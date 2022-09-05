@@ -18,5 +18,9 @@
     "rescript-material-ui",
     "rescript-react-intl"
   ],
-  "reason": { "react-jsx": 3 }
+  "reason": { "react-jsx": 3 },
+  "warnings": {
+    "number": "+A-42-48",
+    "error": "+A-3-44-102-103"
+  }
 }
