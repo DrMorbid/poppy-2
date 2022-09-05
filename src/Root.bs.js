@@ -3,14 +3,17 @@
 import * as App from "./App.bs.js";
 import * as React from "react";
 import * as App_Theme from "./theme/App_Theme.bs.js";
+import * as IntlProvider from "./i18n/IntlProvider.bs.js";
 import * as Core from "@material-ui/core";
 import * as Styles from "@material-ui/core/styles";
 
 function Root(Props) {
-  return React.createElement(Styles.ThemeProvider, {
-              children: null,
-              theme: App_Theme.theme
-            }, React.createElement(Core.CssBaseline, {}), React.createElement(App.make, {}));
+  return React.createElement(IntlProvider.make, {
+              children: React.createElement(Styles.ThemeProvider, {
+                    children: null,
+                    theme: App_Theme.theme
+                  }, React.createElement(Core.CssBaseline, {}), React.createElement(App.make, {}))
+            });
 }
 
 var make = Root;

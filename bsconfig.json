@@ -13,6 +13,10 @@
     }
   ],
   "suffix": ".bs.js",
-  "bs-dependencies": ["@rescript/react", "rescript-material-ui"],
+  "bs-dependencies": [
+    "@rescript/react",
+    "rescript-material-ui",
+    "rescript-react-intl"
+  ],
   "reason": { "react-jsx": 3 }
 }
