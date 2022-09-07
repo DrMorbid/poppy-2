@@ -46,9 +46,26 @@ function toLabel(page) {
   }
 }
 
+function menuItems(param) {
+  return {
+          hd: /* AboutUs */0,
+          tl: {
+            hd: /* Registrations */1,
+            tl: {
+              hd: /* References */2,
+              tl: {
+                hd: /* Contact */3,
+                tl: /* [] */0
+              }
+            }
+          }
+        };
+}
+
 export {
   RoutePath ,
   toRoutePath ,
   toLabel ,
+  menuItems ,
 }
 /* No side effect */

@@ -19,13 +19,13 @@ module Make = (Config: Config) => {
   }
 }
 
-type state = {activeMenuItem: option<App_Page.t>}
+type state = {activeMenuItem: App_Page.t}
 
 let initialState = {
-  activeMenuItem: None,
+  activeMenuItem: App_Page.menuItems()->Belt.List.head->Belt.Option.getExn,
 }
 
-type action = StoreActiveMenuItem(option<App_Page.t>)
+type action = StoreActiveMenuItem(App_Page.t)
 
 let reducer = (_state, action) => {
   switch action {

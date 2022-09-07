@@ -1,29 +1,27 @@
 open Mui
-open App_Page
 
-module Tab = TopMenu_Tab
+module Drawer = TopMenu_Drawer
+module Tabs = TopMenu_Tabs
 
 @react.component
 let make = () => {
-  let isMdUp = Core.useTheme()->Core.Breakpoint.get(#md->#up)->Core.useMediaQuery
-  let ({activeMenuItem, _}: App_Context.state, _) = React.useContext(App_Context.Context.t)
+  let (drawerOpen, setDrawerOpen) = React.useState(() => false)
 
   <AppBar position=#sticky>
-    <Toolbar variant=?{isMdUp ? Some(#dense) : None}>
-      <Grid container=true>
-        <Grid item=true>
-          <Tabs
-            value={switch activeMenuItem {
-            | None => false->Any.make
-            | Some(activeMenuItem) => activeMenuItem->Any.make
-            }}>
-            <Tab page=AboutUs />
-            <Tab page=Registrations />
-            <Tab page=References />
-            <Tab page=Contact />
-          </Tabs>
+    <Drawer drawerOpen onClose={() => setDrawerOpen(_ => false)} />
+    <Hidden xsDown=true>
+      <Tabs />
+    </Hidden>
+    <Hidden smUp=true>
+      <Toolbar>
+        <Grid container=true justify=#"flex-end">
+          <Grid item=true>
+            <IconButton onClick={_ => setDrawerOpen(_ => true)}>
+              <App_Icon.Menu />
+            </IconButton>
+          </Grid>
         </Grid>
-      </Grid>
-    </Toolbar>
+      </Toolbar>
+    </Hidden>
   </AppBar>
 }

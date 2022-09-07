@@ -29,3 +29,5 @@ let toLabel = page => {
   | Contact => contact
   }
 }
+
+let menuItems = () => list{AboutUs, Registrations, References, Contact}
