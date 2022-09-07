@@ -2,7 +2,28 @@
 
 import * as Styles from "@material-ui/core/styles";
 
-var theme = Styles.createTheme({});
+var theme = Styles.createTheme({
+      palette: {
+        error: {
+          main: "#de0522"
+        },
+        info: {
+          main: "#ffe401"
+        },
+        primary: {
+          main: "#ffffff"
+        },
+        secondary: {
+          main: "#009ada"
+        },
+        success: {
+          main: "#68a130"
+        },
+        warning: {
+          main: "#f1a300"
+        }
+      }
+    });
 
 export {
   theme ,
