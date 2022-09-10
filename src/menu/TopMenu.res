@@ -1,4 +1,5 @@
 open Mui
+open ReactIntl
 
 module Drawer = TopMenu_Drawer
 module Tabs = TopMenu_Tabs
@@ -6,6 +7,8 @@ module Tabs = TopMenu_Tabs
 @react.component
 let make = () => {
   let (drawerOpen, setDrawerOpen) = React.useState(() => false)
+  let intl = useIntl()
+  let ({activeMenuItem, _}: App_Context.state, _) = React.useContext(App_Context.Context.t)
 
   <AppBar position=#sticky>
     <Drawer drawerOpen onClose={() => setDrawerOpen(_ => false)} />
@@ -14,7 +17,12 @@ let make = () => {
     </Hidden>
     <Hidden smUp=true>
       <Toolbar>
-        <Grid container=true justify=#"flex-end">
+        <Grid container=true justify=#"space-between" alignItems=#center>
+          <Grid item=true>
+            <Typography variant=#h5>
+              {intl->Intl.formatMessage(activeMenuItem->App_Page.toLabel)->React.string}
+            </Typography>
+          </Grid>
           <Grid item=true>
             <IconButton onClick={_ => setDrawerOpen(_ => true)}>
               <App_Icon.Menu />

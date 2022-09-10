@@ -5,12 +5,16 @@ import * as React from "react";
 import * as App_Page from "../App_Page.bs.js";
 import * as Belt_List from "rescript/lib/es6/belt_List.js";
 import * as ReactIntl from "react-intl";
+import * as App_Actions from "../App_Actions.bs.js";
+import * as App_Context from "../App_Context.bs.js";
 import * as Core from "@material-ui/core";
 
 function TopMenu_Drawer(Props) {
   var drawerOpen = Props.drawerOpen;
   var onClose = Props.onClose;
   var intl = ReactIntl.useIntl();
+  var match = React.useContext(App_Context.Context.t);
+  var dispatch = match[1];
   return React.createElement(Core.Drawer, {
               children: React.createElement(Core.List, {
                     children: Belt_List.toArray(Belt_List.map(App_Page.menuItems(undefined), (function (page) {
@@ -21,6 +25,7 @@ function TopMenu_Drawer(Props) {
                                                 }),
                                             onClick: (function (param) {
                                                 Curry._1(onClose, undefined);
+                                                App_Actions.goToPage(page, dispatch);
                                               })
                                           });
                               })))

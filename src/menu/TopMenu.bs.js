@@ -2,6 +2,9 @@
 
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
+import * as App_Page from "../App_Page.bs.js";
+import * as ReactIntl from "react-intl";
+import * as App_Context from "../App_Context.bs.js";
 import * as TopMenu_Tabs from "./TopMenu_Tabs.bs.js";
 import * as App_Icon_Menu from "../icon/App_Icon_Menu.bs.js";
 import * as TopMenu_Drawer from "./TopMenu_Drawer.bs.js";
@@ -12,6 +15,8 @@ function TopMenu(Props) {
         return false;
       });
   var setDrawerOpen = match[1];
+  var intl = ReactIntl.useIntl();
+  var match$1 = React.useContext(App_Context.Context.t);
   return React.createElement(Core.AppBar, {
               children: null,
               position: "sticky"
@@ -28,20 +33,27 @@ function TopMenu(Props) {
                 }), React.createElement(Core.Hidden, {
                   children: React.createElement(Core.Toolbar, {
                         children: React.createElement(Core.Grid, {
-                              children: React.createElement(Core.Grid, {
-                                    children: React.createElement(Core.IconButton, {
-                                          onClick: (function (param) {
-                                              Curry._1(setDrawerOpen, (function (param) {
-                                                      return true;
-                                                    }));
-                                            }),
-                                          children: React.createElement(App_Icon_Menu.make, {})
-                                        }),
-                                    item: true
-                                  }),
+                              alignItems: "center",
+                              children: null,
                               container: true,
-                              justify: "flex-end"
-                            })
+                              justify: "space-between"
+                            }, React.createElement(Core.Grid, {
+                                  children: React.createElement(Core.Typography, {
+                                        children: intl.formatMessage(App_Page.toLabel(match$1[0].activeMenuItem)),
+                                        variant: "h5"
+                                      }),
+                                  item: true
+                                }), React.createElement(Core.Grid, {
+                                  children: React.createElement(Core.IconButton, {
+                                        onClick: (function (param) {
+                                            Curry._1(setDrawerOpen, (function (param) {
+                                                    return true;
+                                                  }));
+                                          }),
+                                        children: React.createElement(App_Icon_Menu.make, {})
+                                      }),
+                                  item: true
+                                }))
                       }),
                   smUp: true
                 }));

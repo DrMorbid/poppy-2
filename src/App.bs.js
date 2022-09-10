@@ -2,23 +2,36 @@
 
 import * as React from "react";
 import * as TopMenu from "./menu/TopMenu.bs.js";
+import * as App_Router from "./App_Router.bs.js";
+import * as Core from "@material-ui/core";
 
 function App(Props) {
-  return React.createElement(TopMenu.make, {});
+  return React.createElement(React.Fragment, undefined, React.createElement(TopMenu.make, {}), React.createElement(Core.Container, {
+                  children: React.createElement(App_Router.make, {})
+                }));
 }
 
 var Theme;
 
 var Context;
 
+var Actions;
+
 var Page;
+
+var Router;
+
+var Icon;
 
 var make = App;
 
 export {
   Theme ,
   Context ,
+  Actions ,
   Page ,
+  Router ,
+  Icon ,
   make ,
 }
 /* react Not a pure module */

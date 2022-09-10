@@ -13,7 +13,7 @@ let make = () => {
       <Tab
         label={intl->Intl.formatMessage(page->toLabel)->React.string}
         value={page->Any.make}
-        onClick={_ => dispatch(App_Context.StoreActiveMenuItem(page))}
+        onClick={_ => page->App_Actions.goToPage(~dispatch)}
       />
     )
     ->Belt.List.toArray
