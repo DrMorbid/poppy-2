@@ -9,11 +9,12 @@ import * as Core from "@material-ui/core";
 import * as Styles from "@material-ui/core/styles";
 
 function Root(Props) {
+  var prefersDarkTheme = Core.useMediaQuery("(prefers-color-scheme: dark)");
   return React.createElement(IntlProvider.make, {
               children: React.createElement(App_Context.Provider.make, {
                     children: React.createElement(Styles.ThemeProvider, {
                           children: null,
-                          theme: App_Theme.theme
+                          theme: App_Theme.theme(prefersDarkTheme)
                         }, React.createElement(Core.CssBaseline, {}), React.createElement(App.make, {}))
                   })
             });

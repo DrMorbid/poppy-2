@@ -175,3 +175,7 @@ sketch
 # .pnp.*
 
 # End of https://www.toptal.com/developers/gitignore/api/node,react,reasonml,yarn
+
+.DS_Store
+.bsb.lock
+.merlin

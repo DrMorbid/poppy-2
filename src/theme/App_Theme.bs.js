@@ -2,30 +2,41 @@
 
 import * as Styles from "@material-ui/core/styles";
 
-var theme = Styles.createTheme({
-      palette: {
-        error: {
-          main: "#de0522"
-        },
-        info: {
-          main: "#ffe401"
-        },
-        primary: {
-          main: "#ffffff"
-        },
-        secondary: {
-          main: "#009ada"
-        },
-        success: {
-          main: "#68a130"
-        },
-        warning: {
-          main: "#f1a300"
-        }
-      }
-    });
+function getColors(prefersDarkTheme) {
+  return {
+          primary: prefersDarkTheme ? "#303030" : "#fafafa"
+        };
+}
+
+function theme(prefersDarkTheme) {
+  var colors = getColors(prefersDarkTheme);
+  return Styles.createTheme({
+              palette: {
+                error: {
+                  main: "#de0522"
+                },
+                info: {
+                  main: "#ffe401"
+                },
+                primary: {
+                  main: colors.primary
+                },
+                secondary: {
+                  main: "#009ada"
+                },
+                success: {
+                  main: "#68a130"
+                },
+                type: prefersDarkTheme ? "dark" : "light",
+                warning: {
+                  main: "#f1a300"
+                }
+              }
+            });
+}
 
 export {
+  getColors ,
   theme ,
 }
-/* theme Not a pure module */
+/* @material-ui/core/styles Not a pure module */
