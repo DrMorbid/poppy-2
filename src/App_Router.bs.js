@@ -25,12 +25,12 @@ function App_Router(Props) {
           break;
       case "references" :
           if (!match.tl) {
-            return React.createElement(Registrations_Page.make, {});
+            return React.createElement(References_Page.make, {});
           }
           break;
       case "registrations" :
           if (!match.tl) {
-            return React.createElement(References_Page.make, {});
+            return React.createElement(Registrations_Page.make, {});
           }
           break;
       default:

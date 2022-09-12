@@ -25,7 +25,7 @@ let make = () => {
           </Grid>
           <Grid item=true>
             <IconButton onClick={_ => setDrawerOpen(_ => true)}>
-              <App_Icon.Menu />
+              <Common.Icon.Menu />
             </IconButton>
           </Grid>
         </Grid>

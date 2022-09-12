@@ -1,27 +1,20 @@
 open Mui
 open ReactIntl
-open ReactDOM
-
-let useStyles: Styles.useStyles<{
-  "container": string,
-}> = Styles.makeStyles({
-  "container": Style.make(~gridRowGap="1rem", ()),
-})
 
 @react.component
 let make = (~header=?, ~paragraphs) => {
   let intl = useIntl()
-  let classes = useStyles(.)
+  let classes = Common_Style.useStyles(.)
 
-  <Grid container=true className={classes["container"]}>
+  <Grid container=true className={classes["paragraphGap"]}>
     {header->Belt.Option.mapWithDefault(React.null, header =>
-      <Grid item=true>
+      <Grid item=true xs=Grid.Xs.\"12">
         <Typography variant=#h4> {intl->Intl.formatMessage(header)->React.string} </Typography>
       </Grid>
     )}
     {paragraphs
     ->Belt.List.map(paragraph =>
-      <Grid item=true>
+      <Grid item=true xs=Grid.Xs.\"12">
         <Typography> {intl->Intl.formatMessage(paragraph)->React.string} </Typography>
       </Grid>
     )

@@ -3,7 +3,16 @@
 
 var $$Text;
 
+var Style;
+
+var Constants;
+
+var Icon;
+
 export {
   $$Text ,
+  Style ,
+  Constants ,
+  Icon ,
 }
 /* No side effect */

@@ -6,8 +6,8 @@ import * as App_Page from "../App_Page.bs.js";
 import * as ReactIntl from "react-intl";
 import * as App_Context from "../App_Context.bs.js";
 import * as TopMenu_Tabs from "./TopMenu_Tabs.bs.js";
-import * as App_Icon_Menu from "../icon/App_Icon_Menu.bs.js";
 import * as TopMenu_Drawer from "./TopMenu_Drawer.bs.js";
+import * as Common_Icon_Menu from "../common/icon/Common_Icon_Menu.bs.js";
 import * as Core from "@material-ui/core";
 
 function TopMenu(Props) {
@@ -50,7 +50,7 @@ function TopMenu(Props) {
                                                     return true;
                                                   }));
                                           }),
-                                        children: React.createElement(App_Icon_Menu.make, {})
+                                        children: React.createElement(Common_Icon_Menu.make, {})
                                       }),
                                   item: true
                                 }))

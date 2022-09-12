@@ -3,7 +3,10 @@
 
 var Menu;
 
+var OpenInNew;
+
 export {
   Menu ,
+  OpenInNew ,
 }
 /* No side effect */

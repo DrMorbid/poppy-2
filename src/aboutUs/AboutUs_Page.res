@@ -1,12 +1,6 @@
+open Message.AboutUs
+
 @react.component
 let make = () => {
-  <Common.Text
-    header=Message.AboutUs.header
-    paragraphs=list{
-      Message.AboutUs.paragraph1,
-      Message.AboutUs.paragraph2,
-      Message.AboutUs.paragraph3,
-      Message.AboutUs.paragraph4,
-    }
-  />
+  <Common.Text header paragraphs=list{paragraph1, paragraph2, paragraph3, paragraph4} />
 }

@@ -1,1 +1,1 @@
-module Page = References_Page
+module Page = Registrations_Page

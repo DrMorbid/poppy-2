@@ -5,15 +5,14 @@ import * as React from "react";
 import * as TopMenu from "./menu/TopMenu.bs.js";
 import * as App_Router from "./App_Router.bs.js";
 import * as Utils_Style from "./utils/Utils_Style.bs.js";
+import * as Common_Style from "./common/Common_Style.bs.js";
 import * as Core from "@material-ui/core";
 import * as Styles from "@material-ui/styles";
 
 var useStyles = Styles.makeStyles(function (theme) {
       return {
               container: Utils_Style.stylesCombiner({
-                    hd: Utils_Style.styleWithMediaQuery(undefined, Curry._1(theme.breakpoints.up, "sm"), {
-                          marginTop: "2rem"
-                        }),
+                    hd: Utils_Style.styleWithMediaQuery(undefined, Curry._1(theme.breakpoints.up, "sm"), Common_Style.headerGap),
                     tl: {
                       hd: Utils_Style.styleWithMediaQuery(undefined, Curry._1(theme.breakpoints.down, "sm"), {
                             marginTop: "1rem"
@@ -42,8 +41,6 @@ var Page;
 
 var Router;
 
-var Icon;
-
 var make = App;
 
 export {
@@ -52,7 +49,6 @@ export {
   Actions ,
   Page ,
   Router ,
-  Icon ,
   useStyles ,
   make ,
 }

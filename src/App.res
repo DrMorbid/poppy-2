@@ -7,14 +7,13 @@ module Context = App_Context
 module Actions = App_Actions
 module Page = App_Page
 module Router = App_Router
-module Icon = App_Icon
 
 let useStyles: Styles.useStyles<{
   "container": string,
 }> = Styles.makeStylesWithTheme(theme =>
   {
     "container": list{
-      Style.make(~marginTop="2rem", ())->styleWithMediaQuery(
+      Common.Style.headerGap->styleWithMediaQuery(
         ~mediaQuery=theme.breakpoints.up->Any.unsafeGetValue("sm"),
       ),
       Style.make(~marginTop="1rem", ())->styleWithMediaQuery(

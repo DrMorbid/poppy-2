@@ -5,7 +5,7 @@ import Menu from "@material-ui/icons/Menu";
 
 var Menu$1 = {};
 
-function App_Icon_Menu(Props) {
+function Common_Icon_Menu(Props) {
   var color = Props.color;
   var fontSize = Props.fontSize;
   var className = Props.className;
@@ -22,7 +22,7 @@ function App_Icon_Menu(Props) {
   return React.createElement(Menu, tmp);
 }
 
-var make = App_Icon_Menu;
+var make = Common_Icon_Menu;
 
 export {
   Menu$1 as Menu,
