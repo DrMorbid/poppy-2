@@ -13,8 +13,8 @@ let make = (~header=?, ~paragraphs) => {
       </Grid>
     )}
     {paragraphs
-    ->Belt.List.map(paragraph =>
-      <Grid item=true xs=Grid.Xs.\"12">
+    ->Belt.List.mapWithIndex((index, paragraph) =>
+      <Grid item=true xs=Grid.Xs.\"12" key={`paragraph-${index->Belt.Int.toString}`}>
         <Typography> {intl->Intl.formatMessage(paragraph)->React.string} </Typography>
       </Grid>
     )

@@ -16,7 +16,9 @@
   "bs-dependencies": [
     "@rescript/react",
     "rescript-material-ui",
-    "rescript-react-intl"
+    "rescript-react-intl",
+    "@ryyppy/rescript-promise",
+    "@mobily/rescript-date"
   ],
   "reason": { "react-jsx": 3 },
   "warnings": {

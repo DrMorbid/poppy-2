@@ -26,13 +26,14 @@ function Common_Text(Props) {
                                 item: true,
                                 xs: Grid$Mui.Xs[12]
                               });
-                  })), Belt_List.toArray(Belt_List.map(paragraphs, (function (paragraph) {
+                  })), Belt_List.toArray(Belt_List.mapWithIndex(paragraphs, (function (index, paragraph) {
                         return React.createElement(Core.Grid, {
                                     children: React.createElement(Core.Typography, {
                                           children: intl.formatMessage(paragraph)
                                         }),
                                     item: true,
-                                    xs: Grid$Mui.Xs[12]
+                                    xs: Grid$Mui.Xs[12],
+                                    key: "paragraph-" + String(index) + ""
                                   });
                       }))));
 }
