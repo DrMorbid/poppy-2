@@ -29,9 +29,7 @@ let make = () => {
     News_Idb.setNewsRead(Js.Date.make())
   }
 
-  if newsRead {
-    React.null
-  } else {
+  <Collapse \"in"={!newsRead}>
     <Grid
       container=true
       direction=#column
@@ -83,5 +81,5 @@ let make = () => {
         </Alert>
       </Grid>
     </Grid>
-  }
+  </Collapse>
 }

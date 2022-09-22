@@ -36,60 +36,59 @@ function News_Message(Props) {
           }));
     News_Idb.setNewsRead(new Date());
   };
-  if (match[0]) {
-    return null;
-  } else {
-    return React.createElement(Core.Grid, {
-                alignItems: "stretch",
-                children: React.createElement(Core.Grid, {
-                      children: React.createElement(Lab.Alert, {
-                            children: null,
-                            classes: {
-                              message: commonClasses.fullWidth,
-                              action: classes.iconPlacement
-                            },
-                            color: "error",
-                            onClose: onClose,
-                            severity: "info"
-                          }, React.createElement(Lab.AlertTitle, {
-                                children: Belt_List.toArray(Belt_List.mapWithIndex(News_Latest.latestNews.title, (function (index, titleLine) {
-                                            return React.createElement(Core.Typography, {
-                                                        children: titleLine,
-                                                        variant: "h6",
-                                                        key: "news-title-line-" + String(index) + ""
-                                                      });
-                                          })))
-                              }), React.createElement(Core.Grid, {
-                                alignItems: "stretch",
-                                children: Belt_List.toArray(Belt_List.mapWithIndex(News_Latest.latestNews.content, (function (index, param) {
-                                            var tmp = {
-                                              children: param.value
-                                            };
-                                            var tmp$1 = param.emphasis ? commonClasses.bold : undefined;
-                                            if (tmp$1 !== undefined) {
-                                              tmp.className = tmp$1;
-                                            }
-                                            var tmp$2 = {
-                                              children: React.createElement(Core.Typography, tmp),
-                                              item: true,
-                                              key: "news-line-" + String(index) + ""
-                                            };
-                                            var tmp$3 = param.nextLineEmpty ? commonClasses.marginBottomSm : undefined;
-                                            if (tmp$3 !== undefined) {
-                                              tmp$2.className = tmp$3;
-                                            }
-                                            return React.createElement(Core.Grid, tmp$2);
-                                          }))),
-                                container: true,
-                                direction: "column"
-                              })),
-                      item: true
-                    }),
-                className: commonClasses.marginBottom,
-                container: true,
-                direction: "column"
-              });
-  }
+  return React.createElement(Core.Collapse, {
+              children: React.createElement(Core.Grid, {
+                    alignItems: "stretch",
+                    children: React.createElement(Core.Grid, {
+                          children: React.createElement(Lab.Alert, {
+                                children: null,
+                                classes: {
+                                  message: commonClasses.fullWidth,
+                                  action: classes.iconPlacement
+                                },
+                                color: "error",
+                                onClose: onClose,
+                                severity: "info"
+                              }, React.createElement(Lab.AlertTitle, {
+                                    children: Belt_List.toArray(Belt_List.mapWithIndex(News_Latest.latestNews.title, (function (index, titleLine) {
+                                                return React.createElement(Core.Typography, {
+                                                            children: titleLine,
+                                                            variant: "h6",
+                                                            key: "news-title-line-" + String(index) + ""
+                                                          });
+                                              })))
+                                  }), React.createElement(Core.Grid, {
+                                    alignItems: "stretch",
+                                    children: Belt_List.toArray(Belt_List.mapWithIndex(News_Latest.latestNews.content, (function (index, param) {
+                                                var tmp = {
+                                                  children: param.value
+                                                };
+                                                var tmp$1 = param.emphasis ? commonClasses.bold : undefined;
+                                                if (tmp$1 !== undefined) {
+                                                  tmp.className = tmp$1;
+                                                }
+                                                var tmp$2 = {
+                                                  children: React.createElement(Core.Typography, tmp),
+                                                  item: true,
+                                                  key: "news-line-" + String(index) + ""
+                                                };
+                                                var tmp$3 = param.nextLineEmpty ? commonClasses.marginBottomSm : undefined;
+                                                if (tmp$3 !== undefined) {
+                                                  tmp$2.className = tmp$3;
+                                                }
+                                                return React.createElement(Core.Grid, tmp$2);
+                                              }))),
+                                    container: true,
+                                    direction: "column"
+                                  })),
+                          item: true
+                        }),
+                    className: commonClasses.marginBottom,
+                    container: true,
+                    direction: "column"
+                  }),
+              in: !match[0]
+            });
 }
 
 var make = News_Message;
