@@ -30,6 +30,7 @@ let make = () => {
   <>
     <TopMenu />
     <Container className={classes["container"]}>
+      <News.Message />
       <Router />
     </Container>
   </>

@@ -1,10 +1,15 @@
-type lineEmphasis = Normal | Bold | Large
+type lineEmphasis = Normal | Bold
 
-type textLine = {
+type line = {
   emphasis: lineEmphasis,
   value: string,
+  nextLineEmpty: bool,
 }
 
-type line = Empty | Filled(textLine)
+let makeLine = (~emphasis=Normal, ~nextLineEmpty=false, value) => {
+  emphasis,
+  value,
+  nextLineEmpty,
+}
 
-type t = {date: Js.Date.t, content: list<line>}
+type t = {date: Js.Date.t, title: list<string>, content: list<line>}

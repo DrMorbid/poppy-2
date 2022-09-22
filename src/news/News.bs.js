@@ -5,14 +5,14 @@ var Idb;
 
 var Type;
 
-var Dialod;
+var Message;
 
 var Latest;
 
 export {
   Idb ,
   Type ,
-  Dialod ,
+  Message ,
   Latest ,
 }
 /* No side effect */

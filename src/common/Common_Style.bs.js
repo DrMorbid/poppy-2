@@ -13,6 +13,15 @@ var useStyles = Styles.makeStyles({
       },
       bold: {
         fontWeight: "bold"
+      },
+      marginBottomSm: {
+        marginBottom: "0.75rem"
+      },
+      marginBottom: {
+        marginBottom: "1rem"
+      },
+      fullWidth: {
+        width: "100%"
       }
     });
 

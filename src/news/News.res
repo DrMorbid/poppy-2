@@ -1,4 +1,4 @@
 module Idb = News_Idb
 module Type = News_Type
-module Dialod = News_Dialog
+module Message = News_Message
 module Latest = News_Latest

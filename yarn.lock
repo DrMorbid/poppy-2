@@ -2258,6 +2258,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@material-ui/lab@npm:^4.0.0-alpha.61":
+  version: 4.0.0-alpha.61
+  resolution: "@material-ui/lab@npm:4.0.0-alpha.61"
+  dependencies:
+    "@babel/runtime": ^7.4.4
+    "@material-ui/utils": ^4.11.3
+    clsx: ^1.0.4
+    prop-types: ^15.7.2
+    react-is: ^16.8.0 || ^17.0.0
+  peerDependencies:
+    "@material-ui/core": ^4.12.1
+    "@types/react": ^16.8.6 || ^17.0.0
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+  checksum: 8774a07d72615301e0099415580f87ea8f3d1d106f79e0b014738e302dd3e21959abf01d6c0a629e2e9afb8cb91abd8e9686c2886cddff06c27e6a8a8e063ea0
+  languageName: node
+  linkType: hard
+
 "@material-ui/styles@npm:^4.11.4":
   version: 4.11.5
   resolution: "@material-ui/styles@npm:4.11.5"
@@ -9604,6 +9625,7 @@ __metadata:
   dependencies:
     "@material-ui/core": 4.12.3
     "@material-ui/icons": ^4.11.2
+    "@material-ui/lab": ^4.0.0-alpha.61
     "@mobily/rescript-date": ^2.1.0
     "@rescript/react": ^0.10.3
     "@ryyppy/rescript-promise": ^2.1.0
@@ -9617,6 +9639,7 @@ __metadata:
     react-scripts: 5.0.1
     rescript: ^10.0.1
     rescript-material-ui: ^3.0.2
+    rescript-material-ui-lab: ^3.0.2
     rescript-react-intl: ^3.0.0
     rescript-react-intl-extractor-bin: ^0.12.0
     web-vitals: ^2.1.4
@@ -11089,6 +11112,19 @@ __metadata:
   version: 1.0.0
   resolution: "requires-port@npm:1.0.0"
   checksum: eee0e303adffb69be55d1a214e415cf42b7441ae858c76dfc5353148644f6fd6e698926fc4643f510d5c126d12a705e7c8ed7e38061113bdf37547ab356797ff
+  languageName: node
+  linkType: hard
+
+"rescript-material-ui-lab@npm:^3.0.2":
+  version: 3.0.2
+  resolution: "rescript-material-ui-lab@npm:3.0.2"
+  peerDependencies:
+    "@material-ui/core": 4.12.3
+    "@material-ui/lab": ^4.0.0-alpha.60
+    "@rescript/react": ^0.10.3
+    rescript: ^9.1.2
+    rescript-material-ui: ^3.0.0
+  checksum: cc8d862629d0612f4e28d900093bbaafc10ca364b8366dbeda6efc980432b5bb46460fce8b70871b087eb53fc6c53f9da3e6c3fe7188947fd71eab7e90b2fcef
   languageName: node
   linkType: hard
 

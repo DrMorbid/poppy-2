@@ -18,7 +18,8 @@
     "rescript-material-ui",
     "rescript-react-intl",
     "@ryyppy/rescript-promise",
-    "@mobily/rescript-date"
+    "@mobily/rescript-date",
+    "rescript-material-ui-lab"
   ],
   "reason": { "react-jsx": 3 },
   "warnings": {

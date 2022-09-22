@@ -6,6 +6,7 @@ import * as TopMenu from "./menu/TopMenu.bs.js";
 import * as App_Router from "./App_Router.bs.js";
 import * as Utils_Style from "./utils/Utils_Style.bs.js";
 import * as Common_Style from "./common/Common_Style.bs.js";
+import * as News_Message from "./news/News_Message.bs.js";
 import * as Core from "@material-ui/core";
 import * as Styles from "@material-ui/styles";
 
@@ -26,9 +27,9 @@ var useStyles = Styles.makeStyles(function (theme) {
 function App(Props) {
   var classes = useStyles();
   return React.createElement(React.Fragment, undefined, React.createElement(TopMenu.make, {}), React.createElement(Core.Container, {
-                  children: React.createElement(App_Router.make, {}),
+                  children: null,
                   className: classes.container
-                }));
+                }, React.createElement(News_Message.make, {}), React.createElement(App_Router.make, {})));
 }
 
 var Theme;
