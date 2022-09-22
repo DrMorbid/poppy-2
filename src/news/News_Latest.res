@@ -1,7 +1,7 @@
 open News_Type
 
 let latestNews: t = {
-  date: Js.Date.fromString("2021-06-16"),
+  date: Js.Date.fromString("2022-09-25"),
   title: list{
     "Registrace nových dětí a přefocení aktuálně neprobíhá.",
     "Nové termíny na podzim vypíšeme zde, můžete nám dát vědět, že máte zájem a informace Vám zašleme.",

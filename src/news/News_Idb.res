@@ -8,10 +8,17 @@ let newsReadKey = "news-read"
 
 let setNewsRead = date => store->setString(~key=newsReadKey, ~value=date->toISOString)->ignore
 
-let isNewsRead = date => {
+let isLatestNewsRead = () => {
   open Belt.Option
+
+  let newDate = News_Latest.latestNews.date
 
   store
   ->getString(~key=newsReadKey)
-  ->thenResolve(lastDate => lastDate->map(fromString)->map(isEqual(date))->getWithDefault(false))
+  ->thenResolve(lastDate =>
+    lastDate
+    ->map(fromString)
+    ->map(lastDate => lastDate->isAfter(newDate) || lastDate->isEqual(newDate))
+    ->getWithDefault(false)
+  )
 }

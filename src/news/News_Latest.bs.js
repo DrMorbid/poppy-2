@@ -2,7 +2,7 @@
 
 import * as News_Type from "./News_Type.bs.js";
 
-var latestNews_date = new Date("2021-06-16");
+var latestNews_date = new Date("2022-09-25");
 
 var latestNews_title = {
   hd: "Registrace nových dětí a přefocení aktuálně neprobíhá.",

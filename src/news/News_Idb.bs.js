@@ -4,6 +4,7 @@ import * as ReDate from "@mobily/rescript-date/src/ReDate.bs.js";
 import * as Utils_Idb from "../utils/Utils_Idb.bs.js";
 import * as IdbKeyval from "idb-keyval";
 import * as Belt_Option from "rescript/lib/es6/belt_Option.js";
+import * as News_Latest from "./News_Latest.bs.js";
 
 var newsReadKey = "news-read";
 
@@ -11,18 +12,23 @@ function setNewsRead(date) {
   IdbKeyval.set(newsReadKey, date.toISOString(), Utils_Idb.store);
 }
 
-function isNewsRead(date) {
+function isLatestNewsRead(param) {
+  var newDate = News_Latest.latestNews.date;
   return IdbKeyval.get(newsReadKey, Utils_Idb.store).then(function (lastDate) {
               return Belt_Option.getWithDefault(Belt_Option.map(Belt_Option.map(lastDate, (function (prim) {
                                     return new Date(prim);
-                                  })), (function (param) {
-                                return ReDate.isEqual(date, param);
+                                  })), (function (lastDate) {
+                                if (ReDate.isAfter(lastDate, newDate)) {
+                                  return true;
+                                } else {
+                                  return ReDate.isEqual(lastDate, newDate);
+                                }
                               })), false);
             });
 }
 
 export {
   setNewsRead ,
-  isNewsRead ,
+  isLatestNewsRead ,
 }
 /* Utils_Idb Not a pure module */
