@@ -35,7 +35,7 @@ let toLabel = page => {
 
 let menuItems = isLatestNewsRead =>
   if isLatestNewsRead {
-    list{AboutUs, Registrations, References, Contact, News}
+    list{AboutUs, News, Registrations, References, Contact}
   } else {
     list{AboutUs, Registrations, References, Contact}
   }

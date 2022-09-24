@@ -58,13 +58,13 @@ function menuItems(isLatestNewsRead) {
     return {
             hd: /* AboutUs */0,
             tl: {
-              hd: /* Registrations */1,
+              hd: /* News */4,
               tl: {
-                hd: /* References */2,
+                hd: /* Registrations */1,
                 tl: {
-                  hd: /* Contact */3,
+                  hd: /* References */2,
                   tl: {
-                    hd: /* News */4,
+                    hd: /* Contact */3,
                     tl: /* [] */0
                   }
                 }
