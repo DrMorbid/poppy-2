@@ -9,11 +9,12 @@ import * as App_Context from "../App_Context.bs.js";
 import * as Core from "@material-ui/core";
 
 function TopMenu_Tabs(Props) {
+  var isLatestNewsRead = Props.isLatestNewsRead;
   var intl = ReactIntl.useIntl();
   var match = React.useContext(App_Context.Context.t);
   var dispatch = match[1];
   return React.createElement(Core.Tabs, {
-              children: Belt_List.toArray(Belt_List.map(App_Page.menuItems(undefined), (function (page) {
+              children: Belt_List.toArray(Belt_List.map(App_Page.menuItems(isLatestNewsRead), (function (page) {
                           return React.createElement(Core.Tab, {
                                       label: intl.formatMessage(App_Page.toLabel(page)),
                                       onClick: (function (param) {

@@ -17,15 +17,21 @@ var Menu_references = {
 };
 
 var Menu_contact = {
-  id: "6bf7df3e-31ef-4204-863a-9cf963d73779",
+  id: "73b571e6-4145-4efb-a2ae-6fd9f4933981",
   defaultMessage: "Kontakt"
+};
+
+var Menu_news = {
+  id: "ead3a1d1-bc04-41b2-bd64-bca14c7583e4",
+  defaultMessage: "Novinka"
 };
 
 var Menu = {
   aboutUs: Menu_aboutUs,
   registrations: Menu_registrations,
   references: Menu_references,
-  contact: Menu_contact
+  contact: Menu_contact,
+  news: Menu_news
 };
 
 var AboutUs_header = {

@@ -15,6 +15,7 @@ let make = () => {
   let (newsRead, setNewsRead) = React.useState(() => true)
   let commonClasses = Common_Style.useStyles(.)
   let classes = useStyles(.)
+  let (_, dispatch) = React.useContext(App_Context.Context.t)
 
   React.useEffect0(() => {
     News_Idb.isLatestNewsRead()
@@ -27,6 +28,7 @@ let make = () => {
   let onClose = _ => {
     setNewsRead(_ => true)
     News_Idb.setNewsRead(Js.Date.make())
+    dispatch(LatestNewsClosed)
   }
 
   <Collapse \"in"={!newsRead}>

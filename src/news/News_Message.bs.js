@@ -4,6 +4,7 @@ import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
 import * as News_Idb from "./News_Idb.bs.js";
 import * as Belt_List from "rescript/lib/es6/belt_List.js";
+import * as App_Context from "../App_Context.bs.js";
 import * as News_Latest from "./News_Latest.bs.js";
 import * as Common_Style from "../common/Common_Style.bs.js";
 import * as Lab from "@material-ui/lab";
@@ -23,6 +24,8 @@ function News_Message(Props) {
   var setNewsRead = match[1];
   var commonClasses = Common_Style.useStyles();
   var classes = useStyles();
+  var match$1 = React.useContext(App_Context.Context.t);
+  var dispatch = match$1[1];
   React.useEffect((function () {
           News_Idb.isLatestNewsRead(undefined).then(function (isLatestNewsRead) {
                 Curry._1(setNewsRead, (function (param) {
@@ -35,6 +38,7 @@ function News_Message(Props) {
             return true;
           }));
     News_Idb.setNewsRead(new Date());
+    Curry._1(dispatch, /* LatestNewsClosed */0);
   };
   return React.createElement(Core.Collapse, {
               children: React.createElement(Core.Grid, {

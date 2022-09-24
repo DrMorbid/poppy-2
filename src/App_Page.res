@@ -1,4 +1,4 @@
-type t = AboutUs | Registrations | References | Contact
+type t = AboutUs | Registrations | References | Contact | News
 
 module RoutePath = {
   let home = "/"
@@ -6,6 +6,7 @@ module RoutePath = {
   let registrations = "/registrations"
   let references = "/references"
   let contact = "/contact"
+  let news = "/novinka"
 }
 
 let toRoutePath = page => {
@@ -16,6 +17,7 @@ let toRoutePath = page => {
   | Registrations => registrations
   | References => references
   | Contact => contact
+  | News => news
   }
 }
 
@@ -27,7 +29,13 @@ let toLabel = page => {
   | Registrations => registrations
   | References => references
   | Contact => contact
+  | News => news
   }
 }
 
-let menuItems = () => list{AboutUs, Registrations, References, Contact}
+let menuItems = isLatestNewsRead =>
+  if isLatestNewsRead {
+    list{AboutUs, Registrations, References, Contact, News}
+  } else {
+    list{AboutUs, Registrations, References, Contact}
+  }

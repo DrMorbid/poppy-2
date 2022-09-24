@@ -19,17 +19,19 @@ module Make = (Config: Config) => {
   }
 }
 
-type state = {activeMenuItem: App_Page.t}
+type state = {activeMenuItem: App_Page.t, latestNewsClosed: bool}
 
 let initialState = {
-  activeMenuItem: App_Page.menuItems()->Belt.List.head->Belt.Option.getExn,
+  activeMenuItem: AboutUs,
+  latestNewsClosed: false,
 }
 
-type action = StoreActiveMenuItem(App_Page.t)
+type action = StoreActiveMenuItem(App_Page.t) | LatestNewsClosed
 
-let reducer = (_state, action) => {
+let reducer = (state, action) => {
   switch action {
-  | StoreActiveMenuItem(activeMenuItem) => {activeMenuItem: activeMenuItem}
+  | StoreActiveMenuItem(activeMenuItem) => {...state, activeMenuItem}
+  | LatestNewsClosed => {...state, latestNewsClosed: true}
   }
 }
 

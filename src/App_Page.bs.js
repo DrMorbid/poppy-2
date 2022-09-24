@@ -10,12 +10,15 @@ var references = "/references";
 
 var contact = "/contact";
 
+var news = "/novinka";
+
 var RoutePath = {
   home: "/",
   aboutUs: aboutUs,
   registrations: registrations,
   references: references,
-  contact: contact
+  contact: contact,
+  news: news
 };
 
 function toRoutePath(page) {
@@ -28,6 +31,8 @@ function toRoutePath(page) {
         return references;
     case /* Contact */3 :
         return contact;
+    case /* News */4 :
+        return news;
     
   }
 }
@@ -42,24 +47,45 @@ function toLabel(page) {
         return Message.Menu.references;
     case /* Contact */3 :
         return Message.Menu.contact;
+    case /* News */4 :
+        return Message.Menu.news;
     
   }
 }
 
-function menuItems(param) {
-  return {
-          hd: /* AboutUs */0,
-          tl: {
-            hd: /* Registrations */1,
+function menuItems(isLatestNewsRead) {
+  if (isLatestNewsRead) {
+    return {
+            hd: /* AboutUs */0,
             tl: {
-              hd: /* References */2,
+              hd: /* Registrations */1,
               tl: {
-                hd: /* Contact */3,
-                tl: /* [] */0
+                hd: /* References */2,
+                tl: {
+                  hd: /* Contact */3,
+                  tl: {
+                    hd: /* News */4,
+                    tl: /* [] */0
+                  }
+                }
               }
             }
-          }
-        };
+          };
+  } else {
+    return {
+            hd: /* AboutUs */0,
+            tl: {
+              hd: /* Registrations */1,
+              tl: {
+                hd: /* References */2,
+                tl: {
+                  hd: /* Contact */3,
+                  tl: /* [] */0
+                }
+              }
+            }
+          };
+  }
 }
 
 export {

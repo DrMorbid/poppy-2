@@ -1,19 +1,31 @@
 open Mui
 open ReactIntl
+open Promise
 
 module Drawer = TopMenu_Drawer
 module Tabs = TopMenu_Tabs
 
 @react.component
 let make = () => {
+  let (isLatestNewsRead, setIsLatestNewsRead) = React.useState(() => false)
   let (drawerOpen, setDrawerOpen) = React.useState(() => false)
   let intl = useIntl()
-  let ({activeMenuItem, _}: App_Context.state, _) = React.useContext(App_Context.Context.t)
+  let ({activeMenuItem, latestNewsClosed}: App_Context.state, _) = React.useContext(
+    App_Context.Context.t,
+  )
+
+  React.useEffect1(() => {
+    News.Idb.isLatestNewsRead()
+    ->thenResolve(isLatestNewsRead => setIsLatestNewsRead(_ => isLatestNewsRead))
+    ->ignore
+
+    None
+  }, [latestNewsClosed])
 
   <AppBar position=#sticky>
-    <Drawer drawerOpen onClose={() => setDrawerOpen(_ => false)} />
+    <Drawer drawerOpen onClose={() => setDrawerOpen(_ => false)} isLatestNewsRead />
     <Hidden xsDown=true>
-      <Tabs />
+      <Tabs isLatestNewsRead />
     </Hidden>
     <Hidden smUp=true>
       <Toolbar>

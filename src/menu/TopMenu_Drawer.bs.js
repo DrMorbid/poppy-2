@@ -12,12 +12,13 @@ import * as Core from "@material-ui/core";
 function TopMenu_Drawer(Props) {
   var drawerOpen = Props.drawerOpen;
   var onClose = Props.onClose;
+  var isLatestNewsRead = Props.isLatestNewsRead;
   var intl = ReactIntl.useIntl();
   var match = React.useContext(App_Context.Context.t);
   var dispatch = match[1];
   return React.createElement(Core.Drawer, {
               children: React.createElement(Core.List, {
-                    children: Belt_List.toArray(Belt_List.map(App_Page.menuItems(undefined), (function (page) {
+                    children: Belt_List.toArray(Belt_List.map(App_Page.menuItems(isLatestNewsRead), (function (page) {
                                 return React.createElement(Core.ListItem, {
                                             button: true,
                                             children: React.createElement(Core.ListItemText, {

@@ -3,13 +3,13 @@ open ReactIntl
 open App_Page
 
 @react.component
-let make = (~drawerOpen, ~onClose) => {
+let make = (~drawerOpen, ~onClose, ~isLatestNewsRead) => {
   let intl = useIntl()
   let (_, dispatch) = React.useContext(App_Context.Context.t)
 
   <Drawer \"open"=drawerOpen onClose={_ => onClose()}>
     <List>
-      {App_Page.menuItems()
+      {App_Page.menuItems(isLatestNewsRead)
       ->Belt.List.map(page =>
         <ListItem
           button=true

@@ -3,12 +3,12 @@ open ReactIntl
 open App_Page
 
 @react.component
-let make = () => {
+let make = (~isLatestNewsRead) => {
   let intl = useIntl()
   let ({activeMenuItem, _}: App_Context.state, dispatch) = React.useContext(App_Context.Context.t)
 
   <Tabs value={activeMenuItem->Any.make} variant=#fullWidth>
-    {App_Page.menuItems()
+    {App_Page.menuItems(isLatestNewsRead)
     ->Belt.List.map(page =>
       <Tab
         label={intl->Intl.formatMessage(page->toLabel)->React.string}
