@@ -9,10 +9,13 @@ var Message;
 
 var Latest;
 
+var Page;
+
 export {
   Idb ,
   Type ,
   Message ,
   Latest ,
+  Page ,
 }
 /* No side effect */

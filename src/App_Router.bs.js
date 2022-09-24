@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import * as App_Page from "./App_Page.bs.js";
+import * as News_Page from "./news/News_Page.bs.js";
 import * as AboutUs_Page from "./aboutUs/AboutUs_Page.bs.js";
 import * as Contact_Page from "./contact/Contact_Page.bs.js";
 import * as References_Page from "./references/References_Page.bs.js";
@@ -21,6 +22,11 @@ function App_Router(Props) {
       case "contact" :
           if (!match.tl) {
             return React.createElement(Contact_Page.make, {});
+          }
+          break;
+      case "news" :
+          if (!match.tl) {
+            return React.createElement(News_Page.make, {});
           }
           break;
       case "references" :

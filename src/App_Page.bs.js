@@ -10,7 +10,7 @@ var references = "/references";
 
 var contact = "/contact";
 
-var news = "/novinka";
+var news = "/news";
 
 var RoutePath = {
   home: "/",

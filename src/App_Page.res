@@ -6,7 +6,7 @@ module RoutePath = {
   let registrations = "/registrations"
   let references = "/references"
   let contact = "/contact"
-  let news = "/novinka"
+  let news = "/news"
 }
 
 let toRoutePath = page => {
