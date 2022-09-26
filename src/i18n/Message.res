@@ -23,7 +23,7 @@ module Menu = {
     {id: "73b571e6-4145-4efb-a2ae-6fd9f4933981", defaultMessage: "Kontakt"}
   let news =
     @intl.description("Top menu item - News")
-    {id: "ead3a1d1-bc04-41b2-bd64-bca14c7583e4", defaultMessage: "Novinka"}
+    {id: "ead3a1d1-bc04-41b2-bd64-bca14c7583e4", defaultMessage: "Aktuální info"}
 }
 
 module AboutUs = {

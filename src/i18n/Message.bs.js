@@ -23,7 +23,7 @@ var Menu_contact = {
 
 var Menu_news = {
   id: "ead3a1d1-bc04-41b2-bd64-bca14c7583e4",
-  defaultMessage: "Novinka"
+  defaultMessage: "Aktuální info"
 };
 
 var Menu = {
