@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "re:build": "rescript",
+    "re:build": "rescript clean && rescript build -with-deps",
     "re:start": "rescript clean && rescript build -with-deps -w",
     "start": "react-scripts start",
     "build": "react-scripts build",
