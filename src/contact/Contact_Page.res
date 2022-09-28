@@ -20,8 +20,6 @@ let make = () => {
     None
   }, [activeMenuItem])
 
-  //header=?{isSmUp ? Some(header) : None}
-
   <Grid container=true>
     <Grid item=true xs=Xs.\"12">
       <Grid container=true className={commonClasses["paragraphGap"]}>

@@ -48,6 +48,9 @@ let make = () => {
             (),
           )}>
           <AlertTitle>
+            <Typography variant=#h5>
+              {latestNews.date->Js.Date.toLocaleDateString->React.string}
+            </Typography>
             {latestNews.title
             ->Belt.List.mapWithIndex((index, titleLine) =>
               <Typography variant=#h6 key={`news-title-line-${index->Belt.Int.toString}`}>

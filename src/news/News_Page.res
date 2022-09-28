@@ -16,6 +16,11 @@ let make = () => {
 
   <Grid container=true>
     <Grid item=true>
+      <Typography variant=#h4>
+        {latestNews.date->Js.Date.toLocaleDateString->React.string}
+      </Typography>
+    </Grid>
+    <Grid item=true className={commonClasses["marginTopSm"]}>
       {latestNews.title
       ->Belt.List.mapWithIndex((index, titleLine) =>
         <Typography variant=#h5 key={`news-title-line-${index->Belt.Int.toString}`}>
@@ -24,7 +29,7 @@ let make = () => {
       )
       ->Belt.List.toArray
       ->React.array}
-      <Grid container=true direction=#column className={commonClasses["headerGap"]}>
+      <Grid container=true direction=#column className={commonClasses["marginTopSm"]}>
         {latestNews.content
         ->Belt.List.mapWithIndex((index, {emphasis, value, nextLineEmpty}) => {
           <Grid

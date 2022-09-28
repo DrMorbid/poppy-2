@@ -14,6 +14,9 @@ var useStyles = Styles.makeStyles({
       bold: {
         fontWeight: "bold"
       },
+      marginTopSm: {
+        marginTop: "0.75rem"
+      },
       marginBottomSm: {
         marginBottom: "0.75rem"
       },

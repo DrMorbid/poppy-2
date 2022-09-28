@@ -22,41 +22,48 @@ function News_Page(Props) {
           
         }), [activeMenuItem]);
   return React.createElement(Core.Grid, {
-              children: React.createElement(Core.Grid, {
-                    children: null,
-                    item: true
-                  }, Belt_List.toArray(Belt_List.mapWithIndex(News_Latest.latestNews.title, (function (index, titleLine) {
-                              return React.createElement(Core.Typography, {
-                                          children: titleLine,
-                                          variant: "h5",
-                                          key: "news-title-line-" + String(index) + ""
-                                        });
-                            }))), React.createElement(Core.Grid, {
-                        children: Belt_List.toArray(Belt_List.mapWithIndex(News_Latest.latestNews.content, (function (index, param) {
-                                    var tmp = {
-                                      children: param.value
-                                    };
-                                    var tmp$1 = param.emphasis ? commonClasses.bold : undefined;
-                                    if (tmp$1 !== undefined) {
-                                      tmp.className = tmp$1;
-                                    }
-                                    var tmp$2 = {
-                                      children: React.createElement(Core.Typography, tmp),
-                                      item: true,
-                                      key: "news-line-" + String(index) + ""
-                                    };
-                                    var tmp$3 = param.nextLineEmpty ? commonClasses.marginBottomSm : undefined;
-                                    if (tmp$3 !== undefined) {
-                                      tmp$2.className = tmp$3;
-                                    }
-                                    return React.createElement(Core.Grid, tmp$2);
-                                  }))),
-                        className: commonClasses.headerGap,
-                        container: true,
-                        direction: "column"
-                      })),
+              children: null,
               container: true
-            });
+            }, React.createElement(Core.Grid, {
+                  children: React.createElement(Core.Typography, {
+                        children: News_Latest.latestNews.date.toLocaleDateString(),
+                        variant: "h4"
+                      }),
+                  item: true
+                }), React.createElement(Core.Grid, {
+                  children: null,
+                  className: commonClasses.marginTopSm,
+                  item: true
+                }, Belt_List.toArray(Belt_List.mapWithIndex(News_Latest.latestNews.title, (function (index, titleLine) {
+                            return React.createElement(Core.Typography, {
+                                        children: titleLine,
+                                        variant: "h5",
+                                        key: "news-title-line-" + String(index) + ""
+                                      });
+                          }))), React.createElement(Core.Grid, {
+                      children: Belt_List.toArray(Belt_List.mapWithIndex(News_Latest.latestNews.content, (function (index, param) {
+                                  var tmp = {
+                                    children: param.value
+                                  };
+                                  var tmp$1 = param.emphasis ? commonClasses.bold : undefined;
+                                  if (tmp$1 !== undefined) {
+                                    tmp.className = tmp$1;
+                                  }
+                                  var tmp$2 = {
+                                    children: React.createElement(Core.Typography, tmp),
+                                    item: true,
+                                    key: "news-line-" + String(index) + ""
+                                  };
+                                  var tmp$3 = param.nextLineEmpty ? commonClasses.marginBottomSm : undefined;
+                                  if (tmp$3 !== undefined) {
+                                    tmp$2.className = tmp$3;
+                                  }
+                                  return React.createElement(Core.Grid, tmp$2);
+                                }))),
+                      className: commonClasses.marginTopSm,
+                      container: true,
+                      direction: "column"
+                    })));
 }
 
 var make = News_Page;

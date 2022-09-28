@@ -54,14 +54,17 @@ function News_Message(Props) {
                                 onClose: onClose,
                                 severity: "info"
                               }, React.createElement(Lab.AlertTitle, {
-                                    children: Belt_List.toArray(Belt_List.mapWithIndex(News_Latest.latestNews.title, (function (index, titleLine) {
-                                                return React.createElement(Core.Typography, {
-                                                            children: titleLine,
-                                                            variant: "h6",
-                                                            key: "news-title-line-" + String(index) + ""
-                                                          });
-                                              })))
-                                  }), React.createElement(Core.Grid, {
+                                    children: null
+                                  }, React.createElement(Core.Typography, {
+                                        children: News_Latest.latestNews.date.toLocaleDateString(),
+                                        variant: "h5"
+                                      }), Belt_List.toArray(Belt_List.mapWithIndex(News_Latest.latestNews.title, (function (index, titleLine) {
+                                              return React.createElement(Core.Typography, {
+                                                          children: titleLine,
+                                                          variant: "h6",
+                                                          key: "news-title-line-" + String(index) + ""
+                                                        });
+                                            })))), React.createElement(Core.Grid, {
                                     alignItems: "stretch",
                                     children: Belt_List.toArray(Belt_List.mapWithIndex(News_Latest.latestNews.content, (function (index, param) {
                                                 var tmp = {
