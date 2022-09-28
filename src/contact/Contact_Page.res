@@ -10,6 +10,7 @@ let make = () => {
   let intl = useIntl()
   let commonClasses = Style.useStyles(.)
   let ({activeMenuItem, _}: App_Context.state, dispatch) = React.useContext(App_Context.Context.t)
+  let isSmUp = Core.useMediaQuery(Core.useTheme()->Core.Breakpoint.get(#sm->#up))
 
   React.useEffect1(() => {
     if activeMenuItem != Contact {
@@ -19,12 +20,18 @@ let make = () => {
     None
   }, [activeMenuItem])
 
+  //header=?{isSmUp ? Some(header) : None}
+
   <Grid container=true>
     <Grid item=true xs=Xs.\"12">
       <Grid container=true className={commonClasses["paragraphGap"]}>
-        <Grid item=true xs=Xs.\"12">
-          <Typography variant=#h4> {intl->Intl.formatMessage(header)->React.string} </Typography>
-        </Grid>
+        {if isSmUp {
+          <Grid item=true xs=Xs.\"12">
+            <Typography variant=#h4> {intl->Intl.formatMessage(header)->React.string} </Typography>
+          </Grid>
+        } else {
+          React.null
+        }}
         <Grid item=true xs=Xs.\"12">
           <Typography className={commonClasses["bold"]}>
             {intl->Intl.formatMessage(openingTimes)->React.string}

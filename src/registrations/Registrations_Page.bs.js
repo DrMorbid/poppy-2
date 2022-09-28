@@ -3,13 +3,21 @@
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
 import * as Message from "../i18n/Message.bs.js";
+import * as Core$Mui from "rescript-material-ui/src/Core.bs.js";
 import * as App_Context from "../App_Context.bs.js";
+import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as Common_Text from "../common/Common_Text.bs.js";
+import * as Core from "@material-ui/core";
+import * as Styles from "@material-ui/core/styles";
 
 function Registrations_Page(Props) {
   var match = React.useContext(App_Context.Context.t);
   var dispatch = match[1];
   var activeMenuItem = match[0].activeMenuItem;
+  var isSmUp = Core.useMediaQuery(Core$Mui.Breakpoint.get(Styles.useTheme(), {
+            NAME: "up",
+            VAL: "sm"
+          }));
   React.useEffect((function () {
           if (activeMenuItem !== /* Registrations */1) {
             Curry._1(dispatch, /* StoreActiveMenuItem */{
@@ -18,22 +26,26 @@ function Registrations_Page(Props) {
           }
           
         }), [activeMenuItem]);
-  return React.createElement(Common_Text.make, {
-              header: Message.Registrations.header,
-              paragraphs: {
-                hd: Message.Registrations.paragraph1,
-                tl: {
-                  hd: Message.Registrations.paragraph2,
-                  tl: {
-                    hd: Message.Registrations.paragraph3,
-                    tl: {
-                      hd: Message.Registrations.paragraph4,
-                      tl: /* [] */0
-                    }
-                  }
-                }
-              }
-            });
+  var tmp = {
+    paragraphs: {
+      hd: Message.Registrations.paragraph1,
+      tl: {
+        hd: Message.Registrations.paragraph2,
+        tl: {
+          hd: Message.Registrations.paragraph3,
+          tl: {
+            hd: Message.Registrations.paragraph4,
+            tl: /* [] */0
+          }
+        }
+      }
+    }
+  };
+  var tmp$1 = isSmUp ? Message.Registrations.header : undefined;
+  if (tmp$1 !== undefined) {
+    tmp.header = Caml_option.valFromOption(tmp$1);
+  }
+  return React.createElement(Common_Text.make, tmp);
 }
 
 var make = Registrations_Page;

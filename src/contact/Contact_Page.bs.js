@@ -3,6 +3,7 @@
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
 import * as Message from "../i18n/Message.bs.js";
+import * as Core$Mui from "rescript-material-ui/src/Core.bs.js";
 import * as Grid$Mui from "rescript-material-ui/src/Grid.bs.js";
 import * as ReactIntl from "react-intl";
 import * as App_Context from "../App_Context.bs.js";
@@ -13,6 +14,7 @@ import * as Common_Style from "../common/Common_Style.bs.js";
 import * as Common_Constants from "../common/Common_Constants.bs.js";
 import * as Core from "@material-ui/core";
 import * as Contact_AddressButton from "./Contact_AddressButton.bs.js";
+import * as Styles from "@material-ui/core/styles";
 
 function Contact_Page(Props) {
   var match = React.useState(function () {
@@ -25,6 +27,10 @@ function Contact_Page(Props) {
   var match$1 = React.useContext(App_Context.Context.t);
   var dispatch = match$1[1];
   var activeMenuItem = match$1[0].activeMenuItem;
+  var isSmUp = Core.useMediaQuery(Core$Mui.Breakpoint.get(Styles.useTheme(), {
+            NAME: "up",
+            VAL: "sm"
+          }));
   React.useEffect((function () {
           if (activeMenuItem !== /* Contact */3) {
             Curry._1(dispatch, /* StoreActiveMenuItem */{
@@ -49,14 +55,14 @@ function Contact_Page(Props) {
                         children: null,
                         className: commonClasses.paragraphGap,
                         container: true
-                      }, React.createElement(Core.Grid, {
-                            children: React.createElement(Core.Typography, {
-                                  children: intl.formatMessage(Message.Contact.header),
-                                  variant: "h4"
-                                }),
-                            item: true,
-                            xs: Grid$Mui.Xs[12]
-                          }), React.createElement(Core.Grid, {
+                      }, isSmUp ? React.createElement(Core.Grid, {
+                              children: React.createElement(Core.Typography, {
+                                    children: intl.formatMessage(Message.Contact.header),
+                                    variant: "h4"
+                                  }),
+                              item: true,
+                              xs: Grid$Mui.Xs[12]
+                            }) : null, React.createElement(Core.Grid, {
                             children: React.createElement(Core.Typography, {
                                   children: intl.formatMessage(Message.Contact.openingTimes),
                                   className: commonClasses.bold
