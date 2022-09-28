@@ -17,6 +17,70 @@ var useStyles = Styles.makeStyles({
       }
     });
 
+function News_Message$Date(Props) {
+  var variant = Props.variant;
+  return React.createElement(Core.Typography, {
+              children: News_Latest.latestNews.date.toLocaleDateString(),
+              variant: variant
+            });
+}
+
+var $$Date = {
+  make: News_Message$Date
+};
+
+function News_Message$Title(Props) {
+  var variant = Props.variant;
+  return Belt_List.toArray(Belt_List.mapWithIndex(News_Latest.latestNews.title, (function (index, titleLine) {
+                    return React.createElement(Core.Typography, {
+                                children: titleLine,
+                                variant: variant,
+                                key: "news-title-line-" + String(index) + ""
+                              });
+                  })));
+}
+
+var Title = {
+  make: News_Message$Title
+};
+
+function News_Message$Content(Props) {
+  var className = Props.className;
+  var commonClasses = Common_Style.useStyles();
+  var tmp = {
+    alignItems: "stretch",
+    children: Belt_List.toArray(Belt_List.mapWithIndex(News_Latest.latestNews.content, (function (index, param) {
+                var tmp = {
+                  children: param.value
+                };
+                var tmp$1 = param.emphasis ? commonClasses.bold : undefined;
+                if (tmp$1 !== undefined) {
+                  tmp.className = tmp$1;
+                }
+                var tmp$2 = {
+                  children: React.createElement(Core.Typography, tmp),
+                  item: true,
+                  key: "news-line-" + String(index) + ""
+                };
+                var tmp$3 = param.nextLineEmpty ? commonClasses.marginBottomSm : undefined;
+                if (tmp$3 !== undefined) {
+                  tmp$2.className = tmp$3;
+                }
+                return React.createElement(Core.Grid, tmp$2);
+              }))),
+    container: true,
+    direction: "column"
+  };
+  if (className !== undefined) {
+    tmp.className = className;
+  }
+  return React.createElement(Core.Grid, tmp);
+}
+
+var Content = {
+  make: News_Message$Content
+};
+
 function News_Message(Props) {
   var match = React.useState(function () {
         return true;
@@ -55,39 +119,11 @@ function News_Message(Props) {
                                 severity: "info"
                               }, React.createElement(Lab.AlertTitle, {
                                     children: null
-                                  }, React.createElement(Core.Typography, {
-                                        children: News_Latest.latestNews.date.toLocaleDateString(),
+                                  }, React.createElement(News_Message$Date, {
                                         variant: "h5"
-                                      }), Belt_List.toArray(Belt_List.mapWithIndex(News_Latest.latestNews.title, (function (index, titleLine) {
-                                              return React.createElement(Core.Typography, {
-                                                          children: titleLine,
-                                                          variant: "h6",
-                                                          key: "news-title-line-" + String(index) + ""
-                                                        });
-                                            })))), React.createElement(Core.Grid, {
-                                    alignItems: "stretch",
-                                    children: Belt_List.toArray(Belt_List.mapWithIndex(News_Latest.latestNews.content, (function (index, param) {
-                                                var tmp = {
-                                                  children: param.value
-                                                };
-                                                var tmp$1 = param.emphasis ? commonClasses.bold : undefined;
-                                                if (tmp$1 !== undefined) {
-                                                  tmp.className = tmp$1;
-                                                }
-                                                var tmp$2 = {
-                                                  children: React.createElement(Core.Typography, tmp),
-                                                  item: true,
-                                                  key: "news-line-" + String(index) + ""
-                                                };
-                                                var tmp$3 = param.nextLineEmpty ? commonClasses.marginBottomSm : undefined;
-                                                if (tmp$3 !== undefined) {
-                                                  tmp$2.className = tmp$3;
-                                                }
-                                                return React.createElement(Core.Grid, tmp$2);
-                                              }))),
-                                    container: true,
-                                    direction: "column"
-                                  })),
+                                      }), React.createElement(News_Message$Title, {
+                                        variant: "h6"
+                                      })), React.createElement(News_Message$Content, {})),
                           item: true
                         }),
                     className: commonClasses.marginBottom,
@@ -102,6 +138,9 @@ var make = News_Message;
 
 export {
   useStyles ,
+  $$Date ,
+  Title ,
+  Content ,
   make ,
 }
 /* useStyles Not a pure module */

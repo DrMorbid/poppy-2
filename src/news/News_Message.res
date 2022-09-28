@@ -10,6 +10,58 @@ let useStyles: Styles.useStyles<{
   "iconPlacement": Style.make(~alignItems="flex-start", ()),
 })
 
+module Date = {
+  @react.component
+  let make = (~variant) => {
+    <Typography variant> {latestNews.date->Js.Date.toLocaleDateString->React.string} </Typography>
+  }
+}
+
+module Title = {
+  @react.component
+  let make = (~variant) => {
+    latestNews.title
+    ->Belt.List.mapWithIndex((index, titleLine) =>
+      <Typography variant key={`news-title-line-${index->Belt.Int.toString}`}>
+        {titleLine->React.string}
+      </Typography>
+    )
+    ->Belt.List.toArray
+    ->React.array
+  }
+}
+
+module Content = {
+  @react.component
+  let make = (~className=?) => {
+    let commonClasses = Common_Style.useStyles(.)
+
+    <Grid container=true direction=#column alignItems=#stretch ?className>
+      {latestNews.content
+      ->Belt.List.mapWithIndex((index, {emphasis, value, nextLineEmpty}) => {
+        <Grid
+          item=true
+          key={`news-line-${index->Belt.Int.toString}`}
+          className=?{if nextLineEmpty {
+            Some(commonClasses["marginBottomSm"])
+          } else {
+            None
+          }}>
+          <Typography
+            className=?{switch emphasis {
+            | Normal => None
+            | Bold => Some(commonClasses["bold"])
+            }}>
+            {value->React.string}
+          </Typography>
+        </Grid>
+      })
+      ->Belt.List.toArray
+      ->React.array}
+    </Grid>
+  }
+}
+
 @react.component
 let make = () => {
   let (newsRead, setNewsRead) = React.useState(() => true)
@@ -48,41 +100,10 @@ let make = () => {
             (),
           )}>
           <AlertTitle>
-            <Typography variant=#h5>
-              {latestNews.date->Js.Date.toLocaleDateString->React.string}
-            </Typography>
-            {latestNews.title
-            ->Belt.List.mapWithIndex((index, titleLine) =>
-              <Typography variant=#h6 key={`news-title-line-${index->Belt.Int.toString}`}>
-                {titleLine->React.string}
-              </Typography>
-            )
-            ->Belt.List.toArray
-            ->React.array}
+            <Date variant=#h5 />
+            <Title variant=#h6 />
           </AlertTitle>
-          <Grid container=true direction=#column alignItems=#stretch>
-            {latestNews.content
-            ->Belt.List.mapWithIndex((index, {emphasis, value, nextLineEmpty}) => {
-              <Grid
-                item=true
-                key={`news-line-${index->Belt.Int.toString}`}
-                className=?{if nextLineEmpty {
-                  Some(commonClasses["marginBottomSm"])
-                } else {
-                  None
-                }}>
-                <Typography
-                  className=?{switch emphasis {
-                  | Normal => None
-                  | Bold => Some(commonClasses["bold"])
-                  }}>
-                  {value->React.string}
-                </Typography>
-              </Grid>
-            })
-            ->Belt.List.toArray
-            ->React.array}
-          </Grid>
+          <Content />
         </Alert>
       </Grid>
     </Grid>

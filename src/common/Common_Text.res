@@ -2,7 +2,7 @@ open Mui
 open ReactIntl
 
 @react.component
-let make = (~header=?, ~paragraphs) => {
+let make = (~header=?, ~afterHeader=?, ~paragraphs) => {
   let intl = useIntl()
   let classes = Common_Style.useStyles(.)
 
@@ -11,6 +11,9 @@ let make = (~header=?, ~paragraphs) => {
       <Grid item=true xs=Grid.Xs.\"12">
         <Typography variant=#h4> {intl->Intl.formatMessage(header)->React.string} </Typography>
       </Grid>
+    )}
+    {afterHeader->Belt.Option.mapWithDefault(React.null, afterHeader =>
+      <Grid item=true xs=Grid.Xs.\"12"> afterHeader </Grid>
     )}
     {paragraphs
     ->Belt.List.mapWithIndex((index, paragraph) =>

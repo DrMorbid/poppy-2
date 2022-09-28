@@ -2,10 +2,9 @@
 
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
-import * as Belt_List from "rescript/lib/es6/belt_List.js";
 import * as App_Context from "../App_Context.bs.js";
-import * as News_Latest from "./News_Latest.bs.js";
 import * as Common_Style from "../common/Common_Style.bs.js";
+import * as News_Message from "./News_Message.bs.js";
 import * as Core from "@material-ui/core";
 
 function News_Page(Props) {
@@ -25,8 +24,7 @@ function News_Page(Props) {
               children: null,
               container: true
             }, React.createElement(Core.Grid, {
-                  children: React.createElement(Core.Typography, {
-                        children: News_Latest.latestNews.date.toLocaleDateString(),
+                  children: React.createElement(News_Message.$$Date.make, {
                         variant: "h4"
                       }),
                   item: true
@@ -34,35 +32,10 @@ function News_Page(Props) {
                   children: null,
                   className: commonClasses.marginTopSm,
                   item: true
-                }, Belt_List.toArray(Belt_List.mapWithIndex(News_Latest.latestNews.title, (function (index, titleLine) {
-                            return React.createElement(Core.Typography, {
-                                        children: titleLine,
-                                        variant: "h5",
-                                        key: "news-title-line-" + String(index) + ""
-                                      });
-                          }))), React.createElement(Core.Grid, {
-                      children: Belt_List.toArray(Belt_List.mapWithIndex(News_Latest.latestNews.content, (function (index, param) {
-                                  var tmp = {
-                                    children: param.value
-                                  };
-                                  var tmp$1 = param.emphasis ? commonClasses.bold : undefined;
-                                  if (tmp$1 !== undefined) {
-                                    tmp.className = tmp$1;
-                                  }
-                                  var tmp$2 = {
-                                    children: React.createElement(Core.Typography, tmp),
-                                    item: true,
-                                    key: "news-line-" + String(index) + ""
-                                  };
-                                  var tmp$3 = param.nextLineEmpty ? commonClasses.marginBottomSm : undefined;
-                                  if (tmp$3 !== undefined) {
-                                    tmp$2.className = tmp$3;
-                                  }
-                                  return React.createElement(Core.Grid, tmp$2);
-                                }))),
-                      className: commonClasses.marginTopSm,
-                      container: true,
-                      direction: "column"
+                }, React.createElement(News_Message.Title.make, {
+                      variant: "h5"
+                    }), React.createElement(News_Message.Content.make, {
+                      className: commonClasses.marginTopSm
                     })));
 }
 

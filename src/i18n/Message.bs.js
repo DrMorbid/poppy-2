@@ -72,6 +72,11 @@ var Registrations_header = {
   defaultMessage: "Registrace"
 };
 
+var Registrations_nextRegistrations = {
+  id: "f3a4a4f8-c01a-4e62-bff1-d669fc364f6e",
+  defaultMessage: "Příští Registrace"
+};
+
 var Registrations_paragraph1 = {
   id: "9ba60cdb-647c-47b4-b48f-7eb19dd99190",
   defaultMessage: "Termíny registrací jsou pravidelně aktualizovány v běžícím červeném boxu pod menu stránky. Když se objeví termín registrace, můžete v daný den a čas přijít vaše dítě zaregistrovat, pokud je starší 4 let. Pokud je mladší než 4 roky, objednejte se na registraci telefonicky a domluvte si konkrétní hodinu. Obvykle probíhá v ten samý den před registrací starších dětí. Pokud vám daný termín nevyhovuje, počkejte, další termín se včas objeví. Registrace probíhají většinou 2-3x měsíčně."
@@ -94,6 +99,7 @@ var Registrations_paragraph4 = {
 
 var Registrations = {
   header: Registrations_header,
+  nextRegistrations: Registrations_nextRegistrations,
   paragraph1: Registrations_paragraph1,
   paragraph2: Registrations_paragraph2,
   paragraph3: Registrations_paragraph3,

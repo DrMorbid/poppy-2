@@ -86,7 +86,7 @@ let make = () => {
               </Typography>
             </Grid>
             <Grid item=true xs=Xs.\"12">
-              <Contact_AddressButton
+              <Common.OpenInNewButton
                 label=registrationAddress
                 onClick={() => setMapUrl(_ => Some(Constants.registrationAddressMapUrl))}
               />
@@ -107,13 +107,13 @@ let make = () => {
               </Typography>
             </Grid>
             <Grid item=true xs=Xs.\"12">
-              <Contact_AddressButton
+              <Common.OpenInNewButton
                 label=registrationAddressPaidParking1
                 onClick={() => setMapUrl(_ => Some(Constants.registrationAddressPaidParking1))}
               />
             </Grid>
             <Grid item=true xs=Xs.\"12">
-              <Contact_AddressButton
+              <Common.OpenInNewButton
                 label=registrationAddressPaidParking2
                 onClick={() => setMapUrl(_ => Some(Constants.registrationAddressPaidParking2))}
               />
@@ -128,7 +128,7 @@ let make = () => {
               </Typography>
             </Grid>
             <Grid item=true xs=Xs.\"12">
-              <Contact_AddressButton
+              <Common.OpenInNewButton
                 label=facturationAddress
                 onClick={() => setMapUrl(_ => Some(Constants.facturationAddress))}
               />

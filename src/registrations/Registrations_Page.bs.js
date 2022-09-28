@@ -7,13 +7,22 @@ import * as Core$Mui from "rescript-material-ui/src/Core.bs.js";
 import * as App_Context from "../App_Context.bs.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as Common_Text from "../common/Common_Text.bs.js";
+import * as Common_Style from "../common/Common_Style.bs.js";
+import * as News_Message from "../news/News_Message.bs.js";
 import * as Core from "@material-ui/core";
+import * as Common_Icon_Close from "../common/icon/Common_Icon_Close.bs.js";
+import * as Common_OpenInNewButton from "../common/Common_OpenInNewButton.bs.js";
 import * as Styles from "@material-ui/core/styles";
 
 function Registrations_Page(Props) {
-  var match = React.useContext(App_Context.Context.t);
-  var dispatch = match[1];
-  var activeMenuItem = match[0].activeMenuItem;
+  var match = React.useState(function () {
+        return false;
+      });
+  var setDialogOpened = match[1];
+  var commonClasses = Common_Style.useStyles();
+  var match$1 = React.useContext(App_Context.Context.t);
+  var dispatch = match$1[1];
+  var activeMenuItem = match$1[0].activeMenuItem;
   var isSmUp = Core.useMediaQuery(Core$Mui.Breakpoint.get(Styles.useTheme(), {
             NAME: "up",
             VAL: "sm"
@@ -26,7 +35,21 @@ function Registrations_Page(Props) {
           }
           
         }), [activeMenuItem]);
+  var onOpenClick = function (param) {
+    Curry._1(setDialogOpened, (function (param) {
+            return true;
+          }));
+  };
+  var onCloseClick = function (param) {
+    Curry._1(setDialogOpened, (function (param) {
+            return false;
+          }));
+  };
   var tmp = {
+    afterHeader: React.createElement(Common_OpenInNewButton.make, {
+          label: Message.Registrations.nextRegistrations,
+          onClick: onOpenClick
+        }),
     paragraphs: {
       hd: Message.Registrations.paragraph1,
       tl: {
@@ -45,7 +68,46 @@ function Registrations_Page(Props) {
   if (tmp$1 !== undefined) {
     tmp.header = Caml_option.valFromOption(tmp$1);
   }
-  return React.createElement(Common_Text.make, tmp);
+  return React.createElement(React.Fragment, undefined, React.createElement(Core.Dialog, {
+                  children: null,
+                  fullScreen: !isSmUp,
+                  onClose: (function (param) {
+                      return onCloseClick;
+                    }),
+                  open: match[0]
+                }, React.createElement(Core.DialogTitle, {
+                      children: React.createElement(Core.Grid, {
+                            alignItems: "center",
+                            children: null,
+                            container: true,
+                            justify: "space-between"
+                          }, React.createElement(Core.Grid, {
+                                children: React.createElement(News_Message.$$Date.make, {
+                                      variant: "h4"
+                                    }),
+                                item: true
+                              }), React.createElement(Core.Grid, {
+                                children: React.createElement(Core.IconButton, {
+                                      onClick: onCloseClick,
+                                      children: React.createElement(Common_Icon_Close.make, {})
+                                    }),
+                                item: true
+                              }))
+                    }), React.createElement(Core.DialogContent, {
+                      children: React.createElement(Core.DialogContentText, {
+                            children: React.createElement(Core.Grid, {
+                                  children: React.createElement(Core.Grid, {
+                                        children: null,
+                                        item: true
+                                      }, React.createElement(News_Message.Title.make, {
+                                            variant: "h5"
+                                          }), React.createElement(News_Message.Content.make, {
+                                            className: commonClasses.marginTopSm
+                                          })),
+                                  container: true
+                                })
+                          })
+                    })), React.createElement(Common_Text.make, tmp));
 }
 
 var make = Registrations_Page;

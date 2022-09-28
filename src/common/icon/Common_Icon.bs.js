@@ -5,8 +5,11 @@ var Menu;
 
 var OpenInNew;
 
+var Close;
+
 export {
   Menu ,
   OpenInNew ,
+  Close ,
 }
 /* No side effect */

@@ -70,6 +70,14 @@ module Registrations = {
       id: "952d7587-71ba-4883-9516-086adfd2360b",
       defaultMessage: "Registrace",
     }
+  let nextRegistrations =
+    @intl.description(
+      "Registrations page - the button that shows info about the next registrations"
+    )
+    {
+      id: "f3a4a4f8-c01a-4e62-bff1-d669fc364f6e",
+      defaultMessage: "Příští Registrace",
+    }
   let paragraph1 =
     @intl.description("Registrations page - the first paragraph")
     {

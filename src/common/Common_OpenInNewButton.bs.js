@@ -5,7 +5,7 @@ import * as React from "react";
 import * as ReactIntl from "react-intl";
 import * as Core from "@material-ui/core";
 import * as Styles from "@material-ui/styles";
-import * as Common_Icon_OpenInNew from "../common/icon/Common_Icon_OpenInNew.bs.js";
+import * as Common_Icon_OpenInNew from "./icon/Common_Icon_OpenInNew.bs.js";
 
 var useStyles = Styles.makeStyles({
       root: {
@@ -13,7 +13,7 @@ var useStyles = Styles.makeStyles({
       }
     });
 
-function Contact_AddressButton(Props) {
+function Common_OpenInNewButton(Props) {
   var label = Props.label;
   var onClick = Props.onClick;
   var intl = ReactIntl.useIntl();
@@ -31,7 +31,7 @@ function Contact_AddressButton(Props) {
             });
 }
 
-var make = Contact_AddressButton;
+var make = Common_OpenInNewButton;
 
 export {
   useStyles ,

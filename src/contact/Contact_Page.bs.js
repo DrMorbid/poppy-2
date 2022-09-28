@@ -13,7 +13,7 @@ import * as Contact_Map from "./Contact_Map.bs.js";
 import * as Common_Style from "../common/Common_Style.bs.js";
 import * as Common_Constants from "../common/Common_Constants.bs.js";
 import * as Core from "@material-ui/core";
-import * as Contact_AddressButton from "./Contact_AddressButton.bs.js";
+import * as Common_OpenInNewButton from "../common/Common_OpenInNewButton.bs.js";
 import * as Styles from "@material-ui/core/styles";
 
 function Contact_Page(Props) {
@@ -141,7 +141,7 @@ function Contact_Page(Props) {
                                       item: true,
                                       xs: Grid$Mui.Xs[12]
                                     }), React.createElement(Core.Grid, {
-                                      children: React.createElement(Contact_AddressButton.make, {
+                                      children: React.createElement(Common_OpenInNewButton.make, {
                                             label: Message.Contact.registrationAddress,
                                             onClick: (function (param) {
                                                 Curry._1(setMapUrl, (function (param) {
@@ -170,7 +170,7 @@ function Contact_Page(Props) {
                                       item: true,
                                       xs: Grid$Mui.Xs[12]
                                     }), React.createElement(Core.Grid, {
-                                      children: React.createElement(Contact_AddressButton.make, {
+                                      children: React.createElement(Common_OpenInNewButton.make, {
                                             label: Message.Contact.registrationAddressPaidParking1,
                                             onClick: (function (param) {
                                                 Curry._1(setMapUrl, (function (param) {
@@ -181,7 +181,7 @@ function Contact_Page(Props) {
                                       item: true,
                                       xs: Grid$Mui.Xs[12]
                                     }), React.createElement(Core.Grid, {
-                                      children: React.createElement(Contact_AddressButton.make, {
+                                      children: React.createElement(Common_OpenInNewButton.make, {
                                             label: Message.Contact.registrationAddressPaidParking2,
                                             onClick: (function (param) {
                                                 Curry._1(setMapUrl, (function (param) {
@@ -206,7 +206,7 @@ function Contact_Page(Props) {
                                       item: true,
                                       xs: Grid$Mui.Xs[12]
                                     }), React.createElement(Core.Grid, {
-                                      children: React.createElement(Contact_AddressButton.make, {
+                                      children: React.createElement(Common_OpenInNewButton.make, {
                                             label: Message.Contact.facturationAddress,
                                             onClick: (function (param) {
                                                 Curry._1(setMapUrl, (function (param) {

@@ -10,6 +10,7 @@ import * as Core from "@material-ui/core";
 
 function Common_Text(Props) {
   var header = Props.header;
+  var afterHeader = Props.afterHeader;
   var paragraphs = Props.paragraphs;
   var intl = ReactIntl.useIntl();
   var classes = Common_Style.useStyles();
@@ -23,6 +24,12 @@ function Common_Text(Props) {
                                       children: intl.formatMessage(header),
                                       variant: "h4"
                                     }),
+                                item: true,
+                                xs: Grid$Mui.Xs[12]
+                              });
+                  })), Belt_Option.mapWithDefault(afterHeader, null, (function (afterHeader) {
+                    return React.createElement(Core.Grid, {
+                                children: afterHeader,
                                 item: true,
                                 xs: Grid$Mui.Xs[12]
                               });

@@ -5,11 +5,8 @@ var Page;
 
 var $$Map;
 
-var AddressButton;
-
 export {
   Page ,
   $$Map ,
-  AddressButton ,
 }
 /* No side effect */

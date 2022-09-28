@@ -1,6 +1,7 @@
 open Mui
 open ReactIntl
 open ReactDOM
+open Common_Icon
 
 let useStyles: Styles.useStyles<{
   "root": string,
@@ -15,7 +16,7 @@ let make = (~label, ~onClick) => {
 
   <Button
     variant=#outlined
-    endIcon={<Common.Icon.OpenInNew />}
+    endIcon={<OpenInNew />}
     onClick={_ => onClick()}
     classes={Button.Classes.make(~root=classes["root"], ())}>
     {intl->Intl.formatMessage(label)->React.string}

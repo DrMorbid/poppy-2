@@ -9,10 +9,13 @@ var Constants;
 
 var Icon;
 
+var OpenInNewButton;
+
 export {
   $$Text ,
   Style ,
   Constants ,
   Icon ,
+  OpenInNewButton ,
 }
 /* No side effect */
