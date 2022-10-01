@@ -13,6 +13,7 @@ import * as Contact_Map from "./Contact_Map.bs.js";
 import * as Common_Style from "../common/Common_Style.bs.js";
 import * as Common_Constants from "../common/Common_Constants.bs.js";
 import * as Core from "@material-ui/core";
+import * as Common_Icon_Close from "../common/icon/Common_Icon_Close.bs.js";
 import * as Common_OpenInNewButton from "../common/Common_OpenInNewButton.bs.js";
 import * as Styles from "@material-ui/core/styles";
 
@@ -39,6 +40,11 @@ function Contact_Page(Props) {
           }
           
         }), [activeMenuItem]);
+  var onClose = function (param) {
+    Curry._1(setMapUrl, (function (param) {
+            
+          }));
+  };
   var tmp = {};
   if (mapUrl !== undefined) {
     tmp.url = Caml_option.valFromOption(mapUrl);
@@ -248,15 +254,28 @@ function Contact_Page(Props) {
                   smDown: true
                 }), React.createElement(Core.Hidden, {
                   children: React.createElement(Core.Dialog, {
-                        children: React.createElement(Contact_Map.make, tmp$1),
-                        fullWidth: true,
-                        onClose: (function (param, param$1) {
-                            Curry._1(setMapUrl, (function (param) {
-                                    
-                                  }));
+                        children: null,
+                        fullScreen: true,
+                        onClose: (function (param) {
+                            return onClose;
                           }),
                         open: Belt_Option.isSome(mapUrl)
-                      }),
+                      }, React.createElement(Core.DialogTitle, {
+                            children: React.createElement(Core.Grid, {
+                                  alignItems: "center",
+                                  children: React.createElement(Core.Grid, {
+                                        children: React.createElement(Core.IconButton, {
+                                              onClick: onClose,
+                                              children: React.createElement(Common_Icon_Close.make, {})
+                                            }),
+                                        item: true
+                                      }),
+                                  container: true,
+                                  justify: "flex-end"
+                                })
+                          }), React.createElement(Core.DialogContent, {
+                            children: React.createElement(Contact_Map.make, tmp$1)
+                          })),
                   mdUp: true
                 }));
 }

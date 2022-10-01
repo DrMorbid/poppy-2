@@ -20,6 +20,8 @@ let make = () => {
     None
   }, [activeMenuItem])
 
+  let onClose = _ => setMapUrl(_ => None)
+
   <Grid container=true>
     <Grid item=true xs=Xs.\"12">
       <Grid container=true className={commonClasses["paragraphGap"]}>
@@ -150,11 +152,19 @@ let make = () => {
       </Grid>
     </Hidden>
     <Hidden mdUp=true>
-      <Dialog
-        onClose={(_, _) => setMapUrl(_ => None)}
-        \"open"={mapUrl->Belt.Option.isSome}
-        fullWidth=true>
-        <Contact_Map url=?mapUrl />
+      <Dialog onClose={_ => onClose} \"open"={mapUrl->Belt.Option.isSome} fullScreen=true>
+        <DialogTitle>
+          <Grid container=true justify=#"flex-end" alignItems=#center>
+            <Grid item=true>
+              <IconButton onClick=onClose>
+                <Common.Icon.Close />
+              </IconButton>
+            </Grid>
+          </Grid>
+        </DialogTitle>
+        <DialogContent>
+          <Contact_Map url=?mapUrl />
+        </DialogContent>
       </Dialog>
     </Hidden>
   </Grid>
