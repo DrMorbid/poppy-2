@@ -7,9 +7,12 @@ var OpenInNew;
 
 var Close;
 
+var MailOutline;
+
 export {
   Menu ,
   OpenInNew ,
   Close ,
+  MailOutline ,
 }
 /* No side effect */

@@ -22,7 +22,7 @@ let make = () => {
     None
   }, [latestNewsClosed])
 
-  <AppBar position=#sticky>
+  <AppBar position=#relative>
     <Drawer drawerOpen onClose={() => setDrawerOpen(_ => false)} isLatestNewsRead />
     <Hidden xsDown=true>
       <Tabs isLatestNewsRead />

@@ -33,7 +33,7 @@ function TopMenu(Props) {
         }), [match$3.latestNewsClosed]);
   return React.createElement(Core.AppBar, {
               children: null,
-              position: "sticky"
+              position: "relative"
             }, React.createElement(TopMenu_Drawer.make, {
                   drawerOpen: match$1[0],
                   onClose: (function (param) {

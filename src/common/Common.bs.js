@@ -11,11 +11,14 @@ var Icon;
 
 var OpenInNewButton;
 
+var Button;
+
 export {
   $$Text ,
   Style ,
   Constants ,
   Icon ,
   OpenInNewButton ,
+  Button ,
 }
 /* No side effect */

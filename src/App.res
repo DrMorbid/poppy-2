@@ -26,12 +26,23 @@ let useStyles: Styles.useStyles<{
 @react.component
 let make = () => {
   let classes = useStyles(.)
+  let commonClasses = Common.Style.useStyles(.)
 
-  <>
-    <TopMenu />
-    <Container className={classes["container"]}>
-      <News.Message />
-      <Router />
-    </Container>
-  </>
+  <Container className={classes["container"]}>
+    <Grid container=true direction=#column className={commonClasses["paragraphGap"]}>
+      <Grid item=true>
+        <TopHeader />
+      </Grid>
+      <Grid item=true>
+        <TopMenu />
+      </Grid>
+      // TODO will probably go away
+      <Grid item=true>
+        <News.Message />
+      </Grid>
+      <Grid item=true>
+        <Router />
+      </Grid>
+    </Grid>
+  </Container>
 }
