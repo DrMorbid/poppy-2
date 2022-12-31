@@ -10,8 +10,8 @@ let useStyles: Styles.useStyles<{
   "logoContainer": string,
   "logo": string,
 }> = Styles.makeStyles({
-  "logoContainer": Style.make(~width="25%", ()),
-  "logo": Style.make(~height="11vw", ()),
+  "logoContainer": Style.make(~width="26%", ()),
+  "logo": Style.make(~height="10vw", ()),
 })
 
 @react.component
@@ -30,9 +30,7 @@ let make = () => {
     </Grid>
     <Hidden smDown=true>
       <Grid item=true className={classes["logoContainer"]}>
-        <Card>
-          <CardMedia className={classes["logo"]} image="/poppy_logo.jpg" />
-        </Card>
+        <img src="/poppy_logo.jpg" className={classes["logo"]} />
       </Grid>
     </Hidden>
     <Grid item=true>

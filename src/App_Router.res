@@ -8,9 +8,6 @@ let make = () => {
   | list{"contact"} => <Contact.Page />
   | list{"about-us"} => <AboutUs.Page />
   | list{"news"} => <News.Page />
-  | list{} | _ => {
-      RescriptReactRouter.push(App_Page.AboutUs->App_Page.toRoutePath)
-      <AboutUs.Page />
-    }
+  | list{} | _ => <Home.Page />
   }
 }

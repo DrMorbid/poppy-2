@@ -11,10 +11,10 @@ import * as Common_Button_WithIcon from "../common/button/Common_Button_WithIcon
 
 var useStyles = Styles.makeStyles({
       logoContainer: {
-        width: "25%"
+        width: "26%"
       },
       logo: {
-        height: "11vw"
+        height: "10vw"
       }
     });
 
@@ -35,11 +35,9 @@ function TopHeader(Props) {
                   item: true
                 }), React.createElement(Core.Hidden, {
                   children: React.createElement(Core.Grid, {
-                        children: React.createElement(Core.Card, {
-                              children: React.createElement(Core.CardMedia, {
-                                    className: classes.logo,
-                                    image: "/poppy_logo.jpg"
-                                  })
+                        children: React.createElement("img", {
+                              className: classes.logo,
+                              src: "/poppy_logo.jpg"
                             }),
                         className: classes.logoContainer,
                         item: true
