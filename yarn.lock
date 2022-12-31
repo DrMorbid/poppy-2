@@ -6531,7 +6531,7 @@ __metadata:
 
 "fsevents@patch:fsevents@^2.3.2#~builtin<compat/fsevents>, fsevents@patch:fsevents@~2.3.2#~builtin<compat/fsevents>":
   version: 2.3.2
-  resolution: "fsevents@patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=18f3a7"
+  resolution: "fsevents@patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=df0bf1"
   dependencies:
     node-gyp: latest
   conditions: os=darwin
@@ -9642,6 +9642,7 @@ __metadata:
     rescript-material-ui-lab: ^3.0.2
     rescript-react-intl: ^3.0.0
     rescript-react-intl-extractor-bin: ^0.13.0
+    rescript-webapi: ^0.7.0
     web-vitals: ^2.1.4
     workbox-background-sync: ^6.5.4
     workbox-broadcast-update: ^6.5.4
@@ -11161,6 +11162,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"rescript-webapi@npm:^0.7.0":
+  version: 0.7.0
+  resolution: "rescript-webapi@npm:0.7.0"
+  checksum: 2b905cd51718ca7a51bd9fbbff6081abd88106ee076a50c887f4f6817882a8e72474dce6bfd76f7ba31a7c52b0f799a3f95be65feef4f749c264dd926e6f8544
+  languageName: node
+  linkType: hard
+
 "rescript@npm:^10.1.0":
   version: 10.1.0
   resolution: "rescript@npm:10.1.0"
@@ -11252,7 +11260,7 @@ __metadata:
 
 "resolve@patch:resolve@^1.1.7#~builtin<compat/resolve>, resolve@patch:resolve@^1.14.2#~builtin<compat/resolve>, resolve@patch:resolve@^1.19.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.20.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.22.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.22.1#~builtin<compat/resolve>":
   version: 1.22.1
-  resolution: "resolve@patch:resolve@npm%3A1.22.1#~builtin<compat/resolve>::version=1.22.1&hash=07638b"
+  resolution: "resolve@patch:resolve@npm%3A1.22.1#~builtin<compat/resolve>::version=1.22.1&hash=c3c19d"
   dependencies:
     is-core-module: ^2.9.0
     path-parse: ^1.0.7
@@ -11265,7 +11273,7 @@ __metadata:
 
 "resolve@patch:resolve@^2.0.0-next.3#~builtin<compat/resolve>":
   version: 2.0.0-next.4
-  resolution: "resolve@patch:resolve@npm%3A2.0.0-next.4#~builtin<compat/resolve>::version=2.0.0-next.4&hash=07638b"
+  resolution: "resolve@patch:resolve@npm%3A2.0.0-next.4#~builtin<compat/resolve>::version=2.0.0-next.4&hash=c3c19d"
   dependencies:
     is-core-module: ^2.9.0
     path-parse: ^1.0.7

@@ -33,7 +33,7 @@ function TopMenu(Props) {
         }), [match$3.latestNewsClosed]);
   return React.createElement(Core.AppBar, {
               children: null,
-              position: "relative"
+              position: "static"
             }, React.createElement(TopMenu_Drawer.make, {
                   drawerOpen: match$1[0],
                   onClose: (function (param) {
@@ -46,7 +46,7 @@ function TopMenu(Props) {
                   children: React.createElement(TopMenu_Tabs.make, {
                         isLatestNewsRead: isLatestNewsRead
                       }),
-                  xsDown: true
+                  smDown: true
                 }), React.createElement(Core.Hidden, {
                   children: React.createElement(Core.Toolbar, {
                         children: React.createElement(Core.Grid, {
@@ -72,7 +72,7 @@ function TopMenu(Props) {
                                   item: true
                                 }))
                       }),
-                  smUp: true
+                  mdUp: true
                 }));
 }
 

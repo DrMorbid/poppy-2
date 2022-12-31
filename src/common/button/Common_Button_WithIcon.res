@@ -11,11 +11,11 @@ let useStyles: Styles.useStyles<{
 })
 
 @react.component
-let make = (~label) => {
+let make = (~label, ~onClick) => {
   let intl = useIntl()
   let classes = useStyles(.)
 
-  <Button variant=#outlined>
+  <Button variant=#outlined onClick>
     <Grid container=true alignItems=#center className={classes["iconGap"]}>
       <Icon.MailOutline />
       {intl->Intl.formatMessage(label)->React.string}

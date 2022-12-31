@@ -22,12 +22,12 @@ let make = () => {
     None
   }, [latestNewsClosed])
 
-  <AppBar position=#relative>
+  <AppBar position=#static>
     <Drawer drawerOpen onClose={() => setDrawerOpen(_ => false)} isLatestNewsRead />
-    <Hidden xsDown=true>
+    <Hidden smDown=true>
       <Tabs isLatestNewsRead />
     </Hidden>
-    <Hidden smUp=true>
+    <Hidden mdUp=true>
       <Toolbar>
         <Grid container=true justify=#"space-between" alignItems=#center>
           <Grid item=true>

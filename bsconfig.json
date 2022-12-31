@@ -19,7 +19,8 @@
     "rescript-react-intl",
     "@ryyppy/rescript-promise",
     "@mobily/rescript-date",
-    "rescript-material-ui-lab"
+    "rescript-material-ui-lab",
+    "rescript-webapi"
   ],
   "reason": { "react-jsx": 3 },
   "warnings": {

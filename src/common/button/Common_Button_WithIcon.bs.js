@@ -14,9 +14,11 @@ var useStyles = Styles.makeStyles({
 
 function Common_Button_WithIcon(Props) {
   var label = Props.label;
+  var onClick = Props.onClick;
   var intl = ReactIntl.useIntl();
   var classes = useStyles();
   return React.createElement(Core.Button, {
+              onClick: onClick,
               children: React.createElement(Core.Grid, {
                     alignItems: "center",
                     children: null,

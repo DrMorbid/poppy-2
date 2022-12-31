@@ -12,6 +12,9 @@ module Menu = {
   let emailUs =
     @intl.description("Above the top menu - email us")
     {id: "6fc6f245-be0b-474a-b682-ef215bead56f", defaultMessage: "Napište nám"}
+  let register =
+    @intl.description("Above the top menu - register")
+    {id: "2a47d058-357b-4080-9f57-a59c6e7537d8", defaultMessage: "Registrace"}
   let aboutUs =
     @intl.description("Top menu item - About us")
     {id: "0371f3b2-5b62-4c6b-baac-a3925b811458", defaultMessage: "O nás"}
