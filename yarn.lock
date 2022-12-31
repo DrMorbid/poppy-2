@@ -3096,6 +3096,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react@npm:^16.8.12":
+  version: 16.14.34
+  resolution: "@types/react@npm:16.14.34"
+  dependencies:
+    "@types/prop-types": "*"
+    "@types/scheduler": "*"
+    csstype: ^3.0.2
+  checksum: a1a105c131bd7fd5cae693c641b3a05eb03c079875fe8e780e616afc54d86e3fa1e8c6433e7a30d2a7f8a1a7681cf1a4f652e9eb48b6abe1f80f7cafe858ebf2
+  languageName: node
+  linkType: hard
+
 "@types/resolve@npm:1.17.1":
   version: 1.17.1
   resolution: "@types/resolve@npm:1.17.1"
@@ -3918,6 +3929,15 @@ __metadata:
   version: 1.0.0
   resolution: "at-least-node@npm:1.0.0"
   checksum: 463e2f8e43384f1afb54bc68485c436d7622acec08b6fad269b421cb1d29cebb5af751426793d0961ed243146fe4dc983402f6d5a51b720b277818dbf6f2e49e
+  languageName: node
+  linkType: hard
+
+"auto-bind@npm:^2.1.1":
+  version: 2.1.1
+  resolution: "auto-bind@npm:2.1.1"
+  dependencies:
+    "@types/react": ^16.8.12
+  checksum: 01c5051a70caa89e21bb52ab5ae9033fa07b0d5f7681f56a69c87a66348c65418a6433290e8a58838dcd3b638a56c4b3c675a976aac08ed005a78d8caf816f7e
   languageName: node
   linkType: hard
 
@@ -9636,6 +9656,7 @@ __metadata:
     react: ^18.2.0
     react-dom: ^18.2.0
     react-intl: ^6.2.5
+    react-material-ui-carousel: v2
     react-scripts: 5.0.1
     rescript: ^10.1.0
     rescript-material-ui: ^3.0.2
@@ -10825,6 +10846,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-material-ui-carousel@npm:v2":
+  version: 2.3.11
+  resolution: "react-material-ui-carousel@npm:2.3.11"
+  dependencies:
+    auto-bind: ^2.1.1
+    react-swipeable: ^6.1.0
+  peerDependencies:
+    "@material-ui/core": ^4.11.3
+    "@material-ui/icons": ^4.11.2
+    react: ^16.13.1 || ^17.0.1
+    react-dom: ^16.13.1 || ^17.0.1
+  checksum: a394768a45622b7131d071d173728345b6193935df512b77d75d5fb076d6995f53f8616baccf763b180a0e8ce6a4553817de9141e9471d5c679f823c7241ec95
+  languageName: node
+  linkType: hard
+
 "react-refresh@npm:^0.11.0":
   version: 0.11.0
   resolution: "react-refresh@npm:0.11.0"
@@ -10896,6 +10932,15 @@ __metadata:
   bin:
     react-scripts: bin/react-scripts.js
   checksum: 92afa2f245c7092ccc97d5609dc7a2130616262e34da7f15072d9442e2d2e1d4909a91022abd1faac1336eb17c5525a10d9bd43e1ae374c7ec941ca20addca68
+  languageName: node
+  linkType: hard
+
+"react-swipeable@npm:^6.1.0":
+  version: 6.2.2
+  resolution: "react-swipeable@npm:6.2.2"
+  peerDependencies:
+    react: ^16.8.3 || ^17 || ^18
+  checksum: a707aa9438cedcafbe1e0b9e133d518c423199fc6465e6ae862951c1cfdac2945088b3c12313e8fcc05906d0be0ecfe7ddd8221f9262a0e28c12d2eb98150434
   languageName: node
   linkType: hard
 
