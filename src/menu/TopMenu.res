@@ -10,9 +10,7 @@ let make = () => {
   let (isLatestNewsRead, setIsLatestNewsRead) = React.useState(() => false)
   let (drawerOpen, setDrawerOpen) = React.useState(() => false)
   let intl = useIntl()
-  let ({activeMenuItem, latestNewsClosed}: App_Context.state, _) = React.useContext(
-    App_Context.Context.t,
-  )
+  let ({latestNewsClosed, _}: App_Context.state, dispatch) = React.useContext(App_Context.Context.t)
 
   React.useEffect1(() => {
     News.Idb.isLatestNewsRead()
@@ -21,6 +19,8 @@ let make = () => {
 
     None
   }, [latestNewsClosed])
+
+  let onAppNameClick = _ => Home->App_Actions.goToPage(~dispatch)
 
   <AppBar position=#static>
     <Drawer drawerOpen onClose={() => setDrawerOpen(_ => false)} isLatestNewsRead />
@@ -31,9 +31,11 @@ let make = () => {
       <Toolbar>
         <Grid container=true justify=#"space-between" alignItems=#center>
           <Grid item=true>
-            <Typography variant=#h5>
-              {intl->Intl.formatMessage(activeMenuItem->App_Page.toLabel)->React.string}
-            </Typography>
+            <ButtonBase onClick=onAppNameClick>
+              <Typography variant=#h5>
+                {intl->Intl.formatMessage(Message.appName)->React.string}
+              </Typography>
+            </ButtonBase>
           </Grid>
           <Grid item=true>
             <IconButton onClick={_ => setDrawerOpen(_ => true)}>

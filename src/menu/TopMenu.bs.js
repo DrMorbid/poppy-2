@@ -2,9 +2,10 @@
 
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
-import * as App_Page from "../App_Page.bs.js";
+import * as Message from "../i18n/Message.bs.js";
 import * as News_Idb from "../news/News_Idb.bs.js";
 import * as ReactIntl from "react-intl";
+import * as App_Actions from "../App_Actions.bs.js";
 import * as App_Context from "../App_Context.bs.js";
 import * as TopMenu_Tabs from "./TopMenu_Tabs.bs.js";
 import * as TopMenu_Drawer from "./TopMenu_Drawer.bs.js";
@@ -23,14 +24,17 @@ function TopMenu(Props) {
   var setDrawerOpen = match$1[1];
   var intl = ReactIntl.useIntl();
   var match$2 = React.useContext(App_Context.Context.t);
-  var match$3 = match$2[0];
+  var dispatch = match$2[1];
   React.useEffect((function () {
           News_Idb.isLatestNewsRead(undefined).then(function (isLatestNewsRead) {
                 Curry._1(setIsLatestNewsRead, (function (param) {
                         return isLatestNewsRead;
                       }));
               });
-        }), [match$3.latestNewsClosed]);
+        }), [match$2[0].latestNewsClosed]);
+  var onAppNameClick = function (param) {
+    App_Actions.goToPage(/* Home */0, dispatch);
+  };
   return React.createElement(Core.AppBar, {
               children: null,
               position: "static"
@@ -55,9 +59,12 @@ function TopMenu(Props) {
                               container: true,
                               justify: "space-between"
                             }, React.createElement(Core.Grid, {
-                                  children: React.createElement(Core.Typography, {
-                                        children: intl.formatMessage(App_Page.toLabel(match$3.activeMenuItem)),
-                                        variant: "h5"
+                                  children: React.createElement(Core.ButtonBase, {
+                                        children: React.createElement(Core.Typography, {
+                                              children: intl.formatMessage(Message.appName),
+                                              variant: "h5"
+                                            }),
+                                        onClick: onAppNameClick
                                       }),
                                   item: true
                                 }), React.createElement(Core.Grid, {
