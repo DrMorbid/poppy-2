@@ -42,6 +42,7 @@ function Common_Text(Props) {
                                       children: intl.formatMessage(header),
                                       variant: "h4"
                                     }),
+                                className: classes.centeredText,
                                 item: true,
                                 xs: Grid$Mui.Xs[12]
                               });

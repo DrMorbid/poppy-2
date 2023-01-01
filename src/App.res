@@ -46,6 +46,9 @@ let make = () => {
       </Grid>
       <Hidden xsUp={activeMenuItem == Contact}>
         <Grid item=true>
+          <hr />
+        </Grid>
+        <Grid item=true>
           <Contact.Content />
         </Grid>
       </Hidden>

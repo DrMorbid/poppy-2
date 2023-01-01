@@ -6,7 +6,6 @@ import * as Message from "../i18n/Message.bs.js";
 import * as Core$Mui from "rescript-material-ui/src/Core.bs.js";
 import * as Grid$Mui from "rescript-material-ui/src/Grid.bs.js";
 import * as ReactIntl from "react-intl";
-import * as App_Context from "../App_Context.bs.js";
 import * as Belt_Option from "rescript/lib/es6/belt_Option.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as Contact_Map from "./Contact_Map.bs.js";
@@ -14,17 +13,8 @@ import * as Common_Style from "../common/Common_Style.bs.js";
 import * as Common_Constants from "../common/Common_Constants.bs.js";
 import * as Core from "@material-ui/core";
 import * as Common_Icon_Close from "../common/icon/Common_Icon_Close.bs.js";
-import * as Styles from "@material-ui/styles";
 import * as Common_OpenInNewButton from "../common/Common_OpenInNewButton.bs.js";
-import * as Styles$1 from "@material-ui/core/styles";
-
-var useStyles = Styles.makeStyles(function (theme) {
-      return {
-              backGround: {
-                backgroundColor: theme.palette.grey.A400
-              }
-            };
-    });
+import * as Styles from "@material-ui/core/styles";
 
 function Contact_Content(Props) {
   var match = React.useState(function () {
@@ -32,36 +22,56 @@ function Contact_Content(Props) {
       });
   var setMapUrl = match[1];
   var mapUrl = match[0];
+  var match$1 = React.useState(function () {
+        return false;
+      });
+  var setIsMapBeingLoaded = match$1[1];
+  var isMapBeingLoaded = match$1[0];
   var intl = ReactIntl.useIntl();
-  var classes = useStyles();
   var commonClasses = Common_Style.useStyles();
-  var isSmUp = Core.useMediaQuery(Core$Mui.Breakpoint.get(Styles$1.useTheme(), {
+  var isSmUp = Core.useMediaQuery(Core$Mui.Breakpoint.get(Styles.useTheme(), {
             NAME: "up",
             VAL: "sm"
           }));
-  var match$1 = React.useContext(App_Context.Context.t);
   var onClose = function (param) {
+    Curry._1(setIsMapBeingLoaded, (function (param) {
+            return false;
+          }));
     Curry._1(setMapUrl, (function (param) {
             
           }));
   };
-  var tmp = {
-    children: null,
-    container: true
+  var onClick = function (mapUrl, param) {
+    Curry._1(setIsMapBeingLoaded, (function (param) {
+            return true;
+          }));
+    Curry._1(setMapUrl, (function (param) {
+            return mapUrl;
+          }));
   };
-  var tmp$1 = match$1[0].activeMenuItem === /* Contact */4 ? undefined : classes.backGround;
-  if (tmp$1 !== undefined) {
-    tmp.className = tmp$1;
-  }
-  var tmp$2 = {};
+  var onMapLoadingFinished = function (param) {
+    Curry._1(setIsMapBeingLoaded, (function (param) {
+            return false;
+          }));
+  };
+  var tmp = {
+    isMapBeingLoaded: isMapBeingLoaded,
+    onMapLoadingFinished: onMapLoadingFinished
+  };
   if (mapUrl !== undefined) {
-    tmp$2.url = Caml_option.valFromOption(mapUrl);
+    tmp.url = Caml_option.valFromOption(mapUrl);
   }
-  var tmp$3 = {};
+  var tmp$1 = {
+    isMapBeingLoaded: isMapBeingLoaded,
+    onMapLoadingFinished: onMapLoadingFinished
+  };
   if (mapUrl !== undefined) {
-    tmp$3.url = Caml_option.valFromOption(mapUrl);
+    tmp$1.url = Caml_option.valFromOption(mapUrl);
   }
-  return React.createElement(Core.Grid, tmp, React.createElement(Core.Grid, {
+  return React.createElement(Core.Grid, {
+              children: null,
+              container: true
+            }, React.createElement(Core.Grid, {
                   children: React.createElement(Core.Grid, {
                         children: null,
                         className: commonClasses.paragraphGap,
@@ -71,6 +81,7 @@ function Contact_Content(Props) {
                                     children: intl.formatMessage(Message.Contact.header),
                                     variant: "h4"
                                   }),
+                              className: commonClasses.centeredText,
                               item: true,
                               xs: Grid$Mui.Xs[12]
                             }) : null, React.createElement(Core.Grid, {
@@ -155,9 +166,7 @@ function Contact_Content(Props) {
                                       children: React.createElement(Common_OpenInNewButton.make, {
                                             label: Message.Contact.registrationAddress,
                                             onClick: (function (param) {
-                                                Curry._1(setMapUrl, (function (param) {
-                                                        return Common_Constants.registrationAddressMapUrl;
-                                                      }));
+                                                return onClick(Common_Constants.registrationAddressMapUrl, param);
                                               })
                                           }),
                                       item: true,
@@ -184,9 +193,7 @@ function Contact_Content(Props) {
                                       children: React.createElement(Common_OpenInNewButton.make, {
                                             label: Message.Contact.registrationAddressPaidParking1,
                                             onClick: (function (param) {
-                                                Curry._1(setMapUrl, (function (param) {
-                                                        return Common_Constants.registrationAddressPaidParking1;
-                                                      }));
+                                                return onClick(Common_Constants.registrationAddressPaidParking1, param);
                                               })
                                           }),
                                       item: true,
@@ -195,9 +202,7 @@ function Contact_Content(Props) {
                                       children: React.createElement(Common_OpenInNewButton.make, {
                                             label: Message.Contact.registrationAddressPaidParking2,
                                             onClick: (function (param) {
-                                                Curry._1(setMapUrl, (function (param) {
-                                                        return Common_Constants.registrationAddressPaidParking2;
-                                                      }));
+                                                return onClick(Common_Constants.registrationAddressPaidParking2, param);
                                               })
                                           }),
                                       item: true,
@@ -220,9 +225,7 @@ function Contact_Content(Props) {
                                       children: React.createElement(Common_OpenInNewButton.make, {
                                             label: Message.Contact.facturationAddress,
                                             onClick: (function (param) {
-                                                Curry._1(setMapUrl, (function (param) {
-                                                        return Common_Constants.facturationAddress;
-                                                      }));
+                                                return onClick(Common_Constants.facturationAddress, param);
                                               })
                                           }),
                                       item: true,
@@ -250,7 +253,7 @@ function Contact_Content(Props) {
                   xs: Grid$Mui.Xs[12]
                 }), React.createElement(Core.Hidden, {
                   children: React.createElement(Core.Grid, {
-                        children: React.createElement(Contact_Map.make, tmp$2),
+                        children: React.createElement(Contact_Map.make, tmp),
                         className: commonClasses.headerGap,
                         item: true,
                         md: Grid$Mui.Md[6]
@@ -279,7 +282,7 @@ function Contact_Content(Props) {
                                   justify: "flex-end"
                                 })
                           }), React.createElement(Core.DialogContent, {
-                            children: React.createElement(Contact_Map.make, tmp$3)
+                            children: React.createElement(Contact_Map.make, tmp$1)
                           })),
                   mdUp: true
                 }));
@@ -288,7 +291,6 @@ function Contact_Content(Props) {
 var make = Contact_Content;
 
 export {
-  useStyles ,
   make ,
 }
-/* useStyles Not a pure module */
+/* react Not a pure module */

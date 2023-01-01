@@ -26,6 +26,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-intl": "^6.2.5",
+    "react-loading-overlay": "^1.0.1",
     "react-material-ui-carousel": "v2",
     "react-scripts": "5.0.1",
     "rescript": "^10.1.0",

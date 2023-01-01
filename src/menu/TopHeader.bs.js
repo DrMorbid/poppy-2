@@ -5,6 +5,7 @@ import * as Message from "../i18n/Message.bs.js";
 import * as ReactIntl from "react-intl";
 import * as App_Actions from "../App_Actions.bs.js";
 import * as App_Context from "../App_Context.bs.js";
+import * as Common_Style from "../common/Common_Style.bs.js";
 import * as Common_Constants from "../common/Common_Constants.bs.js";
 import * as Core from "@material-ui/core";
 import * as Styles from "@material-ui/styles";
@@ -23,6 +24,7 @@ var useStyles = Styles.makeStyles({
 function TopHeader(Props) {
   var intl = ReactIntl.useIntl();
   var classes = useStyles();
+  var commonClasses = Common_Style.useStyles();
   var match = React.useContext(App_Context.Context.t);
   var dispatch = match[1];
   var onEmailUs = function (e) {
@@ -50,6 +52,7 @@ function TopHeader(Props) {
                                     className: classes.logo,
                                     src: "/poppy_logo.jpg"
                                   }),
+                              className: commonClasses.fullWidth,
                               onClick: onLogoClick
                             }),
                         className: classes.logoContainer,

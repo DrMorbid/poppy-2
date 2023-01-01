@@ -18,6 +18,7 @@ let useStyles: Styles.useStyles<{
 let make = () => {
   let intl = useIntl()
   let classes = useStyles(.)
+  let commonClasses = Common.Style.useStyles(.)
   let (_, dispatch) = React.useContext(App_Context.Context.t)
 
   let onEmailUs = e => {
@@ -35,7 +36,7 @@ let make = () => {
     </Grid>
     <Hidden smDown=true>
       <Grid item=true className={classes["logoContainer"]}>
-        <ButtonBase onClick=onLogoClick>
+        <ButtonBase onClick=onLogoClick className={commonClasses["fullWidth"]}>
           <img src="/poppy_logo.jpg" className={classes["logo"]} />
         </ButtonBase>
       </Grid>

@@ -2,32 +2,32 @@ open Mui
 open Mui.Grid
 open ReactIntl
 open Message.Contact
-open ReactDOM
-
-let useStyles: Styles.useStyles<{
-  "backGround": string,
-}> = Styles.makeStylesWithTheme(theme =>
-  {
-    "backGround": Style.make(~backgroundColor=theme.palette.grey.\"A400", ()),
-  }
-)
 
 @react.component
 let make = () => {
   let (mapUrl, setMapUrl) = React.useState(() => None)
+  let (isMapBeingLoaded, setIsMapBeingLoaded) = React.useState(() => false)
   let intl = useIntl()
-  let classes = useStyles(.)
   let commonClasses = Common.Style.useStyles(.)
   let isSmUp = Core.useMediaQuery(Core.useTheme()->Core.Breakpoint.get(#sm->#up))
-  let ({activeMenuItem, _}: App_Context.state, _) = React.useContext(App_Context.Context.t)
 
-  let onClose = _ => setMapUrl(_ => None)
+  let onClose = _ => {
+    setIsMapBeingLoaded(_ => false)
+    setMapUrl(_ => None)
+  }
 
-  <Grid container=true className=?{activeMenuItem == Contact ? None : Some(classes["backGround"])}>
+  let onClick = (mapUrl, ()) => {
+    setIsMapBeingLoaded(_ => true)
+    setMapUrl(_ => Some(mapUrl))
+  }
+
+  let onMapLoadingFinished = _ => setIsMapBeingLoaded(_ => false)
+
+  <Grid container=true>
     <Grid item=true xs=Xs.\"12">
       <Grid container=true className={commonClasses["paragraphGap"]}>
         {if isSmUp {
-          <Grid item=true xs=Xs.\"12">
+          <Grid item=true xs=Xs.\"12" className={commonClasses["centeredText"]}>
             <Typography variant=#h4> {intl->Intl.formatMessage(header)->React.string} </Typography>
           </Grid>
         } else {
@@ -91,7 +91,7 @@ let make = () => {
             <Grid item=true xs=Xs.\"12">
               <Common.OpenInNewButton
                 label=registrationAddress
-                onClick={() => setMapUrl(_ => Some(Common.Constants.registrationAddressMapUrl))}
+                onClick={onClick(Common.Constants.registrationAddressMapUrl)}
               />
             </Grid>
             <Grid item=true xs=Xs.\"12">
@@ -112,15 +112,13 @@ let make = () => {
             <Grid item=true xs=Xs.\"12">
               <Common.OpenInNewButton
                 label=registrationAddressPaidParking1
-                onClick={() =>
-                  setMapUrl(_ => Some(Common.Constants.registrationAddressPaidParking1))}
+                onClick={onClick(Common.Constants.registrationAddressPaidParking1)}
               />
             </Grid>
             <Grid item=true xs=Xs.\"12">
               <Common.OpenInNewButton
                 label=registrationAddressPaidParking2
-                onClick={() =>
-                  setMapUrl(_ => Some(Common.Constants.registrationAddressPaidParking2))}
+                onClick={onClick(Common.Constants.registrationAddressPaidParking2)}
               />
             </Grid>
           </Grid>
@@ -134,8 +132,7 @@ let make = () => {
             </Grid>
             <Grid item=true xs=Xs.\"12">
               <Common.OpenInNewButton
-                label=facturationAddress
-                onClick={() => setMapUrl(_ => Some(Common.Constants.facturationAddress))}
+                label=facturationAddress onClick={onClick(Common.Constants.facturationAddress)}
               />
             </Grid>
           </Grid>
@@ -151,7 +148,7 @@ let make = () => {
     </Grid>
     <Hidden smDown=true mdUp={mapUrl->Belt.Option.isNone}>
       <Grid item=true md=Md.\"6" className={commonClasses["headerGap"]}>
-        <Contact_Map url=?mapUrl />
+        <Contact_Map url=?mapUrl isMapBeingLoaded onMapLoadingFinished />
       </Grid>
     </Hidden>
     <Hidden mdUp=true>
@@ -166,7 +163,7 @@ let make = () => {
           </Grid>
         </DialogTitle>
         <DialogContent>
-          <Contact_Map url=?mapUrl />
+          <Contact_Map url=?mapUrl isMapBeingLoaded onMapLoadingFinished />
         </DialogContent>
       </Dialog>
     </Hidden>

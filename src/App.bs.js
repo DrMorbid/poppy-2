@@ -50,12 +50,15 @@ function App(Props) {
                         children: React.createElement(App_Router.make, {}),
                         item: true
                       }), React.createElement(Core.Hidden, {
-                        children: React.createElement(Core.Grid, {
-                              children: React.createElement(Contact_Content.make, {}),
-                              item: true
-                            }),
+                        children: null,
                         xsUp: match[0].activeMenuItem === /* Contact */4
-                      })),
+                      }, React.createElement(Core.Grid, {
+                            children: React.createElement("hr", undefined),
+                            item: true
+                          }), React.createElement(Core.Grid, {
+                            children: React.createElement(Contact_Content.make, {}),
+                            item: true
+                          }))),
               className: classes.container
             });
 }

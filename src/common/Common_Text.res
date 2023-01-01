@@ -17,7 +17,7 @@ let make = (~header=?, ~afterHeader=?, ~paragraphs, ~centerAll=?) => {
 
   <Grid container=true className={getContainerClassname()}>
     {header->Belt.Option.mapWithDefault(React.null, header =>
-      <Grid item=true xs=Grid.Xs.\"12">
+      <Grid item=true xs=Grid.Xs.\"12" className={classes["centeredText"]}>
         <Typography variant=#h4> {intl->Intl.formatMessage(header)->React.string} </Typography>
       </Grid>
     )}
