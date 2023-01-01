@@ -6,6 +6,7 @@ import * as Message from "../i18n/Message.bs.js";
 import * as Core$Mui from "rescript-material-ui/src/Core.bs.js";
 import * as Grid$Mui from "rescript-material-ui/src/Grid.bs.js";
 import * as ReactIntl from "react-intl";
+import * as App_Context from "../App_Context.bs.js";
 import * as Belt_Option from "rescript/lib/es6/belt_Option.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as Contact_Map from "./Contact_Map.bs.js";
@@ -13,8 +14,17 @@ import * as Common_Style from "../common/Common_Style.bs.js";
 import * as Common_Constants from "../common/Common_Constants.bs.js";
 import * as Core from "@material-ui/core";
 import * as Common_Icon_Close from "../common/icon/Common_Icon_Close.bs.js";
+import * as Styles from "@material-ui/styles";
 import * as Common_OpenInNewButton from "../common/Common_OpenInNewButton.bs.js";
-import * as Styles from "@material-ui/core/styles";
+import * as Styles$1 from "@material-ui/core/styles";
+
+var useStyles = Styles.makeStyles(function (theme) {
+      return {
+              backGround: {
+                backgroundColor: theme.palette.grey.A400
+              }
+            };
+    });
 
 function Contact_Content(Props) {
   var match = React.useState(function () {
@@ -23,28 +33,35 @@ function Contact_Content(Props) {
   var setMapUrl = match[1];
   var mapUrl = match[0];
   var intl = ReactIntl.useIntl();
+  var classes = useStyles();
   var commonClasses = Common_Style.useStyles();
-  var isSmUp = Core.useMediaQuery(Core$Mui.Breakpoint.get(Styles.useTheme(), {
+  var isSmUp = Core.useMediaQuery(Core$Mui.Breakpoint.get(Styles$1.useTheme(), {
             NAME: "up",
             VAL: "sm"
           }));
+  var match$1 = React.useContext(App_Context.Context.t);
   var onClose = function (param) {
     Curry._1(setMapUrl, (function (param) {
             
           }));
   };
-  var tmp = {};
-  if (mapUrl !== undefined) {
-    tmp.url = Caml_option.valFromOption(mapUrl);
+  var tmp = {
+    children: null,
+    container: true
+  };
+  var tmp$1 = match$1[0].activeMenuItem === /* Contact */4 ? undefined : classes.backGround;
+  if (tmp$1 !== undefined) {
+    tmp.className = tmp$1;
   }
-  var tmp$1 = {};
+  var tmp$2 = {};
   if (mapUrl !== undefined) {
-    tmp$1.url = Caml_option.valFromOption(mapUrl);
+    tmp$2.url = Caml_option.valFromOption(mapUrl);
   }
-  return React.createElement(Core.Grid, {
-              children: null,
-              container: true
-            }, React.createElement(Core.Grid, {
+  var tmp$3 = {};
+  if (mapUrl !== undefined) {
+    tmp$3.url = Caml_option.valFromOption(mapUrl);
+  }
+  return React.createElement(Core.Grid, tmp, React.createElement(Core.Grid, {
                   children: React.createElement(Core.Grid, {
                         children: null,
                         className: commonClasses.paragraphGap,
@@ -233,7 +250,7 @@ function Contact_Content(Props) {
                   xs: Grid$Mui.Xs[12]
                 }), React.createElement(Core.Hidden, {
                   children: React.createElement(Core.Grid, {
-                        children: React.createElement(Contact_Map.make, tmp),
+                        children: React.createElement(Contact_Map.make, tmp$2),
                         className: commonClasses.headerGap,
                         item: true,
                         md: Grid$Mui.Md[6]
@@ -262,7 +279,7 @@ function Contact_Content(Props) {
                                   justify: "flex-end"
                                 })
                           }), React.createElement(Core.DialogContent, {
-                            children: React.createElement(Contact_Map.make, tmp$1)
+                            children: React.createElement(Contact_Map.make, tmp$3)
                           })),
                   mdUp: true
                 }));
@@ -271,6 +288,7 @@ function Contact_Content(Props) {
 var make = Contact_Content;
 
 export {
+  useStyles ,
   make ,
 }
-/* react Not a pure module */
+/* useStyles Not a pure module */

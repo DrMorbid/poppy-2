@@ -2,18 +2,28 @@ open Mui
 open Mui.Grid
 open ReactIntl
 open Message.Contact
-open Common
+open ReactDOM
+
+let useStyles: Styles.useStyles<{
+  "backGround": string,
+}> = Styles.makeStylesWithTheme(theme =>
+  {
+    "backGround": Style.make(~backgroundColor=theme.palette.grey.\"A400", ()),
+  }
+)
 
 @react.component
 let make = () => {
   let (mapUrl, setMapUrl) = React.useState(() => None)
   let intl = useIntl()
-  let commonClasses = Style.useStyles(.)
+  let classes = useStyles(.)
+  let commonClasses = Common.Style.useStyles(.)
   let isSmUp = Core.useMediaQuery(Core.useTheme()->Core.Breakpoint.get(#sm->#up))
+  let ({activeMenuItem, _}: App_Context.state, _) = React.useContext(App_Context.Context.t)
 
   let onClose = _ => setMapUrl(_ => None)
 
-  <Grid container=true>
+  <Grid container=true className=?{activeMenuItem == Contact ? None : Some(classes["backGround"])}>
     <Grid item=true xs=Xs.\"12">
       <Grid container=true className={commonClasses["paragraphGap"]}>
         {if isSmUp {
@@ -44,7 +54,7 @@ let make = () => {
             </Grid>
             <Grid item=true xs=Xs.\"12">
               <Typography>
-                {(intl->Intl.formatMessage(companyEmail) ++ " " ++ Constants.companyEmail)
+                {(intl->Intl.formatMessage(companyEmail) ++ " " ++ Common.Constants.companyEmail)
                   ->React.string}
               </Typography>
             </Grid>
@@ -59,13 +69,13 @@ let make = () => {
             </Grid>
             <Grid item=true xs=Xs.\"12">
               <Typography>
-                {(intl->Intl.formatMessage(infoContactPhone) ++ " " ++ Constants.infoPhone)
+                {(intl->Intl.formatMessage(infoContactPhone) ++ " " ++ Common.Constants.infoPhone)
                   ->React.string}
               </Typography>
             </Grid>
             <Grid item=true xs=Xs.\"12">
               <Typography>
-                {(intl->Intl.formatMessage(infoContactEmail) ++ " " ++ Constants.infoEmail)
+                {(intl->Intl.formatMessage(infoContactEmail) ++ " " ++ Common.Constants.infoEmail)
                   ->React.string}
               </Typography>
             </Grid>
@@ -81,7 +91,7 @@ let make = () => {
             <Grid item=true xs=Xs.\"12">
               <Common.OpenInNewButton
                 label=registrationAddress
-                onClick={() => setMapUrl(_ => Some(Constants.registrationAddressMapUrl))}
+                onClick={() => setMapUrl(_ => Some(Common.Constants.registrationAddressMapUrl))}
               />
             </Grid>
             <Grid item=true xs=Xs.\"12">
@@ -102,13 +112,15 @@ let make = () => {
             <Grid item=true xs=Xs.\"12">
               <Common.OpenInNewButton
                 label=registrationAddressPaidParking1
-                onClick={() => setMapUrl(_ => Some(Constants.registrationAddressPaidParking1))}
+                onClick={() =>
+                  setMapUrl(_ => Some(Common.Constants.registrationAddressPaidParking1))}
               />
             </Grid>
             <Grid item=true xs=Xs.\"12">
               <Common.OpenInNewButton
                 label=registrationAddressPaidParking2
-                onClick={() => setMapUrl(_ => Some(Constants.registrationAddressPaidParking2))}
+                onClick={() =>
+                  setMapUrl(_ => Some(Common.Constants.registrationAddressPaidParking2))}
               />
             </Grid>
           </Grid>
@@ -123,7 +135,7 @@ let make = () => {
             <Grid item=true xs=Xs.\"12">
               <Common.OpenInNewButton
                 label=facturationAddress
-                onClick={() => setMapUrl(_ => Some(Constants.facturationAddress))}
+                onClick={() => setMapUrl(_ => Some(Common.Constants.facturationAddress))}
               />
             </Grid>
           </Grid>
