@@ -27,6 +27,8 @@ let make = () => {
 
   let onLogoClick = _ => Home->App_Actions.goToPage(~dispatch)
 
+  let onRegisterClick = _ => Registrations->App_Actions.goToPage(~dispatch)
+
   <Container>
     <Grid item=true>
       <Common.Button.WithIcon label=emailUs onClick=onEmailUs />
@@ -39,8 +41,8 @@ let make = () => {
       </Grid>
     </Hidden>
     <Grid item=true>
-      <Button variant=#contained color=#secondary>
-        {intl->Intl.formatMessage(register)->React.string}
+      <Button variant=#contained color=#secondary onClick=onRegisterClick>
+        {intl->Intl.formatMessage(registrations)->React.string}
       </Button>
     </Grid>
   </Container>

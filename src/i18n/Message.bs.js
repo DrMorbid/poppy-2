@@ -6,7 +6,7 @@ var Menu_emailUs = {
   defaultMessage: "Napište nám"
 };
 
-var Menu_register = {
+var Menu_registrations = {
   id: "2a47d058-357b-4080-9f57-a59c6e7537d8",
   defaultMessage: "Registrace"
 };
@@ -19,11 +19,6 @@ var Menu_home = {
 var Menu_aboutUs = {
   id: "0371f3b2-5b62-4c6b-baac-a3925b811458",
   defaultMessage: "O nás"
-};
-
-var Menu_registrations = {
-  id: "b54fd38e-5cab-4dc6-9db0-c3f2bc180395",
-  defaultMessage: "Registrace"
 };
 
 var Menu_references = {
@@ -43,13 +38,51 @@ var Menu_news = {
 
 var Menu = {
   emailUs: Menu_emailUs,
-  register: Menu_register,
+  registrations: Menu_registrations,
   home: Menu_home,
   aboutUs: Menu_aboutUs,
-  registrations: Menu_registrations,
   references: Menu_references,
   contact: Menu_contact,
   news: Menu_news
+};
+
+var Home_firstParagraphHeader = {
+  id: "115ab101-90af-43cc-ad43-2ffe55cf8e3f",
+  defaultMessage: "Reklama"
+};
+
+var Home_firstParagraph = {
+  id: "7ed024d8-d064-444f-af7e-7f6ca3b83759",
+  defaultMessage: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum consectetur libero id faucibus."
+};
+
+var Home_secondParagraphHeader = {
+  id: "204c193b-6887-4e07-974e-e7134e58ab76",
+  defaultMessage: "Film a Seriál"
+};
+
+var Home_secondParagraph = {
+  id: "661c230e-e660-4745-b5c0-9df24de636e3",
+  defaultMessage: "Malesuada fames ac turpis egestas integer eget aliquet. Eu volutpat odio facilisis mauris sit amet massa vitae tortor. Vitae aliquet nec ullamcorper sit amet risus."
+};
+
+var Home_thirdParagraphHeader = {
+  id: "7f0e21bf-8a5a-4d99-b522-2fc5ad383b4e",
+  defaultMessage: "Dabing"
+};
+
+var Home_thirdParagraph = {
+  id: "b0fe1f36-cd5e-40ee-8941-3a9383cec031",
+  defaultMessage: "Nibh cras pulvinar mattis nunc sed blandit. Ipsum a arcu cursus vitae congue mauris rhoncus aenean."
+};
+
+var Home = {
+  firstParagraphHeader: Home_firstParagraphHeader,
+  firstParagraph: Home_firstParagraph,
+  secondParagraphHeader: Home_secondParagraphHeader,
+  secondParagraph: Home_secondParagraph,
+  thirdParagraphHeader: Home_thirdParagraphHeader,
+  thirdParagraph: Home_thirdParagraph
 };
 
 var AboutUs_header = {
@@ -288,6 +321,7 @@ var appName = {
 export {
   appName ,
   Menu ,
+  Home ,
   AboutUs ,
   Registrations ,
   References ,

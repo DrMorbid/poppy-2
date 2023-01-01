@@ -12,11 +12,29 @@ function Common_Text(Props) {
   var header = Props.header;
   var afterHeader = Props.afterHeader;
   var paragraphs = Props.paragraphs;
+  var centerAll = Props.centerAll;
   var intl = ReactIntl.useIntl();
   var classes = Common_Style.useStyles();
+  var getContainerClassname = function (param) {
+    return Belt_List.reduce(Belt_List.concat({
+                    hd: classes.paragraphGap,
+                    tl: /* [] */0
+                  }, Belt_Option.mapWithDefault(centerAll, /* [] */0, (function (centerAll) {
+                          if (centerAll) {
+                            return {
+                                    hd: classes.centeredText,
+                                    tl: /* [] */0
+                                  };
+                          } else {
+                            return /* [] */0;
+                          }
+                        }))), "", (function (result, className) {
+                  return "" + result + " " + className + "";
+                }));
+  };
   return React.createElement(Core.Grid, {
               children: null,
-              className: classes.paragraphGap,
+              className: getContainerClassname(undefined),
               container: true
             }, Belt_Option.mapWithDefault(header, null, (function (header) {
                     return React.createElement(Core.Grid, {

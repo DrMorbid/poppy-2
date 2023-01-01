@@ -2,11 +2,20 @@ open Mui
 open ReactIntl
 
 @react.component
-let make = (~header=?, ~afterHeader=?, ~paragraphs) => {
+let make = (~header=?, ~afterHeader=?, ~paragraphs, ~centerAll=?) => {
   let intl = useIntl()
   let classes = Common_Style.useStyles(.)
 
-  <Grid container=true className={classes["paragraphGap"]}>
+  let getContainerClassname = () =>
+    list{classes["paragraphGap"]}
+    ->Belt.List.concat(
+      centerAll->Belt.Option.mapWithDefault(list{}, centerAll =>
+        centerAll ? list{classes["centeredText"]} : list{}
+      ),
+    )
+    ->Belt.List.reduce("", (result, className) => `${result} ${className}`)
+
+  <Grid container=true className={getContainerClassname()}>
     {header->Belt.Option.mapWithDefault(React.null, header =>
       <Grid item=true xs=Grid.Xs.\"12">
         <Typography variant=#h4> {intl->Intl.formatMessage(header)->React.string} </Typography>

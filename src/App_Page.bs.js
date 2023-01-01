@@ -68,13 +68,10 @@ function menuItems(isLatestNewsRead) {
               tl: {
                 hd: /* News */5,
                 tl: {
-                  hd: /* Registrations */2,
+                  hd: /* References */3,
                   tl: {
-                    hd: /* References */3,
-                    tl: {
-                      hd: /* Contact */4,
-                      tl: /* [] */0
-                    }
+                    hd: /* Contact */4,
+                    tl: /* [] */0
                   }
                 }
               }
@@ -86,13 +83,10 @@ function menuItems(isLatestNewsRead) {
             tl: {
               hd: /* AboutUs */1,
               tl: {
-                hd: /* Registrations */2,
+                hd: /* References */3,
                 tl: {
-                  hd: /* References */3,
-                  tl: {
-                    hd: /* Contact */4,
-                    tl: /* [] */0
-                  }
+                  hd: /* Contact */4,
+                  tl: /* [] */0
                 }
               }
             }

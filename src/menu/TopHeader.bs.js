@@ -32,6 +32,9 @@ function TopHeader(Props) {
   var onLogoClick = function (param) {
     App_Actions.goToPage(/* Home */0, dispatch);
   };
+  var onRegisterClick = function (param) {
+    App_Actions.goToPage(/* Registrations */2, dispatch);
+  };
   return React.createElement(TopHeader_Container.make, {
               children: null
             }, React.createElement(Core.Grid, {
@@ -55,7 +58,8 @@ function TopHeader(Props) {
                   smDown: true
                 }), React.createElement(Core.Grid, {
                   children: React.createElement(Core.Button, {
-                        children: intl.formatMessage(Message.Menu.register),
+                        onClick: onRegisterClick,
+                        children: intl.formatMessage(Message.Menu.registrations),
                         color: "secondary",
                         variant: "contained"
                       }),

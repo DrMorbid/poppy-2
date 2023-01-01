@@ -25,6 +25,9 @@ var useStyles = Styles.makeStyles({
       },
       fullWidth: {
         width: "100%"
+      },
+      centeredText: {
+        textAlign: "center"
       }
     });
 

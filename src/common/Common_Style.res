@@ -11,6 +11,7 @@ let useStyles: Styles.useStyles<{
   "marginBottomSm": string,
   "marginBottom": string,
   "fullWidth": string,
+  "centeredText": string,
 }> = Styles.makeStyles({
   "headerGap": headerGap,
   "paragraphGap": Style.make(~gridRowGap="1rem", ()),
@@ -19,4 +20,5 @@ let useStyles: Styles.useStyles<{
   "marginBottomSm": Style.make(~marginBottom="0.75rem", ()),
   "marginBottom": Style.make(~marginBottom="1rem", ()),
   "fullWidth": Style.make(~width="100%", ()),
+  "centeredText": Style.make(~textAlign="center", ()),
 })
