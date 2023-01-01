@@ -10,9 +10,9 @@ import * as Belt_Option from "rescript/lib/es6/belt_Option.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as Contact_Map from "./Contact_Map.bs.js";
 import * as Common_Style from "../common/Common_Style.bs.js";
+import * as Common_Dialog from "../common/Common_Dialog.bs.js";
 import * as Common_Constants from "../common/Common_Constants.bs.js";
 import * as Core from "@material-ui/core";
-import * as Common_Icon_Close from "../common/icon/Common_Icon_Close.bs.js";
 import * as Common_OpenInNewButton from "../common/Common_OpenInNewButton.bs.js";
 import * as Styles from "@material-ui/core/styles";
 
@@ -261,29 +261,12 @@ function Contact_Content(Props) {
                   mdUp: Belt_Option.isNone(mapUrl),
                   smDown: true
                 }), React.createElement(Core.Hidden, {
-                  children: React.createElement(Core.Dialog, {
-                        children: null,
-                        fullScreen: true,
-                        onClose: (function (param) {
-                            return onClose;
-                          }),
-                        open: Belt_Option.isSome(mapUrl)
-                      }, React.createElement(Core.DialogTitle, {
-                            children: React.createElement(Core.Grid, {
-                                  alignItems: "center",
-                                  children: React.createElement(Core.Grid, {
-                                        children: React.createElement(Core.IconButton, {
-                                              onClick: onClose,
-                                              children: React.createElement(Common_Icon_Close.make, {})
-                                            }),
-                                        item: true
-                                      }),
-                                  container: true,
-                                  justify: "flex-end"
-                                })
-                          }), React.createElement(Core.DialogContent, {
-                            children: React.createElement(Contact_Map.make, tmp$1)
-                          })),
+                  children: React.createElement(Common_Dialog.make, {
+                        isOpen: Belt_Option.isSome(mapUrl),
+                        onClose: onClose,
+                        children: React.createElement(Contact_Map.make, tmp$1),
+                        fullScreen: true
+                      }),
                   mdUp: true
                 }));
 }

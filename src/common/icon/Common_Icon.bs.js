@@ -9,10 +9,13 @@ var Close;
 
 var MailOutline;
 
+var KeyboardArrowUp;
+
 export {
   Menu ,
   OpenInNew ,
   Close ,
   MailOutline ,
+  KeyboardArrowUp ,
 }
 /* No side effect */

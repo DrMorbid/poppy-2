@@ -1,14 +1,6 @@
 open Mui
-open MuiLab
-open ReactDOM
 open News_Latest
 open Promise
-
-let useStyles: Styles.useStyles<{
-  "iconPlacement": string,
-}> = Styles.makeStyles({
-  "iconPlacement": Style.make(~alignItems="flex-start", ()),
-})
 
 module Date = {
   @react.component
@@ -33,31 +25,43 @@ module Title = {
 
 module Content = {
   @react.component
-  let make = (~className=?) => {
+  let make = () => {
     let commonClasses = Common_Style.useStyles(.)
 
-    <Grid container=true direction=#column alignItems=#stretch ?className>
-      {latestNews.content
-      ->Belt.List.mapWithIndex((index, {emphasis, value, nextLineEmpty}) => {
+    <Grid container=true>
+      <Grid item=true>
+        <Date variant=#h4 />
+      </Grid>
+      <Grid item=true className={commonClasses["marginTopSm"]}>
+        <Title variant=#h5 />
         <Grid
-          item=true
-          key={`news-line-${index->Belt.Int.toString}`}
-          className=?{if nextLineEmpty {
-            Some(commonClasses["marginBottomSm"])
-          } else {
-            None
-          }}>
-          <Typography
-            className=?{switch emphasis {
-            | Normal => None
-            | Bold => Some(commonClasses["bold"])
-            }}>
-            {value->React.string}
-          </Typography>
+          container=true
+          direction=#column
+          alignItems=#stretch
+          className={commonClasses["marginTopSm"]}>
+          {latestNews.content
+          ->Belt.List.mapWithIndex((index, {emphasis, value, nextLineEmpty}) => {
+            <Grid
+              item=true
+              key={`news-line-${index->Belt.Int.toString}`}
+              className=?{if nextLineEmpty {
+                Some(commonClasses["marginBottomSm"])
+              } else {
+                None
+              }}>
+              <Typography
+                className=?{switch emphasis {
+                | Normal => None
+                | Bold => Some(commonClasses["bold"])
+                }}>
+                {value->React.string}
+              </Typography>
+            </Grid>
+          })
+          ->Belt.List.toArray
+          ->React.array}
         </Grid>
-      })
-      ->Belt.List.toArray
-      ->React.array}
+      </Grid>
     </Grid>
   }
 }
@@ -65,8 +69,6 @@ module Content = {
 @react.component
 let make = () => {
   let (newsRead, setNewsRead) = React.useState(() => true)
-  let commonClasses = Common_Style.useStyles(.)
-  let classes = useStyles(.)
   let (_, dispatch) = React.useContext(App_Context.Context.t)
 
   React.useEffect0(() => {
@@ -83,29 +85,7 @@ let make = () => {
     dispatch(LatestNewsClosed)
   }
 
-  <Collapse \"in"={!newsRead}>
-    <Grid
-      container=true
-      direction=#column
-      alignItems=#stretch
-      className={commonClasses["marginBottom"]}>
-      <Grid item=true>
-        <Alert
-          severity=#info
-          color=#error
-          onClose
-          classes={Alert.Classes.make(
-            ~message=commonClasses["fullWidth"],
-            ~action=classes["iconPlacement"],
-            (),
-          )}>
-          <AlertTitle>
-            <Date variant=#h5 />
-            <Title variant=#h6 />
-          </AlertTitle>
-          <Content />
-        </Alert>
-      </Grid>
-    </Grid>
-  </Collapse>
+  <Common.Dialog isOpen={!newsRead} onClose>
+    <Content />
+  </Common.Dialog>
 }

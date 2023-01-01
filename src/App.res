@@ -7,6 +7,7 @@ module Context = App_Context
 module Actions = App_Actions
 module Page = App_Page
 module Router = App_Router
+module ScrollToTop = App_ScrollToTop
 
 let useStyles: Styles.useStyles<{
   "container": string,
@@ -28,16 +29,17 @@ let make = () => {
   let classes = useStyles(.)
   let commonClasses = Common.Style.useStyles(.)
   let ({activeMenuItem, _}: App_Context.state, _) = React.useContext(App_Context.Context.t)
+  let isSmUp = Core.useMediaQuery(Core.useTheme()->Core.Breakpoint.get(#sm->#up))
+  let isMdUp = Core.useMediaQuery(Core.useTheme()->Core.Breakpoint.get(#md->#up))
 
   <Container className={classes["container"]}>
     <Grid container=true direction=#column className={commonClasses["paragraphGap"]}>
-      <Grid item=true>
+      <Grid item=true id="back-to-top-anchor">
         <TopHeader />
       </Grid>
       <Grid item=true>
         <TopMenu />
       </Grid>
-      // TODO will probably go away
       <Grid item=true>
         <News.Message />
       </Grid>
@@ -53,5 +55,17 @@ let make = () => {
         </Grid>
       </Hidden>
     </Grid>
+    <Snackbar />
+    <ScrollToTop>
+      <Fab
+        color=#secondary
+        size={switch (isSmUp, isMdUp) {
+        | (false, false) => #small
+        | (true, false) => #medium
+        | (_, true) => #large
+        }}>
+        <Common.Icon.KeyboardArrowUp />
+      </Fab>
+    </ScrollToTop>
   </Container>
 }

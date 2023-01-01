@@ -3,12 +3,9 @@
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
 import * as App_Context from "../App_Context.bs.js";
-import * as Common_Style from "../common/Common_Style.bs.js";
 import * as News_Message from "./News_Message.bs.js";
-import * as Core from "@material-ui/core";
 
 function News_Page(Props) {
-  var commonClasses = Common_Style.useStyles();
   var match = React.useContext(App_Context.Context.t);
   var dispatch = match[1];
   var activeMenuItem = match[0].activeMenuItem;
@@ -20,23 +17,7 @@ function News_Page(Props) {
           }
           
         }), [activeMenuItem]);
-  return React.createElement(Core.Grid, {
-              children: null,
-              container: true
-            }, React.createElement(Core.Grid, {
-                  children: React.createElement(News_Message.$$Date.make, {
-                        variant: "h4"
-                      }),
-                  item: true
-                }), React.createElement(Core.Grid, {
-                  children: null,
-                  className: commonClasses.marginTopSm,
-                  item: true
-                }, React.createElement(News_Message.Title.make, {
-                      variant: "h5"
-                    }), React.createElement(News_Message.Content.make, {
-                      className: commonClasses.marginTopSm
-                    })));
+  return React.createElement(News_Message.Content.make, {});
 }
 
 var make = News_Page;

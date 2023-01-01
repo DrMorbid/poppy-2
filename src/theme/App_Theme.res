@@ -12,6 +12,10 @@ let theme = (~prefersDarkTheme) => {
 
   create(
     make(
+      ~typography=Typography.make(
+        ~fontFamily="Century Gothic, CenturyGothic, AppleGothic, sans-serif",
+        (),
+      ),
       ~palette=PaletteOptions.make(
         ~\"type"=prefersDarkTheme ? "dark" : "light",
         ~primary=Primary.make(~main=colors.primary, ()),

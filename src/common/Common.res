@@ -4,3 +4,4 @@ module Constants = Common_Constants
 module Icon = Common_Icon
 module OpenInNewButton = Common_OpenInNewButton
 module Button = Common_Button
+module Dialog = Common_Dialog

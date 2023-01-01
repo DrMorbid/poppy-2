@@ -13,6 +13,8 @@ var OpenInNewButton;
 
 var Button;
 
+var Dialog;
+
 export {
   $$Text ,
   Style ,
@@ -20,5 +22,6 @@ export {
   Icon ,
   OpenInNewButton ,
   Button ,
+  Dialog ,
 }
 /* No side effect */

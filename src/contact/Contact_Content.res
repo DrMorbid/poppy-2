@@ -11,7 +11,7 @@ let make = () => {
   let commonClasses = Common.Style.useStyles(.)
   let isSmUp = Core.useMediaQuery(Core.useTheme()->Core.Breakpoint.get(#sm->#up))
 
-  let onClose = _ => {
+  let onClose = () => {
     setIsMapBeingLoaded(_ => false)
     setMapUrl(_ => None)
   }
@@ -152,20 +152,9 @@ let make = () => {
       </Grid>
     </Hidden>
     <Hidden mdUp=true>
-      <Dialog onClose={_ => onClose} \"open"={mapUrl->Belt.Option.isSome} fullScreen=true>
-        <DialogTitle>
-          <Grid container=true justify=#"flex-end" alignItems=#center>
-            <Grid item=true>
-              <IconButton onClick=onClose>
-                <Common.Icon.Close />
-              </IconButton>
-            </Grid>
-          </Grid>
-        </DialogTitle>
-        <DialogContent>
-          <Contact_Map url=?mapUrl isMapBeingLoaded onMapLoadingFinished />
-        </DialogContent>
-      </Dialog>
+      <Common.Dialog isOpen={mapUrl->Belt.Option.isSome} onClose fullScreen=true>
+        <Contact_Map url=?mapUrl isMapBeingLoaded onMapLoadingFinished />
+      </Common.Dialog>
     </Hidden>
   </Grid>
 }

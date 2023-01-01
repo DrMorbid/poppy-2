@@ -7,15 +7,8 @@ import * as Belt_List from "rescript/lib/es6/belt_List.js";
 import * as App_Context from "../App_Context.bs.js";
 import * as News_Latest from "./News_Latest.bs.js";
 import * as Common_Style from "../common/Common_Style.bs.js";
-import * as Lab from "@material-ui/lab";
+import * as Common_Dialog from "../common/Common_Dialog.bs.js";
 import * as Core from "@material-ui/core";
-import * as Styles from "@material-ui/styles";
-
-var useStyles = Styles.makeStyles({
-      iconPlacement: {
-        alignItems: "flex-start"
-      }
-    });
 
 function News_Message$Date(Props) {
   var variant = Props.variant;
@@ -45,36 +38,46 @@ var Title = {
 };
 
 function News_Message$Content(Props) {
-  var className = Props.className;
   var commonClasses = Common_Style.useStyles();
-  var tmp = {
-    alignItems: "stretch",
-    children: Belt_List.toArray(Belt_List.mapWithIndex(News_Latest.latestNews.content, (function (index, param) {
-                var tmp = {
-                  children: param.value
-                };
-                var tmp$1 = param.emphasis ? commonClasses.bold : undefined;
-                if (tmp$1 !== undefined) {
-                  tmp.className = tmp$1;
-                }
-                var tmp$2 = {
-                  children: React.createElement(Core.Typography, tmp),
-                  item: true,
-                  key: "news-line-" + String(index) + ""
-                };
-                var tmp$3 = param.nextLineEmpty ? commonClasses.marginBottomSm : undefined;
-                if (tmp$3 !== undefined) {
-                  tmp$2.className = tmp$3;
-                }
-                return React.createElement(Core.Grid, tmp$2);
-              }))),
-    container: true,
-    direction: "column"
-  };
-  if (className !== undefined) {
-    tmp.className = className;
-  }
-  return React.createElement(Core.Grid, tmp);
+  return React.createElement(Core.Grid, {
+              children: null,
+              container: true
+            }, React.createElement(Core.Grid, {
+                  children: React.createElement(News_Message$Date, {
+                        variant: "h4"
+                      }),
+                  item: true
+                }), React.createElement(Core.Grid, {
+                  children: null,
+                  className: commonClasses.marginTopSm,
+                  item: true
+                }, React.createElement(News_Message$Title, {
+                      variant: "h5"
+                    }), React.createElement(Core.Grid, {
+                      alignItems: "stretch",
+                      children: Belt_List.toArray(Belt_List.mapWithIndex(News_Latest.latestNews.content, (function (index, param) {
+                                  var tmp = {
+                                    children: param.value
+                                  };
+                                  var tmp$1 = param.emphasis ? commonClasses.bold : undefined;
+                                  if (tmp$1 !== undefined) {
+                                    tmp.className = tmp$1;
+                                  }
+                                  var tmp$2 = {
+                                    children: React.createElement(Core.Typography, tmp),
+                                    item: true,
+                                    key: "news-line-" + String(index) + ""
+                                  };
+                                  var tmp$3 = param.nextLineEmpty ? commonClasses.marginBottomSm : undefined;
+                                  if (tmp$3 !== undefined) {
+                                    tmp$2.className = tmp$3;
+                                  }
+                                  return React.createElement(Core.Grid, tmp$2);
+                                }))),
+                      className: commonClasses.marginTopSm,
+                      container: true,
+                      direction: "column"
+                    })));
 }
 
 var Content = {
@@ -86,8 +89,6 @@ function News_Message(Props) {
         return true;
       });
   var setNewsRead = match[1];
-  var commonClasses = Common_Style.useStyles();
-  var classes = useStyles();
   var match$1 = React.useContext(App_Context.Context.t);
   var dispatch = match$1[1];
   React.useEffect((function () {
@@ -104,43 +105,19 @@ function News_Message(Props) {
     News_Idb.setNewsRead(new Date());
     Curry._1(dispatch, /* LatestNewsClosed */0);
   };
-  return React.createElement(Core.Collapse, {
-              children: React.createElement(Core.Grid, {
-                    alignItems: "stretch",
-                    children: React.createElement(Core.Grid, {
-                          children: React.createElement(Lab.Alert, {
-                                children: null,
-                                classes: {
-                                  message: commonClasses.fullWidth,
-                                  action: classes.iconPlacement
-                                },
-                                color: "error",
-                                onClose: onClose,
-                                severity: "info"
-                              }, React.createElement(Lab.AlertTitle, {
-                                    children: null
-                                  }, React.createElement(News_Message$Date, {
-                                        variant: "h5"
-                                      }), React.createElement(News_Message$Title, {
-                                        variant: "h6"
-                                      })), React.createElement(News_Message$Content, {})),
-                          item: true
-                        }),
-                    className: commonClasses.marginBottom,
-                    container: true,
-                    direction: "column"
-                  }),
-              in: !match[0]
+  return React.createElement(Common_Dialog.make, {
+              isOpen: !match[0],
+              onClose: onClose,
+              children: React.createElement(News_Message$Content, {})
             });
 }
 
 var make = News_Message;
 
 export {
-  useStyles ,
   $$Date ,
   Title ,
   Content ,
   make ,
 }
-/* useStyles Not a pure module */
+/* react Not a pure module */

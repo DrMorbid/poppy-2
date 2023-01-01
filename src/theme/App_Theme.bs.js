@@ -31,6 +31,9 @@ function theme(prefersDarkTheme) {
                 warning: {
                   main: "#f1a300"
                 }
+              },
+              typography: {
+                fontFamily: "Century Gothic, CenturyGothic, AppleGothic, sans-serif"
               }
             });
 }

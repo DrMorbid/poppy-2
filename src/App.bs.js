@@ -3,15 +3,19 @@
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
 import * as TopMenu from "./menu/TopMenu.bs.js";
+import * as Core$Mui from "rescript-material-ui/src/Core.bs.js";
 import * as TopHeader from "./menu/TopHeader.bs.js";
 import * as App_Router from "./App_Router.bs.js";
 import * as App_Context from "./App_Context.bs.js";
 import * as Utils_Style from "./utils/Utils_Style.bs.js";
 import * as Common_Style from "./common/Common_Style.bs.js";
 import * as News_Message from "./news/News_Message.bs.js";
+import * as App_ScrollToTop from "./App_ScrollToTop.bs.js";
 import * as Contact_Content from "./contact/Contact_Content.bs.js";
 import * as Core from "@material-ui/core";
 import * as Styles from "@material-ui/styles";
+import * as Styles$1 from "@material-ui/core/styles";
+import * as Common_Icon_KeyboardArrowUp from "./common/icon/Common_Icon_KeyboardArrowUp.bs.js";
 
 var useStyles = Styles.makeStyles(function (theme) {
       return {
@@ -31,36 +35,55 @@ function App(Props) {
   var classes = useStyles();
   var commonClasses = Common_Style.useStyles();
   var match = React.useContext(App_Context.Context.t);
+  var isSmUp = Core.useMediaQuery(Core$Mui.Breakpoint.get(Styles$1.useTheme(), {
+            NAME: "up",
+            VAL: "sm"
+          }));
+  var isMdUp = Core.useMediaQuery(Core$Mui.Breakpoint.get(Styles$1.useTheme(), {
+            NAME: "up",
+            VAL: "md"
+          }));
   return React.createElement(Core.Container, {
-              children: React.createElement(Core.Grid, {
-                    children: null,
-                    className: commonClasses.paragraphGap,
-                    container: true,
-                    direction: "column"
-                  }, React.createElement(Core.Grid, {
-                        children: React.createElement(TopHeader.make, {}),
-                        item: true
-                      }), React.createElement(Core.Grid, {
-                        children: React.createElement(TopMenu.make, {}),
-                        item: true
-                      }), React.createElement(Core.Grid, {
-                        children: React.createElement(News_Message.make, {}),
-                        item: true
-                      }), React.createElement(Core.Grid, {
-                        children: React.createElement(App_Router.make, {}),
-                        item: true
-                      }), React.createElement(Core.Hidden, {
-                        children: null,
-                        xsUp: match[0].activeMenuItem === /* Contact */4
-                      }, React.createElement(Core.Grid, {
-                            children: React.createElement("hr", undefined),
-                            item: true
-                          }), React.createElement(Core.Grid, {
-                            children: React.createElement(Contact_Content.make, {}),
-                            item: true
-                          }))),
+              children: null,
               className: classes.container
-            });
+            }, React.createElement(Core.Grid, {
+                  children: null,
+                  className: commonClasses.paragraphGap,
+                  container: true,
+                  direction: "column"
+                }, React.createElement(Core.Grid, {
+                      children: React.createElement(TopHeader.make, {}),
+                      item: true,
+                      id: "back-to-top-anchor"
+                    }), React.createElement(Core.Grid, {
+                      children: React.createElement(TopMenu.make, {}),
+                      item: true
+                    }), React.createElement(Core.Grid, {
+                      children: React.createElement(News_Message.make, {}),
+                      item: true
+                    }), React.createElement(Core.Grid, {
+                      children: React.createElement(App_Router.make, {}),
+                      item: true
+                    }), React.createElement(Core.Hidden, {
+                      children: null,
+                      xsUp: match[0].activeMenuItem === /* Contact */4
+                    }, React.createElement(Core.Grid, {
+                          children: React.createElement("hr", undefined),
+                          item: true
+                        }), React.createElement(Core.Grid, {
+                          children: React.createElement(Contact_Content.make, {}),
+                          item: true
+                        }))), React.createElement(Core.Snackbar, {}), React.createElement(App_ScrollToTop.make, {
+                  children: React.createElement(Core.Fab, {
+                        children: React.createElement(Common_Icon_KeyboardArrowUp.make, {}),
+                        color: "secondary",
+                        size: isSmUp ? (
+                            isMdUp ? "large" : "medium"
+                          ) : (
+                            isMdUp ? "large" : "small"
+                          )
+                      })
+                }));
 }
 
 var Theme;
@@ -73,6 +96,8 @@ var Page;
 
 var Router;
 
+var ScrollToTop;
+
 var make = App;
 
 export {
@@ -81,6 +106,7 @@ export {
   Actions ,
   Page ,
   Router ,
+  ScrollToTop ,
   useStyles ,
   make ,
 }
