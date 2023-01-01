@@ -3,6 +3,8 @@
 import * as React from "react";
 import * as Message from "../i18n/Message.bs.js";
 import * as ReactIntl from "react-intl";
+import * as App_Actions from "../App_Actions.bs.js";
+import * as App_Context from "../App_Context.bs.js";
 import * as Common_Constants from "../common/Common_Constants.bs.js";
 import * as Core from "@material-ui/core";
 import * as Styles from "@material-ui/styles";
@@ -21,9 +23,14 @@ var useStyles = Styles.makeStyles({
 function TopHeader(Props) {
   var intl = ReactIntl.useIntl();
   var classes = useStyles();
+  var match = React.useContext(App_Context.Context.t);
+  var dispatch = match[1];
   var onEmailUs = function (e) {
     window.location.href = "mailto:" + Common_Constants.infoEmail + "";
     e.preventDefault();
+  };
+  var onLogoClick = function (param) {
+    App_Actions.goToPage(/* Home */0, dispatch);
   };
   return React.createElement(TopHeader_Container.make, {
               children: null
@@ -35,9 +42,12 @@ function TopHeader(Props) {
                   item: true
                 }), React.createElement(Core.Hidden, {
                   children: React.createElement(Core.Grid, {
-                        children: React.createElement("img", {
-                              className: classes.logo,
-                              src: "/poppy_logo.jpg"
+                        children: React.createElement(Core.ButtonBase, {
+                              children: React.createElement("img", {
+                                    className: classes.logo,
+                                    src: "/poppy_logo.jpg"
+                                  }),
+                              onClick: onLogoClick
                             }),
                         className: classes.logoContainer,
                         item: true

@@ -33,9 +33,9 @@ function Contact_Page(Props) {
             VAL: "sm"
           }));
   React.useEffect((function () {
-          if (activeMenuItem !== /* Contact */3) {
+          if (activeMenuItem !== /* Contact */4) {
             Curry._1(dispatch, /* StoreActiveMenuItem */{
-                  _0: /* Contact */3
+                  _0: /* Contact */4
                 });
           }
           

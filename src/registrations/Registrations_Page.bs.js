@@ -28,9 +28,9 @@ function Registrations_Page(Props) {
             VAL: "sm"
           }));
   React.useEffect((function () {
-          if (activeMenuItem !== /* Registrations */1) {
+          if (activeMenuItem !== /* Registrations */2) {
             Curry._1(dispatch, /* StoreActiveMenuItem */{
-                  _0: /* Registrations */1
+                  _0: /* Registrations */2
                 });
           }
           

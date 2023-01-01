@@ -11,6 +11,11 @@ var Menu_register = {
   defaultMessage: "Registrace"
 };
 
+var Menu_home = {
+  id: "40d873a1-0ae0-4626-a8cd-45fbd140bc50",
+  defaultMessage: "Domů"
+};
+
 var Menu_aboutUs = {
   id: "0371f3b2-5b62-4c6b-baac-a3925b811458",
   defaultMessage: "O nás"
@@ -39,6 +44,7 @@ var Menu_news = {
 var Menu = {
   emailUs: Menu_emailUs,
   register: Menu_register,
+  home: Menu_home,
   aboutUs: Menu_aboutUs,
   registrations: Menu_registrations,
   references: Menu_references,

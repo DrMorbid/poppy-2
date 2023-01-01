@@ -2,6 +2,8 @@
 
 import * as Message from "./i18n/Message.bs.js";
 
+var home = "/";
+
 var aboutUs = "/about-us";
 
 var registrations = "/registrations";
@@ -13,7 +15,7 @@ var contact = "/contact";
 var news = "/news";
 
 var RoutePath = {
-  home: "/",
+  home: home,
   aboutUs: aboutUs,
   registrations: registrations,
   references: references,
@@ -23,15 +25,17 @@ var RoutePath = {
 
 function toRoutePath(page) {
   switch (page) {
-    case /* AboutUs */0 :
+    case /* Home */0 :
+        return home;
+    case /* AboutUs */1 :
         return aboutUs;
-    case /* Registrations */1 :
+    case /* Registrations */2 :
         return registrations;
-    case /* References */2 :
+    case /* References */3 :
         return references;
-    case /* Contact */3 :
+    case /* Contact */4 :
         return contact;
-    case /* News */4 :
+    case /* News */5 :
         return news;
     
   }
@@ -39,15 +43,17 @@ function toRoutePath(page) {
 
 function toLabel(page) {
   switch (page) {
-    case /* AboutUs */0 :
+    case /* Home */0 :
+        return Message.Menu.home;
+    case /* AboutUs */1 :
         return Message.Menu.aboutUs;
-    case /* Registrations */1 :
+    case /* Registrations */2 :
         return Message.Menu.registrations;
-    case /* References */2 :
+    case /* References */3 :
         return Message.Menu.references;
-    case /* Contact */3 :
+    case /* Contact */4 :
         return Message.Menu.contact;
-    case /* News */4 :
+    case /* News */5 :
         return Message.Menu.news;
     
   }
@@ -56,16 +62,19 @@ function toLabel(page) {
 function menuItems(isLatestNewsRead) {
   if (isLatestNewsRead) {
     return {
-            hd: /* AboutUs */0,
+            hd: /* Home */0,
             tl: {
-              hd: /* News */4,
+              hd: /* AboutUs */1,
               tl: {
-                hd: /* Registrations */1,
+                hd: /* News */5,
                 tl: {
-                  hd: /* References */2,
+                  hd: /* Registrations */2,
                   tl: {
-                    hd: /* Contact */3,
-                    tl: /* [] */0
+                    hd: /* References */3,
+                    tl: {
+                      hd: /* Contact */4,
+                      tl: /* [] */0
+                    }
                   }
                 }
               }
@@ -73,14 +82,17 @@ function menuItems(isLatestNewsRead) {
           };
   } else {
     return {
-            hd: /* AboutUs */0,
+            hd: /* Home */0,
             tl: {
-              hd: /* Registrations */1,
+              hd: /* AboutUs */1,
               tl: {
-                hd: /* References */2,
+                hd: /* Registrations */2,
                 tl: {
-                  hd: /* Contact */3,
-                  tl: /* [] */0
+                  hd: /* References */3,
+                  tl: {
+                    hd: /* Contact */4,
+                    tl: /* [] */0
+                  }
                 }
               }
             }

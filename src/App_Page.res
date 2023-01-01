@@ -1,4 +1,4 @@
-type t = AboutUs | Registrations | References | Contact | News
+type t = Home | AboutUs | Registrations | References | Contact | News
 
 module RoutePath = {
   let home = "/"
@@ -13,6 +13,7 @@ let toRoutePath = page => {
   open RoutePath
 
   switch page {
+  | Home => home
   | AboutUs => aboutUs
   | Registrations => registrations
   | References => references
@@ -25,6 +26,7 @@ let toLabel = page => {
   open Message.Menu
 
   switch page {
+  | Home => home
   | AboutUs => aboutUs
   | Registrations => registrations
   | References => references
@@ -35,7 +37,7 @@ let toLabel = page => {
 
 let menuItems = isLatestNewsRead =>
   if isLatestNewsRead {
-    list{AboutUs, News, Registrations, References, Contact}
+    list{Home, AboutUs, News, Registrations, References, Contact}
   } else {
-    list{AboutUs, Registrations, References, Contact}
+    list{Home, AboutUs, Registrations, References, Contact}
   }

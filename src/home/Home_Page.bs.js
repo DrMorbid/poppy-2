@@ -6,7 +6,7 @@ import ReactMaterialUiCarousel from "react-material-ui-carousel";
 
 function Home_Page(Props) {
   return React.createElement(ReactMaterialUiCarousel, {
-              autoPlay: false,
+              autoPlay: true,
               indicators: false,
               animation: "slide",
               children: [

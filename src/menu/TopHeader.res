@@ -18,11 +18,14 @@ let useStyles: Styles.useStyles<{
 let make = () => {
   let intl = useIntl()
   let classes = useStyles(.)
+  let (_, dispatch) = React.useContext(App_Context.Context.t)
 
   let onEmailUs = e => {
     location->Location.setHref(`mailto:${Common.Constants.infoEmail}`)
     e->ReactEvent.Synthetic.preventDefault
   }
+
+  let onLogoClick = _ => Home->App_Actions.goToPage(~dispatch)
 
   <Container>
     <Grid item=true>
@@ -30,7 +33,9 @@ let make = () => {
     </Grid>
     <Hidden smDown=true>
       <Grid item=true className={classes["logoContainer"]}>
-        <img src="/poppy_logo.jpg" className={classes["logo"]} />
+        <ButtonBase onClick=onLogoClick>
+          <img src="/poppy_logo.jpg" className={classes["logo"]} />
+        </ButtonBase>
       </Grid>
     </Hidden>
     <Grid item=true>

@@ -15,6 +15,9 @@ module Menu = {
   let register =
     @intl.description("Above the top menu - register")
     {id: "2a47d058-357b-4080-9f57-a59c6e7537d8", defaultMessage: "Registrace"}
+  let home =
+    @intl.description("Top menu item - Home")
+    {id: "40d873a1-0ae0-4626-a8cd-45fbd140bc50", defaultMessage: "Domů"}
   let aboutUs =
     @intl.description("Top menu item - About us")
     {id: "0371f3b2-5b62-4c6b-baac-a3925b811458", defaultMessage: "O nás"}

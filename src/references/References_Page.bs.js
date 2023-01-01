@@ -24,9 +24,9 @@ function References_Page(Props) {
             VAL: "sm"
           }));
   React.useEffect((function () {
-          if (activeMenuItem !== /* References */2) {
+          if (activeMenuItem !== /* References */3) {
             Curry._1(dispatch, /* StoreActiveMenuItem */{
-                  _0: /* References */2
+                  _0: /* References */3
                 });
           }
           

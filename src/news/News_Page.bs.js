@@ -13,9 +13,9 @@ function News_Page(Props) {
   var dispatch = match[1];
   var activeMenuItem = match[0].activeMenuItem;
   React.useEffect((function () {
-          if (activeMenuItem !== /* News */4) {
+          if (activeMenuItem !== /* News */5) {
             Curry._1(dispatch, /* StoreActiveMenuItem */{
-                  _0: /* News */4
+                  _0: /* News */5
                 });
           }
           
