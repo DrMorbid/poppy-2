@@ -15,7 +15,7 @@ function Make(Config) {
 }
 
 var initialState = {
-  activeMenuItem: /* AboutUs */1,
+  activeMenuItem: /* Home */0,
   latestNewsClosed: false
 };
 

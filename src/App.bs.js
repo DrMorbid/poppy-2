@@ -5,9 +5,11 @@ import * as React from "react";
 import * as TopMenu from "./menu/TopMenu.bs.js";
 import * as TopHeader from "./menu/TopHeader.bs.js";
 import * as App_Router from "./App_Router.bs.js";
+import * as App_Context from "./App_Context.bs.js";
 import * as Utils_Style from "./utils/Utils_Style.bs.js";
 import * as Common_Style from "./common/Common_Style.bs.js";
 import * as News_Message from "./news/News_Message.bs.js";
+import * as Contact_Content from "./contact/Contact_Content.bs.js";
 import * as Core from "@material-ui/core";
 import * as Styles from "@material-ui/styles";
 
@@ -28,6 +30,7 @@ var useStyles = Styles.makeStyles(function (theme) {
 function App(Props) {
   var classes = useStyles();
   var commonClasses = Common_Style.useStyles();
+  var match = React.useContext(App_Context.Context.t);
   return React.createElement(Core.Container, {
               children: React.createElement(Core.Grid, {
                     children: null,
@@ -46,6 +49,12 @@ function App(Props) {
                       }), React.createElement(Core.Grid, {
                         children: React.createElement(App_Router.make, {}),
                         item: true
+                      }), React.createElement(Core.Hidden, {
+                        children: React.createElement(Core.Grid, {
+                              children: React.createElement(Contact_Content.make, {}),
+                              item: true
+                            }),
+                        xsUp: match[0].activeMenuItem === /* Contact */4
                       })),
               className: classes.container
             });

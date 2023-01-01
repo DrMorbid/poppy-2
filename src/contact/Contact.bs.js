@@ -5,8 +5,11 @@ var Page;
 
 var $$Map;
 
+var Content;
+
 export {
   Page ,
   $$Map ,
+  Content ,
 }
 /* No side effect */

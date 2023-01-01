@@ -27,6 +27,7 @@ let useStyles: Styles.useStyles<{
 let make = () => {
   let classes = useStyles(.)
   let commonClasses = Common.Style.useStyles(.)
+  let ({activeMenuItem, _}: App_Context.state, _) = React.useContext(App_Context.Context.t)
 
   <Container className={classes["container"]}>
     <Grid container=true direction=#column className={commonClasses["paragraphGap"]}>
@@ -43,6 +44,11 @@ let make = () => {
       <Grid item=true>
         <Router />
       </Grid>
+      <Hidden xsUp={activeMenuItem == Contact}>
+        <Grid item=true>
+          <Contact.Content />
+        </Grid>
+      </Hidden>
     </Grid>
   </Container>
 }

@@ -22,7 +22,7 @@ module Make = (Config: Config) => {
 type state = {activeMenuItem: App_Page.t, latestNewsClosed: bool}
 
 let initialState = {
-  activeMenuItem: AboutUs,
+  activeMenuItem: Home,
   latestNewsClosed: false,
 }
 
