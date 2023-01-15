@@ -51,7 +51,7 @@ let make = () => {
           <hr />
         </Grid>
         <Grid item=true>
-          <Contact.Content />
+          <Contact.Content.Simple />
         </Grid>
       </Hidden>
     </Grid>

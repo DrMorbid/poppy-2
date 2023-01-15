@@ -5,6 +5,8 @@ var companyEmail = "deti@poppycasting.cz";
 
 var infoEmail = "info@poppycasting.cz";
 
+var bossEmail = "martina@poppycasting.cz";
+
 var infoPhone = "730 826 158";
 
 var registrationAddressMapUrl = "https://frame.mapy.cz/s/fedaboceda";
@@ -18,6 +20,7 @@ var facturationAddress = "https://frame.mapy.cz/s/gofosakuga";
 export {
   companyEmail ,
   infoEmail ,
+  bossEmail ,
   infoPhone ,
   registrationAddressMapUrl ,
   registrationAddressPaidParking1 ,

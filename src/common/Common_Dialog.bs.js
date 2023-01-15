@@ -2,14 +2,26 @@
 
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
+import * as Belt_Option from "rescript/lib/es6/belt_Option.js";
+import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as Core from "@material-ui/core";
 import * as Common_Icon_Close from "./icon/Common_Icon_Close.bs.js";
+import * as Styles from "@material-ui/styles";
+
+var useStyles = Styles.makeStyles({
+      mapSize: {
+        height: "50%",
+        width: "100%"
+      }
+    });
 
 function Common_Dialog(Props) {
   var open = Props.isOpen;
   var onClose = Props.onClose;
   var children = Props.children;
   var fullScreen = Props.fullScreen;
+  var fixedSize = Props.fixedSize;
+  var classes = useStyles();
   var tmp = {
     children: null,
     onClose: (function (param, param$1) {
@@ -17,6 +29,17 @@ function Common_Dialog(Props) {
       }),
     open: open
   };
+  var tmp$1 = Belt_Option.flatMap(fixedSize, (function (fixedSize) {
+          if (fixedSize) {
+            return {
+                    paper: classes.mapSize
+                  };
+          }
+          
+        }));
+  if (tmp$1 !== undefined) {
+    tmp.classes = Caml_option.valFromOption(tmp$1);
+  }
   if (fullScreen !== undefined) {
     tmp.fullScreen = fullScreen;
   }
@@ -43,6 +66,7 @@ function Common_Dialog(Props) {
 var make = Common_Dialog;
 
 export {
+  useStyles ,
   make ,
 }
-/* react Not a pure module */
+/* useStyles Not a pure module */

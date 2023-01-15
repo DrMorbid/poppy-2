@@ -11,9 +11,9 @@ import * as Utils_Style from "./utils/Utils_Style.bs.js";
 import * as Common_Style from "./common/Common_Style.bs.js";
 import * as News_Message from "./news/News_Message.bs.js";
 import * as App_ScrollToTop from "./App_ScrollToTop.bs.js";
-import * as Contact_Content from "./contact/Contact_Content.bs.js";
 import * as Core from "@material-ui/core";
 import * as Styles from "@material-ui/styles";
+import * as Contact_Content_Simple from "./contact/Contact_Content_Simple.bs.js";
 import * as Styles$1 from "@material-ui/core/styles";
 import * as Common_Icon_KeyboardArrowUp from "./common/icon/Common_Icon_KeyboardArrowUp.bs.js";
 
@@ -71,7 +71,7 @@ function App(Props) {
                           children: React.createElement("hr", undefined),
                           item: true
                         }), React.createElement(Core.Grid, {
-                          children: React.createElement(Contact_Content.make, {}),
+                          children: React.createElement(Contact_Content_Simple.make, {}),
                           item: true
                         }))), React.createElement(Core.Snackbar, {}), React.createElement(App_ScrollToTop.make, {
                   children: React.createElement(Core.Fab, {

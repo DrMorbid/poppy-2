@@ -271,9 +271,12 @@ function Contact_Content(Props) {
                 }));
 }
 
+var Simple;
+
 var make = Contact_Content;
 
 export {
+  Simple ,
   make ,
 }
 /* react Not a pure module */

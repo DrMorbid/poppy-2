@@ -292,6 +292,36 @@ var Contact_idNumber = {
   defaultMessage: "IČO: 047 40 165"
 };
 
+var Contact_registrationDatabaseTitle = {
+  id: "5d579eb1-5251-4e0d-8343-2107a3e9c46d",
+  defaultMessage: "REGISTRACE, databáze"
+};
+
+var Contact_registrationDatabasePerson = {
+  id: "9713887e-eea1-4c46-8098-a5e56f5ccb40",
+  defaultMessage: "Mgr. Hana Kittnarová"
+};
+
+var Contact_clientsProductionDirectionTitle = {
+  id: "4225d293-3e8c-424a-b405-114c75fb030b",
+  defaultMessage: "Pro klienty, produkce, režii"
+};
+
+var Contact_clientsProductionDirectionPerson = {
+  id: "28e2a9ad-0402-4283-a88f-e64861fb30b9",
+  defaultMessage: "Mgr. art. Martina Popperová"
+};
+
+var Contact_studioRegistrationsTitle = {
+  id: "49e741c9-d025-4ac1-9138-20b7c4981541",
+  defaultMessage: "Atelier - registrace, přefocení"
+};
+
+var Contact_castingsInfo = {
+  id: "4754256e-6a80-49e9-8042-bfe8ea618c50",
+  defaultMessage: "Všechny castingy probíhají výhradně v Praze na různých adresách."
+};
+
 var Contact = {
   header: Contact_header,
   openingTimes: Contact_openingTimes,
@@ -310,7 +340,13 @@ var Contact = {
   registrationAddressPaidParking2: Contact_registrationAddressPaidParking2,
   facturationAddressLabel: Contact_facturationAddressLabel,
   facturationAddress: Contact_facturationAddress,
-  idNumber: Contact_idNumber
+  idNumber: Contact_idNumber,
+  registrationDatabaseTitle: Contact_registrationDatabaseTitle,
+  registrationDatabasePerson: Contact_registrationDatabasePerson,
+  clientsProductionDirectionTitle: Contact_clientsProductionDirectionTitle,
+  clientsProductionDirectionPerson: Contact_clientsProductionDirectionPerson,
+  studioRegistrationsTitle: Contact_studioRegistrationsTitle,
+  castingsInfo: Contact_castingsInfo
 };
 
 var appName = {

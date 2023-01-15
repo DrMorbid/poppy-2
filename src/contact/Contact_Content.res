@@ -3,6 +3,8 @@ open Mui.Grid
 open ReactIntl
 open Message.Contact
 
+module Simple = Contact_Content_Simple
+
 @react.component
 let make = () => {
   let (mapUrl, setMapUrl) = React.useState(() => None)

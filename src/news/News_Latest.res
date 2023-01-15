@@ -1,4 +1,5 @@
 open News_Type
+open Common.Constants
 
 let latestNews: t = {
   date: Js.Date.fromString("2022-08-25"),
@@ -7,7 +8,7 @@ let latestNews: t = {
     "Nové termíny na podzim vypíšeme zde, můžete nám dát vědět, že máte zájem a informace Vám zašleme.",
   },
   content: list{
-    "info@poppycasting.cz / 730 826 158 - volejte ve všední dny mezi 9-18h"->makeLine(
+    `${infoEmail} / ${infoPhone} - volejte ve všední dny mezi 9-18h`->makeLine(
       ~emphasis=Bold,
       ~nextLineEmpty=true,
     ),
