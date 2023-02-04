@@ -13,6 +13,7 @@ import * as Common_Style from "../common/Common_Style.bs.js";
 import * as Common_Dialog from "../common/Common_Dialog.bs.js";
 import * as Common_Constants from "../common/Common_Constants.bs.js";
 import * as Core from "@material-ui/core";
+import * as JsxRuntime from "react/jsx-runtime";
 import * as Styles from "@material-ui/styles";
 import * as Common_OpenInNewButton from "../common/Common_OpenInNewButton.bs.js";
 import * as Styles$1 from "@material-ui/core/styles";
@@ -24,7 +25,7 @@ var useStyles = Styles.makeStyles({
       }
     });
 
-function Contact_Content_Simple(Props) {
+function Contact_Content_Simple(props) {
   var match = React.useState(function () {
         
       });
@@ -54,136 +55,153 @@ function Contact_Content_Simple(Props) {
             return false;
           }));
   };
-  var tmp = {
-    isMapBeingLoaded: match$1[0],
-    onMapLoadingFinished: onMapLoadingFinished
-  };
-  if (mapUrl !== undefined) {
-    tmp.url = Caml_option.valFromOption(mapUrl);
-  }
-  return React.createElement(Core.Grid, {
-              children: null,
-              container: true
-            }, React.createElement(Core.Grid, {
-                  children: React.createElement(Core.Grid, {
-                        children: null,
-                        className: commonClasses.paragraphGap,
-                        container: true
-                      }, React.createElement(Core.Grid, {
-                            children: React.createElement(Core.Grid, {
-                                  children: null,
-                                  container: true
-                                }, React.createElement(Core.Grid, {
-                                      children: React.createElement(Core.Typography, {
-                                            children: intl.formatMessage(Message.Contact.registrationDatabaseTitle),
-                                            className: commonClasses.bold
-                                          }),
-                                      item: true,
-                                      xs: Grid$Mui.Xs[12]
-                                    }), React.createElement(Core.Grid, {
-                                      children: React.createElement(Core.Typography, {
-                                            children: intl.formatMessage(Message.Contact.registrationDatabasePerson)
-                                          }),
-                                      item: true,
-                                      xs: Grid$Mui.Xs[12]
-                                    }), React.createElement(Core.Grid, {
-                                      children: React.createElement(Core.Typography, {
-                                            children: Common_Constants.infoPhone
-                                          }),
-                                      item: true,
-                                      xs: Grid$Mui.Xs[12]
-                                    }), React.createElement(Core.Grid, {
-                                      children: React.createElement(Core.Typography, {
-                                            children: Common_Constants.infoEmail
-                                          }),
-                                      item: true,
-                                      xs: Grid$Mui.Xs[12]
-                                    })),
-                            item: true,
-                            md: Grid$Mui.Md[4],
-                            sm: Grid$Mui.Sm[6],
-                            xs: Grid$Mui.Xs[12]
-                          }), React.createElement(Core.Grid, {
-                            children: React.createElement(Core.Grid, {
-                                  children: null,
-                                  container: true
-                                }, React.createElement(Core.Grid, {
-                                      children: React.createElement(Core.Typography, {
-                                            children: intl.formatMessage(Message.Contact.clientsProductionDirectionTitle),
-                                            className: commonClasses.bold
-                                          }),
-                                      item: true,
-                                      xs: Grid$Mui.Xs[12]
-                                    }), React.createElement(Core.Grid, {
-                                      children: React.createElement(Core.Typography, {
-                                            children: intl.formatMessage(Message.Contact.clientsProductionDirectionPerson)
-                                          }),
-                                      item: true,
-                                      xs: Grid$Mui.Xs[12]
-                                    }), React.createElement(Core.Grid, {
-                                      children: React.createElement(Core.Typography, {
-                                            children: Common_Constants.bossEmail
-                                          }),
-                                      item: true,
-                                      xs: Grid$Mui.Xs[12]
-                                    })),
-                            item: true,
-                            md: Grid$Mui.Md[4],
-                            sm: Grid$Mui.Sm[6],
-                            xs: Grid$Mui.Xs[12]
-                          }), React.createElement(Core.Grid, {
-                            children: React.createElement(Core.Grid, {
-                                  children: null,
-                                  container: true
-                                }, React.createElement(Core.Grid, {
-                                      children: React.createElement(Core.Typography, {
-                                            children: intl.formatMessage(Message.Contact.studioRegistrationsTitle),
-                                            className: commonClasses.bold
-                                          }),
-                                      item: true,
-                                      xs: Grid$Mui.Xs[12]
-                                    }), React.createElement(Core.Grid, {
-                                      children: React.createElement(Common_OpenInNewButton.make, {
-                                            label: Message.Contact.registrationAddress,
-                                            onClick: (function (param) {
-                                                var mapUrl = Common_Constants.registrationAddressMapUrl;
-                                                Curry._1(setIsMapBeingLoaded, (function (param) {
-                                                        return true;
-                                                      }));
-                                                return Curry._1(setMapUrl, (function (param) {
-                                                              return mapUrl;
-                                                            }));
-                                              })
-                                          }),
-                                      item: true,
-                                      xs: Grid$Mui.Xs[12]
-                                    })),
-                            item: true,
-                            md: Grid$Mui.Md[4],
-                            xs: Grid$Mui.Xs[12]
-                          }), React.createElement(Core.Grid, {
-                            children: React.createElement(Core.Grid, {
-                                  children: React.createElement(Core.Grid, {
-                                        children: React.createElement(Core.Typography, {
-                                              children: intl.formatMessage(Message.Contact.castingsInfo)
-                                            }),
+  return JsxRuntime.jsxs(Core.Grid, {
+              children: [
+                JsxRuntime.jsx(Core.Grid, {
+                      children: Caml_option.some(JsxRuntime.jsxs(Core.Grid, {
+                                children: [
+                                  JsxRuntime.jsx(Core.Grid, {
+                                        children: Caml_option.some(JsxRuntime.jsxs(Core.Grid, {
+                                                  children: [
+                                                    JsxRuntime.jsx(Core.Grid, {
+                                                          children: Caml_option.some(JsxRuntime.jsx(Core.Typography, {
+                                                                    children: Caml_option.some(intl.formatMessage(Message.Contact.registrationDatabaseTitle)),
+                                                                    className: commonClasses.bold
+                                                                  })),
+                                                          item: true,
+                                                          xs: Caml_option.some(Grid$Mui.Xs[12])
+                                                        }),
+                                                    JsxRuntime.jsx(Core.Grid, {
+                                                          children: Caml_option.some(JsxRuntime.jsx(Core.Typography, {
+                                                                    children: Caml_option.some(intl.formatMessage(Message.Contact.registrationDatabasePerson))
+                                                                  })),
+                                                          item: true,
+                                                          xs: Caml_option.some(Grid$Mui.Xs[12])
+                                                        }),
+                                                    JsxRuntime.jsx(Core.Grid, {
+                                                          children: Caml_option.some(JsxRuntime.jsx(Core.Typography, {
+                                                                    children: Caml_option.some(Common_Constants.infoPhone)
+                                                                  })),
+                                                          item: true,
+                                                          xs: Caml_option.some(Grid$Mui.Xs[12])
+                                                        }),
+                                                    JsxRuntime.jsx(Core.Grid, {
+                                                          children: Caml_option.some(JsxRuntime.jsx(Core.Typography, {
+                                                                    children: Caml_option.some(Common_Constants.infoEmail)
+                                                                  })),
+                                                          item: true,
+                                                          xs: Caml_option.some(Grid$Mui.Xs[12])
+                                                        })
+                                                  ],
+                                                  container: true
+                                                })),
                                         item: true,
-                                        xs: Grid$Mui.Xs[12]
+                                        md: Caml_option.some(Grid$Mui.Md[4]),
+                                        sm: Caml_option.some(Grid$Mui.Sm[6]),
+                                        xs: Caml_option.some(Grid$Mui.Xs[12])
                                       }),
-                                  container: true
-                                }),
-                            item: true,
-                            xs: Grid$Mui.Xs[12]
-                          })),
-                  item: true,
-                  xs: Grid$Mui.Xs[12]
-                }), React.createElement(Common_Dialog.make, {
-                  isOpen: Belt_Option.isSome(mapUrl),
-                  onClose: onClose,
-                  children: React.createElement(Contact_Map.make, tmp),
-                  fullScreen: !isMdUp,
-                  fixedSize: isMdUp
-                }));
+                                  JsxRuntime.jsx(Core.Grid, {
+                                        children: Caml_option.some(JsxRuntime.jsxs(Core.Grid, {
+                                                  children: [
+                                                    JsxRuntime.jsx(Core.Grid, {
+                                                          children: Caml_option.some(JsxRuntime.jsx(Core.Typography, {
+                                                                    children: Caml_option.some(intl.formatMessage(Message.Contact.clientsProductionDirectionTitle)),
+                                                                    className: commonClasses.bold
+                                                                  })),
+                                                          item: true,
+                                                          xs: Caml_option.some(Grid$Mui.Xs[12])
+                                                        }),
+                                                    JsxRuntime.jsx(Core.Grid, {
+                                                          children: Caml_option.some(JsxRuntime.jsx(Core.Typography, {
+                                                                    children: Caml_option.some(intl.formatMessage(Message.Contact.clientsProductionDirectionPerson))
+                                                                  })),
+                                                          item: true,
+                                                          xs: Caml_option.some(Grid$Mui.Xs[12])
+                                                        }),
+                                                    JsxRuntime.jsx(Core.Grid, {
+                                                          children: Caml_option.some(JsxRuntime.jsx(Core.Typography, {
+                                                                    children: Caml_option.some(Common_Constants.bossEmail)
+                                                                  })),
+                                                          item: true,
+                                                          xs: Caml_option.some(Grid$Mui.Xs[12])
+                                                        })
+                                                  ],
+                                                  container: true
+                                                })),
+                                        item: true,
+                                        md: Caml_option.some(Grid$Mui.Md[4]),
+                                        sm: Caml_option.some(Grid$Mui.Sm[6]),
+                                        xs: Caml_option.some(Grid$Mui.Xs[12])
+                                      }),
+                                  JsxRuntime.jsx(Core.Grid, {
+                                        children: Caml_option.some(JsxRuntime.jsxs(Core.Grid, {
+                                                  children: [
+                                                    JsxRuntime.jsx(Core.Grid, {
+                                                          children: Caml_option.some(JsxRuntime.jsx(Core.Typography, {
+                                                                    children: Caml_option.some(intl.formatMessage(Message.Contact.studioRegistrationsTitle)),
+                                                                    className: commonClasses.bold
+                                                                  })),
+                                                          item: true,
+                                                          xs: Caml_option.some(Grid$Mui.Xs[12])
+                                                        }),
+                                                    JsxRuntime.jsx(Core.Grid, {
+                                                          children: Caml_option.some(JsxRuntime.jsx(Common_OpenInNewButton.make, {
+                                                                    label: Message.Contact.registrationAddress,
+                                                                    onClick: (function (param) {
+                                                                        var mapUrl = Common_Constants.registrationAddressMapUrl;
+                                                                        Curry._1(setIsMapBeingLoaded, (function (param) {
+                                                                                return true;
+                                                                              }));
+                                                                        return Curry._1(setMapUrl, (function (param) {
+                                                                                      return mapUrl;
+                                                                                    }));
+                                                                      })
+                                                                  })),
+                                                          item: true,
+                                                          xs: Caml_option.some(Grid$Mui.Xs[12])
+                                                        })
+                                                  ],
+                                                  container: true
+                                                })),
+                                        item: true,
+                                        md: Caml_option.some(Grid$Mui.Md[4]),
+                                        xs: Caml_option.some(Grid$Mui.Xs[12])
+                                      }),
+                                  JsxRuntime.jsx(Core.Grid, {
+                                        children: Caml_option.some(JsxRuntime.jsx(Core.Grid, {
+                                                  children: Caml_option.some(JsxRuntime.jsx(Core.Grid, {
+                                                            children: Caml_option.some(JsxRuntime.jsx(Core.Typography, {
+                                                                      children: Caml_option.some(intl.formatMessage(Message.Contact.castingsInfo))
+                                                                    })),
+                                                            item: true,
+                                                            xs: Caml_option.some(Grid$Mui.Xs[12])
+                                                          })),
+                                                  container: true
+                                                })),
+                                        item: true,
+                                        xs: Caml_option.some(Grid$Mui.Xs[12])
+                                      })
+                                ],
+                                className: commonClasses.paragraphGap,
+                                container: true
+                              })),
+                      item: true,
+                      xs: Caml_option.some(Grid$Mui.Xs[12])
+                    }),
+                JsxRuntime.jsx(Common_Dialog.make, {
+                      isOpen: Belt_Option.isSome(mapUrl),
+                      onClose: onClose,
+                      children: JsxRuntime.jsx(Contact_Map.make, {
+                            url: mapUrl,
+                            isMapBeingLoaded: match$1[0],
+                            onMapLoadingFinished: onMapLoadingFinished
+                          }),
+                      fullScreen: !isMdUp,
+                      fixedSize: isMdUp
+                    })
+              ],
+              container: true
+            });
 }
 
 var make = Contact_Content_Simple;

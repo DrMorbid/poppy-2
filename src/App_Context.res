@@ -9,13 +9,7 @@ module Make = (Config: Config) => {
   module Provider = {
     let make = React.Context.provider(t)
 
-    @obj
-    external makeProps: (
-      ~value: Config.context,
-      ~children: React.element,
-      ~key: string=?,
-      unit,
-    ) => {"value": Config.context, "children": React.element} = ""
+    type props<'value, 'children> = {value: 'value, children: 'children}
   }
 }
 
@@ -28,12 +22,11 @@ let initialState = {
 
 type action = StoreActiveMenuItem(App_Page.t) | LatestNewsClosed
 
-let reducer = (state, action) => {
+let reducer = (state, action) =>
   switch action {
   | StoreActiveMenuItem(activeMenuItem) => {...state, activeMenuItem}
   | LatestNewsClosed => {...state, latestNewsClosed: true}
   }
-}
 
 module Context = {
   include Make({

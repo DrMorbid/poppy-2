@@ -5,9 +5,11 @@ import * as Message from "../i18n/Message.bs.js";
 import * as ReactIntl from "react-intl";
 import * as App_Actions from "../App_Actions.bs.js";
 import * as App_Context from "../App_Context.bs.js";
+import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as Common_Style from "../common/Common_Style.bs.js";
 import * as Common_Constants from "../common/Common_Constants.bs.js";
 import * as Core from "@material-ui/core";
+import * as JsxRuntime from "react/jsx-runtime";
 import * as Styles from "@material-ui/styles";
 import * as TopHeader_Container from "./TopHeader_Container.bs.js";
 import * as Common_Button_WithIcon from "../common/button/Common_Button_WithIcon.bs.js";
@@ -21,7 +23,7 @@ var useStyles = Styles.makeStyles({
       }
     });
 
-function TopHeader(Props) {
+function TopHeader(props) {
   var intl = ReactIntl.useIntl();
   var classes = useStyles();
   var commonClasses = Common_Style.useStyles();
@@ -37,37 +39,41 @@ function TopHeader(Props) {
   var onRegisterClick = function (param) {
     App_Actions.goToPage(/* Registrations */2, dispatch);
   };
-  return React.createElement(TopHeader_Container.make, {
-              children: null
-            }, React.createElement(Core.Grid, {
-                  children: React.createElement(Common_Button_WithIcon.make, {
-                        label: Message.Menu.emailUs,
-                        onClick: onEmailUs
-                      }),
-                  item: true
-                }), React.createElement(Core.Hidden, {
-                  children: React.createElement(Core.Grid, {
-                        children: React.createElement(Core.ButtonBase, {
-                              children: React.createElement("img", {
-                                    className: classes.logo,
-                                    src: "/poppy_logo.jpg"
-                                  }),
-                              className: commonClasses.fullWidth,
-                              onClick: onLogoClick
-                            }),
-                        className: classes.logoContainer,
-                        item: true
-                      }),
-                  smDown: true
-                }), React.createElement(Core.Grid, {
-                  children: React.createElement(Core.Button, {
-                        onClick: onRegisterClick,
-                        children: intl.formatMessage(Message.Menu.registrations),
-                        color: "secondary",
-                        variant: "contained"
-                      }),
-                  item: true
-                }));
+  return JsxRuntime.jsxs(TopHeader_Container.make, {
+              children: [
+                JsxRuntime.jsx(Core.Grid, {
+                      children: Caml_option.some(JsxRuntime.jsx(Common_Button_WithIcon.make, {
+                                label: Message.Menu.emailUs,
+                                onClick: onEmailUs
+                              })),
+                      item: true
+                    }),
+                JsxRuntime.jsx(Core.Hidden, {
+                      children: Caml_option.some(JsxRuntime.jsx(Core.Grid, {
+                                children: Caml_option.some(JsxRuntime.jsx(Core.ButtonBase, {
+                                          children: Caml_option.some(JsxRuntime.jsx("img", {
+                                                    className: classes.logo,
+                                                    src: "/poppy_logo.jpg"
+                                                  })),
+                                          className: commonClasses.fullWidth,
+                                          onClick: onLogoClick
+                                        })),
+                                className: classes.logoContainer,
+                                item: true
+                              })),
+                      smDown: true
+                    }),
+                JsxRuntime.jsx(Core.Grid, {
+                      children: Caml_option.some(JsxRuntime.jsx(Core.Button, {
+                                onClick: onRegisterClick,
+                                children: Caml_option.some(intl.formatMessage(Message.Menu.registrations)),
+                                color: "secondary",
+                                variant: "contained"
+                              })),
+                      item: true
+                    })
+              ]
+            });
 }
 
 var Container;

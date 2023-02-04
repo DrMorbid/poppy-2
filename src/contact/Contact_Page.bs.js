@@ -4,8 +4,9 @@ import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
 import * as App_Context from "../App_Context.bs.js";
 import * as Contact_Content from "./Contact_Content.bs.js";
+import * as JsxRuntime from "react/jsx-runtime";
 
-function Contact_Page(Props) {
+function Contact_Page(props) {
   var match = React.useContext(App_Context.Context.t);
   var dispatch = match[1];
   var activeMenuItem = match[0].activeMenuItem;
@@ -17,7 +18,7 @@ function Contact_Page(Props) {
           }
           
         }), [activeMenuItem]);
-  return React.createElement(Contact_Content.make, {});
+  return JsxRuntime.jsx(Contact_Content.make, {});
 }
 
 var make = Contact_Page;

@@ -11,9 +11,10 @@ import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as Common_Text from "../common/Common_Text.bs.js";
 import * as Common_Style from "../common/Common_Style.bs.js";
 import * as Core from "@material-ui/core";
+import * as JsxRuntime from "react/jsx-runtime";
 import * as Styles from "@material-ui/core/styles";
 
-function References_Page(Props) {
+function References_Page(props) {
   var intl = ReactIntl.useIntl();
   var classes = Common_Style.useStyles();
   var match = React.useContext(App_Context.Context.t);
@@ -31,65 +32,70 @@ function References_Page(Props) {
           }
           
         }), [activeMenuItem]);
-  var tmp = {
-    paragraphs: {
-      hd: Message.References.paragraph1,
-      tl: /* [] */0
-    }
-  };
-  var tmp$1 = isSmUp ? Message.References.header : undefined;
-  if (tmp$1 !== undefined) {
-    tmp.header = Caml_option.valFromOption(tmp$1);
-  }
-  return React.createElement(Core.Grid, {
-              children: null,
+  return JsxRuntime.jsxs(Core.Grid, {
+              children: [
+                JsxRuntime.jsx(Core.Grid, {
+                      children: Caml_option.some(JsxRuntime.jsx(Common_Text.make, {
+                                header: isSmUp ? Message.References.header : undefined,
+                                paragraphs: {
+                                  hd: Message.References.paragraph1,
+                                  tl: /* [] */0
+                                }
+                              })),
+                      item: true
+                    }),
+                JsxRuntime.jsx(Core.Grid, {
+                      children: Caml_option.some(JsxRuntime.jsx(Core.Typography, {
+                                children: Caml_option.some(intl.formatMessage(Message.References.section2Header)),
+                                variant: "h5"
+                              })),
+                      className: classes.headerGap,
+                      item: true,
+                      xs: Caml_option.some(Grid$Mui.Xs[12])
+                    }),
+                JsxRuntime.jsx(Core.Grid, {
+                      children: Caml_option.some(JsxRuntime.jsxs(Core.Grid, {
+                                children: [
+                                  JsxRuntime.jsx(Core.Grid, {
+                                        children: Caml_option.some(JsxRuntime.jsx(Core.Typography, {
+                                                  children: Caml_option.some(intl.formatMessage(Message.References.tvAndFilmHeader)),
+                                                  variant: "h6"
+                                                })),
+                                        item: true,
+                                        xs: Caml_option.some(Grid$Mui.Xs[12])
+                                      }),
+                                  JsxRuntime.jsx(Core.Grid, {
+                                        children: Caml_option.some(JsxRuntime.jsx(Core.Typography, {
+                                                  children: Caml_option.some(intl.formatMessage(Message.References.tvAndFilmList))
+                                                })),
+                                        item: true,
+                                        xs: Caml_option.some(Grid$Mui.Xs[12])
+                                      }),
+                                  JsxRuntime.jsx(Core.Grid, {
+                                        children: Caml_option.some(JsxRuntime.jsx(Core.Typography, {
+                                                  children: Caml_option.some(intl.formatMessage(Message.References.adsHeader)),
+                                                  variant: "h6"
+                                                })),
+                                        item: true,
+                                        xs: Caml_option.some(Grid$Mui.Xs[12])
+                                      }),
+                                  JsxRuntime.jsx(Core.Grid, {
+                                        children: Caml_option.some(JsxRuntime.jsx(Core.Typography, {
+                                                  children: Caml_option.some(intl.formatMessage(Message.References.adsList))
+                                                })),
+                                        item: true,
+                                        xs: Caml_option.some(Grid$Mui.Xs[12])
+                                      })
+                                ],
+                                className: classes.paragraphGap,
+                                container: true
+                              })),
+                      className: classes.headerGap,
+                      item: true
+                    })
+              ],
               container: true
-            }, React.createElement(Core.Grid, {
-                  children: React.createElement(Common_Text.make, tmp),
-                  item: true
-                }), React.createElement(Core.Grid, {
-                  children: React.createElement(Core.Typography, {
-                        children: intl.formatMessage(Message.References.section2Header),
-                        variant: "h5"
-                      }),
-                  className: classes.headerGap,
-                  item: true,
-                  xs: Grid$Mui.Xs[12]
-                }), React.createElement(Core.Grid, {
-                  children: React.createElement(Core.Grid, {
-                        children: null,
-                        className: classes.paragraphGap,
-                        container: true
-                      }, React.createElement(Core.Grid, {
-                            children: React.createElement(Core.Typography, {
-                                  children: intl.formatMessage(Message.References.tvAndFilmHeader),
-                                  variant: "h6"
-                                }),
-                            item: true,
-                            xs: Grid$Mui.Xs[12]
-                          }), React.createElement(Core.Grid, {
-                            children: React.createElement(Core.Typography, {
-                                  children: intl.formatMessage(Message.References.tvAndFilmList)
-                                }),
-                            item: true,
-                            xs: Grid$Mui.Xs[12]
-                          }), React.createElement(Core.Grid, {
-                            children: React.createElement(Core.Typography, {
-                                  children: intl.formatMessage(Message.References.adsHeader),
-                                  variant: "h6"
-                                }),
-                            item: true,
-                            xs: Grid$Mui.Xs[12]
-                          }), React.createElement(Core.Grid, {
-                            children: React.createElement(Core.Typography, {
-                                  children: intl.formatMessage(Message.References.adsList)
-                                }),
-                            item: true,
-                            xs: Grid$Mui.Xs[12]
-                          })),
-                  className: classes.headerGap,
-                  item: true
-                }));
+            });
 }
 
 var make = References_Page;

@@ -7,7 +7,9 @@ import * as Belt_List from "rescript/lib/es6/belt_List.js";
 import * as ReactIntl from "react-intl";
 import * as App_Actions from "../App_Actions.bs.js";
 import * as App_Context from "../App_Context.bs.js";
+import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as Core from "@material-ui/core";
+import * as JsxRuntime from "react/jsx-runtime";
 import * as Styles from "@material-ui/styles";
 
 var useStyles = Styles.makeStyles({
@@ -16,34 +18,32 @@ var useStyles = Styles.makeStyles({
       }
     });
 
-function TopMenu_Drawer(Props) {
-  var drawerOpen = Props.drawerOpen;
-  var onClose = Props.onClose;
-  var isLatestNewsRead = Props.isLatestNewsRead;
+function TopMenu_Drawer(props) {
+  var onClose = props.onClose;
   var intl = ReactIntl.useIntl();
   var classes = useStyles();
   var match = React.useContext(App_Context.Context.t);
   var dispatch = match[1];
-  return React.createElement(Core.Drawer, {
-              children: React.createElement(Core.List, {
-                    children: Belt_List.toArray(Belt_List.map(App_Page.menuItems(isLatestNewsRead), (function (page) {
-                                return React.createElement(Core.ListItem, {
-                                            button: true,
-                                            children: React.createElement(Core.ListItemText, {
-                                                  primary: intl.formatMessage(App_Page.toLabel(page))
-                                                }),
-                                            onClick: (function (param) {
-                                                Curry._1(onClose, undefined);
-                                                App_Actions.goToPage(page, dispatch);
-                                              })
-                                          });
-                              }))),
-                    className: classes.list
-                  }),
+  return JsxRuntime.jsx(Core.Drawer, {
+              children: Caml_option.some(JsxRuntime.jsx(Core.List, {
+                        children: Caml_option.some(Belt_List.toArray(Belt_List.map(App_Page.menuItems(props.isLatestNewsRead), (function (page) {
+                                        return JsxRuntime.jsx(Core.ListItem, {
+                                                    button: true,
+                                                    children: Caml_option.some(JsxRuntime.jsx(Core.ListItemText, {
+                                                              primary: Caml_option.some(intl.formatMessage(App_Page.toLabel(page)))
+                                                            })),
+                                                    onClick: (function (param) {
+                                                        Curry._1(onClose, undefined);
+                                                        App_Actions.goToPage(page, dispatch);
+                                                      })
+                                                  });
+                                      })))),
+                        className: classes.list
+                      })),
               onClose: (function (param) {
                   Curry._1(onClose, undefined);
                 }),
-              open: drawerOpen
+              open: props.drawerOpen
             });
 }
 

@@ -6,24 +6,25 @@ import * as Belt_List from "rescript/lib/es6/belt_List.js";
 import * as ReactIntl from "react-intl";
 import * as App_Actions from "../App_Actions.bs.js";
 import * as App_Context from "../App_Context.bs.js";
+import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as Core from "@material-ui/core";
+import * as JsxRuntime from "react/jsx-runtime";
 
-function TopMenu_Tabs(Props) {
-  var isLatestNewsRead = Props.isLatestNewsRead;
+function TopMenu_Tabs(props) {
   var intl = ReactIntl.useIntl();
   var match = React.useContext(App_Context.Context.t);
   var dispatch = match[1];
-  return React.createElement(Core.Tabs, {
-              children: Belt_List.toArray(Belt_List.map(App_Page.menuItems(isLatestNewsRead), (function (page) {
-                          return React.createElement(Core.Tab, {
-                                      label: intl.formatMessage(App_Page.toLabel(page)),
-                                      onClick: (function (param) {
-                                          App_Actions.goToPage(page, dispatch);
-                                        }),
-                                      value: page
-                                    });
-                        }))),
-              value: match[0].activeMenuItem,
+  return JsxRuntime.jsx(Core.Tabs, {
+              children: Caml_option.some(Belt_List.toArray(Belt_List.map(App_Page.menuItems(props.isLatestNewsRead), (function (page) {
+                              return JsxRuntime.jsx(Core.Tab, {
+                                          label: Caml_option.some(intl.formatMessage(App_Page.toLabel(page))),
+                                          onClick: (function (param) {
+                                              App_Actions.goToPage(page, dispatch);
+                                            }),
+                                          value: Caml_option.some(page)
+                                        });
+                            })))),
+              value: Caml_option.some(match[0].activeMenuItem),
               variant: "fullWidth"
             });
 }

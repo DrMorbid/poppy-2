@@ -10,10 +10,11 @@ import * as Common_Text from "../common/Common_Text.bs.js";
 import * as News_Message from "../news/News_Message.bs.js";
 import * as Common_Dialog from "../common/Common_Dialog.bs.js";
 import * as Core from "@material-ui/core";
+import * as JsxRuntime from "react/jsx-runtime";
 import * as Common_OpenInNewButton from "../common/Common_OpenInNewButton.bs.js";
 import * as Styles from "@material-ui/core/styles";
 
-function Registrations_Page(Props) {
+function Registrations_Page(props) {
   var match = React.useState(function () {
         return false;
       });
@@ -43,34 +44,35 @@ function Registrations_Page(Props) {
             return false;
           }));
   };
-  var tmp = {
-    afterHeader: React.createElement(Common_OpenInNewButton.make, {
-          label: Message.Registrations.nextRegistrations,
-          onClick: onOpen
-        }),
-    paragraphs: {
-      hd: Message.Registrations.paragraph1,
-      tl: {
-        hd: Message.Registrations.paragraph2,
-        tl: {
-          hd: Message.Registrations.paragraph3,
-          tl: {
-            hd: Message.Registrations.paragraph4,
-            tl: /* [] */0
-          }
-        }
-      }
-    }
-  };
-  var tmp$1 = isSmUp ? Message.Registrations.header : undefined;
-  if (tmp$1 !== undefined) {
-    tmp.header = Caml_option.valFromOption(tmp$1);
-  }
-  return React.createElement(React.Fragment, undefined, React.createElement(Common_Dialog.make, {
-                  isOpen: match[0],
-                  onClose: onClose,
-                  children: React.createElement(News_Message.Content.make, {})
-                }), React.createElement(Common_Text.make, tmp));
+  return JsxRuntime.jsxs(JsxRuntime.Fragment, {
+              children: [
+                JsxRuntime.jsx(Common_Dialog.make, {
+                      isOpen: match[0],
+                      onClose: onClose,
+                      children: JsxRuntime.jsx(News_Message.Content.make, {})
+                    }),
+                JsxRuntime.jsx(Common_Text.make, {
+                      header: isSmUp ? Message.Registrations.header : undefined,
+                      afterHeader: Caml_option.some(JsxRuntime.jsx(Common_OpenInNewButton.make, {
+                                label: Message.Registrations.nextRegistrations,
+                                onClick: onOpen
+                              })),
+                      paragraphs: {
+                        hd: Message.Registrations.paragraph1,
+                        tl: {
+                          hd: Message.Registrations.paragraph2,
+                          tl: {
+                            hd: Message.Registrations.paragraph3,
+                            tl: {
+                              hd: Message.Registrations.paragraph4,
+                              tl: /* [] */0
+                            }
+                          }
+                        }
+                      }
+                    })
+              ]
+            });
 }
 
 var make = Registrations_Page;

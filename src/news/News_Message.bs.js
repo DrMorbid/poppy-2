@@ -5,16 +5,17 @@ import * as React from "react";
 import * as News_Idb from "./News_Idb.bs.js";
 import * as Belt_List from "rescript/lib/es6/belt_List.js";
 import * as App_Context from "../App_Context.bs.js";
+import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as News_Latest from "./News_Latest.bs.js";
 import * as Common_Style from "../common/Common_Style.bs.js";
 import * as Common_Dialog from "../common/Common_Dialog.bs.js";
 import * as Core from "@material-ui/core";
+import * as JsxRuntime from "react/jsx-runtime";
 
-function News_Message$Date(Props) {
-  var variant = Props.variant;
-  return React.createElement(Core.Typography, {
-              children: News_Latest.latestNews.date.toLocaleDateString(),
-              variant: variant
+function News_Message$Date(props) {
+  return JsxRuntime.jsx(Core.Typography, {
+              children: Caml_option.some(News_Latest.latestNews.date.toLocaleDateString()),
+              variant: props.variant
             });
 }
 
@@ -22,14 +23,13 @@ var $$Date = {
   make: News_Message$Date
 };
 
-function News_Message$Title(Props) {
-  var variant = Props.variant;
+function News_Message$Title(props) {
+  var variant = props.variant;
   return Belt_List.toArray(Belt_List.mapWithIndex(News_Latest.latestNews.title, (function (index, titleLine) {
-                    return React.createElement(Core.Typography, {
-                                children: titleLine,
-                                variant: variant,
-                                key: "news-title-line-" + String(index) + ""
-                              });
+                    return JsxRuntime.jsx(Core.Typography, {
+                                children: Caml_option.some(titleLine),
+                                variant: variant
+                              }, "news-title-line-" + String(index) + "");
                   })));
 }
 
@@ -37,54 +37,51 @@ var Title = {
   make: News_Message$Title
 };
 
-function News_Message$Content(Props) {
+function News_Message$Content(props) {
   var commonClasses = Common_Style.useStyles();
-  return React.createElement(Core.Grid, {
-              children: null,
-              container: true
-            }, React.createElement(Core.Grid, {
-                  children: React.createElement(News_Message$Date, {
-                        variant: "h4"
-                      }),
-                  item: true
-                }), React.createElement(Core.Grid, {
-                  children: null,
-                  className: commonClasses.marginTopSm,
-                  item: true
-                }, React.createElement(News_Message$Title, {
-                      variant: "h5"
-                    }), React.createElement(Core.Grid, {
-                      alignItems: "stretch",
-                      children: Belt_List.toArray(Belt_List.mapWithIndex(News_Latest.latestNews.content, (function (index, param) {
-                                  var tmp = {
-                                    children: param.value
-                                  };
-                                  var tmp$1 = param.emphasis ? commonClasses.bold : undefined;
-                                  if (tmp$1 !== undefined) {
-                                    tmp.className = tmp$1;
-                                  }
-                                  var tmp$2 = {
-                                    children: React.createElement(Core.Typography, tmp),
-                                    item: true,
-                                    key: "news-line-" + String(index) + ""
-                                  };
-                                  var tmp$3 = param.nextLineEmpty ? commonClasses.marginBottomSm : undefined;
-                                  if (tmp$3 !== undefined) {
-                                    tmp$2.className = tmp$3;
-                                  }
-                                  return React.createElement(Core.Grid, tmp$2);
-                                }))),
+  return JsxRuntime.jsxs(Core.Grid, {
+              children: [
+                JsxRuntime.jsx(Core.Grid, {
+                      children: Caml_option.some(JsxRuntime.jsx(News_Message$Date, {
+                                variant: "h4"
+                              })),
+                      item: true
+                    }),
+                JsxRuntime.jsxs(Core.Grid, {
+                      children: [
+                        JsxRuntime.jsx(News_Message$Title, {
+                              variant: "h5"
+                            }),
+                        JsxRuntime.jsx(Core.Grid, {
+                              alignItems: "stretch",
+                              children: Caml_option.some(Belt_List.toArray(Belt_List.mapWithIndex(News_Latest.latestNews.content, (function (index, param) {
+                                              return JsxRuntime.jsx(Core.Grid, {
+                                                          children: Caml_option.some(JsxRuntime.jsx(Core.Typography, {
+                                                                    children: Caml_option.some(param.value),
+                                                                    className: param.emphasis ? commonClasses.bold : undefined
+                                                                  })),
+                                                          className: param.nextLineEmpty ? commonClasses.marginBottomSm : undefined,
+                                                          item: true
+                                                        }, "news-line-" + String(index) + "");
+                                            })))),
+                              className: commonClasses.marginTopSm,
+                              container: true,
+                              direction: "column"
+                            })
+                      ],
                       className: commonClasses.marginTopSm,
-                      container: true,
-                      direction: "column"
-                    })));
+                      item: true
+                    })
+              ],
+              container: true
+            });
 }
 
 var Content = {
   make: News_Message$Content
 };
 
-function News_Message(Props) {
+function News_Message(props) {
   var match = React.useState(function () {
         return true;
       });
@@ -105,10 +102,10 @@ function News_Message(Props) {
     News_Idb.setNewsRead(new Date());
     Curry._1(dispatch, /* LatestNewsClosed */0);
   };
-  return React.createElement(Common_Dialog.make, {
+  return JsxRuntime.jsx(Common_Dialog.make, {
               isOpen: !match[0],
               onClose: onClose,
-              children: React.createElement(News_Message$Content, {})
+              children: JsxRuntime.jsx(News_Message$Content, {})
             });
 }
 

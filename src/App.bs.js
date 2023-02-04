@@ -7,11 +7,13 @@ import * as Core$Mui from "rescript-material-ui/src/Core.bs.js";
 import * as TopHeader from "./menu/TopHeader.bs.js";
 import * as App_Router from "./App_Router.bs.js";
 import * as App_Context from "./App_Context.bs.js";
+import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as Utils_Style from "./utils/Utils_Style.bs.js";
 import * as Common_Style from "./common/Common_Style.bs.js";
 import * as News_Message from "./news/News_Message.bs.js";
 import * as App_ScrollToTop from "./App_ScrollToTop.bs.js";
 import * as Core from "@material-ui/core";
+import * as JsxRuntime from "react/jsx-runtime";
 import * as Styles from "@material-ui/styles";
 import * as Contact_Content_Simple from "./contact/Contact_Content_Simple.bs.js";
 import * as Styles$1 from "@material-ui/core/styles";
@@ -31,7 +33,7 @@ var useStyles = Styles.makeStyles(function (theme) {
             };
     });
 
-function App(Props) {
+function App(props) {
   var classes = useStyles();
   var commonClasses = Common_Style.useStyles();
   var match = React.useContext(App_Context.Context.t);
@@ -43,47 +45,60 @@ function App(Props) {
             NAME: "up",
             VAL: "md"
           }));
-  return React.createElement(Core.Container, {
-              children: null,
+  return JsxRuntime.jsxs(Core.Container, {
+              children: [
+                JsxRuntime.jsxs(Core.Grid, {
+                      children: [
+                        JsxRuntime.jsx(Core.Grid, {
+                              children: Caml_option.some(JsxRuntime.jsx(TopHeader.make, {})),
+                              item: true,
+                              id: "back-to-top-anchor"
+                            }),
+                        JsxRuntime.jsx(Core.Grid, {
+                              children: Caml_option.some(JsxRuntime.jsx(TopMenu.make, {})),
+                              item: true
+                            }),
+                        JsxRuntime.jsx(Core.Grid, {
+                              children: Caml_option.some(JsxRuntime.jsx(News_Message.make, {})),
+                              item: true
+                            }),
+                        JsxRuntime.jsx(Core.Grid, {
+                              children: Caml_option.some(JsxRuntime.jsx(App_Router.make, {})),
+                              item: true
+                            }),
+                        JsxRuntime.jsxs(Core.Hidden, {
+                              children: [
+                                JsxRuntime.jsx(Core.Grid, {
+                                      children: Caml_option.some(JsxRuntime.jsx("hr", {})),
+                                      item: true
+                                    }),
+                                JsxRuntime.jsx(Core.Grid, {
+                                      children: Caml_option.some(JsxRuntime.jsx(Contact_Content_Simple.make, {})),
+                                      item: true
+                                    })
+                              ],
+                              xsUp: match[0].activeMenuItem === /* Contact */4
+                            })
+                      ],
+                      className: commonClasses.paragraphGap,
+                      container: true,
+                      direction: "column"
+                    }),
+                JsxRuntime.jsx(Core.Snackbar, {}),
+                JsxRuntime.jsx(App_ScrollToTop.make, {
+                      children: JsxRuntime.jsx(Core.Fab, {
+                            children: Caml_option.some(JsxRuntime.jsx(Common_Icon_KeyboardArrowUp.make, {})),
+                            color: "secondary",
+                            size: isSmUp ? (
+                                isMdUp ? "large" : "medium"
+                              ) : (
+                                isMdUp ? "large" : "small"
+                              )
+                          })
+                    })
+              ],
               className: classes.container
-            }, React.createElement(Core.Grid, {
-                  children: null,
-                  className: commonClasses.paragraphGap,
-                  container: true,
-                  direction: "column"
-                }, React.createElement(Core.Grid, {
-                      children: React.createElement(TopHeader.make, {}),
-                      item: true,
-                      id: "back-to-top-anchor"
-                    }), React.createElement(Core.Grid, {
-                      children: React.createElement(TopMenu.make, {}),
-                      item: true
-                    }), React.createElement(Core.Grid, {
-                      children: React.createElement(News_Message.make, {}),
-                      item: true
-                    }), React.createElement(Core.Grid, {
-                      children: React.createElement(App_Router.make, {}),
-                      item: true
-                    }), React.createElement(Core.Hidden, {
-                      children: null,
-                      xsUp: match[0].activeMenuItem === /* Contact */4
-                    }, React.createElement(Core.Grid, {
-                          children: React.createElement("hr", undefined),
-                          item: true
-                        }), React.createElement(Core.Grid, {
-                          children: React.createElement(Contact_Content_Simple.make, {}),
-                          item: true
-                        }))), React.createElement(Core.Snackbar, {}), React.createElement(App_ScrollToTop.make, {
-                  children: React.createElement(Core.Fab, {
-                        children: React.createElement(Common_Icon_KeyboardArrowUp.make, {}),
-                        color: "secondary",
-                        size: isSmUp ? (
-                            isMdUp ? "large" : "medium"
-                          ) : (
-                            isMdUp ? "large" : "small"
-                          )
-                      })
-                }));
+            });
 }
 
 var Theme;

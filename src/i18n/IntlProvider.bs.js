@@ -3,19 +3,20 @@
 import * as React from "react";
 import * as Language from "./Language.bs.js";
 import * as ReactIntl from "react-intl";
+import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as Translation from "./Translation.bs.js";
+import * as JsxRuntime from "react/jsx-runtime";
 
-function IntlProvider(Props) {
-  var children = Props.children;
+function IntlProvider(props) {
   var match = React.useState(function () {
         return /* Cs */0;
       });
   var defaultLanguage = match[0];
-  return React.createElement(ReactIntl.IntlProvider, {
+  return JsxRuntime.jsx(ReactIntl.IntlProvider, {
               locale: Language.toString(defaultLanguage),
-              messages: Translation.getTranslation(defaultLanguage),
+              messages: Caml_option.some(Translation.getTranslation(defaultLanguage)),
               defaultLocale: Language.toString(defaultLanguage),
-              children: children
+              children: props.children
             });
 }
 

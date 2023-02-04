@@ -7,12 +7,14 @@ import * as News_Idb from "../news/News_Idb.bs.js";
 import * as ReactIntl from "react-intl";
 import * as App_Actions from "../App_Actions.bs.js";
 import * as App_Context from "../App_Context.bs.js";
+import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as TopMenu_Tabs from "./TopMenu_Tabs.bs.js";
 import * as TopMenu_Drawer from "./TopMenu_Drawer.bs.js";
 import * as Common_Icon_Menu from "../common/icon/Common_Icon_Menu.bs.js";
 import * as Core from "@material-ui/core";
+import * as JsxRuntime from "react/jsx-runtime";
 
-function TopMenu(Props) {
+function TopMenu(props) {
   var match = React.useState(function () {
         return false;
       });
@@ -35,52 +37,59 @@ function TopMenu(Props) {
   var onAppNameClick = function (param) {
     App_Actions.goToPage(/* Home */0, dispatch);
   };
-  return React.createElement(Core.AppBar, {
-              children: null,
-              position: "static"
-            }, React.createElement(TopMenu_Drawer.make, {
-                  drawerOpen: match$1[0],
-                  onClose: (function (param) {
-                      Curry._1(setDrawerOpen, (function (param) {
-                              return false;
-                            }));
+  return JsxRuntime.jsxs(Core.AppBar, {
+              children: [
+                JsxRuntime.jsx(TopMenu_Drawer.make, {
+                      drawerOpen: match$1[0],
+                      onClose: (function (param) {
+                          Curry._1(setDrawerOpen, (function (param) {
+                                  return false;
+                                }));
+                        }),
+                      isLatestNewsRead: isLatestNewsRead
                     }),
-                  isLatestNewsRead: isLatestNewsRead
-                }), React.createElement(Core.Hidden, {
-                  children: React.createElement(TopMenu_Tabs.make, {
-                        isLatestNewsRead: isLatestNewsRead
-                      }),
-                  smDown: true
-                }), React.createElement(Core.Hidden, {
-                  children: React.createElement(Core.Toolbar, {
-                        children: React.createElement(Core.Grid, {
-                              alignItems: "center",
-                              children: null,
-                              container: true,
-                              justify: "space-between"
-                            }, React.createElement(Core.Grid, {
-                                  children: React.createElement(Core.ButtonBase, {
-                                        children: React.createElement(Core.Typography, {
-                                              children: intl.formatMessage(Message.appName),
-                                              variant: "h5"
-                                            }),
-                                        onClick: onAppNameClick
-                                      }),
-                                  item: true
-                                }), React.createElement(Core.Grid, {
-                                  children: React.createElement(Core.IconButton, {
-                                        onClick: (function (param) {
-                                            Curry._1(setDrawerOpen, (function (param) {
-                                                    return true;
-                                                  }));
-                                          }),
-                                        children: React.createElement(Common_Icon_Menu.make, {})
-                                      }),
-                                  item: true
-                                }))
-                      }),
-                  mdUp: true
-                }));
+                JsxRuntime.jsx(Core.Hidden, {
+                      children: Caml_option.some(JsxRuntime.jsx(TopMenu_Tabs.make, {
+                                isLatestNewsRead: isLatestNewsRead
+                              })),
+                      smDown: true
+                    }),
+                JsxRuntime.jsx(Core.Hidden, {
+                      children: Caml_option.some(JsxRuntime.jsx(Core.Toolbar, {
+                                children: Caml_option.some(JsxRuntime.jsxs(Core.Grid, {
+                                          alignItems: "center",
+                                          children: [
+                                            JsxRuntime.jsx(Core.Grid, {
+                                                  children: Caml_option.some(JsxRuntime.jsx(Core.ButtonBase, {
+                                                            children: Caml_option.some(JsxRuntime.jsx(Core.Typography, {
+                                                                      children: Caml_option.some(intl.formatMessage(Message.appName)),
+                                                                      variant: "h5"
+                                                                    })),
+                                                            onClick: onAppNameClick
+                                                          })),
+                                                  item: true
+                                                }),
+                                            JsxRuntime.jsx(Core.Grid, {
+                                                  children: Caml_option.some(JsxRuntime.jsx(Core.IconButton, {
+                                                            onClick: (function (param) {
+                                                                Curry._1(setDrawerOpen, (function (param) {
+                                                                        return true;
+                                                                      }));
+                                                              }),
+                                                            children: Caml_option.some(JsxRuntime.jsx(Common_Icon_Menu.make, {}))
+                                                          })),
+                                                  item: true
+                                                })
+                                          ],
+                                          container: true,
+                                          justify: "space-between"
+                                        }))
+                              })),
+                      mdUp: true
+                    })
+              ],
+              position: "static"
+            });
 }
 
 var Drawer;
