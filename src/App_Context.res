@@ -9,7 +9,13 @@ module Make = (Config: Config) => {
   module Provider = {
     let make = React.Context.provider(t)
 
-    type props<'value, 'children> = {value: 'value, children: 'children}
+    @obj
+    external makeProps: (
+      ~value: Config.context,
+      ~children: React.element,
+      ~key: string=?,
+      unit,
+    ) => {"value": Config.context, "children": React.element} = ""
   }
 }
 
