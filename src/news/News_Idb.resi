@@ -1,2 +1,2 @@
 let setNewsRead: Js.Date.t => unit
-let isLatestNewsRead: unit => Promise.t<bool>
+let isLatestNewsRead: unit => promise<bool>

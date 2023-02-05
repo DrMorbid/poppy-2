@@ -1,4 +1,3 @@
-open Promise
 open Utils.Idb
 open IdbKeyVal
 open ReDate
@@ -8,17 +7,15 @@ let newsReadKey = "news-read"
 
 let setNewsRead = date => store->setString(~key=newsReadKey, ~value=date->toISOString)->ignore
 
-let isLatestNewsRead = () => {
+let isLatestNewsRead = async () => {
   open Belt.Option
 
   let newDate = News_Latest.latestNews.date
 
-  store
-  ->getString(~key=newsReadKey)
-  ->thenResolve(lastDate =>
-    lastDate
-    ->map(fromString)
-    ->map(lastDate => lastDate->isAfter(newDate) || lastDate->isEqual(newDate))
-    ->getWithDefault(false)
-  )
+  let lastDate = await store->getString(~key=newsReadKey)
+
+  lastDate
+  ->map(fromString)
+  ->map(lastDate => lastDate->isAfter(newDate) || lastDate->isEqual(newDate))
+  ->getWithDefault(false)
 }

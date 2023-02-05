@@ -12,19 +12,18 @@ function setNewsRead(date) {
   IdbKeyval.set(newsReadKey, date.toISOString(), Utils_Idb.store);
 }
 
-function isLatestNewsRead(param) {
+async function isLatestNewsRead(param) {
   var newDate = News_Latest.latestNews.date;
-  return IdbKeyval.get(newsReadKey, Utils_Idb.store).then(function (lastDate) {
-              return Belt_Option.getWithDefault(Belt_Option.map(Belt_Option.map(lastDate, (function (prim) {
-                                    return new Date(prim);
-                                  })), (function (lastDate) {
-                                if (ReDate.isAfter(lastDate, newDate)) {
-                                  return true;
-                                } else {
-                                  return ReDate.isEqual(lastDate, newDate);
-                                }
-                              })), false);
-            });
+  var lastDate = await IdbKeyval.get(newsReadKey, Utils_Idb.store);
+  return Belt_Option.getWithDefault(Belt_Option.map(Belt_Option.map(lastDate, (function (prim) {
+                        return new Date(prim);
+                      })), (function (lastDate) {
+                    if (ReDate.isAfter(lastDate, newDate)) {
+                      return true;
+                    } else {
+                      return ReDate.isEqual(lastDate, newDate);
+                    }
+                  })), false);
 }
 
 export {
