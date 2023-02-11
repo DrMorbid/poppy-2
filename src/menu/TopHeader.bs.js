@@ -37,7 +37,7 @@ function TopHeader(props) {
     App_Actions.goToPage(/* Home */0, dispatch);
   };
   var onRegisterClick = function (param) {
-    App_Actions.goToPage(/* Registrations */2, dispatch);
+    App_Actions.goToPage(/* Registrations */1, dispatch);
   };
   return JsxRuntime.jsxs(TopHeader_Container.make, {
               children: [

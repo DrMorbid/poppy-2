@@ -3,6 +3,7 @@ open ReactIntl
 open Promise
 
 module Drawer = TopMenu_Drawer
+module Item = TopMenu_Item
 module Tabs = TopMenu_Tabs
 
 @react.component

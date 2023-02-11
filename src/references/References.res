@@ -1,1 +1,1 @@
-module Page = References_Page
+module Section = References_Section

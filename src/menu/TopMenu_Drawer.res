@@ -1,7 +1,8 @@
 open Mui
 open ReactIntl
-open App_Page
 open ReactDOM
+open TopMenu_Item
+open Home.Section
 
 let useStyles: Styles.useStyles<{
   "list": string,
@@ -13,19 +14,13 @@ let useStyles: Styles.useStyles<{
 let make = (~drawerOpen, ~onClose, ~isLatestNewsRead) => {
   let intl = useIntl()
   let classes = useStyles(.)
-  let (_, dispatch) = React.useContext(App_Context.Context.t)
 
   <Drawer \"open"=drawerOpen onClose={_ => onClose()}>
     <List className={classes["list"]}>
-      {App_Page.menuItems(isLatestNewsRead)
-      ->Belt.List.map(page =>
-        <ListItem
-          button=true
-          onClick={_ => {
-            onClose()
-            page->App_Actions.goToPage(~dispatch)
-          }}>
-          <ListItemText primary={intl->Intl.formatMessage(page->toLabel)->React.string} />
+      {menuItems(isLatestNewsRead)
+      ->Belt.List.map(section =>
+        <ListItem button=true onClick={_ => section->onClick(~onSuccess=onClose)}>
+          <ListItemText primary={intl->Intl.formatMessage(section->toLabel)->React.string} />
         </ListItem>
       )
       ->Belt.List.toArray

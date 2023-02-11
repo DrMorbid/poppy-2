@@ -3,7 +3,13 @@
 
 var Page;
 
+var CarouselItem;
+
+var Section;
+
 export {
   Page ,
+  CarouselItem ,
+  Section ,
 }
 /* No side effect */

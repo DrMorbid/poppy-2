@@ -94,12 +94,15 @@ function TopMenu(props) {
 
 var Drawer;
 
+var Item;
+
 var Tabs;
 
 var make = TopMenu;
 
 export {
   Drawer ,
+  Item ,
   Tabs ,
   make ,
 }

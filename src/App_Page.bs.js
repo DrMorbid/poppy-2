@@ -4,93 +4,26 @@ import * as Message from "./i18n/Message.bs.js";
 
 var home = "/";
 
-var aboutUs = "/about-us";
-
 var registrations = "/registrations";
-
-var references = "/references";
-
-var contact = "/contact";
-
-var news = "/news";
 
 var RoutePath = {
   home: home,
-  aboutUs: aboutUs,
-  registrations: registrations,
-  references: references,
-  contact: contact,
-  news: news
+  registrations: registrations
 };
 
 function toRoutePath(page) {
-  switch (page) {
-    case /* Home */0 :
-        return home;
-    case /* AboutUs */1 :
-        return aboutUs;
-    case /* Registrations */2 :
-        return registrations;
-    case /* References */3 :
-        return references;
-    case /* Contact */4 :
-        return contact;
-    case /* News */5 :
-        return news;
-    
+  if (page) {
+    return registrations;
+  } else {
+    return home;
   }
 }
 
 function toLabel(page) {
-  switch (page) {
-    case /* Home */0 :
-        return Message.Menu.home;
-    case /* AboutUs */1 :
-        return Message.Menu.aboutUs;
-    case /* Registrations */2 :
-        return Message.Menu.registrations;
-    case /* References */3 :
-        return Message.Menu.references;
-    case /* Contact */4 :
-        return Message.Menu.contact;
-    case /* News */5 :
-        return Message.Menu.news;
-    
-  }
-}
-
-function menuItems(isLatestNewsRead) {
-  if (isLatestNewsRead) {
-    return {
-            hd: /* Home */0,
-            tl: {
-              hd: /* AboutUs */1,
-              tl: {
-                hd: /* News */5,
-                tl: {
-                  hd: /* References */3,
-                  tl: {
-                    hd: /* Contact */4,
-                    tl: /* [] */0
-                  }
-                }
-              }
-            }
-          };
+  if (page) {
+    return Message.Menu.registrations;
   } else {
-    return {
-            hd: /* Home */0,
-            tl: {
-              hd: /* AboutUs */1,
-              tl: {
-                hd: /* References */3,
-                tl: {
-                  hd: /* Contact */4,
-                  tl: /* [] */0
-                }
-              }
-            }
-          };
+    return Message.Menu.home;
   }
 }
 
@@ -98,6 +31,5 @@ export {
   RoutePath ,
   toRoutePath ,
   toLabel ,
-  menuItems ,
 }
 /* No side effect */

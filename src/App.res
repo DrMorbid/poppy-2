@@ -28,7 +28,6 @@ let useStyles: Styles.useStyles<{
 let make = () => {
   let classes = useStyles(.)
   let commonClasses = Common.Style.useStyles(.)
-  let ({activeMenuItem, _}: App_Context.state, _) = React.useContext(App_Context.Context.t)
   let isSmUp = Core.useMediaQuery(Core.useTheme()->Core.Breakpoint.get(#sm->#up))
   let isMdUp = Core.useMediaQuery(Core.useTheme()->Core.Breakpoint.get(#md->#up))
 
@@ -46,14 +45,12 @@ let make = () => {
       <Grid item=true>
         <Router />
       </Grid>
-      <Hidden xsUp={activeMenuItem == Contact}>
-        <Grid item=true>
-          <hr />
-        </Grid>
-        <Grid item=true>
-          <Contact.Content.Simple />
-        </Grid>
-      </Hidden>
+      <Grid item=true>
+        <hr />
+      </Grid>
+      <Grid item=true>
+        <Contact.Content.Simple />
+      </Grid>
     </Grid>
     <Snackbar />
     <ScrollToTop>

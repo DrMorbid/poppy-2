@@ -1,19 +1,21 @@
 open Mui
 open ReactIntl
-open App_Page
+open TopMenu_Item
+open Home.Section
 
 @react.component
 let make = (~isLatestNewsRead) => {
   let intl = useIntl()
-  let ({activeMenuItem, _}: App_Context.state, dispatch) = React.useContext(App_Context.Context.t)
+  let ({activeMenuItem, _}: App_Context.state, _dispatch) = React.useContext(App_Context.Context.t)
 
+  // TODO: This is wrong, we need to use the section we clicked
   <Tabs value={activeMenuItem->Any.make} variant=#fullWidth>
-    {App_Page.menuItems(isLatestNewsRead)
-    ->Belt.List.map(page =>
+    {menuItems(isLatestNewsRead)
+    ->Belt.List.map(section =>
       <Tab
-        label={intl->Intl.formatMessage(page->toLabel)->React.string}
-        value={page->Any.make}
-        onClick={_ => page->App_Actions.goToPage(~dispatch)}
+        label={intl->Intl.formatMessage(section->toLabel)->React.string}
+        value={section->Any.make}
+        onClick={_ => section->onClick}
       />
     )
     ->Belt.List.toArray

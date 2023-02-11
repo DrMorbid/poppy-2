@@ -6,16 +6,7 @@ open Message.References
 let make = () => {
   let intl = useIntl()
   let classes = Common.Style.useStyles(.)
-  let ({activeMenuItem, _}: App_Context.state, dispatch) = React.useContext(App_Context.Context.t)
   let isSmUp = Core.useMediaQuery(Core.useTheme()->Core.Breakpoint.get(#sm->#up))
-
-  React.useEffect1(() => {
-    if activeMenuItem != References {
-      dispatch(App_Context.StoreActiveMenuItem(References))
-    }
-
-    None
-  }, [activeMenuItem])
 
   <Grid container=true>
     <Grid item=true>
