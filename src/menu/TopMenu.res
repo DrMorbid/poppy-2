@@ -33,7 +33,7 @@ let make = () => {
         <Grid container=true justify=#"space-between" alignItems=#center>
           <Grid item=true>
             <ButtonBase onClick=onAppNameClick>
-              <Typography variant=#h5>
+              <Typography variant=#h4>
                 {intl->Intl.formatMessage(Message.appName)->React.string}
               </Typography>
             </ButtonBase>

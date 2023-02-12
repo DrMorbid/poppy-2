@@ -38,15 +38,17 @@ var Title = {
 };
 
 function News_Message$Content(props) {
+  var displayDate = props.displayDate;
+  var displayDate$1 = displayDate !== undefined ? displayDate : true;
   var commonClasses = Common_Style.useStyles();
   return JsxRuntime.jsxs(Core.Grid, {
               children: [
-                JsxRuntime.jsx(Core.Grid, {
-                      children: Caml_option.some(JsxRuntime.jsx(News_Message$Date, {
-                                variant: "h4"
-                              })),
-                      item: true
-                    }),
+                displayDate$1 ? JsxRuntime.jsx(Core.Grid, {
+                        children: Caml_option.some(JsxRuntime.jsx(News_Message$Date, {
+                                  variant: "h4"
+                                })),
+                        item: true
+                      }) : null,
                 JsxRuntime.jsxs(Core.Grid, {
                       children: [
                         JsxRuntime.jsx(News_Message$Title, {
@@ -69,7 +71,7 @@ function News_Message$Content(props) {
                               direction: "column"
                             })
                       ],
-                      className: commonClasses.marginTopSm,
+                      className: displayDate$1 ? commonClasses.marginTopSm : undefined,
                       item: true
                     })
               ],

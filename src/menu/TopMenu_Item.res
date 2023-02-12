@@ -1,4 +1,6 @@
 open Home.Section
+open Scroll
+open ReactDOM
 
 let menuItems = isLatestNewsRead =>
   if isLatestNewsRead {
@@ -7,9 +9,16 @@ let menuItems = isLatestNewsRead =>
     list{AboutUs, References, Contact}
   }
 
+let scrollToSection = sectionAnchor => {
+  let anchor = querySelector(`#${sectionAnchor}`)
+  anchor->Belt.Option.forEach(anchor =>
+    anchor->scrollIntoView({behavior: #smooth, block: #start, inline: #start})
+  )
+}
+
 let onClick = (~onSuccess=() => (), homeSection) => {
   switch homeSection {
-  | LatestNews => Js.Console.log("Scrolling to latest news")
+  | LatestNews => Common.Constants.SectionAnchor.latestNews->scrollToSection
   | AboutUs => Js.Console.log("Scrolling to about us")
   | References => Js.Console.log("Scrolling to references")
   | Contact => Js.Console.log("Scrolling to contact")

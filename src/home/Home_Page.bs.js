@@ -4,6 +4,8 @@ import * as Message from "../i18n/Message.bs.js";
 import * as Grid$Mui from "rescript-material-ui/src/Grid.bs.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as Common_Text from "../common/Common_Text.bs.js";
+import * as News_Section from "../news/News_Section.bs.js";
+import * as Common_Constants from "../common/Common_Constants.bs.js";
 import * as Core from "@material-ui/core";
 import * as Home_CarouselItem from "./Home_CarouselItem.bs.js";
 import * as JsxRuntime from "react/jsx-runtime";
@@ -90,6 +92,17 @@ function Home_Page(props) {
                       item: true,
                       md: Caml_option.some(Grid$Mui.Md[4]),
                       sm: Caml_option.some(Grid$Mui.Sm[6]),
+                      xs: Caml_option.some(Grid$Mui.Xs[12])
+                    }),
+                JsxRuntime.jsx(Core.Grid, {
+                      children: Caml_option.some(JsxRuntime.jsx("hr", {})),
+                      item: true,
+                      xs: Caml_option.some(Grid$Mui.Xs[12]),
+                      id: Common_Constants.SectionAnchor.latestNews
+                    }),
+                JsxRuntime.jsx(Core.Grid, {
+                      children: Caml_option.some(JsxRuntime.jsx(News_Section.make, {})),
+                      item: true,
                       xs: Caml_option.some(Grid$Mui.Xs[12])
                     })
               ],

@@ -25,14 +25,16 @@ module Title = {
 
 module Content = {
   @react.component
-  let make = () => {
+  let make = (~displayDate=true) => {
     let commonClasses = Common_Style.useStyles(.)
 
     <Grid container=true>
-      <Grid item=true>
-        <Date variant=#h4 />
-      </Grid>
-      <Grid item=true className={commonClasses["marginTopSm"]}>
+      {displayDate
+        ? <Grid item=true>
+            <Date variant=#h4 />
+          </Grid>
+        : React.null}
+      <Grid item=true className=?{displayDate ? Some(commonClasses["marginTopSm"]) : None}>
         <Title variant=#h5 />
         <Grid
           container=true

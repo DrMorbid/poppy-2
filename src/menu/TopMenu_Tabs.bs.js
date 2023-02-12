@@ -9,13 +9,38 @@ import * as Home_Section from "../home/Home_Section.bs.js";
 import * as TopMenu_Item from "./TopMenu_Item.bs.js";
 import * as Core from "@material-ui/core";
 import * as JsxRuntime from "react/jsx-runtime";
+import * as Styles from "@material-ui/styles";
+
+var useStyles = Styles.makeStyles(function (theme) {
+      var tabTypography = theme.typography.h5;
+      var tmp = {};
+      if (tabTypography.fontFamily !== undefined) {
+        tmp.fontFamily = tabTypography.fontFamily;
+      }
+      if (tabTypography.fontSize !== undefined) {
+        tmp.fontSize = tabTypography.fontSize;
+      }
+      if (tabTypography.fontWeight !== undefined) {
+        tmp.fontWeight = tabTypography.fontWeight;
+      }
+      if (tabTypography.lineHeight !== undefined) {
+        tmp.lineHeight = tabTypography.lineHeight;
+      }
+      return {
+              tabLabel: tmp
+            };
+    });
 
 function TopMenu_Tabs(props) {
   var intl = ReactIntl.useIntl();
+  var classes = useStyles();
   var match = React.useContext(App_Context.Context.t);
   return JsxRuntime.jsx(Core.Tabs, {
               children: Caml_option.some(Belt_List.toArray(Belt_List.map(TopMenu_Item.menuItems(props.isLatestNewsRead), (function (section) {
                               return JsxRuntime.jsx(Core.Tab, {
+                                          classes: {
+                                            wrapper: classes.tabLabel
+                                          },
                                           label: Caml_option.some(intl.formatMessage(Home_Section.toLabel(section))),
                                           onClick: (function (param) {
                                               TopMenu_Item.onClick(undefined, section);
@@ -31,6 +56,7 @@ function TopMenu_Tabs(props) {
 var make = TopMenu_Tabs;
 
 export {
+  useStyles ,
   make ,
 }
-/* react Not a pure module */
+/* useStyles Not a pure module */

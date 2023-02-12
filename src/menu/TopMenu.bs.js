@@ -63,7 +63,7 @@ function TopMenu(props) {
                                                   children: Caml_option.some(JsxRuntime.jsx(Core.ButtonBase, {
                                                             children: Caml_option.some(JsxRuntime.jsx(Core.Typography, {
                                                                       children: Caml_option.some(intl.formatMessage(Message.appName)),
-                                                                      variant: "h5"
+                                                                      variant: "h4"
                                                                     })),
                                                             onClick: onAppNameClick
                                                           })),

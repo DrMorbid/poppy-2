@@ -85,6 +85,13 @@ var Home = {
   thirdParagraph: Home_thirdParagraph
 };
 
+var News = {
+  header: {
+    id: "ae88fbab-0433-4390-93b1-2048cc540f42",
+    defaultMessage: "Aktuální info"
+  }
+};
+
 var AboutUs_header = {
   id: "cb394fa9-9b9e-4b10-8d3e-7c78a1e75dc7",
   defaultMessage: "Casting dětí - POPPY CASTING - castingová agentura"
@@ -358,6 +365,7 @@ export {
   appName ,
   Menu ,
   Home ,
+  News ,
   AboutUs ,
   Registrations ,
   References ,

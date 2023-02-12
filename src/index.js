@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { make as Root } from "./Root.bs";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
+import "./theme/fonts.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

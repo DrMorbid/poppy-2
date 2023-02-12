@@ -13,7 +13,37 @@ let theme = (~prefersDarkTheme) => {
   create(
     make(
       ~typography=Typography.make(
-        ~fontFamily="Century Gothic, CenturyGothic, AppleGothic, sans-serif",
+        ~fontFamily="Maven Pro",
+        ~h1=Obj.magic({
+          "fontFamily": "Comfortaa",
+          "fontSize": "2.8rem",
+          "fontWeight": "800",
+        }),
+        ~h2=Obj.magic({
+          "fontFamily": "Comfortaa",
+          "fontSize": "2.3rem",
+          "fontWeight": "700",
+        }),
+        ~h3=Obj.magic({
+          "fontFamily": "Comfortaa",
+          "fontSize": "1.9rem",
+          "fontWeight": "600",
+        }),
+        ~h4=Obj.magic({
+          "fontFamily": "Comfortaa",
+          "fontSize": "1.6rem",
+          "fontWeight": "600",
+        }),
+        ~h5=Obj.magic({
+          "fontFamily": "Comfortaa",
+          "fontSize": "1.4rem",
+          "fontWeight": "500",
+        }),
+        ~h6=Obj.magic({
+          "fontFamily": "Comfortaa",
+          "fontSize": "1.2rem",
+          "fontWeight": "500",
+        }),
         (),
       ),
       ~palette=PaletteOptions.make(

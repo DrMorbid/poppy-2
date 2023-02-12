@@ -36,7 +36,7 @@ function Common_Text(props) {
                         return JsxRuntime.jsx(Core.Grid, {
                                     children: Caml_option.some(JsxRuntime.jsx(Core.Typography, {
                                               children: Caml_option.some(intl.formatMessage(header)),
-                                              variant: "h4"
+                                              variant: "h2"
                                             })),
                                     className: classes.centeredText,
                                     item: true,

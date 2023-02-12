@@ -37,5 +37,11 @@ let make = () => {
     <Grid item=true xs=Xs.\"12" sm=Sm.\"6" md=Md.\"4" className={classes["horizontalGap"]}>
       <Common.Text header=thirdParagraphHeader paragraphs={list{thirdParagraph}} centerAll=true />
     </Grid>
+    <Grid item=true xs=Xs.\"12" id=Common.Constants.SectionAnchor.latestNews>
+      <hr />
+    </Grid>
+    <Grid item=true xs=Xs.\"12">
+      <News.Section />
+    </Grid>
   </Grid>
 }
