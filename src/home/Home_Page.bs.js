@@ -4,11 +4,14 @@ import * as Message from "../i18n/Message.bs.js";
 import * as Grid$Mui from "rescript-material-ui/src/Grid.bs.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as Common_Text from "../common/Common_Text.bs.js";
+import * as Home_Section from "./Home_Section.bs.js";
 import * as News_Section from "../news/News_Section.bs.js";
+import * as AboutUs_Section from "../aboutUs/AboutUs_Section.bs.js";
 import * as Common_Constants from "../common/Common_Constants.bs.js";
 import * as Core from "@material-ui/core";
 import * as Home_CarouselItem from "./Home_CarouselItem.bs.js";
 import * as JsxRuntime from "react/jsx-runtime";
+import * as References_Section from "../references/References_Section.bs.js";
 import * as Styles from "@material-ui/styles";
 import ReactMaterialUiCarousel from "react-material-ui-carousel";
 
@@ -52,9 +55,12 @@ function Home_Page(props) {
                 JsxRuntime.jsx(Core.Grid, {
                       children: Caml_option.some(JsxRuntime.jsx(Common_Text.make, {
                                 header: Message.Home.firstParagraphHeader,
-                                paragraphs: {
-                                  hd: Message.Home.firstParagraph,
-                                  tl: /* [] */0
+                                body: {
+                                  TAG: /* Paragraphs */0,
+                                  _0: {
+                                    hd: Message.Home.firstParagraph,
+                                    tl: /* [] */0
+                                  }
                                 },
                                 centerAll: true
                               })),
@@ -67,9 +73,12 @@ function Home_Page(props) {
                 JsxRuntime.jsx(Core.Grid, {
                       children: Caml_option.some(JsxRuntime.jsx(Common_Text.make, {
                                 header: Message.Home.secondParagraphHeader,
-                                paragraphs: {
-                                  hd: Message.Home.secondParagraph,
-                                  tl: /* [] */0
+                                body: {
+                                  TAG: /* Paragraphs */0,
+                                  _0: {
+                                    hd: Message.Home.secondParagraph,
+                                    tl: /* [] */0
+                                  }
                                 },
                                 centerAll: true
                               })),
@@ -82,9 +91,12 @@ function Home_Page(props) {
                 JsxRuntime.jsx(Core.Grid, {
                       children: Caml_option.some(JsxRuntime.jsx(Common_Text.make, {
                                 header: Message.Home.thirdParagraphHeader,
-                                paragraphs: {
-                                  hd: Message.Home.thirdParagraph,
-                                  tl: /* [] */0
+                                body: {
+                                  TAG: /* Paragraphs */0,
+                                  _0: {
+                                    hd: Message.Home.thirdParagraph,
+                                    tl: /* [] */0
+                                  }
                                 },
                                 centerAll: true
                               })),
@@ -95,13 +107,26 @@ function Home_Page(props) {
                       xs: Caml_option.some(Grid$Mui.Xs[12])
                     }),
                 JsxRuntime.jsx(Core.Grid, {
-                      children: Caml_option.some(JsxRuntime.jsx("hr", {})),
-                      item: true,
-                      xs: Caml_option.some(Grid$Mui.Xs[12]),
-                      id: Common_Constants.SectionAnchor.latestNews
-                    }),
-                JsxRuntime.jsx(Core.Grid, {
-                      children: Caml_option.some(JsxRuntime.jsx(News_Section.make, {})),
+                      children: Caml_option.some(JsxRuntime.jsxs(Core.Grid, {
+                                alignItems: "stretch",
+                                children: [
+                                  JsxRuntime.jsx(Home_Section.make, {
+                                        anchor: Common_Constants.SectionAnchor.latestNews,
+                                        children: JsxRuntime.jsx(News_Section.make, {})
+                                      }),
+                                  JsxRuntime.jsx(Home_Section.make, {
+                                        anchor: Common_Constants.SectionAnchor.aboutUs,
+                                        children: JsxRuntime.jsx(AboutUs_Section.make, {})
+                                      }),
+                                  JsxRuntime.jsx(Home_Section.make, {
+                                        anchor: Common_Constants.SectionAnchor.references,
+                                        children: JsxRuntime.jsx(References_Section.make, {})
+                                      })
+                                ],
+                                className: classes.verticalGap,
+                                container: true,
+                                direction: "column"
+                              })),
                       item: true,
                       xs: Caml_option.some(Grid$Mui.Xs[12])
                     })

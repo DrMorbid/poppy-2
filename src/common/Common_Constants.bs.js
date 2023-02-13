@@ -2,7 +2,10 @@
 
 
 var SectionAnchor = {
-  latestNews: "latest-news-anchor"
+  latestNews: "latest-news-anchor",
+  aboutUs: "about-us-anchor",
+  references: "references-anchor",
+  contact: "contact-anchor"
 };
 
 var companyEmail = "deti@poppycasting.cz";

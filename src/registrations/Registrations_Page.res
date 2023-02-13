@@ -26,7 +26,7 @@ let make = () => {
     <Common.Text
       header=?{isSmUp ? Some(header) : None}
       afterHeader={<Common.OpenInNewButton label=nextRegistrations onClick=onOpen />}
-      paragraphs=list{paragraph1, paragraph2, paragraph3, paragraph4}
+      body=Paragraphs(list{paragraph1, paragraph2, paragraph3, paragraph4})
     />
   </>
 }

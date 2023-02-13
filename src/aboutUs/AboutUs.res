@@ -1,1 +1,1 @@
-module Page = AboutUs_Page
+module Section = AboutUs_Section

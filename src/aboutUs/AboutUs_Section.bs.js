@@ -4,18 +4,21 @@ import * as Message from "../i18n/Message.bs.js";
 import * as Common_Text from "../common/Common_Text.bs.js";
 import * as JsxRuntime from "react/jsx-runtime";
 
-function AboutUs_Page(props) {
+function AboutUs_Section(props) {
   return JsxRuntime.jsx(Common_Text.make, {
               header: Message.AboutUs.header,
-              paragraphs: {
-                hd: Message.AboutUs.paragraph1,
-                tl: {
-                  hd: Message.AboutUs.paragraph2,
+              body: {
+                TAG: /* Paragraphs */0,
+                _0: {
+                  hd: Message.AboutUs.paragraph1,
                   tl: {
-                    hd: Message.AboutUs.paragraph3,
+                    hd: Message.AboutUs.paragraph2,
                     tl: {
-                      hd: Message.AboutUs.paragraph4,
-                      tl: /* [] */0
+                      hd: Message.AboutUs.paragraph3,
+                      tl: {
+                        hd: Message.AboutUs.paragraph4,
+                        tl: /* [] */0
+                      }
                     }
                   }
                 }
@@ -23,7 +26,7 @@ function AboutUs_Page(props) {
             });
 }
 
-var make = AboutUs_Page;
+var make = AboutUs_Section;
 
 export {
   make ,

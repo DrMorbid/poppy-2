@@ -1,8 +1,10 @@
 open Mui
 open ReactIntl
 
+type body = Paragraphs(list<ReactIntl.message>) | Element(Jsx.element)
+
 @react.component
-let make = (~header=?, ~afterHeader=?, ~paragraphs, ~centerAll=?) => {
+let make = (~header=?, ~afterHeader=?, ~body, ~centerAll=?) => {
   let intl = useIntl()
   let classes = Common_Style.useStyles(.)
 
@@ -24,13 +26,17 @@ let make = (~header=?, ~afterHeader=?, ~paragraphs, ~centerAll=?) => {
     {afterHeader->Belt.Option.mapWithDefault(React.null, afterHeader =>
       <Grid item=true xs=Grid.Xs.\"12"> afterHeader </Grid>
     )}
-    {paragraphs
-    ->Belt.List.mapWithIndex((index, paragraph) =>
-      <Grid item=true xs=Grid.Xs.\"12" key={`paragraph-${index->Belt.Int.toString}`}>
-        <Typography> {intl->Intl.formatMessage(paragraph)->React.string} </Typography>
-      </Grid>
-    )
-    ->Belt.List.toArray
-    ->React.array}
+    {switch body {
+    | Paragraphs(paragraphs) =>
+      paragraphs
+      ->Belt.List.mapWithIndex((index, paragraph) =>
+        <Grid item=true xs=Grid.Xs.\"12" key={`paragraph-${index->Belt.Int.toString}`}>
+          <Typography> {intl->Intl.formatMessage(paragraph)->React.string} </Typography>
+        </Grid>
+      )
+      ->Belt.List.toArray
+      ->React.array
+    | Element(element) => <Grid item=true xs=Grid.Xs.\"12"> element </Grid>
+    }}
   </Grid>
 }

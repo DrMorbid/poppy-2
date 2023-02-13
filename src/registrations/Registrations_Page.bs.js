@@ -57,15 +57,18 @@ function Registrations_Page(props) {
                                 label: Message.Registrations.nextRegistrations,
                                 onClick: onOpen
                               })),
-                      paragraphs: {
-                        hd: Message.Registrations.paragraph1,
-                        tl: {
-                          hd: Message.Registrations.paragraph2,
+                      body: {
+                        TAG: /* Paragraphs */0,
+                        _0: {
+                          hd: Message.Registrations.paragraph1,
                           tl: {
-                            hd: Message.Registrations.paragraph3,
+                            hd: Message.Registrations.paragraph2,
                             tl: {
-                              hd: Message.Registrations.paragraph4,
-                              tl: /* [] */0
+                              hd: Message.Registrations.paragraph3,
+                              tl: {
+                                hd: Message.Registrations.paragraph4,
+                                tl: /* [] */0
+                              }
                             }
                           }
                         }

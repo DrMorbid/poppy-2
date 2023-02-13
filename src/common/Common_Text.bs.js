@@ -11,6 +11,7 @@ import * as JsxRuntime from "react/jsx-runtime";
 
 function Common_Text(props) {
   var centerAll = props.centerAll;
+  var body = props.body;
   var intl = ReactIntl.useIntl();
   var classes = Common_Style.useStyles();
   var getContainerClassname = function (param) {
@@ -30,6 +31,20 @@ function Common_Text(props) {
                   return "" + result + " " + className + "";
                 }));
   };
+  var tmp;
+  tmp = body.TAG === /* Paragraphs */0 ? Belt_List.toArray(Belt_List.mapWithIndex(body._0, (function (index, paragraph) {
+                return JsxRuntime.jsx(Core.Grid, {
+                            children: Caml_option.some(JsxRuntime.jsx(Core.Typography, {
+                                      children: Caml_option.some(intl.formatMessage(paragraph))
+                                    })),
+                            item: true,
+                            xs: Caml_option.some(Grid$Mui.Xs[12])
+                          }, "paragraph-" + String(index) + "");
+              }))) : JsxRuntime.jsx(Core.Grid, {
+          children: Caml_option.some(body._0),
+          item: true,
+          xs: Caml_option.some(Grid$Mui.Xs[12])
+        });
   return JsxRuntime.jsxs(Core.Grid, {
               children: [
                 Belt_Option.mapWithDefault(props.header, null, (function (header) {
@@ -50,15 +65,7 @@ function Common_Text(props) {
                                     xs: Caml_option.some(Grid$Mui.Xs[12])
                                   });
                       })),
-                Belt_List.toArray(Belt_List.mapWithIndex(props.paragraphs, (function (index, paragraph) {
-                            return JsxRuntime.jsx(Core.Grid, {
-                                        children: Caml_option.some(JsxRuntime.jsx(Core.Typography, {
-                                                  children: Caml_option.some(intl.formatMessage(paragraph))
-                                                })),
-                                        item: true,
-                                        xs: Caml_option.some(Grid$Mui.Xs[12])
-                                      }, "paragraph-" + String(index) + "");
-                          })))
+                tmp
               ],
               className: getContainerClassname(undefined),
               container: true

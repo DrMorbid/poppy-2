@@ -9,4 +9,7 @@ let facturationAddress = "https://frame.mapy.cz/s/gofosakuga"
 
 module SectionAnchor = {
   let latestNews = "latest-news-anchor"
+  let aboutUs = "about-us-anchor"
+  let references = "references-anchor"
+  let contact = "contact-anchor"
 }

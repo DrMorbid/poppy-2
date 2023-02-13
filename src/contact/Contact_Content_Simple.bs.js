@@ -186,7 +186,8 @@ function Contact_Content_Simple(props) {
                                 container: true
                               })),
                       item: true,
-                      xs: Caml_option.some(Grid$Mui.Xs[12])
+                      xs: Caml_option.some(Grid$Mui.Xs[12]),
+                      id: Common_Constants.SectionAnchor.contact
                     }),
                 JsxRuntime.jsx(Common_Dialog.make, {
                       isOpen: Belt_Option.isSome(mapUrl),

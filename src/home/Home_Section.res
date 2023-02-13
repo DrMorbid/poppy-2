@@ -1,3 +1,5 @@
+open Mui
+
 type t = LatestNews | AboutUs | References | Contact
 
 let toLabel = page => {
@@ -9,4 +11,14 @@ let toLabel = page => {
   | References => references
   | Contact => contact
   }
+}
+
+@react.component
+let make = (~anchor as id, ~children) => {
+  <>
+    <Grid item=true id>
+      <hr />
+    </Grid>
+    <Grid item=true> children </Grid>
+  </>
 }

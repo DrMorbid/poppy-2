@@ -17,11 +17,13 @@ let scrollToSection = sectionAnchor => {
 }
 
 let onClick = (~onSuccess=() => (), homeSection) => {
+  open Common.Constants.SectionAnchor
+
   switch homeSection {
-  | LatestNews => Common.Constants.SectionAnchor.latestNews->scrollToSection
-  | AboutUs => Js.Console.log("Scrolling to about us")
-  | References => Js.Console.log("Scrolling to references")
-  | Contact => Js.Console.log("Scrolling to contact")
+  | LatestNews => latestNews->scrollToSection
+  | AboutUs => aboutUs->scrollToSection
+  | References => references->scrollToSection
+  | Contact => contact->scrollToSection
   }
   onSuccess()
 }

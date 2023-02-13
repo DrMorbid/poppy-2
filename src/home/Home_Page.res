@@ -15,6 +15,8 @@ let useStyles: Styles.useStyles<{
 
 @react.component
 let make = () => {
+  open Common.Constants.SectionAnchor
+
   let classes = useStyles(.)
 
   <Grid container=true className={classes["verticalGap"]}>
@@ -29,19 +31,32 @@ let make = () => {
       </ReactMaterialUiCarousel>
     </Grid>
     <Grid item=true xs=Xs.\"12" sm=Sm.\"6" md=Md.\"4" className={classes["horizontalGap"]}>
-      <Common.Text header=firstParagraphHeader paragraphs={list{firstParagraph}} centerAll=true />
+      <Common.Text
+        header=firstParagraphHeader body=Paragraphs(list{firstParagraph}) centerAll=true
+      />
     </Grid>
     <Grid item=true xs=Xs.\"12" sm=Sm.\"6" md=Md.\"4" className={classes["horizontalGap"]}>
-      <Common.Text header=secondParagraphHeader paragraphs={list{secondParagraph}} centerAll=true />
+      <Common.Text
+        header=secondParagraphHeader body=Paragraphs(list{secondParagraph}) centerAll=true
+      />
     </Grid>
     <Grid item=true xs=Xs.\"12" sm=Sm.\"6" md=Md.\"4" className={classes["horizontalGap"]}>
-      <Common.Text header=thirdParagraphHeader paragraphs={list{thirdParagraph}} centerAll=true />
-    </Grid>
-    <Grid item=true xs=Xs.\"12" id=Common.Constants.SectionAnchor.latestNews>
-      <hr />
+      <Common.Text
+        header=thirdParagraphHeader body=Paragraphs(list{thirdParagraph}) centerAll=true
+      />
     </Grid>
     <Grid item=true xs=Xs.\"12">
-      <News.Section />
+      <Grid container=true direction=#column alignItems=#stretch className={classes["verticalGap"]}>
+        <Home_Section anchor=latestNews>
+          <News.Section />
+        </Home_Section>
+        <Home_Section anchor=aboutUs>
+          <AboutUs.Section />
+        </Home_Section>
+        <Home_Section anchor=references>
+          <References.Section />
+        </Home_Section>
+      </Grid>
     </Grid>
   </Grid>
 }

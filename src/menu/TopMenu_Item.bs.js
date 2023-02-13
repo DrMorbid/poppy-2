@@ -54,13 +54,13 @@ function onClick(onSuccessOpt, homeSection) {
         scrollToSection(Common_Constants.SectionAnchor.latestNews);
         break;
     case /* AboutUs */1 :
-        console.log("Scrolling to about us");
+        scrollToSection(Common_Constants.SectionAnchor.aboutUs);
         break;
     case /* References */2 :
-        console.log("Scrolling to references");
+        scrollToSection(Common_Constants.SectionAnchor.references);
         break;
     case /* Contact */3 :
-        console.log("Scrolling to contact");
+        scrollToSection(Common_Constants.SectionAnchor.contact);
         break;
     
   }
