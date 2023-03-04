@@ -18,7 +18,10 @@ let useStyles: Styles.useStyles<{
         ~mediaQuery=theme.breakpoints.up->Any.unsafeGetValue("sm"),
       ),
       Style.make(~marginTop="1rem", ())->styleWithMediaQuery(
-        ~mediaQuery=theme.breakpoints.down->Any.unsafeGetValue("sm"),
+        ~mediaQuery=theme.breakpoints.up->Any.unsafeGetValue("xs"),
+      ),
+      Style.make(~paddingLeft="0", ~paddingRight="0", ())->styleWithMediaQuery(
+        ~mediaQuery=theme.breakpoints.down->Any.unsafeGetValue("xs"),
       ),
     }->stylesCombiner,
   }
@@ -44,9 +47,6 @@ let make = () => {
       </Grid>
       <Grid item=true>
         <Router />
-      </Grid>
-      <Grid item=true>
-        <hr />
       </Grid>
       <Grid item=true>
         <Contact.Content.Simple />

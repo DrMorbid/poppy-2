@@ -47,13 +47,13 @@ let make = () => {
     </Grid>
     <Grid item=true xs=Xs.\"12">
       <Grid container=true direction=#column alignItems=#stretch className={classes["verticalGap"]}>
-        <Home_Section anchor=latestNews>
+        <Home_Section colored=true anchor=latestNews>
           <News.Section />
         </Home_Section>
         <Home_Section anchor=aboutUs>
           <AboutUs.Section />
         </Home_Section>
-        <Home_Section anchor=references>
+        <Home_Section colored=true anchor=references>
           <References.Section />
         </Home_Section>
       </Grid>

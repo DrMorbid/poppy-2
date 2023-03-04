@@ -2,13 +2,6 @@ open Mui
 open Mui.Grid
 open ReactIntl
 open Message.Contact
-open ReactDOM
-
-let useStyles: Styles.useStyles<{
-  "mapSize": string,
-}> = Styles.makeStyles({
-  "mapSize": Style.make(~width="100%", ~height="50%", ()),
-})
 
 @react.component
 let make = () => {
@@ -16,7 +9,6 @@ let make = () => {
   let (isMapBeingLoaded, setIsMapBeingLoaded) = React.useState(() => false)
   let intl = useIntl()
   let commonClasses = Common.Style.useStyles(.)
-  let _classes = useStyles(.)
   let isMdUp = Core.useMediaQuery(Core.useTheme()->Core.Breakpoint.get(#md->#up))
 
   let onClose = () => {
@@ -31,7 +23,7 @@ let make = () => {
 
   let onMapLoadingFinished = _ => setIsMapBeingLoaded(_ => false)
 
-  <Grid container=true>
+  <Grid container=true className={commonClasses["pageGutters"]}>
     <Grid item=true xs=Xs.\"12" id=Common.Constants.SectionAnchor.contact>
       <Grid container=true className={commonClasses["paragraphGap"]}>
         <Grid item=true xs=Xs.\"12" sm=Sm.\"6" md=Md.\"4">

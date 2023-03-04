@@ -4,7 +4,6 @@ open Promise
 
 module Drawer = TopMenu_Drawer
 module Item = TopMenu_Item
-module Tabs = TopMenu_Tabs
 
 @react.component
 let make = () => {
@@ -26,7 +25,7 @@ let make = () => {
   <AppBar position=#static>
     <Drawer drawerOpen onClose={() => setDrawerOpen(_ => false)} isLatestNewsRead />
     <Hidden smDown=true>
-      <Tabs isLatestNewsRead />
+      <TopMenu_Toolbar isLatestNewsRead />
     </Hidden>
     <Hidden mdUp=true>
       <Toolbar>
