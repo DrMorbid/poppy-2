@@ -11,7 +11,9 @@ module ScrollToTop = App_ScrollToTop
 
 let useStyles: Styles.useStyles<{
   "container": string,
-}> = Styles.makeStylesWithTheme(theme =>
+  "containerColorLight": string,
+  "containerColorDark": string,
+}> = Styles.makeStylesWithTheme(theme => {
   {
     "container": list{
       Common.Style.headerGap->styleWithMediaQuery(
@@ -24,8 +26,10 @@ let useStyles: Styles.useStyles<{
         ~mediaQuery=theme.breakpoints.down->Any.unsafeGetValue("xs"),
       ),
     }->stylesCombiner,
+    "containerColorLight": Style.make(~backgroundColor="rgba(250, 250, 250, 0.75)", ()),
+    "containerColorDark": Style.make(~backgroundColor="rgba(48, 48, 48, 0.75)", ()),
   }
-)
+})
 
 @react.component
 let make = () => {
@@ -33,8 +37,12 @@ let make = () => {
   let commonClasses = Common.Style.useStyles(.)
   let isSmUp = Core.useMediaQuery(Core.useTheme()->Core.Breakpoint.get(#sm->#up))
   let isMdUp = Core.useMediaQuery(Core.useTheme()->Core.Breakpoint.get(#md->#up))
+  let prefersDarkTheme = Core.useMediaQueryString("(prefers-color-scheme: dark)")
 
-  <Container className={classes["container"]}>
+  <Container
+    className={`${classes["container"]} ${prefersDarkTheme
+        ? classes["containerColorDark"]
+        : classes["containerColorLight"]}`}>
     <Grid container=true direction=#column className={commonClasses["paragraphGap"]}>
       <Grid item=true id="back-to-top-anchor">
         <TopHeader />

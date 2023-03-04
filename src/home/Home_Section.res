@@ -16,18 +16,16 @@ let toLabel = page => {
 }
 
 let useStyles: Styles.useStyles<{
-  "coloredDark": string,
   "coloredLight": string,
-}> = Styles.makeStylesWithTheme(theme =>
-  {
-    "coloredDark": Style.make(~backgroundColor=theme.palette.grey.\"800", ()),
-    "coloredLight": Style.make(~backgroundColor=theme.palette.grey.\"200", ()),
-  }
-)
+  "coloredDark": string,
+}> = Styles.makeStyles({
+  "coloredLight": Style.make(~backgroundColor="rgba(240, 240, 240, 0.75)", ()),
+  "coloredDark": Style.make(~backgroundColor="rgba(70, 70, 70, 0.75)", ()),
+})
 
 @react.component
 let make = (~colored=false, ~anchor as id, ~children) => {
-  let prefersDarkTheme = Mui.Core.useMediaQueryString("(prefers-color-scheme: dark)")
+  let prefersDarkTheme = Core.useMediaQueryString("(prefers-color-scheme: dark)")
   let classes = useStyles(.)
   let commonClasses = Common.Style.useStyles(.)
 
