@@ -8,7 +8,7 @@ let make = () => {
   let classes = Common.Style.useStyles(.)
 
   <Grid container=true>
-    <Grid item=true>
+    <Grid item=true xs=Grid.Xs.\"12">
       <Common.Text header body=Paragraphs(list{paragraph1}) />
     </Grid>
     <Grid item=true xs=Grid.Xs.\"12" className={classes["headerGap"]}>
