@@ -1,6 +1,7 @@
 open Mui
 open ReactDOM
 open Utils.Style
+open App_Types
 
 module Theme = App_Theme
 module Context = App_Context
@@ -16,15 +17,24 @@ let useStyles: Styles.useStyles<{
 }> = Styles.makeStylesWithTheme(theme => {
   {
     "container": list{
-      Common.Style.headerGap->styleWithMediaQuery(
-        ~mediaQuery=theme.breakpoints.up->Any.unsafeGetValue("sm"),
-      ),
-      Style.make(~marginTop="1rem", ())->styleWithMediaQuery(
-        ~mediaQuery=theme.breakpoints.up->Any.unsafeGetValue("xs"),
-      ),
-      Style.make(~paddingLeft="0", ~paddingRight="0", ())->styleWithMediaQuery(
-        ~mediaQuery=theme.breakpoints.down->Any.unsafeGetValue("xs"),
-      ),
+      Style.make(
+        ~paddingTop="1rem",
+        ~paddingLeft="0rem",
+        ~paddingRight="0rem",
+        (),
+      )->styleWithMediaQuery(~mediaQuery=theme.breakpoints.up->Any.unsafeGetValue("xs")),
+      Style.make(
+        ~paddingTop="1.5rem",
+        ~paddingLeft="1.5rem",
+        ~paddingRight="1.5rem",
+        (),
+      )->styleWithMediaQuery(~mediaQuery=theme.breakpoints.up->Any.unsafeGetValue("sm")),
+      Style.make(
+        ~paddingTop="2rem",
+        ~paddingLeft="2rem",
+        ~paddingRight="2rem",
+        (),
+      )->styleWithMediaQuery(~mediaQuery=theme.breakpoints.up->Any.unsafeGetValue("md")),
     }->stylesCombiner,
     "containerColorLight": Style.make(~backgroundColor="rgba(250, 250, 250, 0.75)", ()),
     "containerColorDark": Style.make(~backgroundColor="rgba(48, 48, 48, 0.75)", ()),
@@ -38,13 +48,23 @@ let make = () => {
   let isSmUp = Core.useMediaQuery(Core.useTheme()->Core.Breakpoint.get(#sm->#up))
   let isMdUp = Core.useMediaQuery(Core.useTheme()->Core.Breakpoint.get(#md->#up))
   let prefersDarkTheme = Core.useMediaQueryString("(prefers-color-scheme: dark)")
+  let topRef = React.useRef(Js.Nullable.null)
+  let contactTopRef = React.useRef(Js.Nullable.null)
+  let (_, dispatch) = React.useContext(Context.Context.t)
+
+  React.useEffect1(() => {
+    dispatch(Context.AddMenuItemTopRef(Contact, contactTopRef))
+
+    None
+  }, [contactTopRef])
 
   <Container
-    className={`${classes["container"]} ${prefersDarkTheme
-        ? classes["containerColorDark"]
-        : classes["containerColorLight"]}`}>
+    maxWidth=Container.MaxWidth.xl
+    classes={Container.Classes.make(~root=classes["container"], ())}
+    className={prefersDarkTheme ? classes["containerColorDark"] : classes["containerColorLight"]}
+    ref={topRef->Ref.domRef}>
     <Grid container=true direction=#column className={commonClasses["paragraphGap"]}>
-      <Grid item=true id="back-to-top-anchor">
+      <Grid item=true>
         <TopHeader />
       </Grid>
       <Grid item=true>
@@ -56,12 +76,12 @@ let make = () => {
       <Grid item=true>
         <Router />
       </Grid>
-      <Grid item=true>
+      <Grid item=true ref={contactTopRef->Ref.domRef}>
         <Contact.Content.Simple />
       </Grid>
     </Grid>
     <Snackbar />
-    <ScrollToTop>
+    <ScrollToTop backToTopRef=topRef>
       <Fab
         color=#secondary
         size={switch (isSmUp, isMdUp) {

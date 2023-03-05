@@ -15,9 +15,19 @@ let useStyles: Styles.useStyles<{
 
 @react.component
 let make = () => {
-  open Common.Constants.SectionAnchor
-
   let classes = useStyles(.)
+  let latestNewsTopRef = React.useRef(Js.Nullable.null)
+  let aboutUsTopRef = React.useRef(Js.Nullable.null)
+  let referencesTopRef = React.useRef(Js.Nullable.null)
+  let (_, dispatch) = React.useContext(App_Context.Context.t)
+
+  React.useEffect3(() => {
+    dispatch(App_Context.AddMenuItemTopRef(LatestNews, latestNewsTopRef))
+    dispatch(App_Context.AddMenuItemTopRef(AboutUs, aboutUsTopRef))
+    dispatch(App_Context.AddMenuItemTopRef(References, referencesTopRef))
+
+    None
+  }, (latestNewsTopRef, aboutUsTopRef, referencesTopRef))
 
   <Grid container=true className={classes["verticalGap"]}>
     <Grid item=true xs=Xs.\"12">
@@ -47,13 +57,13 @@ let make = () => {
     </Grid>
     <Grid item=true xs=Xs.\"12">
       <Grid container=true direction=#column alignItems=#stretch className={classes["verticalGap"]}>
-        <Home_Section colored=true anchor=latestNews>
+        <Home_Section colored=true topRef=latestNewsTopRef>
           <News.Section />
         </Home_Section>
-        <Home_Section anchor=aboutUs>
+        <Home_Section topRef=aboutUsTopRef>
           <AboutUs.Section />
         </Home_Section>
-        <Home_Section colored=true anchor=references>
+        <Home_Section colored=true topRef=referencesTopRef>
           <References.Section />
         </Home_Section>
       </Grid>

@@ -1,8 +1,7 @@
 open Mui
 open Mui.Grid
 open ReactDOM
-
-type t = LatestNews | AboutUs | References | Contact
+open App_Types
 
 let toLabel = page => {
   open Message.Menu
@@ -24,7 +23,7 @@ let useStyles: Styles.useStyles<{
 })
 
 @react.component
-let make = (~colored=false, ~anchor as id, ~children) => {
+let make = (~colored=false, ~children, ~topRef) => {
   let prefersDarkTheme = Core.useMediaQueryString("(prefers-color-scheme: dark)")
   let classes = useStyles(.)
   let commonClasses = Common.Style.useStyles(.)
@@ -36,7 +35,7 @@ let make = (~colored=false, ~anchor as id, ~children) => {
     | (false, _) => commonClasses["pageGutters"]
     }
 
-  <Grid item=true>
+  <Grid item=true ref={topRef->Ref.domRef}>
     <Grid container=true>
       {if colored {
         <Grid item=true xs=Xs.\"12">
@@ -45,7 +44,7 @@ let make = (~colored=false, ~anchor as id, ~children) => {
       } else {
         React.null
       }}
-      <Grid item=true xs=Xs.\"12" id className={createContainerStyling()}> children </Grid>
+      <Grid item=true xs=Xs.\"12" className={createContainerStyling()}> children </Grid>
       {if colored {
         <Grid item=true xs=Xs.\"12">
           <Divider />

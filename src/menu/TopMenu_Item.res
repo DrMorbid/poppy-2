@@ -1,6 +1,5 @@
-open Home.Section
 open Scroll
-open ReactDOM
+open App_Types
 
 let menuItems = isLatestNewsRead =>
   if isLatestNewsRead {
@@ -9,21 +8,20 @@ let menuItems = isLatestNewsRead =>
     list{AboutUs, References, Contact}
   }
 
-let scrollToSection = sectionAnchor => {
-  let anchor = querySelector(`#${sectionAnchor}`)
-  anchor->Belt.Option.forEach(anchor =>
-    anchor->scrollIntoView({behavior: #smooth, block: #start, inline: #start})
-  )
-}
+let scrollToSection = (sectionTopRef: React.ref<Js.Nullable.t<Dom.element>>) =>
+  sectionTopRef.current
+  ->Js.Nullable.toOption
+  ->Belt.Option.forEach(ref => ref->scrollIntoView(makeScrollOptions()))
 
-let onClick = (~onSuccess=() => (), homeSection) => {
-  open Common.Constants.SectionAnchor
+let onClick = (~onDrawerClose=?, ~refsMap, homeSection) => {
+  let scroll = () => refsMap->Belt.Map.get(homeSection)->Belt.Option.forEach(scrollToSection)
 
-  switch homeSection {
-  | LatestNews => latestNews->scrollToSection
-  | AboutUs => aboutUs->scrollToSection
-  | References => references->scrollToSection
-  | Contact => contact->scrollToSection
+  switch onDrawerClose {
+  | Some(onDrawerClose) => {
+      onDrawerClose()
+      Js.Global.setTimeout(() => scroll(), Common.Constants.drawerTransitionDuration)->ignore
+    }
+
+  | None => scroll()
   }
-  onSuccess()
 }

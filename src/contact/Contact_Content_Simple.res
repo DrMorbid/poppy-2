@@ -24,7 +24,7 @@ let make = () => {
   let onMapLoadingFinished = _ => setIsMapBeingLoaded(_ => false)
 
   <Grid container=true className={commonClasses["pageGutters"]}>
-    <Grid item=true xs=Xs.\"12" id=Common.Constants.SectionAnchor.contact>
+    <Grid item=true xs=Xs.\"12">
       <Grid container=true className={commonClasses["paragraphGap"]}>
         <Grid item=true xs=Xs.\"12" sm=Sm.\"6" md=Md.\"4">
           <Grid container=true>

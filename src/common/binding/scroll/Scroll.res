@@ -15,5 +15,12 @@ type scrollOptions = {
   block: [#start | #center | #end | #nearest],
   inline: [#start | #center | #end | #nearest],
 }
+let makeScrollOptions = (~block=#start, ~inline=#nearest, ~behavior=#smooth, ()): scrollOptions => {
+  {
+    block,
+    inline,
+    behavior,
+  }
+}
 
 @send external scrollIntoView: (Dom.element, scrollOptions) => unit = "scrollIntoView"
