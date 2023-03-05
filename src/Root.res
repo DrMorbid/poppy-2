@@ -2,11 +2,11 @@ open Mui
 
 @react.component
 let make = () => {
-  let prefersDarkTheme = Mui.Core.useMediaQueryString("(prefers-color-scheme: dark)")
+  let prefersDarkMode = Mui.Core.useMediaQueryString(Common.Constants.darkModeMediaQuery)
 
   <IntlProvider>
     <App.Context.Provider>
-      <ThemeProvider theme={App_Theme.theme(~prefersDarkTheme)}>
+      <ThemeProvider theme={App_Theme.theme(~prefersDarkMode)}>
         <CssBaseline />
         <App />
       </ThemeProvider>

@@ -1,15 +1,18 @@
 open Mui.Theme
 open Mui.ThemeOptions
+open ReactDOM
 
-type colors = {primary: string}
-
-let getColors = (~prefersDarkTheme) => {
-  primary: prefersDarkTheme ? "#303030" : "#fafafa",
+module Colors = {
+  let blue = "#009ada"
+  let green = "#68a130"
+  let yellow = "#ffe401"
+  let orange = "#f1a300"
+  let red = "#de0522"
+  let textLight = "rgba(0, 0, 0, 0.87)"
+  let textDark = "rgba(255, 255,255, 0.87)"
 }
 
-let theme = (~prefersDarkTheme) => {
-  let colors = getColors(~prefersDarkTheme)
-
+let theme = (~prefersDarkMode) => {
   create(
     make(
       ~typography=Typography.make(
@@ -51,13 +54,33 @@ let theme = (~prefersDarkTheme) => {
         (),
       ),
       ~palette=PaletteOptions.make(
-        ~\"type"=prefersDarkTheme ? "dark" : "light",
-        ~primary=Primary.make(~main=colors.primary, ()),
-        ~secondary=Secondary.make(~main="#009ada", ()),
-        ~error=Error.make(~main="#de0522", ()),
-        ~warning=Warning.make(~main="#f1a300", ()),
-        ~info=Info.make(~main="#ffe401", ()),
-        ~success=Success.make(~main="#68a130", ()),
+        ~\"type"=prefersDarkMode ? "dark" : "light",
+        ~primary=Primary.make(~main=Colors.blue, ()),
+        ~secondary=Secondary.make(~main=Colors.yellow, ()),
+        ~error=Error.make(~main=Colors.red, ()),
+        ~warning=Warning.make(~main=Colors.orange, ()),
+        ~info=Info.make(~main=Colors.blue, ()),
+        ~success=Success.make(~main=Colors.green, ()),
+        ~text=TypeText.make(~primary=prefersDarkMode ? Colors.textDark : Colors.textLight, ()),
+        (),
+      ),
+      ~overrides=Overrides.make(
+        ~\"MuiButton"=ButtonClassKey.make(
+          ~containedPrimary=Style.make(~color=prefersDarkMode ? Colors.textDark : "#ffffff", ()),
+          (),
+        ),
+        ~\"MuiButtonBase"=ButtonBaseClassKey.make(
+          ~root=Style.make(~color=prefersDarkMode ? Colors.textDark : Colors.textLight, ()),
+          (),
+        ),
+        ~\"MuiIconButton"=IconButtonClassKey.make(
+          ~root=Style.make(~color=prefersDarkMode ? Colors.textDark : Colors.textLight, ()),
+          (),
+        ),
+        ~\"MuiFab"=FabClassKey.make(
+          ~primary=Style.make(~color=prefersDarkMode ? Colors.textDark : "#ffffff", ()),
+          (),
+        ),
         (),
       ),
       (),

@@ -18,18 +18,18 @@ let useStyles: Styles.useStyles<{
   "coloredLight": string,
   "coloredDark": string,
 }> = Styles.makeStyles({
-  "coloredLight": Style.make(~backgroundColor="rgba(240, 240, 240, 0.75)", ()),
+  "coloredLight": Style.make(~backgroundColor="rgba(230, 230, 230, 0.75)", ()),
   "coloredDark": Style.make(~backgroundColor="rgba(70, 70, 70, 0.75)", ()),
 })
 
 @react.component
 let make = (~colored=false, ~children, ~topRef) => {
-  let prefersDarkTheme = Core.useMediaQueryString("(prefers-color-scheme: dark)")
+  let prefersDarkMode = Core.useMediaQueryString(Common.Constants.darkModeMediaQuery)
   let classes = useStyles(.)
   let commonClasses = Common.Style.useStyles(.)
 
   let createContainerStyling = () =>
-    switch (colored, prefersDarkTheme) {
+    switch (colored, prefersDarkMode) {
     | (true, true) => `${commonClasses["pageGutters"]} ${classes["coloredDark"]}`
     | (true, false) => `${commonClasses["pageGutters"]} ${classes["coloredLight"]}`
     | (false, _) => commonClasses["pageGutters"]

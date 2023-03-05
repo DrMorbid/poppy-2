@@ -7,3 +7,4 @@ let registrationAddressPaidParking1 = "https://frame.mapy.cz/s/gatunepako"
 let registrationAddressPaidParking2 = "https://frame.mapy.cz/s/jocofemeba"
 let facturationAddress = "https://frame.mapy.cz/s/gofosakuga"
 let drawerTransitionDuration = 250
+let darkModeMediaQuery = "(prefers-color-scheme: dark)"

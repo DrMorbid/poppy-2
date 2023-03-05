@@ -22,7 +22,7 @@ let make = () => {
 
   let onAppNameClick = _ => Home->App_Actions.goToPage(~dispatch)
 
-  <AppBar position=#static>
+  <AppBar position=#static color=#default>
     <Drawer drawerOpen onClose={() => setDrawerOpen(_ => false)} isLatestNewsRead />
     <Hidden smDown=true>
       <TopMenu_Toolbar isLatestNewsRead />
