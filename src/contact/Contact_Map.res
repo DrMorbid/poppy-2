@@ -3,28 +3,15 @@ open ReactDOM
 
 @react.component
 let make = (~url as src=?, ~isMapBeingLoaded as active, ~onMapLoadingFinished as onLoad) => {
-  let isSmUp = Core.useMediaQuery(Core.useTheme()->Core.Breakpoint.get(#sm->#up))
-  let isMdUp = Core.useMediaQuery(Core.useTheme()->Core.Breakpoint.get(#md->#up))
-
-  let getHeight = () =>
-    if isMdUp {
-      "100%"
-    } else if isSmUp {
-      "333px"
-    } else {
-      "280px"
-    }
+  let width = "100%"
+  let height = "95%"
 
   <ReactLoadingOverlay
     active
     spinner={<CircularProgress />}
     styles={{
-      wrapper: Js.Dict.fromArray([
-        ("position", "relative"),
-        ("width", "100%"),
-        ("height", getHeight()),
-      ]),
+      wrapper: Js.Dict.fromArray([("position", "relative"), ("width", width), ("height", height)]),
     }}>
-    <iframe style={Style.make(~border="none", ())} ?src width="100%" height={getHeight()} onLoad />
+    <iframe style={Style.make(~border="none", ())} ?src width height onLoad />
   </ReactLoadingOverlay>
 }
