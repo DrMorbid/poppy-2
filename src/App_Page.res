@@ -1,3 +1,5 @@
+open Mui
+
 type t = Home | Registrations | Contact
 
 module RoutePath = {
@@ -24,4 +26,13 @@ let toLabel = page => {
   | Registrations => registrations
   | Contact => contact
   }
+}
+
+@react.component
+let make = (~children) => {
+  let commonClasses = Common.Style.useStyles(.)
+
+  <Grid container=true className={commonClasses["pageGutters"]}>
+    <Grid item=true> children </Grid>
+  </Grid>
 }

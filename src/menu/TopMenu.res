@@ -8,6 +8,7 @@ module Item = TopMenu_Item
 let make = () => {
   let (drawerOpen, setDrawerOpen) = React.useState(() => false)
   let intl = useIntl()
+  let url = RescriptReactRouter.useUrl()
 
   let onAppNameClick = _ => App_Router.goTo(Home)
 
@@ -26,11 +27,13 @@ let make = () => {
               </Typography>
             </ButtonBase>
           </Grid>
-          <Grid item=true>
-            <IconButton onClick={_ => setDrawerOpen(_ => true)}>
-              <Common.Icon.Menu />
-            </IconButton>
-          </Grid>
+          {url->App_Router.isHomePage
+            ? <Grid item=true>
+                <IconButton onClick={_ => setDrawerOpen(_ => true)}>
+                  <Common.Icon.Menu />
+                </IconButton>
+              </Grid>
+            : React.null}
         </Grid>
       </Toolbar>
     </Hidden>

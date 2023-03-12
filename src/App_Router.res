@@ -1,14 +1,22 @@
-let goTo = page => {
-  RescriptReactRouter.push(page->App_Page.toRoutePath)
-}
+open RescriptReactRouter
+
+let goTo = page => push(page->App_Page.toRoutePath)
+
+let isHomePage = url => url.path->Belt.List.length == 0
 
 @react.component
 let make = () => {
-  let url = RescriptReactRouter.useUrl()
+  let url = useUrl()
 
   switch url.path {
-  | list{"registrations"} => <Registrations.Page />
-  | list{"contact"} => <Contact.Page />
+  | list{"registrations"} =>
+    <App_Page>
+      <Registrations.Page />
+    </App_Page>
+  | list{"contact"} =>
+    <App_Page>
+      <Contact.Page />
+    </App_Page>
   | list{} | _ => <Home.Page />
   }
 }
