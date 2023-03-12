@@ -14,9 +14,7 @@ let useStyles: Styles.useStyles<{
 let make = (~drawerOpen, ~onClose) => {
   let intl = useIntl()
   let classes = useStyles(.)
-  let ({menutItemTopRefs: refsMap, _}: App_Context.state, _) = React.useContext(
-    App_Context.Context.t,
-  )
+  let ({menuItemTargets, _}: App_Context.state, _) = React.useContext(App_Context.Context.t)
 
   <Drawer
     \"open"=drawerOpen
@@ -24,8 +22,11 @@ let make = (~drawerOpen, ~onClose) => {
     onClose={_ => onClose()}>
     <List className={classes["list"]}>
       {menuItems
-      ->Belt.List.map(section =>
-        <ListItem button=true onClick={_ => section->onClick(~onDrawerClose=onClose, ~refsMap)}>
+      ->Belt.List.mapWithIndex((index, section) =>
+        <ListItem
+          button=true
+          onClick={_ => section->onClick(~onDrawerClose=onClose, ~menuItemTargets)}
+          key={`menu-item-${index->Belt.Int.toString}`}>
           <ListItemText primary={intl->Intl.formatMessage(section->toLabel)->React.string} />
         </ListItem>
       )

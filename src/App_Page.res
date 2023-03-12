@@ -1,8 +1,9 @@
-type t = Home | Registrations
+type t = Home | Registrations | Contact
 
 module RoutePath = {
   let home = "/"
   let registrations = "/registrations"
+  let contact = "/contact"
 }
 
 let toRoutePath = page => {
@@ -11,6 +12,7 @@ let toRoutePath = page => {
   switch page {
   | Home => home
   | Registrations => registrations
+  | Contact => contact
   }
 }
 
@@ -20,5 +22,6 @@ let toLabel = page => {
   switch page {
   | Home => home
   | Registrations => registrations
+  | Contact => contact
   }
 }

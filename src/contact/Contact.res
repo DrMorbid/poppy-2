@@ -1,2 +1,3 @@
 module Map = Contact_Map
-module Content = Contact_Content
+module Page = Contact_Page
+module BottomBar = Contact_BottomBar

@@ -3,20 +3,28 @@ open App_Types
 
 let menuItems = list{LatestNews, AboutUs, References, Contact}
 
-let scrollToSection = (sectionTopRef: React.ref<Js.Nullable.t<Dom.element>>) =>
-  sectionTopRef.current
+let scrollToSection = (scrollableRef: React.ref<Js.Nullable.t<Dom.element>>) =>
+  scrollableRef.current
   ->Js.Nullable.toOption
   ->Belt.Option.forEach(ref => ref->scrollIntoView(makeScrollOptions()))
 
-let onClick = (~onDrawerClose=?, ~refsMap, homeSection) => {
-  let scroll = () => refsMap->Belt.Map.get(homeSection)->Belt.Option.forEach(scrollToSection)
+let onClick = (~onDrawerClose=?, ~menuItemTargets: App_Context.menuItemTargets, menuItem) => {
+  let goToTarget = () =>
+    menuItemTargets
+    ->Belt.Map.get(menuItem)
+    ->Belt.Option.forEach(menuItem =>
+      switch menuItem {
+      | ScrollableRef(scrollableRef) => scrollToSection(scrollableRef)
+      | Page(page) => App_Router.goTo(page)
+      }
+    )
 
   switch onDrawerClose {
   | Some(onDrawerClose) => {
       onDrawerClose()
-      Js.Global.setTimeout(() => scroll(), Common.Constants.drawerTransitionDuration)->ignore
+      Js.Global.setTimeout(() => goToTarget(), Common.Constants.drawerTransitionDuration)->ignore
     }
 
-  | None => scroll()
+  | None => goToTarget()
   }
 }

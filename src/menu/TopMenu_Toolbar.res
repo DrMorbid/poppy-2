@@ -22,20 +22,18 @@ let useStyles: Styles.useStyles<{
 let make = () => {
   let intl = useIntl()
   let classes = useStyles(.)
-  let ({menutItemTopRefs: refsMap, _}: App_Context.state, _) = React.useContext(
-    App_Context.Context.t,
-  )
+  let ({menuItemTargets, _}: App_Context.state, _) = React.useContext(App_Context.Context.t)
 
   <Toolbar>
     <Grid container=true justify=#"space-evenly">
       {menuItems
-      ->Belt.List.map(section =>
-        <Grid item=true>
+      ->Belt.List.mapWithIndex((index, menuItem) =>
+        <Grid item=true key={`menu-item-${index->Belt.Int.toString}`}>
           <Button
             size=#large
-            onClick={_ => section->onClick(~refsMap)}
+            onClick={_ => menuItem->onClick(~menuItemTargets)}
             classes={Button.Classes.make(~label=classes["label"], ())}>
-            {intl->Intl.formatMessage(section->toLabel)->React.string}
+            {intl->Intl.formatMessage(menuItem->toLabel)->React.string}
           </Button>
         </Grid>
       )

@@ -9,7 +9,7 @@ let make = () => {
   let (drawerOpen, setDrawerOpen) = React.useState(() => false)
   let intl = useIntl()
 
-  let onAppNameClick = _ => Home->App_Actions.goToPage
+  let onAppNameClick = _ => App_Router.goTo(Home)
 
   <AppBar position=#static color=#default>
     <Drawer drawerOpen onClose={() => setDrawerOpen(_ => false)} />

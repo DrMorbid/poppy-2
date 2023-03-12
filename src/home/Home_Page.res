@@ -22,9 +22,9 @@ let make = () => {
   let (_, dispatch) = React.useContext(App_Context.Context.t)
 
   React.useEffect3(() => {
-    dispatch(App_Context.AddMenuItemTopRef(LatestNews, latestNewsTopRef))
-    dispatch(App_Context.AddMenuItemTopRef(AboutUs, aboutUsTopRef))
-    dispatch(App_Context.AddMenuItemTopRef(References, referencesTopRef))
+    dispatch(App_Context.AddMenuItemScrollableRef(LatestNews, latestNewsTopRef))
+    dispatch(App_Context.AddMenuItemScrollableRef(AboutUs, aboutUsTopRef))
+    dispatch(App_Context.AddMenuItemScrollableRef(References, referencesTopRef))
 
     None
   }, (latestNewsTopRef, aboutUsTopRef, referencesTopRef))
@@ -33,10 +33,10 @@ let make = () => {
     <Grid item=true xs=Xs.\"12">
       <ReactMaterialUiCarousel autoPlay=true indicators=false animation=#slide>
         {[
-          <CarouselItem image="/kids/pexels-bess-hamiti-35188.jpg" />,
-          <CarouselItem image="/kids/pexels-lukas-296301.jpg" />,
-          <CarouselItem image="/kids/pexels-samer-daboul-1212805.jpg" />,
-          <CarouselItem image="/kids/pexels-samer-daboul-1815257.jpg" />,
+          <CarouselItem image="/kids/pexels-bess-hamiti-35188.jpg" key="carousel-item-1" />,
+          <CarouselItem image="/kids/pexels-lukas-296301.jpg" key="carousel-item-1" />,
+          <CarouselItem image="/kids/pexels-samer-daboul-1212805.jpg" key="carousel-item-1" />,
+          <CarouselItem image="/kids/pexels-samer-daboul-1815257.jpg" key="carousel-item-1" />,
         ]}
       </ReactMaterialUiCarousel>
     </Grid>
@@ -66,6 +66,9 @@ let make = () => {
         <Home_Section colored=true topRef=referencesTopRef>
           <References.Section />
         </Home_Section>
+        <Grid item=true>
+          <Contact.BottomBar />
+        </Grid>
       </Grid>
     </Grid>
   </Grid>

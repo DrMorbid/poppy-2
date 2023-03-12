@@ -25,9 +25,9 @@ let make = () => {
     e->ReactEvent.Synthetic.preventDefault
   }
 
-  let onLogoClick = _ => Home->App_Actions.goToPage
+  let onLogoClick = _ => App_Router.goTo(Home)
 
-  let onRegisterClick = _ => Registrations->App_Actions.goToPage
+  let onRegisterClick = _ => App_Router.goTo(Registrations)
 
   <Container>
     <Grid item=true>

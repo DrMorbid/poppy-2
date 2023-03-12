@@ -1,3 +1,5 @@
+open App_Types
+
 module type Config = {
   type context
   let defaultValue: context
@@ -11,24 +13,25 @@ module Make = (Config: Config) => {
   }
 }
 
-type state = {
-  menutItemTopRefs: Belt.Map.t<
-    App_Types.MenuItemsTopRefsMap.t,
-    React.ref<Js.Nullable.t<Dom.element>>,
-    App_Types.MenuItemsTopRefsMap.identity,
-  >,
-}
+type menuItemTarget = ScrollableRef(React.ref<Js.Nullable.t<Dom.element>>) | Page(App_Page.t)
+
+type menuItemTargets = Belt.Map.t<MenuItemTargetsMap.t, menuItemTarget, MenuItemTargetsMap.identity>
+
+type state = {menuItemTargets: menuItemTargets}
 
 let initialState = {
-  menutItemTopRefs: Belt.Map.make(~id=module(App_Types.MenuItemsTopRefsMap)),
+  menuItemTargets: Belt.Map.make(~id=module(MenuItemTargetsMap))->Belt.Map.set(
+    Contact,
+    Page(App_Page.Contact),
+  ),
 }
 
-type action = AddMenuItemTopRef(App_Types.homeSection, React.ref<Js.Nullable.t<Dom.element>>)
+type action = AddMenuItemScrollableRef(menuItem, React.ref<Js.Nullable.t<Dom.element>>)
 
 let reducer = (state, action) =>
   switch action {
-  | AddMenuItemTopRef(homeSection, ref) => {
-      menutItemTopRefs: state.menutItemTopRefs->Belt.Map.set(homeSection, ref),
+  | AddMenuItemScrollableRef(menuItem, ref) => {
+      menuItemTargets: state.menuItemTargets->Belt.Map.set(menuItem, ScrollableRef(ref)),
     }
   }
 

@@ -1,7 +1,6 @@
 open Mui
 open ReactDOM
 open Utils.Style
-open App_Types
 
 module Theme = App_Theme
 module Context = App_Context
@@ -49,14 +48,6 @@ let make = () => {
   let isMdUp = Core.useMediaQuery(Core.useTheme()->Core.Breakpoint.get(#md->#up))
   let prefersDarkMode = Core.useMediaQueryString(Common.Constants.darkModeMediaQuery)
   let topRef = React.useRef(Js.Nullable.null)
-  let contactTopRef = React.useRef(Js.Nullable.null)
-  let (_, dispatch) = React.useContext(Context.Context.t)
-
-  React.useEffect1(() => {
-    dispatch(Context.AddMenuItemTopRef(Contact, contactTopRef))
-
-    None
-  }, [contactTopRef])
 
   <Container
     maxWidth=Container.MaxWidth.xl
@@ -72,9 +63,6 @@ let make = () => {
       </Grid>
       <Grid item=true>
         <Router />
-      </Grid>
-      <Grid item=true ref={contactTopRef->Ref.domRef}>
-        <Contact.Content.Simple />
       </Grid>
     </Grid>
     <Snackbar />

@@ -1,7 +1,7 @@
-type homeSection = LatestNews | AboutUs | References | Contact
+type menuItem = LatestNews | AboutUs | References | Contact
 
-module MenuItemsTopRefsMap = Belt.Id.MakeComparable({
-  type t = homeSection
+module MenuItemTargetsMap = Belt.Id.MakeComparable({
+  type t = menuItem
   let cmp = (a, b) =>
     switch (a, b) {
     | (LatestNews, AboutUs | References | Contact)
