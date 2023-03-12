@@ -71,9 +71,6 @@ let make = () => {
         <TopMenu />
       </Grid>
       <Grid item=true>
-        <News.Message />
-      </Grid>
-      <Grid item=true>
         <Router />
       </Grid>
       <Grid item=true ref={contactTopRef->Ref.domRef}>

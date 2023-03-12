@@ -19,16 +19,15 @@ let make = () => {
   let intl = useIntl()
   let classes = useStyles(.)
   let commonClasses = Common.Style.useStyles(.)
-  let (_, dispatch) = React.useContext(App_Context.Context.t)
 
   let onEmailUs = e => {
     location->Location.setHref(`mailto:${Common.Constants.infoEmail}`)
     e->ReactEvent.Synthetic.preventDefault
   }
 
-  let onLogoClick = _ => Home->App_Actions.goToPage(~dispatch)
+  let onLogoClick = _ => Home->App_Actions.goToPage
 
-  let onRegisterClick = _ => Registrations->App_Actions.goToPage(~dispatch)
+  let onRegisterClick = _ => Registrations->App_Actions.goToPage
 
   <Container>
     <Grid item=true>

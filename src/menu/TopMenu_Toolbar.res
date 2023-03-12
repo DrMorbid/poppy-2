@@ -19,7 +19,7 @@ let useStyles: Styles.useStyles<{
 })
 
 @react.component
-let make = (~isLatestNewsRead) => {
+let make = () => {
   let intl = useIntl()
   let classes = useStyles(.)
   let ({menutItemTopRefs: refsMap, _}: App_Context.state, _) = React.useContext(
@@ -28,7 +28,7 @@ let make = (~isLatestNewsRead) => {
 
   <Toolbar>
     <Grid container=true justify=#"space-evenly">
-      {menuItems(isLatestNewsRead)
+      {menuItems
       ->Belt.List.map(section =>
         <Grid item=true>
           <Button

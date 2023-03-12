@@ -1,4 +1,3 @@
-let goToPage = (page, ~dispatch) => {
-  dispatch(App_Context.StoreActiveMenuItem(page))
+let goToPage = page => {
   RescriptReactRouter.push(page->App_Page.toRoutePath)
 }

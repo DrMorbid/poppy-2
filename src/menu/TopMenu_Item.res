@@ -1,12 +1,7 @@
 open Scroll
 open App_Types
 
-let menuItems = isLatestNewsRead =>
-  if isLatestNewsRead {
-    list{LatestNews, AboutUs, References, Contact}
-  } else {
-    list{AboutUs, References, Contact}
-  }
+let menuItems = list{LatestNews, AboutUs, References, Contact}
 
 let scrollToSection = (sectionTopRef: React.ref<Js.Nullable.t<Dom.element>>) =>
   sectionTopRef.current

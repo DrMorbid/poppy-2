@@ -11,7 +11,7 @@ let useStyles: Styles.useStyles<{
 })
 
 @react.component
-let make = (~drawerOpen, ~onClose, ~isLatestNewsRead) => {
+let make = (~drawerOpen, ~onClose) => {
   let intl = useIntl()
   let classes = useStyles(.)
   let ({menutItemTopRefs: refsMap, _}: App_Context.state, _) = React.useContext(
@@ -23,7 +23,7 @@ let make = (~drawerOpen, ~onClose, ~isLatestNewsRead) => {
     transitionDuration={Common.Constants.drawerTransitionDuration->Drawer.TransitionDuration.int}
     onClose={_ => onClose()}>
     <List className={classes["list"]}>
-      {menuItems(isLatestNewsRead)
+      {menuItems
       ->Belt.List.map(section =>
         <ListItem button=true onClick={_ => section->onClick(~onDrawerClose=onClose, ~refsMap)}>
           <ListItemText primary={intl->Intl.formatMessage(section->toLabel)->React.string} />
