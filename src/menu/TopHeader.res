@@ -37,7 +37,7 @@ let make = () => {
     <Hidden smDown=true>
       <Grid item=true className={classes["logoContainer"]}>
         <ButtonBase onClick=onLogoClick className={commonClasses["fullWidth"]}>
-          <img src="/poppy_logo.jpg" className={classes["logo"]} />
+          <img src="/poppy-logo.png" className={classes["logo"]} />
         </ButtonBase>
       </Grid>
     </Hidden>
