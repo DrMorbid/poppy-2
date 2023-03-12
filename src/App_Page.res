@@ -1,11 +1,12 @@
 open Mui
 
-type t = Home | Registrations | Contact
+type t = Home | Registrations | Contact | QAndA
 
 module RoutePath = {
   let home = "/"
   let registrations = "/registrations"
   let contact = "/contact"
+  let qAndA = "/qAndA"
 }
 
 let toRoutePath = page => {
@@ -15,6 +16,7 @@ let toRoutePath = page => {
   | Home => home
   | Registrations => registrations
   | Contact => contact
+  | QAndA => qAndA
   }
 }
 
@@ -25,6 +27,7 @@ let toLabel = page => {
   | Home => home
   | Registrations => registrations
   | Contact => contact
+  | QAndA => qAndA
   }
 }
 

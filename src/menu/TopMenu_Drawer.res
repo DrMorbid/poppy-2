@@ -2,7 +2,6 @@ open Mui
 open ReactIntl
 open ReactDOM
 open TopMenu_Item
-open Home.Section
 
 let useStyles: Styles.useStyles<{
   "list": string,
@@ -27,7 +26,9 @@ let make = (~drawerOpen, ~onClose) => {
           button=true
           onClick={_ => section->onClick(~onDrawerClose=onClose, ~menuItemTargets)}
           key={`menu-item-${index->Belt.Int.toString}`}>
-          <ListItemText primary={intl->Intl.formatMessage(section->toLabel)->React.string} />
+          <ListItemText
+            primary={intl->Intl.formatMessage(section->App_Types.MenuItem.toLabel)->React.string}
+          />
         </ListItem>
       )
       ->Belt.List.toArray

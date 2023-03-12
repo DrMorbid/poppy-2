@@ -1,7 +1,7 @@
 open Scroll
-open App_Types
+open App_Types.MenuItem
 
-let menuItems = list{LatestNews, AboutUs, References, Contact}
+let menuItems = list{LatestNews, AboutUs, QAndA, References, Contact}
 
 let scrollToSection = (scrollableRef: React.ref<Js.Nullable.t<Dom.element>>) =>
   scrollableRef.current

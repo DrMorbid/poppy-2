@@ -1,18 +1,6 @@
 open Mui
 open Mui.Grid
 open ReactDOM
-open App_Types
-
-let toLabel = page => {
-  open Message.Menu
-
-  switch page {
-  | LatestNews => news
-  | AboutUs => aboutUs
-  | References => references
-  | Contact => contact
-  }
-}
 
 let useStyles: Styles.useStyles<{
   "coloredLight": string,

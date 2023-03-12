@@ -17,6 +17,10 @@ let make = () => {
     <App_Page>
       <Contact.Page />
     </App_Page>
+  | list{"qAndA"} =>
+    <App_Page>
+      <QAndA.Page />
+    </App_Page>
   | list{} | _ => <Home.Page />
   }
 }

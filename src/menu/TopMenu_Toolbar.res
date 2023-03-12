@@ -1,7 +1,6 @@
 open Mui
 open ReactIntl
 open TopMenu_Item
-open Home.Section
 open ReactDOM
 
 let useStyles: Styles.useStyles<{
@@ -33,7 +32,7 @@ let make = () => {
             size=#large
             onClick={_ => menuItem->onClick(~menuItemTargets)}
             classes={Button.Classes.make(~label=classes["label"], ())}>
-            {intl->Intl.formatMessage(menuItem->toLabel)->React.string}
+            {intl->Intl.formatMessage(menuItem->App_Types.MenuItem.toLabel)->React.string}
           </Button>
         </Grid>
       )

@@ -15,18 +15,21 @@ module Make = (Config: Config) => {
 
 type menuItemTarget = ScrollableRef(React.ref<Js.Nullable.t<Dom.element>>) | Page(App_Page.t)
 
-type menuItemTargets = Belt.Map.t<MenuItemTargetsMap.t, menuItemTarget, MenuItemTargetsMap.identity>
+type menuItemTargets = Belt.Map.t<
+  MenuItem.TargetsMap.t,
+  menuItemTarget,
+  MenuItem.TargetsMap.identity,
+>
 
 type state = {menuItemTargets: menuItemTargets}
 
 let initialState = {
-  menuItemTargets: Belt.Map.make(~id=module(MenuItemTargetsMap))->Belt.Map.set(
-    Contact,
-    Page(App_Page.Contact),
-  ),
+  menuItemTargets: Belt.Map.make(~id=module(MenuItem.TargetsMap))
+  ->Belt.Map.set(Contact, Page(App_Page.Contact))
+  ->Belt.Map.set(QAndA, Page(App_Page.QAndA)),
 }
 
-type action = AddMenuItemScrollableRef(menuItem, React.ref<Js.Nullable.t<Dom.element>>)
+type action = AddMenuItemScrollableRef(MenuItem.t, React.ref<Js.Nullable.t<Dom.element>>)
 
 let reducer = (state, action) =>
   switch action {

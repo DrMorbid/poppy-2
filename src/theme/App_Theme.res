@@ -81,6 +81,10 @@ let theme = (~prefersDarkMode) => {
           ~primary=Style.make(~color=prefersDarkMode ? Colors.textDark : "#ffffff", ()),
           (),
         ),
+        ~\"MuiAccordion"=AccordionClassKey.make(
+          ~root=Style.make(~backgroundColor="transparent", ()),
+          (),
+        ),
         (),
       ),
       (),
