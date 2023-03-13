@@ -27,7 +27,9 @@ let make = () => {
     body=Element(
       <Grid container=true>
         <Grid item=true xs=Xs.\"12">
-          <Grid container=true className={commonClasses["paragraphGap"]}>
+          <Grid
+            container=true
+            className={`${commonClasses["paragraphGap"]} ${commonClasses["marginBottom"]}`}>
             <Grid item=true xs=Xs.\"12">
               <Typography className={commonClasses["bold"]}>
                 {intl->Intl.formatMessage(openingTimes)->React.string}
@@ -46,18 +48,19 @@ let make = () => {
               <Grid container=true>
                 <Grid item=true xs=Xs.\"12">
                   <Typography className={commonClasses["bold"]}>
-                    {intl->Intl.formatMessage(companyName)->React.string}
+                    {intl->Intl.formatMessage(registrationDatabaseTitle)->React.string}
                   </Typography>
-                </Grid>
-                <Grid item=true xs=Xs.\"12">
-                  <Typography> {intl->Intl.formatMessage(companyOwner)->React.string} </Typography>
                 </Grid>
                 <Grid item=true xs=Xs.\"12">
                   <Typography>
-                    {(intl->Intl.formatMessage(companyEmail) ++
-                    " " ++
-                    Common.Constants.companyEmail)->React.string}
+                    {intl->Intl.formatMessage(registrationDatabasePerson)->React.string}
                   </Typography>
+                </Grid>
+                <Grid item=true xs=Xs.\"12">
+                  <Typography> {Common.Constants.infoPhone->React.string} </Typography>
+                </Grid>
+                <Grid item=true xs=Xs.\"12">
+                  <Typography> {Common.Constants.infoEmail->React.string} </Typography>
                 </Grid>
               </Grid>
             </Grid>
@@ -66,22 +69,16 @@ let make = () => {
               <Grid container=true>
                 <Grid item=true xs=Xs.\"12">
                   <Typography className={commonClasses["bold"]}>
-                    {intl->Intl.formatMessage(infoContactHeader)->React.string}
+                    {intl->Intl.formatMessage(clientsProductionDirectionTitle)->React.string}
                   </Typography>
                 </Grid>
                 <Grid item=true xs=Xs.\"12">
                   <Typography>
-                    {(intl->Intl.formatMessage(infoContactPhone) ++
-                    " " ++
-                    Common.Constants.infoPhone)->React.string}
+                    {intl->Intl.formatMessage(clientsProductionDirectionPerson)->React.string}
                   </Typography>
                 </Grid>
                 <Grid item=true xs=Xs.\"12">
-                  <Typography>
-                    {(intl->Intl.formatMessage(infoContactEmail) ++
-                    " " ++
-                    Common.Constants.infoEmail)->React.string}
-                  </Typography>
+                  <Typography> {Common.Constants.bossEmail->React.string} </Typography>
                 </Grid>
               </Grid>
             </Grid>
@@ -140,6 +137,13 @@ let make = () => {
                   <Common.OpenInNewButton
                     label=facturationAddress onClick={onClick(Common.Constants.facturationAddress)}
                   />
+                </Grid>
+              </Grid>
+            </Grid>
+            <Grid item=true xs=Xs.\"12">
+              <Grid container=true>
+                <Grid item=true xs=Xs.\"12">
+                  <Typography> {intl->Intl.formatMessage(castingsInfo)->React.string} </Typography>
                 </Grid>
               </Grid>
             </Grid>

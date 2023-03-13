@@ -19,9 +19,9 @@ let make = () => {
     </Hidden>
     <Hidden mdUp=true>
       <Toolbar>
-        <Grid container=true justify=#"space-between" alignItems=#center>
-          {if url->App_Router.isHomePage {
-            <>
+        {if url->App_Router.isHomePage {
+          <Grid container=true justify=#"space-between" alignItems=#center>
+            {<>
               <Grid item=true>
                 <ButtonBase onClick=onAppNameClick>
                   <Typography variant=#h4>
@@ -34,13 +34,15 @@ let make = () => {
                   <Common.Icon.Menu />
                 </IconButton>
               </Grid>
-            </>
-          } else {
+            </>}
+          </Grid>
+        } else {
+          <Grid container=true justify=#center>
             <Button variant=#outlined size=#large onClick=onAppNameClick>
               {intl->Intl.formatMessage(Home->App_Page.toLabel)->React.string}
             </Button>
-          }}
-        </Grid>
+          </Grid>
+        }}
       </Toolbar>
     </Hidden>
   </AppBar>
