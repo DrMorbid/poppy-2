@@ -21,11 +21,13 @@ let useStyles: Styles.useStyles<{
 let make = () => {
   let intl = useIntl()
   let classes = useStyles(.)
+  let url = RescriptReactRouter.useUrl()
   let ({menuItemTargets, _}: App_Context.state, _) = React.useContext(App_Context.Context.t)
 
   <Toolbar>
     <Grid container=true justify=#"space-evenly">
-      {menuItems
+      {url
+      ->getMenuItems
       ->Belt.List.mapWithIndex((index, menuItem) =>
         <Grid item=true key={`menu-item-${index->Belt.Int.toString}`}>
           <Button

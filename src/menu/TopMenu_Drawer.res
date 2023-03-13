@@ -13,14 +13,17 @@ let useStyles: Styles.useStyles<{
 let make = (~drawerOpen, ~onClose) => {
   let intl = useIntl()
   let classes = useStyles(.)
+  let url = RescriptReactRouter.useUrl()
   let ({menuItemTargets, _}: App_Context.state, _) = React.useContext(App_Context.Context.t)
 
   <Drawer
     \"open"=drawerOpen
     transitionDuration={Common.Constants.drawerTransitionDuration->Drawer.TransitionDuration.int}
+    anchor=#right
     onClose={_ => onClose()}>
     <List className={classes["list"]}>
-      {menuItems
+      {url
+      ->getMenuItems
       ->Belt.List.mapWithIndex((index, section) =>
         <ListItem
           button=true

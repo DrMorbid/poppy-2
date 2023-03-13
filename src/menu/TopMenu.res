@@ -20,20 +20,26 @@ let make = () => {
     <Hidden mdUp=true>
       <Toolbar>
         <Grid container=true justify=#"space-between" alignItems=#center>
-          <Grid item=true>
-            <ButtonBase onClick=onAppNameClick>
-              <Typography variant=#h4>
-                {intl->Intl.formatMessage(Message.appName)->React.string}
-              </Typography>
-            </ButtonBase>
-          </Grid>
-          {url->App_Router.isHomePage
-            ? <Grid item=true>
+          {if url->App_Router.isHomePage {
+            <>
+              <Grid item=true>
+                <ButtonBase onClick=onAppNameClick>
+                  <Typography variant=#h4>
+                    {intl->Intl.formatMessage(Message.appName)->React.string}
+                  </Typography>
+                </ButtonBase>
+              </Grid>
+              <Grid item=true>
                 <IconButton onClick={_ => setDrawerOpen(_ => true)}>
                   <Common.Icon.Menu />
                 </IconButton>
               </Grid>
-            : React.null}
+            </>
+          } else {
+            <Button variant=#outlined size=#large onClick=onAppNameClick>
+              {intl->Intl.formatMessage(Home->App_Page.toLabel)->React.string}
+            </Button>
+          }}
         </Grid>
       </Toolbar>
     </Hidden>

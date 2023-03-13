@@ -1,23 +1,26 @@
 module MenuItem = {
-  type t = LatestNews | AboutUs | QAndA | References | Contact
+  type t = Home | LatestNews | AboutUs | QAndA | References | Contact
 
   module TargetsMap = Belt.Id.MakeComparable({
     type t = t
     let cmp = (a, b) =>
       switch (a, b) {
+      | (Home, LatestNews | AboutUs | QAndA | References | Contact)
       | (LatestNews, AboutUs | QAndA | References | Contact)
       | (AboutUs, QAndA | References | Contact)
       | (QAndA, References | Contact)
       | (References, Contact) => -1
+      | (Home, Home)
       | (LatestNews, LatestNews)
       | (AboutUs, AboutUs)
       | (QAndA, QAndA)
       | (References, References)
       | (Contact, Contact) => 0
-      | (Contact, LatestNews | AboutUs | QAndA | References)
-      | (References, LatestNews | AboutUs | QAndA)
-      | (QAndA, LatestNews | AboutUs)
-      | (AboutUs, LatestNews) => 1
+      | (Contact, Home | LatestNews | AboutUs | QAndA | References)
+      | (References, Home | LatestNews | AboutUs | QAndA)
+      | (QAndA, Home | LatestNews | AboutUs)
+      | (AboutUs, Home | LatestNews)
+      | (LatestNews, Home) => 1
       }
   })
 
@@ -25,6 +28,7 @@ module MenuItem = {
     open Message.Menu
 
     switch page {
+    | Home => home
     | LatestNews => news
     | AboutUs => aboutUs
     | References => references

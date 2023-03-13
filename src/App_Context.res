@@ -25,8 +25,9 @@ type state = {menuItemTargets: menuItemTargets}
 
 let initialState = {
   menuItemTargets: Belt.Map.make(~id=module(MenuItem.TargetsMap))
-  ->Belt.Map.set(Contact, Page(App_Page.Contact))
-  ->Belt.Map.set(QAndA, Page(App_Page.QAndA)),
+  ->Belt.Map.set(Home, Page(App_Page.Home))
+  ->Belt.Map.set(QAndA, Page(App_Page.QAndA))
+  ->Belt.Map.set(Contact, Page(App_Page.Contact)),
 }
 
 type action = AddMenuItemScrollableRef(MenuItem.t, React.ref<Js.Nullable.t<Dom.element>>)

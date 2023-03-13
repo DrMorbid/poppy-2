@@ -11,7 +11,7 @@ let make = () => {
 
   <Common.Text
     header
-    afterHeader={<Typography variant=#h3>
+    afterHeader={<Typography variant=#h4>
       {intl->Intl.formatMessage(subHeader)->React.string}
     </Typography>}
     body=Element(

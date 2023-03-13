@@ -48,7 +48,6 @@ let make = () => {
   let isMdUp = Core.useMediaQuery(Core.useTheme()->Core.Breakpoint.get(#md->#up))
   let prefersDarkMode = Core.useMediaQueryString(Common.Constants.darkModeMediaQuery)
   let topRef = React.useRef(Js.Nullable.null)
-  let url = RescriptReactRouter.useUrl()
 
   <Container
     maxWidth=Container.MaxWidth.xl
@@ -59,11 +58,9 @@ let make = () => {
       <Grid item=true>
         <TopHeader />
       </Grid>
-      {url->Router.isHomePage || !isMdUp
-        ? <Grid item=true>
-            <TopMenu />
-          </Grid>
-        : React.null}
+      <Grid item=true>
+        <TopMenu />
+      </Grid>
       <Grid item=true>
         <Router />
       </Grid>

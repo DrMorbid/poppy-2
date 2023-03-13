@@ -1,7 +1,8 @@
 open Scroll
 open App_Types.MenuItem
 
-let menuItems = list{LatestNews, AboutUs, QAndA, References, Contact}
+let getMenuItems = url =>
+  url->App_Router.isHomePage ? list{LatestNews, AboutUs, QAndA, References, Contact} : list{Home}
 
 let scrollToSection = (scrollableRef: React.ref<Js.Nullable.t<Dom.element>>) =>
   scrollableRef.current
