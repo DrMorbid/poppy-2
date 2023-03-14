@@ -27,7 +27,7 @@ module Text = {
 }
 
 @react.component
-let make = (~header=?, ~afterHeader=?, ~body, ~centerAll=?) => {
+let make = (~header=?, ~headerVariant=#h2, ~afterHeader=?, ~body, ~centerAll=?) => {
   let intl = useIntl()
   let classes = Common_Style.useStyles(.)
 
@@ -43,7 +43,9 @@ let make = (~header=?, ~afterHeader=?, ~body, ~centerAll=?) => {
   <Grid container=true className={getContainerClassname()}>
     {header->Belt.Option.mapWithDefault(React.null, header =>
       <Grid item=true xs=Grid.Xs.\"12" className={classes["centeredText"]}>
-        <Typography variant=#h2> {intl->Intl.formatMessage(header)->React.string} </Typography>
+        <Typography variant=headerVariant>
+          {intl->Intl.formatMessage(header)->React.string}
+        </Typography>
       </Grid>
     )}
     {afterHeader->Belt.Option.mapWithDefault(React.null, afterHeader =>

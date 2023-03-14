@@ -14,6 +14,8 @@ let useStyles: Styles.useStyles<{
   "fullWidth": string,
   "centeredText": string,
   "pageGutters": string,
+  "islandsVerticalGap": string,
+  "islandsHorizontalGap": string,
 }> = Styles.makeStylesWithTheme(theme =>
   {
     "headerGap": headerGap,
@@ -35,5 +37,7 @@ let useStyles: Styles.useStyles<{
         ~mediaQuery=theme.breakpoints.down->Any.unsafeGetValue("xs"),
       ),
     }->stylesCombiner,
+    "islandsVerticalGap": Style.make(~gridRowGap="2rem", ()),
+    "islandsHorizontalGap": Style.make(~paddingLeft="1rem", ~paddingRight="1rem", ()),
   }
 )
