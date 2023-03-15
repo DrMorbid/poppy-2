@@ -48,6 +48,13 @@ let make = () => {
   let isMdUp = Core.useMediaQuery(Core.useTheme()->Core.Breakpoint.get(#md->#up))
   let prefersDarkMode = Core.useMediaQueryString(Common.Constants.darkModeMediaQuery)
   let topRef = React.useRef(Js.Nullable.null)
+  let (_, dispatch) = React.useContext(App_Context.Context.t)
+
+  React.useEffect1(() => {
+    dispatch(SetTopRef(topRef))
+
+    None
+  }, [topRef])
 
   <Container
     maxWidth=Container.MaxWidth.xl
@@ -66,7 +73,7 @@ let make = () => {
       </Grid>
     </Grid>
     <Snackbar />
-    <ScrollToTop backToTopRef=topRef>
+    <ScrollToTop>
       <Fab
         color=#primary
         size={switch (isSmUp, isMdUp) {

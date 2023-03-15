@@ -1,9 +1,5 @@
 open RescriptReactRouter
 
-let goTo = page => push(page->App_Page.toRoutePath)
-
-let isHomePage = url => url.path->Belt.List.length == 0
-
 @react.component
 let make = () => {
   let url = useUrl()
@@ -20,6 +16,10 @@ let make = () => {
   | list{"qAndA"} =>
     <App_Page>
       <QAndA.Page />
+    </App_Page>
+  | list{"references"} =>
+    <App_Page>
+      <References.Page />
     </App_Page>
   | list{} | _ => <Home.Page />
   }

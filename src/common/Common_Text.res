@@ -1,9 +1,12 @@
 open Mui
 open ReactIntl
 
+type fragmentContent = Message(ReactIntl.message) | String(string)
+
 type fragment = {
-  content: ReactIntl.message,
+  content: fragmentContent,
   bold?: bool,
+  appendSpace?: bool,
 }
 
 type fragmentParagraph = list<fragment>
@@ -18,6 +21,24 @@ type body =
   | Fragments(list<fragmentParagraph>)
   | Lists(list<listParagraph>)
   | Element(Jsx.element)
+
+module FragmentContent = {
+  let toString = (~intl, content) =>
+    switch content {
+    | Message(message) => intl->Intl.formatMessage(message)
+    | String(string) => string
+    }
+
+  let addSuffix = (~appendSpace=?, ~index, ~fragmentsCount) =>
+    index < fragmentsCount - 1 && appendSpace->Belt.Option.getWithDefault(false) ? " " : ""
+
+  @react.component
+  let make = (~content, ~index, ~fragmentsCount, ~appendSpace=?) => {
+    let intl = useIntl()
+
+    (content->toString(~intl) ++ addSuffix(~index, ~fragmentsCount, ~appendSpace?))->React.string
+  }
+}
 
 module Text = {
   @react.component
@@ -71,9 +92,12 @@ let make = (~header=?, ~headerVariant=#h2, ~afterHeader=?, ~body, ~centerAll=?) 
               component={"span"->Typography.Component.string}
               className={fragment.bold->Belt.Option.getWithDefault(false) ? classes["bold"] : ""}
               key={`fragment-${index->Belt.Int.toString}`}>
-              {(intl->Intl.formatMessage(fragment.content) ++ (
-                  index < fragments->Belt.List.size - 1 ? " " : ""
-                ))->React.string}
+              <FragmentContent
+                content=fragment.content
+                index
+                fragmentsCount={fragments->Belt.List.size}
+                appendSpace=?fragment.appendSpace
+              />
             </Typography>
           )
           ->Belt.List.toArray

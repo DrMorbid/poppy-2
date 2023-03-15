@@ -1,12 +1,14 @@
 open Mui
+open RescriptReactRouter
 
-type t = Home | Registrations | Contact | QAndA
+type t = Home | Registrations | Contact | QAndA | References
 
 module RoutePath = {
   let home = "/"
   let registrations = "/registrations"
   let contact = "/contact"
   let qAndA = "/qAndA"
+  let references = "/references"
 }
 
 let toRoutePath = page => {
@@ -17,6 +19,7 @@ let toRoutePath = page => {
   | Registrations => registrations
   | Contact => contact
   | QAndA => qAndA
+  | References => references
   }
 }
 
@@ -28,8 +31,13 @@ let toLabel = page => {
   | Registrations => registrations
   | Contact => contact
   | QAndA => qAndA
+  | References => references
   }
 }
+
+let goTo = page => push(page->toRoutePath)
+
+let isHomePage = url => url.path->Belt.List.length == 0
 
 @react.component
 let make = (~children) => {

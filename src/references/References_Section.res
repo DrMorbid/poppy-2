@@ -19,7 +19,9 @@ module Island = {
       <Common.Text
         header
         headerVariant=#h4
-        body=Fragments(list{list{{content: content}, {content: sectionEtc}}})
+        body=Fragments(list{
+          list{{content: Message(content), appendSpace: true}, {content: Message(sectionEtc)}},
+        })
         centerAll=true
       />
     </Grid>
@@ -30,6 +32,12 @@ module Island = {
 let make = () => {
   let intl = useIntl()
   let commonClasses = Common.Style.useStyles(.)
+  let ({topRef, _}: App_Context.state, _) = React.useContext(App_Context.Context.t)
+
+  let onClick = e => {
+    App_ScrollToTop.onClick(~topRef?, ~behavior=#auto, e)
+    App_Page.goTo(References)
+  }
 
   <Grid container=true justify=#center className={commonClasses["islandsVerticalGap"]}>
     <Grid item=true>
@@ -50,7 +58,7 @@ let make = () => {
       />
     </Grid>
     <Grid item=true>
-      <Button variant=#contained color=#primary>
+      <Button variant=#contained color=#primary onClick>
         {intl->Intl.formatMessage(showMore)->React.string}
       </Button>
     </Grid>

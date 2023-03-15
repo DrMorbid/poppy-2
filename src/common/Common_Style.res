@@ -7,6 +7,7 @@ let headerGap = Style.make(~marginTop="2rem", ())
 let useStyles: Styles.useStyles<{
   "headerGap": string,
   "paragraphGap": string,
+  "sectionGap": string,
   "bold": string,
   "marginTopSm": string,
   "marginBottomSm": string,
@@ -20,6 +21,7 @@ let useStyles: Styles.useStyles<{
   {
     "headerGap": headerGap,
     "paragraphGap": Style.make(~gridRowGap="1rem", ()),
+    "sectionGap": Style.make(~gridRowGap="2rem", ()),
     "bold": Style.make(~fontWeight="bold !important", ()),
     "marginTopSm": Style.make(~marginTop="0.75rem", ()),
     "marginBottomSm": Style.make(~marginBottom="0.75rem", ()),

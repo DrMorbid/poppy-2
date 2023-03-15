@@ -2,7 +2,7 @@ open Scroll
 open App_Types.MenuItem
 
 let getMenuItems = url =>
-  url->App_Router.isHomePage ? list{LatestNews, AboutUs, QAndA, References, Contact} : list{Home}
+  url->App_Page.isHomePage ? list{LatestNews, AboutUs, QAndA, References, Contact} : list{Home}
 
 let scrollToSection = (scrollableRef: React.ref<Js.Nullable.t<Dom.element>>) =>
   scrollableRef.current
@@ -16,7 +16,7 @@ let onClick = (~onDrawerClose=?, ~menuItemTargets: App_Context.menuItemTargets, 
     ->Belt.Option.forEach(menuItem =>
       switch menuItem {
       | ScrollableRef(scrollableRef) => scrollToSection(scrollableRef)
-      | Page(page) => App_Router.goTo(page)
+      | Page(page) => App_Page.goTo(page)
       }
     )
 

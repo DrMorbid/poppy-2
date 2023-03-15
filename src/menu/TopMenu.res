@@ -10,7 +10,7 @@ let make = () => {
   let intl = useIntl()
   let url = RescriptReactRouter.useUrl()
 
-  let onAppNameClick = _ => App_Router.goTo(Home)
+  let onAppNameClick = _ => App_Page.goTo(Home)
 
   <AppBar position=#static color=#default>
     <Drawer drawerOpen onClose={() => setDrawerOpen(_ => false)} />
@@ -19,7 +19,7 @@ let make = () => {
     </Hidden>
     <Hidden mdUp=true>
       <Toolbar>
-        {if url->App_Router.isHomePage {
+        {if url->App_Page.isHomePage {
           <Grid container=true justify=#"space-between" alignItems=#center>
             {<>
               <Grid item=true>

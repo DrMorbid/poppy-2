@@ -19,9 +19,12 @@ let make = () => {
         <Section
           header=question1
           body=Fragments(list{
-            list{{content: answer1Paragraph1}},
-            list{{content: answer1Paragraph2Part1, bold: true}, {content: answer1Paragraph2Part2}},
-            list{{content: answer1Paragraph3}},
+            list{{content: Message(answer1Paragraph1)}},
+            list{
+              {content: Message(answer1Paragraph2Part1), bold: true, appendSpace: true},
+              {content: Message(answer1Paragraph2Part2)},
+            },
+            list{{content: Message(answer1Paragraph3)}},
           })
           key="question-1"
         />,
@@ -63,12 +66,15 @@ let make = () => {
           header=question7
           body=Fragments(list{
             list{
-              {content: answer7Paragraph1Part1},
-              {content: answer7Paragraph1Part2, bold: true},
-              {content: answer7Paragraph1Part3},
+              {content: Message(answer7Paragraph1Part1), appendSpace: true},
+              {content: Message(answer7Paragraph1Part2), bold: true, appendSpace: true},
+              {content: Message(answer7Paragraph1Part3)},
             },
-            list{{content: answer7Paragraph2Part1}, {content: answer7Paragraph2Part2, bold: true}},
-            list{{content: answer7Paragraph3}},
+            list{
+              {content: Message(answer7Paragraph2Part1), appendSpace: true},
+              {content: Message(answer7Paragraph2Part2), bold: true},
+            },
+            list{{content: Message(answer7Paragraph3)}},
           })
           key="question-7"
         />,
@@ -116,8 +122,8 @@ let make = () => {
           header=question12
           body=Fragments(list{
             list{
-              {content: answer12Paragraph1Part1},
-              {content: answer12Paragraph1Part2, bold: true},
+              {content: Message(answer12Paragraph1Part1), appendSpace: true},
+              {content: Message(answer12Paragraph1Part2), bold: true},
             },
           })
           key="question-12"
