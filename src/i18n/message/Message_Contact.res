@@ -20,12 +20,6 @@ let companyName =
     id: "5ecee400-bdeb-4d52-a101-25fe293e61e1",
     defaultMessage: "Poppy casting, s.r.o.",
   }
-let companyOwner =
-  @intl.description("Contact page - the company owner")
-  {
-    id: "588ddae1-8b2e-4141-b776-4cd9dfbc4447",
-    defaultMessage: "Mgr.art. Martina Popperová",
-  }
 let companyEmail =
   @intl.description("Contact page - the company email")
   {
@@ -116,23 +110,11 @@ let registrationDatabaseTitle =
     id: "5d579eb1-5251-4e0d-8343-2107a3e9c46d",
     defaultMessage: "REGISTRACE, databáze",
   }
-let registrationDatabasePerson =
-  @intl.description("Contact bottom bar - the Registration, database person")
-  {
-    id: "9713887e-eea1-4c46-8098-a5e56f5ccb40",
-    defaultMessage: "Mgr. Hana Kittnarová",
-  }
 let clientsProductionDirectionTitle =
   @intl.description("Contact bottom bar - the clients, production, pirection title")
   {
     id: "4225d293-3e8c-424a-b405-114c75fb030b",
     defaultMessage: "Pro klienty, produkce, režii",
-  }
-let clientsProductionDirectionPerson =
-  @intl.description("Contact bottom bar - the clients, production, pirection person")
-  {
-    id: "28e2a9ad-0402-4283-a88f-e64861fb30b9",
-    defaultMessage: "Mgr. art. Martina Popperová",
   }
 let studioRegistrationsTitle =
   @intl.description("Contact bottom bar - the studio - registrations, photosessions title")

@@ -1,6 +1,7 @@
 open Mui
 open Mui.Grid
 open ReactIntl
+open Message
 open Message.Contact
 
 @react.component
@@ -73,9 +74,7 @@ let make = () => {
                   </Typography>
                 </Grid>
                 <Grid item=true xs=Xs.\"12">
-                  <Typography>
-                    {intl->Intl.formatMessage(clientsProductionDirectionPerson)->React.string}
-                  </Typography>
+                  <Typography> {intl->Intl.formatMessage(companyOwner)->React.string} </Typography>
                 </Grid>
                 <Grid item=true xs=Xs.\"12">
                   <Typography> {Common.Constants.bossEmail->React.string} </Typography>

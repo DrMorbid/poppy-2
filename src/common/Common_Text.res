@@ -3,11 +3,9 @@ open ReactIntl
 
 type fragmentContent = Message(ReactIntl.message) | String(string)
 
-type fragment = {
-  content: fragmentContent,
-  bold?: bool,
-  appendSpace?: bool,
-}
+type fragment =
+  | Text({content: fragmentContent, bold?: bool, appendSpace?: bool})
+  | Element(Jsx.element)
 
 type fragmentParagraph = list<fragment>
 
@@ -87,19 +85,23 @@ let make = (~header=?, ~headerVariant=#h2, ~afterHeader=?, ~body, ~centerAll=?) 
       ->Belt.List.mapWithIndex((index, fragments) =>
         <Text key={`paragraph-${index->Belt.Int.toString}`}>
           {fragments
-          ->Belt.List.mapWithIndex((index, fragment) =>
-            <Typography
-              component={"span"->Typography.Component.string}
-              className={fragment.bold->Belt.Option.getWithDefault(false) ? classes["bold"] : ""}
-              key={`fragment-${index->Belt.Int.toString}`}>
-              <FragmentContent
-                content=fragment.content
-                index
-                fragmentsCount={fragments->Belt.List.size}
-                appendSpace=?fragment.appendSpace
-              />
-            </Typography>
-          )
+          ->Belt.List.mapWithIndex((index, fragment) => {
+            switch fragment {
+            | Text(fragment) =>
+              <Typography
+                component={"span"->Typography.Component.string}
+                className={fragment.bold->Belt.Option.getWithDefault(false) ? classes["bold"] : ""}
+                key={`fragment-${index->Belt.Int.toString}`}>
+                <FragmentContent
+                  content=fragment.content
+                  index
+                  fragmentsCount={fragments->Belt.List.size}
+                  appendSpace=?fragment.appendSpace
+                />
+              </Typography>
+            | Element(element) => element
+            }
+          })
           ->Belt.List.toArray
           ->React.array}
         </Text>

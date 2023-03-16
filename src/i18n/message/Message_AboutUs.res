@@ -6,29 +6,63 @@ let header =
   @intl.description("About Us page - the header")
   {
     id: "cb394fa9-9b9e-4b10-8d3e-7c78a1e75dc7",
-    defaultMessage: "Casting dětí - POPPY CASTING - castingová agentura",
+    defaultMessage: "Kdo jsme",
   }
-let paragraph1 =
-  @intl.description("About Us page - the first paragraph")
+let companyOwnerDescription1 =
+  @intl.description("About Us page - the first part of company owner's description")
   {
     id: "9c048db6-f90d-48da-a31e-06187c783a60",
-    defaultMessage: "Agenturu Poppy Casting založila herečka, produkční a dabingová režisérka Martina Popperová, která se od roku 2003 herecky podílela například na těchto projektech: Sametoví vrazi, Strážce duší, Ulice, To horké léto v Marienbadu, Žil jsem s cizinkou, Láska v Praze, Trapasy, Hop nebo Trop, Nepolepšitelný, Vyprávěj, Zdivočelá země, Seznam.cz...a další. Hrála v několika divadlech, jak v České republice tak i na Slovensku. Realizovala nahrávání mnoha mluvených TV a rádio spotů, jak herecky tak i režijně a produkčně.",
+    defaultMessage: "Herečka, produkční, castingová a dabingová režisérka, zakladatelka agentury Poppy casting.",
   }
-let paragraph2 =
-  @intl.description("About Us page - the second paragraph")
+let companyOwnerDescription2 =
+  @intl.description("About Us page - the second part of company owner's description")
   {
-    id: "91953b1a-c603-4b24-b821-ad620b073b48",
-    defaultMessage: "Od roku 2005 pracovala ve společnosti Baby Casting jako hlavní produkční a castingová manažerka, kde se věnovala práci s dětmi a získala bohaté zkušenosti v daném oboru.",
+    id: "78d75afe-dfbf-4ccc-8641-b55a3b6d6106",
+    defaultMessage: "Připravuje pro vás smlouvy a dojednává kontrakty, doporučuje děti do hereckých rolí.",
   }
-let paragraph3 =
-  @intl.description("About Us page - the third paragraph")
+let companyOwnerDescription3 =
+  @intl.description("About Us page - the third part of company owner's description")
   {
-    id: "6f71e6a6-a34a-4a73-9806-bac49a58092b",
-    defaultMessage: "Agentura Poppy casting je určena dětem od 6 měsíců do 15 let. Spolupracujeme s mnohými agenturami, produkcemi, televizemi a dabingovými studii při obsazování dětských rolí do filmů, seriálů, točených i focených reklam a dabingových spotů. Naším cílem je objevit talentované a zajímavé děti a poskytnout jim příležitost uplatnit se ve filmovém či reklamním prostředí.",
+    id: "a1e83a25-c48a-4224-af4c-f3064715264e",
+    defaultMessage: "Dětskému castingu se věnuje od roku 2005, Poppycasting založila v roce 2012.",
   }
-let paragraph4 =
-  @intl.description("About Us page - the fourth paragraph")
+let contact =
+  @intl.description("About Us page - contact label")
   {
-    id: "08d300a0-aa59-4a78-8de1-00dd40ae6ce7",
-    defaultMessage: "Součástí této práce je také vzdělávání dětí formou herecké přípravy, naučit je jak se chovat před kamerou tak, aby je to bavilo a cítily se přirozeně. Každoročně pořádáme Letní filmový tábor Filmák, nebo různé dabingové a herecké workshopy. O všech možnostech herecké přípravy budeme informovat na těchto stránkách.",
+    id: "604b2750-e43f-4542-a741-1a0b873765b3",
+    defaultMessage: "Kontakt",
+  }
+let registrationDatabasePersonDescription1 =
+  @intl.description(
+    "About Us page - the first part of registration and database person's description"
+  )
+  {
+    id: "668cef96-3e5a-4e28-a83a-a5aef1ca64b7",
+    defaultMessage: "Produkční, pravá ruka Martiny, věnuje se registracím nových dětí, odpovídá na Vaše dotazy, spravuje databázi talentů a zve děti na castingy.",
+  }
+let registrationDatabasePersonDescription2 =
+  @intl.description(
+    "About Us page - the second part of registration and database person's description"
+  )
+  {
+    id: "ed16458e-f167-41d9-af6c-e031412b0504",
+    defaultMessage: "Původně učitelka ČJ - HV, v Poppy casting od roku 2016.",
+  }
+let photographer =
+  @intl.description("About Us page - the photographer")
+  {
+    id: "392d2225-9bb1-424e-b25f-648de58929fd",
+    defaultMessage: "Eva Kolínová - Baby foto Eva",
+  }
+let photographer1 =
+  @intl.description("About Us page - the first part of photographer's description")
+  {
+    id: "f7b87daf-a144-4e73-b4fd-6342f1282136",
+    defaultMessage: "Naše dvorní fotografka specializující se na focení dětí, nastávajících maminek a rodinné foto.",
+  }
+let assistants =
+  @intl.description("About Us page - the assistants")
+  {
+    id: "292eacbc-7fb1-4192-8877-437ebe497d4b",
+    defaultMessage: "Asistentka Verča a Jana",
   }
