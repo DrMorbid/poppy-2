@@ -4,17 +4,21 @@ open Common.Constants
 open Mui
 open Mui.Grid
 
-let getContact = (email): Common.Text.fragmentParagraph => list{
-  Text({
-    content: Message(contact),
-  }),
-  Text({
-    content: String(":"),
-    appendSpace: true,
-  }),
-  Text({
-    content: String(email),
-  }),
+module Person = AboutUs_Person
+
+let getContact = (email): Common.Text.fragmentParagraph => {
+  content: list{
+    Text({
+      content: Message(contact),
+    }),
+    Text({
+      content: String(":"),
+      appendSpace: true,
+    }),
+    Text({
+      content: String(email),
+    }),
+  },
 }
 
 @react.component
@@ -26,76 +30,55 @@ let make = () => {
     body={Element(
       <Grid container=true className={commonClasses["sectionGap"]}>
         <Grid item=true xs=Xs.\"12" xl=Xl.\"6">
-          <Common.Text
-            body={Fragments(list{
-              list{
-                Text({
-                  content: Message(companyOwner),
-                  bold: true,
-                }),
-              },
-              list{
-                Text({
-                  content: Message(companyOwnerDescription1),
-                }),
-              },
-              list{
-                Text({
-                  content: Message(companyOwnerDescription2),
-                }),
-              },
-              list{
-                Text({
-                  content: Message(companyOwnerDescription3),
-                }),
-              },
-              bossEmail->getContact,
-            })}
+          <Person
+            photoSrc="/martina-popperova.jpg"
+            name=companyOwner
+            description=list{
+              companyOwnerDescription1,
+              companyOwnerDescription2,
+              companyOwnerDescription3,
+            }
+            email=bossEmail
+          />
+        </Grid>
+        <Grid item=true xs=Xs.\"12" xl=Xl.\"6">
+          <Person
+            photoSrc="/hanka-kittnarova.jpg"
+            name=registrationDatabasePerson
+            description=list{
+              registrationDatabasePersonDescription1,
+              registrationDatabasePersonDescription2,
+            }
+            email=registrationDatabasePersonEmail
           />
         </Grid>
         <Grid item=true xs=Xs.\"12" xl=Xl.\"6">
           <Common.Text
             body={Fragments(list{
-              list{
-                Text({
-                  content: Message(registrationDatabasePerson),
-                  bold: true,
-                }),
+              {
+                content: list{
+                  Text({
+                    content: Message(photographer),
+                    bold: true,
+                  }),
+                },
+                centered: true,
               },
-              list{
-                Text({
-                  content: Message(registrationDatabasePersonDescription1),
-                }),
+              {
+                content: list{
+                  Element(
+                    <Link href=photographerWebsite key="element-fragment-1">
+                      {photographerWebsite->React.string}
+                    </Link>,
+                  ),
+                },
               },
-              list{
-                Text({
-                  content: Message(registrationDatabasePersonDescription2),
-                }),
-              },
-              registrationDatabasePersonEmail->getContact,
-            })}
-          />
-        </Grid>
-        <Grid item=true xs=Xs.\"12" xl=Xl.\"6">
-          <Common.Text
-            body={Fragments(list{
-              list{
-                Text({
-                  content: Message(photographer),
-                  bold: true,
-                }),
-              },
-              list{
-                Element(
-                  <Link href=photographerWebsite key="element-fragment-1">
-                    {photographerWebsite->React.string}
-                  </Link>,
-                ),
-              },
-              list{
-                Text({
-                  content: Message(photographer1),
-                }),
+              {
+                content: list{
+                  Text({
+                    content: Message(photographer1),
+                  }),
+                },
               },
             })}
           />
@@ -103,11 +86,14 @@ let make = () => {
         <Grid item=true xs=Xs.\"12" xl=Xl.\"6">
           <Common.Text
             body={Fragments(list{
-              list{
-                Text({
-                  content: Message(assistants),
-                  bold: true,
-                }),
+              {
+                content: list{
+                  Text({
+                    content: Message(assistants),
+                    bold: true,
+                  }),
+                },
+                centered: true,
               },
             })}
           />

@@ -19,12 +19,14 @@ let make = () => {
         <Section
           header=question1
           body=Fragments(list{
-            list{Text({content: Message(answer1Paragraph1)})},
-            list{
-              Text({content: Message(answer1Paragraph2Part1), bold: true, appendSpace: true}),
-              Text({content: Message(answer1Paragraph2Part2)}),
+            {content: list{Text({content: Message(answer1Paragraph1)})}},
+            {
+              content: list{
+                Text({content: Message(answer1Paragraph2Part1), bold: true, appendSpace: true}),
+                Text({content: Message(answer1Paragraph2Part2)}),
+              },
             },
-            list{Text({content: Message(answer1Paragraph3)})},
+            {content: list{Text({content: Message(answer1Paragraph3)})}},
           })
           key="question-1"
         />,
@@ -65,16 +67,20 @@ let make = () => {
         <Section
           header=question7
           body=Fragments(list{
-            list{
-              Text({content: Message(answer7Paragraph1Part1), appendSpace: true}),
-              Text({content: Message(answer7Paragraph1Part2), bold: true, appendSpace: true}),
-              Text({content: Message(answer7Paragraph1Part3)}),
+            {
+              content: list{
+                Text({content: Message(answer7Paragraph1Part1), appendSpace: true}),
+                Text({content: Message(answer7Paragraph1Part2), bold: true, appendSpace: true}),
+                Text({content: Message(answer7Paragraph1Part3)}),
+              },
             },
-            list{
-              Text({content: Message(answer7Paragraph2Part1), appendSpace: true}),
-              Text({content: Message(answer7Paragraph2Part2), bold: true}),
+            {
+              content: list{
+                Text({content: Message(answer7Paragraph2Part1), appendSpace: true}),
+                Text({content: Message(answer7Paragraph2Part2), bold: true}),
+              },
             },
-            list{Text({content: Message(answer7Paragraph3)})},
+            {content: list{Text({content: Message(answer7Paragraph3)})}},
           })
           key="question-7"
         />,
@@ -121,9 +127,11 @@ let make = () => {
         <Section
           header=question12
           body=Fragments(list{
-            list{
-              Text({content: Message(answer12Paragraph1Part1), appendSpace: true}),
-              Text({content: Message(answer12Paragraph1Part2), bold: true}),
+            {
+              content: list{
+                Text({content: Message(answer12Paragraph1Part1), appendSpace: true}),
+                Text({content: Message(answer12Paragraph1Part2), bold: true}),
+              },
             },
           })
           key="question-12"

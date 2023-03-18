@@ -7,7 +7,7 @@ type fragment =
   | Text({content: fragmentContent, bold?: bool, appendSpace?: bool})
   | Element(Jsx.element)
 
-type fragmentParagraph = list<fragment>
+type fragmentParagraph = {content: list<fragment>, centered?: bool}
 
 type listParagraph = {
   title: ReactIntl.message,
@@ -40,8 +40,15 @@ module FragmentContent = {
 
 module Text = {
   @react.component
-  let make = (~children) => {
-    <Grid item=true xs=Grid.Xs.\"12"> children </Grid>
+  let make = (~children, ~centered=?) => {
+    let commonClasses = Common_Style.useStyles(.)
+
+    <Grid
+      item=true
+      xs=Grid.Xs.\"12"
+      className={centered->Belt.Option.getWithDefault(false) ? commonClasses["centeredText"] : ""}>
+      children
+    </Grid>
   }
 }
 
@@ -83,8 +90,8 @@ let make = (~header=?, ~headerVariant=#h2, ~afterHeader=?, ~body, ~centerAll=?) 
     | Fragments(paragraphs) =>
       paragraphs
       ->Belt.List.mapWithIndex((index, fragments) =>
-        <Text key={`paragraph-${index->Belt.Int.toString}`}>
-          {fragments
+        <Text centered=?fragments.centered key={`paragraph-${index->Belt.Int.toString}`}>
+          {fragments.content
           ->Belt.List.mapWithIndex((index, fragment) => {
             switch fragment {
             | Text(fragment) =>
@@ -95,7 +102,7 @@ let make = (~header=?, ~headerVariant=#h2, ~afterHeader=?, ~body, ~centerAll=?) 
                 <FragmentContent
                   content=fragment.content
                   index
-                  fragmentsCount={fragments->Belt.List.size}
+                  fragmentsCount={fragments.content->Belt.List.size}
                   appendSpace=?fragment.appendSpace
                 />
               </Typography>

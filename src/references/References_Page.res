@@ -9,11 +9,13 @@ module Section = {
       header
       headerVariant=#h4
       body=Fragments(list{
-        list{
-          Text({content: Message(part1)}),
-          Text({content: String(","), appendSpace: true}),
-          Text({content: Message(part2), appendSpace: true}),
-          Text({content: Message(sectionEtc)}),
+        {
+          content: list{
+            Text({content: Message(part1)}),
+            Text({content: String(","), appendSpace: true}),
+            Text({content: Message(part2), appendSpace: true}),
+            Text({content: Message(sectionEtc)}),
+          },
         },
       })
     />

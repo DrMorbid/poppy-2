@@ -20,9 +20,11 @@ module Island = {
         header
         headerVariant=#h4
         body=Fragments(list{
-          list{
-            Text({content: Message(content), appendSpace: true}),
-            Text({content: Message(sectionEtc)}),
+          {
+            content: list{
+              Text({content: Message(content), appendSpace: true}),
+              Text({content: Message(sectionEtc)}),
+            },
           },
         })
         centerAll=true
