@@ -5,3 +5,5 @@ module Icon = Common_Icon
 module OpenInNewButton = Common_OpenInNewButton
 module Button = Common_Button
 module Dialog = Common_Dialog
+module Island = Common_Island
+module Section = Common_Section

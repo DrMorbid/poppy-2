@@ -43,7 +43,7 @@ let make = (~photoSrc, ~name, ~description, ~email) => {
               },
               centered: true,
             },
-            ...description->Belt.List.map(descriptionLine => {
+            ...description->Belt.List.map((descriptionLine): fragmentParagraph => {
               content: list{
                 Text({
                   content: Message(descriptionLine),

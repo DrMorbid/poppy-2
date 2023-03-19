@@ -20,9 +20,6 @@ let references =
 let contact =
   @intl.description("Top menu item - Contact")
   {id: "73b571e6-4145-4efb-a2ae-6fd9f4933981", defaultMessage: "Kontakt"}
-let news =
-  @intl.description("Top menu item - News")
-  {id: "ead3a1d1-bc04-41b2-bd64-bca14c7583e4", defaultMessage: "Aktuální info"}
 let qAndA =
   @intl.description("Top menu item - Q&A")
   {id: "838a3d51-ced5-4d2a-a955-d807ae1e77cb", defaultMessage: "Otázky a odpovědi"}

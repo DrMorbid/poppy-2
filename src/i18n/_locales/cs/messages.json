@@ -1,4 +1,8 @@
 {
+    "022440e0-53f1-45ad-b334-59f2dfdb39df": {
+        "message": "fotí ve 2 outfitech",
+        "description": "Registrations page - middle kids - the fourth line"
+    },
     "0371f3b2-5b62-4c6b-baac-a3925b811458": {
         "message": "Kdo jsme",
         "description": "Top menu item - Who we are"
@@ -10,10 +14,6 @@
     "09de6bec-d523-4b7a-9d15-c73bbe2960f9": {
         "message": "500Kč v hotovosti a 1000Kč se strhne z 1. vypláceného honoráře.",
         "description": "Q&A page - answer to question 7 - paragraph 2 - part2"
-    },
-    "0ae2b88c-ca8a-4741-9851-20dcf18796b6": {
-        "message": "U registrací dětí od 6 měsíců do 4 let si registrační poplatek ve výši 1500,- Kč účtujeme přímo u registrace. Důvodem je komplikovanější a časově náročnější práce s malým dítětem, proto vyžadujeme objednání předem, abychom měli na vaše dítě dostatek času a vy nemuseli čekat. Tento poplatek je jednorázový a i když budeme vaše dítě fotit častěji než je to běžné u starších dětí, jak jistě sami víte, děti se v tomto věku mění velice rychle, žádný další registrační poplatek vám už účtován nebude. Jako bonus dostanete od nás pořízené záběry na památku. Fotky posíláme ve zmenšeném formátu mailem.",
-        "description": "Registrations page - the third paragraph"
     },
     "0e472007-df8d-4a91-a94f-eff8c767d5d0": {
         "message": "Reference",
@@ -62,6 +62,10 @@
     "2174610a-a24a-4d57-8209-c989ea38e51f": {
         "message": "O výběru dítěte do role rozhoduje vždy klient a režisér, nikoli my z agentury.",
         "description": "Q&A page - answer to question 5 - paragraph 4"
+    },
+    "2264b17d-0ea8-49c9-aec7-1cde77887917": {
+        "message": "foto rodičům nezasíláme a není možné je od nás odkoupit, děkujeme za pochopení.",
+        "description": "Registrations page - oldest kids - the third line"
     },
     "23d00c72-cf3e-40a2-b536-01b570d634a0": {
         "message": "Děti bohužel nemůžeme registrovat zdarma, protože zájem rodičů je velký, poplatek nám pomáhá udržovat množství registrovaných dětí v normálu, tedy i Vám zajistit šance na zakázky. Preferujeme individuální přístup a děti známe, na registraci či přefocení se jim věnujeme, z poplatku hradíme naše náklady spojené s focením, přefocováním a evidencí dítěte v databázi.",
@@ -119,6 +123,10 @@
         "message": "Jaký je poplatek, kolik stojí castingy?",
         "description": "Q&A page - question 7"
     },
+    "3f20d49f-5784-43ea-9590-6571f86164ed": {
+        "message": "Aktuální termíny registrací",
+        "description": "Registrations page - current registration dates - header"
+    },
     "3f670b27-213d-45e8-a589-d0d7cba9a881": {
         "message": "Děti 4+: Natrénujte s dítětem představení na kameru, kde řekne své jméno, odkud pochází, věk a jaké jsou jeho zájmy, dovednosti, koníčky či herecké zkušenosti. Intro je součástí každého castingu. Poté může následovat herecká akce, kterou režisér dítěti vysvětlí a dítě ji zahraje, případně je nějaká snadná improvizace. Herecké castingy vyžadují nastudování textu předem, většina běžných reklamních castingů ale nemá předem pro dítě konkrétnější zadání, aby co nejpřirozeněji reagovalo.",
         "description": "Q&A page - answer to question 10 - paragraph 3"
@@ -167,6 +175,10 @@
         "message": "Potvrzení do role může přijít třeba jen den před avizovaným termínem kostýmové zkoušky.",
         "description": "Q&A page - answer to question 6 - paragraph 6"
     },
+    "4b4fd264-e3e1-4958-aa7e-b7d64029544c": {
+        "message": "osobně ve vypsaných termínech mezi 9 - 13:30h, objednejte se",
+        "description": "Registrations page - middle kids - the second line"
+    },
     "4c0bdbb8-fff7-4301-b21c-fa4b06eddf3c": {
         "message": "Kde a od kolika hodin se koná natáčení dopředu nevíme, protože se jedná o velmi živý organismus, který se neustále mění za běhu.",
         "description": "Q&A page - answer to question 6 - paragraph 4"
@@ -179,13 +191,13 @@
         "message": "nebo e-mailem:",
         "description": "Contact page - the info contact email"
     },
+    "54d5dee3-1a36-497e-af05-225d6e2eb018": {
+        "message": "registrujeme osobně ve vypsaných termínech mezi 9 - 13:30h, objednejte se",
+        "description": "Registrations page - youngest kids - the first line"
+    },
     "588ddae1-8b2e-4141-b776-4cd9dfbc4447": {
         "message": "Mgr. art. Martina Popperová",
         "description": "The company owner"
-    },
-    "5bea953c-5bd7-4af7-942b-46c390062287": {
-        "message": "Na registraci nepotřebujete nic, doporučujeme tričko bez výrazných nápisů, v létě se vyhýbejte šatům na ramínka, dobré je mít alespoň krátký rukáv, ať dítě nevypadá „polonaze“. Vyplníte registrační dotazník, my si dítě nafotíme, tudíž není potřeba nosit sebou vlastní fotografie.",
-        "description": "Registrations page - the fourth paragraph"
     },
     "5cacc13c-de61-47bb-b7f0-4c6856699644": {
         "message": "Proč vybíráme poplatek za registraci?",
@@ -194,6 +206,10 @@
     "5d579eb1-5251-4e0d-8343-2107a3e9c46d": {
         "message": "REGISTRACE, databáze",
         "description": "Contact bottom bar - the Registration, database title"
+    },
+    "5d9705b6-5f6d-47b1-9dcc-bca2e4521809": {
+        "message": "foto z registrace zasíláme mailem",
+        "description": "Registrations page - youngest kids - the fourth line"
     },
     "5ecee400-bdeb-4d52-a101-25fe293e61e1": {
         "message": "Poppy casting, s.r.o.",
@@ -287,6 +303,10 @@
         "message": "ul. Kostelní nebo pod Technickým muzeem 40Kč/h",
         "description": "Contact page - the registration address paid parking 1"
     },
+    "76ac014a-0e24-4aec-90f2-327ce36a32c3": {
+        "message": "miminka se fotí ve 2 outfitech",
+        "description": "Registrations page - youngest kids - the third line"
+    },
     "77e1062d-d854-4c16-bd7d-ca8a2f9a95fa": {
         "message": "Máme nabídky role TV reklam, seriálů, českých i zahraničních filmů, dabing, kompars, dabléry hlavních dětských herců. Méně zakázek je u nás na modeling.",
         "description": "Q&A page - answer to question 1 - paragraph 3"
@@ -315,6 +335,10 @@
         "message": "Pro mimopražské zájemce je dojíždění velmi náročné časově i finančně. Dětem dále než 1h dojezdu do Prahy registraci nedoporučujeme.",
         "description": "Q&A page - answer to question 3 - paragraph 2"
     },
+    "8b53a69e-1841-451e-af0e-ef21117bc62a": {
+        "message": "ozvěte se tedy prosím až kolem 4. roka dítěte",
+        "description": "Registrations page - middle kids - the second section - the second line"
+    },
     "8bc483c1-91ac-4f35-a897-6f9794332b01": {
         "message": "Děti na castingy zveme SMSkou, kterou pošleme rodiči. Ověříte si, že máte volno všechny vypsané termíny a odepíšete zpět se jménem a příjmením dítěte.",
         "description": "Q&A page - answer to question 6 - paragraph 1"
@@ -322,6 +346,10 @@
     "8c3c6989-a6fa-4111-886f-81389325486a": {
         "message": "Paťanka 5, 160 00 Praha 6",
         "description": "Contact page - the facturation address"
+    },
+    "8dd8e4ed-fb57-4cc6-a3f9-ac8759e05a59": {
+        "message": "hradí jednorázově 500 Kč v hotovosti u zápisu a 1000 Kč se strhne z 1. vypláceného honoráře.",
+        "description": "Registrations page - oldest kids - the second line"
     },
     "93df4d63-d1ac-4861-8be5-2029c23fbfaf": {
         "message": "Praha 7 Letná má modré parkovací zóny, kde bez karty pro P7 nesmíte stát autem, placená stání:",
@@ -347,9 +375,9 @@
         "message": "Poptávka je například na miminka ve věku 8-9 měs, takových dětí v databázi budeme mít opravdu jen pár, protože velmi rychle rostou a jedná se o krátký věkový úsek života dítěte. Šance, že Vaše dítě bude zrovna v požadovaném věku v době dané zakázky je tedy poměrně malá, nabídek pro miminka je tedy bohužel logicky spíše málo.",
         "description": "Q&A page - answer to question 8 - paragraph 2"
     },
-    "9ba60cdb-647c-47b4-b48f-7eb19dd99190": {
-        "message": "Termíny registrací jsou pravidelně aktualizovány v běžícím červeném boxu pod menu stránky. Když se objeví termín registrace, můžete v daný den a čas přijít vaše dítě zaregistrovat, pokud je starší 4 let. Pokud je mladší než 4 roky, objednejte se na registraci telefonicky a domluvte si konkrétní hodinu. Obvykle probíhá v ten samý den před registrací starších dětí. Pokud vám daný termín nevyhovuje, počkejte, další termín se včas objeví. Registrace probíhají většinou 2-3x měsíčně.",
-        "description": "Registrations page - the first paragraph"
+    "9ae6d7cc-7db0-4d70-bff0-952bdefb1d8f": {
+        "message": "děti 4 - 15 let",
+        "description": "Registrations page - oldest kids - header"
     },
     "9c048db6-f90d-48da-a31e-06187c783a60": {
         "message": "Herečka, produkční, castingová a dabingová režisérka, zakladatelka agentury Poppy casting.",
@@ -359,13 +387,25 @@
         "message": "Atelier VIVID, adresa: Františka Křížka 1, Praha 7, 2. patro.",
         "description": "Q&A page - answer to question 9 - paragraph 1"
     },
+    "9dffdd7a-1b6a-44fe-a2f5-9bc0eff86673": {
+        "message": "registrace zabere 30 minut, čas je vyhrazen pouze pro vás",
+        "description": "Registrations page - youngest kids - the second line"
+    },
     "9e0fe979-40e6-4978-9268-397e295da651": {
         "message": "Pokud jste dítě zaregistrovali do agentury, která má exkluzivní zastoupení, registrovat jej u nás nemůžete.",
         "description": "Q&A page - answer to question 12 - paragraph 1 - part 2"
     },
+    "9fe18571-d40a-439c-b21a-98305b70cffd": {
+        "message": "důvodem stop stavu náboru dětí běžného evropského vzhledu v tomto věku je nízká poptávka, málo zakázek pro tento věk. Spolupráce s dětmi v tomto období je náročná, dítě nepostojí, nezopakuje záběr vícekrát. je fixované na maminku, produkce se tomuto věku vyhýbají.",
+        "description": "Registrations page - middle kids - the second section - the first line"
+    },
     "a0b279bd-a9cd-4cab-9afd-8de72b2f23d0": {
         "message": "Buďte prosím trpěliví a maximálně flexibilní, na nat.den si vždy raději blokujte celý den.",
         "description": "Q&A page - answer to question 6 - paragraph 5"
+    },
+    "a181adb2-79c0-429f-b9a9-d5275107f560": {
+        "message": "registrujeme",
+        "description": "Registrations page - middle kids - the first line - the first part"
     },
     "a1b1962d-baff-4ec4-bd06-55d9e071c381": {
         "message": "Dítěti musí \"uměleckou činnost\" povolit lékař a úřad práce, což je zákonnou podmínkou pro jakékoliv natáčení či focení, za které dítě dostává honorář. Podrobnosti vysvětlujeme u registrace. Důvodem pro neudělení povolení může být vysoká nemocnost dítěte, transplantace i například v útlém věku, závažné či chronické onemocnění apod.",
@@ -391,6 +431,10 @@
         "message": "Aktuální info",
         "description": "News page - the header"
     },
+    "aff491b0-4982-4a78-b94e-dc6f658b690a": {
+        "message": "děti 18 měs. - 3 roky",
+        "description": "Registrations page - middle kids - header"
+    },
     "b0fe1f36-cd5e-40ee-8941-3a9383cec031": {
         "message": "Nibh cras pulvinar mattis nunc sed blandit. Ipsum a arcu cursus vitae congue mauris rhoncus aenean.",
         "description": "The third paragraph on the home page"
@@ -398,6 +442,10 @@
     "b14db5d9-c99a-4b08-af69-7ab224854101": {
         "message": "NE: tričko s obrázky, nápisy, značkami, křiklavé vzory",
         "description": "Q&A page - answer to question 11 - paragraph 1 - inappropriate 2"
+    },
+    "b5558f2d-bd8e-4ba3-a2c8-561a9e5a6adc": {
+        "message": "registrujeme osobně ve vypsaných termínech mezi 14 - 18h, objednejte se",
+        "description": "Registrations page - oldest kids - the first line"
     },
     "b96688f6-32df-41e0-bb36-aee5099b6cd9": {
         "message": "Je v Poppy casting exkluzivita?",
@@ -419,9 +467,9 @@
         "message": "U komerčních zakázek je honorář vždy uveden, u filmu a seriálu honorář řešíme až po obsazení dítěte do role.",
         "description": "Q&A page - answer to question 6 - paragraph 3"
     },
-    "c5cde1ec-d9e0-4c79-b672-f03f79eb34b8": {
-        "message": "U registrace dětí od 4 do 15 let se platí jednorázový registrační poplatek ve výši 1 500 Kč. Část poplatku se hradí na místě u registrace, zbytek až z prvního honoráře, tzn. 500 Kč se platí hned u registrace, 1000 kč se odečte až z prvního honoráře. Pokud se nám nepodaří uplatnit vaše dítě v některém z našich projektů, bude vás to stát jenom 500 Kč. Reg. poplatek kryje náklady související s registrací, pořízením fotografií, zařazením do databáze a následnou pravidelnou aktualizací fotek formou opětovného focení, až dítě vyroste nebo změní vzhled (délku nebo barvu vlasů…)",
-        "description": "Registrations page - the second paragraph"
+    "c3107315-372f-496c-bf65-99a43c760c44": {
+        "message": "STOPSTAV 18 měs. - 3 roky",
+        "description": "Registrations page - middle kids - the second section - header"
     },
     "c65d1a9a-885c-488d-a9b5-af73c3ae5870": {
         "message": "Nejobsazovanější věk je u nás 6 měs - 1,5 roku a 5-12 let.",
@@ -430,6 +478,10 @@
     "c680e70d-80c3-4547-99b2-e9e4aba885e6": {
         "message": "hotově u registrace, neplatíte dále žádné poplatky.",
         "description": "Q&A page - answer to question 7 - paragraph 1 - part 3"
+    },
+    "c9bb840c-4f73-4a84-9cb6-2cf39ad7f925": {
+        "message": "miminka 6 měs. - 17 měs.",
+        "description": "Registrations page - youngest kids - header"
     },
     "cb394fa9-9b9e-4b10-8d3e-7c78a1e75dc7": {
         "message": "Kdo jsme",
@@ -487,6 +539,10 @@
         "message": "Castingy se konají výhradně v Praze a znamenají dojíždění, protože konkurzů je potřeba obejít více, aby se něco dítěti podařilo získat. Casting může mít 1. kolo a 2. kolo (tzv. callback pro užší výběr z 1.kola), poté kostýmová zkouška, někdy herecká zkouška, poté termín natáčení. Miminka si ale většinou vyberou jen z fotek bez castingu.",
         "description": "Q&A page - answer to question 3 - paragraph 1"
     },
+    "dc050771-fb75-49a6-bd34-dff8ab4d53c9": {
+        "message": "foto z registrace zasíláme mailem",
+        "description": "Registrations page - middle kids - the fifth line"
+    },
     "de1b85cb-35da-4669-995d-d8129cd91981": {
         "message": "Zahraniční film a seriál",
         "description": "References page - header of the third section"
@@ -506,6 +562,10 @@
     "e6c3aeb3-690b-4db0-a671-98c739369944": {
         "message": "ANO: jednobarevný vršek nebo proužky, puntíky, jemný vzor",
         "description": "Q&A page - answer to question 11 - paragraph 2 - appropriate 1"
+    },
+    "ea1bc44d-c83a-4dc0-a236-1cf7aad1c70c": {
+        "message": "POUZE děti jiných etnik a JEDNOVAJEČNÁ dvojčata",
+        "description": "Registrations page - middle kids - the first line - the second part"
     },
     "ead3a1d1-bc04-41b2-bd64-bca14c7583e4": {
         "message": "Aktuální info",
@@ -527,9 +587,9 @@
         "message": "Čím starší je dítě, tím větší herecké schopnosti či průprava se od něj na castingu očekávají, stejně tak konkurence je větší.",
         "description": "Q&A page - answer to question 5 - paragraph 2"
     },
-    "f3a4a4f8-c01a-4e62-bff1-d669fc364f6e": {
-        "message": "Příští Registrace",
-        "description": "Registrations page - the button that shows info about the next registrations"
+    "f356ee89-c465-43f8-ba8c-79d9175ad2d9": {
+        "message": "registrace zabere 30 minut, čas je vyhrazen pouze pro vás",
+        "description": "Registrations page - middle kids - the third line"
     },
     "f7b87daf-a144-4e73-b4fd-6342f1282136": {
         "message": "Naše dvorní fotografka specializující se na focení dětí, nastávajících maminek a rodinné foto.",

@@ -111,15 +111,18 @@ let make = () => {
             {
               title: answer11Paragraph1,
               list: list{
-                answer11Paragraph1No1,
-                answer11Paragraph1No2,
-                answer11Paragraph1No3,
-                answer11Paragraph1No4,
+                {content: Message(answer11Paragraph1No1)},
+                {content: Message(answer11Paragraph1No2)},
+                {content: Message(answer11Paragraph1No3)},
+                {content: Message(answer11Paragraph1No4)},
               },
             },
             {
               title: answer11Paragraph2,
-              list: list{answer11Paragraph2Yes1, answer11Paragraph2Yes2},
+              list: list{
+                {content: Message(answer11Paragraph2Yes1)},
+                {content: Message(answer11Paragraph2Yes2)},
+              },
             },
           })
           key="question-11"

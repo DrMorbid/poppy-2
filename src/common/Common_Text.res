@@ -1,17 +1,22 @@
 open Mui
+open Mui.Grid
 open ReactIntl
 
 type fragmentContent = Message(ReactIntl.message) | String(string)
 
 type fragment =
-  | Text({content: fragmentContent, bold?: bool, appendSpace?: bool})
+  | Text({content: fragmentContent, bold?: bool, color?: Typography.color, appendSpace?: bool})
   | Element(Jsx.element)
 
 type fragmentParagraph = {content: list<fragment>, centered?: bool}
 
+type listRowContent = Fragments(list<fragment>) | Message(ReactIntl.message)
+
+type listRow = {content: listRowContent, bold?: bool}
+
 type listParagraph = {
-  title: ReactIntl.message,
-  list: list<ReactIntl.message>,
+  title?: ReactIntl.message,
+  list: list<listRow>,
 }
 
 type body =
@@ -21,7 +26,7 @@ type body =
   | Element(Jsx.element)
 
 module FragmentContent = {
-  let toString = (~intl, content) =>
+  let toString = (~intl, content: fragmentContent) =>
     switch content {
     | Message(message) => intl->Intl.formatMessage(message)
     | String(string) => string
@@ -52,13 +57,50 @@ module Text = {
   }
 }
 
+module Fragment = {
+  @react.component
+  let make = (~fragments) => {
+    let classes = Common_Style.useStyles(.)
+
+    fragments
+    ->Belt.List.mapWithIndex((index, fragment) => {
+      switch fragment {
+      | Text(fragment) =>
+        <Typography
+          component={"span"->Typography.Component.string}
+          className={fragment.bold->Belt.Option.getWithDefault(false) ? classes["bold"] : ""}
+          key={`fragment-${index->Belt.Int.toString}`}
+          color=?fragment.color>
+          <FragmentContent
+            content=fragment.content
+            index
+            fragmentsCount={fragments->Belt.List.size}
+            appendSpace=?fragment.appendSpace
+          />
+        </Typography>
+      | Element(element) => element
+      }
+    })
+    ->Belt.List.toArray
+    ->React.array
+  }
+}
+
 @react.component
-let make = (~header=?, ~headerVariant=#h2, ~afterHeader=?, ~body, ~centerAll=?) => {
+let make = (
+  ~header=?,
+  ~headerVariant=#h2,
+  ~headerUppercase=false,
+  ~afterHeader=?,
+  ~body,
+  ~centerAll=?,
+  ~disableGutters=false,
+) => {
   let intl = useIntl()
   let classes = Common_Style.useStyles(.)
 
   let getContainerClassname = () =>
-    list{classes["paragraphGap"]}
+    (disableGutters ? list{} : list{classes["paragraphGap"]})
     ->Belt.List.concat(
       centerAll->Belt.Option.mapWithDefault(list{}, centerAll =>
         centerAll ? list{classes["centeredText"]} : list{}
@@ -69,7 +111,9 @@ let make = (~header=?, ~headerVariant=#h2, ~afterHeader=?, ~body, ~centerAll=?) 
   <Grid container=true className={getContainerClassname()}>
     {header->Belt.Option.mapWithDefault(React.null, header =>
       <Grid item=true xs=Grid.Xs.\"12" className={classes["centeredText"]}>
-        <Typography variant=headerVariant>
+        <Typography
+          variant=headerVariant
+          className=?{headerUppercase ? Some(classes["uppercaseText"]) : None}>
           {intl->Intl.formatMessage(header)->React.string}
         </Typography>
       </Grid>
@@ -91,43 +135,40 @@ let make = (~header=?, ~headerVariant=#h2, ~afterHeader=?, ~body, ~centerAll=?) 
       paragraphs
       ->Belt.List.mapWithIndex((index, fragments) =>
         <Text centered=?fragments.centered key={`paragraph-${index->Belt.Int.toString}`}>
-          {fragments.content
-          ->Belt.List.mapWithIndex((index, fragment) => {
-            switch fragment {
-            | Text(fragment) =>
-              <Typography
-                component={"span"->Typography.Component.string}
-                className={fragment.bold->Belt.Option.getWithDefault(false) ? classes["bold"] : ""}
-                key={`fragment-${index->Belt.Int.toString}`}>
-                <FragmentContent
-                  content=fragment.content
-                  index
-                  fragmentsCount={fragments.content->Belt.List.size}
-                  appendSpace=?fragment.appendSpace
-                />
-              </Typography>
-            | Element(element) => element
-            }
-          })
-          ->Belt.List.toArray
-          ->React.array}
+          <Fragment fragments=fragments.content />
         </Text>
       )
       ->Belt.List.toArray
       ->React.array
     | Lists(paragraphs) =>
       paragraphs
-      ->Belt.List.mapWithIndex((index, {title, list}) =>
+      ->Belt.List.mapWithIndex((index, paragraph) =>
         <Grid container=true key={`paragraph-${index->Belt.Int.toString}`}>
-          <Text>
-            <Typography> {intl->Intl.formatMessage(title)->React.string} </Typography>
-          </Text>
+          {paragraph.title->Belt.Option.mapWithDefault(React.null, title =>
+            <Text>
+              <Typography> {intl->Intl.formatMessage(title)->React.string} </Typography>
+            </Text>
+          )}
           <Grid item=true xs=Grid.Xs.\"12">
             <List>
-              {list
-              ->Belt.List.mapWithIndex((index, item) =>
-                <ListItem key={`list-item-${index->Belt.Int.toString}`}>
-                  <ListItemText primary={intl->Intl.formatMessage(item)->React.string} />
+              {paragraph.list
+              ->Belt.List.mapWithIndex((index, row) =>
+                <ListItem key={`list-row-${index->Belt.Int.toString}`}>
+                  {switch row.content {
+                  | Fragments(fragments) =>
+                    <Grid container=true>
+                      <Grid item=true xs=Xs.\"12">
+                        <Fragment fragments />
+                      </Grid>
+                    </Grid>
+                  | Message(message) =>
+                    <ListItemText
+                      primary={intl->Intl.formatMessage(message)->React.string}
+                      classes=?{row.bold->Belt.Option.getWithDefault(false)
+                        ? Some(ListItemText.Classes.make(~primary=classes["bold"], ()))
+                        : None}
+                    />
+                  }}
                 </ListItem>
               )
               ->Belt.List.toArray

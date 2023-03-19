@@ -1,6 +1,4 @@
-open Message.News
-
 @react.component
-let make = () => {
-  <Common.Text header body=Element(<News_Message />) />
+let make = (~header=Message.News.header, ~headerVariant=?, ~headerUppercase=?) => {
+  <Common.Text header ?headerVariant ?headerUppercase body=Element(<News_Message />) />
 }

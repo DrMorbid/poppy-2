@@ -1,4 +1,5 @@
 open Mui
+open Mui.Grid
 open RescriptReactRouter
 
 type t = Home | Registrations | Contact | QAndA | References
@@ -44,6 +45,6 @@ let make = (~children) => {
   let commonClasses = Common.Style.useStyles(.)
 
   <Grid container=true className={commonClasses["pageGutters"]}>
-    <Grid item=true> children </Grid>
+    <Grid item=true xs=Xs.\"12"> children </Grid>
   </Grid>
 }

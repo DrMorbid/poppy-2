@@ -7,18 +7,16 @@ module CarouselItem = Home_CarouselItem
 @react.component
 let make = () => {
   let commonClasses = Common.Style.useStyles(.)
-  let latestNewsTopRef = React.useRef(Js.Nullable.null)
   let whoWeAreTopRef = React.useRef(Js.Nullable.null)
   let referencesTopRef = React.useRef(Js.Nullable.null)
   let (_, dispatch) = React.useContext(App_Context.Context.t)
 
-  React.useEffect3(() => {
-    dispatch(App_Context.AddMenuItemScrollableRef(LatestNews, latestNewsTopRef))
+  React.useEffect2(() => {
     dispatch(App_Context.AddMenuItemScrollableRef(WhoWeAre, whoWeAreTopRef))
     dispatch(App_Context.AddMenuItemScrollableRef(References, referencesTopRef))
 
     None
-  }, (latestNewsTopRef, whoWeAreTopRef, referencesTopRef))
+  }, (whoWeAreTopRef, referencesTopRef))
 
   <Grid container=true className={commonClasses["islandsVerticalGap"]}>
     <Grid item=true xs=Xs.\"12">
@@ -31,37 +29,37 @@ let make = () => {
         ]}
       </ReactMaterialUiCarousel>
     </Grid>
-    <Grid
-      item=true xs=Xs.\"12" sm=Sm.\"6" md=Md.\"4" className={commonClasses["islandsHorizontalGap"]}>
-      <Common.Text
-        header=firstParagraphHeader body=Paragraphs(list{firstParagraph}) centerAll=true
-      />
-    </Grid>
-    <Grid
-      item=true xs=Xs.\"12" sm=Sm.\"6" md=Md.\"4" className={commonClasses["islandsHorizontalGap"]}>
-      <Common.Text
-        header=secondParagraphHeader body=Paragraphs(list{secondParagraph}) centerAll=true
-      />
-    </Grid>
-    <Grid
-      item=true xs=Xs.\"12" sm=Sm.\"6" md=Md.\"4" className={commonClasses["islandsHorizontalGap"]}>
-      <Common.Text
-        header=thirdParagraphHeader body=Paragraphs(list{thirdParagraph}) centerAll=true
-      />
-    </Grid>
+    <Common.Island
+      header=firstParagraphHeader
+      body=Paragraphs(list{firstParagraph})
+      centerAll=true
+      lg=Lg.\"4"
+      xl=Xl.\"4"
+    />
+    <Common.Island
+      header=secondParagraphHeader
+      body=Paragraphs(list{secondParagraph})
+      centerAll=true
+      lg=Lg.\"4"
+      xl=Xl.\"4"
+    />
+    <Common.Island
+      header=thirdParagraphHeader
+      body=Paragraphs(list{thirdParagraph})
+      centerAll=true
+      lg=Lg.\"4"
+      xl=Xl.\"4"
+    />
     <Grid item=true xs=Xs.\"12">
       <Grid
         container=true
         direction=#column
         alignItems=#stretch
         className={commonClasses["islandsVerticalGap"]}>
-        <Home_Section colored=true topRef=latestNewsTopRef>
-          <News.Section />
-        </Home_Section>
-        <Home_Section topRef=whoWeAreTopRef>
+        <Home_Section colored=true topRef=whoWeAreTopRef>
           <WhoWeAre.Section />
         </Home_Section>
-        <Home_Section colored=true topRef=referencesTopRef>
+        <Home_Section topRef=referencesTopRef>
           <References.Section />
         </Home_Section>
         <Grid item=true>

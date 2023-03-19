@@ -17,6 +17,7 @@ let useStyles: Styles.useStyles<{
   "pageGutters": string,
   "islandsVerticalGap": string,
   "islandsHorizontalGap": string,
+  "uppercaseText": string,
 }> = Styles.makeStylesWithTheme(theme =>
   {
     "headerGap": headerGap,
@@ -41,5 +42,6 @@ let useStyles: Styles.useStyles<{
     }->stylesCombiner,
     "islandsVerticalGap": Style.make(~gridRowGap="2rem", ()),
     "islandsHorizontalGap": Style.make(~paddingLeft="1rem", ~paddingRight="1rem", ()),
+    "uppercaseText": Style.make(~textTransform="uppercase", ()),
   }
 )

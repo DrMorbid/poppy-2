@@ -85,6 +85,7 @@ let theme = (~prefersDarkMode) => {
           ~root=Style.make(~backgroundColor="transparent", ()),
           (),
         ),
+        ~\"MuiPaper"=PaperClassKey.make(~elevation1=Style.make(~boxShadow="unset", ()), ()),
         (),
       ),
       (),

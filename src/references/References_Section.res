@@ -6,30 +6,18 @@ open ReactIntl
 module Island = {
   @react.component
   let make = (~header, ~content) => {
-    let commonClasses = Common.Style.useStyles(.)
-
-    <Grid
-      item=true
-      xs=Xs.\"12"
-      sm=Sm.\"6"
-      md=Md.\"4"
-      lg=Lg.\"3"
-      xl=Xl.\"true"
-      className={commonClasses["islandsHorizontalGap"]}>
-      <Common.Text
-        header
-        headerVariant=#h4
-        body=Fragments(list{
-          {
-            content: list{
-              Text({content: Message(content), appendSpace: true}),
-              Text({content: Message(sectionEtc)}),
-            },
+    <Common.Island
+      header
+      headerVariant=#h4
+      body=Fragments(list{
+        {
+          content: list{
+            Text({content: Message(content), appendSpace: true}),
+            Text({content: Message(sectionEtc)}),
           },
-        })
-        centerAll=true
-      />
-    </Grid>
+        },
+      })
+    />
   }
 }
 
