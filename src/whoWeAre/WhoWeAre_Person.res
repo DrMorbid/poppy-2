@@ -1,9 +1,9 @@
-open Message.AboutUs
+open Message.WhoWeAre
 open Mui
 open Mui.Grid
 open Common.Text
 
-module Photo = AboutUs_Photo
+module Photo = WhoWeAre_Photo
 
 let getContact = (email): Common.Text.fragmentParagraph => {
   content: list{

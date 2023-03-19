@@ -8,17 +8,17 @@ module CarouselItem = Home_CarouselItem
 let make = () => {
   let commonClasses = Common.Style.useStyles(.)
   let latestNewsTopRef = React.useRef(Js.Nullable.null)
-  let aboutUsTopRef = React.useRef(Js.Nullable.null)
+  let whoWeAreTopRef = React.useRef(Js.Nullable.null)
   let referencesTopRef = React.useRef(Js.Nullable.null)
   let (_, dispatch) = React.useContext(App_Context.Context.t)
 
   React.useEffect3(() => {
     dispatch(App_Context.AddMenuItemScrollableRef(LatestNews, latestNewsTopRef))
-    dispatch(App_Context.AddMenuItemScrollableRef(AboutUs, aboutUsTopRef))
+    dispatch(App_Context.AddMenuItemScrollableRef(WhoWeAre, whoWeAreTopRef))
     dispatch(App_Context.AddMenuItemScrollableRef(References, referencesTopRef))
 
     None
-  }, (latestNewsTopRef, aboutUsTopRef, referencesTopRef))
+  }, (latestNewsTopRef, whoWeAreTopRef, referencesTopRef))
 
   <Grid container=true className={commonClasses["islandsVerticalGap"]}>
     <Grid item=true xs=Xs.\"12">
@@ -58,8 +58,8 @@ let make = () => {
         <Home_Section colored=true topRef=latestNewsTopRef>
           <News.Section />
         </Home_Section>
-        <Home_Section topRef=aboutUsTopRef>
-          <AboutUs.Section />
+        <Home_Section topRef=whoWeAreTopRef>
+          <WhoWeAre.Section />
         </Home_Section>
         <Home_Section colored=true topRef=referencesTopRef>
           <References.Section />

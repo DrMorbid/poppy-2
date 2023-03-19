@@ -1,10 +1,10 @@
 open Message
-open Message.AboutUs
+open Message.WhoWeAre
 open Common.Constants
 open Mui
 open Mui.Grid
 
-module Person = AboutUs_Person
+module Person = WhoWeAre_Person
 
 let getContact = (email): Common.Text.fragmentParagraph => {
   content: list{

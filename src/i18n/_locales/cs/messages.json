@@ -1,10 +1,550 @@
 {
     "0371f3b2-5b62-4c6b-baac-a3925b811458": {
-        "message": "O nás",
-        "description": "Top menu item - about us"
+        "message": "Kdo jsme",
+        "description": "Top menu item - Who we are"
+    },
+    "05876c12-2be7-44d9-b6b0-afc7b8d87595": {
+        "message": "e-mail:",
+        "description": "Contact page - the company email"
+    },
+    "09de6bec-d523-4b7a-9d15-c73bbe2960f9": {
+        "message": "500Kč v hotovosti a 1000Kč se strhne z 1. vypláceného honoráře.",
+        "description": "Q&A page - answer to question 7 - paragraph 2 - part2"
+    },
+    "0ae2b88c-ca8a-4741-9851-20dcf18796b6": {
+        "message": "U registrací dětí od 6 měsíců do 4 let si registrační poplatek ve výši 1500,- Kč účtujeme přímo u registrace. Důvodem je komplikovanější a časově náročnější práce s malým dítětem, proto vyžadujeme objednání předem, abychom měli na vaše dítě dostatek času a vy nemuseli čekat. Tento poplatek je jednorázový a i když budeme vaše dítě fotit častěji než je to běžné u starších dětí, jak jistě sami víte, děti se v tomto věku mění velice rychle, žádný další registrační poplatek vám už účtován nebude. Jako bonus dostanete od nás pořízené záběry na památku. Fotky posíláme ve zmenšeném formátu mailem.",
+        "description": "Registrations page - the third paragraph"
+    },
+    "0e472007-df8d-4a91-a94f-eff8c767d5d0": {
+        "message": "Reference",
+        "description": "References page - the header"
+    },
+    "10733f1c-b25a-4138-8e60-f4cee08f92f7": {
+        "message": "Český seriál",
+        "description": "References page - header of the second section"
+    },
+    "115ab101-90af-43cc-ad43-2ffe55cf8e3f": {
+        "message": "Reklama",
+        "description": "Header of the first paragraph on the home page"
+    },
+    "11e05738-f6e0-446f-810f-5d2412bca2fe": {
+        "message": "NE: příliš slavnostní oblečení, kravata, obrovské sukně",
+        "description": "Q&A page - answer to question 11 - paragraph 1 - inappropriate 4"
+    },
+    "1348acf3-9407-479d-8c25-731a155bf300": {
+        "message": "Je Vaše dítě zdravé?",
+        "description": "Q&A page - question 2"
+    },
+    "16af5122-17d7-4485-8406-55016c4c9aa6": {
+        "message": "Děti 4-15 let hradí jednorázově",
+        "description": "Q&A page - answer to question 7 - paragraph 2 - part1"
+    },
+    "1c429711-7359-4714-a65c-9db4042e5ca3": {
+        "message": "Co na sebe dát dítěti na registraci, casting?",
+        "description": "Q&A page - answer to question 11"
     },
     "1c7ff9c8-a7f2-40bf-a645-f7ac48cdfbd9": {
         "message": "Poppy Casting",
         "description": "The name of the application"
+    },
+    "1ec457c8-6064-44fb-91fc-1bea98e9e39c": {
+        "message": "Výsledky castingu mnohdy víme až \"na poslední chvíli\", tedy není možné dávat vědět všem, koho nevybrali. Informujeme ty, kdo jsou v užším výběru nebo potvrzeni. Držte si termíny volné až do dne kostýmové zkoušky či natáčení, pokud se nikdo neozval, znamená to, že jste neuspěli. Děkujeme za pochopení.",
+        "description": "Q&A page - answer to question 10 - paragraph 5"
+    },
+    "1f2ce561-f4ac-47bc-ac91-a97f8cabf7f3": {
+        "message": "Český film",
+        "description": "References page - header of the first section"
+    },
+    "204c193b-6887-4e07-974e-e7134e58ab76": {
+        "message": "Film a Seriál",
+        "description": "Header of the second paragraph on the home page"
+    },
+    "2174610a-a24a-4d57-8209-c989ea38e51f": {
+        "message": "O výběru dítěte do role rozhoduje vždy klient a režisér, nikoli my z agentury.",
+        "description": "Q&A page - answer to question 5 - paragraph 4"
+    },
+    "23d00c72-cf3e-40a2-b536-01b570d634a0": {
+        "message": "Děti bohužel nemůžeme registrovat zdarma, protože zájem rodičů je velký, poplatek nám pomáhá udržovat množství registrovaných dětí v normálu, tedy i Vám zajistit šance na zakázky. Preferujeme individuální přístup a děti známe, na registraci či přefocení se jim věnujeme, z poplatku hradíme naše náklady spojené s focením, přefocováním a evidencí dítěte v databázi.",
+        "description": "Q&A page - answer to question 8 - paragraph 1"
+    },
+    "243ec852-93af-46c2-9c6a-b6402bc3de0f": {
+        "message": "All quiet (Na západní frontě klid), A boy called Christmas, Army of thieves, A Small light, Ash Lad 2, Beethoven, Blood and Gold, Borgia, Carniwal Row, Crossing lines",
+        "description": "References page - part one of the third section"
+    },
+    "25cbad58-8315-4bc5-9f36-68df7fedf87b": {
+        "message": "Je databáze Poppy casting veřejná?",
+        "description": "Q&A page - question 13"
+    },
+    "292eacbc-7fb1-4192-8877-437ebe497d4b": {
+        "message": "Asistentka Verča a Jana",
+        "description": "About Us page - the assistants"
+    },
+    "2a47d058-357b-4080-9f57-a59c6e7537d8": {
+        "message": "Registrace",
+        "description": "Above the top menu - registrations"
+    },
+    "2d22df08-1649-4bda-9764-6a68b683002d": {
+        "message": "NE: šedá barva (máme šedé pozadí fotek)",
+        "description": "Q&A page - answer to question 11 - paragraph 1 - inappropriate 1"
+    },
+    "2e88dffa-857c-40fc-a00b-fc2eb6212079": {
+        "message": "Nevhodné:",
+        "description": "Q&A page - answer to question 11 - paragraph 1"
+    },
+    "334e80f1-4203-44aa-ad56-e32d01751476": {
+        "message": "Děti",
+        "description": "Q&A page - answer to question 7 - paragraph 1 - part 1"
+    },
+    "34f4a860-cc7d-4e81-af81-c2e81e4b7849": {
+        "message": "MHD tram 1,8,12,25,26 Kamenická nebo 6,8,17,26 Strossmayerovo náměstí",
+        "description": "Contact page - the registration address connection"
+    },
+    "37dc3db8-1705-4a7e-83a8-675806963340": {
+        "message": "Jak to v Poppy casting funguje?",
+        "description": "Q&A page - question 6"
+    },
+    "37f7a6cf-6e2d-4512-a549-da264b47c3b4": {
+        "message": "Je Vaše dítě nebojácné? Není na maminku příliš fixované, aby zvládlo být kousek od ní nebo v náručí herečky? U miminek se pochopitelně vše velmi rychle mění, tedy je těžké předvídat, jak se dítě bude chovat, ale pokud víte, že při pohledu na cizího člověka, který na něj promluví, dítě pláče, nebude nejspíše na casting vhodný adept.",
+        "description": "Q&A page - answer to question 1 - paragraph 2 - part 2"
+    },
+    "392d2225-9bb1-424e-b25f-648de58929fd": {
+        "message": "Eva Kolínová - Baby foto Eva",
+        "description": "About Us page - the photographer"
+    },
+    "3ea3bde4-c556-4b30-83af-3d54c089085e": {
+        "message": "Nelze. Registrujeme pouze osobně ve vypsaných termínech, kde si dítě vyfotíme, abychom získali představu o tom, zda se nestydí, zda komunikuje, jak na nás působí, jaké jsou jeho řečové a herecké schopnosti, charisma.",
+        "description": "Q&A page - answer to question 4 - paragraph 1"
+    },
+    "3eb465a6-5dad-4d6c-b6be-527f9d410057": {
+        "message": "Jaký je poplatek, kolik stojí castingy?",
+        "description": "Q&A page - question 7"
+    },
+    "3f670b27-213d-45e8-a589-d0d7cba9a881": {
+        "message": "Děti 4+: Natrénujte s dítětem představení na kameru, kde řekne své jméno, odkud pochází, věk a jaké jsou jeho zájmy, dovednosti, koníčky či herecké zkušenosti. Intro je součástí každého castingu. Poté může následovat herecká akce, kterou režisér dítěti vysvětlí a dítě ji zahraje, případně je nějaká snadná improvizace. Herecké castingy vyžadují nastudování textu předem, většina běžných reklamních castingů ale nemá předem pro dítě konkrétnější zadání, aby co nejpřirozeněji reagovalo.",
+        "description": "Q&A page - answer to question 10 - paragraph 3"
+    },
+    "400e454f-61d8-464f-a2da-da354065e16a": {
+        "message": "Vhodné:",
+        "description": "Q&A page - answer to question 11 - paragraph 2"
+    },
+    "40d873a1-0ae0-4626-a8cd-45fbd140bc50": {
+        "message": "Domů",
+        "description": "Top menu item - Home"
+    },
+    "4225d293-3e8c-424a-b405-114c75fb030b": {
+        "message": "Pro klienty, produkce, režii",
+        "description": "Contact bottom bar - the clients, production, pirection title"
+    },
+    "45d926b1-7a58-4115-8848-a2356582480e": {
+        "message": "Může se stát, že je casting či natáčení v době, kdy jsou děti ve škole, někdy je nutné dítě ze školy uvolnit nebo se castingu neúčastnit. Není možné žádat o změnu času pořádání castingu. Doprovod na místě nemusí být nutně zákonný zástupce, klidně babička, teta apod.",
+        "description": "Q&A page - answer to question 10 - paragraph 4"
+    },
+    "46d77863-5004-4936-b476-88356481eef9": {
+        "message": "Františka Křížka 362/1, Praha 7, 2. patro",
+        "description": "Contact page - the registration address"
+    },
+    "4754256e-6a80-49e9-8042-bfe8ea618c50": {
+        "message": "Všechny castingy probíhají výhradně v Praze na různých adresách.",
+        "description": "Contact bottom bar - castings info"
+    },
+    "47e4f0be-2a4e-4324-be1d-7f7cd84879ad": {
+        "message": "Miminka:",
+        "description": "Q&A page - answer to question 1 - paragraph 2 - part 1"
+    },
+    "48fd1715-5ac5-468d-912b-6922976fe647": {
+        "message": "Je Vaše dítě komunikativní, rádo předvádí? Nestydí před kamerou a cizími lidmi? Bude spolupracovat a hraní scének na castingu jej bude bavit? Je typově zajímavé, něčím výrazné? Má hereckou průpravu, zkušenost? Baví ho dramťák, zajímá se o herectví? Pokud jste odpověděli alespoň několikrát ano, přidejte se k nám.",
+        "description": "Q&A page - answer to question 1 - paragraph 1"
+    },
+    "49e741c9-d025-4ac1-9138-20b7c4981541": {
+        "message": "Atelier - registrace, přefocení",
+        "description": "Contact bottom bar - the studio - registrations, photosessions title"
+    },
+    "4b0d7d0d-1ec5-4249-a9af-255da8cfc814": {
+        "message": "Na různých adresách v Praze, čtěte pečlivě vždy sms s instrukcemi, děti dochází do různých agentur či produkcí, se kterými spolupracujeme.",
+        "description": "Q&A page - answer to question 10 - paragraph 1"
+    },
+    "4b4e932d-33d5-462e-960d-d68cd74edac0": {
+        "message": "Potvrzení do role může přijít třeba jen den před avizovaným termínem kostýmové zkoušky.",
+        "description": "Q&A page - answer to question 6 - paragraph 6"
+    },
+    "4c0bdbb8-fff7-4301-b21c-fa4b06eddf3c": {
+        "message": "Kde a od kolika hodin se koná natáčení dopředu nevíme, protože se jedná o velmi živý organismus, který se neustále mění za běhu.",
+        "description": "Q&A page - answer to question 6 - paragraph 4"
+    },
+    "4de90d79-5e91-4f18-bbbe-cb91ac7d8eee": {
+        "message": "Není, tedy můžete být registrováni v dalších agenturách, ovšem u registrace podepisujete podmínku, že v případě, že stejnou nabídku dostanete od nás, stejně tak od jiné agentury (a je jedno, zda od nás v úterý, ale od jiné agentury třeba už v pondělí), na castingu do formuláře uvedete Poppycasting.",
+        "description": "Q&A page - answer to question 12 - paragraph 1 - part 1"
+    },
+    "4e09e2cc-319f-467c-a4c4-76bac3c87815": {
+        "message": "nebo e-mailem:",
+        "description": "Contact page - the info contact email"
+    },
+    "588ddae1-8b2e-4141-b776-4cd9dfbc4447": {
+        "message": "Mgr. art. Martina Popperová",
+        "description": "The company owner"
+    },
+    "5bea953c-5bd7-4af7-942b-46c390062287": {
+        "message": "Na registraci nepotřebujete nic, doporučujeme tričko bez výrazných nápisů, v létě se vyhýbejte šatům na ramínka, dobré je mít alespoň krátký rukáv, ať dítě nevypadá „polonaze“. Vyplníte registrační dotazník, my si dítě nafotíme, tudíž není potřeba nosit sebou vlastní fotografie.",
+        "description": "Registrations page - the fourth paragraph"
+    },
+    "5cacc13c-de61-47bb-b7f0-4c6856699644": {
+        "message": "Proč vybíráme poplatek za registraci?",
+        "description": "Q&A page - question 8"
+    },
+    "5d579eb1-5251-4e0d-8343-2107a3e9c46d": {
+        "message": "REGISTRACE, databáze",
+        "description": "Contact bottom bar - the Registration, database title"
+    },
+    "5ecee400-bdeb-4d52-a101-25fe293e61e1": {
+        "message": "Poppy casting, s.r.o.",
+        "description": "Contact page - the company name"
+    },
+    "5efc3bbe-887a-4fbf-8a22-654d0a07a2c9": {
+        "message": "ul. Milady Horákové 40Kč/h",
+        "description": "Contact page - the registration address paid parking 2"
+    },
+    "5f017fd8-f9ad-4a18-b30b-bbc1c9c3fc45": {
+        "message": "Přesný čas a místo nástupu na natáčení se vybraní herci dozvídají většinou večer předem.",
+        "description": "Q&A page - answer to question 6 - paragraph 7"
+    },
+    "5f0725d4-479e-4af4-be21-75469e84f1ac": {
+        "message": "Novartis, Vitana, Passer Invest, Penny, PomBar, Sound studio, Tvaroháček, The Elite Hunter, Vitana, VW Caddy, Život k sežrání",
+        "description": "References page - part two of the fifth section"
+    },
+    "5f6482c3-2285-43e2-ab32-1cd9c3a387dd": {
+        "message": "Kontakt",
+        "description": "Contact page - the header"
+    },
+    "604b2750-e43f-4542-a741-1a0b873765b3": {
+        "message": "Kontakt",
+        "description": "About Us page - contact label"
+    },
+    "625b14ea-6bfb-43df-b196-3101abbe22cd": {
+        "message": "ANO: tričko, body, kalhoty, džíny, sukně, běžné šaty",
+        "description": "Q&A page - answer to question 11 - paragraph 2 - appropriate 2"
+    },
+    "6432b98b-ca34-4917-a3e3-fa5556edf73b": {
+        "message": "Baťa, Baagl, Benzina, Benu, Beton, Bexsero, Billa, Birell, Biopron, Bohemian Energy, B&Q, Brumík, BT, Carnival Games, Care, Capri sun, Centropol, Celaskon, Coca Cola, Colgate, Concept, Content, Coop, Crayola, Česká spořitelna, ČS George, České dráhy, Český rozhlas, ČEZ, ČMSS, ČSOB, Dash, Decathlon, Diesel, Disneyland, Degree, Drylock, Einstein, Emko, E.O.N., Era, Ergo, Elmex, Esprit, EU Election, E-trade, Evian, Ericsson, Erste Bank, Euromillionen, Equinox, Exxon, Falck, Farmaceutická fotobanka, Flexi, Flinstones, Figaro, Frigidaire, Go Student, Garnier, Genius, Generali, Globus, Grammarly, Granko, Hami, Happy Kids play, Heinz, Head and Shoulders, Hello Kitty, Hewlet Packard, Homecredit, Huggies, Champomy, Ibalgin, Ice Peak, ING, Ikea, Innogy, Ibalgin, Iglo, Imbruvica, Jablotron, Jihlavanka, Jeep, Jeux Olympiques, Kaiser, Kaspersky, Kaufland, Kenvelo, Kia, Kinder, Kitchenaid, Klasa, Kleenex, Klik, Kofola, Kooperativa, Komerční banka, K Mart, Lego, L’etoille, Letgo, Lídl, Lipánek, Listerine, Little Woods, Loui Vuitton, Luca, Luxiom, Lustucru, Lyte, Lysol, Macy’s, Májka, Mall, Malajské aerolinky, Mapy.cz, Marťánci, Mattress Firm, Milka, Mbank, McDonalds, Meta, Mentos, Mercedes, MND, Microsoft, Milka, Mixle Pixle, Monoprix, Mol, Mollers, Muller, My Tutor, Neutron, Nestlé, Net4Gas, Nintendo, Nesquick, Nomad food, Novonordisk, Odol, Ondrášovka, Olvarit, Opavia, Orion, O2, Palm Hill, Panadol, Paralen, Pillsbury, Pella Windows, Penny, Pere Dodu, Phillips, Post Bellum, Poděbradka, Pražská plynárenská, Pribina, Pribináček, Pro deti.cz, Prospan, Protex, Rakovina věc veřejná, Raiffesien Bank, Raiffeisen stavební spořitelna, Reddi Wip, Rohlík Rossmann, R+V, Sagrotan, Samsung, Sarenza, Seznam.cz, Smyths, Scotchbritte, Scotch, Shell, Slovenská spořitelna, Srovnejto, Sotio, Starlink, sušenky Lu, Sunar, Sundae, Sykora, Škoda, Tantum Verde, Tatrabanka, Tatranky, Telekom, Tesco, Teta, Tobetoo, Topgal, Tmobile, Tchibo, Toma, Toyota, Ubisoft, Umass, Unicredit Bank, Unicef, US Polo, Vanish, Vahine, Viper, Vinea, Vicks, Verbund, Vitana, Vodafone, Whirpool, Wustenrot, Women for Women, Young Academy, Xbox, Zemní plyn… videoklip Haul, videoklip Kozliatko, upoutávky FTV Pima a NOVA",
+        "description": "References page - part two of the fourth section"
+    },
+    "661c230e-e660-4745-b5c0-9df24de636e3": {
+        "message": "Malesuada fames ac turpis egestas integer eget aliquet. Eu volutpat odio facilisis mauris sit amet massa vitae tortor. Vitae aliquet nec ullamcorper sit amet risus.",
+        "description": "The second paragraph on the home page"
+    },
+    "668cef96-3e5a-4e28-a83a-a5aef1ca64b7": {
+        "message": "Produkční, pravá ruka Martiny, věnuje se registracím nových dětí, odpovídá na Vaše dotazy, spravuje databázi talentů a zve děti na castingy.",
+        "description": "About Us page - the first part of registration and database person's description"
+    },
+    "6aeb8404-d8c9-4e1f-ad8f-1775bd11c903": {
+        "message": "Hodí se na herectví Vaše dítě?",
+        "description": "Q&A page - question 1"
+    },
+    "6bf7df3e-31ef-4204-863a-9cf963d73779": {
+        "message": "Reference",
+        "description": "Top menu item - References"
+    },
+    "6c7da4cc-bca0-4e57-a1e3-adb11872c1aa": {
+        "message": "Na castingu se může sejít více dětí najednou, někdy hodinu čekáte, jindy jste za 10 minut pryč, dopředu bohužel nedokážeme predikovat.",
+        "description": "Q&A page - answer to question 10 - paragraph 2"
+    },
+    "6ca7da80-4f64-4787-a6b8-29737d98fecc": {
+        "message": "Pracovní doba pro vaše dotazy v pracovní dny 9.00 - 18.00.",
+        "description": "Contact page - the opening times"
+    },
+    "6ccf258c-a8a0-4842-a7dd-c65388d0681c": {
+        "message": "Fotky z registrace ani castingů rodičům nezasíláme, výjimkou jsou pouze registrace miminek, kdy foto pošleme mailem, neupravené, jak bylo nafoceno, protože děti hradí celý poplatek najednou. Z dalších přefocení ani castingů ale dále nezasíláme.",
+        "description": "Q&A page - answer to question 4 - paragraph 2"
+    },
+    "6fc6f245-be0b-474a-b682-ef215bead56f": {
+        "message": "Napište nám",
+        "description": "Above the top menu - email us"
+    },
+    "706db97d-376a-4bb7-b45c-b9f563cbd7cc": {
+        "message": "tel.čísle:",
+        "description": "Contact page - the info contact phone"
+    },
+    "70a2dd0a-d816-4bdd-acc1-f5024b5880cb": {
+        "message": "Lze se registrovat online?",
+        "description": "Q&A page - question 4"
+    },
+    "72a13e6a-5639-4ca0-9aa9-2e7d8e298ccc": {
+        "message": "IČO: 047 40 165",
+        "description": "Contact page - the ID number"
+    },
+    "73b571e6-4145-4efb-a2ae-6fd9f4933981": {
+        "message": "Kontakt",
+        "description": "Top menu item - Contact"
+    },
+    "74536b7d-1333-430f-8e9e-24580783a22c": {
+        "message": "a další...",
+        "description": "References page - suffix to part one of every section"
+    },
+    "75a4f6a4-3847-4bbf-aae4-a4fb4e01b9fe": {
+        "message": "Kde se konají castingy? Jak to probíhá?",
+        "description": "Q&A page - question 10"
+    },
+    "766a0ab3-5083-4fb1-87ac-87165933df44": {
+        "message": "ul. Kostelní nebo pod Technickým muzeem 40Kč/h",
+        "description": "Contact page - the registration address paid parking 1"
+    },
+    "77e1062d-d854-4c16-bd7d-ca8a2f9a95fa": {
+        "message": "Máme nabídky role TV reklam, seriálů, českých i zahraničních filmů, dabing, kompars, dabléry hlavních dětských herců. Méně zakázek je u nás na modeling.",
+        "description": "Q&A page - answer to question 1 - paragraph 3"
+    },
+    "78d75afe-dfbf-4ccc-8641-b55a3b6d6106": {
+        "message": "Připravuje pro vás smlouvy a dojednává kontrakty, doporučuje děti do hereckých rolí.",
+        "description": "About Us page - the second part of company owner's description"
+    },
+    "7ed024d8-d064-444f-af7e-7f6ca3b83759": {
+        "message": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum consectetur libero id faucibus.",
+        "description": "The first paragraph on the home page"
+    },
+    "7f0e21bf-8a5a-4d99-b522-2fc5ad383b4e": {
+        "message": "Dabing",
+        "description": "Header of the third paragraph on the home page"
+    },
+    "803964ff-7f8b-410d-b6db-2a3f1182b340": {
+        "message": "Nemůžeme bohužel zaručit, že Vaše nějakou dítě zakázku získá, ale zvýšit šance můžete Vy tím, že dítě bude chodit v budoucnosti minimálně do dramatického kroužku, ochotnického divadla či hereckých kurzů. Pouze talent mnohdy nestačí.",
+        "description": "Q&A page - answer to question 5 - paragraph 3"
+    },
+    "838a3d51-ced5-4d2a-a955-d807ae1e77cb": {
+        "message": "Otázky a odpovědi",
+        "description": "Top menu item - Q&A"
+    },
+    "857e18e9-09cd-4b7e-90f6-3bd50a63a91f": {
+        "message": "Pro mimopražské zájemce je dojíždění velmi náročné časově i finančně. Dětem dále než 1h dojezdu do Prahy registraci nedoporučujeme.",
+        "description": "Q&A page - answer to question 3 - paragraph 2"
+    },
+    "8bc483c1-91ac-4f35-a897-6f9794332b01": {
+        "message": "Děti na castingy zveme SMSkou, kterou pošleme rodiči. Ověříte si, že máte volno všechny vypsané termíny a odepíšete zpět se jménem a příjmením dítěte.",
+        "description": "Q&A page - answer to question 6 - paragraph 1"
+    },
+    "8c3c6989-a6fa-4111-886f-81389325486a": {
+        "message": "Paťanka 5, 160 00 Praha 6",
+        "description": "Contact page - the facturation address"
+    },
+    "93df4d63-d1ac-4861-8be5-2029c23fbfaf": {
+        "message": "Praha 7 Letná má modré parkovací zóny, kde bez karty pro P7 nesmíte stát autem, placená stání:",
+        "description": "Contact page - the registration address parking"
+    },
+    "9410fcc1-d823-40f0-a707-96592e796d22": {
+        "message": "NE: odhalená ramena, dekolt, pupíky",
+        "description": "Q&A page - answer to question 11 - paragraph 1 - inappropriate 3"
+    },
+    "952d7587-71ba-4883-9516-086adfd2360b": {
+        "message": "Registrace",
+        "description": "Registrations page - the header"
+    },
+    "9713887e-eea1-4c46-8098-a5e56f5ccb40": {
+        "message": "Mgr. Hana Kittnarová",
+        "description": "The Registration, database person"
+    },
+    "99e9c0f2-175c-45ba-a47a-c4d8608623b5": {
+        "message": "Poté obdržíte obratem adresu castingu, další podrobnosti.",
+        "description": "Q&A page - answer to question 6 - paragraph 2"
+    },
+    "9ac59ef4-2416-4a62-8ad5-5312a9cd4f68": {
+        "message": "Poptávka je například na miminka ve věku 8-9 měs, takových dětí v databázi budeme mít opravdu jen pár, protože velmi rychle rostou a jedná se o krátký věkový úsek života dítěte. Šance, že Vaše dítě bude zrovna v požadovaném věku v době dané zakázky je tedy poměrně malá, nabídek pro miminka je tedy bohužel logicky spíše málo.",
+        "description": "Q&A page - answer to question 8 - paragraph 2"
+    },
+    "9ba60cdb-647c-47b4-b48f-7eb19dd99190": {
+        "message": "Termíny registrací jsou pravidelně aktualizovány v běžícím červeném boxu pod menu stránky. Když se objeví termín registrace, můžete v daný den a čas přijít vaše dítě zaregistrovat, pokud je starší 4 let. Pokud je mladší než 4 roky, objednejte se na registraci telefonicky a domluvte si konkrétní hodinu. Obvykle probíhá v ten samý den před registrací starších dětí. Pokud vám daný termín nevyhovuje, počkejte, další termín se včas objeví. Registrace probíhají většinou 2-3x měsíčně.",
+        "description": "Registrations page - the first paragraph"
+    },
+    "9c048db6-f90d-48da-a31e-06187c783a60": {
+        "message": "Herečka, produkční, castingová a dabingová režisérka, zakladatelka agentury Poppy casting.",
+        "description": "About Us page - the first part of company owner's description"
+    },
+    "9d1e38e4-c949-4b17-ab6f-05d8a02c0b4c": {
+        "message": "Atelier VIVID, adresa: Františka Křížka 1, Praha 7, 2. patro.",
+        "description": "Q&A page - answer to question 9 - paragraph 1"
+    },
+    "9e0fe979-40e6-4978-9268-397e295da651": {
+        "message": "Pokud jste dítě zaregistrovali do agentury, která má exkluzivní zastoupení, registrovat jej u nás nemůžete.",
+        "description": "Q&A page - answer to question 12 - paragraph 1 - part 2"
+    },
+    "a0b279bd-a9cd-4cab-9afd-8de72b2f23d0": {
+        "message": "Buďte prosím trpěliví a maximálně flexibilní, na nat.den si vždy raději blokujte celý den.",
+        "description": "Q&A page - answer to question 6 - paragraph 5"
+    },
+    "a1b1962d-baff-4ec4-bd06-55d9e071c381": {
+        "message": "Dítěti musí \"uměleckou činnost\" povolit lékař a úřad práce, což je zákonnou podmínkou pro jakékoliv natáčení či focení, za které dítě dostává honorář. Podrobnosti vysvětlujeme u registrace. Důvodem pro neudělení povolení může být vysoká nemocnost dítěte, transplantace i například v útlém věku, závažné či chronické onemocnění apod.",
+        "description": "Q&A page - answer to question 2 - paragraph 1"
+    },
+    "a1e83a25-c48a-4224-af4c-f3064715264e": {
+        "message": "Dětskému castingu se věnuje od roku 2005, Poppycasting založila v roce 2012.",
+        "description": "About Us page - the third part of company owner's description"
+    },
+    "a5eff367-926c-4315-bf96-fc773c34f8da": {
+        "message": "Kukačky, Zlatá labuť, Iveta, Jitřní záře, Zákony vlka, O mě se neboj, Pan Profesor, Božena Němcová, Pod hladinou, Temný kraj, Specialisté, 1.Republika",
+        "description": "References page - part one of the second section"
+    },
+    "a773f81c-c45f-43ae-8548-c02b43751225": {
+        "message": "Projekty, do kterých jsme obsadili děti:",
+        "description": "References page - the sub header"
+    },
+    "a79092a0-18c4-4dc3-a07a-4bea305bf3f3": {
+        "message": "Než se k nám rozhodnete přihlásit",
+        "description": "Q&A page - the sub-header"
+    },
+    "ae88fbab-0433-4390-93b1-2048cc540f42": {
+        "message": "Aktuální info",
+        "description": "News page - the header"
+    },
+    "b0fe1f36-cd5e-40ee-8941-3a9383cec031": {
+        "message": "Nibh cras pulvinar mattis nunc sed blandit. Ipsum a arcu cursus vitae congue mauris rhoncus aenean.",
+        "description": "The third paragraph on the home page"
+    },
+    "b14db5d9-c99a-4b08-af69-7ab224854101": {
+        "message": "NE: tričko s obrázky, nápisy, značkami, křiklavé vzory",
+        "description": "Q&A page - answer to question 11 - paragraph 1 - inappropriate 2"
+    },
+    "b96688f6-32df-41e0-bb36-aee5099b6cd9": {
+        "message": "Je v Poppy casting exkluzivita?",
+        "description": "Q&A page - question 12"
+    },
+    "bae6bf3b-fcd9-493b-8537-face0f016813": {
+        "message": "Spolupracujeme s ověřenými partnery, pracujeme v souladu s GDPR.",
+        "description": "Q&A page - answer to question 13 - paragraph 2"
+    },
+    "bb731b22-3892-4e85-a51e-7ad558f7e5bd": {
+        "message": "korespondenční a fakturační adresa:",
+        "description": "Contact page - the facturation address plabel"
+    },
+    "bc6afe1d-94f7-46e9-b23a-c6f39f341d1f": {
+        "message": "Dabing a reklamní voiceovery",
+        "description": "References page - header of the fifth section"
+    },
+    "c13a8586-e3cf-467a-b651-a498647b1e5e": {
+        "message": "U komerčních zakázek je honorář vždy uveden, u filmu a seriálu honorář řešíme až po obsazení dítěte do role.",
+        "description": "Q&A page - answer to question 6 - paragraph 3"
+    },
+    "c5cde1ec-d9e0-4c79-b672-f03f79eb34b8": {
+        "message": "U registrace dětí od 4 do 15 let se platí jednorázový registrační poplatek ve výši 1 500 Kč. Část poplatku se hradí na místě u registrace, zbytek až z prvního honoráře, tzn. 500 Kč se platí hned u registrace, 1000 kč se odečte až z prvního honoráře. Pokud se nám nepodaří uplatnit vaše dítě v některém z našich projektů, bude vás to stát jenom 500 Kč. Reg. poplatek kryje náklady související s registrací, pořízením fotografií, zařazením do databáze a následnou pravidelnou aktualizací fotek formou opětovného focení, až dítě vyroste nebo změní vzhled (délku nebo barvu vlasů…)",
+        "description": "Registrations page - the second paragraph"
+    },
+    "c65d1a9a-885c-488d-a9b5-af73c3ae5870": {
+        "message": "Nejobsazovanější věk je u nás 6 měs - 1,5 roku a 5-12 let.",
+        "description": "Q&A page - answer to question 5 - paragraph 1"
+    },
+    "c680e70d-80c3-4547-99b2-e9e4aba885e6": {
+        "message": "hotově u registrace, neplatíte dále žádné poplatky.",
+        "description": "Q&A page - answer to question 7 - paragraph 1 - part 3"
+    },
+    "cb394fa9-9b9e-4b10-8d3e-7c78a1e75dc7": {
+        "message": "Kdo jsme",
+        "description": "About Us page - the header"
+    },
+    "cdafb0c7-145c-44c9-8d48-028f5d09c39d": {
+        "message": "Zobrazit další",
+        "description": "References page - a button to display more"
+    },
+    "cee207c1-c522-410c-8199-3625b0b5a84f": {
+        "message": "Registrace probíhá v ateliéru VIVID na adrese:",
+        "description": "Contact page - the registration address header"
+    },
+    "cf18dd06-a669-41d1-988d-9ad750665556": {
+        "message": "Castingy se konají nejčastěji ve všední dny nejpozději do 17h, zvažte tedy, zda je to ve vašich možnostech (práce, škola, kroužky).",
+        "description": "Q&A page - answer to question 3 - paragraph 3"
+    },
+    "d0ae95ba-5bdf-4dde-a123-4b525d4e4100": {
+        "message": "Castingy jsou zdarma. Přefocení každý půl rok a po 3.roce každý rok u nás v atelieru také zdarma.",
+        "description": "Q&A page - answer to question 7 - paragraph 3"
+    },
+    "d1e69a03-1e0d-4bb6-9613-db7973225f5f": {
+        "message": "Mimo stanovené termíny nás tam nezastihnete.",
+        "description": "Q&A page - answer to question 9 - paragraph 2"
+    },
+    "d39f027e-07f4-453f-8a32-d3d97214f09c": {
+        "message": "Reklama",
+        "description": "References page - header of the fourth section"
+    },
+    "d4282b3d-73db-4cec-9549-871b5b67aa25": {
+        "message": "Antipiracy, Aupark, Brita, Dekalb, Dům Ronalda McDonalda, České dráhy, Dettol, Dream studios, Globus, Jelen, Kinder, McDonalds, Microsoft, Mondelez",
+        "description": "References page - part one of the fifth section"
+    },
+    "d44643cf-bd5f-40f5-baae-b4afaac68f25": {
+        "message": "Albert, Ajax, Areoplan, AF Gruppen, Amazon, Apetito, Ariel, Arktika, Archeopark, Asda, Audi, Auchan, Auto Esa, Aukro, Aquila, Banque populare",
+        "description": "References page - part one of the fourth section"
+    },
+    "d66dad62-db2a-4ed5-bbfd-b9cb95d6c625": {
+        "message": "Dangerous Liaisons, Extraction 2, Foundation, Freud, Guardians, Hanna, Haunted 2, Hui Buh 2, Jojo Rabbit, Knightfall, Lore, Lucky Man, Margrete 1st, Norimberk, One life, Ophelia, Růžový králíček, Shadowplay, Shadows in my eyes, Sturmfrei, Tag Team, The Commander, The Crow, The Grey Man, The Letter for the King, The Marco effect, The thing I saw, The Wheel of time, White bird, Whiskey Cavalier, Whos’next?, 3 Mušketýři, 12 Monkeys + studentské filmy FAMU",
+        "description": "References page - part two of the third section"
+    },
+    "d8f5fe82-23fa-415d-84b8-8cdf36c9b756": {
+        "message": "Děti Nagana, Světýlka, Láska na špičkách, Mimořádná událost, Prvok,Šampón,Tečka a Karel, Chlap na střídačku, Národní třída, Vlastníci, Slovo, Běžná selhání, Deník moderního fotra, Mazel a tajemství lesa, Zátopek",
+        "description": "References page - part one of the first section"
+    },
+    "d905dd15-001b-4577-baf3-ac32b9108df8": {
+        "message": "Kde se konají registrace?",
+        "description": "Q&A page - question 9"
+    },
+    "d92d330c-7375-4697-bd33-0ee811e72331": {
+        "message": "Amerikánka, Bábovka, Bába z ledu, Bezva ženská, Bikeři, Božský děda, Cena za štěstí, Dukla 61, Dvě slova jako klíč, Fotr, Kdopak by se vlka bál, Konečně máme republiku, Milada, Mstitel, Naše báječná léta, Na krátko, Na střeše, Obeť, Obrazy lásky, Po strništi bos, Přes prsty, Příliš osobní známost, Rapl, Slíbená princezna, Štěstí je krásná věc, Tátova Volha, Tichý společník, Všetko alebo nič, YungMichal, Zdeněk Toman, 10 pravidel jak sbalit holku",
+        "description": "References page - part two of the first section"
+    },
+    "da168ad3-466d-4890-a90b-0d37fb483349": {
+        "message": "Castingy se konají výhradně v Praze a znamenají dojíždění, protože konkurzů je potřeba obejít více, aby se něco dítěti podařilo získat. Casting může mít 1. kolo a 2. kolo (tzv. callback pro užší výběr z 1.kola), poté kostýmová zkouška, někdy herecká zkouška, poté termín natáčení. Miminka si ale většinou vyberou jen z fotek bez castingu.",
+        "description": "Q&A page - answer to question 3 - paragraph 1"
+    },
+    "de1b85cb-35da-4669-995d-d8129cd91981": {
+        "message": "Zahraniční film a seriál",
+        "description": "References page - header of the third section"
+    },
+    "df269de6-665f-41ce-8a99-cae37d40427c": {
+        "message": "6 měs - 18 měs hradí 1.500Kč",
+        "description": "Q&A page - answer to question 7 - paragraph 1 - part 2"
+    },
+    "e3cffc3b-0478-4cff-9c3c-b719c143aeb4": {
+        "message": "Bydlíte v Praze a okolí?",
+        "description": "Q&A page - question 3"
+    },
+    "e698d1df-4094-4935-b3f0-bf36c35f3e3a": {
+        "message": "Jakou má vaše dítě šanci na úspěch?",
+        "description": "Q&A page - question 5"
+    },
+    "e6c3aeb3-690b-4db0-a671-98c739369944": {
+        "message": "ANO: jednobarevný vršek nebo proužky, puntíky, jemný vzor",
+        "description": "Q&A page - answer to question 11 - paragraph 2 - appropriate 1"
+    },
+    "ead3a1d1-bc04-41b2-bd64-bca14c7583e4": {
+        "message": "Aktuální info",
+        "description": "Top menu item - News"
+    },
+    "ed16458e-f167-41d9-af6c-e031412b0504": {
+        "message": "Původně učitelka ČJ - HV, v Poppy casting od roku 2016.",
+        "description": "About Us page - the second part of registration and database person's description"
+    },
+    "ed313c03-79ff-4dd2-8912-00855ab0cd73": {
+        "message": "Parkování:",
+        "description": "Contact page - the registration address parking label"
+    },
+    "ef604b18-1b95-45e8-9e9f-730c20f03f9b": {
+        "message": "Objednávky, informace a dotazy k registracím na:",
+        "description": "Contact page - the info contact header"
+    },
+    "f1e78b69-62c1-4b5b-a550-2763a4646df5": {
+        "message": "Čím starší je dítě, tím větší herecké schopnosti či průprava se od něj na castingu očekávají, stejně tak konkurence je větší.",
+        "description": "Q&A page - answer to question 5 - paragraph 2"
+    },
+    "f3a4a4f8-c01a-4e62-bff1-d669fc364f6e": {
+        "message": "Příští Registrace",
+        "description": "Registrations page - the button that shows info about the next registrations"
+    },
+    "f7b87daf-a144-4e73-b4fd-6342f1282136": {
+        "message": "Naše dvorní fotografka specializující se na focení dětí, nastávajících maminek a rodinné foto.",
+        "description": "About Us page - the first part of photographer's description"
+    },
+    "f9c61891-0855-4878-9055-ab80a9e4512f": {
+        "message": "Anatomie života, Cold feet, Černá sanitka, Černý pivo, Dáma a král, Druhá šance, DOC, Emanuel Moravec - Anatomie zrady, Ententyky, Guru, Hana, HPI, Hop nebo trop, Hvězdy nad hlavou, Král Šumavy, Krásno, Lynč, Něžné vlny, Marie Terezie 3, Matematika zločinu, Mordrparta, Národní házená, Návraty domů, Odznak Vysočina, Ohnivý kuře, Oktopus, Ordinace v řůžové zahradě, Ombudsman, Podezření, Polda, Policajtka, Policie Modrava, Pozadí událostí, Přijela pouť, Roseanne, Sestřičky, Stockholmský syndrom, Soukromé pasti, Svět pod hlavou, Šéfka, Škvrna, Tiger Daddy, Tátové na tahu, Topinka, Ulice, V peřině, VIP vraždy, Vyprávěj, Ženy v pokušení, Život je hra",
+        "description": "References page - part two of the second section"
+    },
+    "fa63adfe-160d-4aaf-9278-bc8b10680f41": {
+        "message": "Není, do databáze mají přístup pouze naši zaměstnanci, děti z fotek často anonymně nabízíme režisérům a klientům.",
+        "description": "Q&A page - answer to question 13 - paragraph 1"
+    },
+    "fbaa7734-385e-45ac-afad-4e73528e6178": {
+        "message": "Otázky a odpovědi",
+        "description": "Q&A page - the header"
     }
 }
