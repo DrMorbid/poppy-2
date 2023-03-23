@@ -1,34 +1,57 @@
 open Message.Registrations
-open Mui
-open Mui.Grid
-
-module Island = {
-  @react.component
-  let make = (~header, ~body) => {
-    <Common.Island
-      body={Element(<Registrations_Accordion header body />)}
-      disableGutters=true
-      sm=Sm.\"12"
-      lg=Lg.\"4"
-      xl=Xl.\"4"
-    />
-  }
-}
 
 @react.component
 let make = () => {
-  let commonClasses = Common.Style.useStyles(.)
+  let registrationsYoungestTopRef = React.useRef(Js.Nullable.null)
+  let registrationsMiddleTopRef = React.useRef(Js.Nullable.null)
+  let registrationsOldestTopRef = React.useRef(Js.Nullable.null)
+  let currentRegistrationDatesTopRef = React.useRef(Js.Nullable.null)
+  let (_, dispatch) = React.useContext(App_Context.Context.t)
+
+  React.useEffect4(() => {
+    dispatch(
+      App_Context.AddRegistrationsMenuItemScrollableRef(
+        RegistrationsYoungest,
+        registrationsYoungestTopRef,
+      ),
+    )
+    dispatch(
+      App_Context.AddRegistrationsMenuItemScrollableRef(
+        RegistrationsMiddle,
+        registrationsMiddleTopRef,
+      ),
+    )
+    dispatch(
+      App_Context.AddRegistrationsMenuItemScrollableRef(
+        RegistrationsOldest,
+        registrationsOldestTopRef,
+      ),
+    )
+    dispatch(
+      App_Context.AddRegistrationsMenuItemScrollableRef(
+        CurrentRegistrationDates,
+        currentRegistrationDatesTopRef,
+      ),
+    )
+
+    None
+  }, (
+    registrationsYoungestTopRef,
+    registrationsMiddleTopRef,
+    registrationsOldestTopRef,
+    currentRegistrationDatesTopRef,
+  ))
 
   <Common.Text
     header
-    centerAll=true
-    body={Element(
-      <Grid container=true className={commonClasses["paragraphGap"]}>
-        <Grid item=true xs=Xs.\"12">
-          <Grid container=true>
-            <Island
-              header=youngestKidsHeader
-              body=Lists(list{
+    body=Element(
+      <App_ScrollableSections
+        sections={list{
+          {
+            element: <Common.Text
+              header=Message.registrationsYoungest
+              headerVariant=#h4
+              body={Lists(list{
                 {
                   list: list{
                     {content: Message(youngestKidsLine1), bold: true},
@@ -37,56 +60,43 @@ let make = () => {
                     {content: Message(youngestKidsLine4), bold: true},
                   },
                 },
-              })
-            />
-            <Island
-              header=middleKidsHeader
-              body=Element(<>
-                <Grid item=true>
-                  <Common.Text
-                    body=Lists(list{
-                      {
-                        list: list{
-                          {
-                            content: Fragments(list{
-                              Text({content: Message(middleKidsLine1Part1), appendSpace: true}),
-                              Text({
-                                content: Message(middleKidsLine1Part2),
-                                bold: true,
-                                color: #error,
-                              }),
-                            }),
-                            bold: true,
-                          },
-                          {content: Message(middleKidsLine2)},
-                          {content: Message(middleKidsLine3)},
-                          {content: Message(middleKidsLine4)},
-                          {content: Message(middleKidsLine5)},
-                        },
-                      },
-                    })
-                  />
-                </Grid>
-                <Grid item=true>
-                  <Common.Text
-                    header=middleKidsSection2Header
-                    headerVariant=#h6
-                    disableGutters=true
-                    body=Lists(list{
-                      {
-                        list: list{
-                          {content: Message(middleKidsSection2Line1)},
-                          {content: Message(middleKidsSection2Line2), bold: true},
-                        },
-                      },
-                    })
-                  />
-                </Grid>
-              </>)
-            />
-            <Island
-              header=oldestKidsHeader
-              body=Lists(list{
+              })}
+            />,
+            topRef: registrationsYoungestTopRef,
+          },
+          {
+            element: <Common.Text
+              header=Message.registrationsMiddle
+              headerVariant=#h4
+              body={Lists(list{
+                {
+                  list: list{
+                    {
+                      content: Fragments(list{
+                        Text({content: Message(middleKidsLine1Part1), appendSpace: true}),
+                        Text({
+                          content: Message(middleKidsLine1Part2),
+                          bold: true,
+                          color: #error,
+                        }),
+                      }),
+                      bold: true,
+                    },
+                    {content: Message(middleKidsLine2)},
+                    {content: Message(middleKidsLine3)},
+                    {content: Message(middleKidsLine4)},
+                    {content: Message(middleKidsLine5)},
+                  },
+                },
+              })}
+            />,
+            topRef: registrationsMiddleTopRef,
+          },
+          {
+            element: <Common.Text
+              header=Message.registrationsOldest
+              headerVariant=#h4
+              body={Lists(list{
                 {
                   list: list{
                     {content: Message(oldestKidsLine1)},
@@ -94,14 +104,19 @@ let make = () => {
                     {content: Message(oldestKidsLine3)},
                   },
                 },
-              })
-            />
-          </Grid>
-        </Grid>
-        <Common.Section colored=true>
-          <News.Section header=currentRegistrationDates headerVariant=#h3 headerUppercase=true />
-        </Common.Section>
-      </Grid>,
-    )}
+              })}
+            />,
+            topRef: registrationsOldestTopRef,
+          },
+          {
+            element: <News.Section
+              header=Message.currentRegistrationDates headerVariant=#h3 headerUppercase=true
+            />,
+            topRef: currentRegistrationDatesTopRef,
+          },
+        }}
+        coloredSections=Odd
+      />,
+    )
   />
 }

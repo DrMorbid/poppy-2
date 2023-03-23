@@ -39,7 +39,7 @@ let make = () => {
 
   <Grid
     container=true
-    className={`${commonClasses["pageGutters"]} ${prefersDarkMode
+    className={`${commonClasses["pageGuttersComplete"]} ${prefersDarkMode
         ? classes["containerDark"]
         : classes["containerLight"]}`}>
     <Grid item=true xs=Xs.\"12">

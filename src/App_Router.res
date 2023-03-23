@@ -6,7 +6,7 @@ let make = () => {
 
   switch url.path {
   | list{"registrations"} =>
-    <App_Page>
+    <App_Page gutters=Top>
       <Registrations.Page />
     </App_Page>
   | list{"contact"} =>

@@ -8,6 +8,8 @@ module Actions = App_Actions
 module Page = App_Page
 module Router = App_Router
 module ScrollToTop = App_ScrollToTop
+module ScrollableSection = App_ScrollableSection
+module ScrollableSections = App_ScrollableSections
 
 let useStyles: Styles.useStyles<{
   "container": string,

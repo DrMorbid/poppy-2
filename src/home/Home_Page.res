@@ -12,8 +12,8 @@ let make = () => {
   let (_, dispatch) = React.useContext(App_Context.Context.t)
 
   React.useEffect2(() => {
-    dispatch(App_Context.AddMenuItemScrollableRef(WhoWeAre, whoWeAreTopRef))
-    dispatch(App_Context.AddMenuItemScrollableRef(References, referencesTopRef))
+    dispatch(App_Context.AddHomeMenuItemScrollableRef(WhoWeAre, whoWeAreTopRef))
+    dispatch(App_Context.AddHomeMenuItemScrollableRef(References, referencesTopRef))
 
     None
   }, (whoWeAreTopRef, referencesTopRef))
@@ -51,21 +51,15 @@ let make = () => {
       xl=Xl.\"4"
     />
     <Grid item=true xs=Xs.\"12">
-      <Grid
-        container=true
-        direction=#column
-        alignItems=#stretch
-        className={commonClasses["islandsVerticalGap"]}>
-        <Home_Section colored=true topRef=whoWeAreTopRef>
-          <WhoWeAre.Section />
-        </Home_Section>
-        <Home_Section topRef=referencesTopRef>
-          <References.Section />
-        </Home_Section>
+      <App_ScrollableSections
+        sections={list{
+          {element: <WhoWeAre.Section />, topRef: whoWeAreTopRef},
+          {element: <References.Section />, topRef: referencesTopRef},
+        }}>
         <Grid item=true>
           <Contact.BottomBar />
         </Grid>
-      </Grid>
+      </App_ScrollableSections>
     </Grid>
   </Grid>
 }

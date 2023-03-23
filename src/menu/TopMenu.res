@@ -19,7 +19,7 @@ let make = () => {
     </Hidden>
     <Hidden mdUp=true>
       <Toolbar>
-        {if url->App_Page.isHomePage {
+        {if url->App_Page.isHomePage || url->App_Page.isRegistrationsPage {
           <Grid container=true justify=#"space-between" alignItems=#center>
             {<>
               <Grid item=true>

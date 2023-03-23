@@ -22,7 +22,10 @@ let make = () => {
   let intl = useIntl()
   let classes = useStyles(.)
   let url = RescriptReactRouter.useUrl()
-  let ({menuItemTargets, _}: App_Context.state, _) = React.useContext(App_Context.Context.t)
+  let (
+    {homeMenuItemTargets, registrationsMenuItemTargets, _}: App_Context.state,
+    _,
+  ) = React.useContext(App_Context.Context.t)
 
   <Toolbar>
     <Grid container=true justify=#"space-evenly">
@@ -32,7 +35,13 @@ let make = () => {
         <Grid item=true key={`menu-item-${index->Belt.Int.toString}`}>
           <Button
             size=#large
-            onClick={_ => menuItem->onClick(~menuItemTargets)}
+            onClick={_ =>
+              menuItem->onClick(
+                ~menuItemTargets=url->pickMenuItemTargets(
+                  ~homeMenuItemTargets,
+                  ~registrationsMenuItemTargets,
+                ),
+              )}
             classes={Button.Classes.make(~label=classes["label"], ())}>
             {intl->Intl.formatMessage(menuItem->App_Types.MenuItem.toLabel)->React.string}
           </Button>

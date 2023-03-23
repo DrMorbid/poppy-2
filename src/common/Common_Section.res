@@ -18,9 +18,9 @@ let make = (~colored=false, ~children) => {
 
   let createContainerStyling = () =>
     switch (colored, prefersDarkMode) {
-    | (true, true) => `${commonClasses["pageGutters"]} ${classes["coloredDark"]}`
-    | (true, false) => `${commonClasses["pageGutters"]} ${classes["coloredLight"]}`
-    | (false, _) => commonClasses["pageGutters"]
+    | (true, true) => `${commonClasses["pageGuttersComplete"]} ${classes["coloredDark"]}`
+    | (true, false) => `${commonClasses["pageGuttersComplete"]} ${classes["coloredLight"]}`
+    | (false, _) => commonClasses["pageGuttersComplete"]
     }
 
   <Grid item=true xs=Xs.\"12" className={createContainerStyling()}> children </Grid>

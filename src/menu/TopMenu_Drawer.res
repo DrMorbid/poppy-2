@@ -14,7 +14,10 @@ let make = (~drawerOpen, ~onClose) => {
   let intl = useIntl()
   let classes = useStyles(.)
   let url = RescriptReactRouter.useUrl()
-  let ({menuItemTargets, _}: App_Context.state, _) = React.useContext(App_Context.Context.t)
+  let (
+    {homeMenuItemTargets, registrationsMenuItemTargets, _}: App_Context.state,
+    _,
+  ) = React.useContext(App_Context.Context.t)
 
   <Drawer
     \"open"=drawerOpen
@@ -27,7 +30,14 @@ let make = (~drawerOpen, ~onClose) => {
       ->Belt.List.mapWithIndex((index, section) =>
         <ListItem
           button=true
-          onClick={_ => section->onClick(~onDrawerClose=onClose, ~menuItemTargets)}
+          onClick={_ =>
+            section->onClick(
+              ~onDrawerClose=onClose,
+              ~menuItemTargets=url->pickMenuItemTargets(
+                ~homeMenuItemTargets,
+                ~registrationsMenuItemTargets,
+              ),
+            )}
           key={`menu-item-${index->Belt.Int.toString}`}>
           <ListItemText
             primary={intl->Intl.formatMessage(section->App_Types.MenuItem.toLabel)->React.string}

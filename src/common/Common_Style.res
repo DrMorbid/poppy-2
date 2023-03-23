@@ -2,7 +2,44 @@ open Mui
 open ReactDOM
 open Utils.Style
 
+let pagePaddingXs = "1rem"
+let pagePaddingSm = "2rem"
+let pagePaddingMdUp = "3rem"
+
 let headerGap = Style.make(~marginTop="2rem", ())
+let pageGuttersTop = (~theme: Theme.t) =>
+  list{
+    Style.make(~paddingTop=pagePaddingMdUp, ())->styleWithMediaQuery(
+      ~mediaQuery=theme.breakpoints.up->Any.unsafeGetValue("sm"),
+    ),
+    Style.make(~paddingTop=pagePaddingSm, ())->styleWithMediaQuery(
+      ~mediaQuery=theme.breakpoints.up->Any.unsafeGetValue("xs"),
+    ),
+    Style.make(~paddingTop=pagePaddingXs, ())->styleWithMediaQuery(
+      ~mediaQuery=theme.breakpoints.down->Any.unsafeGetValue("xs"),
+    ),
+  }->stylesCombiner
+let pageGuttersWithoutTop = (~theme: Theme.t) =>
+  list{
+    Style.make(
+      ~paddingRight=pagePaddingMdUp,
+      ~paddingBottom=pagePaddingMdUp,
+      ~paddingLeft=pagePaddingMdUp,
+      (),
+    )->styleWithMediaQuery(~mediaQuery=theme.breakpoints.up->Any.unsafeGetValue("sm")),
+    Style.make(
+      ~paddingRight=pagePaddingSm,
+      ~paddingBottom=pagePaddingSm,
+      ~paddingLeft=pagePaddingSm,
+      (),
+    )->styleWithMediaQuery(~mediaQuery=theme.breakpoints.up->Any.unsafeGetValue("xs")),
+    Style.make(
+      ~paddingRight=pagePaddingXs,
+      ~paddingBottom=pagePaddingXs,
+      ~paddingLeft=pagePaddingXs,
+      (),
+    )->styleWithMediaQuery(~mediaQuery=theme.breakpoints.down->Any.unsafeGetValue("xs")),
+  }->stylesCombiner
 
 let useStyles: Styles.useStyles<{
   "headerGap": string,
@@ -14,7 +51,8 @@ let useStyles: Styles.useStyles<{
   "marginBottom": string,
   "fullWidth": string,
   "centeredText": string,
-  "pageGutters": string,
+  "pageGuttersTop": string,
+  "pageGuttersComplete": string,
   "islandsVerticalGap": string,
   "islandsHorizontalGap": string,
   "uppercaseText": string,
@@ -29,14 +67,25 @@ let useStyles: Styles.useStyles<{
     "marginBottom": Style.make(~marginBottom="1rem", ()),
     "fullWidth": Style.make(~width="100%", ()),
     "centeredText": Style.make(~textAlign="center", ()),
-    "pageGutters": list{
-      Style.make(~padding="3rem", ())->styleWithMediaQuery(
+    "pageGuttersTop": list{
+      Style.make(~paddingTop=pagePaddingMdUp, ())->styleWithMediaQuery(
         ~mediaQuery=theme.breakpoints.up->Any.unsafeGetValue("sm"),
       ),
-      Style.make(~padding="2rem", ())->styleWithMediaQuery(
+      Style.make(~paddingTop=pagePaddingSm, ())->styleWithMediaQuery(
         ~mediaQuery=theme.breakpoints.up->Any.unsafeGetValue("xs"),
       ),
-      Style.make(~padding="1rem", ())->styleWithMediaQuery(
+      Style.make(~paddingTop=pagePaddingXs, ())->styleWithMediaQuery(
+        ~mediaQuery=theme.breakpoints.down->Any.unsafeGetValue("xs"),
+      ),
+    }->stylesCombiner,
+    "pageGuttersComplete": list{
+      Style.make(~padding=pagePaddingMdUp, ())->styleWithMediaQuery(
+        ~mediaQuery=theme.breakpoints.up->Any.unsafeGetValue("sm"),
+      ),
+      Style.make(~padding=pagePaddingSm, ())->styleWithMediaQuery(
+        ~mediaQuery=theme.breakpoints.up->Any.unsafeGetValue("xs"),
+      ),
+      Style.make(~padding=pagePaddingXs, ())->styleWithMediaQuery(
         ~mediaQuery=theme.breakpoints.down->Any.unsafeGetValue("xs"),
       ),
     }->stylesCombiner,

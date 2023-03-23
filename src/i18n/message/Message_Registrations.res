@@ -8,30 +8,6 @@ let header =
     id: "952d7587-71ba-4883-9516-086adfd2360b",
     defaultMessage: "Registrace",
   }
-let youngestKidsHeader =
-  @intl.description("Registrations page - youngest kids - header")
-  {
-    id: "c9bb840c-4f73-4a84-9cb6-2cf39ad7f925",
-    defaultMessage: "miminka 6 měs. - 17 měs.",
-  }
-let middleKidsHeader =
-  @intl.description("Registrations page - middle kids - header")
-  {
-    id: "aff491b0-4982-4a78-b94e-dc6f658b690a",
-    defaultMessage: "děti 18 měs. - 3 roky",
-  }
-let oldestKidsHeader =
-  @intl.description("Registrations page - oldest kids - header")
-  {
-    id: "9ae6d7cc-7db0-4d70-bff0-952bdefb1d8f",
-    defaultMessage: "děti 4 - 15 let",
-  }
-let currentRegistrationDates =
-  @intl.description("Registrations page - current registration dates - header")
-  {
-    id: "3f20d49f-5784-43ea-9590-6571f86164ed",
-    defaultMessage: "Aktuální termíny registrací",
-  }
 let youngestKidsLine1 =
   @intl.description("Registrations page - youngest kids - the first line")
   {

@@ -125,7 +125,7 @@
     },
     "3f20d49f-5784-43ea-9590-6571f86164ed": {
         "message": "Aktuální termíny registrací",
-        "description": "Registrations page - current registration dates - header"
+        "description": "Registrations - current registration dates"
     },
     "3f670b27-213d-45e8-a589-d0d7cba9a881": {
         "message": "Děti 4+: Natrénujte s dítětem představení na kameru, kde řekne své jméno, odkud pochází, věk a jaké jsou jeho zájmy, dovednosti, koníčky či herecké zkušenosti. Intro je součástí každého castingu. Poté může následovat herecká akce, kterou režisér dítěti vysvětlí a dítě ji zahraje, případně je nějaká snadná improvizace. Herecké castingy vyžadují nastudování textu předem, většina běžných reklamních castingů ale nemá předem pro dítě konkrétnější zadání, aby co nejpřirozeněji reagovalo.",
@@ -376,8 +376,8 @@
         "description": "Q&A page - answer to question 8 - paragraph 2"
     },
     "9ae6d7cc-7db0-4d70-bff0-952bdefb1d8f": {
-        "message": "děti 4 - 15 let",
-        "description": "Registrations page - oldest kids - header"
+        "message": "4 - 15 let",
+        "description": "Registrations - oldest kids"
     },
     "9c048db6-f90d-48da-a31e-06187c783a60": {
         "message": "Herečka, produkční, castingová a dabingová režisérka, zakladatelka agentury Poppy casting.",
@@ -432,8 +432,8 @@
         "description": "News page - the header"
     },
     "aff491b0-4982-4a78-b94e-dc6f658b690a": {
-        "message": "děti 18 měs. - 3 roky",
-        "description": "Registrations page - middle kids - header"
+        "message": "18 měs. - 3 roky",
+        "description": "Registrations - middle kids"
     },
     "b0fe1f36-cd5e-40ee-8941-3a9383cec031": {
         "message": "Nibh cras pulvinar mattis nunc sed blandit. Ipsum a arcu cursus vitae congue mauris rhoncus aenean.",
@@ -480,8 +480,8 @@
         "description": "Q&A page - answer to question 7 - paragraph 1 - part 3"
     },
     "c9bb840c-4f73-4a84-9cb6-2cf39ad7f925": {
-        "message": "miminka 6 měs. - 17 měs.",
-        "description": "Registrations page - youngest kids - header"
+        "message": "6 měs. - 17 měs.",
+        "description": "Registrations - youngest kids"
     },
     "cb394fa9-9b9e-4b10-8d3e-7c78a1e75dc7": {
         "message": "Kdo jsme",
@@ -566,10 +566,6 @@
     "ea1bc44d-c83a-4dc0-a236-1cf7aad1c70c": {
         "message": "POUZE děti jiných etnik a JEDNOVAJEČNÁ dvojčata",
         "description": "Registrations page - middle kids - the first line - the second part"
-    },
-    "ead3a1d1-bc04-41b2-bd64-bca14c7583e4": {
-        "message": "Aktuální info",
-        "description": "Top menu item - News"
     },
     "ed16458e-f167-41d9-af6c-e031412b0504": {
         "message": "Původně učitelka ČJ - HV, v Poppy casting od roku 2016.",

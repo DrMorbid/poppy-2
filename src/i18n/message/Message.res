@@ -17,6 +17,30 @@ let registrationDatabasePerson =
     id: "9713887e-eea1-4c46-8098-a5e56f5ccb40",
     defaultMessage: "Mgr. Hana Kittnarová",
   }
+let registrationsYoungest =
+  @intl.description("Registrations - youngest kids")
+  {
+    id: "c9bb840c-4f73-4a84-9cb6-2cf39ad7f925",
+    defaultMessage: "6 měs. - 17 měs.",
+  }
+let registrationsMiddle =
+  @intl.description("Registrations - middle kids")
+  {
+    id: "aff491b0-4982-4a78-b94e-dc6f658b690a",
+    defaultMessage: "18 měs. - 3 roky",
+  }
+let registrationsOldest =
+  @intl.description("Registrations - oldest kids")
+  {
+    id: "9ae6d7cc-7db0-4d70-bff0-952bdefb1d8f",
+    defaultMessage: "4 - 15 let",
+  }
+let currentRegistrationDates =
+  @intl.description("Registrations - current registration dates")
+  {
+    id: "3f20d49f-5784-43ea-9590-6571f86164ed",
+    defaultMessage: "Aktuální termíny registrací",
+  }
 
 module Menu = Message_Menu
 module Home = Message_Home

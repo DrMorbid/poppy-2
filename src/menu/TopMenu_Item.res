@@ -2,7 +2,19 @@ open Scroll
 open App_Types.MenuItem
 
 let getMenuItems = url =>
-  url->App_Page.isHomePage ? list{WhoWeAre, QAndA, References, Contact} : list{Home}
+  if url->App_Page.isHomePage {
+    list{WhoWeAre, QAndA, References, Contact}
+  } else if url->App_Page.isRegistrationsPage {
+    list{
+      Home,
+      RegistrationsYoungest,
+      RegistrationsMiddle,
+      RegistrationsOldest,
+      CurrentRegistrationDates,
+    }
+  } else {
+    list{Home}
+  }
 
 let scrollToSection = (scrollableRef: React.ref<Js.Nullable.t<Dom.element>>) =>
   scrollableRef.current
@@ -29,3 +41,10 @@ let onClick = (~onDrawerClose=?, ~menuItemTargets: App_Context.menuItemTargets, 
   | None => goToTarget()
   }
 }
+
+let pickMenuItemTargets = (~homeMenuItemTargets, ~registrationsMenuItemTargets, url) =>
+  if url->App_Page.isHomePage {
+    homeMenuItemTargets
+  } else {
+    registrationsMenuItemTargets
+  }
