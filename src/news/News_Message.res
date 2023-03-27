@@ -24,30 +24,24 @@ module Title = {
 
 @react.component
 let make = () => {
-  let commonClasses = Common_Style.useStyles(.)
-
   <Grid container=true>
     <Grid item=true>
       <Title variant=#h5 />
-      <Grid
-        container=true
-        direction=#column
-        alignItems=#stretch
-        className={commonClasses["marginTopSm"]}>
+      <Grid container=true direction=#column alignItems=#stretch className=Common.Style.marginTopSm>
         {latestNews.content
         ->Belt.List.mapWithIndex((index, {emphasis, value, nextLineEmpty}) => {
           <Grid
             item=true
             key={`news-line-${index->Belt.Int.toString}`}
             className=?{if nextLineEmpty {
-              Some(commonClasses["marginBottomSm"])
+              Some(Common.Style.marginBottomSm)
             } else {
               None
             }}>
             <Typography
               className=?{switch emphasis {
               | Normal => None
-              | Bold => Some(commonClasses["bold"])
+              | Bold => Some(Common.Style.bold)
               }}>
               {value->React.string}
             </Typography>

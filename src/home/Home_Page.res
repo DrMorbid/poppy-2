@@ -6,7 +6,6 @@ module CarouselItem = Home_CarouselItem
 
 @react.component
 let make = () => {
-  let commonClasses = Common.Style.useStyles(.)
   let whoWeAreTopRef = React.useRef(Js.Nullable.null)
   let referencesTopRef = React.useRef(Js.Nullable.null)
   let (_, dispatch) = React.useContext(App_Context.Context.t)
@@ -18,7 +17,7 @@ let make = () => {
     None
   }, (whoWeAreTopRef, referencesTopRef))
 
-  <Grid container=true className={commonClasses["islandsVerticalGap"]}>
+  <Grid container=true className=Common.Style.islandsVerticalGap>
     <Grid item=true xs=Xs.\"12">
       <ReactMaterialUiCarousel autoPlay=true indicators=false animation=#slide>
         {[

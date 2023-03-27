@@ -20,9 +20,9 @@ let make = () => {
   let (mapUrl, setMapUrl) = React.useState(() => None)
   let (isMapBeingLoaded, setIsMapBeingLoaded) = React.useState(() => false)
   let intl = useIntl()
-  let commonClasses = Common.Style.useStyles(.)
   let classes = useStyles(.)
-  let isMdUp = Core.useMediaQuery(Core.useTheme()->Core.Breakpoint.get(#md->#up))
+  let theme = Core.useTheme()
+  let isMdUp = Core.useMediaQuery(theme->Core.Breakpoint.get(#md->#up))
   let prefersDarkMode = Core.useMediaQueryString(Common.Constants.darkModeMediaQuery)
 
   let onClose = () => {
@@ -39,15 +39,16 @@ let make = () => {
 
   <Grid
     container=true
-    className={`${commonClasses["pageGuttersComplete"]} ${prefersDarkMode
-        ? classes["containerDark"]
-        : classes["containerLight"]}`}>
+    className={Emotion.cx([
+      Common.Style.pageGuttersComplete(theme),
+      prefersDarkMode ? classes["containerDark"] : classes["containerLight"],
+    ])}>
     <Grid item=true xs=Xs.\"12">
-      <Grid container=true className={commonClasses["paragraphGap"]}>
+      <Grid container=true className={Common.Style.paragraphGap}>
         <Grid item=true xs=Xs.\"12" sm=Sm.\"6" md=Md.\"4">
           <Grid container=true>
             <Grid item=true xs=Xs.\"12">
-              <Typography className={commonClasses["bold"]}>
+              <Typography className={Common.Style.bold}>
                 {intl->Intl.formatMessage(registrationDatabaseTitle)->React.string}
               </Typography>
             </Grid>
@@ -67,7 +68,7 @@ let make = () => {
         <Grid item=true xs=Xs.\"12" sm=Sm.\"6" md=Md.\"4">
           <Grid container=true>
             <Grid item=true xs=Xs.\"12">
-              <Typography className={commonClasses["bold"]}>
+              <Typography className={Common.Style.bold}>
                 {intl->Intl.formatMessage(clientsProductionDirectionTitle)->React.string}
               </Typography>
             </Grid>
@@ -82,7 +83,7 @@ let make = () => {
         <Grid item=true xs=Xs.\"12" md=Md.\"4">
           <Grid container=true>
             <Grid item=true xs=Xs.\"12">
-              <Typography className={commonClasses["bold"]}>
+              <Typography className={Common.Style.bold}>
                 {intl->Intl.formatMessage(studioRegistrationsTitle)->React.string}
               </Typography>
             </Grid>

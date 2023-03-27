@@ -1,6 +1,7 @@
 open Mui
 open ReactDOM
 open Utils.Style
+open Emotion
 
 module Theme = App_Theme
 module Context = App_Context
@@ -11,13 +12,9 @@ module ScrollToTop = App_ScrollToTop
 module ScrollableSection = App_ScrollableSection
 module ScrollableSections = App_ScrollableSections
 
-let useStyles: Styles.useStyles<{
-  "container": string,
-  "containerColorLight": string,
-  "containerColorDark": string,
-}> = Styles.makeStylesWithTheme(theme => {
-  {
-    "container": list{
+module Classes = {
+  let container = (theme: Mui.Theme.t) =>
+    list{
       Style.make(
         ~paddingTop="1rem",
         ~paddingLeft="0rem",
@@ -36,18 +33,19 @@ let useStyles: Styles.useStyles<{
         ~paddingRight="2rem",
         (),
       )->styleWithMediaQuery(~mediaQuery=theme.breakpoints.up->Any.unsafeGetValue("md")),
-    }->stylesCombiner,
-    "containerColorLight": Style.make(~backgroundColor="rgba(250, 250, 250, 0.75)", ()),
-    "containerColorDark": Style.make(~backgroundColor="rgba(48, 48, 48, 0.75)", ()),
-  }
-})
+    }
+    ->stylesCombiner
+    ->styleToClass
+  let containerColorLight =
+    Style.make(~backgroundColor="rgba(250, 250, 250, 0.75)", ())->styleToClass
+  let containerColorDark = Style.make(~backgroundColor="rgba(48, 48, 48, 0.75)", ())->styleToClass
+}
 
 @react.component
 let make = () => {
-  let classes = useStyles(.)
-  let commonClasses = Common.Style.useStyles(.)
-  let isSmUp = Core.useMediaQuery(Core.useTheme()->Core.Breakpoint.get(#sm->#up))
-  let isMdUp = Core.useMediaQuery(Core.useTheme()->Core.Breakpoint.get(#md->#up))
+  let theme = Core.useTheme()
+  let isSmUp = Core.useMediaQuery(theme->Core.Breakpoint.get(#sm->#up))
+  let isMdUp = Core.useMediaQuery(theme->Core.Breakpoint.get(#md->#up))
   let prefersDarkMode = Core.useMediaQueryString(Common.Constants.darkModeMediaQuery)
   let topRef = React.useRef(Js.Nullable.null)
   let (_, dispatch) = React.useContext(App_Context.Context.t)
@@ -60,10 +58,10 @@ let make = () => {
 
   <Container
     maxWidth=Container.MaxWidth.xl
-    classes={Container.Classes.make(~root=classes["container"], ())}
-    className={prefersDarkMode ? classes["containerColorDark"] : classes["containerColorLight"]}
+    classes={Container.Classes.make(~root=Classes.container(theme), ())}
+    className={prefersDarkMode ? Classes.containerColorDark : Classes.containerColorLight}
     ref={topRef->Ref.domRef}>
-    <Grid container=true direction=#column className={commonClasses["paragraphGap"]}>
+    <Grid container=true direction=#column className=Common.Style.paragraphGap>
       <Grid item=true>
         <TopHeader />
       </Grid>

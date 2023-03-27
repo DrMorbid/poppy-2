@@ -46,12 +46,10 @@ module FragmentContent = {
 module Text = {
   @react.component
   let make = (~children, ~centered=?) => {
-    let commonClasses = Common_Style.useStyles(.)
-
     <Grid
       item=true
       xs=Grid.Xs.\"12"
-      className={centered->Belt.Option.getWithDefault(false) ? commonClasses["centeredText"] : ""}>
+      className={centered->Belt.Option.getWithDefault(false) ? Common_Style.centeredText : ""}>
       children
     </Grid>
   }
@@ -60,15 +58,13 @@ module Text = {
 module Fragment = {
   @react.component
   let make = (~fragments) => {
-    let classes = Common_Style.useStyles(.)
-
     fragments
     ->Belt.List.mapWithIndex((index, fragment) => {
       switch fragment {
       | Text(fragment) =>
         <Typography
           component={"span"->Typography.Component.string}
-          className={fragment.bold->Belt.Option.getWithDefault(false) ? classes["bold"] : ""}
+          className={fragment.bold->Belt.Option.getWithDefault(false) ? Common_Style.bold : ""}
           key={`fragment-${index->Belt.Int.toString}`}
           color=?fragment.color>
           <FragmentContent
@@ -97,23 +93,22 @@ let make = (
   ~disableGutters=false,
 ) => {
   let intl = useIntl()
-  let classes = Common_Style.useStyles(.)
 
   let getContainerClassname = () =>
-    (disableGutters ? list{} : list{classes["paragraphGap"]})
+    (disableGutters ? list{} : list{Common_Style.paragraphGap})
     ->Belt.List.concat(
       centerAll->Belt.Option.mapWithDefault(list{}, centerAll =>
-        centerAll ? list{classes["centeredText"]} : list{}
+        centerAll ? list{Common_Style.centeredText} : list{}
       ),
     )
     ->Belt.List.reduce("", (result, className) => `${result} ${className}`)
 
   <Grid container=true className={getContainerClassname()}>
     {header->Belt.Option.mapWithDefault(React.null, header =>
-      <Grid item=true xs=Grid.Xs.\"12" className={classes["centeredText"]}>
+      <Grid item=true xs=Grid.Xs.\"12" className={Common_Style.centeredText}>
         <Typography
           variant=headerVariant
-          className=?{headerUppercase ? Some(classes["uppercaseText"]) : None}>
+          className=?{headerUppercase ? Some(Common_Style.uppercaseText) : None}>
           {intl->Intl.formatMessage(header)->React.string}
         </Typography>
       </Grid>
@@ -165,7 +160,7 @@ let make = (
                     <ListItemText
                       primary={intl->Intl.formatMessage(message)->React.string}
                       classes=?{row.bold->Belt.Option.getWithDefault(false)
-                        ? Some(ListItemText.Classes.make(~primary=classes["bold"], ()))
+                        ? Some(ListItemText.Classes.make(~primary=Common_Style.bold, ()))
                         : None}
                     />
                   }}

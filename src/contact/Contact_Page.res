@@ -9,7 +9,6 @@ let make = () => {
   let (mapUrl, setMapUrl) = React.useState(() => None)
   let (isMapBeingLoaded, setIsMapBeingLoaded) = React.useState(() => false)
   let intl = useIntl()
-  let commonClasses = Common.Style.useStyles(.)
 
   let onClose = () => {
     setIsMapBeingLoaded(_ => false)
@@ -30,9 +29,9 @@ let make = () => {
         <Grid item=true xs=Xs.\"12">
           <Grid
             container=true
-            className={`${commonClasses["paragraphGap"]} ${commonClasses["marginBottom"]}`}>
+            className={Emotion.cx([Common.Style.paragraphGap, Common.Style.marginBottom])}>
             <Grid item=true xs=Xs.\"12">
-              <Typography className={commonClasses["bold"]}>
+              <Typography className=Common.Style.bold>
                 {intl->Intl.formatMessage(openingTimes)->React.string}
               </Typography>
             </Grid>
@@ -42,13 +41,13 @@ let make = () => {
           item=true
           xs=Xs.\"12"
           md={mapUrl->Belt.Option.isSome ? Md.\"6" : Md.\"12"}
-          className={commonClasses["headerGap"]}>
-          <Grid container=true className={commonClasses["paragraphGap"]}>
+          className=Common.Style.headerGap>
+          <Grid container=true className=Common.Style.paragraphGap>
             <Grid
               item=true xs=Xs.\"12" sm=Sm.\"6" md={mapUrl->Belt.Option.isSome ? Md.\"12" : Md.\"6"}>
               <Grid container=true>
                 <Grid item=true xs=Xs.\"12">
-                  <Typography className={commonClasses["bold"]}>
+                  <Typography className=Common.Style.bold>
                     {intl->Intl.formatMessage(registrationDatabaseTitle)->React.string}
                   </Typography>
                 </Grid>
@@ -69,7 +68,7 @@ let make = () => {
               item=true xs=Xs.\"12" sm=Sm.\"6" md={mapUrl->Belt.Option.isSome ? Md.\"12" : Md.\"6"}>
               <Grid container=true>
                 <Grid item=true xs=Xs.\"12">
-                  <Typography className={commonClasses["bold"]}>
+                  <Typography className=Common.Style.bold>
                     {intl->Intl.formatMessage(clientsProductionDirectionTitle)->React.string}
                   </Typography>
                 </Grid>
@@ -85,7 +84,7 @@ let make = () => {
               item=true xs=Xs.\"12" sm=Sm.\"6" md={mapUrl->Belt.Option.isSome ? Md.\"12" : Md.\"6"}>
               <Grid container=true>
                 <Grid item=true xs=Xs.\"12">
-                  <Typography className={commonClasses["bold"]}>
+                  <Typography className=Common.Style.bold>
                     {intl->Intl.formatMessage(registrationAddressHeader)->React.string}
                   </Typography>
                 </Grid>
@@ -128,7 +127,7 @@ let make = () => {
               item=true xs=Xs.\"12" sm=Sm.\"6" md={mapUrl->Belt.Option.isSome ? Md.\"12" : Md.\"6"}>
               <Grid container=true>
                 <Grid item=true xs=Xs.\"12">
-                  <Typography className={commonClasses["bold"]}>
+                  <Typography className=Common.Style.bold>
                     {intl->Intl.formatMessage(facturationAddressLabel)->React.string}
                   </Typography>
                 </Grid>
@@ -156,7 +155,7 @@ let make = () => {
           </Grid>
         </Grid>
         <Hidden smDown=true mdUp={mapUrl->Belt.Option.isNone}>
-          <Grid item=true md=Md.\"6" className={commonClasses["headerGap"]}>
+          <Grid item=true md=Md.\"6" className=Common.Style.headerGap>
             <Contact_Map url=?mapUrl isMapBeingLoaded onMapLoadingFinished />
           </Grid>
         </Hidden>

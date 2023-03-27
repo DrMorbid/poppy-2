@@ -25,7 +25,6 @@ module Section = {
 @react.component
 let make = () => {
   let intl = useIntl()
-  let commonClasses = Common.Style.useStyles(.)
 
   <Common.Text
     header
@@ -33,7 +32,7 @@ let make = () => {
       {intl->Intl.formatMessage(subHeader)->React.string}
     </Typography>}
     body={Element(
-      <Grid container=true className={commonClasses["sectionGap"]}>
+      <Grid container=true className=Common.Style.sectionGap>
         <Grid item=true>
           <Section header=section1Header part1=section1Part1 part2=section1Part2 />
         </Grid>

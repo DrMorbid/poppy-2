@@ -2,25 +2,22 @@ open Mui
 open Mui.Grid
 open ReactDOM
 
-let useStyles: Styles.useStyles<{
-  "coloredLight": string,
-  "coloredDark": string,
-}> = Styles.makeStyles({
-  "coloredLight": Style.make(~backgroundColor="rgba(230, 230, 230, 0.75)", ()),
-  "coloredDark": Style.make(~backgroundColor="rgba(70, 70, 70, 0.75)", ()),
-})
+module Classes = {
+  let coloredLight =
+    Style.make(~backgroundColor="rgba(230, 230, 230, 0.75)", ())->Emotion.styleToClass
+  let coloredDark = Style.make(~backgroundColor="rgba(70, 70, 70, 0.75)", ())->Emotion.styleToClass
+}
 
 @react.component
 let make = (~colored=false, ~children) => {
   let prefersDarkMode = Core.useMediaQueryString(Common_Constants.darkModeMediaQuery)
-  let classes = useStyles(.)
-  let commonClasses = Common_Style.useStyles(.)
+  let theme = Core.useTheme()
 
   let createContainerStyling = () =>
     switch (colored, prefersDarkMode) {
-    | (true, true) => `${commonClasses["pageGuttersComplete"]} ${classes["coloredDark"]}`
-    | (true, false) => `${commonClasses["pageGuttersComplete"]} ${classes["coloredLight"]}`
-    | (false, _) => commonClasses["pageGuttersComplete"]
+    | (true, true) => Emotion.cx([Common_Style.pageGuttersComplete(theme), Classes.coloredDark])
+    | (true, false) => Emotion.cx([Common_Style.pageGuttersComplete(theme), Classes.coloredLight])
+    | (false, _) => Common_Style.pageGuttersComplete(theme)
     }
 
   <Grid item=true xs=Xs.\"12" className={createContainerStyling()}> children </Grid>

@@ -14,8 +14,6 @@ let make = (
   ~lg=Lg.\"3",
   ~xl=Xl.\"true",
 ) => {
-  let commonClasses = Common_Style.useStyles(.)
-
   <Grid
     item=true
     xs
@@ -25,7 +23,7 @@ let make = (
     xl
     className=?{disableGutters->Belt.Option.getWithDefault(false)
       ? None
-      : Some(commonClasses["islandsHorizontalGap"])}>
+      : Some(Common_Style.islandsHorizontalGap)}>
     <Common_Text ?header ?headerVariant body ?centerAll />
   </Grid>
 }

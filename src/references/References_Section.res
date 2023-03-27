@@ -24,7 +24,6 @@ module Island = {
 @react.component
 let make = () => {
   let intl = useIntl()
-  let commonClasses = Common.Style.useStyles(.)
   let ({topRef, _}: App_Context.state, _) = React.useContext(App_Context.Context.t)
 
   let onClick = e => {
@@ -32,7 +31,7 @@ let make = () => {
     App_Page.goTo(References)
   }
 
-  <Grid container=true justify=#center className={commonClasses["islandsVerticalGap"]}>
+  <Grid container=true justify=#center className=Common.Style.islandsVerticalGap>
     <Grid item=true>
       <Common.Text
         header
@@ -40,7 +39,7 @@ let make = () => {
           {intl->Intl.formatMessage(subHeader)->React.string}
         </Typography>}
         body={Element(
-          <Grid container=true className={commonClasses["islandsVerticalGap"]}>
+          <Grid container=true className=Common.Style.islandsVerticalGap>
             <Island header=section1Header content=section1Part1 />
             <Island header=section2Header content=section2Part1 />
             <Island header=section3Header content=section3Part1 />

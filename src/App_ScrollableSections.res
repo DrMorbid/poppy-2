@@ -7,13 +7,8 @@ type section = {element: Jsx.element, topRef: React.ref<Js.nullable<Dom.element>
 
 @react.component
 let make = (~sections, ~coloredSections=Even, ~children=?) => {
-  let commonClasses = Common.Style.useStyles(.)
-
   <Grid
-    container=true
-    direction=#column
-    alignItems=#stretch
-    className={commonClasses["islandsVerticalGap"]}>
+    container=true direction=#column alignItems=#stretch className=Common.Style.islandsVerticalGap>
     {<>
       {sections
       ->Belt.List.mapWithIndex((index, {element, topRef}) =>

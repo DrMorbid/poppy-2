@@ -23,12 +23,10 @@ let getContact = (email): Common.Text.fragmentParagraph => {
 
 @react.component
 let make = () => {
-  let commonClasses = Common.Style.useStyles(.)
-
   <Common.Text
     header
     body={Element(
-      <Grid container=true className={commonClasses["sectionGap"]}>
+      <Grid container=true className=Common.Style.sectionGap>
         <Grid item=true xs=Xs.\"12" xl=Xl.\"6">
           <Person
             photoSrc="/martina-popperova.jpg"

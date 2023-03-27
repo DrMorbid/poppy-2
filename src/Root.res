@@ -8,7 +8,9 @@ let make = () => {
     <App.Context.Provider>
       <ThemeProvider theme={App_Theme.theme(~prefersDarkMode)}>
         <CssBaseline />
-        <App />
+        <StylesProvider injectFirst=true>
+          <App />
+        </StylesProvider>
       </ThemeProvider>
     </App.Context.Provider>
   </IntlProvider>

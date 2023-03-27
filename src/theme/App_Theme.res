@@ -12,7 +12,7 @@ module Colors = {
   let textDark = "rgba(255, 255,255, 0.87)"
 }
 
-let theme = (~prefersDarkMode) => {
+let theme = (~prefersDarkMode) =>
   create(
     make(
       ~typography=Typography.make(
@@ -91,4 +91,3 @@ let theme = (~prefersDarkMode) => {
       (),
     ),
   )
-}

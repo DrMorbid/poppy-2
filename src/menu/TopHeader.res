@@ -18,7 +18,6 @@ let useStyles: Styles.useStyles<{
 let make = () => {
   let intl = useIntl()
   let classes = useStyles(.)
-  let commonClasses = Common.Style.useStyles(.)
 
   let onEmailUs = e => {
     location->Location.setHref(`mailto:${Common.Constants.infoEmail}`)
@@ -35,7 +34,7 @@ let make = () => {
     </Grid>
     <Hidden smDown=true>
       <Grid item=true className={classes["logoContainer"]}>
-        <ButtonBase onClick=onLogoClick className={commonClasses["fullWidth"]}>
+        <ButtonBase onClick=onLogoClick className=Common.Style.fullWidth>
           <img src="/poppy-logo.png" className={classes["logo"]} />
         </ButtonBase>
       </Grid>

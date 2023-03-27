@@ -50,13 +50,13 @@ type gutters = Top | Complete
 
 @react.component
 let make = (~gutters=Complete, ~children) => {
-  let commonClasses = Common.Style.useStyles(.)
+  let theme = Core.useTheme()
 
   <Grid
     container=true
     className={switch gutters {
-    | Top => commonClasses["pageGuttersTop"]
-    | Complete => commonClasses["pageGuttersComplete"]
+    | Top => Common.Style.pageGuttersTop(theme)
+    | Complete => Common.Style.pageGuttersComplete(theme)
     }}>
     <Grid item=true xs=Xs.\"12"> children </Grid>
   </Grid>
