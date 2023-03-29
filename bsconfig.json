@@ -1,8 +1,13 @@
 {
-  "name": "your-project-name",
+  "name": "poppy-casting",
   "sources": [
     {
       "dir": "src",
+      "subdirs": true
+    },
+    {
+      "dir": "tests",
+      "type": "dev",
       "subdirs": true
     }
   ],
@@ -22,6 +27,7 @@
     "rescript-material-ui-lab",
     "rescript-webapi"
   ],
+  "bs-dev-dependencies": ["rescript-vitest"],
   "jsx": { "version": 4, "mode": "automatic" },
   "warnings": {
     "number": "+A-42-48",
