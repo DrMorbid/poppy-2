@@ -3,29 +3,27 @@ open ReactIntl
 open TopMenu_Item
 open ReactDOM
 
-let useStyles: Styles.useStyles<{
-  "label": string,
-}> = Styles.makeStylesWithTheme(theme => {
-  let tabTypography = theme.typography.h5
-  {
-    "label": Style.make(
+module Classes = {
+  let label = (theme: Theme.t) => {
+    let tabTypography = theme.typography.h5
+    Style.make(
       ~fontSize=?tabTypography.fontSize,
       ~fontWeight=?tabTypography.fontWeight,
       ~lineHeight=?tabTypography.lineHeight,
       (),
-    ),
+    )->Emotion.styleToClass
   }
-})
+}
 
 @react.component
 let make = () => {
   let intl = useIntl()
-  let classes = useStyles(.)
   let url = RescriptReactRouter.useUrl()
   let (
     {homeMenuItemTargets, registrationsMenuItemTargets, _}: App_Context.state,
     _,
   ) = React.useContext(App_Context.Context.t)
+  let theme = Core.useTheme()
 
   <Toolbar>
     <Grid container=true justify=#"space-evenly">
@@ -42,7 +40,7 @@ let make = () => {
                   ~registrationsMenuItemTargets,
                 ),
               )}
-            classes={Button.Classes.make(~label=classes["label"], ())}>
+            classes={Button.Classes.make(~label=theme->Classes.label, ())}>
             {intl->Intl.formatMessage(menuItem->App_Types.MenuItem.toLabel)->React.string}
           </Button>
         </Grid>

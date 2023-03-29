@@ -5,22 +5,18 @@ open Message
 open Message.Contact
 open ReactDOM
 
-let useStyles: Styles.useStyles<{
-  "containerLight": string,
-  "containerDark": string,
-}> = Styles.makeStylesWithTheme(theme =>
-  {
-    "containerLight": Style.make(~backgroundColor=theme.palette.success.light, ()),
-    "containerDark": Style.make(~backgroundColor=theme.palette.success.dark, ()),
-  }
-)
+module Classes = {
+  let containerLight = (theme: Theme.t) =>
+    Style.make(~backgroundColor=theme.palette.success.light, ())->Emotion.styleToClass
+  let containerDark = (theme: Theme.t) =>
+    Style.make(~backgroundColor=theme.palette.success.dark, ())->Emotion.styleToClass
+}
 
 @react.component
 let make = () => {
   let (mapUrl, setMapUrl) = React.useState(() => None)
   let (isMapBeingLoaded, setIsMapBeingLoaded) = React.useState(() => false)
   let intl = useIntl()
-  let classes = useStyles(.)
   let theme = Core.useTheme()
   let isMdUp = Core.useMediaQuery(theme->Core.Breakpoint.get(#md->#up))
   let prefersDarkMode = Core.useMediaQueryString(Common.Constants.darkModeMediaQuery)
@@ -41,7 +37,7 @@ let make = () => {
     container=true
     className={Emotion.cx([
       Common.Style.pageGuttersComplete(theme),
-      prefersDarkMode ? classes["containerDark"] : classes["containerLight"],
+      prefersDarkMode ? theme->Classes.containerDark : theme->Classes.containerLight,
     ])}>
     <Grid item=true xs=Xs.\"12">
       <Grid container=true className={Common.Style.paragraphGap}>

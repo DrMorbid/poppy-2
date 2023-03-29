@@ -10,7 +10,7 @@ let pagePaddingMdUp = "3rem"
 let headerGap = Style.make(~marginTop="2rem", ())->styleToClass
 let paragraphGap = Style.make(~gridRowGap="1rem", ())->styleToClass
 let sectionGap = Style.make(~gridRowGap="2rem", ())->styleToClass
-let bold = Style.make(~fontWeight="bold !important", ())->styleToClass
+let bold = Style.make(~fontWeight="bold", ())->styleToClass
 let marginTopSm = Style.make(~marginTop="0.75rem", ())->styleToClass
 let marginBottomSm = Style.make(~marginBottom="0.75rem", ())->styleToClass
 let marginBottom = Style.make(~marginBottom="1rem", ())->styleToClass

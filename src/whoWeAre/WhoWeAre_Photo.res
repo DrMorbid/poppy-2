@@ -2,11 +2,9 @@ open Mui
 open ReactDOM
 open Utils.Style
 
-let useStyles: Styles.useStyles<{
-  "photo": string,
-}> = Styles.makeStylesWithTheme(theme => {
-  {
-    "photo": list{
+module Classes = {
+  let photo = (theme: Theme.t) =>
+    list{
       Style.make(~width="9rem", ~height="9rem", ())->styleWithMediaQuery(
         ~mediaQuery=theme.breakpoints.up->Any.unsafeGetValue("xs"),
       ),
@@ -19,13 +17,14 @@ let useStyles: Styles.useStyles<{
       Style.make(~width="17rem", ~height="17rem", ())->styleWithMediaQuery(
         ~mediaQuery=theme.breakpoints.up->Any.unsafeGetValue("lg"),
       ),
-    }->stylesCombiner,
-  }
-})
+    }
+    ->stylesCombiner
+    ->Emotion.styleToClass
+}
 
 @react.component
 let make = (~src) => {
-  let classes = useStyles(.)
+  let theme = Core.useTheme()
 
-  <Avatar src className={classes["photo"]} />
+  <Avatar src className={theme->Classes.photo} />
 }

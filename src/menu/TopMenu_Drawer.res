@@ -3,16 +3,13 @@ open ReactIntl
 open ReactDOM
 open TopMenu_Item
 
-let useStyles: Styles.useStyles<{
-  "list": string,
-}> = Styles.makeStyles({
-  "list": Style.make(~width="50vw", ()),
-})
+module Classes = {
+  let list = Style.make(~width="50vw", ())->Emotion.styleToClass
+}
 
 @react.component
 let make = (~drawerOpen, ~onClose) => {
   let intl = useIntl()
-  let classes = useStyles(.)
   let url = RescriptReactRouter.useUrl()
   let (
     {homeMenuItemTargets, registrationsMenuItemTargets, _}: App_Context.state,
@@ -24,7 +21,7 @@ let make = (~drawerOpen, ~onClose) => {
     transitionDuration={Common.Constants.drawerTransitionDuration->Drawer.TransitionDuration.int}
     anchor=#right
     onClose={_ => onClose()}>
-    <List className={classes["list"]}>
+    <List className=Classes.list>
       {url
       ->getMenuItems
       ->Belt.List.mapWithIndex((index, section) =>

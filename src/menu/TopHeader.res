@@ -6,18 +6,14 @@ open Webapi.Dom
 
 module Container = TopHeader_Container
 
-let useStyles: Styles.useStyles<{
-  "logoContainer": string,
-  "logo": string,
-}> = Styles.makeStyles({
-  "logoContainer": Style.make(~width="26%", ()),
-  "logo": Style.make(~height="10vw", ()),
-})
+module Classes = {
+  let logoContainer = Style.make(~width="26%", ())->Emotion.styleToClass
+  let logo = Style.make(~height="10vw", ())->Emotion.styleToClass
+}
 
 @react.component
 let make = () => {
   let intl = useIntl()
-  let classes = useStyles(.)
 
   let onEmailUs = e => {
     location->Location.setHref(`mailto:${Common.Constants.infoEmail}`)
@@ -33,9 +29,9 @@ let make = () => {
       <Common.Button.WithIcon label=emailUs onClick=onEmailUs />
     </Grid>
     <Hidden smDown=true>
-      <Grid item=true className={classes["logoContainer"]}>
+      <Grid item=true className=Classes.logoContainer>
         <ButtonBase onClick=onLogoClick className=Common.Style.fullWidth>
-          <img src="/poppy-logo.png" className={classes["logo"]} />
+          <img src="/poppy-logo.png" className=Classes.logo />
         </ButtonBase>
       </Grid>
     </Hidden>

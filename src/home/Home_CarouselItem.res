@@ -1,19 +1,22 @@
 open Mui
 open ReactDOM
 
-let useStyles: Styles.useStyles<{
-  "imageContainer": string,
-  "image": string,
-}> = Styles.makeStyles({
-  "imageContainer": Style.make(~position="relative", ~paddingTop="30%", ~width="100%", ()),
-  "image": Style.make(~position="absolute", ~width="100%", ~height="100%", ~top="0", ()),
-})
+module Classes = {
+  let imageContainer =
+    Style.make(~position="relative", ~paddingTop="30%", ~width="100%", ())->Emotion.styleToClass
+  let image =
+    Style.make(
+      ~position="absolute",
+      ~width="100%",
+      ~height="100%",
+      ~top="0",
+      (),
+    )->Emotion.styleToClass
+}
 
 @react.component
 let make = (~image) => {
-  let classes = useStyles(.)
-
-  <Card className={classes["imageContainer"]}>
-    <CardMedia image className={classes["image"]} />
+  <Card className=Classes.imageContainer>
+    <CardMedia image className=Classes.image />
   </Card>
 }
