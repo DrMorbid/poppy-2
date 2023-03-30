@@ -1,19 +1,17 @@
-let addMediaQuery = (
-  ~addMediaPrefix=false,
-  ~mediaQuery: string,
-  style: ReactDOM.Style.t,
-): ReactDOM.Style.t => {
-  list{((addMediaPrefix ? "@media " : "") ++ mediaQuery, style)}->Js.Dict.fromList->Obj.magic
+open ReactDOM
+
+let addMediaQuery = (~addMediaPrefix=false, ~mediaQuery: string, style: Style.t): Style.t => {
+  list{((addMediaPrefix ? "@media " : "") ++ mediaQuery, style)}
+  ->List.toArray
+  ->Dict.fromArray
+  ->Obj.magic
 }
 
-let styleWithMediaQuery = (
-  ~addMediaPrefix=false,
-  ~mediaQuery: string,
-  style: ReactDOM.Style.t,
-): ReactDOM.Style.t => style->addMediaQuery(~addMediaPrefix, ~mediaQuery)
+let styleWithMediaQuery = (~addMediaPrefix=false, ~mediaQuery: string, style: Style.t): Style.t =>
+  style->addMediaQuery(~addMediaPrefix, ~mediaQuery)
 
-let stylesCombiner = (listOfStyles: list<ReactDOM.Style.t>): ReactDOM.Style.t => {
-  listOfStyles->Belt.List.reduce(ReactDOM.Style.make(), (acumulator, additionalStyle) =>
-    ReactDOM.Style.combine(acumulator, additionalStyle)
+let stylesCombiner = (listOfStyles: list<Style.t>): Style.t => {
+  listOfStyles->Belt.List.reduce(Style.make(), (acumulator, additionalStyle) =>
+    Style.combine(acumulator, additionalStyle)
   )
 }

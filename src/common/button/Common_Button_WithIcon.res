@@ -1,5 +1,4 @@
 open Mui
-open ReactIntl
 open ReactDOM
 
 module Icon = Common_Icon
@@ -10,12 +9,12 @@ module Classes = {
 
 @react.component
 let make = (~label, ~onClick) => {
-  let intl = useIntl()
+  let intl = ReactIntl.useIntl()
 
   <Button variant=#outlined onClick>
     <Grid container=true alignItems=#center className=Classes.iconGap>
       <Icon.MailOutline />
-      {intl->Intl.formatMessage(label)->React.string}
+      {intl->ReactIntl.Intl.formatMessage(label)->React.string}
     </Grid>
   </Button>
 }

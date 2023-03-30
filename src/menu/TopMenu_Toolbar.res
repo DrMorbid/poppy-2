@@ -41,7 +41,7 @@ let make = () => {
                 ),
               )}
             classes={Button.Classes.make(~label=theme->Classes.label, ())}>
-            {intl->Intl.formatMessage(menuItem->App_Types.MenuItem.toLabel)->React.string}
+            {intl->ReactIntl.Intl.formatMessage(menuItem->App_Types.MenuItem.toLabel)->React.string}
           </Button>
         </Grid>
       )

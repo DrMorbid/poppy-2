@@ -1,6 +1,5 @@
 open Mui
 open Mui.Grid
-open ReactIntl
 
 type fragmentContent = Message(ReactIntl.message) | String(string)
 
@@ -28,7 +27,7 @@ type body =
 module FragmentContent = {
   let toString = (~intl, content: fragmentContent) =>
     switch content {
-    | Message(message) => intl->Intl.formatMessage(message)
+    | Message(message) => intl->ReactIntl.Intl.formatMessage(message)
     | String(string) => string
     }
 
@@ -37,7 +36,7 @@ module FragmentContent = {
 
   @react.component
   let make = (~content, ~index, ~fragmentsCount, ~appendSpace=?) => {
-    let intl = useIntl()
+    let intl = ReactIntl.useIntl()
 
     (content->toString(~intl) ++ addSuffix(~index, ~fragmentsCount, ~appendSpace?))->React.string
   }
@@ -92,7 +91,7 @@ let make = (
   ~centerAll=?,
   ~disableGutters=false,
 ) => {
-  let intl = useIntl()
+  let intl = ReactIntl.useIntl()
 
   let getContainerClassname = () =>
     (disableGutters ? list{} : list{Common_Style.paragraphGap})
@@ -109,7 +108,7 @@ let make = (
         <Typography
           variant=headerVariant
           className=?{headerUppercase ? Some(Common_Style.uppercaseText) : None}>
-          {intl->Intl.formatMessage(header)->React.string}
+          {intl->ReactIntl.Intl.formatMessage(header)->React.string}
         </Typography>
       </Grid>
     )}
@@ -121,7 +120,7 @@ let make = (
       paragraphs
       ->Belt.List.mapWithIndex((index, paragraph) =>
         <Text key={`paragraph-${index->Belt.Int.toString}`}>
-          <Typography> {intl->Intl.formatMessage(paragraph)->React.string} </Typography>
+          <Typography> {intl->ReactIntl.Intl.formatMessage(paragraph)->React.string} </Typography>
         </Text>
       )
       ->Belt.List.toArray
@@ -141,11 +140,11 @@ let make = (
         <Grid container=true key={`paragraph-${index->Belt.Int.toString}`}>
           {paragraph.title->Belt.Option.mapWithDefault(React.null, title =>
             <Text>
-              <Typography> {intl->Intl.formatMessage(title)->React.string} </Typography>
+              <Typography> {intl->ReactIntl.Intl.formatMessage(title)->React.string} </Typography>
             </Text>
           )}
           <Grid item=true xs=Grid.Xs.\"12">
-            <List>
+            <Mui.List>
               {paragraph.list
               ->Belt.List.mapWithIndex((index, row) =>
                 <ListItem key={`list-row-${index->Belt.Int.toString}`}>
@@ -158,7 +157,7 @@ let make = (
                     </Grid>
                   | Message(message) =>
                     <ListItemText
-                      primary={intl->Intl.formatMessage(message)->React.string}
+                      primary={intl->ReactIntl.Intl.formatMessage(message)->React.string}
                       classes=?{row.bold->Belt.Option.getWithDefault(false)
                         ? Some(ListItemText.Classes.make(~primary=Common_Style.bold, ()))
                         : None}
@@ -168,7 +167,7 @@ let make = (
               )
               ->Belt.List.toArray
               ->React.array}
-            </List>
+            </Mui.List>
           </Grid>
         </Grid>
       )

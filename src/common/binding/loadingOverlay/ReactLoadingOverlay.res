@@ -1,8 +1,8 @@
 type styles = {
-  wrapper?: Js.Dict.t<string>,
-  overlay?: Js.Dict.t<string> => Js.Dict.t<string>,
-  content?: Js.Dict.t<string> => Js.Dict.t<string>,
-  spinner?: Js.Dict.t<string> => Js.Dict.t<string>,
+  wrapper?: Dict.t<string>,
+  overlay?: Dict.t<string> => Dict.t<string>,
+  content?: Dict.t<string> => Dict.t<string>,
+  spinner?: Dict.t<string> => Dict.t<string>,
 }
 
 @react.component @module("react-loading-overlay")

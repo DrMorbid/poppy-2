@@ -1,6 +1,5 @@
 open Mui
 open Mui.Grid
-open ReactIntl
 open Message
 open Message.Contact
 open ReactDOM
@@ -16,7 +15,7 @@ module Classes = {
 let make = () => {
   let (mapUrl, setMapUrl) = React.useState(() => None)
   let (isMapBeingLoaded, setIsMapBeingLoaded) = React.useState(() => false)
-  let intl = useIntl()
+  let intl = ReactIntl.useIntl()
   let theme = Core.useTheme()
   let isMdUp = Core.useMediaQuery(theme->Core.Breakpoint.get(#md->#up))
   let prefersDarkMode = Core.useMediaQueryString(Common.Constants.darkModeMediaQuery)
@@ -45,12 +44,12 @@ let make = () => {
           <Grid container=true>
             <Grid item=true xs=Xs.\"12">
               <Typography className={Common.Style.bold}>
-                {intl->Intl.formatMessage(registrationDatabaseTitle)->React.string}
+                {intl->ReactIntl.Intl.formatMessage(registrationDatabaseTitle)->React.string}
               </Typography>
             </Grid>
             <Grid item=true xs=Xs.\"12">
               <Typography>
-                {intl->Intl.formatMessage(registrationDatabasePerson)->React.string}
+                {intl->ReactIntl.Intl.formatMessage(registrationDatabasePerson)->React.string}
               </Typography>
             </Grid>
             <Grid item=true xs=Xs.\"12">
@@ -65,11 +64,13 @@ let make = () => {
           <Grid container=true>
             <Grid item=true xs=Xs.\"12">
               <Typography className={Common.Style.bold}>
-                {intl->Intl.formatMessage(clientsProductionDirectionTitle)->React.string}
+                {intl->ReactIntl.Intl.formatMessage(clientsProductionDirectionTitle)->React.string}
               </Typography>
             </Grid>
             <Grid item=true xs=Xs.\"12">
-              <Typography> {intl->Intl.formatMessage(companyOwner)->React.string} </Typography>
+              <Typography>
+                {intl->ReactIntl.Intl.formatMessage(companyOwner)->React.string}
+              </Typography>
             </Grid>
             <Grid item=true xs=Xs.\"12">
               <Typography> {Common.Constants.bossEmail->React.string} </Typography>
@@ -80,7 +81,7 @@ let make = () => {
           <Grid container=true>
             <Grid item=true xs=Xs.\"12">
               <Typography className={Common.Style.bold}>
-                {intl->Intl.formatMessage(studioRegistrationsTitle)->React.string}
+                {intl->ReactIntl.Intl.formatMessage(studioRegistrationsTitle)->React.string}
               </Typography>
             </Grid>
             <Grid item=true xs=Xs.\"12">
@@ -94,7 +95,9 @@ let make = () => {
         <Grid item=true xs=Xs.\"12">
           <Grid container=true>
             <Grid item=true xs=Xs.\"12">
-              <Typography> {intl->Intl.formatMessage(castingsInfo)->React.string} </Typography>
+              <Typography>
+                {intl->ReactIntl.Intl.formatMessage(castingsInfo)->React.string}
+              </Typography>
             </Grid>
           </Grid>
         </Grid>

@@ -20,10 +20,10 @@ module Classes = {
     ->Emotion.styleToClass
 }
 
-let onClick = (~topRef: option<React.ref<Js.Nullable.t<Dom.element>>>=?, ~behavior=?, _) =>
+let onClick = (~topRef: option<React.ref<Nullable.t<Dom.element>>>=?, ~behavior=?, _) =>
   topRef->Belt.Option.forEach(({current}) =>
     current
-    ->Js.Nullable.toOption
+    ->Nullable.toOption
     ->Belt.Option.forEach(scrollIntoView(_, makeScrollOptions(~behavior?, ())))
   )
 

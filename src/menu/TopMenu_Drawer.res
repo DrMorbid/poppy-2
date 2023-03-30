@@ -21,7 +21,7 @@ let make = (~drawerOpen, ~onClose) => {
     transitionDuration={Common.Constants.drawerTransitionDuration->Drawer.TransitionDuration.int}
     anchor=#right
     onClose={_ => onClose()}>
-    <List className=Classes.list>
+    <Mui.List className=Classes.list>
       {url
       ->getMenuItems
       ->Belt.List.mapWithIndex((index, section) =>
@@ -37,12 +37,14 @@ let make = (~drawerOpen, ~onClose) => {
             )}
           key={`menu-item-${index->Belt.Int.toString}`}>
           <ListItemText
-            primary={intl->Intl.formatMessage(section->App_Types.MenuItem.toLabel)->React.string}
+            primary={intl
+            ->ReactIntl.Intl.formatMessage(section->App_Types.MenuItem.toLabel)
+            ->React.string}
           />
         </ListItem>
       )
       ->Belt.List.toArray
       ->React.array}
-    </List>
+    </Mui.List>
   </Drawer>
 }

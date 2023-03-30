@@ -1,6 +1,5 @@
 open Mui
 open Mui.Grid
-open ReactIntl
 open Message
 open Message.Contact
 
@@ -8,7 +7,7 @@ open Message.Contact
 let make = () => {
   let (mapUrl, setMapUrl) = React.useState(() => None)
   let (isMapBeingLoaded, setIsMapBeingLoaded) = React.useState(() => false)
-  let intl = useIntl()
+  let intl = ReactIntl.useIntl()
 
   let onClose = () => {
     setIsMapBeingLoaded(_ => false)
@@ -32,7 +31,7 @@ let make = () => {
             className={Emotion.cx([Common.Style.paragraphGap, Common.Style.marginBottom])}>
             <Grid item=true xs=Xs.\"12">
               <Typography className=Common.Style.bold>
-                {intl->Intl.formatMessage(openingTimes)->React.string}
+                {intl->ReactIntl.Intl.formatMessage(openingTimes)->React.string}
               </Typography>
             </Grid>
           </Grid>
@@ -48,12 +47,12 @@ let make = () => {
               <Grid container=true>
                 <Grid item=true xs=Xs.\"12">
                   <Typography className=Common.Style.bold>
-                    {intl->Intl.formatMessage(registrationDatabaseTitle)->React.string}
+                    {intl->ReactIntl.Intl.formatMessage(registrationDatabaseTitle)->React.string}
                   </Typography>
                 </Grid>
                 <Grid item=true xs=Xs.\"12">
                   <Typography>
-                    {intl->Intl.formatMessage(registrationDatabasePerson)->React.string}
+                    {intl->ReactIntl.Intl.formatMessage(registrationDatabasePerson)->React.string}
                   </Typography>
                 </Grid>
                 <Grid item=true xs=Xs.\"12">
@@ -69,11 +68,15 @@ let make = () => {
               <Grid container=true>
                 <Grid item=true xs=Xs.\"12">
                   <Typography className=Common.Style.bold>
-                    {intl->Intl.formatMessage(clientsProductionDirectionTitle)->React.string}
+                    {intl
+                    ->ReactIntl.Intl.formatMessage(clientsProductionDirectionTitle)
+                    ->React.string}
                   </Typography>
                 </Grid>
                 <Grid item=true xs=Xs.\"12">
-                  <Typography> {intl->Intl.formatMessage(companyOwner)->React.string} </Typography>
+                  <Typography>
+                    {intl->ReactIntl.Intl.formatMessage(companyOwner)->React.string}
+                  </Typography>
                 </Grid>
                 <Grid item=true xs=Xs.\"12">
                   <Typography> {Common.Constants.bossEmail->React.string} </Typography>
@@ -85,7 +88,7 @@ let make = () => {
               <Grid container=true>
                 <Grid item=true xs=Xs.\"12">
                   <Typography className=Common.Style.bold>
-                    {intl->Intl.formatMessage(registrationAddressHeader)->React.string}
+                    {intl->ReactIntl.Intl.formatMessage(registrationAddressHeader)->React.string}
                   </Typography>
                 </Grid>
                 <Grid item=true xs=Xs.\"12">
@@ -96,17 +99,21 @@ let make = () => {
                 </Grid>
                 <Grid item=true xs=Xs.\"12">
                   <Typography>
-                    {intl->Intl.formatMessage(registrationAddressConnection)->React.string}
+                    {intl
+                    ->ReactIntl.Intl.formatMessage(registrationAddressConnection)
+                    ->React.string}
                   </Typography>
                 </Grid>
                 <Grid item=true xs=Xs.\"12">
                   <Typography>
-                    {intl->Intl.formatMessage(registrationAddressParkingLabel)->React.string}
+                    {intl
+                    ->ReactIntl.Intl.formatMessage(registrationAddressParkingLabel)
+                    ->React.string}
                   </Typography>
                 </Grid>
                 <Grid item=true xs=Xs.\"12">
                   <Typography>
-                    {intl->Intl.formatMessage(registrationAddressParking)->React.string}
+                    {intl->ReactIntl.Intl.formatMessage(registrationAddressParking)->React.string}
                   </Typography>
                 </Grid>
                 <Grid item=true xs=Xs.\"12">
@@ -128,7 +135,7 @@ let make = () => {
               <Grid container=true>
                 <Grid item=true xs=Xs.\"12">
                   <Typography className=Common.Style.bold>
-                    {intl->Intl.formatMessage(facturationAddressLabel)->React.string}
+                    {intl->ReactIntl.Intl.formatMessage(facturationAddressLabel)->React.string}
                   </Typography>
                 </Grid>
                 <Grid item=true xs=Xs.\"12">
@@ -141,14 +148,18 @@ let make = () => {
             <Grid item=true xs=Xs.\"12">
               <Grid container=true>
                 <Grid item=true xs=Xs.\"12">
-                  <Typography> {intl->Intl.formatMessage(castingsInfo)->React.string} </Typography>
+                  <Typography>
+                    {intl->ReactIntl.Intl.formatMessage(castingsInfo)->React.string}
+                  </Typography>
                 </Grid>
               </Grid>
             </Grid>
             <Grid item=true xs=Xs.\"12">
               <Grid container=true>
                 <Grid item=true xs=Xs.\"12">
-                  <Typography> {intl->Intl.formatMessage(idNumber)->React.string} </Typography>
+                  <Typography>
+                    {intl->ReactIntl.Intl.formatMessage(idNumber)->React.string}
+                  </Typography>
                 </Grid>
               </Grid>
             </Grid>

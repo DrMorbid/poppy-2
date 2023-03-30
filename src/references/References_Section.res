@@ -36,7 +36,7 @@ let make = () => {
       <Common.Text
         header
         afterHeader={<Typography variant=#h6>
-          {intl->Intl.formatMessage(subHeader)->React.string}
+          {intl->ReactIntl.Intl.formatMessage(subHeader)->React.string}
         </Typography>}
         body={Element(
           <Grid container=true className=Common.Style.islandsVerticalGap>
@@ -51,7 +51,7 @@ let make = () => {
     </Grid>
     <Grid item=true>
       <Button variant=#contained color=#primary onClick>
-        {intl->Intl.formatMessage(showMore)->React.string}
+        {intl->ReactIntl.Intl.formatMessage(showMore)->React.string}
       </Button>
     </Grid>
   </Grid>

@@ -6,8 +6,8 @@ module CarouselItem = Home_CarouselItem
 
 @react.component
 let make = () => {
-  let whoWeAreTopRef = React.useRef(Js.Nullable.null)
-  let referencesTopRef = React.useRef(Js.Nullable.null)
+  let whoWeAreTopRef = React.useRef(Nullable.null)
+  let referencesTopRef = React.useRef(Nullable.null)
   let (_, dispatch) = React.useContext(App_Context.Context.t)
 
   React.useEffect2(() => {

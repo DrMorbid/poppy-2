@@ -10,7 +10,7 @@ let make = (~url as src=?, ~isMapBeingLoaded as active, ~onMapLoadingFinished as
     active
     spinner={<CircularProgress />}
     styles={{
-      wrapper: Js.Dict.fromArray([("position", "relative"), ("width", width), ("height", height)]),
+      wrapper: Dict.fromArray([("position", "relative"), ("width", width), ("height", height)]),
     }}>
     <iframe style={Style.make(~border="none", ())} ?src width height onLoad />
   </ReactLoadingOverlay>

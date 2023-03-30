@@ -43,7 +43,7 @@ let isHomePage = url => url.path->Belt.List.length == 0
 let isRegistrationsPage = url =>
   url.path
   ->Belt.List.head
-  ->Belt.Option.keep(path => path == RoutePath.registrations->Js.String2.substringToEnd(~from=1))
+  ->Belt.Option.keep(path => path == RoutePath.registrations->String.substringToEnd(~start=1))
   ->Belt.Option.isSome
 
 type gutters = Top | Complete

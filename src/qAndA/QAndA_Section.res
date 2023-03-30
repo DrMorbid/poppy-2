@@ -7,7 +7,9 @@ let make = (~header, ~body) => {
 
   <Accordion>
     <AccordionSummary expandIcon={<Common.Icon.ExpandMore />}>
-      <Typography variant=#h5> {intl->Intl.formatMessage(header)->React.string} </Typography>
+      <Typography variant=#h5>
+        {intl->ReactIntl.Intl.formatMessage(header)->React.string}
+      </Typography>
     </AccordionSummary>
     <AccordionDetails>
       <Common.Text body />

@@ -2,10 +2,10 @@ open Message.Registrations
 
 @react.component
 let make = () => {
-  let registrationsYoungestTopRef = React.useRef(Js.Nullable.null)
-  let registrationsMiddleTopRef = React.useRef(Js.Nullable.null)
-  let registrationsOldestTopRef = React.useRef(Js.Nullable.null)
-  let currentRegistrationDatesTopRef = React.useRef(Js.Nullable.null)
+  let registrationsYoungestTopRef = React.useRef(null)
+  let registrationsMiddleTopRef = React.useRef(null)
+  let registrationsOldestTopRef = React.useRef(null)
+  let currentRegistrationDatesTopRef = React.useRef(null)
   let (_, dispatch) = React.useContext(App_Context.Context.t)
 
   React.useEffect4(() => {

@@ -1,5 +1,4 @@
 open Mui
-open ReactIntl
 
 module Drawer = TopMenu_Drawer
 module Item = TopMenu_Item
@@ -7,7 +6,7 @@ module Item = TopMenu_Item
 @react.component
 let make = () => {
   let (drawerOpen, setDrawerOpen) = React.useState(() => false)
-  let intl = useIntl()
+  let intl = ReactIntl.useIntl()
   let url = RescriptReactRouter.useUrl()
 
   let onAppNameClick = _ => App_Page.goTo(Home)
@@ -25,7 +24,7 @@ let make = () => {
               <Grid item=true>
                 <ButtonBase onClick=onAppNameClick>
                   <Typography variant=#h4>
-                    {intl->Intl.formatMessage(Message.appName)->React.string}
+                    {intl->ReactIntl.Intl.formatMessage(Message.appName)->React.string}
                   </Typography>
                 </ButtonBase>
               </Grid>
@@ -39,7 +38,7 @@ let make = () => {
         } else {
           <Grid container=true justify=#center>
             <Button variant=#outlined size=#large onClick=onAppNameClick>
-              {intl->Intl.formatMessage(Home->App_Page.toLabel)->React.string}
+              {intl->ReactIntl.Intl.formatMessage(Home->App_Page.toLabel)->React.string}
             </Button>
           </Grid>
         }}

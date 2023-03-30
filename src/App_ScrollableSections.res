@@ -3,7 +3,7 @@ open Mui.Grid
 
 type coloredSections = Even | Odd
 
-type section = {element: Jsx.element, topRef: React.ref<Js.nullable<Dom.element>>}
+type section = {element: Jsx.element, topRef: React.ref<nullable<Dom.element>>}
 
 @react.component
 let make = (~sections, ~coloredSections=Even, ~children=?) => {

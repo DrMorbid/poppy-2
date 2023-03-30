@@ -1,13 +1,14 @@
 open Mui
-open ReactIntl
 
 @react.component
 let make = (~header, ~body) => {
-  let intl = useIntl()
+  let intl = ReactIntl.useIntl()
 
   <Accordion>
     <AccordionSummary expandIcon={<Common.Icon.ExpandMore />}>
-      <Typography variant=#h4> {intl->Intl.formatMessage(header)->React.string} </Typography>
+      <Typography variant=#h4>
+        {intl->ReactIntl.Intl.formatMessage(header)->React.string}
+      </Typography>
     </AccordionSummary>
     <AccordionDetails>
       <Common.Text body />

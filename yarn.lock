@@ -1325,6 +1325,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@rescript/core@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "@rescript/core@npm:0.2.0"
+  checksum: 1b3ba157500262bba53c80a2f47152ca1c7866c0e60487a76943bced6bf488ea7e4bee7dd90d6706544bdb3c5d4bc5766c269c6c4bd8b94ab355ab086897250b
+  languageName: node
+  linkType: hard
+
 "@rescript/react@npm:^0.11.0":
   version: 0.11.0
   resolution: "@rescript/react@npm:0.11.0"
@@ -3604,6 +3611,7 @@ __metadata:
     "@material-ui/icons": ^4.11.3
     "@material-ui/lab": ^4.0.0-alpha.61
     "@mobily/rescript-date": ^2.1.0
+    "@rescript/core": ^0.2.0
     "@rescript/react": ^0.11.0
     "@ryyppy/rescript-promise": ^2.1.0
     "@testing-library/jest-dom": ^5.16.5

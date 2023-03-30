@@ -29,7 +29,7 @@ let make = () => {
   <Common.Text
     header
     afterHeader={<Typography variant=#h6>
-      {intl->Intl.formatMessage(subHeader)->React.string}
+      {intl->ReactIntl.Intl.formatMessage(subHeader)->React.string}
     </Typography>}
     body={Element(
       <Grid container=true className=Common.Style.sectionGap>

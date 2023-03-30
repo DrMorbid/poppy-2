@@ -37,7 +37,7 @@ let make = () => {
     </Hidden>
     <Grid item=true>
       <Button variant=#contained color=#primary onClick=onRegisterClick>
-        {intl->Intl.formatMessage(registrations)->React.string}
+        {intl->ReactIntl.Intl.formatMessage(registrations)->React.string}
       </Button>
     </Grid>
   </Container>

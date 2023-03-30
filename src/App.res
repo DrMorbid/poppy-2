@@ -47,7 +47,7 @@ let make = () => {
   let isSmUp = Core.useMediaQuery(theme->Core.Breakpoint.get(#sm->#up))
   let isMdUp = Core.useMediaQuery(theme->Core.Breakpoint.get(#md->#up))
   let prefersDarkMode = Core.useMediaQueryString(Common.Constants.darkModeMediaQuery)
-  let topRef = React.useRef(Js.Nullable.null)
+  let topRef = React.useRef(Nullable.null)
   let (_, dispatch) = React.useContext(App_Context.Context.t)
 
   React.useEffect1(() => {

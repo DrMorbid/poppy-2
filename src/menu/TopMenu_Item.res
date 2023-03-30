@@ -16,9 +16,9 @@ let getMenuItems = url =>
     list{Home}
   }
 
-let scrollToSection = (scrollableRef: React.ref<Js.Nullable.t<Dom.element>>) =>
+let scrollToSection = (scrollableRef: React.ref<Nullable.t<Dom.element>>) =>
   scrollableRef.current
-  ->Js.Nullable.toOption
+  ->Nullable.toOption
   ->Belt.Option.forEach(ref => ref->scrollIntoView(makeScrollOptions()))
 
 let onClick = (~onDrawerClose=?, ~menuItemTargets: App_Context.menuItemTargets, menuItem) => {
@@ -35,7 +35,7 @@ let onClick = (~onDrawerClose=?, ~menuItemTargets: App_Context.menuItemTargets, 
   switch onDrawerClose {
   | Some(onDrawerClose) => {
       onDrawerClose()
-      Js.Global.setTimeout(() => goToTarget(), Common.Constants.drawerTransitionDuration)->ignore
+      setTimeout(() => goToTarget(), Common.Constants.drawerTransitionDuration)->ignore
     }
 
   | None => goToTarget()

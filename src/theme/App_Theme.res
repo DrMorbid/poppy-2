@@ -1,5 +1,5 @@
-open Mui.Theme
 open Mui.ThemeOptions
+open Mui.Theme
 open ReactDOM
 
 module Colors = {
@@ -57,7 +57,7 @@ let theme = (~prefersDarkMode) =>
         ~\"type"=prefersDarkMode ? "dark" : "light",
         ~primary=Primary.make(~main=Colors.blue, ()),
         ~secondary=Secondary.make(~main=Colors.yellow, ()),
-        ~error=Error.make(~main=Colors.red, ()),
+        ~error=Mui.ThemeOptions.Error.make(~main=Colors.red, ()),
         ~warning=Warning.make(~main=Colors.orange, ()),
         ~info=Info.make(~main=Colors.blue, ()),
         ~success=Success.make(~main=Colors.green, ()),

@@ -4,7 +4,7 @@ open News_Latest
 module Date = {
   @react.component
   let make = (~variant) => {
-    <Typography variant> {latestNews.date->Js.Date.toLocaleDateString->React.string} </Typography>
+    <Typography variant> {latestNews.date->Date.toLocaleDateString->React.string} </Typography>
   }
 }
 
