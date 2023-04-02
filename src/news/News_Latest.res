@@ -2,7 +2,6 @@ open News_Type
 open Common.Constants
 
 let latestNews: News_Type.t = {
-  date: Date.fromString("2022-08-25"),
   title: list{
     "Registrace nových dětí a přefocení aktuálně neprobíhá.",
     "Nové termíny na podzim vypíšeme zde, můžete nám dát vědět, že máte zájem a informace Vám zašleme.",

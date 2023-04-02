@@ -1,3 +1,4 @@
+open Mui
 open Message.Registrations
 
 @react.component
@@ -65,31 +66,50 @@ let make = () => {
             topRef: registrationsYoungestTopRef,
           },
           {
-            element: <Common.Text
-              header=Message.registrationsMiddle
-              headerVariant=#h4
-              body={Lists(list{
-                {
-                  list: list{
+            element: <>
+              <Grid item=true>
+                <Common.Text
+                  header=Message.registrationsMiddle
+                  headerVariant=#h4
+                  body={Lists(list{
                     {
-                      content: Fragments(list{
-                        Text({content: Message(middleKidsLine1Part1), appendSpace: true}),
-                        Text({
-                          content: Message(middleKidsLine1Part2),
+                      list: list{
+                        {
+                          content: Fragments(list{
+                            Text({content: Message(middleKidsLine1Part1), appendSpace: true}),
+                            Text({
+                              content: Message(middleKidsLine1Part2),
+                              bold: true,
+                              color: #error,
+                            }),
+                          }),
                           bold: true,
-                          color: #error,
-                        }),
-                      }),
-                      bold: true,
+                        },
+                        {content: Message(middleKidsLine2)},
+                        {content: Message(middleKidsLine3)},
+                        {content: Message(middleKidsLine4)},
+                        {content: Message(middleKidsLine5)},
+                      },
                     },
-                    {content: Message(middleKidsLine2)},
-                    {content: Message(middleKidsLine3)},
-                    {content: Message(middleKidsLine4)},
-                    {content: Message(middleKidsLine5)},
-                  },
-                },
-              })}
-            />,
+                  })}
+                />
+              </Grid>
+              <Grid item=true>
+                <Common.Text
+                  header=middleKidsSection2Header
+                  headerVariant=#h6
+                  disableGutters=true
+                  body=Lists(list{
+                    {
+                      list: list{
+                        {content: Message(middleKidsSection2Line1)},
+                        {content: Message(middleKidsSection2Line2), bold: true},
+                      },
+                    },
+                  })
+                />
+              </Grid>
+            </>,
             topRef: registrationsMiddleTopRef,
           },
           {

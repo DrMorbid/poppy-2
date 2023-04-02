@@ -12,4 +12,4 @@ let makeLine = (~emphasis=Normal, ~nextLineEmpty=false, value) => {
   nextLineEmpty,
 }
 
-type t = {date: Date.t, title: list<string>, content: list<line>}
+type t = {title: list<string>, content: list<line>}

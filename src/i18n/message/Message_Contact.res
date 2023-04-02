@@ -14,36 +14,6 @@ let openingTimes =
     id: "6ca7da80-4f64-4787-a6b8-29737d98fecc",
     defaultMessage: "Pracovní doba pro vaše dotazy v pracovní dny 9.00 - 18.00.",
   }
-let companyName =
-  @intl.description("Contact page - the company name")
-  {
-    id: "5ecee400-bdeb-4d52-a101-25fe293e61e1",
-    defaultMessage: "Poppy casting, s.r.o.",
-  }
-let companyEmail =
-  @intl.description("Contact page - the company email")
-  {
-    id: "05876c12-2be7-44d9-b6b0-afc7b8d87595",
-    defaultMessage: "e-mail:",
-  }
-let infoContactHeader =
-  @intl.description("Contact page - the info contact header")
-  {
-    id: "ef604b18-1b95-45e8-9e9f-730c20f03f9b",
-    defaultMessage: "Objednávky, informace a dotazy k registracím na:",
-  }
-let infoContactPhone =
-  @intl.description("Contact page - the info contact phone")
-  {
-    id: "706db97d-376a-4bb7-b45c-b9f563cbd7cc",
-    defaultMessage: "tel.čísle:",
-  }
-let infoContactEmail =
-  @intl.description("Contact page - the info contact email")
-  {
-    id: "4e09e2cc-319f-467c-a4c4-76bac3c87815",
-    defaultMessage: "nebo e-mailem:",
-  }
 let registrationAddressHeader =
   @intl.description("Contact page - the registration address header")
   {

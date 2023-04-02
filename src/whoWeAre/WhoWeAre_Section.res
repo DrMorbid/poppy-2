@@ -6,21 +6,6 @@ open Mui.Grid
 
 module Person = WhoWeAre_Person
 
-let getContact = (email): Common.Text.fragmentParagraph => {
-  content: list{
-    Text({
-      content: Message(contact),
-    }),
-    Text({
-      content: String(":"),
-      appendSpace: true,
-    }),
-    Text({
-      content: String(email),
-    }),
-  },
-}
-
 @react.component
 let make = () => {
   <Common.Text

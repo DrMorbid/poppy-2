@@ -1,14 +1,5 @@
 open News_Latest
 
-module Date = {
-  @react.component
-  let make = (~variant) => {
-    <Mui.Typography variant>
-      {latestNews.date->Date.toLocaleDateString->React.string}
-    </Mui.Typography>
-  }
-}
-
 module Title = {
   @react.component
   let make = (~variant) => {
