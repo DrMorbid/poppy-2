@@ -21,10 +21,8 @@ module Classes = {
 }
 
 let onClick = (~topRef: option<React.ref<Nullable.t<Dom.element>>>=?, ~behavior=?, _) =>
-  topRef->Belt.Option.forEach(({current}) =>
-    current
-    ->Nullable.toOption
-    ->Belt.Option.forEach(scrollIntoView(_, makeScrollOptions(~behavior?, ())))
+  topRef->Option.forEach(({current}) =>
+    current->Nullable.toOption->Option.forEach(scrollIntoView(_, makeScrollOptions(~behavior?, ())))
   )
 
 @react.component

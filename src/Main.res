@@ -4,7 +4,7 @@ open ReactDOM
 %%raw(`import "./theme/fonts.css"`)
 
 querySelector("#root")
-->Belt.Option.getExn
+->Option.getExn
 ->Client.createRoot
 ->Client.Root.render(
   <React.StrictMode>

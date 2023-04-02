@@ -19,13 +19,13 @@ let getMenuItems = url =>
 let scrollToSection = (scrollableRef: React.ref<Nullable.t<Dom.element>>) =>
   scrollableRef.current
   ->Nullable.toOption
-  ->Belt.Option.forEach(ref => ref->scrollIntoView(makeScrollOptions()))
+  ->Option.forEach(ref => ref->scrollIntoView(makeScrollOptions()))
 
 let onClick = (~onDrawerClose=?, ~menuItemTargets: App_Context.menuItemTargets, menuItem) => {
   let goToTarget = () =>
     menuItemTargets
-    ->Belt.Map.get(menuItem)
-    ->Belt.Option.forEach(menuItem =>
+    ->Map.get(menuItem)
+    ->Option.forEach(menuItem =>
       switch menuItem {
       | ScrollableRef(scrollableRef) => scrollToSection(scrollableRef)
       | Page(page) => App_Page.goTo(page)

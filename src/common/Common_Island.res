@@ -21,7 +21,7 @@ let make = (
     md
     lg
     xl
-    className=?{disableGutters->Belt.Option.getWithDefault(false)
+    className=?{disableGutters->Option.getWithDefault(false)
       ? None
       : Some(Common_Style.islandsHorizontalGap)}>
     <Common_Text ?header ?headerVariant body ?centerAll />

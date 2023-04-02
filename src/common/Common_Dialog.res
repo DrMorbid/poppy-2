@@ -16,7 +16,7 @@ let make = (~isOpen as \"open", ~onClose, ~children, ~fullScreen=?, ~fixedSize=?
     onClose={(_, _) => onClose()}
     \"open"
     ?fullScreen
-    classes=?{fixedSize->Belt.Option.flatMap(fixedSize =>
+    classes=?{fixedSize->Option.flatMap(fixedSize =>
       fixedSize ? Some(Dialog.Classes.make(~paper=Classes.mapSize, ())) : None
     )}
     maxWidth={switch (isXlUp, isLgUp, isMdUp) {

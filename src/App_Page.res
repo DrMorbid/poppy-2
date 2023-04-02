@@ -1,4 +1,3 @@
-open Mui
 open Mui.Grid
 open RescriptReactRouter
 
@@ -38,26 +37,26 @@ let toLabel = page => {
 
 let goTo = page => push(page->toRoutePath)
 
-let isHomePage = url => url.path->Belt.List.length == 0
+let isHomePage = url => url.path->List.length == 0
 
 let isRegistrationsPage = url =>
   url.path
-  ->Belt.List.head
-  ->Belt.Option.keep(path => path == RoutePath.registrations->String.substringToEnd(~start=1))
-  ->Belt.Option.isSome
+  ->List.head
+  ->Option.filter(path => path == RoutePath.registrations->String.substringToEnd(~start=1))
+  ->Option.isSome
 
 type gutters = Top | Complete
 
 @react.component
 let make = (~gutters=Complete, ~children) => {
-  let theme = Core.useTheme()
+  let theme = Mui.Core.useTheme()
 
-  <Grid
+  <Mui.Grid
     container=true
     className={switch gutters {
     | Top => Common.Style.pageGuttersTop(theme)
     | Complete => Common.Style.pageGuttersComplete(theme)
     }}>
-    <Grid item=true xs=Xs.\"12"> children </Grid>
-  </Grid>
+    <Mui.Grid item=true xs=Xs.\"12"> children </Mui.Grid>
+  </Mui.Grid>
 }

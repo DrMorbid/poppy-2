@@ -1,5 +1,4 @@
 open Message.QAndA
-open Mui
 open ReactIntl
 open Common.Text
 
@@ -11,9 +10,9 @@ let make = () => {
 
   <Common.Text
     header
-    afterHeader={<Typography variant=#h4>
+    afterHeader={<Mui.Typography variant=#h4>
       {intl->ReactIntl.Intl.formatMessage(subHeader)->React.string}
-    </Typography>}
+    </Mui.Typography>}
     body=Element(
       list{
         <Section
@@ -145,7 +144,7 @@ let make = () => {
           key="question-13"
         />,
       }
-      ->Belt.List.toArray
+      ->List.toArray
       ->React.array,
     )
   />

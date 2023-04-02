@@ -103,8 +103,7 @@ let make = () => {
         </Grid>
       </Grid>
     </Grid>
-    <Common.Dialog
-      isOpen={mapUrl->Belt.Option.isSome} onClose fullScreen={!isMdUp} fixedSize=isMdUp>
+    <Common.Dialog isOpen={mapUrl->Option.isSome} onClose fullScreen={!isMdUp} fixedSize=isMdUp>
       <Contact_Map url=?mapUrl isMapBeingLoaded onMapLoadingFinished />
     </Common.Dialog>
   </Grid>

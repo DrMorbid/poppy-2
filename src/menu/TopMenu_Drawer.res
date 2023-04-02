@@ -1,4 +1,3 @@
-open Mui
 open ReactIntl
 open ReactDOM
 open TopMenu_Item
@@ -16,16 +15,16 @@ let make = (~drawerOpen, ~onClose) => {
     _,
   ) = React.useContext(App_Context.Context.t)
 
-  <Drawer
+  <Mui.Drawer
     \"open"=drawerOpen
-    transitionDuration={Common.Constants.drawerTransitionDuration->Drawer.TransitionDuration.int}
+    transitionDuration={Common.Constants.drawerTransitionDuration->Mui.Drawer.TransitionDuration.int}
     anchor=#right
     onClose={_ => onClose()}>
     <Mui.List className=Classes.list>
       {url
       ->getMenuItems
-      ->Belt.List.mapWithIndex((index, section) =>
-        <ListItem
+      ->List.mapWithIndex((index, section) =>
+        <Mui.ListItem
           button=true
           onClick={_ =>
             section->onClick(
@@ -35,16 +34,16 @@ let make = (~drawerOpen, ~onClose) => {
                 ~registrationsMenuItemTargets,
               ),
             )}
-          key={`menu-item-${index->Belt.Int.toString}`}>
-          <ListItemText
+          key={`menu-item-${index->Int.toString}`}>
+          <Mui.ListItemText
             primary={intl
             ->ReactIntl.Intl.formatMessage(section->App_Types.MenuItem.toLabel)
             ->React.string}
           />
-        </ListItem>
+        </Mui.ListItem>
       )
-      ->Belt.List.toArray
+      ->List.toArray
       ->React.array}
     </Mui.List>
-  </Drawer>
+  </Mui.Drawer>
 }

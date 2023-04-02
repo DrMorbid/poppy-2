@@ -39,11 +39,10 @@ let make = () => {
         <Grid
           item=true
           xs=Xs.\"12"
-          md={mapUrl->Belt.Option.isSome ? Md.\"6" : Md.\"12"}
+          md={mapUrl->Option.isSome ? Md.\"6" : Md.\"12"}
           className=Common.Style.headerGap>
           <Grid container=true className=Common.Style.paragraphGap>
-            <Grid
-              item=true xs=Xs.\"12" sm=Sm.\"6" md={mapUrl->Belt.Option.isSome ? Md.\"12" : Md.\"6"}>
+            <Grid item=true xs=Xs.\"12" sm=Sm.\"6" md={mapUrl->Option.isSome ? Md.\"12" : Md.\"6"}>
               <Grid container=true>
                 <Grid item=true xs=Xs.\"12">
                   <Typography className=Common.Style.bold>
@@ -63,8 +62,7 @@ let make = () => {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid
-              item=true xs=Xs.\"12" sm=Sm.\"6" md={mapUrl->Belt.Option.isSome ? Md.\"12" : Md.\"6"}>
+            <Grid item=true xs=Xs.\"12" sm=Sm.\"6" md={mapUrl->Option.isSome ? Md.\"12" : Md.\"6"}>
               <Grid container=true>
                 <Grid item=true xs=Xs.\"12">
                   <Typography className=Common.Style.bold>
@@ -83,8 +81,7 @@ let make = () => {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid
-              item=true xs=Xs.\"12" sm=Sm.\"6" md={mapUrl->Belt.Option.isSome ? Md.\"12" : Md.\"6"}>
+            <Grid item=true xs=Xs.\"12" sm=Sm.\"6" md={mapUrl->Option.isSome ? Md.\"12" : Md.\"6"}>
               <Grid container=true>
                 <Grid item=true xs=Xs.\"12">
                   <Typography className=Common.Style.bold>
@@ -130,8 +127,7 @@ let make = () => {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid
-              item=true xs=Xs.\"12" sm=Sm.\"6" md={mapUrl->Belt.Option.isSome ? Md.\"12" : Md.\"6"}>
+            <Grid item=true xs=Xs.\"12" sm=Sm.\"6" md={mapUrl->Option.isSome ? Md.\"12" : Md.\"6"}>
               <Grid container=true>
                 <Grid item=true xs=Xs.\"12">
                   <Typography className=Common.Style.bold>
@@ -165,13 +161,13 @@ let make = () => {
             </Grid>
           </Grid>
         </Grid>
-        <Hidden smDown=true mdUp={mapUrl->Belt.Option.isNone}>
+        <Hidden smDown=true mdUp={mapUrl->Option.isNone}>
           <Grid item=true md=Md.\"6" className=Common.Style.headerGap>
             <Contact_Map url=?mapUrl isMapBeingLoaded onMapLoadingFinished />
           </Grid>
         </Hidden>
         <Hidden mdUp=true>
-          <Common.Dialog isOpen={mapUrl->Belt.Option.isSome} onClose fullScreen=true>
+          <Common.Dialog isOpen={mapUrl->Option.isSome} onClose fullScreen=true>
             <Contact_Map url=?mapUrl isMapBeingLoaded onMapLoadingFinished />
           </Common.Dialog>
         </Hidden>

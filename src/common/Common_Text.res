@@ -1,10 +1,9 @@
-open Mui
 open Mui.Grid
 
 type fragmentContent = Message(ReactIntl.message) | String(string)
 
 type fragment =
-  | Text({content: fragmentContent, bold?: bool, color?: Typography.color, appendSpace?: bool})
+  | Text({content: fragmentContent, bold?: bool, color?: Mui.Typography.color, appendSpace?: bool})
   | Element(Jsx.element)
 
 type fragmentParagraph = {content: list<fragment>, centered?: bool}
@@ -32,7 +31,7 @@ module FragmentContent = {
     }
 
   let addSuffix = (~appendSpace=?, ~index, ~fragmentsCount) =>
-    index < fragmentsCount - 1 && appendSpace->Belt.Option.getWithDefault(false) ? " " : ""
+    index < fragmentsCount - 1 && appendSpace->Option.getWithDefault(false) ? " " : ""
 
   @react.component
   let make = (~content, ~index, ~fragmentsCount, ~appendSpace=?) => {
@@ -45,12 +44,12 @@ module FragmentContent = {
 module Text = {
   @react.component
   let make = (~children, ~centered=?) => {
-    <Grid
+    <Mui.Grid
       item=true
-      xs=Grid.Xs.\"12"
-      className={centered->Belt.Option.getWithDefault(false) ? Common_Style.centeredText : ""}>
+      xs=Xs.\"12"
+      className={centered->Option.getWithDefault(false) ? Common_Style.centeredText : ""}>
       children
-    </Grid>
+    </Mui.Grid>
   }
 }
 
@@ -58,25 +57,25 @@ module Fragment = {
   @react.component
   let make = (~fragments) => {
     fragments
-    ->Belt.List.mapWithIndex((index, fragment) => {
+    ->List.mapWithIndex((index, fragment) => {
       switch fragment {
       | Text(fragment) =>
-        <Typography
-          component={"span"->Typography.Component.string}
-          className={fragment.bold->Belt.Option.getWithDefault(false) ? Common_Style.bold : ""}
-          key={`fragment-${index->Belt.Int.toString}`}
+        <Mui.Typography
+          component={"span"->Mui.Typography.Component.string}
+          className={fragment.bold->Option.getWithDefault(false) ? Common_Style.bold : ""}
+          key={`fragment-${index->Int.toString}`}
           color=?fragment.color>
           <FragmentContent
             content=fragment.content
             index
-            fragmentsCount={fragments->Belt.List.size}
+            fragmentsCount={fragments->List.size}
             appendSpace=?fragment.appendSpace
           />
-        </Typography>
+        </Mui.Typography>
       | Element(element) => element
       }
     })
-    ->Belt.List.toArray
+    ->List.toArray
     ->React.array
   }
 }
@@ -95,85 +94,89 @@ let make = (
 
   let getContainerClassname = () =>
     (disableGutters ? list{} : list{Common_Style.paragraphGap})
-    ->Belt.List.concat(
-      centerAll->Belt.Option.mapWithDefault(list{}, centerAll =>
+    ->List.concat(
+      centerAll->Option.mapWithDefault(list{}, centerAll =>
         centerAll ? list{Common_Style.centeredText} : list{}
       ),
     )
-    ->Belt.List.reduce("", (result, className) => `${result} ${className}`)
+    ->List.reduce("", (result, className) => `${result} ${className}`)
 
-  <Grid container=true className={getContainerClassname()}>
-    {header->Belt.Option.mapWithDefault(React.null, header =>
-      <Grid item=true xs=Grid.Xs.\"12" className={Common_Style.centeredText}>
-        <Typography
+  <Mui.Grid container=true className={getContainerClassname()}>
+    {header->Option.mapWithDefault(React.null, header =>
+      <Mui.Grid item=true xs=Xs.\"12" className={Common_Style.centeredText}>
+        <Mui.Typography
           variant=headerVariant
           className=?{headerUppercase ? Some(Common_Style.uppercaseText) : None}>
           {intl->ReactIntl.Intl.formatMessage(header)->React.string}
-        </Typography>
-      </Grid>
+        </Mui.Typography>
+      </Mui.Grid>
     )}
-    {afterHeader->Belt.Option.mapWithDefault(React.null, afterHeader =>
-      <Grid item=true xs=Grid.Xs.\"12"> afterHeader </Grid>
+    {afterHeader->Option.mapWithDefault(React.null, afterHeader =>
+      <Mui.Grid item=true xs=Xs.\"12"> afterHeader </Mui.Grid>
     )}
     {switch body {
     | Paragraphs(paragraphs) =>
       paragraphs
-      ->Belt.List.mapWithIndex((index, paragraph) =>
-        <Text key={`paragraph-${index->Belt.Int.toString}`}>
-          <Typography> {intl->ReactIntl.Intl.formatMessage(paragraph)->React.string} </Typography>
+      ->List.mapWithIndex((index, paragraph) =>
+        <Text key={`paragraph-${index->Int.toString}`}>
+          <Mui.Typography>
+            {intl->ReactIntl.Intl.formatMessage(paragraph)->React.string}
+          </Mui.Typography>
         </Text>
       )
-      ->Belt.List.toArray
+      ->List.toArray
       ->React.array
     | Fragments(paragraphs) =>
       paragraphs
-      ->Belt.List.mapWithIndex((index, fragments) =>
-        <Text centered=?fragments.centered key={`paragraph-${index->Belt.Int.toString}`}>
+      ->List.mapWithIndex((index, fragments) =>
+        <Text centered=?fragments.centered key={`paragraph-${index->Int.toString}`}>
           <Fragment fragments=fragments.content />
         </Text>
       )
-      ->Belt.List.toArray
+      ->List.toArray
       ->React.array
     | Lists(paragraphs) =>
       paragraphs
-      ->Belt.List.mapWithIndex((index, paragraph) =>
-        <Grid container=true key={`paragraph-${index->Belt.Int.toString}`}>
-          {paragraph.title->Belt.Option.mapWithDefault(React.null, title =>
+      ->List.mapWithIndex((index, paragraph) =>
+        <Mui.Grid container=true key={`paragraph-${index->Int.toString}`}>
+          {paragraph.title->Option.mapWithDefault(React.null, title =>
             <Text>
-              <Typography> {intl->ReactIntl.Intl.formatMessage(title)->React.string} </Typography>
+              <Mui.Typography>
+                {intl->ReactIntl.Intl.formatMessage(title)->React.string}
+              </Mui.Typography>
             </Text>
           )}
-          <Grid item=true xs=Grid.Xs.\"12">
+          <Mui.Grid item=true xs=Xs.\"12">
             <Mui.List>
               {paragraph.list
-              ->Belt.List.mapWithIndex((index, row) =>
-                <ListItem key={`list-row-${index->Belt.Int.toString}`}>
+              ->List.mapWithIndex((index, row) =>
+                <Mui.ListItem key={`list-row-${index->Int.toString}`}>
                   {switch row.content {
                   | Fragments(fragments) =>
-                    <Grid container=true>
-                      <Grid item=true xs=Xs.\"12">
+                    <Mui.Grid container=true>
+                      <Mui.Grid item=true xs=Xs.\"12">
                         <Fragment fragments />
-                      </Grid>
-                    </Grid>
+                      </Mui.Grid>
+                    </Mui.Grid>
                   | Message(message) =>
-                    <ListItemText
+                    <Mui.ListItemText
                       primary={intl->ReactIntl.Intl.formatMessage(message)->React.string}
-                      classes=?{row.bold->Belt.Option.getWithDefault(false)
-                        ? Some(ListItemText.Classes.make(~primary=Common_Style.bold, ()))
+                      classes=?{row.bold->Option.getWithDefault(false)
+                        ? Some(Mui.ListItemText.Classes.make(~primary=Common_Style.bold, ()))
                         : None}
                     />
                   }}
-                </ListItem>
+                </Mui.ListItem>
               )
-              ->Belt.List.toArray
+              ->List.toArray
               ->React.array}
             </Mui.List>
-          </Grid>
-        </Grid>
+          </Mui.Grid>
+        </Mui.Grid>
       )
-      ->Belt.List.toArray
+      ->List.toArray
       ->React.array
     | Element(element) => <Text> element </Text>
     }}
-  </Grid>
+  </Mui.Grid>
 }

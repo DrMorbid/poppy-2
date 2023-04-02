@@ -1,10 +1,11 @@
-open Mui
 open News_Latest
 
 module Date = {
   @react.component
   let make = (~variant) => {
-    <Typography variant> {latestNews.date->Date.toLocaleDateString->React.string} </Typography>
+    <Mui.Typography variant>
+      {latestNews.date->Date.toLocaleDateString->React.string}
+    </Mui.Typography>
   }
 }
 
@@ -12,44 +13,45 @@ module Title = {
   @react.component
   let make = (~variant) => {
     latestNews.title
-    ->Belt.List.mapWithIndex((index, titleLine) =>
-      <Typography variant key={`news-title-line-${index->Belt.Int.toString}`}>
+    ->List.mapWithIndex((index, titleLine) =>
+      <Mui.Typography variant key={`news-title-line-${index->Int.toString}`}>
         {titleLine->React.string}
-      </Typography>
+      </Mui.Typography>
     )
-    ->Belt.List.toArray
+    ->List.toArray
     ->React.array
   }
 }
 
 @react.component
 let make = () => {
-  <Grid container=true>
-    <Grid item=true>
+  <Mui.Grid container=true>
+    <Mui.Grid item=true>
       <Title variant=#h5 />
-      <Grid container=true direction=#column alignItems=#stretch className=Common.Style.marginTopSm>
+      <Mui.Grid
+        container=true direction=#column alignItems=#stretch className=Common.Style.marginTopSm>
         {latestNews.content
-        ->Belt.List.mapWithIndex((index, {emphasis, value, nextLineEmpty}) => {
-          <Grid
+        ->List.mapWithIndex((index, {emphasis, value, nextLineEmpty}) => {
+          <Mui.Grid
             item=true
-            key={`news-line-${index->Belt.Int.toString}`}
+            key={`news-line-${index->Int.toString}`}
             className=?{if nextLineEmpty {
               Some(Common.Style.marginBottomSm)
             } else {
               None
             }}>
-            <Typography
+            <Mui.Typography
               className=?{switch emphasis {
               | Normal => None
               | Bold => Some(Common.Style.bold)
               }}>
               {value->React.string}
-            </Typography>
-          </Grid>
+            </Mui.Typography>
+          </Mui.Grid>
         })
-        ->Belt.List.toArray
+        ->List.toArray
         ->React.array}
-      </Grid>
-    </Grid>
-  </Grid>
+      </Mui.Grid>
+    </Mui.Grid>
+  </Mui.Grid>
 }

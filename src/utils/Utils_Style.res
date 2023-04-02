@@ -11,7 +11,7 @@ let styleWithMediaQuery = (~addMediaPrefix=false, ~mediaQuery: string, style: St
   style->addMediaQuery(~addMediaPrefix, ~mediaQuery)
 
 let stylesCombiner = (listOfStyles: list<Style.t>): Style.t => {
-  listOfStyles->Belt.List.reduce(Style.make(), (acumulator, additionalStyle) =>
+  listOfStyles->List.reduce(Style.make(), (acumulator, additionalStyle) =>
     Style.combine(acumulator, additionalStyle)
   )
 }

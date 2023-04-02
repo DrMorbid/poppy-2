@@ -15,11 +15,7 @@ module Make = (Config: Config) => {
 
 type menuItemTarget = ScrollableRef(React.ref<Nullable.t<Dom.element>>) | Page(App_Page.t)
 
-type menuItemTargets = Belt.Map.t<
-  MenuItem.TargetsMap.t,
-  menuItemTarget,
-  MenuItem.TargetsMap.identity,
->
+type menuItemTargets = Map.t<MenuItem.t, menuItemTarget>
 
 type state = {
   homeMenuItemTargets: menuItemTargets,
@@ -28,18 +24,20 @@ type state = {
 }
 
 let initialState = {
-  open Belt.Map
+  open MenuItem
+
+  let homeMenuItemTargets = Map.make()
+  homeMenuItemTargets->Map.set(Home, Page(App_Page.Home))
+  homeMenuItemTargets->Map.set(QAndA, Page(App_Page.QAndA))
+  homeMenuItemTargets->Map.set(Contact, Page(App_Page.Contact))
+  homeMenuItemTargets->Map.set(References, Page(App_Page.References))
+
+  let registrationsMenuItemTargets = Map.make()
+  registrationsMenuItemTargets->Map.set(Home, Page(App_Page.Home))
 
   {
-    homeMenuItemTargets: make(~id=module(MenuItem.TargetsMap))
-    ->set(Home, Page(App_Page.Home))
-    ->set(QAndA, Page(App_Page.QAndA))
-    ->set(Contact, Page(App_Page.Contact))
-    ->set(References, Page(App_Page.References)),
-    registrationsMenuItemTargets: make(~id=module(MenuItem.TargetsMap))->set(
-      Home,
-      Page(App_Page.Home),
-    ),
+    homeMenuItemTargets,
+    registrationsMenuItemTargets,
     topRef: None,
   }
 }
@@ -53,14 +51,19 @@ let reducer = (state, action) =>
   switch action {
   | AddHomeMenuItemScrollableRef(menuItem, ref) => {
       ...state,
-      homeMenuItemTargets: state.homeMenuItemTargets->Belt.Map.set(menuItem, ScrollableRef(ref)),
+      homeMenuItemTargets: {
+        state.homeMenuItemTargets->Map.set(menuItem, ScrollableRef(ref))
+
+        state.homeMenuItemTargets
+      },
     }
   | AddRegistrationsMenuItemScrollableRef(menuItem, ref) => {
       ...state,
-      registrationsMenuItemTargets: state.registrationsMenuItemTargets->Belt.Map.set(
-        menuItem,
-        ScrollableRef(ref),
-      ),
+      registrationsMenuItemTargets: {
+        state.registrationsMenuItemTargets->Map.set(menuItem, ScrollableRef(ref))
+
+        state.registrationsMenuItemTargets
+      },
     }
   | SetTopRef(topRef) => {
       ...state,

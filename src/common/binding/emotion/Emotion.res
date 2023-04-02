@@ -21,5 +21,5 @@ type classLabel = {label: string}
 @module("@emotion/css") external injectGlobalObject: {..} => unit = "injectGlobal"
 
 let useCx1 = (~dependency=?, classNameArray) =>
-  React.useMemo1(_ => cx(classNameArray), dependency->Belt.Option.getWithDefault(classNameArray))
+  React.useMemo1(_ => cx(classNameArray), dependency->Option.getWithDefault(classNameArray))
 let useCx0 = classNameArray => React.useMemo0(_ => cx(classNameArray))

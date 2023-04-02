@@ -1,5 +1,4 @@
 open Message.WhoWeAre
-open Mui
 open Mui.Grid
 open Common.Text
 
@@ -22,15 +21,15 @@ let getContact = (email): Common.Text.fragmentParagraph => {
 
 @react.component
 let make = (~photoSrc, ~name, ~description, ~email) => {
-  <Grid container=true>
-    <Grid item=true xs=Xs.\"12">
-      <Grid container=true justify=#center>
-        <Grid item=true>
+  <Mui.Grid container=true>
+    <Mui.Grid item=true xs=Xs.\"12">
+      <Mui.Grid container=true justify=#center>
+        <Mui.Grid item=true>
           <Photo src=photoSrc />
-        </Grid>
-      </Grid>
-    </Grid>
-    <Grid item=true xs=Xs.\"12">
+        </Mui.Grid>
+      </Mui.Grid>
+    </Mui.Grid>
+    <Mui.Grid item=true xs=Xs.\"12">
       <Common.Text
         body={Fragments(
           list{
@@ -43,7 +42,7 @@ let make = (~photoSrc, ~name, ~description, ~email) => {
               },
               centered: true,
             },
-            ...description->Belt.List.map((descriptionLine): fragmentParagraph => {
+            ...description->List.map((descriptionLine): fragmentParagraph => {
               content: list{
                 Text({
                   content: Message(descriptionLine),
@@ -54,6 +53,6 @@ let make = (~photoSrc, ~name, ~description, ~email) => {
           },
         )}
       />
-    </Grid>
-  </Grid>
+    </Mui.Grid>
+  </Mui.Grid>
 }
