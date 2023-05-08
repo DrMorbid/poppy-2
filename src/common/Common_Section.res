@@ -4,8 +4,13 @@ open ReactDOM
 open Emotion
 
 module Classes = {
-  let coloredLight = Style.make(~backgroundColor="rgba(230, 230, 230, 0.75)", ())->styleToClass
-  let coloredDark = Style.make(~backgroundColor="rgba(70, 70, 70, 0.75)", ())->styleToClass
+  let background = (theme: Theme.t) =>
+    Style.make(
+      ~backgroundColor=theme.palette.secondary.light->App_Theme.Transparency.addTransparency(
+        #background,
+      ),
+      (),
+    )->styleToClass
 }
 
 @react.component
@@ -15,8 +20,8 @@ let make = (~colored=false, ~children) => {
 
   let createContainerStyling = () =>
     switch (colored, prefersDarkMode) {
-    | (true, true) => cx([Common_Style.pageGuttersComplete(theme), Classes.coloredDark])
-    | (true, false) => cx([Common_Style.pageGuttersComplete(theme), Classes.coloredLight])
+    | (true, true) => cx([Common_Style.pageGuttersComplete(theme), Classes.background(theme)])
+    | (true, false) => cx([Common_Style.pageGuttersComplete(theme), Classes.background(theme)])
     | (false, _) => Common_Style.pageGuttersComplete(theme)
     }
 

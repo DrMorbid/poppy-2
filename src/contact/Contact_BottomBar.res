@@ -3,12 +3,16 @@ open Mui.Grid
 open Message
 open Message.Contact
 open ReactDOM
+open Emotion
 
 module Classes = {
-  let containerLight = (theme: Theme.t) =>
-    Style.make(~backgroundColor=theme.palette.success.light, ())->Emotion.styleToClass
-  let containerDark = (theme: Theme.t) =>
-    Style.make(~backgroundColor=theme.palette.success.dark, ())->Emotion.styleToClass
+  let container = (theme: Theme.t) =>
+    Style.make(
+      ~backgroundColor=theme.palette.success.main->App_Theme.Transparency.addTransparency(
+        #background,
+      ),
+      (),
+    )->styleToClass
 }
 
 @react.component
@@ -18,7 +22,6 @@ let make = () => {
   let intl = ReactIntl.useIntl()
   let theme = Core.useTheme()
   let isMdUp = Core.useMediaQuery(theme->Core.Breakpoint.get(#md->#up))
-  let prefersDarkMode = Core.useMediaQueryString(Common.Constants.darkModeMediaQuery)
 
   let onClose = () => {
     setIsMapBeingLoaded(_ => false)
@@ -34,10 +37,7 @@ let make = () => {
 
   <Grid
     container=true
-    className={Emotion.cx([
-      Common.Style.pageGuttersComplete(theme),
-      prefersDarkMode ? theme->Classes.containerDark : theme->Classes.containerLight,
-    ])}>
+    className={cx([Common.Style.pageGuttersComplete(theme), theme->Classes.container])}>
     <Grid item=true xs=Xs.\"12">
       <Grid container=true className={Common.Style.paragraphGap}>
         <Grid item=true xs=Xs.\"12" sm=Sm.\"6" md=Md.\"4">
