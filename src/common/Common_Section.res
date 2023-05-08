@@ -1,11 +1,11 @@
 open Mui
 open Mui.Grid
 open ReactDOM
+open Emotion
 
 module Classes = {
-  let coloredLight =
-    Style.make(~backgroundColor="rgba(230, 230, 230, 0.75)", ())->Emotion.styleToClass
-  let coloredDark = Style.make(~backgroundColor="rgba(70, 70, 70, 0.75)", ())->Emotion.styleToClass
+  let coloredLight = Style.make(~backgroundColor="rgba(230, 230, 230, 0.75)", ())->styleToClass
+  let coloredDark = Style.make(~backgroundColor="rgba(70, 70, 70, 0.75)", ())->styleToClass
 }
 
 @react.component
@@ -15,8 +15,8 @@ let make = (~colored=false, ~children) => {
 
   let createContainerStyling = () =>
     switch (colored, prefersDarkMode) {
-    | (true, true) => Emotion.cx([Common_Style.pageGuttersComplete(theme), Classes.coloredDark])
-    | (true, false) => Emotion.cx([Common_Style.pageGuttersComplete(theme), Classes.coloredLight])
+    | (true, true) => cx([Common_Style.pageGuttersComplete(theme), Classes.coloredDark])
+    | (true, false) => cx([Common_Style.pageGuttersComplete(theme), Classes.coloredLight])
     | (false, _) => Common_Style.pageGuttersComplete(theme)
     }
 

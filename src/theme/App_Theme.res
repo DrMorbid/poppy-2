@@ -1,18 +1,46 @@
 open Mui.ThemeOptions
 open Mui.Theme
+open Mui.Colors
 open ReactDOM
 
-module Colors = {
-  let blue = "#009ada"
-  let green = "#68a130"
-  let yellow = "#ffe401"
-  let orange = "#f1a300"
-  let red = "#de0522"
-  let textLight = "rgba(0, 0, 0, 0.87)"
-  let textDark = "rgba(255, 255,255, 0.87)"
-}
+module Transparency = {
+  let text = "de"
+  let background = "bf"
 
-let theme = (~prefersDarkMode) =>
+  let addTransparency = (color, kind: [#text | #background]) => {
+    let normalizeColor = color =>
+      if color->String.length == 4 {
+        color->String.charAt(0) ++
+        color->String.charAt(1) ++
+        color->String.charAt(1) ++
+        color->String.charAt(2) ++
+        color->String.charAt(2) ++
+        color->String.charAt(3) ++
+        color->String.charAt(3)
+      } else {
+        color
+      }
+
+    color->normalizeColor ++
+      switch kind {
+      | #background => "bf"
+      | #text => "de"
+      }
+  }
+}
+open Transparency
+
+let theme = (~prefersDarkMode) => {
+  let palette = {
+    "primary": prefersDarkMode ? lightBlue["700"] : lightBlue["200"],
+    "secondary": prefersDarkMode ? yellow["700"] : yellow["200"],
+    "error": prefersDarkMode ? red["700"] : red["200"],
+    "warning": prefersDarkMode ? orange["700"] : orange["200"],
+    "info": prefersDarkMode ? blue["700"] : blue["200"],
+    "success": prefersDarkMode ? green["700"] : green["200"],
+    "text": prefersDarkMode ? common["white"] : common["black"],
+  }
+
   create(
     make(
       ~typography=Typography.make(
@@ -55,30 +83,30 @@ let theme = (~prefersDarkMode) =>
       ),
       ~palette=PaletteOptions.make(
         ~\"type"=prefersDarkMode ? "dark" : "light",
-        ~primary=Primary.make(~main=Colors.blue, ()),
-        ~secondary=Secondary.make(~main=Colors.yellow, ()),
-        ~error=Mui.ThemeOptions.Error.make(~main=Colors.red, ()),
-        ~warning=Warning.make(~main=Colors.orange, ()),
-        ~info=Info.make(~main=Colors.blue, ()),
-        ~success=Success.make(~main=Colors.green, ()),
-        ~text=TypeText.make(~primary=prefersDarkMode ? Colors.textDark : Colors.textLight, ()),
+        ~primary=Primary.make(~main=palette["primary"], ()),
+        ~secondary=Secondary.make(~main=palette["secondary"], ()),
+        ~error=Mui.ThemeOptions.Error.make(~main=palette["error"], ()),
+        ~warning=Warning.make(~main=palette["warning"], ()),
+        ~info=Info.make(~main=palette["info"], ()),
+        ~success=Success.make(~main=palette["success"], ()),
+        ~text=TypeText.make(~primary=palette["text"]->addTransparency(#text), ()),
         (),
       ),
       ~overrides=Overrides.make(
         ~\"MuiButton"=ButtonClassKey.make(
-          ~containedPrimary=Style.make(~color=prefersDarkMode ? Colors.textDark : "#ffffff", ()),
+          ~containedPrimary=Style.make(~color=palette["text"]->addTransparency(#text), ()),
           (),
         ),
         ~\"MuiButtonBase"=ButtonBaseClassKey.make(
-          ~root=Style.make(~color=prefersDarkMode ? Colors.textDark : Colors.textLight, ()),
+          ~root=Style.make(~color=palette["text"]->addTransparency(#text), ()),
           (),
         ),
         ~\"MuiIconButton"=IconButtonClassKey.make(
-          ~root=Style.make(~color=prefersDarkMode ? Colors.textDark : Colors.textLight, ()),
+          ~root=Style.make(~color=palette["text"]->addTransparency(#text), ()),
           (),
         ),
         ~\"MuiFab"=FabClassKey.make(
-          ~primary=Style.make(~color=prefersDarkMode ? Colors.textDark : "#ffffff", ()),
+          ~primary=Style.make(~color=palette["text"]->addTransparency(#text), ()),
           (),
         ),
         ~\"MuiAccordion"=AccordionClassKey.make(
@@ -86,8 +114,16 @@ let theme = (~prefersDarkMode) =>
           (),
         ),
         ~\"MuiPaper"=PaperClassKey.make(~elevation1=Style.make(~boxShadow="unset", ()), ()),
+        ~\"MuiAppBar"=AppBarClassKey.make(
+          ~colorPrimary=Style.make(
+            ~backgroundColor=palette["primary"]->addTransparency(#background),
+            (),
+          )->Obj.magic,
+          (),
+        ),
         (),
       ),
       (),
     ),
   )
+}
