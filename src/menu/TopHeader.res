@@ -14,6 +14,7 @@ module Classes = {
 @react.component
 let make = () => {
   let intl = useIntl()
+  let prefersDarkMode = Core.useMediaQueryString(Common.Constants.darkModeMediaQuery)
 
   let onEmailUs = e => {
     location->Location.setHref(`mailto:${Common.Constants.infoEmail}`)
@@ -31,7 +32,10 @@ let make = () => {
     <Hidden smDown=true>
       <Grid item=true className=Classes.logoContainer>
         <ButtonBase onClick=onLogoClick className=Common.Style.fullWidth>
-          <img src="/poppy-logo.png" className=Classes.logo />
+          <img
+            src={prefersDarkMode ? "/poppy-logo-dark.png" : "/poppy-logo-light.png"}
+            className=Classes.logo
+          />
         </ButtonBase>
       </Grid>
     </Hidden>
