@@ -24,7 +24,7 @@ module Transparency = {
     color->normalizeColor ++
       switch kind {
       | #background => "bf"
-      | #text => "de"
+      | #text => "f2"
       }
   }
 }
@@ -56,7 +56,7 @@ let theme = (~prefersDarkMode) => {
     "successLight": prefersDarkMode ? lightGreen["900"] : lightGreen["100"],
     "successDark": prefersDarkMode ? lightGreen["700"] : lightGreen["500"],
     "successContrastText": prefersDarkMode ? lightGreen["A700"] : lightGreen["A100"],
-    "text": prefersDarkMode ? common["white"] : common["black"],
+    "text": prefersDarkMode ? grey["50"] : grey["900"],
   }
 
   create(

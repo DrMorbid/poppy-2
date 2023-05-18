@@ -37,8 +37,8 @@ module Classes = {
     ->stylesCombiner
     ->styleToClass
   let containerColorLight =
-    Style.make(~backgroundColor="rgba(250, 250, 250, 0.75)", ())->styleToClass
-  let containerColorDark = Style.make(~backgroundColor="rgba(48, 48, 48, 0.75)", ())->styleToClass
+    Style.make(~backgroundColor="rgba(250, 250, 250, 0.8)", ())->styleToClass
+  let containerColorDark = Style.make(~backgroundColor="rgba(48, 48, 48, 0.8)", ())->styleToClass
 }
 
 @react.component
