@@ -2,7 +2,7 @@ open Mui.Grid
 
 type coloredSections = Even | Odd
 
-type section = {element: Jsx.element, topRef: React.ref<nullable<Dom.element>>}
+type section = {element: Jsx.element, topRef: React.ref<nullable<Dom.element>>, accented?: bool}
 
 @react.component
 let make = (~sections, ~coloredSections=Even, ~children=?) => {
@@ -10,11 +10,15 @@ let make = (~sections, ~coloredSections=Even, ~children=?) => {
     container=true direction=#column alignItems=#stretch className=Common.Style.islandsVerticalGap>
     {<>
       {sections
-      ->List.mapWithIndex((index, {element, topRef}) =>
+      ->List.mapWithIndex((index, {element, topRef, ?accented}) =>
         <App_ScrollableSection
-          colored={switch (coloredSections, index->mod(2) == 0) {
-          | (Even, true) | (Odd, false) => true
-          | (Odd, true) | (Even, false) => false
+          coloring={if accented->Option.getWithDefault(false) {
+            Accented
+          } else {
+            switch (coloredSections, index->mod(2) == 0) {
+            | (Even, true) | (Odd, false) => Colored
+            | (Odd, true) | (Even, false) => Transparent
+            }
           }}
           topRef
           key={`scrollable-section-${index->Int.toString}`}>

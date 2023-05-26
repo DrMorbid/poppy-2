@@ -133,6 +133,7 @@ let make = () => {
               header=Message.currentRegistrationDates headerVariant=#h3 headerUppercase=true
             />,
             topRef: currentRegistrationDatesTopRef,
+            accented: true,
           },
         }}
         coloredSections=Odd

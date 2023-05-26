@@ -7,7 +7,9 @@ module Transparency = {
   let text = "de"
   let background = "bf"
 
-  let addTransparency = (color, kind: [#text | #background]) => {
+  type kind = [#text | #background]
+
+  let addTransparency = (color, kind: kind) => {
     let normalizeColor = color =>
       if color->String.length == 4 {
         color->String.charAt(0) ++

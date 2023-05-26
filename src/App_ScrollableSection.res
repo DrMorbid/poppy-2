@@ -3,23 +3,23 @@ open Mui.Grid
 open ReactDOM
 
 @react.component
-let make = (~colored=false, ~children, ~topRef) => {
+let make = (~coloring: Common.Section.coloring=Transparent, ~children, ~topRef) => {
   <Grid item=true ref={topRef->Ref.domRef}>
     <Grid container=true>
-      {if colored {
+      {switch coloring {
+      | Colored | Accented =>
         <Grid item=true xs=Xs.\"12">
           <Divider />
         </Grid>
-      } else {
-        React.null
+      | Transparent => React.null
       }}
-      <Common.Section colored> {children} </Common.Section>
-      {if colored {
+      <Common.Section coloring> {children} </Common.Section>
+      {switch coloring {
+      | Colored | Accented =>
         <Grid item=true xs=Xs.\"12">
           <Divider />
         </Grid>
-      } else {
-        React.null
+      | Transparent => React.null
       }}
     </Grid>
   </Grid>
