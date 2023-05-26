@@ -130,7 +130,7 @@ let make = () => {
           },
           {
             element: <News.Section
-              header=Message.currentRegistrationDates headerVariant=#h3 headerUppercase=true
+              header=currentRegistrationDates headerVariant=#h3 headerUppercase=true
             />,
             topRef: currentRegistrationDatesTopRef,
             accented: true,

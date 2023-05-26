@@ -35,12 +35,6 @@ let registrationsOldest =
     id: "9ae6d7cc-7db0-4d70-bff0-952bdefb1d8f",
     defaultMessage: "4 - 15 let",
   }
-let currentRegistrationDates =
-  @intl.description("Registrations - current registration dates")
-  {
-    id: "3f20d49f-5784-43ea-9590-6571f86164ed",
-    defaultMessage: "Aktuální termíny registrací",
-  }
 
 module Menu = Message_Menu
 module Home = Message_Home

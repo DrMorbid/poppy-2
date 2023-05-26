@@ -23,7 +23,7 @@ module MenuItem = {
     | RegistrationsYoungest => registrationsYoungest
     | RegistrationsMiddle => registrationsMiddle
     | RegistrationsOldest => registrationsOldest
-    | CurrentRegistrationDates => currentRegistrationDates
+    | CurrentRegistrationDates => currentDates
     }
   }
 }

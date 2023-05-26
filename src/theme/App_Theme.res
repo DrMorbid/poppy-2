@@ -175,6 +175,10 @@ let theme = (~prefersDarkMode) => {
             ~backgroundColor=palette["primary"]->addTransparency(#background),
             (),
           )->Obj.magic,
+          ~colorSecondary=Style.make(
+            ~backgroundColor=palette["secondary"]->addTransparency(#background),
+            (),
+          )->Obj.magic,
           (),
         ),
         (),

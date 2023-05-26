@@ -23,3 +23,9 @@ let contact =
 let qAndA =
   @intl.description("Top menu item - Q&A")
   {id: "838a3d51-ced5-4d2a-a955-d807ae1e77cb", defaultMessage: "Otázky a odpovědi"}
+let currentDates =
+  @intl.description("Top menu item - Current Dates")
+  {
+    id: "dc11ed02-f9f6-4fdf-97c2-9cea0ad95414",
+    defaultMessage: "Aktuální termíny",
+  }

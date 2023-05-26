@@ -24,14 +24,16 @@ let make = () => {
   ) = React.useContext(App_Context.Context.t)
   let theme = Mui.Core.useTheme()
 
-  <Mui.Toolbar>
-    <Mui.Grid container=true justify=#"space-evenly">
+  <Mui.Toolbar disableGutters=true>
+    <Mui.Grid container=true justify=#"space-evenly" spacing=#1>
       {url
       ->getMenuItems
       ->List.mapWithIndex((index, menuItem) =>
         <Mui.Grid item=true key={`menu-item-${index->Int.toString}`}>
           <Mui.Button
             size=#large
+            color=#default
+            variant=#outlined
             onClick={_ =>
               menuItem->onClick(
                 ~menuItemTargets=url->pickMenuItemTargets(

@@ -7,10 +7,6 @@
         "message": "Kdo jsme",
         "description": "Top menu item - Who we are"
     },
-    "05876c12-2be7-44d9-b6b0-afc7b8d87595": {
-        "message": "e-mail:",
-        "description": "Contact page - the company email"
-    },
     "09de6bec-d523-4b7a-9d15-c73bbe2960f9": {
         "message": "500Kč v hotovosti a 1000Kč se strhne z 1. vypláceného honoráře.",
         "description": "Q&A page - answer to question 7 - paragraph 2 - part2"
@@ -187,10 +183,6 @@
         "message": "Není, tedy můžete být registrováni v dalších agenturách, ovšem u registrace podepisujete podmínku, že v případě, že stejnou nabídku dostanete od nás, stejně tak od jiné agentury (a je jedno, zda od nás v úterý, ale od jiné agentury třeba už v pondělí), na castingu do formuláře uvedete Poppycasting.",
         "description": "Q&A page - answer to question 12 - paragraph 1 - part 1"
     },
-    "4e09e2cc-319f-467c-a4c4-76bac3c87815": {
-        "message": "nebo e-mailem:",
-        "description": "Contact page - the info contact email"
-    },
     "54d5dee3-1a36-497e-af05-225d6e2eb018": {
         "message": "registrujeme osobně ve vypsaných termínech mezi 9 - 13:30h, objednejte se",
         "description": "Registrations page - youngest kids - the first line"
@@ -210,10 +202,6 @@
     "5d9705b6-5f6d-47b1-9dcc-bca2e4521809": {
         "message": "foto z registrace zasíláme mailem",
         "description": "Registrations page - youngest kids - the fourth line"
-    },
-    "5ecee400-bdeb-4d52-a101-25fe293e61e1": {
-        "message": "Poppy casting, s.r.o.",
-        "description": "Contact page - the company name"
     },
     "5efc3bbe-887a-4fbf-8a22-654d0a07a2c9": {
         "message": "ul. Milady Horákové 40Kč/h",
@@ -274,10 +262,6 @@
     "6fc6f245-be0b-474a-b682-ef215bead56f": {
         "message": "Napište nám",
         "description": "Above the top menu - email us"
-    },
-    "706db97d-376a-4bb7-b45c-b9f563cbd7cc": {
-        "message": "tel.čísle:",
-        "description": "Contact page - the info contact phone"
     },
     "70a2dd0a-d816-4bdd-acc1-f5024b5880cb": {
         "message": "Lze se registrovat online?",
@@ -543,6 +527,10 @@
         "message": "foto z registrace zasíláme mailem",
         "description": "Registrations page - middle kids - the fifth line"
     },
+    "dc11ed02-f9f6-4fdf-97c2-9cea0ad95414": {
+        "message": "Aktuální termíny",
+        "description": "Top menu item - Current Dates"
+    },
     "de1b85cb-35da-4669-995d-d8129cd91981": {
         "message": "Zahraniční film a seriál",
         "description": "References page - header of the third section"
@@ -574,10 +562,6 @@
     "ed313c03-79ff-4dd2-8912-00855ab0cd73": {
         "message": "Parkování:",
         "description": "Contact page - the registration address parking label"
-    },
-    "ef604b18-1b95-45e8-9e9f-730c20f03f9b": {
-        "message": "Objednávky, informace a dotazy k registracím na:",
-        "description": "Contact page - the info contact header"
     },
     "f1e78b69-62c1-4b5b-a550-2763a4646df5": {
         "message": "Čím starší je dítě, tím větší herecké schopnosti či průprava se od něj na castingu očekávají, stejně tak konkurence je větší.",

@@ -104,3 +104,9 @@ let oldestKidsLine3 =
     id: "2264b17d-0ea8-49c9-aec7-1cde77887917",
     defaultMessage: "foto rodičům nezasíláme a není možné je od nás odkoupit, děkujeme za pochopení.",
   }
+let currentRegistrationDates =
+  @intl.description("Registrations - current registration dates")
+  {
+    id: "3f20d49f-5784-43ea-9590-6571f86164ed",
+    defaultMessage: "Aktuální termíny registrací",
+  }

@@ -11,7 +11,7 @@ let make = () => {
 
   let onAppNameClick = _ => App_Page.goTo(Home)
 
-  <AppBar position=#static color=#primary>
+  <AppBar position=#static>
     <Drawer drawerOpen onClose={() => setDrawerOpen(_ => false)} />
     <Hidden smDown=true>
       <TopMenu_Toolbar />
