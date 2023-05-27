@@ -2,18 +2,7 @@ open Mui
 open Mui.Grid
 open Message
 open Message.Contact
-open ReactDOM
 open Emotion
-
-module Classes = {
-  let container = (theme: Theme.t) =>
-    Style.make(
-      ~backgroundColor=theme.palette.success.main->App_Theme.Transparency.addTransparency(
-        #background,
-      ),
-      (),
-    )->styleToClass
-}
 
 @react.component
 let make = () => {
@@ -37,7 +26,10 @@ let make = () => {
 
   <Grid
     container=true
-    className={cx([Common.Style.pageGuttersComplete(theme), theme->Classes.container])}>
+    className={cx([
+      Common.Style.pageGuttersComplete(theme),
+      theme->Common.Section.Classes.accentedBackgroundGreen,
+    ])}>
     <Grid item=true xs=Xs.\"12">
       <Grid container=true className={Common.Style.paragraphGap}>
         <Grid item=true xs=Xs.\"12" sm=Sm.\"6" md=Md.\"4">

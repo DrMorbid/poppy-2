@@ -7,7 +7,7 @@ let make = (~coloring: Common.Section.coloring=Transparent, ~children, ~topRef) 
   <Grid item=true ref={topRef->Ref.domRef}>
     <Grid container=true>
       {switch coloring {
-      | Colored | Accented =>
+      | Colored | Accented(_) =>
         <Grid item=true xs=Xs.\"12">
           <Divider />
         </Grid>
@@ -15,7 +15,7 @@ let make = (~coloring: Common.Section.coloring=Transparent, ~children, ~topRef) 
       }}
       <Common.Section coloring> {children} </Common.Section>
       {switch coloring {
-      | Colored | Accented =>
+      | Colored | Accented(_) =>
         <Grid item=true xs=Xs.\"12">
           <Divider />
         </Grid>

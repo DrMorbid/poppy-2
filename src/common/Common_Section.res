@@ -14,16 +14,25 @@ module Classes = {
       ),
       (),
     )->styleToClass
-  let accentedBackground = (theme: Theme.t) =>
+  let accentedBackgroundYellow = (theme: Theme.t) =>
     Style.make(
       ~backgroundColor=theme.palette.secondary.light->App_Theme.Transparency.addTransparency(
         #background,
       ),
       (),
     )->styleToClass
+  let accentedBackgroundGreen = (theme: Theme.t) =>
+    Style.make(
+      ~backgroundColor=theme.palette.success.main->App_Theme.Transparency.addTransparency(
+        #background,
+      ),
+      (),
+    )->styleToClass
 }
 
-type coloring = Transparent | Colored | Accented
+type accented = Yellow | Green
+
+type coloring = Transparent | Colored | Accented(accented)
 
 @react.component
 let make = (~coloring=Transparent, ~children) => {
@@ -37,7 +46,10 @@ let make = (~coloring=Transparent, ~children) => {
         Common_Style.pageGuttersComplete(theme),
         Classes.coloredBackground(theme, prefersDarkMode),
       ])
-    | Accented => cx([Common_Style.pageGuttersComplete(theme), Classes.accentedBackground(theme)])
+    | Accented(Yellow) =>
+      cx([Common_Style.pageGuttersComplete(theme), Classes.accentedBackgroundYellow(theme)])
+    | Accented(Green) =>
+      cx([Common_Style.pageGuttersComplete(theme), Classes.accentedBackgroundGreen(theme)])
     | Transparent => Common_Style.pageGuttersComplete(theme)
     }
 
