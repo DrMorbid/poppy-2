@@ -166,10 +166,14 @@ let theme = (~prefersDarkMode) => {
           (),
         ),
         ~\"MuiAccordion"=AccordionClassKey.make(
-          ~root=Style.make(~backgroundColor="transparent", ()),
+          ~root=Style.make(
+            ~backgroundColor=(prefersDarkMode ? grey["900"] : common["white"])->addTransparency(
+              #background,
+            ),
+            (),
+          ),
           (),
         ),
-        ~\"MuiPaper"=PaperClassKey.make(~elevation1=Style.make(~boxShadow="unset", ()), ()),
         ~\"MuiAppBar"=AppBarClassKey.make(
           ~colorPrimary=Style.make(
             ~backgroundColor=palette["primary"]->addTransparency(#background),
