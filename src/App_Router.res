@@ -10,7 +10,7 @@ let make = () => {
       <Registrations.Page />
     </App_Page>
   | list{"contact"} =>
-    <App_Page>
+    <App_Page gutters=Top>
       <Contact.Page />
     </App_Page>
   | list{"qAndA"} =>
