@@ -27,3 +27,7 @@ module MenuItem = {
     }
   }
 }
+
+module Age = {
+  type ageLimit = Years(int) | Months(int)
+}

@@ -24,7 +24,7 @@ let make = () => {
       defaultValues: {
         parentName: "",
         childName: "",
-        childBirthdate: "",
+        childBirthdate: Date.make(),
         cityOfResidence: "",
         parentPhone: "",
         parentEmail: "",
@@ -35,10 +35,15 @@ let make = () => {
 
   let intl = ReactIntl.useIntl()
 
-  let onSubmit = input => {
+  let onSubmit = (input, _) => {
     Js.log2("FKR: email us page: submitting: %o", input)
-    _ => ()
   }
+
+  Js.log3(
+    "FKR: email us page: render: %s, %o",
+    form->FormInput.ChildBirthdate.invalid,
+    (form->Form.formState).errors,
+  )
 
   <form onSubmit={form->Form.handleSubmit(onSubmit)}>
     <Grid container=true spacing=#2>
@@ -46,17 +51,38 @@ let make = () => {
         label=parentNameLabel
         field=Field.parentName
         renderWithRegister={field => form->FormInput.ParentName.renderWithRegister(field, ())}
+        autoFocus=true
       />
       <EmailUs_Field
         label=childNameLabel
         field=Field.childName
         renderWithRegister={field => form->FormInput.ChildName.renderWithRegister(field, ())}
       />
-      <EmailUs_Field
-        label=childBirthdateLabel
-        field=Field.childBirthdate
-        renderWithRegister={field => form->FormInput.ChildBirthdate.renderWithRegister(field, ())}
-      />
+      <Grid item=true xs=Xs.\"12" sm=Sm.\"6" md=Md.\"4" lg=Lg.\"3" xl=Xl.\"2">
+        {form->FormInput.ChildBirthdate.renderController(
+          ({field: {onChange, value, _}, fieldState: {error, _}, _}) =>
+            <MuiPickers.DatePicker
+              name="childBirthdate"
+              disableFuture=true
+              openTo=#year
+              format="d. M. yyyy"
+              views={[#year, #month, #date]}
+              fullWidth=true
+              margin=#none
+              label={intl->ReactIntl.Intl.formatMessage(childBirthdateLabel)->Jsx.string}
+              required=Field.childBirthdate.required
+              onChange
+              value
+              error={error->Option.isSome}
+              helperText=?{error->Option.isSome
+                ? Some(intl->ReactIntl.Intl.formatMessage(childBirthdateHelperText)->Jsx.string)
+                : None}
+              minDate={Common.Constants.highestChildAge->Utils.Date.ageLimitToDate}
+              maxDate={Common.Constants.lowestChildAge->Utils.Date.ageLimitToDate}
+            />,
+          (),
+        )}
+      </Grid>
       <EmailUs_Field
         label=cityOfResidenceLabel
         field=Field.cityOfResidence

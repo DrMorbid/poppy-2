@@ -1,7 +1,7 @@
 type input = {
   parentName: string,
   childName: string,
-  childBirthdate: string,
+  childBirthdate: Date.t,
   cityOfResidence: string,
   parentPhone: string,
   parentEmail: string,
@@ -56,10 +56,32 @@ module FormInput = {
   })
 
   module ChildBirthdate = Form.MakeInput({
-    type t = string
+    type t = Date.t
     let name = "childBirthdate"
     let config = ReactHookForm.Rules.make({
       required: Field.childBirthdate.required,
+      validate: Dict.fromArray([
+        (
+          "min",
+          ReactHookForm.Validation.sync(date => {
+            if date->ReDate.isBefore(Common.Constants.highestChildAge->Utils.Date.ageLimitToDate) {
+              Some("min")
+            } else {
+              None
+            }
+          }),
+        ),
+        (
+          "max",
+          ReactHookForm.Validation.sync(date => {
+            if date->ReDate.isAfter(Common.Constants.lowestChildAge->Utils.Date.ageLimitToDate) {
+              Some("max")
+            } else {
+              None
+            }
+          }),
+        ),
+      ]),
     })
   })
 

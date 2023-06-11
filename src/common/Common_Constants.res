@@ -9,3 +9,6 @@ let facturationAddress = "https://frame.mapy.cz/s/gofosakuga"
 let drawerTransitionDuration = 250
 let darkModeMediaQuery = "(prefers-color-scheme: dark)"
 let photographerWebsite = "https://www.babyfotoeva.cz/"
+
+let lowestChildAge: App_Types.Age.ageLimit = Months(6)
+let highestChildAge: App_Types.Age.ageLimit = Years(15)

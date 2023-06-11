@@ -45,6 +45,13 @@ let noteLabel =
     defaultMessage: "Poznámka",
   }
 
+let childBirthdateHelperText =
+  @intl.description("Email Us page - the child birthdate error helper text")
+  {
+    id: "8acc5ad9-1872-4be3-b3d0-8378ff135ef9",
+    defaultMessage: "Vyberte prosím datum narození.",
+  }
+
 let submitButton =
   @intl.description("Email Us page - the submit button label")
   {

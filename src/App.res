@@ -11,6 +11,7 @@ module Router = App_Router
 module ScrollToTop = App_ScrollToTop
 module ScrollableSection = App_ScrollableSection
 module ScrollableSections = App_ScrollableSections
+module Types = App_Types
 
 module Classes = {
   let container = (theme: Mui.Theme.t) =>

@@ -30,7 +30,7 @@ let mixColors = (
     ->Option.getWithDefault(color) ++
     " " ++
     percentage
-    ->Option.map(Belt.Int.toString)
+    ->Option.map(Int.toString)
     ->Option.map(percentage => percentage ++ "%")
     ->Option.getWithDefault("")
 

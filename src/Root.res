@@ -9,7 +9,10 @@ let make = () => {
       <ThemeProvider theme={App_Theme.theme(~prefersDarkMode)}>
         <CssBaseline />
         <StylesProvider injectFirst=true>
-          <App />
+          <MuiPickers.UtilsProvider
+            utils=MuiPickers.UtilsProvider.dateFnsUtils locale=MuiPickers.UtilsProvider.csLocale>
+            <App />
+          </MuiPickers.UtilsProvider>
         </StylesProvider>
       </ThemeProvider>
     </App.Context.Provider>
