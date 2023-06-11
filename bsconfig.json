@@ -26,7 +26,8 @@
     "@mobily/rescript-date",
     "rescript-material-ui-lab",
     "rescript-webapi",
-    "@rescript/core"
+    "@rescript/core",
+    "@greenlabs/rescript-react-hook-form"
   ],
   "bs-dev-dependencies": ["rescript-vitest"],
   "bsc-flags": ["-open RescriptCore"],

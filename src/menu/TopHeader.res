@@ -15,26 +15,7 @@ let make = () => {
   let intl = useIntl()
   let prefersDarkMode = Core.useMediaQueryString(Common.Constants.darkModeMediaQuery)
 
-  // let onEmailUs = e => {
-  //   location->Location.setHref(`mailto:${Common.Constants.infoEmail}`)
-  //   e->ReactEvent.Synthetic.preventDefault
-  // }
-
-  let onEmailUs = async () => {
-    // TODO: log
-    Js.Console.log("Sending an email...")
-
-    let message = await SmtpJs.email->SmtpJs.sendWithSecureToken({
-      "SecureToken": "678157a9-d3e9-40c2-86d1-7a60817485de",
-      "To": "drmorbid@seznam.cz",
-      "From": "filip.kittnar@seznam.cz",
-      "Subject": "This is a test email",
-      "Body": "Well... Did it arrive?",
-    })
-
-    // TODO: log
-    Js.Console.log2("Email sent: ", message)
-  }
+  let onEmailUs = () => App_Page.goTo(EmailUs)
 
   let onLogoClick = _ => App_Page.goTo(Home)
 

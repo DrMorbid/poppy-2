@@ -21,6 +21,10 @@ let make = () => {
     <App_Page>
       <References.Page />
     </App_Page>
+  | list{"emailUs"} =>
+    <App_Page>
+      <EmailUs.Page />
+    </App_Page>
   | list{} | _ => <Home.Page />
   }
 }

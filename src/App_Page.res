@@ -1,7 +1,7 @@
 open Mui.Grid
 open RescriptReactRouter
 
-type t = Home | Registrations | Contact | QAndA | References
+type t = Home | Registrations | Contact | QAndA | References | EmailUs
 
 module RoutePath = {
   let home = "/"
@@ -9,6 +9,7 @@ module RoutePath = {
   let contact = "/contact"
   let qAndA = "/qAndA"
   let references = "/references"
+  let emailUs = "/emailUs"
 }
 
 let toRoutePath = page => {
@@ -20,6 +21,7 @@ let toRoutePath = page => {
   | Contact => contact
   | QAndA => qAndA
   | References => references
+  | EmailUs => emailUs
   }
 }
 
@@ -32,6 +34,7 @@ let toLabel = page => {
   | Contact => contact
   | QAndA => qAndA
   | References => references
+  | EmailUs => emailUs
   }
 }
 
