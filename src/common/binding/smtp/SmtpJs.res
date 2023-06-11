@@ -8,7 +8,7 @@ type sendRequestWithCredentials = {
   ...sendRequest,
 }
 
-@module external email: t = "./smtp"
+@module("./smtp") external email: t = "default"
 
 @send external sendWithSecureToken: (t, sendRequestWithSecureToken) => promise<string> = "send"
 @send external sendWithCredentials: (t, sendRequestWithCredentials) => promise<string> = "send"
