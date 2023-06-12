@@ -1,0 +1,37 @@
+@media (prefers-color-scheme: light) {
+    .MuiPickersToolbar-toolbar {
+        background-color: #4fc3f7
+    }
+
+    .MuiPickersToolbarText-toolbarBtnSelected {
+        color: #212121f2
+    }
+
+    .MuiPickersToolbarText-toolbarTxt {
+        color: #212121f2
+    }
+
+    .MuiPickersDay-daySelected {
+        background-color: #4fc3f7;
+        color: #212121f2
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .MuiPickersToolbar-toolbar {
+        background-color: #0288d1
+    }
+
+    .MuiPickersToolbarText-toolbarBtnSelected {
+        color: #fafafaf2
+    }
+
+    .MuiPickersToolbarText-toolbarTxt {
+        color: #fafafaf2
+    }
+
+    .MuiPickersDay-daySelected {
+        background-color: #0288d1;
+        color: #fafafaf2
+    }
+}
