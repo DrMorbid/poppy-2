@@ -92,16 +92,20 @@ let make = () => {
         label=parentPhoneLabel
         field=Field.parentPhone
         renderWithRegister={field => form->FormInput.ParentPhone.renderWithRegister(field, ())}
+        \"type"={#tel}
       />
       <EmailUs_Field
         label=parentEmailLabel
         field=Field.parentEmail
         renderWithRegister={field => form->FormInput.ParentEmail.renderWithRegister(field, ())}
+        \"type"={#email}
       />
       <EmailUs_Field
         label=noteLabel
         field=Field.note
         renderWithRegister={field => form->FormInput.Note.renderWithRegister(field, ())}
+        multiline=true
+        last=true
       />
       <Grid item=true xs=Xs.\"12">
         <Button \"type"={#submit->Button.Type.enum} color=#primary variant=#contained>
