@@ -2,6 +2,18 @@ open ReactIntl
 
 @@intl.messages
 
+let header =
+  @intl.description("Email Us page - the header")
+  {
+    id: "ccae16f5-3c5f-4b24-8f08-c91458e21263",
+    defaultMessage: "Napiště Nám",
+  }
+let subHeader =
+  @intl.description("Email Us page - the sub-header info text")
+  {
+    id: "b0770075-7e30-451c-bdff-20fe6b08647e",
+    defaultMessage: "Máte zájem o registraci? Vyplňte následující formulář, odešlete a my se Vám ozveme.",
+  }
 let parentNameLabel =
   @intl.description("Email Us page - the parent name label")
   {
