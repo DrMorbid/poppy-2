@@ -30,16 +30,40 @@ let make = () => {
       "To": "drmorbid@seznam.cz",
       "From": "filip.kittnar@seznam.cz",
       "Subject": "Zájem o registraci",
-      "Body": `Jméno rodiče: ${input.parentName}
-      Jméno dítěte: ${input.childName}
-      Datum narození dítěte: ${input.childBirthdate->Date.toLocaleDateStringWithLocaleAndOptions(
+      "Body": `
+<!DOCTYPE PUBLIC “-//W3C//DTD XHTML 1.0 Transitional//EN” “https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd”>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title></title>
+  </head>
+  <body>
+  <ul>
+  <li>
+    Jméno rodiče: ${input.parentName}
+  </li>
+  <li>
+    Jméno dítěte: ${input.childName}
+  </li>
+  <li>
+    Datum narození dítěte: ${input.childBirthdate->Date.toLocaleDateStringWithLocaleAndOptions(
           "cs-CZ",
           {dateStyle: #medium},
         )}
-      Město bydliště: ${input.cityOfResidence}
-      Telefon na rodiče: ${input.parentPhone}
-      Email na rodiče: ${input.parentEmail}
-      ${input.note->Option.map(note => `Poznámka: ${note}`)->Option.getWithDefault("")}`,
+  </li>
+  <li>
+    Město bydliště: ${input.cityOfResidence}
+  </li>
+  <li>
+    Telefon na rodiče: ${input.parentPhone}
+  </li>
+  <li>
+    Email na rodiče: ${input.parentEmail}
+    ${input.note->Option.map(note => `Poznámka: ${note}`)->Option.getWithDefault("")}
+  </li>
+  </body>
+</html>`,
     })
 
     // TODO: log
