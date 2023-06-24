@@ -22,14 +22,14 @@ let fetchEmailBody = async (
   let emailBody = await response->Response.text
 
   emailBody
-  ->String.replaceRegExp(%re("/\${parentName}/"), parentName)
-  ->String.replaceRegExp(%re("/\${childName}/"), childName)
+  ->String.replaceRegExp(%re("/\${parentName}/g"), parentName)
+  ->String.replaceRegExp(%re("/\${childName}/g"), childName)
   ->String.replaceRegExp(
-    %re("/\${childBirthdate}/"),
+    %re("/\${childBirthdate}/g"),
     childBirthdate->Date.toLocaleDateStringWithLocaleAndOptions("cs-CZ", {dateStyle: #medium}),
   )
-  ->String.replaceRegExp(%re("/\${cityOfResidence}/"), cityOfResidence)
-  ->String.replaceRegExp(%re("/\${parentPhone}/"), parentPhone)
-  ->String.replaceRegExp(%re("/\${parentEmail}/"), parentEmail)
-  ->String.replaceRegExp(%re("/\${note}/"), note->Option.getWithDefault(""))
+  ->String.replaceRegExp(%re("/\${cityOfResidence}/g"), cityOfResidence)
+  ->String.replaceRegExp(%re("/\${parentPhone}/g"), parentPhone)
+  ->String.replaceRegExp(%re("/\${parentEmail}/g"), parentEmail)
+  ->String.replaceRegExp(%re("/\${note}/g"), note->Option.getWithDefault(""))
 }

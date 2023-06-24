@@ -5,31 +5,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Automatický email z formuláře na stránkách Poppy Casting</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <ul>
-        <li>
-            Jméno rodiče: ${parentName}
-        </li>
-        <li>
-            Jméno dítěte: ${childName}
-        </li>
-        <li>
-            Datum narození dítěte: ${childBirthdate}
-        </li>
-        <li>
-            Město bydliště: ${cityOfResidence}
-        </li>
-        <li>
-            Telefon na rodiče: ${parentPhone}
-        </li>
-        <li>
-            Email na rodiče: ${parentEmail}
-        </li>
-        <li>
+    <div class="row">
+        <div class="col">
+            <h1>Email z formuláře na webu Poppy Casting</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+                            <span class="fw-bold">Jméno rodiče</span>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-8 col-lg-10">${parentName}</div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+                            <span class="fw-bold">Jméno dítěte</span>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-8 col-lg-10">${childName}</div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+                            <span class="fw-bold">Datum narození dítěte</span>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-8 col-lg-10">${childBirthdate}</div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+                            <span class="fw-bold">Město bydliště</span>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-8 col-lg-10">${cityOfResidence}</div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+                            <span class="fw-bold">Telefon na rodiče</span>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-8 col-lg-10">${parentPhone}</div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+                            <span class="fw-bold">Email na rodiče</span>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-8 col-lg-10">
+                            <a href="mailto:${parentEmail}" target="_blank" class="btn btn-link">${parentEmail}</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
             ${note}
-        </li>
+        </div>
+    </div>
 </body>
 
 </html>

@@ -23,9 +23,6 @@ let make = () => {
   let intl = ReactIntl.useIntl()
 
   let onSubmit = async (input, _) => {
-    // TODO: log
-    Js.Console.log("Sending an email...")
-
     fetchEmailBody(
       ~parentName=input.parentName,
       ~childName=input.childName,
@@ -33,21 +30,24 @@ let make = () => {
       ~cityOfResidence=input.cityOfResidence,
       ~parentPhone=input.parentPhone,
       ~parentEmail=input.parentEmail,
-      ~note=?input.note,
+      ~note=?input.note
+      ->Option.map(String.split(_, "\n"))
+      ->Option.map(Array.map(_, line => `<p>${line}</p>`))
+      ->Option.map(Array.joinWith(_, "")),
     )
-    ->Promise.thenResolve(Console.log)
+    ->Promise.thenResolve(async body => {
+      let message = await SmtpJs.email->SmtpJs.sendWithSecureToken({
+        "SecureToken": "678157a9-d3e9-40c2-86d1-7a60817485de",
+        "To": "drmorbid@seznam.cz",
+        "From": "filip.kittnar@seznam.cz",
+        "Subject": intl->ReactIntl.Intl.formatMessage(emailSubject),
+        "Body": body,
+      })
+
+      // TODO: log
+      Js.Console.log2("Email sent: ", message)
+    })
     ->ignore
-
-    // let message = await SmtpJs.email->SmtpJs.sendWithSecureToken({
-    //   "SecureToken": "678157a9-d3e9-40c2-86d1-7a60817485de",
-    //   "To": "drmorbid@seznam.cz",
-    //   "From": "filip.kittnar@seznam.cz",
-    //   "Subject": intl->ReactIntl.Intl.formatMessage(emailSubject),
-    //   "Body": "body",
-    // })
-
-    // TODO: log
-    // Js.Console.log2("Email sent: ", message)
   }
 
   <Common.Text
