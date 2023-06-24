@@ -70,3 +70,10 @@ let submitButton =
     id: "bd99edd4-19bb-4b02-85dd-ff5c2268413d",
     defaultMessage: "Odeslat",
   }
+
+let emailSubject =
+  @intl.description("Email Us page - the subject of the email")
+  {
+    id: "71ad3241-7e46-48e2-a257-302e22f160ee",
+    defaultMessage: "Zájem o registraci",
+  }

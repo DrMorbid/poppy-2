@@ -2,6 +2,7 @@ open EmailUs_Form
 open Mui
 open Mui.Grid
 open Message.EmailUs
+open EmailUs_Utils
 
 @react.component
 let make = () => {
@@ -25,49 +26,28 @@ let make = () => {
     // TODO: log
     Js.Console.log("Sending an email...")
 
-    let message = await SmtpJs.email->SmtpJs.sendWithSecureToken({
-      "SecureToken": "678157a9-d3e9-40c2-86d1-7a60817485de",
-      "To": "drmorbid@seznam.cz",
-      "From": "filip.kittnar@seznam.cz",
-      "Subject": "Zájem o registraci",
-      "Body": `
-<!DOCTYPE PUBLIC “-//W3C//DTD XHTML 1.0 Transitional//EN” “https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd”>
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title></title>
-  </head>
-  <body>
-  <ul>
-  <li>
-    Jméno rodiče: ${input.parentName}
-  </li>
-  <li>
-    Jméno dítěte: ${input.childName}
-  </li>
-  <li>
-    Datum narození dítěte: ${input.childBirthdate->Date.toLocaleDateStringWithLocaleAndOptions(
-          "cs-CZ",
-          {dateStyle: #medium},
-        )}
-  </li>
-  <li>
-    Město bydliště: ${input.cityOfResidence}
-  </li>
-  <li>
-    Telefon na rodiče: ${input.parentPhone}
-  </li>
-  <li>
-    Email na rodiče: ${input.parentEmail}
-    ${input.note->Option.map(note => `Poznámka: ${note}`)->Option.getWithDefault("")}
-  </li>
-  </body>
-</html>`,
-    })
+    fetchEmailBody(
+      ~parentName=input.parentName,
+      ~childName=input.childName,
+      ~childBirthdate=input.childBirthdate,
+      ~cityOfResidence=input.cityOfResidence,
+      ~parentPhone=input.parentPhone,
+      ~parentEmail=input.parentEmail,
+      ~note=?input.note,
+    )
+    ->Promise.thenResolve(Console.log)
+    ->ignore
+
+    // let message = await SmtpJs.email->SmtpJs.sendWithSecureToken({
+    //   "SecureToken": "678157a9-d3e9-40c2-86d1-7a60817485de",
+    //   "To": "drmorbid@seznam.cz",
+    //   "From": "filip.kittnar@seznam.cz",
+    //   "Subject": intl->ReactIntl.Intl.formatMessage(emailSubject),
+    //   "Body": "body",
+    // })
 
     // TODO: log
-    Js.Console.log2("Email sent: ", message)
+    // Js.Console.log2("Email sent: ", message)
   }
 
   <Common.Text
