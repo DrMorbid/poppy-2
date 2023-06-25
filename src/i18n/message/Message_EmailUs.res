@@ -77,3 +77,16 @@ let emailSubject =
     id: "71ad3241-7e46-48e2-a257-302e22f160ee",
     defaultMessage: "Zájem o registraci",
   }
+
+let alertSuccess =
+  @intl.description("Email Us page - the alert - successful result")
+  {
+    id: "cb76db23-1be0-482d-a7be-acf1074dd580",
+    defaultMessage: "Email byl odeslán",
+  }
+let alertError =
+  @intl.description("Email Us page - the alert - error result")
+  {
+    id: "23446130-8c22-4018-bb01-cdfe1215e140",
+    defaultMessage: "Email nemohl být odeslán: {error}",
+  }

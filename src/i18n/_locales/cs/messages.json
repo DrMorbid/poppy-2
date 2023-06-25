@@ -63,6 +63,10 @@
         "message": "foto rodičům nezasíláme a není možné je od nás odkoupit, děkujeme za pochopení.",
         "description": "Registrations page - oldest kids - the third line"
     },
+    "23446130-8c22-4018-bb01-cdfe1215e140": {
+        "message": "Email nemohl být odeslán: {error}",
+        "description": "Email Us page - the alert - error result"
+    },
     "23d00c72-cf3e-40a2-b536-01b570d634a0": {
         "message": "Děti bohužel nemůžeme registrovat zdarma, protože zájem rodičů je velký, poplatek nám pomáhá udržovat množství registrovaných dětí v normálu, tedy i Vám zajistit šance na zakázky. Preferujeme individuální přístup a děti známe, na registraci či přefocení se jim věnujeme, z poplatku hradíme naše náklady spojené s focením, přefocováním a evidencí dítěte v databázi.",
         "description": "Q&A page - answer to question 8 - paragraph 1"
@@ -159,6 +163,10 @@
         "message": "Je Vaše dítě komunikativní, rádo předvádí? Nestydí před kamerou a cizími lidmi? Bude spolupracovat a hraní scének na castingu jej bude bavit? Je typově zajímavé, něčím výrazné? Má hereckou průpravu, zkušenost? Baví ho dramťák, zajímá se o herectví? Pokud jste odpověděli alespoň několikrát ano, přidejte se k nám.",
         "description": "Q&A page - answer to question 1 - paragraph 1"
     },
+    "49d7e285-6c76-40ba-8dfc-b185ace08760": {
+        "message": "Email rodiče",
+        "description": "Email Us page - the parent email label"
+    },
     "49e741c9-d025-4ac1-9138-20b7c4981541": {
         "message": "Atelier - registrace, přefocení",
         "description": "Contact bottom bar - the studio - registrations, photosessions title"
@@ -219,6 +227,10 @@
         "message": "Kontakt",
         "description": "Contact page - the header"
     },
+    "5f769449-f921-41e7-b536-cd6fdff912dc": {
+        "message": "Datum narození dítěte",
+        "description": "Email Us page - the child birthdate label"
+    },
     "604b2750-e43f-4542-a741-1a0b873765b3": {
         "message": "Kontakt",
         "description": "About Us page - contact label"
@@ -259,6 +271,10 @@
         "message": "Fotky z registrace ani castingů rodičům nezasíláme, výjimkou jsou pouze registrace miminek, kdy foto pošleme mailem, neupravené, jak bylo nafoceno, protože děti hradí celý poplatek najednou. Z dalších přefocení ani castingů ale dále nezasíláme.",
         "description": "Q&A page - answer to question 4 - paragraph 2"
     },
+    "6f2b0267-8924-4114-a8b8-329de65e84a6": {
+        "message": "Jméno dítěte",
+        "description": "Email Us page - the child name label"
+    },
     "6fc6f245-be0b-474a-b682-ef215bead56f": {
         "message": "Napište nám",
         "description": "Above the top menu - email us"
@@ -266,6 +282,10 @@
     "70a2dd0a-d816-4bdd-acc1-f5024b5880cb": {
         "message": "Lze se registrovat online?",
         "description": "Q&A page - question 4"
+    },
+    "71ad3241-7e46-48e2-a257-302e22f160ee": {
+        "message": "Zájem o registraci",
+        "description": "Email Us page - the subject of the email"
     },
     "72a13e6a-5639-4ca0-9aa9-2e7d8e298ccc": {
         "message": "IČO: 047 40 165",
@@ -278,6 +298,10 @@
     "74536b7d-1333-430f-8e9e-24580783a22c": {
         "message": "a další...",
         "description": "References page - suffix to part one of every section"
+    },
+    "74c58c91-a913-4bf6-9843-97398186ce4d": {
+        "message": "Jméno rodiče",
+        "description": "Email Us page - the parent name label"
     },
     "75a4f6a4-3847-4bbf-aae4-a4fb4e01b9fe": {
         "message": "Kde se konají castingy? Jak to probíhá?",
@@ -318,6 +342,10 @@
     "857e18e9-09cd-4b7e-90f6-3bd50a63a91f": {
         "message": "Pro mimopražské zájemce je dojíždění velmi náročné časově i finančně. Dětem dále než 1h dojezdu do Prahy registraci nedoporučujeme.",
         "description": "Q&A page - answer to question 3 - paragraph 2"
+    },
+    "8acc5ad9-1872-4be3-b3d0-8378ff135ef9": {
+        "message": "Vyberte prosím datum narození.",
+        "description": "Email Us page - the child birthdate error helper text"
     },
     "8b53a69e-1841-451e-af0e-ef21117bc62a": {
         "message": "ozvěte se tedy prosím až kolem 4. roka dítěte",
@@ -419,6 +447,10 @@
         "message": "18 měs. - 3 roky",
         "description": "Registrations - middle kids"
     },
+    "b0770075-7e30-451c-bdff-20fe6b08647e": {
+        "message": "Máte zájem o registraci? Vyplňte následující formulář, odešlete a my se Vám ozveme.",
+        "description": "Email Us page - the sub-header info text"
+    },
     "b0fe1f36-cd5e-40ee-8941-3a9383cec031": {
         "message": "Nibh cras pulvinar mattis nunc sed blandit. Ipsum a arcu cursus vitae congue mauris rhoncus aenean.",
         "description": "The third paragraph on the home page"
@@ -447,6 +479,10 @@
         "message": "Dabing a reklamní voiceovery",
         "description": "References page - header of the fifth section"
     },
+    "bd99edd4-19bb-4b02-85dd-ff5c2268413d": {
+        "message": "Odeslat",
+        "description": "Email Us page - the submit button label"
+    },
     "c13a8586-e3cf-467a-b651-a498647b1e5e": {
         "message": "U komerčních zakázek je honorář vždy uveden, u filmu a seriálu honorář řešíme až po obsazení dítěte do role.",
         "description": "Q&A page - answer to question 6 - paragraph 3"
@@ -470,6 +506,14 @@
     "cb394fa9-9b9e-4b10-8d3e-7c78a1e75dc7": {
         "message": "Kdo jsme",
         "description": "About Us page - the header"
+    },
+    "cb76db23-1be0-482d-a7be-acf1074dd580": {
+        "message": "Email byl odeslán",
+        "description": "Email Us page - the alert - successful result"
+    },
+    "ccae16f5-3c5f-4b24-8f08-c91458e21263": {
+        "message": "Napiště Nám",
+        "description": "Email Us page - the header"
     },
     "cdafb0c7-145c-44c9-8d48-028f5d09c39d": {
         "message": "Zobrazit další",
@@ -543,6 +587,10 @@
         "message": "Bydlíte v Praze a okolí?",
         "description": "Q&A page - question 3"
     },
+    "e4d642e6-40a0-4aa4-919e-9b2adb3a5df6": {
+        "message": "Poznámka",
+        "description": "Email Us page - the note label"
+    },
     "e698d1df-4094-4935-b3f0-bf36c35f3e3a": {
         "message": "Jakou má vaše dítě šanci na úspěch?",
         "description": "Q&A page - question 5"
@@ -554,6 +602,10 @@
     "ea1bc44d-c83a-4dc0-a236-1cf7aad1c70c": {
         "message": "POUZE děti jiných etnik a JEDNOVAJEČNÁ dvojčata",
         "description": "Registrations page - middle kids - the first line - the second part"
+    },
+    "eaca6630-7b35-4a15-8e21-308b42313104": {
+        "message": "Telefon na rodiče",
+        "description": "Email Us page - the parent phone label"
     },
     "ed16458e-f167-41d9-af6c-e031412b0504": {
         "message": "Původně učitelka ČJ - HV, v Poppy casting od roku 2016.",
@@ -582,6 +634,10 @@
     "fa63adfe-160d-4aaf-9278-bc8b10680f41": {
         "message": "Není, do databáze mají přístup pouze naši zaměstnanci, děti z fotek často anonymně nabízíme režisérům a klientům.",
         "description": "Q&A page - answer to question 13 - paragraph 1"
+    },
+    "fa91facf-bfc8-4bcd-8e14-534651157e05": {
+        "message": "Město bydliště",
+        "description": "Email Us page - the city of residence label"
     },
     "fbaa7734-385e-45ac-afad-4e73528e6178": {
         "message": "Otázky a odpovědi",

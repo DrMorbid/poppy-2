@@ -6,6 +6,9 @@ open EmailUs_Utils
 
 @react.component
 let make = () => {
+  let (successAlertOpen, setSuccessAlertOpen) = React.useState(() => false)
+  let (errorAlertOpen, setErrorAlertOpen) = React.useState(() => None)
+
   let form = Form.use(
     ~config={
       defaultValues: {
@@ -44,11 +47,17 @@ let make = () => {
         "Body": body,
       })
 
-      // TODO: log
-      Js.Console.log2("Email sent: ", message)
+      if message->String.match(%re("/^ok$/i"))->Option.isSome {
+        setSuccessAlertOpen(_ => true)
+      } else {
+        setErrorAlertOpen(_ => Some(message))
+      }
     })
     ->ignore
   }
+
+  let onSuccessClose = (_, _) => setSuccessAlertOpen(_ => false)
+  let onErrorClose = (_, _) => setErrorAlertOpen(_ => None)
 
   <Common.Text
     header
@@ -57,6 +66,16 @@ let make = () => {
     </Mui.Typography>}
     body=Element(
       <form onSubmit={form->Form.handleSubmit((input, form) => onSubmit(input, form)->ignore)}>
+        <EmailUs_Alert \"open"=successAlertOpen severity=#success onClose=onSuccessClose>
+          alertSuccess
+        </EmailUs_Alert>
+        <EmailUs_Alert
+          \"open"={errorAlertOpen->Option.isSome}
+          severity=#error
+          onClose=onErrorClose
+          messageValues=?{errorAlertOpen->Option.map(error => {"error": error})}>
+          alertError
+        </EmailUs_Alert>
         <Grid container=true spacing=#2>
           <EmailUs_Field
             label=parentNameLabel
