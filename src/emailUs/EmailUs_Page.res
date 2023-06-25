@@ -40,9 +40,9 @@ let make = () => {
     )
     ->Promise.thenResolve(async body => {
       let message = await SmtpJs.email->SmtpJs.sendWithSecureToken({
-        "SecureToken": "678157a9-d3e9-40c2-86d1-7a60817485de",
-        "To": "drmorbid@seznam.cz",
-        "From": "drmorbid@seznam.cz",
+        "SecureToken": EnvVar.SmtpJs.secureToken->Option.getWithDefault(""),
+        "To": EnvVar.SmtpJs.to->Option.getWithDefault(""),
+        "From": EnvVar.SmtpJs.from->Option.getWithDefault(""),
         "Subject": intl->ReactIntl.Intl.formatMessage(emailSubject),
         "Body": body,
       })
