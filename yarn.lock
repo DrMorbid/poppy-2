@@ -3849,7 +3849,7 @@ __metadata:
     react-loading-overlay: ^1.0.1
     react-material-ui-carousel: ^3.4.2
     reanalyze: ^2.23.0
-    rescript: ^10.1.4
+    rescript: ^11.0.0-beta.3
     rescript-material-ui: ^3.0.2
     rescript-material-ui-lab: ^3.0.2
     rescript-react-intl: ^3.0.0
@@ -4210,15 +4210,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rescript@npm:^10.1.4":
-  version: 10.1.4
-  resolution: "rescript@npm:10.1.4"
+"rescript@npm:^11.0.0-beta.3":
+  version: 11.0.0-beta.3
+  resolution: "rescript@npm:11.0.0-beta.3"
   bin:
     bsc: bsc
-    bsrefmt: bsrefmt
     bstracing: lib/bstracing
     rescript: rescript
-  checksum: 5bd4b17a9671bc91f369ef56fbd03bba73b4a2cfeab9e09d92f8133f70b62028754914afede07f18d2c1dd877a38a14b2ff5a3b6b90783ea2306b29ff3de54f0
+  checksum: 865f3f754349baec5783010a0632e9b3fa01a5b100eea35e1392b9d5323d0e9f181f9514c8c97be88213b31ed27a64e710117dcce3a5c7d0871223766e1f59b8
   languageName: node
   linkType: hard
 
