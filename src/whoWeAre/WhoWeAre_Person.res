@@ -20,7 +20,7 @@ let getContact = (email): Common.Text.fragmentParagraph => {
 }
 
 @react.component
-let make = (~photoSrc, ~name, ~description, ~email) => {
+let make = (~photoSrc, ~name, ~description, ~email=?) => {
   <Mui.Grid container=true>
     <Mui.Grid item=true xs=Xs.\"12">
       <Mui.Grid container=true justify=#center>
@@ -43,14 +43,9 @@ let make = (~photoSrc, ~name, ~description, ~email) => {
               centered: true,
             },
             ...description->List.map((descriptionLine): fragmentParagraph => {
-              content: list{
-                Text({
-                  content: Message(descriptionLine),
-                }),
-              },
+              content: list{descriptionLine},
             }),
-            email->getContact,
-          },
+          }->List.concat(email->Option.mapWithDefault(list{}, email => list{email->getContact})),
         )}
       />
     </Mui.Grid>
