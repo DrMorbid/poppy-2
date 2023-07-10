@@ -61,133 +61,122 @@ let theme = (~prefersDarkMode) => {
     "text": prefersDarkMode ? grey["50"] : grey["900"],
   }
 
-  create(
-    make(
-      ~typography=Typography.make(
-        ~fontFamily="Maven Pro",
-        ~h1=Obj.magic({
-          "fontFamily": "Comfortaa",
-          "fontSize": "2.8rem",
-          "fontWeight": "800",
-        }),
-        ~h2=Obj.magic({
-          "fontFamily": "Comfortaa",
-          "fontSize": "2.3rem",
-          "fontWeight": "700",
-        }),
-        ~h3=Obj.magic({
-          "fontFamily": "Comfortaa",
-          "fontSize": "1.9rem",
-          "fontWeight": "600",
-        }),
-        ~h4=Obj.magic({
-          "fontFamily": "Comfortaa",
-          "fontSize": "1.6rem",
-          "fontWeight": "600",
-        }),
-        ~h5=Obj.magic({
-          "fontFamily": "Comfortaa",
-          "fontSize": "1.4rem",
-          "fontWeight": "500",
-        }),
-        ~h6=Obj.magic({
-          "fontFamily": "Comfortaa",
-          "fontSize": "1.2rem",
-          "fontWeight": "500",
-        }),
-        (),
-      ),
-      ~breakpoints=Breakpoints.make(
-        ~values=BreakpointValues.make(~xs=0., ~sm=600., ~md=900., ~lg=1200., ~xl=1536., ()),
-        (),
-      ),
-      ~palette=PaletteOptions.make(
-        ~\"type"=prefersDarkMode ? "dark" : "light",
-        ~primary=Primary.make(
-          ~main=palette["primary"],
-          ~light=palette["primaryLight"],
-          ~dark=palette["primaryDark"],
-          ~contrastText=palette["primaryContrastText"],
-          (),
-        ),
-        ~secondary=Secondary.make(
-          ~main=palette["secondary"],
-          ~light=palette["secondaryLight"],
-          ~dark=palette["secondaryDark"],
-          ~contrastText=palette["secondaryContrastText"],
-          (),
-        ),
-        ~error=Mui.ThemeOptions.Error.make(
-          ~main=palette["error"],
-          ~light=palette["errorLight"],
-          ~dark=palette["errorDark"],
-          ~contrastText=palette["errorContrastText"],
-          (),
-        ),
-        ~warning=Warning.make(
-          ~main=palette["warning"],
-          ~light=palette["warningLight"],
-          ~dark=palette["warningDark"],
-          ~contrastText=palette["warningContrastText"],
-          (),
-        ),
-        ~info=Info.make(
-          ~main=palette["info"],
-          ~light=palette["infoLight"],
-          ~dark=palette["infoDark"],
-          ~contrastText=palette["infoContrastText"],
-          (),
-        ),
-        ~success=Success.make(
-          ~main=palette["success"],
-          ~light=palette["successLight"],
-          ~dark=palette["successDark"],
-          ~contrastText=palette["successContrastText"],
-          (),
-        ),
-        ~text=TypeText.make(~primary=palette["text"]->addTransparency(#text), ()),
-        (),
-      ),
-      ~overrides=Overrides.make(
-        ~\"MuiButton"=ButtonClassKey.make(
-          ~containedPrimary=Style.make(~color=palette["text"]->addTransparency(#text), ()),
-          (),
-        ),
-        ~\"MuiButtonBase"=ButtonBaseClassKey.make(
-          ~root=Style.make(~color=palette["text"]->addTransparency(#text), ()),
-          (),
-        ),
-        ~\"MuiIconButton"=IconButtonClassKey.make(
-          ~root=Style.make(~color=palette["text"]->addTransparency(#text), ()),
-          (),
-        ),
-        ~\"MuiFab"=FabClassKey.make(
-          ~primary=Style.make(~color=palette["text"]->addTransparency(#text), ()),
-          (),
-        ),
-        ~\"MuiAccordion"=AccordionClassKey.make(
-          ~root=Style.make(
-            ~backgroundColor=(prefersDarkMode ? grey["900"] : common["white"])->addTransparency(
-              #background,
-            ),
-            (),
+  create({
+    typography: {
+      fontFamily: "Maven Pro",
+      h1: Obj.magic({
+        "fontFamily": "Comfortaa",
+        "fontSize": "2.8rem",
+        "fontWeight": "800",
+      }),
+      h2: Obj.magic({
+        "fontFamily": "Comfortaa",
+        "fontSize": "2.3rem",
+        "fontWeight": "700",
+      }),
+      h3: Obj.magic({
+        "fontFamily": "Comfortaa",
+        "fontSize": "1.9rem",
+        "fontWeight": "600",
+      }),
+      h4: Obj.magic({
+        "fontFamily": "Comfortaa",
+        "fontSize": "1.6rem",
+        "fontWeight": "600",
+      }),
+      h5: Obj.magic({
+        "fontFamily": "Comfortaa",
+        "fontSize": "1.4rem",
+        "fontWeight": "500",
+      }),
+      h6: Obj.magic({
+        "fontFamily": "Comfortaa",
+        "fontSize": "1.2rem",
+        "fontWeight": "500",
+      }),
+    },
+    breakpoints: {
+      values: {
+        lg: 0.,
+        md: 600.,
+        sm: 900.,
+        xl: 1200.,
+        xs: 1536.,
+      },
+    },
+    palette: {
+      \"type": prefersDarkMode ? "dark" : "light",
+      primary: {
+        main: palette["primary"],
+        light: palette["primaryLight"],
+        dark: palette["primaryDark"],
+        contrastText: palette["primaryContrastText"],
+      },
+      secondary: {
+        main: palette["secondary"],
+        light: palette["secondaryLight"],
+        dark: palette["secondaryDark"],
+        contrastText: palette["secondaryContrastText"],
+      },
+      error: {
+        main: palette["error"],
+        light: palette["errorLight"],
+        dark: palette["errorDark"],
+        contrastText: palette["errorContrastText"],
+      },
+      warning: {
+        main: palette["warning"],
+        light: palette["warningLight"],
+        dark: palette["warningDark"],
+        contrastText: palette["warningContrastText"],
+      },
+      info: {
+        main: palette["info"],
+        light: palette["infoLight"],
+        dark: palette["infoDark"],
+        contrastText: palette["infoContrastText"],
+      },
+      success: {
+        main: palette["success"],
+        light: palette["successLight"],
+        dark: palette["successDark"],
+        contrastText: palette["successContrastText"],
+      },
+      text: {
+        primary: palette["text"]->addTransparency(#text),
+      },
+    },
+    overrides: {
+      muiButton: {
+        containedPrimary: Style.make(~color=palette["text"]->addTransparency(#text), ()),
+      },
+      muiButtonBase: {
+        root: Style.make(~color=palette["text"]->addTransparency(#text), ()),
+      },
+      muiIconButton: {
+        root: Style.make(~color=palette["text"]->addTransparency(#text), ()),
+      },
+      muiFab: {
+        primary: Style.make(~color=palette["text"]->addTransparency(#text), ()),
+      },
+      muiAccordion: {
+        root: Style.make(
+          ~backgroundColor=(prefersDarkMode ? grey["900"] : common["white"])->addTransparency(
+            #background,
           ),
           (),
         ),
-        ~\"MuiAppBar"=AppBarClassKey.make(
-          ~colorPrimary=Style.make(
-            ~backgroundColor=palette["primary"]->addTransparency(#background),
-            (),
-          )->Obj.magic,
-          ~colorSecondary=Style.make(
-            ~backgroundColor=palette["secondary"]->addTransparency(#background),
-            (),
-          )->Obj.magic,
+      },
+      muiAppBar: {
+        colorPrimary: Style.make(
+          ~backgroundColor=palette["primary"]->addTransparency(#background),
           (),
-        ),
-        (),
-      ),
-      (),
-    ),
-  )
+        )->Obj.magic,
+        colorSecondary: Style.make(
+          ~backgroundColor=palette["secondary"]->addTransparency(#background),
+          (),
+        )->Obj.magic,
+      },
+    },
+  })
 }

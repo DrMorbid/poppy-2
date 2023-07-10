@@ -17,6 +17,6 @@ module Classes = {
 @react.component
 let make = (~image) => {
   <Card className=Classes.imageContainer>
-    <CardMedia image className=Classes.image />
+    <CardMedia image classes={root: Classes.image} />
   </Card>
 }

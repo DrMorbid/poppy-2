@@ -11,8 +11,8 @@ module Classes = {
 let make = (~label, ~onClick) => {
   let intl = ReactIntl.useIntl()
 
-  <Button variant=#outlined onClick>
-    <Grid container=true alignItems=#center className=Classes.iconGap>
+  <Button variant=Outlined onClick>
+    <Grid container=true className=Classes.iconGap>
       <Icon.MailOutline />
       {intl->ReactIntl.Intl.formatMessage(label)->React.string}
     </Grid>

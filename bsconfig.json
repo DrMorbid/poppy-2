@@ -20,14 +20,13 @@
   "suffix": ".bs.js",
   "bs-dependencies": [
     "@rescript/react",
-    "rescript-material-ui",
     "rescript-react-intl",
     "@ryyppy/rescript-promise",
     "@mobily/rescript-date",
-    "rescript-material-ui-lab",
     "rescript-webapi",
     "@rescript/core",
-    "@greenlabs/rescript-react-hook-form"
+    "@greenlabs/rescript-react-hook-form",
+    "@rescript-mui/material"
   ],
   "bs-dev-dependencies": ["rescript-vitest"],
   "bsc-flags": ["-open RescriptCore"],
