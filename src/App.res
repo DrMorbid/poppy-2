@@ -1,4 +1,3 @@
-open Mui
 open ReactDOM
 open Utils.Style
 open Emotion
@@ -21,19 +20,19 @@ module Classes = {
         ~paddingLeft="0rem",
         ~paddingRight="0rem",
         (),
-      )->styleWithMediaQuery(~mediaQuery=theme.breakpoints.up->Any.unsafeGetValue("xs")),
+      )->styleWithMediaQuery(~mediaQuery=theme.breakpoints.up->Float.toString),
       Style.make(
         ~paddingTop="1.5rem",
         ~paddingLeft="1.5rem",
         ~paddingRight="1.5rem",
         (),
-      )->styleWithMediaQuery(~mediaQuery=theme.breakpoints.up->Any.unsafeGetValue("sm")),
+      )->styleWithMediaQuery(~mediaQuery=theme.breakpoints.up->Float.toString),
       Style.make(
         ~paddingTop="2rem",
         ~paddingLeft="2rem",
         ~paddingRight="2rem",
         (),
-      )->styleWithMediaQuery(~mediaQuery=theme.breakpoints.up->Any.unsafeGetValue("md")),
+      )->styleWithMediaQuery(~mediaQuery=theme.breakpoints.up->Float.toString),
     }
     ->stylesCombiner
     ->styleToClass
@@ -44,46 +43,46 @@ module Classes = {
 
 @react.component
 let make = () => {
-  let theme = Core.useTheme()
-  let isSmUp = Core.useMediaQuery(theme->Core.Breakpoint.get(#sm->#up))
-  let isMdUp = Core.useMediaQuery(theme->Core.Breakpoint.get(#md->#up))
-  let prefersDarkMode = Core.useMediaQueryString(Common.Constants.darkModeMediaQuery)
+  let theme = MuiStyles.useTheme()
+  let isSmUp = Mui.Core.useMediaQuery({sm: True})
+  let isMdUp = Mui.Core.useMediaQuery({md: True})
+  let prefersDarkMode = Mui.Core.useMediaQueryString(Common.Constants.darkModeMediaQuery)
   let topRef = React.useRef(Nullable.null)
   let (_, dispatch) = React.useContext(App_Context.Context.t)
 
-  React.useEffect1(() => {
+  React.useEffect(() => {
     dispatch(SetTopRef(topRef))
 
     None
   }, [topRef])
 
-  <Container
-    maxWidth=Container.MaxWidth.xl
-    classes={Container.Classes.make(~root=Classes.container(theme), ())}
+  <Mui.Container
+    maxWidth=Xl
+    classes={root: Classes.container(theme)}
     className={prefersDarkMode ? Classes.containerColorDark : Classes.containerColorLight}
     ref={topRef->Ref.domRef}>
-    <Grid container=true direction=#column className=Common.Style.paragraphGap>
-      <Grid item=true>
+    <Mui.Grid container=true direction=Column className=Common.Style.paragraphGap>
+      <Mui.Grid item=true>
         <TopHeader />
-      </Grid>
-      <Grid item=true>
+      </Mui.Grid>
+      <Mui.Grid item=true>
         <TopMenu />
-      </Grid>
-      <Grid item=true>
+      </Mui.Grid>
+      <Mui.Grid item=true>
         <Router />
-      </Grid>
-    </Grid>
-    <Snackbar />
+      </Mui.Grid>
+    </Mui.Grid>
+    <Mui.Snackbar />
     <ScrollToTop>
-      <Fab
-        color=#primary
+      <Mui.Fab
+        color=Primary
         size={switch (isSmUp, isMdUp) {
-        | (false, false) => #small
-        | (true, false) => #medium
-        | (_, true) => #large
+        | (false, false) => Small
+        | (true, false) => Medium
+        | (_, true) => Large
         }}>
         <Common.Icon.KeyboardArrowUp />
-      </Fab>
+      </Mui.Fab>
     </ScrollToTop>
-  </Container>
+  </Mui.Container>
 }

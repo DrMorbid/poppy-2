@@ -1,6 +1,4 @@
 open EmailUs_Form
-open Mui
-open Mui.Grid
 open Message.EmailUs
 open EmailUs_Utils
 
@@ -61,24 +59,24 @@ let make = () => {
 
   <Common.Text
     header
-    afterHeader={<Mui.Typography variant=#subtitle1>
+    afterHeader={<Mui.Typography variant=Subtitle1>
       {intl->ReactIntl.Intl.formatMessage(subHeader)->React.string}
     </Mui.Typography>}
     body=Element(
       <form
         onSubmit={form->Form.handleSubmit((input, form) => onSubmit(input, form)->ignore)}
         autoComplete="on">
-        <EmailUs_Alert \"open"=successAlertOpen severity=#success onClose=onSuccessClose>
+        <EmailUs_Alert open_=successAlertOpen severity=Success onClose=onSuccessClose>
           alertSuccess
         </EmailUs_Alert>
         <EmailUs_Alert
-          \"open"={errorAlertOpen->Option.isSome}
-          severity=#error
+          open_={errorAlertOpen->Option.isSome}
+          severity=Error
           onClose=onErrorClose
           messageValues=?{errorAlertOpen->Option.map(error => {"error": error})}>
           alertError
         </EmailUs_Alert>
-        <Grid container=true spacing=#2>
+        <Mui.Grid container=true spacing=Int(2)>
           <EmailUs_Field
             label=parentNameLabel
             field=Field.parentName
@@ -90,7 +88,7 @@ let make = () => {
             field=Field.childName
             renderWithRegister={field => form->FormInput.ChildName.renderWithRegister(field, ())}
           />
-          <Grid item=true xs=Xs.\"12" sm=Sm.\"6" md=Md.\"4" lg=Lg.\"3" xl=Xl.\"2">
+          <Mui.Grid item=true xs=Number(12) sm=Number(6) md=Number(4) lg=Number(3) xl=Number(2)>
             {form->FormInput.ChildBirthdate.renderController(
               ({field: {onChange, value, _}, fieldState: {error, _}, _}) =>
                 <MuiPickers.DatePicker
@@ -100,7 +98,7 @@ let make = () => {
                   format="d. M. yyyy"
                   views={[#year, #month, #date]}
                   fullWidth=true
-                  margin=#none
+                  margin=None
                   label={intl->ReactIntl.Intl.formatMessage(childBirthdateLabel)->Jsx.string}
                   required=Field.childBirthdate.required
                   onChange
@@ -114,7 +112,7 @@ let make = () => {
                 />,
               (),
             )}
-          </Grid>
+          </Mui.Grid>
           <EmailUs_Field
             label=cityOfResidenceLabel
             field=Field.cityOfResidence
@@ -125,13 +123,13 @@ let make = () => {
             label=parentPhoneLabel
             field=Field.parentPhone
             renderWithRegister={field => form->FormInput.ParentPhone.renderWithRegister(field, ())}
-            \"type"={#tel}
+            type_=#tel
           />
           <EmailUs_Field
             label=parentEmailLabel
             field=Field.parentEmail
             renderWithRegister={field => form->FormInput.ParentEmail.renderWithRegister(field, ())}
-            \"type"={#email}
+            type_=#email
           />
           <EmailUs_Field
             label=noteLabel
@@ -140,12 +138,12 @@ let make = () => {
             multiline=true
             last=true
           />
-          <Grid item=true xs=Xs.\"12">
-            <Button \"type"={#submit->Button.Type.enum} color=#primary variant=#contained>
+          <Mui.Grid item=true xs=Number(12)>
+            <Mui.Button type_=Submit color=Primary variant=Contained>
               {intl->ReactIntl.Intl.formatMessage(submitButton)->React.string}
-            </Button>
-          </Grid>
-        </Grid>
+            </Mui.Button>
+          </Mui.Grid>
+        </Mui.Grid>
       </form>,
     )
   />

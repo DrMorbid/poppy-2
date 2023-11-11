@@ -3,14 +3,9 @@ open TopMenu_Item
 open ReactDOM
 
 module Classes = {
-  let label = (theme: Mui.Theme.t) => {
-    let tabTypography = theme.typography.h5
-    Style.make(
-      ~fontSize=?tabTypography.fontSize,
-      ~fontWeight=?tabTypography.fontWeight,
-      ~lineHeight=?tabTypography.lineHeight,
-      (),
-    )->Emotion.styleToClass
+  let label = (_theme: Mui.Theme.t) => {
+    // let tabTypography = theme.typography.h5
+    Style.make()->Emotion.styleToClass
   }
 }
 
@@ -22,18 +17,18 @@ let make = () => {
     {homeMenuItemTargets, registrationsMenuItemTargets, _}: App_Context.state,
     _,
   ) = React.useContext(App_Context.Context.t)
-  let theme = Mui.Core.useTheme()
+  let theme = MuiStyles.useTheme()
 
   <Mui.Toolbar disableGutters=true>
-    <Mui.Grid container=true justify=#"space-evenly" spacing=#1>
+    <Mui.Grid container=true justifyContent=String("space-evenly") spacing=Int(1)>
       {url
       ->getMenuItems
       ->List.mapWithIndex((index, menuItem) =>
         <Mui.Grid item=true key={`menu-item-${index->Int.toString}`}>
           <Mui.Button
-            size=#large
-            color=#default
-            variant=#outlined
+            size=Large
+            color=String("default")
+            variant=Outlined
             onClick={_ =>
               menuItem->onClick(
                 ~menuItemTargets=url->pickMenuItemTargets(
@@ -41,7 +36,7 @@ let make = () => {
                   ~registrationsMenuItemTargets,
                 ),
               )}
-            classes={Mui.Button.Classes.make(~label=theme->Classes.label, ())}>
+            classes={text: theme->Classes.label}>
             {intl->ReactIntl.Intl.formatMessage(menuItem->App_Types.MenuItem.toLabel)->React.string}
           </Mui.Button>
         </Mui.Grid>

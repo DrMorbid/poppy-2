@@ -1,10 +1,10 @@
 open Message.WhoWeAre
 open Mui.Grid
-open Common.Text
+open Common
 
 module Photo = WhoWeAre_Photo
 
-let getContact = (email): Common.Text.fragmentParagraph => {
+let getContact = (email): Text.fragmentParagraph => {
   content: list{
     Text({
       content: Message(contact),
@@ -22,19 +22,19 @@ let getContact = (email): Common.Text.fragmentParagraph => {
 @react.component
 let make = (~photoSrc, ~name, ~description, ~email=?) => {
   <Mui.Grid container=true>
-    <Mui.Grid item=true xs=Xs.\"12">
-      <Mui.Grid container=true justify=#center>
+    <Mui.Grid item=true xs=Number(12)>
+      <Mui.Grid container=true justifyContent=Center>
         <Mui.Grid item=true>
           <Photo src=photoSrc />
         </Mui.Grid>
       </Mui.Grid>
     </Mui.Grid>
-    <Mui.Grid item=true xs=Xs.\"12">
-      <Common.Text
+    <Mui.Grid item=true xs=Number(12)>
+      <Text
         body={Fragments(
           list{
             {
-              content: list{
+              Text.content: list{
                 Text({
                   content: Message(name),
                   bold: true,
@@ -42,7 +42,7 @@ let make = (~photoSrc, ~name, ~description, ~email=?) => {
               },
               centered: true,
             },
-            ...description->List.map((descriptionLine): fragmentParagraph => {
+            ...description->List.map((descriptionLine): Text.fragmentParagraph => {
               content: list{descriptionLine},
             }),
           }->List.concat(email->Option.mapWithDefault(list{}, email => list{email->getContact})),

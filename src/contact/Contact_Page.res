@@ -1,5 +1,3 @@
-open Mui
-open Mui.Grid
 open Message
 open Message.Contact
 
@@ -28,181 +26,187 @@ let make = () => {
       <App_ScrollableSections
         sections={list{
           {
-            element: <Grid container=true>
-              <Grid item=true xs=Xs.\"12">
-                <Grid
+            element: <Mui.Grid container=true>
+              <Mui.Grid item=true xs=Number(12)>
+                <Mui.Grid
                   container=true
                   className={Emotion.cx([Common.Style.paragraphGap, Common.Style.marginBottom])}>
-                  <Grid item=true xs=Xs.\"12">
-                    <Typography className=Common.Style.bold>
+                  <Mui.Grid item=true xs=Number(12)>
+                    <Mui.Typography className=Common.Style.bold>
                       {intl->ReactIntl.Intl.formatMessage(openingTimes)->React.string}
-                    </Typography>
-                  </Grid>
-                </Grid>
-              </Grid>
-              <Grid
+                    </Mui.Typography>
+                  </Mui.Grid>
+                </Mui.Grid>
+              </Mui.Grid>
+              <Mui.Grid
                 item=true
-                xs=Xs.\"12"
-                md={mapUrl->Option.isSome ? Md.\"6" : Md.\"12"}
+                xs=Number(12)
+                md={mapUrl->Option.isSome ? Number(6) : Number(12)}
                 className=Common.Style.headerGap>
-                <Grid container=true className=Common.Style.paragraphGap>
-                  <Grid
+                <Mui.Grid container=true className=Common.Style.paragraphGap>
+                  <Mui.Grid
                     item=true
-                    xs=Xs.\"12"
-                    sm=Sm.\"6"
-                    md={mapUrl->Option.isSome ? Md.\"12" : Md.\"6"}>
-                    <Grid container=true>
-                      <Grid item=true xs=Xs.\"12">
-                        <Typography className=Common.Style.bold>
+                    xs=Number(12)
+                    sm=Number(6)
+                    md={mapUrl->Option.isSome ? Number(12) : Number(6)}>
+                    <Mui.Grid container=true>
+                      <Mui.Grid item=true xs=Number(12)>
+                        <Mui.Typography className=Common.Style.bold>
                           {intl
                           ->ReactIntl.Intl.formatMessage(registrationDatabaseTitle)
                           ->React.string}
-                        </Typography>
-                      </Grid>
-                      <Grid item=true xs=Xs.\"12">
-                        <Typography>
+                        </Mui.Typography>
+                      </Mui.Grid>
+                      <Mui.Grid item=true xs=Number(12)>
+                        <Mui.Typography>
                           {intl
                           ->ReactIntl.Intl.formatMessage(registrationDatabasePerson)
                           ->React.string}
-                        </Typography>
-                      </Grid>
-                      <Grid item=true xs=Xs.\"12">
-                        <Typography> {Common.Constants.infoPhone->React.string} </Typography>
-                      </Grid>
-                      <Grid item=true xs=Xs.\"12">
-                        <Typography> {Common.Constants.infoEmail->React.string} </Typography>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                  <Grid
+                        </Mui.Typography>
+                      </Mui.Grid>
+                      <Mui.Grid item=true xs=Number(12)>
+                        <Mui.Typography>
+                          {Common.Constants.infoPhone->React.string}
+                        </Mui.Typography>
+                      </Mui.Grid>
+                      <Mui.Grid item=true xs=Number(12)>
+                        <Mui.Typography>
+                          {Common.Constants.infoEmail->React.string}
+                        </Mui.Typography>
+                      </Mui.Grid>
+                    </Mui.Grid>
+                  </Mui.Grid>
+                  <Mui.Grid
                     item=true
-                    xs=Xs.\"12"
-                    sm=Sm.\"6"
-                    md={mapUrl->Option.isSome ? Md.\"12" : Md.\"6"}>
-                    <Grid container=true>
-                      <Grid item=true xs=Xs.\"12">
-                        <Typography className=Common.Style.bold>
+                    xs=Number(12)
+                    sm=Number(6)
+                    md={mapUrl->Option.isSome ? Number(12) : Number(6)}>
+                    <Mui.Grid container=true>
+                      <Mui.Grid item=true xs=Number(12)>
+                        <Mui.Typography className=Common.Style.bold>
                           {intl
                           ->ReactIntl.Intl.formatMessage(clientsProductionDirectionTitle)
                           ->React.string}
-                        </Typography>
-                      </Grid>
-                      <Grid item=true xs=Xs.\"12">
-                        <Typography>
+                        </Mui.Typography>
+                      </Mui.Grid>
+                      <Mui.Grid item=true xs=Number(12)>
+                        <Mui.Typography>
                           {intl->ReactIntl.Intl.formatMessage(companyOwner)->React.string}
-                        </Typography>
-                      </Grid>
-                      <Grid item=true xs=Xs.\"12">
-                        <Typography> {Common.Constants.bossEmail->React.string} </Typography>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                  <Grid
+                        </Mui.Typography>
+                      </Mui.Grid>
+                      <Mui.Grid item=true xs=Number(12)>
+                        <Mui.Typography>
+                          {Common.Constants.bossEmail->React.string}
+                        </Mui.Typography>
+                      </Mui.Grid>
+                    </Mui.Grid>
+                  </Mui.Grid>
+                  <Mui.Grid
                     item=true
-                    xs=Xs.\"12"
-                    sm=Sm.\"6"
-                    md={mapUrl->Option.isSome ? Md.\"12" : Md.\"6"}>
-                    <Grid container=true>
-                      <Grid item=true xs=Xs.\"12">
-                        <Typography className=Common.Style.bold>
+                    xs=Number(12)
+                    sm=Number(6)
+                    md={mapUrl->Option.isSome ? Number(12) : Number(6)}>
+                    <Mui.Grid container=true>
+                      <Mui.Grid item=true xs=Number(12)>
+                        <Mui.Typography className=Common.Style.bold>
                           {intl
                           ->ReactIntl.Intl.formatMessage(registrationAddressHeader)
                           ->React.string}
-                        </Typography>
-                      </Grid>
-                      <Grid item=true xs=Xs.\"12">
+                        </Mui.Typography>
+                      </Mui.Grid>
+                      <Mui.Grid item=true xs=Number(12)>
                         <Common.OpenInNewButton
                           label=registrationAddress
                           onClick={onClick(Common.Constants.registrationAddressMapUrl)}
                         />
-                      </Grid>
-                      <Grid item=true xs=Xs.\"12">
-                        <Typography>
+                      </Mui.Grid>
+                      <Mui.Grid item=true xs=Number(12)>
+                        <Mui.Typography>
                           {intl
                           ->ReactIntl.Intl.formatMessage(registrationAddressConnection)
                           ->React.string}
-                        </Typography>
-                      </Grid>
-                      <Grid item=true xs=Xs.\"12">
-                        <Typography>
+                        </Mui.Typography>
+                      </Mui.Grid>
+                      <Mui.Grid item=true xs=Number(12)>
+                        <Mui.Typography>
                           {intl
                           ->ReactIntl.Intl.formatMessage(registrationAddressParkingLabel)
                           ->React.string}
-                        </Typography>
-                      </Grid>
-                      <Grid item=true xs=Xs.\"12">
-                        <Typography>
+                        </Mui.Typography>
+                      </Mui.Grid>
+                      <Mui.Grid item=true xs=Number(12)>
+                        <Mui.Typography>
                           {intl
                           ->ReactIntl.Intl.formatMessage(registrationAddressParking)
                           ->React.string}
-                        </Typography>
-                      </Grid>
-                      <Grid item=true xs=Xs.\"12">
+                        </Mui.Typography>
+                      </Mui.Grid>
+                      <Mui.Grid item=true xs=Number(12)>
                         <Common.OpenInNewButton
                           label=registrationAddressPaidParking1
                           onClick={onClick(Common.Constants.registrationAddressPaidParking1)}
                         />
-                      </Grid>
-                      <Grid item=true xs=Xs.\"12">
+                      </Mui.Grid>
+                      <Mui.Grid item=true xs=Number(12)>
                         <Common.OpenInNewButton
                           label=registrationAddressPaidParking2
                           onClick={onClick(Common.Constants.registrationAddressPaidParking2)}
                         />
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                  <Grid
+                      </Mui.Grid>
+                    </Mui.Grid>
+                  </Mui.Grid>
+                  <Mui.Grid
                     item=true
-                    xs=Xs.\"12"
-                    sm=Sm.\"6"
-                    md={mapUrl->Option.isSome ? Md.\"12" : Md.\"6"}>
-                    <Grid container=true>
-                      <Grid item=true xs=Xs.\"12">
-                        <Typography className=Common.Style.bold>
+                    xs=Number(12)
+                    sm=Number(6)
+                    md={mapUrl->Option.isSome ? Number(12) : Number(6)}>
+                    <Mui.Grid container=true>
+                      <Mui.Grid item=true xs=Number(12)>
+                        <Mui.Typography className=Common.Style.bold>
                           {intl
                           ->ReactIntl.Intl.formatMessage(facturationAddressLabel)
                           ->React.string}
-                        </Typography>
-                      </Grid>
-                      <Grid item=true xs=Xs.\"12">
+                        </Mui.Typography>
+                      </Mui.Grid>
+                      <Mui.Grid item=true xs=Number(12)>
                         <Common.OpenInNewButton
                           label=facturationAddress
                           onClick={onClick(Common.Constants.facturationAddress)}
                         />
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                  <Grid item=true xs=Xs.\"12">
-                    <Grid container=true>
-                      <Grid item=true xs=Xs.\"12">
-                        <Typography>
+                      </Mui.Grid>
+                    </Mui.Grid>
+                  </Mui.Grid>
+                  <Mui.Grid item=true xs=Number(12)>
+                    <Mui.Grid container=true>
+                      <Mui.Grid item=true xs=Number(12)>
+                        <Mui.Typography>
                           {intl->ReactIntl.Intl.formatMessage(castingsInfo)->React.string}
-                        </Typography>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                  <Grid item=true xs=Xs.\"12">
-                    <Grid container=true>
-                      <Grid item=true xs=Xs.\"12">
-                        <Typography>
+                        </Mui.Typography>
+                      </Mui.Grid>
+                    </Mui.Grid>
+                  </Mui.Grid>
+                  <Mui.Grid item=true xs=Number(12)>
+                    <Mui.Grid container=true>
+                      <Mui.Grid item=true xs=Number(12)>
+                        <Mui.Typography>
                           {intl->ReactIntl.Intl.formatMessage(idNumber)->React.string}
-                        </Typography>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                </Grid>
-              </Grid>
-              <Hidden smDown=true mdUp={mapUrl->Option.isNone}>
-                <Grid item=true md=Md.\"6" className=Common.Style.headerGap>
+                        </Mui.Typography>
+                      </Mui.Grid>
+                    </Mui.Grid>
+                  </Mui.Grid>
+                </Mui.Grid>
+              </Mui.Grid>
+              <Mui.Hidden smDown=true mdUp={mapUrl->Option.isNone}>
+                <Mui.Grid item=true md=Number(6) className=Common.Style.headerGap>
                   <Contact_Map url=?mapUrl isMapBeingLoaded onMapLoadingFinished />
-                </Grid>
-              </Hidden>
-              <Hidden mdUp=true>
+                </Mui.Grid>
+              </Mui.Hidden>
+              <Mui.Hidden mdUp=true>
                 <Common.Dialog isOpen={mapUrl->Option.isSome} onClose fullScreen=true>
                   <Contact_Map url=?mapUrl isMapBeingLoaded onMapLoadingFinished />
                 </Common.Dialog>
-              </Hidden>
-            </Grid>,
+              </Mui.Hidden>
+            </Mui.Grid>,
             topRef,
             accented: Green,
           },

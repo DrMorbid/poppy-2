@@ -1,5 +1,3 @@
-open Mui
-open Mui.Grid
 open Message.References
 open ReactIntl
 
@@ -8,7 +6,7 @@ module Island = {
   let make = (~header, ~content) => {
     <Common.Island
       header
-      headerVariant=#h4
+      headerVariant=H4
       body=Fragments(list{
         {
           content: list{
@@ -31,28 +29,28 @@ let make = () => {
     App_Page.goTo(References)
   }
 
-  <Grid container=true justify=#center className=Common.Style.islandsVerticalGap>
-    <Grid item=true>
+  <Mui.Grid container=true justifyContent=Center className=Common.Style.islandsVerticalGap>
+    <Mui.Grid item=true>
       <Common.Text
         header
-        afterHeader={<Typography variant=#h6>
+        afterHeader={<Mui.Typography variant=H6>
           {intl->ReactIntl.Intl.formatMessage(subHeader)->React.string}
-        </Typography>}
+        </Mui.Typography>}
         body={Element(
-          <Grid container=true className=Common.Style.islandsVerticalGap>
+          <Mui.Grid container=true className=Common.Style.islandsVerticalGap>
             <Island header=section1Header content=section1Part1 />
             <Island header=section2Header content=section2Part1 />
             <Island header=section3Header content=section3Part1 />
             <Island header=section4Header content=section4Part1 />
             <Island header=section5Header content=section5Part1 />
-          </Grid>,
+          </Mui.Grid>,
         )}
       />
-    </Grid>
-    <Grid item=true>
-      <Button variant=#contained color=#primary onClick>
+    </Mui.Grid>
+    <Mui.Grid item=true>
+      <Mui.Button variant=Contained color=Primary onClick>
         {intl->ReactIntl.Intl.formatMessage(showMore)->React.string}
-      </Button>
-    </Grid>
-  </Grid>
+      </Mui.Button>
+    </Mui.Grid>
+  </Mui.Grid>
 }

@@ -23,7 +23,7 @@ module DatePicker = {
     ~value: Date.t=?,
     ~onChange: Date.t => unit=?,
     ~fullWidth: bool=?,
-    ~margin: Mui.TextField.margin=?,
+    ~margin: Mui.FormControl.margin=?,
     ~required: bool=?,
     ~initialFocusedDate: Date.t=?,
     ~name: string=?,

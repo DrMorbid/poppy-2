@@ -1,18 +1,17 @@
-open Mui
 open ReactIntl
 
 @react.component
 let make = (~header, ~body) => {
   let intl = useIntl()
 
-  <Accordion>
-    <AccordionSummary expandIcon={<Common.Icon.ExpandMore />}>
-      <Typography variant=#h5>
+  <Mui.Accordion>
+    <Mui.AccordionSummary expandIcon={<Common.Icon.ExpandMore />}>
+      <Mui.Typography variant=H5>
         {intl->ReactIntl.Intl.formatMessage(header)->React.string}
-      </Typography>
-    </AccordionSummary>
-    <AccordionDetails>
+      </Mui.Typography>
+    </Mui.AccordionSummary>
+    <Mui.AccordionDetails>
       <Common.Text body />
-    </AccordionDetails>
-  </Accordion>
+    </Mui.AccordionDetails>
+  </Mui.Accordion>
 }

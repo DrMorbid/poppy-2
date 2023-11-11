@@ -1,9 +1,7 @@
-open Mui.Grid
-
 type fragmentContent = Message(ReactIntl.message) | String(string)
 
 type fragment =
-  | Text({content: fragmentContent, bold?: bool, color?: Mui.Typography.color, appendSpace?: bool})
+  | Text({content: fragmentContent, bold?: bool, color?: [#error], appendSpace?: bool})
   | Element(Jsx.element)
 
 type fragmentParagraph = {content: list<fragment>, centered?: bool}
@@ -46,7 +44,7 @@ module Text = {
   let make = (~children, ~centered=?) => {
     <Mui.Grid
       item=true
-      xs=Xs.\"12"
+      xs=Number(12)
       className={centered->Option.getWithDefault(false) ? Common_Style.centeredText : ""}>
       children
     </Mui.Grid>
@@ -61,10 +59,12 @@ module Fragment = {
       switch fragment {
       | Text(fragment) =>
         <Mui.Typography
-          component={"span"->Mui.Typography.Component.string}
+          component={"span"->Mui.OverridableComponent.string}
           className={fragment.bold->Option.getWithDefault(false) ? Common_Style.bold : ""}
           key={`fragment-${index->Int.toString}`}
-          color=?fragment.color>
+          color=?{fragment.color
+          ->Option.map(color => (color :> string))
+          ->Option.map(color => Mui.System.Value.String(color))}>
           <FragmentContent
             content=fragment.content
             index
@@ -83,7 +83,7 @@ module Fragment = {
 @react.component
 let make = (
   ~header=?,
-  ~headerVariant=#h2,
+  ~headerVariant: Mui.Typography.variant=H2,
   ~headerUppercase=false,
   ~afterHeader=?,
   ~body,
@@ -103,7 +103,7 @@ let make = (
 
   <Mui.Grid container=true className={getContainerClassname()}>
     {header->Option.mapWithDefault(React.null, header =>
-      <Mui.Grid item=true xs=Xs.\"12" className={Common_Style.centeredText}>
+      <Mui.Grid item=true xs=Number(12) className={Common_Style.centeredText}>
         <Mui.Typography
           variant=headerVariant
           className=?{headerUppercase ? Some(Common_Style.uppercaseText) : None}>
@@ -112,7 +112,7 @@ let make = (
       </Mui.Grid>
     )}
     {afterHeader->Option.mapWithDefault(React.null, afterHeader =>
-      <Mui.Grid item=true xs=Xs.\"12"> afterHeader </Mui.Grid>
+      <Mui.Grid item=true xs=Number(12)> afterHeader </Mui.Grid>
     )}
     {switch body {
     | Paragraphs(paragraphs) =>
@@ -146,7 +146,7 @@ let make = (
               </Mui.Typography>
             </Text>
           )}
-          <Mui.Grid item=true xs=Xs.\"12">
+          <Mui.Grid item=true xs=Number(12)>
             <Mui.List>
               {paragraph.list
               ->List.mapWithIndex((index, row) =>
@@ -154,7 +154,7 @@ let make = (
                   {switch row.content {
                   | Fragments(fragments) =>
                     <Mui.Grid container=true>
-                      <Mui.Grid item=true xs=Xs.\"12">
+                      <Mui.Grid item=true xs=Number(12)>
                         <Fragment fragments />
                       </Mui.Grid>
                     </Mui.Grid>
@@ -162,7 +162,7 @@ let make = (
                     <Mui.ListItemText
                       primary={intl->ReactIntl.Intl.formatMessage(message)->React.string}
                       classes=?{row.bold->Option.getWithDefault(false)
-                        ? Some(Mui.ListItemText.Classes.make(~primary=Common_Style.bold, ()))
+                        ? Some({primary: Common_Style.bold})
                         : None}
                     />
                   }}

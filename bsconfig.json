@@ -31,9 +31,5 @@
   "bs-dev-dependencies": ["rescript-vitest"],
   "bsc-flags": ["-open RescriptCore"],
   "jsx": { "version": 4, "mode": "automatic" },
-  "warnings": {
-    "number": "+A-42-48",
-    "error": "+A-3-44-102-103"
-  },
   "uncurried": false
 }

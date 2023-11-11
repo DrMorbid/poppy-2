@@ -1,4 +1,3 @@
-open Mui
 open ReactDOM
 open Utils.Style
 open Emotion
@@ -19,13 +18,13 @@ let centeredText = Style.make(~textAlign="center", ())->styleToClass
 let pageGuttersTop = (theme: Mui.Theme.t) =>
   list{
     Style.make(~paddingTop=pagePaddingMdUp, ())->styleWithMediaQuery(
-      ~mediaQuery=theme.breakpoints.up->Any.unsafeGetValue("sm"),
+      ~mediaQuery=theme.breakpoints.up->Float.toString,
     ),
     Style.make(~paddingTop=pagePaddingSm, ())->styleWithMediaQuery(
-      ~mediaQuery=theme.breakpoints.up->Any.unsafeGetValue("xs"),
+      ~mediaQuery=theme.breakpoints.up->Float.toString,
     ),
     Style.make(~paddingTop=pagePaddingXs, ())->styleWithMediaQuery(
-      ~mediaQuery=theme.breakpoints.down->Any.unsafeGetValue("xs"),
+      ~mediaQuery=theme.breakpoints.down->Float.toString,
     ),
   }
   ->stylesCombiner
@@ -33,13 +32,13 @@ let pageGuttersTop = (theme: Mui.Theme.t) =>
 let pageGuttersComplete = (theme: Mui.Theme.t) =>
   list{
     Style.make(~padding=pagePaddingMdUp, ())->styleWithMediaQuery(
-      ~mediaQuery=theme.breakpoints.up->Any.unsafeGetValue("sm"),
+      ~mediaQuery=theme.breakpoints.up->Float.toString,
     ),
     Style.make(~padding=pagePaddingSm, ())->styleWithMediaQuery(
-      ~mediaQuery=theme.breakpoints.up->Any.unsafeGetValue("xs"),
+      ~mediaQuery=theme.breakpoints.up->Float.toString,
     ),
     Style.make(~padding=pagePaddingXs, ())->styleWithMediaQuery(
-      ~mediaQuery=theme.breakpoints.down->Any.unsafeGetValue("xs"),
+      ~mediaQuery=theme.breakpoints.down->Float.toString,
     ),
   }
   ->stylesCombiner

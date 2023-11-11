@@ -1,4 +1,3 @@
-open Mui.Grid
 open RescriptReactRouter
 
 type t = Home | Registrations | Contact | QAndA | References | EmailUs
@@ -52,7 +51,7 @@ type gutters = Top | Complete
 
 @react.component
 let make = (~gutters=Complete, ~children) => {
-  let theme = Mui.Core.useTheme()
+  let theme = MuiStyles.useTheme()
 
   <Mui.Grid
     container=true
@@ -60,6 +59,6 @@ let make = (~gutters=Complete, ~children) => {
     | Top => Common.Style.pageGuttersTop(theme)
     | Complete => Common.Style.pageGuttersComplete(theme)
     }}>
-    <Mui.Grid item=true xs=Xs.\"12"> children </Mui.Grid>
+    <Mui.Grid item=true xs=Number(12)> children </Mui.Grid>
   </Mui.Grid>
 }

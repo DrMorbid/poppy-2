@@ -1,5 +1,3 @@
-open Mui.Grid
-
 type coloredSections = Even | Odd
 
 type section = {
@@ -11,7 +9,7 @@ type section = {
 @react.component
 let make = (~sections, ~coloredSections=Even, ~children=?) => {
   <Mui.Grid
-    container=true direction=#column alignItems=#stretch className=Common.Style.islandsVerticalGap>
+    container=true direction=Column alignItems=Stretch className=Common.Style.islandsVerticalGap>
     {<>
       {sections
       ->List.mapWithIndex((index, {element, topRef, ?accented}) =>

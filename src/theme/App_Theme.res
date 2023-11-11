@@ -146,36 +146,48 @@ let theme = (~prefersDarkMode) => {
         primary: palette["text"]->addTransparency(#text),
       },
     },
-    overrides: {
+    components: {
       muiButton: {
-        containedPrimary: Style.make(~color=palette["text"]->addTransparency(#text), ()),
+        styleOverrides: {
+          containedPrimary: Style.make(~color=palette["text"]->addTransparency(#text), ()),
+        },
       },
       muiButtonBase: {
-        root: Style.make(~color=palette["text"]->addTransparency(#text), ()),
+        styleOverrides: {
+          root: Style.make(~color=palette["text"]->addTransparency(#text), ()),
+        },
       },
       muiIconButton: {
-        root: Style.make(~color=palette["text"]->addTransparency(#text), ()),
+        styleOverrides: {
+          root: Style.make(~color=palette["text"]->addTransparency(#text), ()),
+        },
       },
       muiFab: {
-        primary: Style.make(~color=palette["text"]->addTransparency(#text), ()),
+        styleOverrides: {
+          primary: Style.make(~color=palette["text"]->addTransparency(#text), ()),
+        },
       },
       muiAccordion: {
-        root: Style.make(
-          ~backgroundColor=(prefersDarkMode ? grey["900"] : common["white"])->addTransparency(
-            #background,
+        styleOverrides: {
+          root: Style.make(
+            ~backgroundColor=(prefersDarkMode ? grey["900"] : common["white"])->addTransparency(
+              #background,
+            ),
+            (),
           ),
-          (),
-        ),
+        },
       },
       muiAppBar: {
-        colorPrimary: Style.make(
-          ~backgroundColor=palette["primary"]->addTransparency(#background),
-          (),
-        )->Obj.magic,
-        colorSecondary: Style.make(
-          ~backgroundColor=palette["secondary"]->addTransparency(#background),
-          (),
-        )->Obj.magic,
+        styleOverrides: {
+          colorPrimary: Style.make(
+            ~backgroundColor=palette["primary"]->addTransparency(#background),
+            (),
+          )->Obj.magic,
+          colorSecondary: Style.make(
+            ~backgroundColor=palette["secondary"]->addTransparency(#background),
+            (),
+          )->Obj.magic,
+        },
       },
     },
   })

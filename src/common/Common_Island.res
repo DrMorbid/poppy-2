@@ -1,6 +1,3 @@
-open Mui
-open Mui.Grid
-
 @react.component
 let make = (
   ~header=?,
@@ -8,13 +5,13 @@ let make = (
   ~body,
   ~centerAll=?,
   ~disableGutters=?,
-  ~xs=Xs.\"12",
-  ~sm=Sm.\"6",
-  ~md=Md.\"4",
-  ~lg=Lg.\"3",
-  ~xl=Xl.\"true",
+  ~xs=Mui.Grid.Number(12),
+  ~sm=Mui.Grid.Number(6),
+  ~md=Mui.Grid.Number(4),
+  ~lg=Mui.Grid.Number(3),
+  ~xl=Mui.Grid.True,
 ) => {
-  <Grid
+  <Mui.Grid
     item=true
     xs
     sm
@@ -25,5 +22,5 @@ let make = (
       ? None
       : Some(Common_Style.islandsHorizontalGap)}>
     <Common_Text ?header ?headerVariant body ?centerAll />
-  </Grid>
+  </Mui.Grid>
 }
