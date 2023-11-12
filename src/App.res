@@ -44,8 +44,8 @@ module Classes = {
 @react.component
 let make = () => {
   let theme = MuiStyles.useTheme()
-  let isSmUp = Mui.Core.useMediaQuery({sm: True})
-  let isMdUp = Mui.Core.useMediaQuery({md: True})
+  let isSmUp = Mui.Core.useMediaQueryString(App_Theme.Breakpoint.smUp)
+  let isMdUp = Mui.Core.useMediaQueryString(App_Theme.Breakpoint.mdUp)
   let prefersDarkMode = Mui.Core.useMediaQueryString(Common.Constants.darkModeMediaQuery)
   let topRef = React.useRef(Nullable.null)
   let (_, dispatch) = React.useContext(App_Context.Context.t)

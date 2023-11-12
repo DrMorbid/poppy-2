@@ -32,6 +32,25 @@ module Transparency = {
 }
 open Transparency
 
+module Breakpoint = {
+  let values: Mui.ThemeOptions.breakpointValues = {
+    lg: 0.,
+    md: 600.,
+    sm: 900.,
+    xl: 1200.,
+    xs: 1536.,
+  }
+
+  let up = breakpointValue =>
+    `(min-width: ${breakpointValue->Option.map(Float.toString)->Option.getWithDefault("0")}px)`
+
+  let xsUp = values.xs->up
+  let smUp = values.sm->up
+  let mdUp = values.md->up
+  let lgUp = values.lg->up
+  let xlUp = values.xl->up
+}
+
 let theme = (~prefersDarkMode) => {
   let palette = {
     "primary": prefersDarkMode ? lightBlue["700"] : lightBlue["300"],
@@ -96,13 +115,7 @@ let theme = (~prefersDarkMode) => {
       }),
     },
     breakpoints: {
-      values: {
-        lg: 0.,
-        md: 600.,
-        sm: 900.,
-        xl: 1200.,
-        xs: 1536.,
-      },
+      values: Breakpoint.values,
     },
     palette: {
       \"type": prefersDarkMode ? "dark" : "light",

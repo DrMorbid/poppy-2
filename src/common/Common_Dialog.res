@@ -1,4 +1,3 @@
-open Mui
 open ReactDOM
 
 module Classes = {
@@ -7,11 +6,11 @@ module Classes = {
 
 @react.component
 let make = (~isOpen as open_, ~onClose, ~children, ~fullScreen=?, ~fixedSize=?) => {
-  let isMdUp = Core.useMediaQuery({sm: False, md: True})
-  let isLgUp = Core.useMediaQuery({md: False, lg: True})
-  let isXlUp = Core.useMediaQuery({lg: False, xl: True})
+  let isMdUp = Mui.Core.useMediaQueryString(App_Theme.Breakpoint.mdUp)
+  let isLgUp = Mui.Core.useMediaQueryString(App_Theme.Breakpoint.lgUp)
+  let isXlUp = Mui.Core.useMediaQueryString(App_Theme.Breakpoint.xlUp)
 
-  <Dialog
+  <Mui.Dialog
     onClose={(_, _) => onClose()}
     open_
     ?fullScreen
@@ -24,15 +23,13 @@ let make = (~isOpen as open_, ~onClose, ~children, ~fullScreen=?, ~fixedSize=?) 
     | (false, false, true) => Sm
     | (false, false, false) => Xs
     }}>
-    <DialogTitle>
-      // <Grid container=true justify=#"flex-end" alignItems=#center>
-      <Grid item=true>
-        <IconButton onClick={_ => onClose()}>
+    <Mui.DialogTitle>
+      <Mui.Grid item=true>
+        <Mui.IconButton onClick={_ => onClose()}>
           <Common_Icon.Close />
-        </IconButton>
-      </Grid>
-      // </Grid>
-    </DialogTitle>
-    <DialogContent> children </DialogContent>
-  </Dialog>
+        </Mui.IconButton>
+      </Mui.Grid>
+    </Mui.DialogTitle>
+    <Mui.DialogContent> children </Mui.DialogContent>
+  </Mui.Dialog>
 }

@@ -8,7 +8,7 @@ let make = () => {
   let (isMapBeingLoaded, setIsMapBeingLoaded) = React.useState(() => false)
   let intl = ReactIntl.useIntl()
   let theme = MuiStyles.useTheme()
-  let isMdUp = Mui.Core.useMediaQuery({md: True})
+  let isMdUp = Mui.Core.useMediaQueryString(App_Theme.Breakpoint.mdUp)
 
   let onClose = () => {
     setIsMapBeingLoaded(_ => false)
