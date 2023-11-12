@@ -27,7 +27,6 @@ let make = () => {
         <Mui.Grid item=true key={`menu-item-${index->Int.toString}`}>
           <Mui.Button
             size=Large
-            color=String("default")
             variant=Outlined
             onClick={_ =>
               menuItem->onClick(
