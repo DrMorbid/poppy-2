@@ -16,29 +16,30 @@ module Classes = {
   let container =
     list{
       Style.make(
-        ~paddingTop="1rem",
-        ~paddingLeft="0rem",
-        ~paddingRight="0rem",
+        ~paddingTop="1rem !important",
+        ~paddingLeft="0rem !important",
+        ~paddingRight="0rem !important",
         (),
       )->styleWithMediaQuery(~addMediaPrefix=true, ~mediaQuery=Theme.Breakpoint.xsUp),
       Style.make(
-        ~paddingTop="1.5rem",
-        ~paddingLeft="1.5rem",
-        ~paddingRight="1.5rem",
+        ~paddingTop="1.5rem !important",
+        ~paddingLeft="1.5rem !important",
+        ~paddingRight="1.5rem !important",
         (),
       )->styleWithMediaQuery(~addMediaPrefix=true, ~mediaQuery=Theme.Breakpoint.smUp),
       Style.make(
-        ~paddingTop="2rem",
-        ~paddingLeft="2rem",
-        ~paddingRight="2rem",
+        ~paddingTop="2rem !important",
+        ~paddingLeft="2rem !important",
+        ~paddingRight="2rem !important",
         (),
       )->styleWithMediaQuery(~addMediaPrefix=true, ~mediaQuery=Theme.Breakpoint.mdUp),
     }
     ->stylesCombiner
-    ->styleToClass
+    ->styleToLabeledClass({label: "container"})
   let containerColorLight =
-    Style.make(~backgroundColor="rgba(250, 250, 250, 0.8)", ())->styleToClass
-  let containerColorDark = Style.make(~backgroundColor="rgba(48, 48, 48, 0.8)", ())->styleToClass
+    Style.make(~backgroundColor="rgba(250, 250, 250, 0.8) !important", ())->styleToClass
+  let containerColorDark =
+    Style.make(~backgroundColor="rgba(48, 48, 48, 0.8) !important", ())->styleToClass
 }
 
 @react.component
