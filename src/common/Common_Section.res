@@ -41,15 +41,12 @@ let make = (~coloring=Transparent, ~children) => {
   let createContainerStyling = () =>
     switch coloring {
     | Colored =>
-      cx([
-        Common_Style.pageGuttersComplete(theme),
-        Classes.coloredBackground(theme, prefersDarkMode),
-      ])
+      cx([Common_Style.pageGuttersComplete, Classes.coloredBackground(theme, prefersDarkMode)])
     | Accented(Yellow) =>
-      cx([Common_Style.pageGuttersComplete(theme), Classes.accentedBackgroundYellow(theme)])
+      cx([Common_Style.pageGuttersComplete, Classes.accentedBackgroundYellow(theme)])
     | Accented(Green) =>
-      cx([Common_Style.pageGuttersComplete(theme), Classes.accentedBackgroundGreen(theme)])
-    | Transparent => Common_Style.pageGuttersComplete(theme)
+      cx([Common_Style.pageGuttersComplete, Classes.accentedBackgroundGreen(theme)])
+    | Transparent => Common_Style.pageGuttersComplete
     }
 
   <Mui.Grid item=true xs=Number(12) className={createContainerStyling()}> children </Mui.Grid>

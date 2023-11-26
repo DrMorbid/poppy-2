@@ -34,21 +34,28 @@ open Transparency
 
 module Breakpoint = {
   let values: Mui.ThemeOptions.breakpointValues = {
-    lg: 0.,
-    md: 600.,
-    sm: 900.,
-    xl: 1200.,
-    xs: 1536.,
+    xs: 0.,
+    sm: 600.,
+    md: 900.,
+    lg: 1200.,
+    xl: 1536.,
   }
 
-  let up = breakpointValue =>
-    `(min-width: ${breakpointValue->Option.map(Float.toString)->Option.getWithDefault("0")}px)`
+  let mediaQuery = (~down=false, breakpointValue) =>
+    `(${down ? "max-width" : "min-width"}: ${breakpointValue
+      ->Option.map(Float.toString)
+      ->Option.getWithDefault("0")}px)`
 
-  let xsUp = values.xs->up
-  let smUp = values.sm->up
-  let mdUp = values.md->up
-  let lgUp = values.lg->up
-  let xlUp = values.xl->up
+  let xsUp = values.xs->mediaQuery
+  let smUp = values.sm->mediaQuery
+  let mdUp = values.md->mediaQuery
+  let lgUp = values.lg->mediaQuery
+  let xlUp = values.xl->mediaQuery
+  let xsDown = values.xs->mediaQuery(~down=true)
+  let smDown = values.sm->mediaQuery(~down=true)
+  let mdDown = values.md->mediaQuery(~down=true)
+  let lgDown = values.lg->mediaQuery(~down=true)
+  let xlDown = values.xl->mediaQuery(~down=true)
 }
 
 let theme = (~prefersDarkMode) => {

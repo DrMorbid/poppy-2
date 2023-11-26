@@ -13,26 +13,26 @@ module ScrollableSections = App_ScrollableSections
 module Types = App_Types
 
 module Classes = {
-  let container = (theme: Mui.Theme.t) =>
+  let container =
     list{
       Style.make(
         ~paddingTop="1rem",
         ~paddingLeft="0rem",
         ~paddingRight="0rem",
         (),
-      )->styleWithMediaQuery(~mediaQuery=theme.breakpoints.up->Float.toString),
+      )->styleWithMediaQuery(~addMediaPrefix=true, ~mediaQuery=Theme.Breakpoint.xsUp),
       Style.make(
         ~paddingTop="1.5rem",
         ~paddingLeft="1.5rem",
         ~paddingRight="1.5rem",
         (),
-      )->styleWithMediaQuery(~mediaQuery=theme.breakpoints.up->Float.toString),
+      )->styleWithMediaQuery(~addMediaPrefix=true, ~mediaQuery=Theme.Breakpoint.smUp),
       Style.make(
         ~paddingTop="2rem",
         ~paddingLeft="2rem",
         ~paddingRight="2rem",
         (),
-      )->styleWithMediaQuery(~mediaQuery=theme.breakpoints.up->Float.toString),
+      )->styleWithMediaQuery(~addMediaPrefix=true, ~mediaQuery=Theme.Breakpoint.mdUp),
     }
     ->stylesCombiner
     ->styleToClass
@@ -43,7 +43,6 @@ module Classes = {
 
 @react.component
 let make = () => {
-  let theme = MuiStyles.useTheme()
   let isSmUp = Mui.Core.useMediaQueryString(App_Theme.Breakpoint.smUp)
   let isMdUp = Mui.Core.useMediaQueryString(App_Theme.Breakpoint.mdUp)
   let prefersDarkMode = Mui.Core.useMediaQueryString(Common.Constants.darkModeMediaQuery)
@@ -58,7 +57,7 @@ let make = () => {
 
   <Mui.Container
     maxWidth=Xl
-    classes={root: Classes.container(theme)}
+    classes={root: Classes.container}
     className={prefersDarkMode ? Classes.containerColorDark : Classes.containerColorLight}
     ref={topRef->Ref.domRef}>
     <Mui.Grid container=true direction=Column className=Common.Style.paragraphGap>

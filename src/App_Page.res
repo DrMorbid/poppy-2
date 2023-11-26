@@ -51,13 +51,11 @@ type gutters = Top | Complete
 
 @react.component
 let make = (~gutters=Complete, ~children) => {
-  let theme = MuiStyles.useTheme()
-
   <Mui.Grid
     container=true
     className={switch gutters {
-    | Top => Common.Style.pageGuttersTop(theme)
-    | Complete => Common.Style.pageGuttersComplete(theme)
+    | Top => Common.Style.pageGuttersTop
+    | Complete => Common.Style.pageGuttersComplete
     }}>
     <Mui.Grid item=true xs=Number(12)> children </Mui.Grid>
   </Mui.Grid>

@@ -25,7 +25,7 @@ let make = () => {
   <Mui.Grid
     container=true
     className={cx([
-      Common.Style.pageGuttersComplete(theme),
+      Common.Style.pageGuttersComplete,
       theme->Common.Section.Classes.accentedBackgroundGreen,
     ])}>
     <Mui.Grid item=true xs=Number(12)>

@@ -15,30 +15,36 @@ let marginBottomSm = Style.make(~marginBottom="0.75rem", ())->styleToClass
 let marginBottom = Style.make(~marginBottom="1rem", ())->styleToClass
 let fullWidth = Style.make(~width="100%", ())->styleToClass
 let centeredText = Style.make(~textAlign="center", ())->styleToClass
-let pageGuttersTop = (theme: Mui.Theme.t) =>
+let pageGuttersTop =
   list{
     Style.make(~paddingTop=pagePaddingMdUp, ())->styleWithMediaQuery(
-      ~mediaQuery=theme.breakpoints.up->Float.toString,
+      ~addMediaPrefix=true,
+      ~mediaQuery=App_Theme.Breakpoint.smUp,
     ),
     Style.make(~paddingTop=pagePaddingSm, ())->styleWithMediaQuery(
-      ~mediaQuery=theme.breakpoints.up->Float.toString,
+      ~addMediaPrefix=true,
+      ~mediaQuery=App_Theme.Breakpoint.xsUp,
     ),
     Style.make(~paddingTop=pagePaddingXs, ())->styleWithMediaQuery(
-      ~mediaQuery=theme.breakpoints.down->Float.toString,
+      ~addMediaPrefix=true,
+      ~mediaQuery=App_Theme.Breakpoint.xsDown,
     ),
   }
   ->stylesCombiner
   ->styleToClass
-let pageGuttersComplete = (theme: Mui.Theme.t) =>
+let pageGuttersComplete =
   list{
     Style.make(~padding=pagePaddingMdUp, ())->styleWithMediaQuery(
-      ~mediaQuery=theme.breakpoints.up->Float.toString,
+      ~addMediaPrefix=true,
+      ~mediaQuery=App_Theme.Breakpoint.smUp,
     ),
     Style.make(~padding=pagePaddingSm, ())->styleWithMediaQuery(
-      ~mediaQuery=theme.breakpoints.up->Float.toString,
+      ~addMediaPrefix=true,
+      ~mediaQuery=App_Theme.Breakpoint.xsUp,
     ),
     Style.make(~padding=pagePaddingXs, ())->styleWithMediaQuery(
-      ~mediaQuery=theme.breakpoints.down->Float.toString,
+      ~addMediaPrefix=true,
+      ~mediaQuery=App_Theme.Breakpoint.xsDown,
     ),
   }
   ->stylesCombiner
