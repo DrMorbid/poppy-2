@@ -11,7 +11,7 @@ let make = () => {
 
   <Mui.AppBar position=Static>
     <Drawer drawerOpen onClose={() => setDrawerOpen(_ => false)} />
-    <Mui.Hidden smDown=true>
+    <Mui.Hidden mdDown=true>
       <TopMenu_Toolbar />
     </Mui.Hidden>
     <Mui.Hidden mdUp=true>

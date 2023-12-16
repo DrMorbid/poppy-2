@@ -10,7 +10,7 @@ let make = (~children) => {
         children
       </Mui.Grid>
     </Mui.Hidden>
-    <Mui.Hidden smUp=true>
+    <Mui.Hidden xsUp=true>
       <Mui.Grid container=true direction=Row justifyContent=Mui.System.Value.String("space-evenly")>
         children
       </Mui.Grid>
