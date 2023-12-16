@@ -1,7 +1,8 @@
 open ReactDOM
 
 module Classes = {
-  let mapSize = Style.make(~width="100%", ~height="75%", ())->Emotion.styleToClass
+  let mapSize =
+    Style.make(~width="100% !important", ~height="75% !important", ())->Emotion.styleToClass
 }
 
 @react.component

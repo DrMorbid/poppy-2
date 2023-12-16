@@ -7,7 +7,7 @@ module Transparency = {
   let text = "de"
   let background = "bf"
 
-  type kind = [#text | #background]
+  type kind = [#text | #background | #button]
 
   let addTransparency = (color, kind: kind) => {
     let normalizeColor = color =>
@@ -27,6 +27,7 @@ module Transparency = {
       switch kind {
       | #background => "bf"
       | #text => "f2"
+      | #button => "3b"
       }
   }
 }
@@ -170,6 +171,11 @@ let theme = (~prefersDarkMode) => {
       muiButton: {
         styleOverrides: {
           containedPrimary: Style.make(~color=palette["text"]->addTransparency(#text), ()),
+          outlinedPrimary: Style.make(
+            ~color=palette["text"]->addTransparency(#text),
+            ~borderColor=common["black"]->addTransparency(#button),
+            (),
+          ),
         },
       },
       muiButtonBase: {

@@ -3,7 +3,7 @@ open ReactDOM
 open TopMenu_Item
 
 module Classes = {
-  let list = Style.make(~width="50vw", ())->Emotion.styleToClass
+  let list = Style.make(~width="50vw !important", ())->Emotion.styleToClass
 }
 
 @react.component

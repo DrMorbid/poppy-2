@@ -4,7 +4,6 @@ open Emotion
 
 module Theme = App_Theme
 module Context = App_Context
-module Actions = App_Actions
 module Page = App_Page
 module Router = App_Router
 module ScrollToTop = App_ScrollToTop

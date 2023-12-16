@@ -3,7 +3,7 @@ open ReactDOM
 open Common_Icon
 
 module Classes = {
-  let root = Style.make(~textTransform="none", ())->Emotion.styleToClass
+  let root = Style.make(~textTransform="none !important", ())->Emotion.styleToClass
 }
 
 @react.component

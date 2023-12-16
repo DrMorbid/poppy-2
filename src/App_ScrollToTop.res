@@ -5,18 +5,24 @@ open Utils.Style
 module Classes = {
   let button =
     list{
-      Style.make(~position="fixed", ~bottom="1rem", ~right="1rem", ())->styleWithMediaQuery(
-        ~addMediaPrefix=true,
-        ~mediaQuery=App_Theme.Breakpoint.xsUp,
-      ),
-      Style.make(~position="fixed", ~bottom="1.5rem", ~right="1.5rem", ())->styleWithMediaQuery(
-        ~addMediaPrefix=true,
-        ~mediaQuery=App_Theme.Breakpoint.smUp,
-      ),
-      Style.make(~position="fixed", ~bottom="2rem", ~right="2rem", ())->styleWithMediaQuery(
-        ~addMediaPrefix=true,
-        ~mediaQuery=App_Theme.Breakpoint.mdUp,
-      ),
+      Style.make(
+        ~position="fixed !important",
+        ~bottom="1rem !important",
+        ~right="1rem !important",
+        (),
+      )->styleWithMediaQuery(~addMediaPrefix=true, ~mediaQuery=App_Theme.Breakpoint.xsUp),
+      Style.make(
+        ~position="fixed !important",
+        ~bottom="1.5rem !important",
+        ~right="1.5rem !important",
+        (),
+      )->styleWithMediaQuery(~addMediaPrefix=true, ~mediaQuery=App_Theme.Breakpoint.smUp),
+      Style.make(
+        ~position="fixed !important",
+        ~bottom="2rem !important",
+        ~right="2rem !important",
+        (),
+      )->styleWithMediaQuery(~addMediaPrefix=true, ~mediaQuery=App_Theme.Breakpoint.mdUp),
     }
     ->stylesCombiner
     ->Emotion.styleToClass

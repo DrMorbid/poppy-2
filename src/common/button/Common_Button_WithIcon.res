@@ -4,7 +4,7 @@ open ReactDOM
 module Icon = Common_Icon
 
 module Classes = {
-  let iconGap = Style.make(~gridColumnGap="0.5rem", ())->Emotion.styleToClass
+  let iconGap = Style.make(~gridColumnGap="0.5rem !important", ())->Emotion.styleToClass
 }
 
 @react.component

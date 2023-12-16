@@ -4,7 +4,6 @@ open ReactDOM
 
 module Classes = {
   let label = (_theme: Mui.Theme.t) => {
-    // let tabTypography = theme.typography.h5
     Style.make()->Emotion.styleToClass
   }
 }

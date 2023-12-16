@@ -5,8 +5,8 @@ open ReactDOM
 module Container = TopHeader_Container
 
 module Classes = {
-  let logoContainer = Style.make(~width="26%", ())->Emotion.styleToClass
-  let logo = Style.make(~height="10vw", ())->Emotion.styleToClass
+  let logoContainer = Style.make(~width="26% !important", ())->Emotion.styleToClass
+  let logo = Style.make(~height="10vw !important", ())->Emotion.styleToClass
 }
 
 @react.component
