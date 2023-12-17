@@ -3,7 +3,7 @@ open TopMenu_Item
 open ReactDOM
 
 module Classes = {
-  let label = (_theme: Mui.Theme.t) => {
+  let label = () => {
     Style.make()->Emotion.styleToClass
   }
 }
@@ -16,7 +16,6 @@ let make = () => {
     {homeMenuItemTargets, registrationsMenuItemTargets, _}: App_Context.state,
     _,
   ) = React.useContext(App_Context.Context.t)
-  let theme = MuiStyles.useTheme()
 
   <Mui.Toolbar disableGutters=true>
     <Mui.Grid container=true justifyContent=String("space-evenly") spacing=Int(1)>
@@ -34,7 +33,7 @@ let make = () => {
                   ~registrationsMenuItemTargets,
                 ),
               )}
-            classes={text: theme->Classes.label}>
+            classes={text: Classes.label()}>
             {intl->ReactIntl.Intl.formatMessage(menuItem->App_Types.MenuItem.toLabel)->React.string}
           </Mui.Button>
         </Mui.Grid>

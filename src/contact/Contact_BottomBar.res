@@ -7,7 +7,7 @@ let make = () => {
   let (mapUrl, setMapUrl) = React.useState(() => None)
   let (isMapBeingLoaded, setIsMapBeingLoaded) = React.useState(() => false)
   let intl = ReactIntl.useIntl()
-  let theme = MuiStyles.useTheme()
+  let prefersDarkMode = Mui.Core.useMediaQueryString(Common_Constants.darkModeMediaQuery)
   let isMdUp = Mui.Core.useMediaQueryString(App_Theme.Breakpoint.mdUp)
 
   let onClose = () => {
@@ -26,7 +26,7 @@ let make = () => {
     container=true
     className={cx([
       Common.Style.pageGuttersComplete,
-      theme->Common.Section.Classes.accentedBackgroundGreen,
+      Common.Section.Classes.accentedBackgroundGreen(prefersDarkMode),
     ])}>
     <Mui.Grid item=true xs=Number(12)>
       <Mui.Grid container=true className={Common.Style.paragraphGap}>
