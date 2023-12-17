@@ -5,9 +5,9 @@ open ReactDOM
 module Classes = {
   let label = {
     Style.make(
-      ~fontSize=App_Theme.Typography.h5.fontSize,
-      ~fontWeight=App_Theme.Typography.h5.fontWeight,
-      ~lineHeight="1.334",
+      ~fontSize=`${App_Theme.Typography.h5.fontSize} !important`,
+      ~fontWeight=`${App_Theme.Typography.h5.fontWeight} !important`,
+      ~lineHeight="1.334 !important",
       (),
     )->Emotion.styleToClass
   }
@@ -38,7 +38,7 @@ let make = () => {
                   ~registrationsMenuItemTargets,
                 ),
               )}
-            classes={text: Classes.label}>
+            classes={root: Classes.label}>
             {intl->ReactIntl.Intl.formatMessage(menuItem->App_Types.MenuItem.toLabel)->React.string}
           </Mui.Button>
         </Mui.Grid>
