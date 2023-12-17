@@ -90,23 +90,16 @@ let make = () => {
           />
           <Mui.Grid item=true xs=Number(12) sm=Number(6) md=Number(4) lg=Number(3) xl=Number(2)>
             {form->FormInput.ChildBirthdate.renderController(
-              ({field: {onChange, value, _}, fieldState: {error, _}, _}) =>
-                <MuiPickers.DatePicker
+              ({field: {onChange, value, _}, _}) =>
+                <MuiXDatePicker.DatePicker
                   name="childBirthdate"
                   disableFuture=true
                   openTo=#year
                   format="d. M. yyyy"
-                  views={[#year, #month, #date]}
-                  fullWidth=true
-                  margin=None
+                  views={[#year, #month, #day]}
                   label={intl->ReactIntl.Intl.formatMessage(childBirthdateLabel)->Jsx.string}
-                  required=Field.childBirthdate.required
                   onChange
                   value
-                  error={error->Option.isSome}
-                  helperText=?{error->Option.isSome
-                    ? Some(intl->ReactIntl.Intl.formatMessage(childBirthdateHelperText)->Jsx.string)
-                    : None}
                   minDate={Common.Constants.highestChildAge->Utils.Date.ageLimitToDate}
                   maxDate={Common.Constants.lowestChildAge->Utils.Date.ageLimitToDate}
                 />,

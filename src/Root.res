@@ -6,10 +6,11 @@ let make = () => {
     <App.Context.Provider>
       <Mui.ThemeProvider theme={Theme(App_Theme.theme(~prefersDarkMode))}>
         <Mui.CssBaseline />
-        <MuiPickers.UtilsProvider
-          utils=MuiPickers.UtilsProvider.dateFnsUtils locale=MuiPickers.UtilsProvider.csLocale>
+        <MuiXDatePicker.LocalizationProvider
+          dateAdapter=MuiXDatePicker.LocalizationProvider.adapterDateFns
+          adapterLocale=DateFns.csLocale>
           <App />
-        </MuiPickers.UtilsProvider>
+        </MuiXDatePicker.LocalizationProvider>
       </Mui.ThemeProvider>
     </App.Context.Provider>
   </IntlProvider>
