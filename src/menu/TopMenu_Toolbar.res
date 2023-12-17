@@ -3,8 +3,13 @@ open TopMenu_Item
 open ReactDOM
 
 module Classes = {
-  let label = () => {
-    Style.make()->Emotion.styleToClass
+  let label = {
+    Style.make(
+      ~fontSize=App_Theme.Typography.h5.fontSize,
+      ~fontWeight=App_Theme.Typography.h5.fontWeight,
+      ~lineHeight="1.334",
+      (),
+    )->Emotion.styleToClass
   }
 }
 
@@ -33,7 +38,7 @@ let make = () => {
                   ~registrationsMenuItemTargets,
                 ),
               )}
-            classes={text: Classes.label()}>
+            classes={text: Classes.label}>
             {intl->ReactIntl.Intl.formatMessage(menuItem->App_Types.MenuItem.toLabel)->React.string}
           </Mui.Button>
         </Mui.Grid>

@@ -4,9 +4,9 @@ open Emotion
 module Classes = {
   let coloredBackground = prefersDarkMode =>
     Style.make(
-      ~backgroundColor=App_Theme.theme(
-        ~prefersDarkMode,
-      ).palette.secondary.light->Utils.Style.mixColors(
+      ~backgroundColor=App_Theme.Colors.palette(
+        prefersDarkMode,
+      )["secondaryLight"]->Utils.Style.mixColors(
         ~with=prefersDarkMode ? Mui.Colors.grey["800"] : Mui.Colors.grey["100"],
         ~transparency1=#background,
         ~transparency2=#background,
@@ -16,16 +16,16 @@ module Classes = {
     )->styleToClass
   let accentedBackgroundYellow = prefersDarkMode =>
     Style.make(
-      ~backgroundColor=App_Theme.theme(
-        ~prefersDarkMode,
-      ).palette.secondary.light->App_Theme.Transparency.addTransparency(#background),
+      ~backgroundColor=App_Theme.Colors.palette(
+        prefersDarkMode,
+      )["secondaryLight"]->App_Theme.Transparency.addTransparency(#background),
       (),
     )->styleToClass
   let accentedBackgroundGreen = prefersDarkMode =>
     Style.make(
-      ~backgroundColor=App_Theme.theme(
-        ~prefersDarkMode,
-      ).palette.success.main->App_Theme.Transparency.addTransparency(#background),
+      ~backgroundColor=App_Theme.Colors.palette(
+        prefersDarkMode,
+      )["success"]->App_Theme.Transparency.addTransparency(#background),
       (),
     )->styleToClass
 }
