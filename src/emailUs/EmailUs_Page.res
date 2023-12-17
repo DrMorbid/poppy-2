@@ -6,6 +6,7 @@ open EmailUs_Utils
 let make = () => {
   let (successAlertOpen, setSuccessAlertOpen) = React.useState(() => false)
   let (errorAlertOpen, setErrorAlertOpen) = React.useState(() => None)
+  let (dateErrorMessage, setDateErrorMessage) = React.useState(() => None)
 
   let form = Form.use(
     ~config={
@@ -89,22 +90,29 @@ let make = () => {
             renderWithRegister={field => form->FormInput.ChildName.renderWithRegister(field, ())}
           />
           <Mui.Grid item=true xs=Number(12) sm=Number(6) md=Number(4) lg=Number(3) xl=Number(2)>
-            {form->FormInput.ChildBirthdate.renderController(
-              ({field: {onChange, value, _}, _}) =>
-                <MuiXDatePicker.DatePicker
-                  name="childBirthdate"
-                  disableFuture=true
-                  openTo=#year
-                  format="d. M. yyyy"
-                  views={[#year, #month, #day]}
-                  label={intl->ReactIntl.Intl.formatMessage(childBirthdateLabel)->Jsx.string}
-                  onChange
-                  value
-                  minDate={Common.Constants.highestChildAge->Utils.Date.ageLimitToDate}
-                  maxDate={Common.Constants.lowestChildAge->Utils.Date.ageLimitToDate}
-                />,
-              (),
-            )}
+            {form->FormInput.ChildBirthdate.renderController(({field: {onChange, value, _}, _}) =>
+              <MuiXDatePicker.DatePicker
+                name="childBirthdate"
+                disableFuture=true
+                openTo=#year
+                format="d. M. yyyy"
+                views={[#year, #month, #day]}
+                label={intl->ReactIntl.Intl.formatMessage(childBirthdateLabel)->Jsx.string}
+                required=Field.childBirthdate.required
+                onChange
+                value
+                minDate={Common.Constants.highestChildAge->Utils.Date.ageLimitToDate}
+                maxDate={Common.Constants.lowestChildAge->Utils.Date.ageLimitToDate}
+                sx={Mui.Sx.array([Mui.Sx.Array.obj({width: Mui.System.Value.String("100%")})])}
+                onError={(error, _value) =>
+                  setDateErrorMessage(_ => error->Option.map(Utils.Date.dateErrorToMessage))}
+                slotProps=?{dateErrorMessage->Option.map((
+                  dateErrorMessage
+                ): MuiXDatePicker.DatePicker.SlotProps.t => {
+                  textField: {helperText: intl->ReactIntl.Intl.formatMessage(dateErrorMessage)},
+                })}
+              />
+            , ())}
           </Mui.Grid>
           <EmailUs_Field
             label=cityOfResidenceLabel

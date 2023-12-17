@@ -45,3 +45,4 @@ module References = Message_References
 module Contact = Message_Contact
 module QAndA = Message_QAndA
 module EmailUs = Message_EmailUs
+module Date = Message_Date

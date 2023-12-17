@@ -15,6 +15,31 @@ module LocalizationProvider = {
 
 module DatePicker = {
   type view = [#day | #month | #year]
+  type error = [
+    | #invalidDate
+    | #disableFuture
+    | #disablePast
+    | #shouldDisableDate
+    | #shouldDisableMonth
+    | #shouldDisableYear
+    | #minDate
+    | #maxDate
+    | #minutesStep
+    | #minTime
+    | #maxTime
+    | #"shouldDisableClock-hours"
+    | #"shouldDisableClock-minutes"
+    | #"shouldDisableClock-seconds"
+    | #"shouldDisableTime-hours"
+    | #"shouldDisableTime-minutes"
+    | #"shouldDisableTime-seconds"
+  ]
+
+  module SlotProps = {
+    type textField = {helperText?: string}
+
+    type t = {textField?: textField}
+  }
 
   @react.component @module("@mui/x-date-pickers/DatePicker")
   external make: (
@@ -25,8 +50,12 @@ module DatePicker = {
     ~views: array<view>=?,
     ~value: Date.t=?,
     ~onChange: Date.t => unit=?,
+    ~required: bool=?,
     ~name: string=?,
     ~minDate: Date.t=?,
     ~maxDate: Date.t=?,
+    ~onError: (option<error>, Date.t) => unit=?,
+    ~sx: Mui.Sx.props=?,
+    ~slotProps: SlotProps.t=?,
   ) => React.element = "DatePicker"
 }
