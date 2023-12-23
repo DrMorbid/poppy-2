@@ -36,7 +36,7 @@ module DatePicker = {
   ]
 
   module SlotProps = {
-    type textField = {helperText?: string}
+    type textField = {helperText?: string, error?: bool}
 
     type t = {textField?: textField}
   }
@@ -49,12 +49,12 @@ module DatePicker = {
     ~label: React.element=?,
     ~views: array<view>=?,
     ~value: Date.t=?,
-    ~onChange: Date.t => unit=?,
+    ~onChange: Nullable.t<Date.t> => unit=?,
     ~required: bool=?,
     ~name: string=?,
     ~minDate: Date.t=?,
     ~maxDate: Date.t=?,
-    ~onError: (option<error>, Date.t) => unit=?,
+    ~onError: (Nullable.t<error>, Nullable.t<Date.t>) => unit=?,
     ~sx: Mui.Sx.props=?,
     ~slotProps: SlotProps.t=?,
   ) => React.element = "DatePicker"

@@ -13,7 +13,7 @@ let make = () => {
       defaultValues: {
         parentName: "",
         childName: "",
-        childBirthdate: Date.make(),
+        childBirthdate: Some(Date.make()),
         cityOfResidence: "",
         parentPhone: "",
         parentEmail: "",
@@ -24,11 +24,11 @@ let make = () => {
 
   let intl = ReactIntl.useIntl()
 
-  let onSubmit = async (input, _) => {
+  let onSubmit = async (input, _) =>
     fetchEmailBody(
       ~parentName=input.parentName,
       ~childName=input.childName,
-      ~childBirthdate=input.childBirthdate,
+      ~childBirthdate=?input.childBirthdate,
       ~cityOfResidence=input.cityOfResidence,
       ~parentPhone=input.parentPhone,
       ~parentEmail=input.parentEmail,
@@ -38,22 +38,25 @@ let make = () => {
       ->Option.map(Array.joinWith(_, "")),
     )
     ->Promise.thenResolve(async body => {
-      let message = await SmtpJs.email->SmtpJs.sendWithSecureToken({
-        "SecureToken": EnvVar.SmtpJs.secureToken->Option.getWithDefault(""),
-        "To": EnvVar.SmtpJs.to->Option.getWithDefault(""),
-        "From": EnvVar.SmtpJs.from->Option.getWithDefault(""),
-        "Subject": intl->ReactIntl.Intl.formatMessage(emailSubject),
-        "Body": body,
-      })
+      if input.childBirthdate->Option.isSome {
+        let message = await SmtpJs.email->SmtpJs.sendWithSecureToken({
+          "SecureToken": EnvVar.SmtpJs.secureToken->Option.getWithDefault(""),
+          "To": EnvVar.SmtpJs.to->Option.getWithDefault(""),
+          "From": EnvVar.SmtpJs.from->Option.getWithDefault(""),
+          "Subject": intl->ReactIntl.Intl.formatMessage(emailSubject),
+          "Body": body,
+        })
 
-      if message->String.match(%re("/^ok$/i"))->Option.isSome {
-        setSuccessAlertOpen(_ => true)
+        if message->String.match(%re("/^ok$/i"))->Option.isSome {
+          setSuccessAlertOpen(_ => true)
+        } else {
+          setErrorAlertOpen(_ => Some(message))
+        }
       } else {
-        setErrorAlertOpen(_ => Some(message))
+        setErrorAlertOpen(_ => Some(Message.Date.dateMissing.defaultMessage))
       }
     })
     ->ignore
-  }
 
   let onSuccessClose = (_, _) => setSuccessAlertOpen(_ => false)
   let onErrorClose = (_, _) => setErrorAlertOpen(_ => None)
@@ -99,17 +102,30 @@ let make = () => {
                 views={[#year, #month, #day]}
                 label={intl->ReactIntl.Intl.formatMessage(childBirthdateLabel)->Jsx.string}
                 required=Field.childBirthdate.required
-                onChange
-                value
+                onChange={date =>
+                  date
+                  ->Nullable.toOption
+                  ->Option.flatMap(date => date->Utils.Date.isValid ? Some(date) : None)
+                  ->onChange}
+                ?value
                 minDate={Common.Constants.highestChildAge->Utils.Date.ageLimitToDate}
                 maxDate={Common.Constants.lowestChildAge->Utils.Date.ageLimitToDate}
                 sx={Mui.Sx.array([Mui.Sx.Array.obj({width: Mui.System.Value.String("100%")})])}
-                onError={(error, _value) =>
-                  setDateErrorMessage(_ => error->Option.map(Utils.Date.dateErrorToMessage))}
+                onError={(error, value) =>
+                  setDateErrorMessage(_ =>
+                    if value->Nullable.toOption->Option.isNone {
+                      Some(Message.Date.dateMissing)
+                    } else {
+                      error->Nullable.toOption->Option.map(Utils.Date.dateErrorToMessage)
+                    }
+                  )}
                 slotProps=?{dateErrorMessage->Option.map((
                   dateErrorMessage
                 ): MuiXDatePicker.DatePicker.SlotProps.t => {
-                  textField: {helperText: intl->ReactIntl.Intl.formatMessage(dateErrorMessage)},
+                  textField: {
+                    helperText: intl->ReactIntl.Intl.formatMessage(dateErrorMessage),
+                    error: true,
+                  },
                 })}
               />
             , ())}
