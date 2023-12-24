@@ -347,15 +347,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.21.0":
-  version: 7.22.5
-  resolution: "@babel/runtime@npm:7.22.5"
-  dependencies:
-    regenerator-runtime: "npm:^0.13.11"
-  checksum: 994898ec8e3c23d941899444bf4b18c61be9c26a12b0e4649d53d72cb6ecce5af2b9db1f405b2f63abb25633def3f8538fe9d0963ae65cf7d47ca3232032e63d
-  languageName: node
-  linkType: hard
-
 "@babel/runtime@npm:^7.23.2, @babel/runtime@npm:^7.3.1, @babel/runtime@npm:^7.4.4, @babel/runtime@npm:^7.6.0, @babel/runtime@npm:^7.8.3":
   version: 7.23.2
   resolution: "@babel/runtime@npm:7.23.2"
@@ -436,21 +427,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@date-io/core@npm:1.x, @date-io/core@npm:^1.3.13":
+"@date-io/core@npm:1.x":
   version: 1.3.13
   resolution: "@date-io/core@npm:1.3.13"
   checksum: 5a9e9d1de20f0346a3c7d2d5946190caef4bfb0b64d82ba1f4c566657a9192667c94ebe7f438d11d4286d9c190974daad4fb2159294225cd8af4d9a140239879
-  languageName: node
-  linkType: hard
-
-"@date-io/date-fns@npm:^1.3.13":
-  version: 1.3.13
-  resolution: "@date-io/date-fns@npm:1.3.13"
-  dependencies:
-    "@date-io/core": "npm:^1.3.13"
-  peerDependencies:
-    date-fns: ^2.0.0
-  checksum: 0b7ce35b2fcc5502b06671a037c1ca9ba8ede4a0f3d9d46cc58acc687484b40fe753a85ed30252c872fa5de75d23b3337ad6f5fe8f09ad0f8d342a5583446642
   languageName: node
   linkType: hard
 
@@ -3185,21 +3165,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"date-fns@npm:^2.30.0":
-  version: 2.30.0
-  resolution: "date-fns@npm:2.30.0"
-  dependencies:
-    "@babel/runtime": "npm:^7.21.0"
-  checksum: 70b3e8ea7aaaaeaa2cd80bd889622a4bcb5d8028b4de9162cbcda359db06e16ff6e9309e54eead5341e71031818497f19aaf9839c87d1aba1e27bb4796e758a9
-  languageName: node
-  linkType: hard
-
 "date-time@npm:^3.1.0":
   version: 3.1.0
   resolution: "date-time@npm:3.1.0"
   dependencies:
     time-zone: "npm:^1.0.0"
   checksum: f9cfcd1b15dfeabab15c0b9d18eb9e4e2d9d4371713564178d46a8f91ad577a290b5178b80050718d02d9c0cf646f8a875011e12d1ed05871e9f72c72c8a8fe6
+  languageName: node
+  linkType: hard
+
+"dayjs@npm:^1.11.10":
+  version: 1.11.10
+  resolution: "dayjs@npm:1.11.10"
+  checksum: 27e8f5bc01c0a76f36c656e62ab7f08c2e7b040b09e613cd4844abf03fb258e0350f0a83b02c887b84d771c1f11e092deda0beef8c6df2a1afbc3f6c1fade279
   languageName: node
   linkType: hard
 
@@ -4684,7 +4662,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "poppy-2@workspace:."
   dependencies:
-    "@date-io/date-fns": "npm:^1.3.13"
     "@emotion/css": "npm:^11.11.2"
     "@greenlabs/rescript-react-hook-form": "npm:^0.11.2"
     "@jihchi/vite-plugin-rescript": "npm:^5.3.1"
@@ -4705,7 +4682,7 @@ __metadata:
     "@testing-library/react": "npm:^14.1.0"
     "@testing-library/user-event": "npm:^14.5.1"
     "@vitejs/plugin-react": "npm:^4.1.1"
-    date-fns: "npm:^2.30.0"
+    dayjs: "npm:^1.11.10"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
     react-hook-form: "npm:^7.48.2"

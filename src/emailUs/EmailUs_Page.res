@@ -61,6 +61,15 @@ let make = () => {
   let onSuccessClose = (_, _) => setSuccessAlertOpen(_ => false)
   let onErrorClose = (_, _) => setErrorAlertOpen(_ => None)
 
+  let onChildBirthdateChange = (onFormFieldChange, date) =>
+    date
+    ->Nullable.toOption
+    ->Option.map(DayJs.toDate)
+    ->Option.flatMap(date => date->Utils.Date.isValid ? Some(date) : None)
+    ->onFormFieldChange
+
+  Console.log2("FKR: render: form: values=%o", form->Form.getValues)
+
   <Common.Text
     header
     afterHeader={<Mui.Typography variant=Subtitle1>
@@ -98,18 +107,14 @@ let make = () => {
                 name="childBirthdate"
                 disableFuture=true
                 openTo=#year
-                format="d. M. yyyy"
+                format="D. M. YYYY"
                 views={[#year, #month, #day]}
                 label={intl->ReactIntl.Intl.formatMessage(childBirthdateLabel)->Jsx.string}
                 required=Field.childBirthdate.required
-                onChange={date =>
-                  date
-                  ->Nullable.toOption
-                  ->Option.flatMap(date => date->Utils.Date.isValid ? Some(date) : None)
-                  ->onChange}
-                ?value
-                minDate={Common.Constants.highestChildAge->Utils.Date.ageLimitToDate}
-                maxDate={Common.Constants.lowestChildAge->Utils.Date.ageLimitToDate}
+                onChange={onChildBirthdateChange(onChange)}
+                value=?{value->Option.map(DayJs.dayjs)}
+                minDate={Common.Constants.highestChildAge->Utils.Date.ageLimitToDate->DayJs.dayjs}
+                maxDate={Common.Constants.lowestChildAge->Utils.Date.ageLimitToDate->DayJs.dayjs}
                 sx={Mui.Sx.array([Mui.Sx.Array.obj({width: Mui.System.Value.String("100%")})])}
                 onError={(error, value) =>
                   setDateErrorMessage(_ =>
@@ -119,14 +124,15 @@ let make = () => {
                       error->Nullable.toOption->Option.map(Utils.Date.dateErrorToMessage)
                     }
                   )}
-                slotProps=?{dateErrorMessage->Option.map((
-                  dateErrorMessage
-                ): MuiXDatePicker.DatePicker.SlotProps.t => {
+                slotProps={dateErrorMessage
+                ->Option.map((dateErrorMessage): MuiXDatePicker.DatePicker.SlotProps.t => {
                   textField: {
-                    helperText: intl->ReactIntl.Intl.formatMessage(dateErrorMessage),
+                    helperText: intl->ReactIntl.Intl.formatMessage(dateErrorMessage)->Jsx.string,
                     error: true,
+                    variant: Standard,
                   },
-                })}
+                })
+                ->Option.getWithDefault({textField: {variant: Standard}})}
               />
             , ())}
           </Mui.Grid>

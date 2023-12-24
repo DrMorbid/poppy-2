@@ -52,6 +52,7 @@ let make = (
     xl={last ? fieldGrid.last.xl : fieldGrid.notLast.xl}>
     {renderWithRegister(
       <Mui.TextField
+        variant=Standard
         ?autoFocus
         fullWidth=true
         margin=None

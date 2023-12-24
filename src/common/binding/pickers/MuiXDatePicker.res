@@ -2,8 +2,8 @@ type adapterLocale
 type dateAdapter
 
 module LocalizationProvider = {
-  @module("@mui/x-date-pickers/AdapterDateFns")
-  external adapterDateFns: dateAdapter = "AdapterDateFns"
+  @module("@mui/x-date-pickers/AdapterDayjs")
+  external adapterDayjs: dateAdapter = "AdapterDayjs"
 
   @react.component @module("@mui/x-date-pickers/LocalizationProvider")
   external make: (
@@ -36,7 +36,7 @@ module DatePicker = {
   ]
 
   module SlotProps = {
-    type textField = {helperText?: string, error?: bool}
+    type textField = {helperText?: Jsx.element, error?: bool, variant?: Mui.TextField.variant}
 
     type t = {textField?: textField}
   }
@@ -48,14 +48,18 @@ module DatePicker = {
     ~format: string=?,
     ~label: React.element=?,
     ~views: array<view>=?,
-    ~value: Date.t=?,
-    ~onChange: Nullable.t<Date.t> => unit=?,
+    ~value: DayJs.t=?,
+    ~onChange: Nullable.t<DayJs.t> => unit=?,
     ~required: bool=?,
     ~name: string=?,
-    ~minDate: Date.t=?,
-    ~maxDate: Date.t=?,
-    ~onError: (Nullable.t<error>, Nullable.t<Date.t>) => unit=?,
+    ~minDate: DayJs.t=?,
+    ~maxDate: DayJs.t=?,
+    ~onError: (Nullable.t<error>, Nullable.t<DayJs.t>) => unit=?,
     ~sx: Mui.Sx.props=?,
     ~slotProps: SlotProps.t=?,
   ) => React.element = "DatePicker"
+}
+
+module DayJs = {
+  @module("dayjs/locale/cs") external csLocale: adapterLocale = "default"
 }

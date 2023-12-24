@@ -7,8 +7,8 @@ let make = () => {
       <Mui.ThemeProvider theme={Theme(App_Theme.theme(~prefersDarkMode))}>
         <Mui.CssBaseline />
         <MuiXDatePicker.LocalizationProvider
-          dateAdapter=MuiXDatePicker.LocalizationProvider.adapterDateFns
-          adapterLocale=DateFns.csLocale>
+          dateAdapter=MuiXDatePicker.LocalizationProvider.adapterDayjs
+          adapterLocale=MuiXDatePicker.DayJs.csLocale>
           <App />
         </MuiXDatePicker.LocalizationProvider>
       </Mui.ThemeProvider>

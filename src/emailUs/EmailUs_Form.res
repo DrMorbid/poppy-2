@@ -63,7 +63,8 @@ module FormInput = {
       validate: Dict.fromArray([
         (
           "min",
-          ReactHookForm.Validation.sync(date =>
+          ReactHookForm.Validation.sync(date => {
+            Console.log2("FKR: date validation: date=%o", date)
             if (
               date
               ->Option.map(
@@ -75,7 +76,7 @@ module FormInput = {
             } else {
               None
             }
-          ),
+          }),
         ),
         (
           "max",
