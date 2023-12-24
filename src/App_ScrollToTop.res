@@ -35,7 +35,7 @@ let onClick = (~topRef: option<React.ref<Nullable.t<Dom.element>>>=?, ~behavior=
 
 @react.component
 let make = (~children) => {
-  let in_ = useScrollTrigger(Options.make(~disableHysteresis=true, ~threshold=200, ()))
+  let in_ = useScrollTrigger({disableHysteresis: true, threshold: 200})
   let ({topRef, _}: App_Context.state, _) = React.useContext(App_Context.Context.t)
 
   <Mui.Grow in_>

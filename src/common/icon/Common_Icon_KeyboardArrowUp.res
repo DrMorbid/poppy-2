@@ -1,5 +1,5 @@
 module KeyboardArrowUp = {
-  @react.component @module("@material-ui/icons/KeyboardArrowUp")
+  @react.component @module("@mui/icons-material/KeyboardArrowUp")
   external make: (~color: string=?, ~fontSize: string=?, ~className: string=?) => React.element =
     "default"
 }

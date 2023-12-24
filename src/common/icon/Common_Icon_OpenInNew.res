@@ -1,5 +1,5 @@
 module OpenInNew = {
-  @react.component @module("@material-ui/icons/OpenInNew")
+  @react.component @module("@mui/icons-material/OpenInNew")
   external make: (~color: string=?, ~fontSize: string=?, ~className: string=?) => React.element =
     "default"
 }

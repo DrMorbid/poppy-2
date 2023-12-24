@@ -68,8 +68,6 @@ let make = () => {
     ->Option.flatMap(date => date->Utils.Date.isValid ? Some(date) : None)
     ->onFormFieldChange
 
-  Console.log2("FKR: render: form: values=%o", form->Form.getValues)
-
   <Common.Text
     header
     afterHeader={<Mui.Typography variant=Subtitle1>
