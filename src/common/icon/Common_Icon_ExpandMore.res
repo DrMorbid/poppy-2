@@ -1,5 +1,5 @@
 module ExpandMore = {
-  @react.component @module("@mui/icons-material/OpenInNew")
+  @react.component @module("@mui/icons-material/ExpandMore")
   external make: (~color: string=?, ~fontSize: string=?, ~className: string=?) => React.element =
     "default"
 }

@@ -103,7 +103,7 @@ let theme = (~prefersDarkMode) => {
       values: Breakpoint.values,
     },
     palette: {
-      \"type": prefersDarkMode ? "dark" : "light",
+      mode: prefersDarkMode ? "dark" : "light",
       primary: {
         main: palette["primary"],
         light: palette["primaryLight"],
@@ -147,10 +147,10 @@ let theme = (~prefersDarkMode) => {
     components: {
       muiButton: {
         styleOverrides: {
-          containedPrimary: Style.make(~color=palette["text"]->addTransparency(#text), ()),
-          outlinedPrimary: Style.make(
+          contained: Style.make(~color=palette["text"]->addTransparency(#text), ()),
+          outlined: Style.make(
             ~color=palette["text"]->addTransparency(#text),
-            ~borderColor=common["black"]->addTransparency(#button),
+            ~borderColor=palette["text"],
             (),
           ),
         },
@@ -173,7 +173,7 @@ let theme = (~prefersDarkMode) => {
       muiAccordion: {
         styleOverrides: {
           root: Style.make(
-            ~backgroundColor=(prefersDarkMode ? grey["900"] : common["white"])->addTransparency(
+            ~backgroundColor=(prefersDarkMode ? common["black"] : common["white"])->addTransparency(
               #background,
             ),
             (),

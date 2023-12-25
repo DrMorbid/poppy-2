@@ -1,3 +1,5 @@
+// TODO: Don't like this carousel. Seems dead. Watch one for newer and better and idealy directly inside of MUI.
+
 @react.component @module("react-material-ui-carousel")
 external make: (
   ~autoPlay: bool=?,

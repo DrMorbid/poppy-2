@@ -1,6 +1,8 @@
 type adapterLocale
 type dateAdapter
 
+// TODO: Had to implement myself. Watch out for future updates.
+
 module LocalizationProvider = {
   @module("@mui/x-date-pickers/AdapterDayjs")
   external adapterDayjs: dateAdapter = "AdapterDayjs"

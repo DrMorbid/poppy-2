@@ -1,5 +1,6 @@
 type options = {disableHysteresis?: bool, target?: React.element, threshold?: int}
 
+// TODO: Had to implement myself, watch out for updates of ReScript MUI.
 @module("@mui/material/useScrollTrigger")
 external useScrollTrigger: options => bool = "default"
 
