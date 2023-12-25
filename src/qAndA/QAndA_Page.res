@@ -5,7 +5,7 @@ open Common.Text
 module Section = QAndA_Section
 
 @react.component
-let make = () => {
+let default = () => {
   let intl = useIntl()
 
   <Common.Text

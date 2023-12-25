@@ -3,7 +3,7 @@ open Message.EmailUs
 open EmailUs_Utils
 
 @react.component
-let make = () => {
+let default = () => {
   let (successAlertOpen, setSuccessAlertOpen) = React.useState(() => false)
   let (errorAlertOpen, setErrorAlertOpen) = React.useState(() => None)
   let (dateErrorMessage, setDateErrorMessage) = React.useState(() => None)

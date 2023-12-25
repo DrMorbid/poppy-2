@@ -28,7 +28,6 @@
     "@greenlabs/rescript-react-hook-form",
     "@rescript-mui/material"
   ],
-  "bs-dev-dependencies": ["rescript-vitest"],
   "bsc-flags": ["-open RescriptCore"],
   "jsx": { "version": 4, "mode": "automatic" },
   "uncurried": false

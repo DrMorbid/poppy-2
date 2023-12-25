@@ -23,10 +23,11 @@ module Island = {
 let make = () => {
   let intl = useIntl()
   let ({topRef, _}: App_Context.state, _) = React.useContext(App_Context.Context.t)
+  let router = Next.Navigation.useRouter()
 
   let onClick = e => {
     App_ScrollToTop.onClick(~topRef?, ~behavior=#auto, e)
-    App_Page.goTo(References)
+    router->App_Page.goTo(References)
   }
 
   <Mui.Grid container=true justifyContent=Center className=Common.Style.islandsVerticalGap>

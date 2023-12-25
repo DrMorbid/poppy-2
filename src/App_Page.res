@@ -1,5 +1,3 @@
-open RescriptReactRouter
-
 type t = Home | Registrations | Contact | QAndA | References | EmailUs
 
 module RoutePath = {
@@ -37,15 +35,11 @@ let toLabel = page => {
   }
 }
 
-let goTo = page => push(page->toRoutePath)
+let goTo = (router, page) => router->Next.Navigation.Router.push(page->toRoutePath)
 
-let isHomePage = url => url.path->List.length == 0
+let isHomePage = pathname => pathname->String.equal(RoutePath.home)
 
-let isRegistrationsPage = url =>
-  url.path
-  ->List.head
-  ->Option.filter(path => path == RoutePath.registrations->String.substringToEnd(~start=1))
-  ->Option.isSome
+let isRegistrationsPage = pathname => pathname->String.equal(RoutePath.registrations)
 
 type gutters = Top | Complete
 

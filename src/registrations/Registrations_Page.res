@@ -1,7 +1,7 @@
 open Message.Registrations
 
 @react.component
-let make = () => {
+let default = () => {
   let registrationsYoungestTopRef = React.useRef(null)
   let registrationsMiddleTopRef = React.useRef(null)
   let registrationsOldestTopRef = React.useRef(null)

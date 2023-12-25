@@ -34,13 +34,25 @@ let onClick = (~topRef: option<React.ref<Nullable.t<Dom.element>>>=?, ~behavior=
   )
 
 @react.component
-let make = (~children) => {
+let make = () => {
+  let isSmUp = Mui.Core.useMediaQueryString(App_Theme.Breakpoint.smUp)
+  let isMdUp = Mui.Core.useMediaQueryString(App_Theme.Breakpoint.mdUp)
   let in_ = useScrollTrigger({disableHysteresis: true, threshold: 200})
   let ({topRef, _}: App_Context.state, _) = React.useContext(App_Context.Context.t)
 
+  // TODO: After MUI update, see if we can get rid of the wrapping div and put the onClick directly into Fab component.
   <Mui.Grow in_>
-    <Mui.ButtonBase onClick={e => onClick(e, ~topRef?)} className=Classes.button>
-      children
-    </Mui.ButtonBase>
+    <div onClick={e => onClick(e, ~topRef?)}>
+      <Mui.Fab
+        color=Primary
+        size={switch (isSmUp, isMdUp) {
+        | (false, false) => String("small")
+        | (true, false) => String("medium")
+        | (_, true) => String("large")
+        }}
+        className=Classes.button>
+        <Common.Icon.KeyboardArrowUp />
+      </Mui.Fab>
+    </div>
   </Mui.Grow>
 }

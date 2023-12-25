@@ -13,12 +13,13 @@ module Classes = {
 let make = () => {
   let intl = useIntl()
   let prefersDarkMode = Mui.Core.useMediaQueryString(Common.Constants.darkModeMediaQuery)
+  let router = Next.Navigation.useRouter()
 
-  let onEmailUs = () => App_Page.goTo(EmailUs)
+  let onEmailUs = () => router->App_Page.goTo(EmailUs)
 
-  let onLogoClick = _ => App_Page.goTo(Home)
+  let onLogoClick = _ => router->App_Page.goTo(Home)
 
-  let onRegisterClick = _ => App_Page.goTo(Registrations)
+  let onRegisterClick = _ => router->App_Page.goTo(Registrations)
 
   <Container>
     <Mui.Grid item=true>

@@ -5,9 +5,10 @@ module Item = TopMenu_Item
 let make = () => {
   let (drawerOpen, setDrawerOpen) = React.useState(() => false)
   let intl = ReactIntl.useIntl()
-  let url = RescriptReactRouter.useUrl()
+  let pathname = Next.Navigation.usePathname()
+  let router = Next.Navigation.useRouter()
 
-  let onAppNameClick = _ => App_Page.goTo(Home)
+  let onAppNameClick = _ => router->App_Page.goTo(Home)
 
   <Mui.AppBar position=Static>
     <Drawer drawerOpen onClose={() => setDrawerOpen(_ => false)} />
@@ -16,7 +17,7 @@ let make = () => {
     </Mui.Hidden>
     <Mui.Hidden mdUp=true>
       <Mui.Toolbar>
-        {if url->App_Page.isHomePage || url->App_Page.isRegistrationsPage {
+        {if pathname->App_Page.isHomePage || pathname->App_Page.isRegistrationsPage {
           <Mui.Grid container=true justifyContent=String("space-between") alignItems=Center>
             {<>
               <Mui.Grid item=true>

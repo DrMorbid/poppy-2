@@ -9,7 +9,8 @@ module Classes = {
 @react.component
 let make = (~drawerOpen, ~onClose) => {
   let intl = useIntl()
-  let url = RescriptReactRouter.useUrl()
+  let pathname = Next.Navigation.usePathname()
+  let router = Next.Navigation.useRouter()
   let (
     {homeMenuItemTargets, registrationsMenuItemTargets, _}: App_Context.state,
     _,
@@ -21,17 +22,18 @@ let make = (~drawerOpen, ~onClose) => {
     anchor=Right
     onClose={(_, _) => onClose()}>
     <Mui.List className=Classes.list>
-      {url
+      {pathname
       ->getMenuItems
       ->List.mapWithIndex((index, section) =>
         <Mui.ListItemButton
           onClick={_ =>
             section->onClick(
               ~onDrawerClose=onClose,
-              ~menuItemTargets=url->pickMenuItemTargets(
+              ~menuItemTargets=pathname->pickMenuItemTargets(
                 ~homeMenuItemTargets,
                 ~registrationsMenuItemTargets,
               ),
+              ~router,
             )}
           key={`menu-item-${index->Int.toString}`}>
           <Mui.ListItemText

@@ -3,7 +3,7 @@ open Message.Home
 module CarouselItem = Home_CarouselItem
 
 @react.component
-let make = () => {
+let default = () => {
   let whoWeAreTopRef = React.useRef(Nullable.null)
   let referencesTopRef = React.useRef(Nullable.null)
   let (_, dispatch) = React.useContext(App_Context.Context.t)
