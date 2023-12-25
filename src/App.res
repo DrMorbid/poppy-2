@@ -1,3 +1,5 @@
+@@directive("'use client';")
+
 open ReactDOM
 open Utils.Style
 open Emotion
@@ -5,7 +7,6 @@ open Emotion
 module Theme = App_Theme
 module Context = App_Context
 module Page = App_Page
-module Router = App_Router
 module ScrollToTop = App_ScrollToTop
 module ScrollableSection = App_ScrollableSection
 module ScrollableSections = App_ScrollableSections
@@ -42,9 +43,7 @@ module Classes = {
 }
 
 @react.component
-let make = () => {
-  let isSmUp = Mui.Core.useMediaQueryString(Theme.Breakpoint.smUp)
-  let isMdUp = Mui.Core.useMediaQueryString(Theme.Breakpoint.mdUp)
+let make = (~children) => {
   let prefersDarkMode = Mui.Core.useMediaQueryString(Common.Constants.darkModeMediaQuery)
   let topRef = React.useRef(Nullable.null)
   let (_, dispatch) = React.useContext(App_Context.Context.t)
@@ -68,21 +67,9 @@ let make = () => {
       <Mui.Grid item=true>
         <TopMenu />
       </Mui.Grid>
-      <Mui.Grid item=true>
-        <Router />
-      </Mui.Grid>
+      <Mui.Grid item=true> {children} </Mui.Grid>
     </Mui.Grid>
     <Mui.Snackbar />
-    <ScrollToTop>
-      <Mui.Fab
-        color=Primary
-        size={switch (isSmUp, isMdUp) {
-        | (false, false) => String("small")
-        | (true, false) => String("medium")
-        | (_, true) => String("large")
-        }}>
-        <Common.Icon.KeyboardArrowUp />
-      </Mui.Fab>
-    </ScrollToTop>
+    <ScrollToTop />
   </Mui.Container>
 }

@@ -2,7 +2,7 @@ open Message
 open Message.Contact
 
 @react.component
-let make = () => {
+let default = () => {
   let (mapUrl, setMapUrl) = React.useState(() => None)
   let (isMapBeingLoaded, setIsMapBeingLoaded) = React.useState(() => false)
   let intl = ReactIntl.useIntl()

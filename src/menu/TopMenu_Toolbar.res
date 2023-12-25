@@ -16,7 +16,8 @@ module Classes = {
 @react.component
 let make = () => {
   let intl = useIntl()
-  let url = RescriptReactRouter.useUrl()
+  let pathname = Next.Navigation.usePathname()
+  let router = Next.Navigation.useRouter()
   let (
     {homeMenuItemTargets, registrationsMenuItemTargets, _}: App_Context.state,
     _,
@@ -24,7 +25,7 @@ let make = () => {
 
   <Mui.Toolbar disableGutters=true>
     <Mui.Grid container=true justifyContent=String("space-evenly") spacing=Int(1)>
-      {url
+      {pathname
       ->getMenuItems
       ->List.mapWithIndex((index, menuItem) =>
         <Mui.Grid item=true key={`menu-item-${index->Int.toString}`}>
@@ -33,10 +34,11 @@ let make = () => {
             variant=Outlined
             onClick={_ =>
               menuItem->onClick(
-                ~menuItemTargets=url->pickMenuItemTargets(
+                ~menuItemTargets=pathname->pickMenuItemTargets(
                   ~homeMenuItemTargets,
                   ~registrationsMenuItemTargets,
                 ),
+                ~router,
               )}
             classes={root: Classes.label}>
             {intl->ReactIntl.Intl.formatMessage(menuItem->App_Types.MenuItem.toLabel)->React.string}

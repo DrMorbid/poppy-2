@@ -1,10 +1,11 @@
 @val
-external mode: option<[#development | #production]> = "import.meta.env.MODE"
+external nodeEnv: option<[#development | #production]> = "process.env.NODE_ENV"
+
 module SmtpJs = {
   @val
-  external secureToken: option<string> = "import.meta.env.VITE_SMTPJS_SECURE_TOKEN"
+  external secureToken: option<string> = "process.env.NEXT_PUBLIC_SMTPJS_SECURE_TOKEN"
   @val
-  external from: option<string> = "import.meta.env.VITE_SMTPJS_FROM"
+  external from: option<string> = "process.env.NEXT_PUBLIC_SMTPJS_FROM"
   @val
-  external to: option<string> = "import.meta.env.VITE_SMTPJS_TO"
+  external to: option<string> = "process.env.NEXT_PUBLIC_SMTPJS_TO"
 }

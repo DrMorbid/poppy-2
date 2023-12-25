@@ -1,10 +1,10 @@
 open Scroll
 open App_Types.MenuItem
 
-let getMenuItems = url =>
-  if url->App_Page.isHomePage {
+let getMenuItems = pathname =>
+  if pathname->App_Page.isHomePage {
     list{WhoWeAre, QAndA, References, Contact}
-  } else if url->App_Page.isRegistrationsPage {
+  } else if pathname->App_Page.isRegistrationsPage {
     list{
       Home,
       RegistrationsYoungest,
@@ -21,14 +21,19 @@ let scrollToSection = (scrollableRef: React.ref<Nullable.t<Dom.element>>) =>
   ->Nullable.toOption
   ->Option.forEach(ref => ref->scrollIntoView(makeScrollOptions()))
 
-let onClick = (~onDrawerClose=?, ~menuItemTargets: App_Context.menuItemTargets, menuItem) => {
+let onClick = (
+  ~onDrawerClose=?,
+  ~menuItemTargets: App_Context.menuItemTargets,
+  ~router,
+  menuItem,
+) => {
   let goToTarget = () =>
     menuItemTargets
     ->Map.get(menuItem)
     ->Option.forEach(menuItem =>
       switch menuItem {
       | ScrollableRef(scrollableRef) => scrollToSection(scrollableRef)
-      | Page(page) => App_Page.goTo(page)
+      | Page(page) => router->App_Page.goTo(page)
       }
     )
 

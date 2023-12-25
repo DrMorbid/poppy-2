@@ -22,7 +22,7 @@ module Section = {
 }
 
 @react.component
-let make = () => {
+let default = () => {
   let intl = useIntl()
 
   <Common.Text

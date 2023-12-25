@@ -1,14 +1,23 @@
-open ReactDOM
+@@directive("'use client';")
 
-%%raw(`import "./theme/background.css"`)
-%%raw(`import "./theme/fonts.css"`)
-%%raw(`import "./theme/pickers.css"`)
+@react.component
+let make = (~children) => {
+  let prefersDarkMode = Mui.Core.useMediaQueryString(Common.Constants.darkModeMediaQuery)
 
-querySelector("#root")
-->Option.getExn
-->Client.createRoot
-->Client.Root.render(
-  <React.StrictMode>
-    <Root />
-  </React.StrictMode>,
-)
+  <IntlProvider>
+    <App.Context.Provider>
+      <MuiNext.AppRouterCacheProvider>
+        <Mui.ThemeProvider theme={Theme(App_Theme.theme(~prefersDarkMode))}>
+          <Mui.CssBaseline />
+          <MuiXDatePicker.LocalizationProvider
+            dateAdapter=MuiXDatePicker.LocalizationProvider.adapterDayjs
+            adapterLocale=MuiXDatePicker.DayJs.csLocale>
+            <main>
+              <App> {children} </App>
+            </main>
+          </MuiXDatePicker.LocalizationProvider>
+        </Mui.ThemeProvider>
+      </MuiNext.AppRouterCacheProvider>
+    </App.Context.Provider>
+  </IntlProvider>
+}
