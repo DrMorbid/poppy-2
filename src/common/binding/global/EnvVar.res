@@ -1,5 +1,5 @@
 @val
-external env: option<[#development | #staging | #production]> = "process.env.NODE_ENV"
+external nodeEnv: option<[#development | #production]> = "process.env.NODE_ENV"
 
 module SmtpJs = {
   @val

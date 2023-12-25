@@ -8,7 +8,7 @@
     "res:dev": "rescript clean && rescript build -w",
     "dev": "next dev",
     "start": "next start",
-    "build:staging": "next build --mode staging",
+    "build:staging": "env-cmd -f .env.staging next build",
     "build": "next build",
     "intl:extract-messages": "node ./scripts/intlExtractor.js"
   },
@@ -56,6 +56,7 @@
     "@testing-library/jest-dom": "^6.1.5",
     "@testing-library/react": "^14.1.2",
     "@testing-library/user-event": "^14.5.1",
+    "env-cmd": "^10.1.0",
     "reanalyze": "^2.23.0",
     "rescript": "11.0.0-rc.8",
     "rescript-react-intl": "^3.0.0",
