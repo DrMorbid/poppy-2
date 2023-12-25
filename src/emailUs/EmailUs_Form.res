@@ -69,7 +69,7 @@ module FormInput = {
               ->Option.map(
                 ReDate.isBefore(_, Common.Constants.highestChildAge->Utils.Date.ageLimitToDate),
               )
-              ->Option.getWithDefault(false)
+              ->Option.getOr(false)
             ) {
               Some("min")
             } else {
@@ -85,7 +85,7 @@ module FormInput = {
               ->Option.map(
                 ReDate.isAfter(_, Common.Constants.lowestChildAge->Utils.Date.ageLimitToDate),
               )
-              ->Option.getWithDefault(false)
+              ->Option.getOr(false)
             ) {
               Some("max")
             } else {

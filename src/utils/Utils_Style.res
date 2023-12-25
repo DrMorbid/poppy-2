@@ -27,12 +27,12 @@ let mixColors = (
   let tweakColor = (~transparency=?, ~percentage=?, color) =>
     transparency
     ->Option.map(transparency => color->App_Theme.Transparency.addTransparency(transparency))
-    ->Option.getWithDefault(color) ++
+    ->Option.getOr(color) ++
     " " ++
     percentage
     ->Option.map(Int.toString)
     ->Option.map(percentage => percentage ++ "%")
-    ->Option.getWithDefault("")
+    ->Option.getOr("")
 
   "color-mix(in srgb, " ++
   color->tweakColor(~transparency=?transparency1, ~percentage=?percentage1) ++

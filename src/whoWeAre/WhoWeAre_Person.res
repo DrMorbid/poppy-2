@@ -45,7 +45,7 @@ let make = (~photoSrc, ~name, ~description, ~email=?) => {
             ...description->List.map((descriptionLine): Text.fragmentParagraph => {
               content: list{descriptionLine},
             }),
-          }->List.concat(email->Option.mapWithDefault(list{}, email => list{email->getContact})),
+          }->List.concat(email->Option.mapOr(list{}, email => list{email->getContact})),
         )}
       />
     </Mui.Grid>

@@ -30,7 +30,7 @@ let make = (~sections, ~coloredSections=Even, ~children=?) => {
       )
       ->List.toArray
       ->React.array}
-      {children->Option.getWithDefault(React.null)}
+      {children->Option.getOr(React.null)}
     </>}
   </Mui.Grid>
 }

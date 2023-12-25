@@ -40,9 +40,9 @@ let make = () => {
     ->Promise.thenResolve(async body => {
       if input.childBirthdate->Option.isSome {
         let message = await SmtpJs.email->SmtpJs.sendWithSecureToken({
-          "SecureToken": EnvVar.SmtpJs.secureToken->Option.getWithDefault(""),
-          "To": EnvVar.SmtpJs.to->Option.getWithDefault(""),
-          "From": EnvVar.SmtpJs.from->Option.getWithDefault(""),
+          "SecureToken": EnvVar.SmtpJs.secureToken->Option.getOr(""),
+          "To": EnvVar.SmtpJs.to->Option.getOr(""),
+          "From": EnvVar.SmtpJs.from->Option.getOr(""),
           "Subject": intl->ReactIntl.Intl.formatMessage(emailSubject),
           "Body": body,
         })
@@ -130,7 +130,7 @@ let make = () => {
                     variant: Standard,
                   },
                 })
-                ->Option.getWithDefault({textField: {variant: Standard}})}
+                ->Option.getOr({textField: {variant: Standard}})}
               />
             , ())}
           </Mui.Grid>

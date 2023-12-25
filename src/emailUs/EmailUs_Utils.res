@@ -28,10 +28,10 @@ let fetchEmailBody = async (
     %re("/\${childBirthdate}/g"),
     childBirthdate
     ->Option.map(Date.toLocaleDateStringWithLocaleAndOptions(_, "cs-CZ", {dateStyle: #medium}))
-    ->Option.getWithDefault(""),
+    ->Option.getOr(""),
   )
   ->String.replaceRegExp(%re("/\${cityOfResidence}/g"), cityOfResidence)
   ->String.replaceRegExp(%re("/\${parentPhone}/g"), parentPhone)
   ->String.replaceRegExp(%re("/\${parentEmail}/g"), parentEmail)
-  ->String.replaceRegExp(%re("/\${note}/g"), note->Option.getWithDefault(""))
+  ->String.replaceRegExp(%re("/\${note}/g"), note->Option.getOr(""))
 }
