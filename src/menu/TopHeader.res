@@ -24,7 +24,7 @@ let make = () => {
     <Mui.Grid item=true>
       <Common.Button.WithIcon label=emailUs onClick={_ => onEmailUs()->ignore} />
     </Mui.Grid>
-    <Mui.Hidden smDown=true>
+    <Mui.Hidden mdDown=true>
       <Mui.Grid item=true className=Classes.logoContainer>
         <Mui.ButtonBase onClick=onLogoClick className=Common.Style.fullWidth>
           <img

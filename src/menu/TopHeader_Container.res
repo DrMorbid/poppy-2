@@ -1,7 +1,7 @@
 @react.component
 let make = (~children) => {
   <>
-    <Mui.Hidden xsDown=true>
+    <Mui.Hidden smDown=true>
       <Mui.Grid
         container=true
         direction=Row
@@ -10,7 +10,7 @@ let make = (~children) => {
         children
       </Mui.Grid>
     </Mui.Hidden>
-    <Mui.Hidden xsUp=true>
+    <Mui.Hidden smUp=true>
       <Mui.Grid container=true direction=Row justifyContent=Mui.System.Value.String("space-evenly")>
         children
       </Mui.Grid>

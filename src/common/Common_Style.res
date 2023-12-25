@@ -17,34 +17,34 @@ let fullWidth = Style.make(~width="100% !important", ())->styleToClass
 let centeredText = Style.make(~textAlign="center !important", ())->styleToClass
 let pageGuttersTop =
   list{
-    Style.make(~paddingTop=`${pagePaddingMdUp} !important`, ())->styleWithMediaQuery(
-      ~addMediaPrefix=true,
-      ~mediaQuery=App_Theme.Breakpoint.smUp,
-    ),
-    Style.make(~paddingTop=`${pagePaddingSm} !important`, ())->styleWithMediaQuery(
+    Style.make(~paddingTop=`${pagePaddingXs} !important`, ())->styleWithMediaQuery(
       ~addMediaPrefix=true,
       ~mediaQuery=App_Theme.Breakpoint.xsUp,
     ),
-    Style.make(~paddingTop=`${pagePaddingXs} !important`, ())->styleWithMediaQuery(
+    Style.make(~paddingTop=`${pagePaddingSm} !important`, ())->styleWithMediaQuery(
       ~addMediaPrefix=true,
-      ~mediaQuery=App_Theme.Breakpoint.xsDown,
+      ~mediaQuery=App_Theme.Breakpoint.smUp,
+    ),
+    Style.make(~paddingTop=`${pagePaddingMdUp} !important`, ())->styleWithMediaQuery(
+      ~addMediaPrefix=true,
+      ~mediaQuery=App_Theme.Breakpoint.mdUp,
     ),
   }
   ->stylesCombiner
   ->styleToClass
 let pageGuttersComplete =
   list{
-    Style.make(~padding=`${pagePaddingMdUp} !important`, ())->styleWithMediaQuery(
-      ~addMediaPrefix=true,
-      ~mediaQuery=App_Theme.Breakpoint.smUp,
-    ),
-    Style.make(~padding=`${pagePaddingSm} !important`, ())->styleWithMediaQuery(
+    Style.make(~padding=`${pagePaddingXs} !important`, ())->styleWithMediaQuery(
       ~addMediaPrefix=true,
       ~mediaQuery=App_Theme.Breakpoint.xsUp,
     ),
-    Style.make(~padding=`${pagePaddingXs} !important`, ())->styleWithMediaQuery(
+    Style.make(~padding=`${pagePaddingSm} !important`, ())->styleWithMediaQuery(
       ~addMediaPrefix=true,
-      ~mediaQuery=App_Theme.Breakpoint.xsDown,
+      ~mediaQuery=App_Theme.Breakpoint.smUp,
+    ),
+    Style.make(~padding=`${pagePaddingMdUp} !important`, ())->styleWithMediaQuery(
+      ~addMediaPrefix=true,
+      ~mediaQuery=App_Theme.Breakpoint.mdUp,
     ),
   }
   ->stylesCombiner

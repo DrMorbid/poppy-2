@@ -43,8 +43,8 @@ module Classes = {
 
 @react.component
 let make = () => {
-  let isSmUp = Mui.Core.useMediaQueryString(App_Theme.Breakpoint.smUp)
-  let isMdUp = Mui.Core.useMediaQueryString(App_Theme.Breakpoint.mdUp)
+  let isSmUp = Mui.Core.useMediaQueryString(Theme.Breakpoint.smUp)
+  let isMdUp = Mui.Core.useMediaQueryString(Theme.Breakpoint.mdUp)
   let prefersDarkMode = Mui.Core.useMediaQueryString(Common.Constants.darkModeMediaQuery)
   let topRef = React.useRef(Nullable.null)
   let (_, dispatch) = React.useContext(App_Context.Context.t)
@@ -55,6 +55,7 @@ let make = () => {
     None
   }, [topRef])
 
+  // TODO: After MUI update, try to use variants in Fab.size instead of String. Variants used to not work properly
   <Mui.Container
     maxWidth=Xl
     classes={root: Classes.container}
@@ -76,9 +77,9 @@ let make = () => {
       <Mui.Fab
         color=Primary
         size={switch (isSmUp, isMdUp) {
-        | (false, false) => Small
-        | (true, false) => Medium
-        | (_, true) => Large
+        | (false, false) => String("small")
+        | (true, false) => String("medium")
+        | (_, true) => String("large")
         }}>
         <Common.Icon.KeyboardArrowUp />
       </Mui.Fab>

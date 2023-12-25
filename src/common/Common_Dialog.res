@@ -25,10 +25,15 @@ let make = (~isOpen as open_, ~onClose, ~children, ~fullScreen=?, ~fixedSize=?) 
     | (false, false, false) => Xs
     }}>
     <Mui.DialogTitle>
-      <Mui.Grid item=true>
-        <Mui.IconButton onClick={_ => onClose()}>
-          <Common_Icon.Close />
-        </Mui.IconButton>
+      <Mui.Grid
+        container=true
+        justifyContent=Mui.System.Value.String("flex-end")
+        alignItems=Mui.System.Value.Center>
+        <Mui.Grid item=true>
+          <Mui.IconButton onClick={_ => onClose()}>
+            <Common_Icon.Close />
+          </Mui.IconButton>
+        </Mui.Grid>
       </Mui.Grid>
     </Mui.DialogTitle>
     <Mui.DialogContent> children </Mui.DialogContent>
