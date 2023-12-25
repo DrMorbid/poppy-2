@@ -3,7 +3,7 @@ open ReactDOM
 open TopMenu_Item
 
 module Classes = {
-  let list = Style.make(~width="50vw", ())->Emotion.styleToClass
+  let list = Style.make(~width="50vw !important", ())->Emotion.styleToClass
 }
 
 @react.component
@@ -16,16 +16,15 @@ let make = (~drawerOpen, ~onClose) => {
   ) = React.useContext(App_Context.Context.t)
 
   <Mui.Drawer
-    \"open"=drawerOpen
-    transitionDuration={Common.Constants.drawerTransitionDuration->Mui.Drawer.TransitionDuration.int}
-    anchor=#right
-    onClose={_ => onClose()}>
+    open_=drawerOpen
+    transitionDuration={Time(Common.Constants.drawerTransitionDuration)}
+    anchor=Right
+    onClose={(_, _) => onClose()}>
     <Mui.List className=Classes.list>
       {url
       ->getMenuItems
       ->List.mapWithIndex((index, section) =>
-        <Mui.ListItem
-          button=true
+        <Mui.ListItemButton
           onClick={_ =>
             section->onClick(
               ~onDrawerClose=onClose,
@@ -40,7 +39,7 @@ let make = (~drawerOpen, ~onClose) => {
             ->ReactIntl.Intl.formatMessage(section->App_Types.MenuItem.toLabel)
             ->React.string}
           />
-        </Mui.ListItem>
+        </Mui.ListItemButton>
       )
       ->List.toArray
       ->React.array}

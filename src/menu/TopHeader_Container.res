@@ -1,13 +1,19 @@
-open Mui
-
 @react.component
 let make = (~children) => {
   <>
-    <Hidden xsDown=true>
-      <Grid container=true direction=#row justify=#"space-between" wrap=#nowrap> children </Grid>
-    </Hidden>
-    <Hidden smUp=true>
-      <Grid container=true direction=#row justify=#"space-evenly"> children </Grid>
-    </Hidden>
+    <Mui.Hidden smDown=true>
+      <Mui.Grid
+        container=true
+        direction=Row
+        justifyContent=Mui.System.Value.String("space-between")
+        wrap=Nowrap>
+        children
+      </Mui.Grid>
+    </Mui.Hidden>
+    <Mui.Hidden smUp=true>
+      <Mui.Grid container=true direction=Row justifyContent=Mui.System.Value.String("space-evenly")>
+        children
+      </Mui.Grid>
+    </Mui.Hidden>
   </>
 }

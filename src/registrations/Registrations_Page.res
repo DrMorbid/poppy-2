@@ -1,4 +1,3 @@
-open Mui
 open Message.Registrations
 
 @react.component
@@ -9,7 +8,7 @@ let make = () => {
   let currentRegistrationDatesTopRef = React.useRef(null)
   let (_, dispatch) = React.useContext(App_Context.Context.t)
 
-  React.useEffect4(() => {
+  React.useEffect(() => {
     dispatch(
       App_Context.AddRegistrationsMenuItemScrollableRef(
         RegistrationsYoungest,
@@ -51,7 +50,7 @@ let make = () => {
           {
             element: <Common.Text
               header=Message.registrationsYoungest
-              headerVariant=#h4
+              headerVariant=H4
               body={Lists(list{
                 {
                   list: list{
@@ -67,10 +66,10 @@ let make = () => {
           },
           {
             element: <>
-              <Grid item=true>
+              <Mui.Grid item=true>
                 <Common.Text
                   header=Message.registrationsMiddle
-                  headerVariant=#h4
+                  headerVariant=H4
                   body={Lists(list{
                     {
                       list: list{
@@ -93,11 +92,11 @@ let make = () => {
                     },
                   })}
                 />
-              </Grid>
-              <Grid item=true>
+              </Mui.Grid>
+              <Mui.Grid item=true>
                 <Common.Text
                   header=middleKidsSection2Header
-                  headerVariant=#h6
+                  headerVariant=H6
                   disableGutters=true
                   body=Lists(list{
                     {
@@ -108,14 +107,14 @@ let make = () => {
                     },
                   })
                 />
-              </Grid>
+              </Mui.Grid>
             </>,
             topRef: registrationsMiddleTopRef,
           },
           {
             element: <Common.Text
               header=Message.registrationsOldest
-              headerVariant=#h4
+              headerVariant=H4
               body={Lists(list{
                 {
                   list: list{
@@ -130,7 +129,7 @@ let make = () => {
           },
           {
             element: <News.Section
-              header=currentRegistrationDates headerVariant=#h3 headerUppercase=true
+              header=currentRegistrationDates headerVariant=H3 headerUppercase=true
             />,
             topRef: currentRegistrationDatesTopRef,
             accented: Yellow,

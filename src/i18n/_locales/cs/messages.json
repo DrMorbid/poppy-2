@@ -27,6 +27,10 @@
         "message": "NE: příliš slavnostní oblečení, kravata, obrovské sukně",
         "description": "Q&A page - answer to question 11 - paragraph 1 - inappropriate 4"
     },
+    "11fc9b24-ab05-4c46-b04b-116bd45f5a5a": {
+        "message": "Prosím, zadejte platné datum.",
+        "description": "Date validation - date is invalid"
+    },
     "1348acf3-9407-479d-8c25-731a155bf300": {
         "message": "Je Vaše dítě zdravé?",
         "description": "Q&A page - question 2"
@@ -247,6 +251,10 @@
         "message": "Malesuada fames ac turpis egestas integer eget aliquet. Eu volutpat odio facilisis mauris sit amet massa vitae tortor. Vitae aliquet nec ullamcorper sit amet risus.",
         "description": "The second paragraph on the home page"
     },
+    "66832bdf-0a9d-40b4-ad12-922591b87198": {
+        "message": "Datum je příliš vysoké.",
+        "description": "Date validation - date is too high"
+    },
     "668cef96-3e5a-4e28-a83a-a5aef1ca64b7": {
         "message": "Produkční, pravá ruka Martiny, věnuje se registracím nových dětí, odpovídá na Vaše dotazy, spravuje databázi talentů a zve děti na castingy.",
         "description": "About Us page - the first part of registration and database person's description"
@@ -344,8 +352,8 @@
         "description": "Q&A page - answer to question 3 - paragraph 2"
     },
     "8acc5ad9-1872-4be3-b3d0-8378ff135ef9": {
-        "message": "Vyberte prosím datum narození.",
-        "description": "Email Us page - the child birthdate error helper text"
+        "message": "Datum je příliš nízké.",
+        "description": "Date validation - date is too low"
     },
     "8b53a69e-1841-451e-af0e-ef21117bc62a": {
         "message": "ozvěte se tedy prosím až kolem 4. roka dítěte",
@@ -526,6 +534,10 @@
     "cf18dd06-a669-41d1-988d-9ad750665556": {
         "message": "Castingy se konají nejčastěji ve všední dny nejpozději do 17h, zvažte tedy, zda je to ve vašich možnostech (práce, škola, kroužky).",
         "description": "Q&A page - answer to question 3 - paragraph 3"
+    },
+    "cff318a3-7706-433c-bd4b-13d498f57474": {
+        "message": "Prosím, zadejte datum.",
+        "description": "Date validation - date is missing"
     },
     "d0ae95ba-5bdf-4dde-a123-4b525d4e4100": {
         "message": "Castingy jsou zdarma. Přefocení každý půl rok a po 3.roce každý rok u nás v atelieru také zdarma.",

@@ -4,7 +4,7 @@ let fetchEmailBody = async (
   ~note=?,
   ~parentName,
   ~childName,
-  ~childBirthdate,
+  ~childBirthdate=?,
   ~cityOfResidence,
   ~parentPhone,
   ~parentEmail,
@@ -26,7 +26,9 @@ let fetchEmailBody = async (
   ->String.replaceRegExp(%re("/\${childName}/g"), childName)
   ->String.replaceRegExp(
     %re("/\${childBirthdate}/g"),
-    childBirthdate->Date.toLocaleDateStringWithLocaleAndOptions("cs-CZ", {dateStyle: #medium}),
+    childBirthdate
+    ->Option.map(Date.toLocaleDateStringWithLocaleAndOptions(_, "cs-CZ", {dateStyle: #medium}))
+    ->Option.getWithDefault(""),
   )
   ->String.replaceRegExp(%re("/\${cityOfResidence}/g"), cityOfResidence)
   ->String.replaceRegExp(%re("/\${parentPhone}/g"), parentPhone)

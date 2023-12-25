@@ -1,5 +1,5 @@
 module Close = {
-  @react.component @module("@material-ui/icons/Close")
+  @react.component @module("@mui/icons-material/Close")
   external make: (~color: string=?, ~fontSize: string=?, ~className: string=?) => React.element =
     "default"
 }

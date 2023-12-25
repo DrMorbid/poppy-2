@@ -1,39 +1,41 @@
-open Mui
 open ReactDOM
 
 module Classes = {
-  let mapSize = Style.make(~width="100%", ~height="75%", ())->Emotion.styleToClass
+  let mapSize =
+    Style.make(~width="100% !important", ~height="75% !important", ())->Emotion.styleToClass
 }
 
 @react.component
-let make = (~isOpen as \"open", ~onClose, ~children, ~fullScreen=?, ~fixedSize=?) => {
-  let theme = Core.useTheme()
-  let isMdUp = Core.useMediaQuery(theme->Core.Breakpoint.get(#md->#up))
-  let isLgUp = Core.useMediaQuery(theme->Core.Breakpoint.get(#lg->#up))
-  let isXlUp = Core.useMediaQuery(theme->Core.Breakpoint.get(#xl->#up))
+let make = (~isOpen as open_, ~onClose, ~children, ~fullScreen=?, ~fixedSize=?) => {
+  let isMdUp = Mui.Core.useMediaQueryString(App_Theme.Breakpoint.mdUp)
+  let isLgUp = Mui.Core.useMediaQueryString(App_Theme.Breakpoint.lgUp)
+  let isXlUp = Mui.Core.useMediaQueryString(App_Theme.Breakpoint.xlUp)
 
-  <Dialog
+  <Mui.Dialog
     onClose={(_, _) => onClose()}
-    \"open"
+    open_
     ?fullScreen
-    classes=?{fixedSize->Option.flatMap(fixedSize =>
-      fixedSize ? Some(Dialog.Classes.make(~paper=Classes.mapSize, ())) : None
-    )}
+    classes={
+      paper: ?fixedSize->Option.flatMap(fixedSize => fixedSize ? Some(Classes.mapSize) : None),
+    }
     maxWidth={switch (isXlUp, isLgUp, isMdUp) {
-    | (true, _, _) => Dialog.MaxWidth.lg
-    | (false, true, _) => Dialog.MaxWidth.md
-    | (false, false, true) => Dialog.MaxWidth.sm
-    | (false, false, false) => Dialog.MaxWidth.xs
+    | (true, _, _) => Lg
+    | (false, true, _) => Md
+    | (false, false, true) => Sm
+    | (false, false, false) => Xs
     }}>
-    <DialogTitle>
-      <Grid container=true justify=#"flex-end" alignItems=#center>
-        <Grid item=true>
-          <IconButton onClick={_ => onClose()}>
+    <Mui.DialogTitle>
+      <Mui.Grid
+        container=true
+        justifyContent=Mui.System.Value.String("flex-end")
+        alignItems=Mui.System.Value.Center>
+        <Mui.Grid item=true>
+          <Mui.IconButton onClick={_ => onClose()}>
             <Common_Icon.Close />
-          </IconButton>
-        </Grid>
-      </Grid>
-    </DialogTitle>
-    <DialogContent> children </DialogContent>
-  </Dialog>
+          </Mui.IconButton>
+        </Mui.Grid>
+      </Mui.Grid>
+    </Mui.DialogTitle>
+    <Mui.DialogContent> children </Mui.DialogContent>
+  </Mui.Dialog>
 }

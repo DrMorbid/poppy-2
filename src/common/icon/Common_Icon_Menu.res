@@ -1,5 +1,5 @@
 module Menu = {
-  @react.component @module("@material-ui/icons/Menu")
+  @react.component @module("@mui/icons-material/Menu")
   external make: (~color: string=?, ~fontSize: string=?, ~className: string=?) => React.element =
     "default"
 }

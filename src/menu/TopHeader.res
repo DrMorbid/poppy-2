@@ -1,4 +1,3 @@
-open Mui
 open Message.Menu
 open ReactIntl
 open ReactDOM
@@ -6,14 +5,14 @@ open ReactDOM
 module Container = TopHeader_Container
 
 module Classes = {
-  let logoContainer = Style.make(~width="26%", ())->Emotion.styleToClass
-  let logo = Style.make(~height="10vw", ())->Emotion.styleToClass
+  let logoContainer = Style.make(~width="26% !important", ())->Emotion.styleToClass
+  let logo = Style.make(~height="10vw !important", ())->Emotion.styleToClass
 }
 
 @react.component
 let make = () => {
   let intl = useIntl()
-  let prefersDarkMode = Core.useMediaQueryString(Common.Constants.darkModeMediaQuery)
+  let prefersDarkMode = Mui.Core.useMediaQueryString(Common.Constants.darkModeMediaQuery)
 
   let onEmailUs = () => App_Page.goTo(EmailUs)
 
@@ -22,23 +21,23 @@ let make = () => {
   let onRegisterClick = _ => App_Page.goTo(Registrations)
 
   <Container>
-    <Grid item=true>
+    <Mui.Grid item=true>
       <Common.Button.WithIcon label=emailUs onClick={_ => onEmailUs()->ignore} />
-    </Grid>
-    <Hidden smDown=true>
-      <Grid item=true className=Classes.logoContainer>
-        <ButtonBase onClick=onLogoClick className=Common.Style.fullWidth>
+    </Mui.Grid>
+    <Mui.Hidden mdDown=true>
+      <Mui.Grid item=true className=Classes.logoContainer>
+        <Mui.ButtonBase onClick=onLogoClick className=Common.Style.fullWidth>
           <img
             src={prefersDarkMode ? "/poppy-logo-dark.png" : "/poppy-logo-light.png"}
             className=Classes.logo
           />
-        </ButtonBase>
-      </Grid>
-    </Hidden>
-    <Grid item=true>
-      <Button variant=#contained color=#primary onClick=onRegisterClick>
+        </Mui.ButtonBase>
+      </Mui.Grid>
+    </Mui.Hidden>
+    <Mui.Grid item=true>
+      <Mui.Button variant=Contained color=Primary onClick=onRegisterClick>
         {intl->ReactIntl.Intl.formatMessage(registrations)->React.string}
-      </Button>
-    </Grid>
+      </Mui.Button>
+    </Mui.Grid>
   </Container>
 }

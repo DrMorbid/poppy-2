@@ -1,10 +1,14 @@
 open EmailUs_Form
-open Mui
-open Mui.Grid
 
-type \"type" = [#text | #email | #tel]
+type type_ = [#text | #email | #tel]
 
-type grid = {xs: Grid.Xs.t, sm: Grid.Sm.t, md: Grid.Md.t, lg: Grid.Lg.t, xl: Grid.Xl.t}
+type grid = {
+  xs: Mui.Grid.autoNumberBool,
+  sm: Mui.Grid.autoNumberBool,
+  md: Mui.Grid.autoNumberBool,
+  lg: Mui.Grid.autoNumberBool,
+  xl: Mui.Grid.autoNumberBool,
+}
 type fieldGrid = {
   notLast: grid,
   last: grid,
@@ -12,18 +16,18 @@ type fieldGrid = {
 
 let fieldGrid = {
   notLast: {
-    xs: Xs.\"12",
-    sm: Sm.\"6",
-    md: Md.\"4",
-    lg: Lg.\"3",
-    xl: Xl.\"2",
+    xs: Number(12),
+    sm: Number(6),
+    md: Number(4),
+    lg: Number(3),
+    xl: Number(2),
   },
   last: {
-    xs: Xs.\"12",
-    sm: Sm.\"12",
-    md: Md.\"12",
-    lg: Lg.\"6",
-    xl: Xl.\"6",
+    xs: Number(12),
+    sm: Number(12),
+    md: Number(12),
+    lg: Number(6),
+    xl: Number(6),
   },
 }
 
@@ -33,13 +37,13 @@ let make = (
   ~field: Field.t,
   ~renderWithRegister,
   ~autoFocus=?,
-  ~\"type": \"type"=#text,
+  ~type_: type_=#text,
   ~multiline=?,
   ~last=false,
 ) => {
   let intl = ReactIntl.useIntl()
 
-  <Grid
+  <Mui.Grid
     item=true
     xs={last ? fieldGrid.last.xs : fieldGrid.notLast.xs}
     sm={last ? fieldGrid.last.sm : fieldGrid.notLast.sm}
@@ -47,15 +51,16 @@ let make = (
     lg={last ? fieldGrid.last.lg : fieldGrid.notLast.lg}
     xl={last ? fieldGrid.last.xl : fieldGrid.notLast.xl}>
     {renderWithRegister(
-      <TextField
+      <Mui.TextField
+        variant=Standard
         ?autoFocus
         fullWidth=true
-        margin=#none
+        margin=None
         label={intl->ReactIntl.Intl.formatMessage(label)->Jsx.string}
         required=field.required
-        \"type"={(\"type" :> string)}
+        type_={(type_ :> string)}
         ?multiline
       />,
     )}
-  </Grid>
+  </Mui.Grid>
 }

@@ -1,8 +1,6 @@
 open Message
 open Message.WhoWeAre
 open Common.Constants
-open Mui
-open Mui.Grid
 open Common.Text
 
 module Person = WhoWeAre_Person
@@ -12,8 +10,8 @@ let make = () => {
   <Common.Text
     header
     body={Element(
-      <Grid container=true className=Common.Style.sectionGap>
-        <Grid item=true xs=Xs.\"12" xl=Xl.\"6">
+      <Mui.Grid container=true className=Common.Style.sectionGap>
+        <Mui.Grid item=true xs=Number(12) xl=Number(6)>
           <Person
             photoSrc="/team/martina-popperova.jpg"
             name=companyOwner
@@ -30,8 +28,8 @@ let make = () => {
             }
             email=bossEmail
           />
-        </Grid>
-        <Grid item=true xs=Xs.\"12" xl=Xl.\"6">
+        </Mui.Grid>
+        <Mui.Grid item=true xs=Number(12) xl=Number(6)>
           <Person
             photoSrc="/team/hanka-kittnarova.jpg"
             name=registrationDatabasePerson
@@ -45,24 +43,24 @@ let make = () => {
             }
             email=registrationDatabasePersonEmail
           />
-        </Grid>
-        <Grid item=true xs=Xs.\"12" xl=Xl.\"6">
+        </Mui.Grid>
+        <Mui.Grid item=true xs=Number(12) xl=Number(6)>
           <Person
             photoSrc="/team/eva-kolinova.jpg"
             name=photographer
             description=list{
               Element(
-                <Link href=photographerWebsite key="element-fragment-1">
+                <Mui.Link href=photographerWebsite key="element-fragment-1">
                   {photographerWebsite->React.string}
-                </Link>,
+                </Mui.Link>,
               ),
               Text({
                 content: Message(photographer1),
               }),
             }
           />
-        </Grid>
-        <Grid item=true xs=Xs.\"12" xl=Xl.\"6">
+        </Mui.Grid>
+        <Mui.Grid item=true xs=Number(12) xl=Number(6)>
           <Common.Text
             body={Fragments(list{
               {
@@ -76,8 +74,8 @@ let make = () => {
               },
             })}
           />
-        </Grid>
-      </Grid>,
+        </Mui.Grid>
+      </Mui.Grid>,
     )}
   />
 }

@@ -1,5 +1,5 @@
 module MailOutline = {
-  @react.component @module("@material-ui/icons/MailOutline")
+  @react.component @module("@mui/icons-material/MailOutline")
   external make: (~color: string=?, ~fontSize: string=?, ~className: string=?) => React.element =
     "default"
 }

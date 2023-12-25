@@ -1,6 +1,4 @@
 open EmailUs_Form
-open Mui
-open Mui.Grid
 open Message.EmailUs
 open EmailUs_Utils
 
@@ -8,13 +6,14 @@ open EmailUs_Utils
 let make = () => {
   let (successAlertOpen, setSuccessAlertOpen) = React.useState(() => false)
   let (errorAlertOpen, setErrorAlertOpen) = React.useState(() => None)
+  let (dateErrorMessage, setDateErrorMessage) = React.useState(() => None)
 
   let form = Form.use(
     ~config={
       defaultValues: {
         parentName: "",
         childName: "",
-        childBirthdate: Date.make(),
+        childBirthdate: Some(Date.make()),
         cityOfResidence: "",
         parentPhone: "",
         parentEmail: "",
@@ -25,11 +24,11 @@ let make = () => {
 
   let intl = ReactIntl.useIntl()
 
-  let onSubmit = async (input, _) => {
+  let onSubmit = async (input, _) =>
     fetchEmailBody(
       ~parentName=input.parentName,
       ~childName=input.childName,
-      ~childBirthdate=input.childBirthdate,
+      ~childBirthdate=?input.childBirthdate,
       ~cityOfResidence=input.cityOfResidence,
       ~parentPhone=input.parentPhone,
       ~parentEmail=input.parentEmail,
@@ -39,46 +38,56 @@ let make = () => {
       ->Option.map(Array.joinWith(_, "")),
     )
     ->Promise.thenResolve(async body => {
-      let message = await SmtpJs.email->SmtpJs.sendWithSecureToken({
-        "SecureToken": EnvVar.SmtpJs.secureToken->Option.getWithDefault(""),
-        "To": EnvVar.SmtpJs.to->Option.getWithDefault(""),
-        "From": EnvVar.SmtpJs.from->Option.getWithDefault(""),
-        "Subject": intl->ReactIntl.Intl.formatMessage(emailSubject),
-        "Body": body,
-      })
+      if input.childBirthdate->Option.isSome {
+        let message = await SmtpJs.email->SmtpJs.sendWithSecureToken({
+          "SecureToken": EnvVar.SmtpJs.secureToken->Option.getWithDefault(""),
+          "To": EnvVar.SmtpJs.to->Option.getWithDefault(""),
+          "From": EnvVar.SmtpJs.from->Option.getWithDefault(""),
+          "Subject": intl->ReactIntl.Intl.formatMessage(emailSubject),
+          "Body": body,
+        })
 
-      if message->String.match(%re("/^ok$/i"))->Option.isSome {
-        setSuccessAlertOpen(_ => true)
+        if message->String.match(%re("/^ok$/i"))->Option.isSome {
+          setSuccessAlertOpen(_ => true)
+        } else {
+          setErrorAlertOpen(_ => Some(message))
+        }
       } else {
-        setErrorAlertOpen(_ => Some(message))
+        setErrorAlertOpen(_ => Some(Message.Date.dateMissing.defaultMessage))
       }
     })
     ->ignore
-  }
 
   let onSuccessClose = (_, _) => setSuccessAlertOpen(_ => false)
   let onErrorClose = (_, _) => setErrorAlertOpen(_ => None)
 
+  let onChildBirthdateChange = (onFormFieldChange, date) =>
+    date
+    ->Nullable.toOption
+    ->Option.map(DayJs.toDate)
+    ->Option.flatMap(date => date->Utils.Date.isValid ? Some(date) : None)
+    ->onFormFieldChange
+
   <Common.Text
     header
-    afterHeader={<Mui.Typography variant=#subtitle1>
+    afterHeader={<Mui.Typography variant=Subtitle1>
       {intl->ReactIntl.Intl.formatMessage(subHeader)->React.string}
     </Mui.Typography>}
     body=Element(
       <form
         onSubmit={form->Form.handleSubmit((input, form) => onSubmit(input, form)->ignore)}
         autoComplete="on">
-        <EmailUs_Alert \"open"=successAlertOpen severity=#success onClose=onSuccessClose>
+        <EmailUs_Alert open_=successAlertOpen severity=Success onClose=onSuccessClose>
           alertSuccess
         </EmailUs_Alert>
         <EmailUs_Alert
-          \"open"={errorAlertOpen->Option.isSome}
-          severity=#error
+          open_={errorAlertOpen->Option.isSome}
+          severity=Error
           onClose=onErrorClose
           messageValues=?{errorAlertOpen->Option.map(error => {"error": error})}>
           alertError
         </EmailUs_Alert>
-        <Grid container=true spacing=#2>
+        <Mui.Grid container=true spacing=Int(2)>
           <EmailUs_Field
             label=parentNameLabel
             field=Field.parentName
@@ -90,31 +99,41 @@ let make = () => {
             field=Field.childName
             renderWithRegister={field => form->FormInput.ChildName.renderWithRegister(field, ())}
           />
-          <Grid item=true xs=Xs.\"12" sm=Sm.\"6" md=Md.\"4" lg=Lg.\"3" xl=Xl.\"2">
-            {form->FormInput.ChildBirthdate.renderController(
-              ({field: {onChange, value, _}, fieldState: {error, _}, _}) =>
-                <MuiPickers.DatePicker
-                  name="childBirthdate"
-                  disableFuture=true
-                  openTo=#year
-                  format="d. M. yyyy"
-                  views={[#year, #month, #date]}
-                  fullWidth=true
-                  margin=#none
-                  label={intl->ReactIntl.Intl.formatMessage(childBirthdateLabel)->Jsx.string}
-                  required=Field.childBirthdate.required
-                  onChange
-                  value
-                  error={error->Option.isSome}
-                  helperText=?{error->Option.isSome
-                    ? Some(intl->ReactIntl.Intl.formatMessage(childBirthdateHelperText)->Jsx.string)
-                    : None}
-                  minDate={Common.Constants.highestChildAge->Utils.Date.ageLimitToDate}
-                  maxDate={Common.Constants.lowestChildAge->Utils.Date.ageLimitToDate}
-                />,
-              (),
-            )}
-          </Grid>
+          <Mui.Grid item=true xs=Number(12) sm=Number(6) md=Number(4) lg=Number(3) xl=Number(2)>
+            {form->FormInput.ChildBirthdate.renderController(({field: {onChange, value, _}, _}) =>
+              <MuiXDatePicker.DatePicker
+                name="childBirthdate"
+                disableFuture=true
+                openTo=#year
+                format="D. M. YYYY"
+                views={[#year, #month, #day]}
+                label={intl->ReactIntl.Intl.formatMessage(childBirthdateLabel)->Jsx.string}
+                required=Field.childBirthdate.required
+                onChange={onChildBirthdateChange(onChange)}
+                value=?{value->Option.map(DayJs.dayjs)}
+                minDate={Common.Constants.highestChildAge->Utils.Date.ageLimitToDate->DayJs.dayjs}
+                maxDate={Common.Constants.lowestChildAge->Utils.Date.ageLimitToDate->DayJs.dayjs}
+                sx={Mui.Sx.array([Mui.Sx.Array.obj({width: Mui.System.Value.String("100%")})])}
+                onError={(error, value) =>
+                  setDateErrorMessage(_ =>
+                    if value->Nullable.toOption->Option.isNone {
+                      Some(Message.Date.dateMissing)
+                    } else {
+                      error->Nullable.toOption->Option.map(Utils.Date.dateErrorToMessage)
+                    }
+                  )}
+                slotProps={dateErrorMessage
+                ->Option.map((dateErrorMessage): MuiXDatePicker.DatePicker.SlotProps.t => {
+                  textField: {
+                    helperText: intl->ReactIntl.Intl.formatMessage(dateErrorMessage)->Jsx.string,
+                    error: true,
+                    variant: Standard,
+                  },
+                })
+                ->Option.getWithDefault({textField: {variant: Standard}})}
+              />
+            , ())}
+          </Mui.Grid>
           <EmailUs_Field
             label=cityOfResidenceLabel
             field=Field.cityOfResidence
@@ -125,13 +144,13 @@ let make = () => {
             label=parentPhoneLabel
             field=Field.parentPhone
             renderWithRegister={field => form->FormInput.ParentPhone.renderWithRegister(field, ())}
-            \"type"={#tel}
+            type_=#tel
           />
           <EmailUs_Field
             label=parentEmailLabel
             field=Field.parentEmail
             renderWithRegister={field => form->FormInput.ParentEmail.renderWithRegister(field, ())}
-            \"type"={#email}
+            type_=#email
           />
           <EmailUs_Field
             label=noteLabel
@@ -140,12 +159,12 @@ let make = () => {
             multiline=true
             last=true
           />
-          <Grid item=true xs=Xs.\"12">
-            <Button \"type"={#submit->Button.Type.enum} color=#primary variant=#contained>
+          <Mui.Grid item=true xs=Number(12)>
+            <Mui.Button type_=Submit color=Primary variant=Contained>
               {intl->ReactIntl.Intl.formatMessage(submitButton)->React.string}
-            </Button>
-          </Grid>
-        </Grid>
+            </Mui.Button>
+          </Mui.Grid>
+        </Mui.Grid>
       </form>,
     )
   />

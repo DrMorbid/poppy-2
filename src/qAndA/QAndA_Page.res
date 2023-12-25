@@ -10,7 +10,7 @@ let make = () => {
 
   <Common.Text
     header
-    afterHeader={<Mui.Typography variant=#h4>
+    afterHeader={<Mui.Typography variant=H4>
       {intl->ReactIntl.Intl.formatMessage(subHeader)->React.string}
     </Mui.Typography>}
     body=Element(

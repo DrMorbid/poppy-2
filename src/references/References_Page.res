@@ -1,5 +1,4 @@
 open Message.References
-open Mui
 open ReactIntl
 
 module Section = {
@@ -7,7 +6,7 @@ module Section = {
   let make = (~header, ~part1, ~part2) => {
     <Common.Text
       header
-      headerVariant=#h4
+      headerVariant=H4
       body=Fragments(list{
         {
           content: list{
@@ -28,27 +27,27 @@ let make = () => {
 
   <Common.Text
     header
-    afterHeader={<Typography variant=#h6>
+    afterHeader={<Mui.Typography variant=H6>
       {intl->ReactIntl.Intl.formatMessage(subHeader)->React.string}
-    </Typography>}
+    </Mui.Typography>}
     body={Element(
-      <Grid container=true className=Common.Style.sectionGap>
-        <Grid item=true>
+      <Mui.Grid container=true className=Common.Style.sectionGap>
+        <Mui.Grid item=true>
           <Section header=section1Header part1=section1Part1 part2=section1Part2 />
-        </Grid>
-        <Grid item=true>
+        </Mui.Grid>
+        <Mui.Grid item=true>
           <Section header=section2Header part1=section2Part1 part2=section2Part2 />
-        </Grid>
-        <Grid item=true>
+        </Mui.Grid>
+        <Mui.Grid item=true>
           <Section header=section3Header part1=section3Part1 part2=section3Part2 />
-        </Grid>
-        <Grid item=true>
+        </Mui.Grid>
+        <Mui.Grid item=true>
           <Section header=section4Header part1=section4Part1 part2=section4Part2 />
-        </Grid>
-        <Grid item=true>
+        </Mui.Grid>
+        <Mui.Grid item=true>
           <Section header=section5Header part1=section5Part1 part2=section5Part2 />
-        </Grid>
-      </Grid>,
+        </Mui.Grid>
+      </Mui.Grid>,
     )}
   />
 }

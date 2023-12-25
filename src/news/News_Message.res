@@ -18,9 +18,9 @@ module Title = {
 let make = () => {
   <Mui.Grid container=true>
     <Mui.Grid item=true>
-      <Title variant=#h5 />
+      <Title variant=H5 />
       <Mui.Grid
-        container=true direction=#column alignItems=#stretch className=Common.Style.marginTopSm>
+        container=true direction=Column alignItems=Stretch className=Common.Style.marginTopSm>
         {latestNews.content
         ->List.mapWithIndex((index, {emphasis, value, nextLineEmpty}) => {
           <Mui.Grid

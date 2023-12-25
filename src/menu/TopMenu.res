@@ -1,5 +1,3 @@
-open Mui
-
 module Drawer = TopMenu_Drawer
 module Item = TopMenu_Item
 
@@ -11,38 +9,38 @@ let make = () => {
 
   let onAppNameClick = _ => App_Page.goTo(Home)
 
-  <AppBar position=#static>
+  <Mui.AppBar position=Static>
     <Drawer drawerOpen onClose={() => setDrawerOpen(_ => false)} />
-    <Hidden smDown=true>
+    <Mui.Hidden mdDown=true>
       <TopMenu_Toolbar />
-    </Hidden>
-    <Hidden mdUp=true>
-      <Toolbar>
+    </Mui.Hidden>
+    <Mui.Hidden mdUp=true>
+      <Mui.Toolbar>
         {if url->App_Page.isHomePage || url->App_Page.isRegistrationsPage {
-          <Grid container=true justify=#"space-between" alignItems=#center>
+          <Mui.Grid container=true justifyContent=String("space-between") alignItems=Center>
             {<>
-              <Grid item=true>
-                <ButtonBase onClick=onAppNameClick>
-                  <Typography variant=#h4>
+              <Mui.Grid item=true>
+                <Mui.ButtonBase onClick=onAppNameClick>
+                  <Mui.Typography variant=H4>
                     {intl->ReactIntl.Intl.formatMessage(Message.appName)->React.string}
-                  </Typography>
-                </ButtonBase>
-              </Grid>
-              <Grid item=true>
-                <IconButton onClick={_ => setDrawerOpen(_ => true)}>
+                  </Mui.Typography>
+                </Mui.ButtonBase>
+              </Mui.Grid>
+              <Mui.Grid item=true>
+                <Mui.IconButton onClick={_ => setDrawerOpen(_ => true)}>
                   <Common.Icon.Menu />
-                </IconButton>
-              </Grid>
+                </Mui.IconButton>
+              </Mui.Grid>
             </>}
-          </Grid>
+          </Mui.Grid>
         } else {
-          <Grid container=true justify=#center>
-            <Button variant=#outlined size=#large onClick=onAppNameClick>
+          <Mui.Grid container=true justifyContent=Center>
+            <Mui.Button variant=Outlined size=Large onClick=onAppNameClick>
               {intl->ReactIntl.Intl.formatMessage(Home->App_Page.toLabel)->React.string}
-            </Button>
-          </Grid>
+            </Mui.Button>
+          </Mui.Grid>
         }}
-      </Toolbar>
-    </Hidden>
-  </AppBar>
+      </Mui.Toolbar>
+    </Mui.Hidden>
+  </Mui.AppBar>
 }

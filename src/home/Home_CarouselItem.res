@@ -3,13 +3,18 @@ open ReactDOM
 
 module Classes = {
   let imageContainer =
-    Style.make(~position="relative", ~paddingTop="30%", ~width="100%", ())->Emotion.styleToClass
+    Style.make(
+      ~position="relative !important",
+      ~paddingTop="30% !important",
+      ~width="100% !important",
+      (),
+    )->Emotion.styleToClass
   let image =
     Style.make(
-      ~position="absolute",
-      ~width="100%",
-      ~height="100%",
-      ~top="0",
+      ~position="absolute !important",
+      ~width="100% !important",
+      ~height="100% !important",
+      ~top="0 !important",
       (),
     )->Emotion.styleToClass
 }
@@ -17,6 +22,6 @@ module Classes = {
 @react.component
 let make = (~image) => {
   <Card className=Classes.imageContainer>
-    <CardMedia image className=Classes.image />
+    <CardMedia image classes={root: Classes.image} />
   </Card>
 }

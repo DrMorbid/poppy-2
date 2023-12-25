@@ -1,14 +1,8 @@
-module Options = {
-  type t = {disableHysteresis: option<bool>, target: option<React.element>, threshold: option<int>}
-  let make = (~disableHysteresis=?, ~target=?, ~threshold=?, ()) => {
-    disableHysteresis,
-    target,
-    threshold,
-  }
-}
+type options = {disableHysteresis?: bool, target?: React.element, threshold?: int}
 
-@module("@material-ui/core/useScrollTrigger")
-external useScrollTrigger: Options.t => bool = "default"
+// TODO: Had to implement myself, watch out for updates of ReScript MUI.
+@module("@mui/material/useScrollTrigger")
+external useScrollTrigger: options => bool = "default"
 
 type scrollOptions = {
   behavior: [#auto | #smooth],
