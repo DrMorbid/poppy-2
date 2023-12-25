@@ -1,3 +1,3 @@
 "use client";
 
-export { default } from "../../src/qAndA/QAndA_Page.bs";
+export { default } from "../../src/qAndA/QAndA_Page.res.js";

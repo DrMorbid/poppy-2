@@ -1,3 +1,3 @@
 "use client";
 
-export { default } from "../../src/emailUs/EmailUs_Page.bs";
+export { default } from "../../src/emailUs/EmailUs_Page.res.js";

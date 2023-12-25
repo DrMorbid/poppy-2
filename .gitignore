@@ -212,3 +212,4 @@ next-env.d.ts
 .merlin
 build
 *.bs.js
+*.res.js

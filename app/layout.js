@@ -15,4 +15,4 @@ export const viewport = {
   themeColor: "#000000",
 };
 
-export { default } from "../src/Layout.bs";
+export { default } from "../src/Layout.res.js";
