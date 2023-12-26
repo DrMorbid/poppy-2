@@ -1,31 +1,11 @@
 open Scroll
-open ReactDOM
-open Utils.Style
 
 module Classes = {
-  let button =
-    list{
-      Style.make(
-        ~position="fixed !important",
-        ~bottom="1rem !important",
-        ~right="1rem !important",
-        (),
-      )->styleWithMediaQuery(~addMediaPrefix=true, ~mediaQuery=App_Theme.Breakpoint.xsUp),
-      Style.make(
-        ~position="fixed !important",
-        ~bottom="1.5rem !important",
-        ~right="1.5rem !important",
-        (),
-      )->styleWithMediaQuery(~addMediaPrefix=true, ~mediaQuery=App_Theme.Breakpoint.smUp),
-      Style.make(
-        ~position="fixed !important",
-        ~bottom="2rem !important",
-        ~right="2rem !important",
-        (),
-      )->styleWithMediaQuery(~addMediaPrefix=true, ~mediaQuery=App_Theme.Breakpoint.mdUp),
-    }
-    ->stylesCombiner
-    ->Emotion.styleToClass
+  let button = Mui.Sx.obj({
+    position: String("fixed"),
+    bottom: Breakpoint({xs: String("1rem"), sm: String("1.5rem"), md: String("2rem")}),
+    right: Breakpoint({xs: String("1rem"), sm: String("1.5rem"), md: String("2rem")}),
+  })
 }
 
 let onClick = (~topRef: option<React.ref<Nullable.t<Dom.element>>>=?, ~behavior=?, _) =>
@@ -49,7 +29,7 @@ let make = () => {
       | (true, false) => Medium
       | (_, true) => Large
       }}
-      className=Classes.button>
+      sx=Classes.button>
       <Common.Icon.KeyboardArrowUp />
     </Mui.Fab>
   </Mui.Grow>

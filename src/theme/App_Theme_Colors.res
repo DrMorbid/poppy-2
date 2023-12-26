@@ -28,3 +28,5 @@ let palette = prefersDarkMode =>
     "successContrastText": prefersDarkMode ? lightGreen["A700"] : lightGreen["A100"],
     "text": prefersDarkMode ? grey["50"] : grey["900"],
   }
+
+let isLightMode = mode => mode == "light"
