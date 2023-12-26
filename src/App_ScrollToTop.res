@@ -40,11 +40,9 @@ let make = () => {
   let in_ = useScrollTrigger({disableHysteresis: true, threshold: 200})
   let ({topRef, _}: App_Context.state, _) = React.useContext(App_Context.Context.t)
 
-  // TODO: After MUI update, us onClick instead of both onMouseUp and onTouchEnd.
   <Mui.Grow in_>
     <Mui.Fab
-      onMouseUp={e => onClick(e, ~topRef?)}
-      onTouchEnd={e => onClick(e, ~topRef?)}
+      onClick={e => onClick(e, ~topRef?)}
       color=Primary
       size={switch (isSmUp, isMdUp) {
       | (false, false) => Small
