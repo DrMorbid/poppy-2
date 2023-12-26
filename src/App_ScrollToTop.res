@@ -40,19 +40,19 @@ let make = () => {
   let in_ = useScrollTrigger({disableHysteresis: true, threshold: 200})
   let ({topRef, _}: App_Context.state, _) = React.useContext(App_Context.Context.t)
 
-  // TODO: After MUI update, see if we can get rid of the wrapping div and put the onClick directly into Fab component.
+  // TODO: After MUI update, us onClick instead of both onMouseUp and onTouchEnd.
   <Mui.Grow in_>
-    <div onClick={e => onClick(e, ~topRef?)}>
-      <Mui.Fab
-        color=Primary
-        size={switch (isSmUp, isMdUp) {
-        | (false, false) => String("small")
-        | (true, false) => String("medium")
-        | (_, true) => String("large")
-        }}
-        className=Classes.button>
-        <Common.Icon.KeyboardArrowUp />
-      </Mui.Fab>
-    </div>
+    <Mui.Fab
+      onMouseUp={e => onClick(e, ~topRef?)}
+      onTouchEnd={e => onClick(e, ~topRef?)}
+      color=Primary
+      size={switch (isSmUp, isMdUp) {
+      | (false, false) => Small
+      | (true, false) => Medium
+      | (_, true) => Large
+      }}
+      className=Classes.button>
+      <Common.Icon.KeyboardArrowUp />
+    </Mui.Fab>
   </Mui.Grow>
 }

@@ -54,7 +54,6 @@ let make = (~children) => {
     None
   }, [topRef])
 
-  // TODO: After MUI update, try to use variants in Fab.size instead of String. Variants used to not work properly
   <Mui.Container
     maxWidth=Xl
     classes={root: Classes.container}
