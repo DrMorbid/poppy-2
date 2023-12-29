@@ -60,7 +60,7 @@ module Fragment = {
       | Text(fragment) =>
         <Mui.Typography
           component={"span"->Mui.OverridableComponent.string}
-          className={fragment.bold->Option.getOr(false) ? Common_Style.bold : ""}
+          className=?{fragment.bold->Option.getOr(false) ? Some(Common_Style.bold) : None}
           key={`fragment-${index->Int.toString}`}
           color=?{fragment.color
           ->Option.map(color => (color :> string))

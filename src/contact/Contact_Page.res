@@ -42,7 +42,7 @@ let default = () => {
                 item=true
                 xs=Number(12)
                 md={mapUrl->Option.isSome ? Number(6) : Number(12)}
-                className=Common.Style.headerGap>
+                sx=Common.Style.headerGap>
                 <Mui.Grid container=true className=Common.Style.paragraphGap>
                   <Mui.Grid
                     item=true
@@ -197,7 +197,7 @@ let default = () => {
                 </Mui.Grid>
               </Mui.Grid>
               <Mui.Hidden smDown=true mdUp={mapUrl->Option.isNone}>
-                <Mui.Grid item=true md=Number(6) className=Common.Style.headerGap>
+                <Mui.Grid item=true md=Number(6) sx=Common.Style.headerGap>
                   <Contact_Map url=?mapUrl isMapBeingLoaded onMapLoadingFinished />
                 </Mui.Grid>
               </Mui.Hidden>

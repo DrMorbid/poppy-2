@@ -6,9 +6,9 @@ let pagePaddingXs = "1rem"
 let pagePaddingSm = "2rem"
 let pagePaddingMdUp = "3rem"
 
-let headerGap = Style.make(~marginTop="2rem !important", ())->styleToClass
-let paragraphGap = Style.make(~gridRowGap="1rem !important", ())->styleToClass
-let sectionGap = Style.make(~gridRowGap="2rem !important", ())->styleToClass
+let headerGap = Mui.Sx.obj({marginTop: String("2rem")})
+let paragraphGap = Style.make(~gridRowGap="1rem", ())->styleToClass
+let sectionGap = Style.make(~gridRowGap="2rem", ())->styleToClass
 let bold = Style.make(~fontWeight="bold !important", ())->styleToClass
 let marginTopSm = Style.make(~marginTop="0.75rem !important", ())->styleToClass
 let marginBottomSm = Style.make(~marginBottom="0.75rem !important", ())->styleToClass
