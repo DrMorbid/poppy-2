@@ -4,7 +4,6 @@ open ReactDOM
 
 module Theme = App_Theme
 module Context = App_Context
-module Page = App_Page
 module ScrollToTop = App_ScrollToTop
 module ScrollableSection = App_ScrollableSection
 module ScrollableSections = App_ScrollableSections
@@ -40,7 +39,7 @@ let make = (~children) => {
   }, [topRef])
 
   <Mui.Container maxWidth=Xl ref={topRef->Ref.domRef} sx=Classes.container>
-    <Mui.Grid container=true direction=Column className=Common.Style.paragraphGap>
+    <Mui.Grid container=true direction=Column sx={Common.Style.paragraphGap->Utils.Style.styleToSx}>
       <Mui.Grid item=true>
         <TopHeader />
       </Mui.Grid>

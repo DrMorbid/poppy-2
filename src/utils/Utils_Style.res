@@ -39,3 +39,6 @@ let mixColors = (
   ", " ++
   with->tweakColor(~transparency=?transparency2, ~percentage=?percentage2) ++ ")"
 }
+
+external styleToSx: Style.t => Mui.Sx.props = "%identity"
+external styleToSxArray: Style.t => Mui.Sx.Array.t = "%identity"

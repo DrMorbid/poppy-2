@@ -18,9 +18,7 @@ let make = (
     md
     lg
     xl
-    className=?{disableGutters->Option.getOr(false)
-      ? None
-      : Some(Common_Style.islandsHorizontalGap)}>
+    sx=?{disableGutters->Option.getOr(false) ? None : Some(Common_Style.islandsHorizontalGap)}>
     <Common_Text ?header ?headerVariant body ?centerAll />
   </Mui.Grid>
 }

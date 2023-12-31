@@ -31,7 +31,7 @@ let default = () => {
       {intl->ReactIntl.Intl.formatMessage(subHeader)->React.string}
     </Mui.Typography>}
     body={Element(
-      <Mui.Grid container=true className=Common.Style.sectionGap>
+      <Mui.Grid container=true sx=Common.Style.sectionGap>
         <Mui.Grid item=true>
           <Section header=section1Header part1=section1Part1 part2=section1Part2 />
         </Mui.Grid>

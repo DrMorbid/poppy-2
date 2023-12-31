@@ -30,9 +30,12 @@ let default = () => {
               <Mui.Grid item=true xs=Number(12)>
                 <Mui.Grid
                   container=true
-                  className={Emotion.cx([Common.Style.paragraphGap, Common.Style.marginBottom])}>
+                  sx={[
+                    Common.Style.paragraphGap->Utils.Style.styleToSxArray,
+                    Common.Style.marginBottom,
+                  ]->Mui.Sx.array}>
                   <Mui.Grid item=true xs=Number(12)>
-                    <Mui.Typography className=Common.Style.bold>
+                    <Mui.Typography sx={Common.Style.bold->Mui.Sx.obj}>
                       {intl->ReactIntl.Intl.formatMessage(openingTimes)->React.string}
                     </Mui.Typography>
                   </Mui.Grid>
@@ -43,7 +46,7 @@ let default = () => {
                 xs=Number(12)
                 md={mapUrl->Option.isSome ? Number(6) : Number(12)}
                 sx=Common.Style.headerGap>
-                <Mui.Grid container=true className=Common.Style.paragraphGap>
+                <Mui.Grid container=true sx={Common.Style.paragraphGap->Utils.Style.styleToSx}>
                   <Mui.Grid
                     item=true
                     xs=Number(12)
@@ -51,7 +54,7 @@ let default = () => {
                     md={mapUrl->Option.isSome ? Number(12) : Number(6)}>
                     <Mui.Grid container=true>
                       <Mui.Grid item=true xs=Number(12)>
-                        <Mui.Typography className=Common.Style.bold>
+                        <Mui.Typography sx={Common.Style.bold->Mui.Sx.obj}>
                           {intl
                           ->ReactIntl.Intl.formatMessage(registrationDatabaseTitle)
                           ->React.string}
@@ -83,7 +86,7 @@ let default = () => {
                     md={mapUrl->Option.isSome ? Number(12) : Number(6)}>
                     <Mui.Grid container=true>
                       <Mui.Grid item=true xs=Number(12)>
-                        <Mui.Typography className=Common.Style.bold>
+                        <Mui.Typography sx={Common.Style.bold->Mui.Sx.obj}>
                           {intl
                           ->ReactIntl.Intl.formatMessage(clientsProductionDirectionTitle)
                           ->React.string}
@@ -108,7 +111,7 @@ let default = () => {
                     md={mapUrl->Option.isSome ? Number(12) : Number(6)}>
                     <Mui.Grid container=true>
                       <Mui.Grid item=true xs=Number(12)>
-                        <Mui.Typography className=Common.Style.bold>
+                        <Mui.Typography sx={Common.Style.bold->Mui.Sx.obj}>
                           {intl
                           ->ReactIntl.Intl.formatMessage(registrationAddressHeader)
                           ->React.string}
@@ -162,7 +165,7 @@ let default = () => {
                     md={mapUrl->Option.isSome ? Number(12) : Number(6)}>
                     <Mui.Grid container=true>
                       <Mui.Grid item=true xs=Number(12)>
-                        <Mui.Typography className=Common.Style.bold>
+                        <Mui.Typography sx={Common.Style.bold->Mui.Sx.obj}>
                           {intl
                           ->ReactIntl.Intl.formatMessage(facturationAddressLabel)
                           ->React.string}

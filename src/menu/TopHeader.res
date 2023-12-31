@@ -5,8 +5,8 @@ open ReactDOM
 module Container = TopHeader_Container
 
 module Classes = {
-  let logoContainer = Style.make(~width="26% !important", ())->Emotion.styleToClass
-  let logo = Style.make(~height="10vw !important", ())->Emotion.styleToClass
+  let logoContainer = Mui.Sx.obj({width: String("26%")})
+  let logo = Style.make(~height="10vw", ())
 }
 
 @react.component
@@ -26,11 +26,11 @@ let make = () => {
       <Common.Button.WithIcon label=emailUs onClick={_ => onEmailUs()->ignore} />
     </Mui.Grid>
     <Mui.Hidden mdDown=true>
-      <Mui.Grid item=true className=Classes.logoContainer>
-        <Mui.ButtonBase onClick=onLogoClick className=Common.Style.fullWidth>
+      <Mui.Grid item=true sx=Classes.logoContainer>
+        <Mui.ButtonBase onClick=onLogoClick sx=Common.Style.fullWidth>
           <img
             src={prefersDarkMode ? "/poppy-logo-dark.png" : "/poppy-logo-light.png"}
-            className=Classes.logo
+            style=Classes.logo
           />
         </Mui.ButtonBase>
       </Mui.Grid>

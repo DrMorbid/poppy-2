@@ -10,7 +10,7 @@ let make = () => {
   <Common.Text
     header
     body={Element(
-      <Mui.Grid container=true className=Common.Style.sectionGap>
+      <Mui.Grid container=true sx=Common.Style.sectionGap>
         <Mui.Grid item=true xs=Number(12) xl=Number(6)>
           <Person
             photoSrc="/team/martina-popperova.jpg"

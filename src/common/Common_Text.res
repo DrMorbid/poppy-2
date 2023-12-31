@@ -45,7 +45,7 @@ module Text = {
     <Mui.Grid
       item=true
       xs=Number(12)
-      className={centered->Option.getOr(false) ? Common_Style.centeredText : ""}>
+      sx=?{centered->Option.getOr(false) ? Some([Common_Style.centeredText]->Mui.Sx.array) : None}>
       children
     </Mui.Grid>
   }
@@ -60,7 +60,7 @@ module Fragment = {
       | Text(fragment) =>
         <Mui.Typography
           component={"span"->Mui.OverridableComponent.string}
-          className=?{fragment.bold->Option.getOr(false) ? Some(Common_Style.bold) : None}
+          sx=?{fragment.bold->Option.getOr(false) ? Some(Common_Style.bold->Mui.Sx.obj) : None}
           key={`fragment-${index->Int.toString}`}
           color=?{fragment.color
           ->Option.map(color => (color :> string))
@@ -93,20 +93,19 @@ let make = (
   let intl = ReactIntl.useIntl()
 
   let getContainerClassname = () =>
-    (disableGutters ? list{} : list{Common_Style.paragraphGap})
+    (disableGutters ? list{} : list{Common_Style.paragraphGap->Utils.Style.styleToSxArray})
     ->List.concat(
       centerAll->Option.mapOr(list{}, centerAll =>
         centerAll ? list{Common_Style.centeredText} : list{}
       ),
     )
-    ->List.reduce("", (result, className) => `${result} ${className}`)
+    ->List.reduce([], (result, sx) => result->Array.concat([sx]))
 
-  <Mui.Grid container=true className={getContainerClassname()}>
+  <Mui.Grid container=true sx={getContainerClassname()->Mui.Sx.array}>
     {header->Option.mapOr(React.null, header =>
-      <Mui.Grid item=true xs=Number(12) className={Common_Style.centeredText}>
+      <Mui.Grid item=true xs=Number(12) sx={[Common_Style.centeredText]->Mui.Sx.array}>
         <Mui.Typography
-          variant=headerVariant
-          className=?{headerUppercase ? Some(Common_Style.uppercaseText) : None}>
+          variant=headerVariant sx=?{headerUppercase ? Some(Common_Style.uppercaseText) : None}>
           {intl->ReactIntl.Intl.formatMessage(header)->React.string}
         </Mui.Typography>
       </Mui.Grid>
@@ -161,8 +160,12 @@ let make = (
                   | Message(message) =>
                     <Mui.ListItemText
                       primary={intl->ReactIntl.Intl.formatMessage(message)->React.string}
-                      classes=?{row.bold->Option.getOr(false)
-                        ? Some({primary: Common_Style.bold})
+                      sx=?{row.bold->Option.getOr(false)
+                        ? Some(
+                            [("& .MuiListItemText-primary", Common_Style.bold)]
+                            ->Dict.fromArray
+                            ->Mui.Sx.dict,
+                          )
                         : None}
                     />
                   }}
