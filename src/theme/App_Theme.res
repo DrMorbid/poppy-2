@@ -5,35 +5,7 @@ open ReactDOM
 
 module Colors = App_Theme_Colors
 module Typography = App_Theme_Typography
-
-module Transparency = {
-  let text = "de"
-  let background = "bf"
-
-  type kind = [#text | #background | #button]
-
-  let addTransparency = (color, kind: kind) => {
-    let normalizeColor = color =>
-      if color->String.length == 4 {
-        color->String.charAt(0) ++
-        color->String.charAt(1) ++
-        color->String.charAt(1) ++
-        color->String.charAt(2) ++
-        color->String.charAt(2) ++
-        color->String.charAt(3) ++
-        color->String.charAt(3)
-      } else {
-        color
-      }
-
-    color->normalizeColor ++
-      switch kind {
-      | #background => "bf"
-      | #text => "f2"
-      | #button => "3b"
-      }
-  }
-}
+module Transparency = App_Theme_Transparency
 open Transparency
 
 module Breakpoint = {
@@ -150,9 +122,41 @@ let theme = (~prefersDarkMode) => {
           contained: Style.make(~color=palette["text"]->addTransparency(#text), ()),
           outlined: Style.make(
             ~color=palette["text"]->addTransparency(#text),
-            ~borderColor=palette["text"],
+            ~borderColor=palette["text"]->addTransparency(#text),
             (),
           ),
+          outlinedPrimary: [
+            (
+              "&:hover",
+              (
+                {
+                  color: String(palette["text"]->Utils.Style.mixColors(~with=palette["primary"])),
+                  borderColor: String(
+                    palette["text"]->Utils.Style.mixColors(~with=palette["primary"]),
+                  ),
+                }: Mui.System.props
+              ),
+            ),
+          ]
+          ->Dict.fromArray
+          ->Mui.Sx.dict
+          ->Utils_Style.sxToStyle,
+          outlinedSecondary: [
+            (
+              "&:hover",
+              (
+                {
+                  color: String(palette["text"]->Utils.Style.mixColors(~with=palette["secondary"])),
+                  borderColor: String(
+                    palette["text"]->Utils.Style.mixColors(~with=palette["secondary"]),
+                  ),
+                }: Mui.System.props
+              ),
+            ),
+          ]
+          ->Dict.fromArray
+          ->Mui.Sx.dict
+          ->Utils_Style.sxToStyle,
         },
       },
       muiButtonBase: {

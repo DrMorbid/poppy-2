@@ -10,7 +10,7 @@ let mixColors = (
 ) => {
   let tweakColor = (~transparency=?, ~percentage=?, color) =>
     transparency
-    ->Option.map(transparency => color->App_Theme.Transparency.addTransparency(transparency))
+    ->Option.map(transparency => color->App_Theme_Transparency.addTransparency(transparency))
     ->Option.getOr(color) ++
     " " ++
     percentage
@@ -26,3 +26,4 @@ let mixColors = (
 
 external styleToSx: Style.t => Mui.Sx.props = "%identity"
 external styleToSxArray: Style.t => Mui.Sx.Array.t = "%identity"
+external sxToStyle: Mui.Sx.props => Style.t = "%identity"

@@ -28,6 +28,7 @@ let make = () => {
           <Mui.Button
             size=Large
             variant=Outlined
+            color=Secondary
             onClick={_ =>
               menuItem->onClick(
                 ~menuItemTargets=pathname->pickMenuItemTargets(

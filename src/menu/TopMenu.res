@@ -36,7 +36,7 @@ let make = () => {
           </Mui.Grid>
         } else {
           <Mui.Grid container=true justifyContent=Center>
-            <Mui.Button variant=Outlined size=Large onClick=onAppNameClick>
+            <Mui.Button variant=Outlined size=Large color=Secondary onClick=onAppNameClick>
               {intl->ReactIntl.Intl.formatMessage(Home->App_Page.toLabel)->React.string}
             </Mui.Button>
           </Mui.Grid>
