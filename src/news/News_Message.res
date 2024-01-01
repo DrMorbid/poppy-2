@@ -19,22 +19,21 @@ let make = () => {
   <Mui.Grid container=true>
     <Mui.Grid item=true>
       <Title variant=H5 />
-      <Mui.Grid
-        container=true direction=Column alignItems=Stretch className=Common.Style.marginTopSm>
+      <Mui.Grid container=true direction=Column alignItems=Stretch sx=Common.Style.marginTopSm>
         {latestNews.content
         ->List.mapWithIndex((index, {emphasis, value, nextLineEmpty}) => {
           <Mui.Grid
             item=true
             key={`news-line-${index->Int.toString}`}
-            className=?{if nextLineEmpty {
+            sx=?{if nextLineEmpty {
               Some(Common.Style.marginBottomSm)
             } else {
               None
             }}>
             <Mui.Typography
-              className=?{switch emphasis {
+              sx=?{switch emphasis {
               | Normal => None
-              | Bold => Some(Common.Style.bold)
+              | Bold => Some({Common.Style.bold->Mui.Sx.obj})
               }}>
               {value->React.string}
             </Mui.Typography>

@@ -15,7 +15,7 @@ let default = () => {
     None
   }, (whoWeAreTopRef, referencesTopRef))
 
-  <Mui.Grid container=true className=Common.Style.islandsVerticalGap>
+  <Mui.Grid container=true sx=Common.Style.islandsVerticalGap>
     <Mui.Grid item=true xs=Number(12)>
       <ReactMaterialUiCarousel autoPlay=true indicators=false animation=#slide>
         {[

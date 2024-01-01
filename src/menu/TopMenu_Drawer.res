@@ -1,9 +1,8 @@
 open ReactIntl
-open ReactDOM
 open TopMenu_Item
 
 module Classes = {
-  let list = Style.make(~width="50vw !important", ())->Emotion.styleToClass
+  let list = Mui.Sx.obj({width: String("50vw")})
 }
 
 @react.component
@@ -21,7 +20,7 @@ let make = (~drawerOpen, ~onClose) => {
     transitionDuration={Time(Common.Constants.drawerTransitionDuration)}
     anchor=Right
     onClose={(_, _) => onClose()}>
-    <Mui.List className=Classes.list>
+    <Mui.List sx=Classes.list>
       {pathname
       ->getMenuItems
       ->List.mapWithIndex((index, section) =>

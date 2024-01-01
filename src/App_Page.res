@@ -40,17 +40,3 @@ let goTo = (router, page) => router->Next.Navigation.Router.push(page->toRoutePa
 let isHomePage = pathname => pathname->String.equal(RoutePath.home)
 
 let isRegistrationsPage = pathname => pathname->String.equal(RoutePath.registrations)
-
-type gutters = Top | Complete
-
-@react.component
-let make = (~gutters=Complete, ~children) => {
-  <Mui.Grid
-    container=true
-    className={switch gutters {
-    | Top => Common.Style.pageGuttersTop
-    | Complete => Common.Style.pageGuttersComplete
-    }}>
-    <Mui.Grid item=true xs=Number(12)> children </Mui.Grid>
-  </Mui.Grid>
-}

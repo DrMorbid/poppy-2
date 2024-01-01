@@ -1,27 +1,22 @@
 open Mui
-open ReactDOM
 
 module Classes = {
-  let imageContainer =
-    Style.make(
-      ~position="relative !important",
-      ~paddingTop="30% !important",
-      ~width="100% !important",
-      (),
-    )->Emotion.styleToClass
-  let image =
-    Style.make(
-      ~position="absolute !important",
-      ~width="100% !important",
-      ~height="100% !important",
-      ~top="0 !important",
-      (),
-    )->Emotion.styleToClass
+  let imageContainer = Mui.Sx.obj({
+    position: String("relative"),
+    paddingTop: String("30%"),
+    width: String("100%"),
+  })
+  let image = Mui.Sx.obj({
+    position: String("absolute"),
+    width: String("100%"),
+    height: String("100%"),
+    top: String("0"),
+  })
 }
 
 @react.component
 let make = (~image) => {
-  <Card className=Classes.imageContainer>
-    <CardMedia image classes={root: Classes.image} />
+  <Card sx=Classes.imageContainer>
+    <CardMedia image sx=Classes.image />
   </Card>
 }

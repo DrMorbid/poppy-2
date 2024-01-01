@@ -30,7 +30,7 @@ let make = () => {
     router->App_Page.goTo(References)
   }
 
-  <Mui.Grid container=true justifyContent=Center className=Common.Style.islandsVerticalGap>
+  <Mui.Grid container=true justifyContent=Center sx=Common.Style.islandsVerticalGap>
     <Mui.Grid item=true>
       <Common.Text
         header
@@ -38,7 +38,7 @@ let make = () => {
           {intl->ReactIntl.Intl.formatMessage(subHeader)->React.string}
         </Mui.Typography>}
         body={Element(
-          <Mui.Grid container=true className=Common.Style.islandsVerticalGap>
+          <Mui.Grid container=true sx=Common.Style.islandsVerticalGap>
             <Island header=section1Header content=section1Part1 />
             <Island header=section2Header content=section2Part1 />
             <Island header=section3Header content=section3Part1 />

@@ -1,16 +1,12 @@
 open ReactIntl
 open TopMenu_Item
-open ReactDOM
 
 module Classes = {
-  let label = {
-    Style.make(
-      ~fontSize=`${App_Theme.Typography.h5.fontSize} !important`,
-      ~fontWeight=`${App_Theme.Typography.h5.fontWeight} !important`,
-      ~lineHeight="1.334 !important",
-      (),
-    )->Emotion.styleToClass
-  }
+  let label = Mui.Sx.obj({
+    fontSize: String(App_Theme.Typography.h5.fontSize),
+    fontWeight: String(App_Theme.Typography.h5.fontWeight),
+    lineHeight: Number(1.334),
+  })
 }
 
 @react.component
@@ -40,7 +36,7 @@ let make = () => {
                 ),
                 ~router,
               )}
-            classes={root: Classes.label}>
+            sx=Classes.label>
             {intl->ReactIntl.Intl.formatMessage(menuItem->App_Types.MenuItem.toLabel)->React.string}
           </Mui.Button>
         </Mui.Grid>

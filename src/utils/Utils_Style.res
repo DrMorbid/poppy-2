@@ -1,21 +1,5 @@
 open ReactDOM
 
-let addMediaQuery = (~addMediaPrefix=false, ~mediaQuery: string, style: Style.t): Style.t => {
-  list{((addMediaPrefix ? "@media " : "") ++ mediaQuery, style)}
-  ->List.toArray
-  ->Dict.fromArray
-  ->Obj.magic
-}
-
-let styleWithMediaQuery = (~addMediaPrefix=false, ~mediaQuery: string, style: Style.t): Style.t =>
-  style->addMediaQuery(~addMediaPrefix, ~mediaQuery)
-
-let stylesCombiner = (listOfStyles: list<Style.t>): Style.t => {
-  listOfStyles->List.reduce(Style.make(), (acumulator, additionalStyle) =>
-    Style.combine(acumulator, additionalStyle)
-  )
-}
-
 let mixColors = (
   ~transparency1=?,
   ~percentage1=?,
@@ -39,3 +23,6 @@ let mixColors = (
   ", " ++
   with->tweakColor(~transparency=?transparency2, ~percentage=?percentage2) ++ ")"
 }
+
+external styleToSx: Style.t => Mui.Sx.props = "%identity"
+external styleToSxArray: Style.t => Mui.Sx.Array.t = "%identity"
