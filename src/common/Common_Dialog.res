@@ -1,7 +1,8 @@
-open ReactDOM
-
 module Classes = {
-  let mapSize = Style.make(~width="100%", ~height="75%", ())->Emotion.styleToClass
+  let mapSize =
+    [("& .MuiDialog-paper", ({width: String("100%"), height: String("75%")}: Mui.System.props))]
+    ->Dict.fromArray
+    ->Mui.Sx.dict
 }
 
 @react.component
@@ -14,9 +15,7 @@ let make = (~isOpen as open_, ~onClose, ~children, ~fullScreen=?, ~fixedSize=?) 
     onClose={(_, _) => onClose()}
     open_
     ?fullScreen
-    classes={
-      paper: ?fixedSize->Option.flatMap(fixedSize => fixedSize ? Some(Classes.mapSize) : None),
-    }
+    sx=?{fixedSize->Option.flatMap(fixedSize => fixedSize ? Some(Classes.mapSize) : None)}
     maxWidth={switch (isXlUp, isLgUp, isMdUp) {
     | (true, _, _) => Lg
     | (false, true, _) => Md
