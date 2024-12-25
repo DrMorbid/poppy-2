@@ -4,13 +4,14 @@ module Classes = {
       bgcolor: String(
         App_Theme.Colors.palette(
           !(theme.palette.mode->App_Theme.Colors.isLightMode),
-        )["secondaryDark"]->Utils.Style.mixColors(
+        )["secondaryLight"]->Utils.Style.mixColors(
           ~with=theme.palette.mode->App_Theme.Colors.isLightMode
             ? Mui.Colors.grey["50"]
             : Mui.Colors.grey["900"],
           ~transparency1=#background,
           ~transparency2=#background,
-          ~percentage1=5,
+          ~percentage1=25,
+          ~percentage2=75,
         ),
       ),
     })

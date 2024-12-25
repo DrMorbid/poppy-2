@@ -8,7 +8,7 @@ type section = {
 
 @react.component
 let make = (~sections, ~coloredSections=Even, ~children=?) => {
-  <Mui.Grid container=true direction=Column alignItems=Stretch sx=Common.Style.islandsVerticalGap>
+  <Mui.Grid container=true direction=Column alignItems=Stretch>
     {<>
       {sections
       ->List.mapWithIndex(({element, topRef, ?accented}, index) =>

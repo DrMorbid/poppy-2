@@ -8,7 +8,6 @@
     "res:dev": "rescript clean && rescript build -w",
     "dev": "next dev",
     "start": "next start",
-    "build:staging": "env-cmd -f .env.staging next build",
     "build": "next build",
     "intl": "node ./scripts/intlExtractor.js"
   },
