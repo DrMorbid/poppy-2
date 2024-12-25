@@ -196,6 +196,7 @@ let theme = (~prefersDarkMode) => {
           )->Obj.magic,
         },
       },
+      muiDivider: {styleOverrides: {root: {borderWidth: "2px"}}},
     },
   })
 }

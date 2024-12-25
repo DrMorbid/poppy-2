@@ -54,10 +54,10 @@ let default = () => {
               body={Lists(list{
                 {
                   list: list{
-                    {content: Message(youngestKidsLine1), bold: true},
-                    {content: Message(youngestKidsLine2), bold: true},
-                    {content: Message(youngestKidsLine3), bold: true},
-                    {content: Message(youngestKidsLine4), bold: true},
+                    {content: Message(youngestKidsLine1)},
+                    {content: Message(youngestKidsLine2)},
+                    {content: Message(youngestKidsLine3)},
+                    {content: Message(youngestKidsLine4)},
                   },
                 },
               })}

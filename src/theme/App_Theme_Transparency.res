@@ -19,7 +19,7 @@ let addTransparency = (color, kind: kind) => {
 
   color->normalizeColor ++
     switch kind {
-    | #background => "bf"
+    | #background => "d4"
     | #text => "f2"
     | #button => "3b"
     }
