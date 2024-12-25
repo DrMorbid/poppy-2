@@ -11,7 +11,7 @@ let make = () => {
     header
     body={Element(
       <Mui.Grid container=true sx=Common.Style.sectionGap>
-        <Mui.Grid item=true xs=Number(12) xl=Number(6)>
+        <Mui.Grid item=true xs=Number(12) xl=Number(12)>
           <Person
             photoSrc="/team/martina-popperova.jpg"
             name=companyOwner
@@ -58,21 +58,6 @@ let make = () => {
                 content: Message(photographer1),
               }),
             }
-          />
-        </Mui.Grid>
-        <Mui.Grid item=true xs=Number(12) xl=Number(6)>
-          <Common.Text
-            body={Fragments(list{
-              {
-                content: list{
-                  Text({
-                    content: Message(assistants),
-                    bold: true,
-                  }),
-                },
-                centered: true,
-              },
-            })}
           />
         </Mui.Grid>
       </Mui.Grid>,

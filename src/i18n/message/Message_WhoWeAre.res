@@ -60,9 +60,3 @@ let photographer1 =
     id: "f7b87daf-a144-4e73-b4fd-6342f1282136",
     defaultMessage: "Naše dvorní fotografka specializující se na focení dětí, nastávajících maminek a rodinné foto.",
   }
-let assistants =
-  @intl.description("About Us page - the assistants")
-  {
-    id: "292eacbc-7fb1-4192-8877-437ebe497d4b",
-    defaultMessage: "Asistentka Verča a Jana",
-  }

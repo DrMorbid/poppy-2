@@ -10,7 +10,7 @@
     "start": "next start",
     "build:staging": "env-cmd -f .env.staging next build",
     "build": "next build",
-    "intl:extract-messages": "node ./scripts/intlExtractor.js"
+    "intl": "node ./scripts/intlExtractor.js"
   },
   "dependencies": {
     "@emotion/cache": "^11.14.0",
