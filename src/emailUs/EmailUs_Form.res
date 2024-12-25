@@ -63,9 +63,10 @@ module FormInput = {
       validate: Dict.fromArray([
         (
           "min",
-          ReactHookForm.Validation.sync(date =>
+          ReactHookForm.Validation.sync((date: option<Date.t>) =>
             if (
               date
+              ->Option.map(Dayjs.fromDate)
               ->Option.map(
                 Dayjs.isBefore(_, Common.Constants.highestChildAge->Utils.Date.ageLimitToDate),
               )
@@ -79,9 +80,10 @@ module FormInput = {
         ),
         (
           "max",
-          ReactHookForm.Validation.sync(date => {
+          ReactHookForm.Validation.sync((date: option<Date.t>) => {
             if (
               date
+              ->Option.map(Dayjs.fromDate)
               ->Option.map(
                 Dayjs.isAfter(_, Common.Constants.lowestChildAge->Utils.Date.ageLimitToDate),
               )
