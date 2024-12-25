@@ -11,7 +11,7 @@ let make = (~sections, ~coloredSections=Even, ~children=?) => {
   <Mui.Grid container=true direction=Column alignItems=Stretch sx=Common.Style.islandsVerticalGap>
     {<>
       {sections
-      ->List.mapWithIndex((index, {element, topRef, ?accented}) =>
+      ->List.mapWithIndex(({element, topRef, ?accented}, index) =>
         <App_ScrollableSection
           coloring={switch accented {
           | Some(Yellow) => Accented(Yellow)

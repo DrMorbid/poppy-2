@@ -4,7 +4,7 @@ module Title = {
   @react.component
   let make = (~variant) => {
     latestNews.title
-    ->List.mapWithIndex((index, titleLine) =>
+    ->List.mapWithIndex((titleLine, index) =>
       <Mui.Typography variant key={`news-title-line-${index->Int.toString}`}>
         {titleLine->React.string}
       </Mui.Typography>
@@ -21,7 +21,7 @@ let make = () => {
       <Title variant=H5 />
       <Mui.Grid container=true direction=Column alignItems=Stretch sx=Common.Style.marginTopSm>
         {latestNews.content
-        ->List.mapWithIndex((index, {emphasis, value, nextLineEmpty}) => {
+        ->List.mapWithIndex(({emphasis, value, nextLineEmpty}, index) => {
           <Mui.Grid
             item=true
             key={`news-line-${index->Int.toString}`}

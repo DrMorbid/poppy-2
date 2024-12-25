@@ -35,7 +35,7 @@ let default = () => {
       ~note=?input.note
       ->Option.map(String.split(_, "\n"))
       ->Option.map(Array.map(_, line => `<p>${line}</p>`))
-      ->Option.map(Array.joinWith(_, "")),
+      ->Option.map(Array.join(_, "")),
     )
     ->Promise.thenResolve(async body => {
       if input.childBirthdate->Option.isSome {
@@ -64,7 +64,7 @@ let default = () => {
   let onChildBirthdateChange = (onFormFieldChange, date) =>
     date
     ->Nullable.toOption
-    ->Option.map(DayJs.toDate)
+    ->Option.map(Dayjs.toDate)
     ->Option.flatMap(date => date->Utils.Date.isValid ? Some(date) : None)
     ->onFormFieldChange
 
@@ -109,10 +109,10 @@ let default = () => {
                 views={[#year, #month, #day]}
                 label={intl->ReactIntl.Intl.formatMessage(childBirthdateLabel)->Jsx.string}
                 required=Field.childBirthdate.required
-                onChange={onChildBirthdateChange(onChange)}
-                value=?{value->Option.map(DayJs.dayjs)}
-                minDate={Common.Constants.highestChildAge->Utils.Date.ageLimitToDate->DayJs.dayjs}
-                maxDate={Common.Constants.lowestChildAge->Utils.Date.ageLimitToDate->DayJs.dayjs}
+                onChange={onChildBirthdateChange(onChange, _)}
+                value=?{value->Option.map(Dayjs.fromDate)}
+                minDate={Common.Constants.highestChildAge->Utils.Date.ageLimitToDate}
+                maxDate={Common.Constants.lowestChildAge->Utils.Date.ageLimitToDate}
                 sx={Mui.Sx.array([Mui.Sx.Array.obj({width: Mui.System.Value.String("100%")})])}
                 onError={(error, value) =>
                   setDateErrorMessage(_ =>

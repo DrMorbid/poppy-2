@@ -13,7 +13,7 @@ let make = () => {
     setMapUrl(_ => None)
   }
 
-  let onClick = (mapUrl, ()) => {
+  let onClick = mapUrl => {
     setIsMapBeingLoaded(_ => true)
     setMapUrl(_ => Some(mapUrl))
   }
@@ -75,7 +75,7 @@ let make = () => {
             <Mui.Grid item=true xs=Number(12)>
               <Common.OpenInNewButton
                 label=registrationAddress
-                onClick={onClick(Common.Constants.registrationAddressMapUrl)}
+                onClick={() => onClick(Common.Constants.registrationAddressMapUrl)}
               />
             </Mui.Grid>
           </Mui.Grid>

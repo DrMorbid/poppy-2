@@ -67,7 +67,7 @@ module FormInput = {
             if (
               date
               ->Option.map(
-                ReDate.isBefore(_, Common.Constants.highestChildAge->Utils.Date.ageLimitToDate),
+                Dayjs.isBefore(_, Common.Constants.highestChildAge->Utils.Date.ageLimitToDate),
               )
               ->Option.getOr(false)
             ) {
@@ -83,7 +83,7 @@ module FormInput = {
             if (
               date
               ->Option.map(
-                ReDate.isAfter(_, Common.Constants.lowestChildAge->Utils.Date.ageLimitToDate),
+                Dayjs.isAfter(_, Common.Constants.lowestChildAge->Utils.Date.ageLimitToDate),
               )
               ->Option.getOr(false)
             ) {

@@ -19,7 +19,7 @@ module Breakpoint = {
 
   let mediaQuery = (~down=false, breakpointValue) =>
     `(${down ? "max-width" : "min-width"}: ${breakpointValue
-      ->Option.map(Float.toString)
+      ->Option.map(Float.toString(_))
       ->Option.getOr("0")}px)`
 
   let xsUp = values.xs->mediaQuery

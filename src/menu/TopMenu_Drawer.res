@@ -23,7 +23,7 @@ let make = (~drawerOpen, ~onClose) => {
     <Mui.List sx=Classes.list>
       {pathname
       ->getMenuItems
-      ->List.mapWithIndex((index, section) =>
+      ->List.mapWithIndex((section, index) =>
         <Mui.ListItemButton
           onClick={_ =>
             section->onClick(

@@ -14,7 +14,7 @@ let mixColors = (
     ->Option.getOr(color) ++
     " " ++
     percentage
-    ->Option.map(Int.toString)
+    ->Option.map(Int.toString(_))
     ->Option.map(percentage => percentage ++ "%")
     ->Option.getOr("")
 

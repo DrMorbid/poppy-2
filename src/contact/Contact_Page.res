@@ -13,7 +13,7 @@ let default = () => {
     setMapUrl(_ => None)
   }
 
-  let onClick = (mapUrl, ()) => {
+  let onClick = mapUrl => {
     setIsMapBeingLoaded(_ => true)
     setMapUrl(_ => Some(mapUrl))
   }
@@ -120,7 +120,7 @@ let default = () => {
                       <Mui.Grid item=true xs=Number(12)>
                         <Common.OpenInNewButton
                           label=registrationAddress
-                          onClick={onClick(Common.Constants.registrationAddressMapUrl)}
+                          onClick={() => onClick(Common.Constants.registrationAddressMapUrl)}
                         />
                       </Mui.Grid>
                       <Mui.Grid item=true xs=Number(12)>
@@ -147,13 +147,13 @@ let default = () => {
                       <Mui.Grid item=true xs=Number(12)>
                         <Common.OpenInNewButton
                           label=registrationAddressPaidParking1
-                          onClick={onClick(Common.Constants.registrationAddressPaidParking1)}
+                          onClick={() => onClick(Common.Constants.registrationAddressPaidParking1)}
                         />
                       </Mui.Grid>
                       <Mui.Grid item=true xs=Number(12)>
                         <Common.OpenInNewButton
                           label=registrationAddressPaidParking2
-                          onClick={onClick(Common.Constants.registrationAddressPaidParking2)}
+                          onClick={() => onClick(Common.Constants.registrationAddressPaidParking2)}
                         />
                       </Mui.Grid>
                     </Mui.Grid>
@@ -174,7 +174,7 @@ let default = () => {
                       <Mui.Grid item=true xs=Number(12)>
                         <Common.OpenInNewButton
                           label=facturationAddress
-                          onClick={onClick(Common.Constants.facturationAddress)}
+                          onClick={() => onClick(Common.Constants.facturationAddress)}
                         />
                       </Mui.Grid>
                     </Mui.Grid>

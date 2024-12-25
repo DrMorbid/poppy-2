@@ -1,9 +1,9 @@
 let ageLimitToDate = (ageLimit: App_Types.Age.ageLimit) => {
-  let today = Date.make()
+  let today = Dayjs.now()
 
   switch ageLimit {
-  | Months(months) => today->ReDate.addMonths((-1 * months)->Int.toFloat)
-  | Years(years) => today->ReDate.addYears((-1 * years)->Int.toFloat)
+  | Months(months) => today->Dayjs.subtract(months, #month)
+  | Years(years) => today->Dayjs.subtract(years, #year)
   }
 }
 

@@ -50,18 +50,18 @@ module DatePicker = {
     ~format: string=?,
     ~label: React.element=?,
     ~views: array<view>=?,
-    ~value: DayJs.t=?,
-    ~onChange: Nullable.t<DayJs.t> => unit=?,
+    ~value: Dayjs.t=?,
+    ~onChange: Nullable.t<Dayjs.t> => unit=?,
     ~required: bool=?,
     ~name: string=?,
-    ~minDate: DayJs.t=?,
-    ~maxDate: DayJs.t=?,
-    ~onError: (Nullable.t<error>, Nullable.t<DayJs.t>) => unit=?,
+    ~minDate: Dayjs.t=?,
+    ~maxDate: Dayjs.t=?,
+    ~onError: (Nullable.t<error>, Nullable.t<Dayjs.t>) => unit=?,
     ~sx: Mui.Sx.props=?,
     ~slotProps: SlotProps.t=?,
   ) => React.element = "DatePicker"
 }
 
-module DayJs = {
+module Dayjs = {
   @module("dayjs/locale/cs") external csLocale: adapterLocale = "default"
 }

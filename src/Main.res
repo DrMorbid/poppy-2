@@ -11,7 +11,7 @@ let make = (~children) => {
           <Mui.CssBaseline />
           <MuiXDatePicker.LocalizationProvider
             dateAdapter=MuiXDatePicker.LocalizationProvider.adapterDayjs
-            adapterLocale=MuiXDatePicker.DayJs.csLocale>
+            adapterLocale=MuiXDatePicker.Dayjs.csLocale>
             <main>
               <App> {children} </App>
             </main>

@@ -55,7 +55,7 @@ module Fragment = {
   @react.component
   let make = (~fragments) => {
     fragments
-    ->List.mapWithIndex((index, fragment) => {
+    ->List.mapWithIndex((fragment, index) => {
       switch fragment {
       | Text(fragment) =>
         <Mui.Typography
@@ -116,7 +116,7 @@ let make = (
     {switch body {
     | Paragraphs(paragraphs) =>
       paragraphs
-      ->List.mapWithIndex((index, paragraph) =>
+      ->List.mapWithIndex((paragraph, index) =>
         <Text key={`paragraph-${index->Int.toString}`}>
           <Mui.Typography>
             {intl->ReactIntl.Intl.formatMessage(paragraph)->React.string}
@@ -127,7 +127,7 @@ let make = (
       ->React.array
     | Fragments(paragraphs) =>
       paragraphs
-      ->List.mapWithIndex((index, fragments) =>
+      ->List.mapWithIndex((fragments, index) =>
         <Text centered=?fragments.centered key={`paragraph-${index->Int.toString}`}>
           <Fragment fragments=fragments.content />
         </Text>
@@ -136,7 +136,7 @@ let make = (
       ->React.array
     | Lists(paragraphs) =>
       paragraphs
-      ->List.mapWithIndex((index, paragraph) =>
+      ->List.mapWithIndex((paragraph, index) =>
         <Mui.Grid container=true key={`paragraph-${index->Int.toString}`}>
           {paragraph.title->Option.mapOr(React.null, title =>
             <Text>
@@ -148,7 +148,7 @@ let make = (
           <Mui.Grid item=true xs=Number(12)>
             <Mui.List>
               {paragraph.list
-              ->List.mapWithIndex((index, row) =>
+              ->List.mapWithIndex((row, index) =>
                 <Mui.ListItem key={`list-row-${index->Int.toString}`}>
                   {switch row.content {
                   | Fragments(fragments) =>

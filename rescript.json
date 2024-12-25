@@ -4,16 +4,11 @@
     {
       "dir": "src",
       "subdirs": true
-    },
-    {
-      "dir": "tests",
-      "type": "dev",
-      "subdirs": true
     }
   ],
   "package-specs": [
     {
-      "module": "es6",
+      "module": "esmodule",
       "in-source": true
     }
   ],
@@ -21,14 +16,16 @@
   "bs-dependencies": [
     "@rescript/react",
     "rescript-react-intl",
-    "@ryyppy/rescript-promise",
-    "@mobily/rescript-date",
     "rescript-webapi",
     "@rescript/core",
     "@greenlabs/rescript-react-hook-form",
     "@rescript-mui/material"
   ],
-  "bsc-flags": ["-open RescriptCore"],
-  "jsx": { "version": 4, "mode": "automatic" },
-  "uncurried": false
+  "bsc-flags": [
+    "-open RescriptCore"
+  ],
+  "jsx": {
+    "version": 4,
+    "mode": "automatic"
+  }
 }

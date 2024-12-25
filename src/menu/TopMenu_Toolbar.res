@@ -23,7 +23,7 @@ let make = () => {
     <Mui.Grid container=true justifyContent=String("space-evenly") spacing=Int(1)>
       {pathname
       ->getMenuItems
-      ->List.mapWithIndex((index, menuItem) =>
+      ->List.mapWithIndex((menuItem, index) =>
         <Mui.Grid item=true key={`menu-item-${index->Int.toString}`}>
           <Mui.Button
             size=Large
