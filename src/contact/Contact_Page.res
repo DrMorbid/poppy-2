@@ -92,7 +92,12 @@ let default = () => {
                       </Mui.Grid>
                       <Mui.Grid item=true xs=Number(12)>
                         <Mui.Typography>
-                          {intl->ReactIntl.Intl.formatMessage(companyOwner)->React.string}
+                          {intl
+                          ->ReactIntl.Intl.formatMessageWithValues(
+                            companyOwner,
+                            {"name": Common.Constants.companyOwnerName},
+                          )
+                          ->React.string}
                         </Mui.Typography>
                       </Mui.Grid>
                       <Mui.Grid item=true xs=Number(12)>
