@@ -56,14 +56,14 @@ let make = () => {
             photoSrc="/team/eva-kolinova.jpg"
             name=String(Common.Constants.photographerName)
             description=list{
+              Text({
+                content: Message(photographer1),
+              }),
               Element(
                 <Mui.Link href=photographerWebsite key="element-fragment-1">
                   {photographerWebsite->React.string}
                 </Mui.Link>,
               ),
-              Text({
-                content: Message(photographer1),
-              }),
             }
           />
         </Mui.Grid>
