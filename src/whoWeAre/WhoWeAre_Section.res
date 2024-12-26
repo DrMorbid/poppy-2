@@ -27,6 +27,7 @@ let make = () => {
               }),
             }
             email=bossEmail
+            allwaysFullWidth=true
           />
         </Mui.Grid>
         <Mui.Grid item=true xs=Number(12) xl=Number(6)>

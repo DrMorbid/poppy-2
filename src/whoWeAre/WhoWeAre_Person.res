@@ -20,8 +20,8 @@ let getContact = (email): Text.fragmentParagraph => {
 }
 
 @react.component
-let make = (~photoSrc, ~name, ~description, ~email=?) => {
-  <Mui.Grid container=true>
+let make = (~photoSrc, ~name, ~description, ~email=?, ~allwaysFullWidth=false) => {
+  <Mui.Grid container=true justifyContent=Center>
     <Mui.Grid item=true xs=Number(12)>
       <Mui.Grid container=true justifyContent=Center>
         <Mui.Grid item=true>
@@ -29,7 +29,8 @@ let make = (~photoSrc, ~name, ~description, ~email=?) => {
         </Mui.Grid>
       </Mui.Grid>
     </Mui.Grid>
-    <Mui.Grid item=true xs=Number(12)>
+    <Mui.Grid
+      item=true xs=Number(12) md=Number(10) lg=Number(8) xl=Number(allwaysFullWidth ? 6 : 12)>
       <Text
         body={Fragments(
           list{
