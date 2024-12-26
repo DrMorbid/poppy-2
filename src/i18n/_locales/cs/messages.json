@@ -83,10 +83,6 @@
         "message": "Je databáze Poppy casting veřejná?",
         "description": "Q&A page - question 13"
     },
-    "292eacbc-7fb1-4192-8877-437ebe497d4b": {
-        "message": "Asistentka Verča a Jana",
-        "description": "About Us page - the assistants"
-    },
     "2a47d058-357b-4080-9f57-a59c6e7537d8": {
         "message": "Registrace",
         "description": "Above the top menu - registrations"
@@ -248,7 +244,7 @@
         "description": "References page - part two of the fourth section"
     },
     "661c230e-e660-4745-b5c0-9df24de636e3": {
-        "message": "Malesuada fames ac turpis egestas integer eget aliquet. Eu volutpat odio facilisis mauris sit amet massa vitae tortor. Vitae aliquet nec ullamcorper sit amet risus.",
+        "message": "Obsazujeme především hlavní a vedlejší mluvené i nemluvené herecké role, dabléry hl.herců, okrajově i kompars.",
         "description": "The second paragraph on the home page"
     },
     "66832bdf-0a9d-40b4-ad12-922591b87198": {
@@ -332,7 +328,7 @@
         "description": "About Us page - the second part of company owner's description"
     },
     "7ed024d8-d064-444f-af7e-7f6ca3b83759": {
-        "message": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum consectetur libero id faucibus.",
+        "message": "Spolupracujeme s mnohými agenturami, produkcemi, televizemi a studii při obsazování dětských rolí do točených i focených reklam pro ČR i zahraničí.",
         "description": "The first paragraph on the home page"
     },
     "7f0e21bf-8a5a-4d99-b522-2fc5ad383b4e": {
@@ -460,7 +456,7 @@
         "description": "Email Us page - the sub-header info text"
     },
     "b0fe1f36-cd5e-40ee-8941-3a9383cec031": {
-        "message": "Nibh cras pulvinar mattis nunc sed blandit. Ipsum a arcu cursus vitae congue mauris rhoncus aenean.",
+        "message": "Zaměřujeme se na český a slovenský dabing filmů, seriálů, reklam pro televizi, rádio i internet.",
         "description": "The third paragraph on the home page"
     },
     "b14db5d9-c99a-4b08-af69-7ab224854101": {

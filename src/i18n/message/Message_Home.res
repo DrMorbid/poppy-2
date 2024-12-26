@@ -9,7 +9,7 @@ let firstParagraph =
   @intl.description("The first paragraph on the home page")
   {
     id: "7ed024d8-d064-444f-af7e-7f6ca3b83759",
-    defaultMessage: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum consectetur libero id faucibus.",
+    defaultMessage: "Spolupracujeme s mnohými agenturami, produkcemi, televizemi a studii při obsazování dětských rolí do točených i focených reklam pro ČR i zahraničí.",
   }
 let secondParagraphHeader =
   @intl.description("Header of the second paragraph on the home page")
@@ -18,7 +18,7 @@ let secondParagraph =
   @intl.description("The second paragraph on the home page")
   {
     id: "661c230e-e660-4745-b5c0-9df24de636e3",
-    defaultMessage: "Malesuada fames ac turpis egestas integer eget aliquet. Eu volutpat odio facilisis mauris sit amet massa vitae tortor. Vitae aliquet nec ullamcorper sit amet risus.",
+    defaultMessage: "Obsazujeme především hlavní a vedlejší mluvené i nemluvené herecké role, dabléry hl.herců, okrajově i kompars.",
   }
 let thirdParagraphHeader =
   @intl.description("Header of the third paragraph on the home page")
@@ -27,5 +27,5 @@ let thirdParagraph =
   @intl.description("The third paragraph on the home page")
   {
     id: "b0fe1f36-cd5e-40ee-8941-3a9383cec031",
-    defaultMessage: "Nibh cras pulvinar mattis nunc sed blandit. Ipsum a arcu cursus vitae congue mauris rhoncus aenean.",
+    defaultMessage: "Zaměřujeme se na český a slovenský dabing filmů, seriálů, reklam pro televizi, rádio i internet.",
   }
