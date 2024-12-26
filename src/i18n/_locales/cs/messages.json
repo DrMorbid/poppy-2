@@ -111,10 +111,6 @@
         "message": "Je Vaše dítě nebojácné? Není na maminku příliš fixované, aby zvládlo být kousek od ní nebo v náručí herečky? U miminek se pochopitelně vše velmi rychle mění, tedy je těžké předvídat, jak se dítě bude chovat, ale pokud víte, že při pohledu na cizího člověka, který na něj promluví, dítě pláče, nebude nejspíše na casting vhodný adept.",
         "description": "Q&A page - answer to question 1 - paragraph 2 - part 2"
     },
-    "392d2225-9bb1-424e-b25f-648de58929fd": {
-        "message": "Eva Kolínová - Baby foto Eva",
-        "description": "About Us page - the photographer"
-    },
     "3ea3bde4-c556-4b30-83af-3d54c089085e": {
         "message": "Nelze. Registrujeme pouze osobně ve vypsaných termínech, kde si dítě vyfotíme, abychom získali představu o tom, zda se nestydí, zda komunikuje, jak na nás působí, jaké jsou jeho řečové a herecké schopnosti, charisma.",
         "description": "Q&A page - answer to question 4 - paragraph 1"
@@ -196,7 +192,7 @@
         "description": "Registrations page - youngest kids - the first line"
     },
     "588ddae1-8b2e-4141-b776-4cd9dfbc4447": {
-        "message": "Mgr. art. Martina Popperová",
+        "message": "Mgr. art. {name}",
         "description": "The company owner"
     },
     "5cacc13c-de61-47bb-b7f0-4c6856699644": {
@@ -378,10 +374,6 @@
     "952d7587-71ba-4883-9516-086adfd2360b": {
         "message": "Registrace",
         "description": "Registrations page - the header"
-    },
-    "9713887e-eea1-4c46-8098-a5e56f5ccb40": {
-        "message": "Mgr. Hana Kittnarová",
-        "description": "The Registration, database person"
     },
     "99e9c0f2-175c-45ba-a47a-c4d8608623b5": {
         "message": "Poté obdržíte obratem adresu castingu, další podrobnosti.",

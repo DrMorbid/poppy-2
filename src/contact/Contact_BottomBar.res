@@ -37,7 +37,7 @@ let make = () => {
             </Mui.Grid>
             <Mui.Grid item=true xs=Number(12)>
               <Mui.Typography>
-                {intl->ReactIntl.Intl.formatMessage(registrationDatabasePerson)->React.string}
+                {Common.Constants.registrationDatabasePersonName->React.string}
               </Mui.Typography>
             </Mui.Grid>
             <Mui.Grid item=true xs=Number(12)>

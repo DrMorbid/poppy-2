@@ -9,13 +9,7 @@ let companyOwner =
   @intl.description("The company owner")
   {
     id: "588ddae1-8b2e-4141-b776-4cd9dfbc4447",
-    defaultMessage: "Mgr. art. Martina Popperová",
-  }
-let registrationDatabasePerson =
-  @intl.description("The Registration, database person")
-  {
-    id: "9713887e-eea1-4c46-8098-a5e56f5ccb40",
-    defaultMessage: "Mgr. Hana Kittnarová",
+    defaultMessage: "Mgr. art. {name}",
   }
 let registrationsYoungest =
   @intl.description("Registrations - youngest kids")

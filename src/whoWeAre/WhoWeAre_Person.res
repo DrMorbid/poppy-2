@@ -37,7 +37,7 @@ let make = (~photoSrc, ~name, ~description, ~email=?, ~allwaysFullWidth=false) =
             {
               Text.content: list{
                 Text({
-                  content: Message(name),
+                  content: name,
                   bold: true,
                 }),
               },

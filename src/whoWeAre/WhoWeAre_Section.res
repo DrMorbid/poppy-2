@@ -7,6 +7,8 @@ module Person = WhoWeAre_Person
 
 @react.component
 let make = () => {
+  let intl = ReactIntl.useIntl()
+
   <Common.Text
     header
     body={Element(
@@ -14,7 +16,12 @@ let make = () => {
         <Mui.Grid item=true xs=Number(12) xl=Number(12)>
           <Person
             photoSrc="/team/martina-popperova.jpg"
-            name=companyOwner
+            name=String(
+              intl->ReactIntl.Intl.formatMessageWithValues(
+                companyOwner,
+                {"name": companyOwnerName},
+              ),
+            )
             description=list{
               Text({
                 content: Message(companyOwnerDescription1),
@@ -26,14 +33,13 @@ let make = () => {
                 content: Message(companyOwnerDescription3),
               }),
             }
-            email=bossEmail
             allwaysFullWidth=true
           />
         </Mui.Grid>
         <Mui.Grid item=true xs=Number(12) xl=Number(6)>
           <Person
             photoSrc="/team/hanka-kittnarova.jpg"
-            name=registrationDatabasePerson
+            name=String(Common.Constants.registrationDatabasePersonName)
             description=list{
               Text({
                 content: Message(registrationDatabasePersonDescription1),
@@ -48,7 +54,7 @@ let make = () => {
         <Mui.Grid item=true xs=Number(12) xl=Number(6)>
           <Person
             photoSrc="/team/eva-kolinova.jpg"
-            name=photographer
+            name=String(Common.Constants.photographerName)
             description=list{
               Element(
                 <Mui.Link href=photographerWebsite key="element-fragment-1">

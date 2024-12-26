@@ -48,12 +48,6 @@ let registrationDatabasePersonDescription2 =
     id: "ed16458e-f167-41d9-af6c-e031412b0504",
     defaultMessage: "Původně učitelka ČJ - HV, v Poppy casting od roku 2016.",
   }
-let photographer =
-  @intl.description("About Us page - the photographer")
-  {
-    id: "392d2225-9bb1-424e-b25f-648de58929fd",
-    defaultMessage: "Eva Kolínová - Baby foto Eva",
-  }
 let photographer1 =
   @intl.description("About Us page - the first part of photographer's description")
   {
