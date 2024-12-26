@@ -19,10 +19,12 @@ let default = () => {
     <Mui.Grid item=true xs=Number(12)>
       <ReactMaterialUiCarousel autoPlay=true indicators=false animation=#slide>
         {[
-          <CarouselItem image="/kids/pexels-bess-hamiti-35188.jpg" key="carousel-item-1" />,
-          <CarouselItem image="/kids/pexels-lukas-296301.jpg" key="carousel-item-1" />,
-          <CarouselItem image="/kids/pexels-samer-daboul-1212805.jpg" key="carousel-item-1" />,
-          <CarouselItem image="/kids/pexels-samer-daboul-1815257.jpg" key="carousel-item-1" />,
+          <CarouselItem image="/kids/boy-light-hat.webp" key="carousel-item-0" />,
+          <CarouselItem image="/kids/girl-crown-mirror.webp" key="carousel-item-1" />,
+          <CarouselItem image="/kids/boy-megaphone-flap.webp" key="carousel-item-2" />,
+          <CarouselItem image="/kids/girl-hand-flap.webp" key="carousel-item-3" />,
+          <CarouselItem image="/kids/boy-megaphone-scream.webp" key="carousel-item-4" />,
+          <CarouselItem image="/kids/girl-holding-flap.webp" key="carousel-item-5" />,
         ]}
       </ReactMaterialUiCarousel>
     </Mui.Grid>
