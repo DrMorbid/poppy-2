@@ -7,10 +7,14 @@ module Classes = {
 }
 
 @react.component
-let make = (~label, ~onClick) => {
+let make = (~label, ~onClick, ~large=false) => {
   let intl = ReactIntl.useIntl()
 
-  <Button variant=Outlined onClick>
+  <Button
+    variant=Outlined
+    size=?{large ? Some(Large) : None}
+    onClick
+    sx=?{large ? Some(Common_Style.largeButtonLabel) : None}>
     <Grid container=true sx=Classes.iconGap>
       <Icon.MailOutline />
       {intl->ReactIntl.Intl.formatMessage(label)->React.string}

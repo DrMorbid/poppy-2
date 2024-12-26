@@ -16,7 +16,7 @@ let make = () => {
       <TopMenu_Toolbar />
     </Mui.Hidden>
     <Mui.Hidden mdUp=true>
-      <Mui.Toolbar>
+      <Mui.Toolbar variant={Dense}>
         {if pathname->App_Page.isHomePage || pathname->App_Page.isRegistrationsPage {
           <Mui.Grid container=true justifyContent=String("space-between") alignItems=Center>
             {<>

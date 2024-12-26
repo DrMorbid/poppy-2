@@ -14,6 +14,7 @@ let make = () => {
   let intl = useIntl()
   let prefersDarkMode = Mui.Core.useMediaQueryString(Common.Constants.darkModeMediaQuery)
   let router = Next.Navigation.useRouter()
+  let isMdUp = Mui.Core.useMediaQueryString(App_Theme.Breakpoint.mdUp)
 
   let onEmailUs = () => router->App_Page.goTo(EmailUs)
 
@@ -23,7 +24,9 @@ let make = () => {
 
   <Container>
     <Mui.Grid item=true>
-      <Common.Button.WithIcon label=emailUs onClick={_ => onEmailUs()->ignore} />
+      <Common.Button.WithIcon
+        label=emailUs large=?{isMdUp ? Some(true) : None} onClick={_ => onEmailUs()->ignore}
+      />
     </Mui.Grid>
     <Mui.Hidden mdDown=true>
       <Mui.Grid item=true sx=Classes.logoContainer>
@@ -36,7 +39,12 @@ let make = () => {
       </Mui.Grid>
     </Mui.Hidden>
     <Mui.Grid item=true>
-      <Mui.Button variant=Contained color=Primary onClick=onRegisterClick>
+      <Mui.Button
+        size=?{isMdUp ? Some(Large) : None}
+        variant=Contained
+        color=Primary
+        onClick=onRegisterClick
+        sx=?{isMdUp ? Some(Common.Style.largeButtonLabel) : None}>
         {intl->ReactIntl.Intl.formatMessage(registrations)->React.string}
       </Mui.Button>
     </Mui.Grid>

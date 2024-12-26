@@ -1,13 +1,5 @@
 open ReactIntl
 
-module Classes = {
-  let label = Mui.Sx.obj({
-    fontSize: String(App_Theme.Typography.h5.fontSize),
-    fontWeight: String(App_Theme.Typography.h5.fontWeight),
-    lineHeight: Number(1.334),
-  })
-}
-
 @react.component
 let make = (~label, ~onClick, ~index, ~visible=false) => {
   let intl = useIntl()
@@ -22,7 +14,7 @@ let make = (~label, ~onClick, ~index, ~visible=false) => {
     }
 
   <Mui.Grow in_=visible timeout={Duration(Common.Constants.menuItemAnimationDuration)}>
-    <Mui.Button size=Large variant=Contained color={pickColor()} onClick sx=Classes.label>
+    <Mui.Button variant=Contained color={pickColor()} onClick>
       {intl->ReactIntl.Intl.formatMessage(label)->React.string}
     </Mui.Button>
   </Mui.Grow>

@@ -31,3 +31,8 @@ let pageGuttersComplete = Mui.Sx.Array.obj({
 let islandsVerticalGap = Style.make(~gridRowGap="2rem", ())->styleToSx
 let islandsHorizontalGap = Mui.Sx.obj({paddingLeft: String("1rem"), paddingRight: String("1rem")})
 let uppercaseText = Style.make(~textTransform="uppercase", ())->styleToSx
+let largeButtonLabel = Mui.Sx.obj({
+  fontSize: String(App_Theme.Typography.h5.fontSize),
+  fontWeight: String(App_Theme.Typography.h5.fontWeight),
+  lineHeight: Number(1.334),
+})
