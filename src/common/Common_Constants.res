@@ -1,3 +1,5 @@
+let menuItemAnimationDuration = 250
+
 let infoEmail = "info@poppycasting.cz"
 let companyOwnerName = "Martina Popperová"
 let bossEmail = "martina@poppycasting.cz"

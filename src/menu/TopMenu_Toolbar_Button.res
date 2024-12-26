@@ -9,7 +9,7 @@ module Classes = {
 }
 
 @react.component
-let make = (~label, ~onClick, ~index) => {
+let make = (~label, ~onClick, ~index, ~visible=false) => {
   let intl = useIntl()
 
   let pickColor = (): Mui.Button.color =>
@@ -21,7 +21,9 @@ let make = (~label, ~onClick, ~index) => {
     | _ => Info
     }
 
-  <Mui.Button size=Large variant=Contained color={pickColor()} onClick sx=Classes.label>
-    {intl->ReactIntl.Intl.formatMessage(label)->React.string}
-  </Mui.Button>
+  <Mui.Grow in_=visible timeout={Duration(Common.Constants.menuItemAnimationDuration)}>
+    <Mui.Button size=Large variant=Contained color={pickColor()} onClick sx=Classes.label>
+      {intl->ReactIntl.Intl.formatMessage(label)->React.string}
+    </Mui.Button>
+  </Mui.Grow>
 }
