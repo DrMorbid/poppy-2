@@ -7,8 +7,12 @@
         "message": "Kdo jsme",
         "description": "Top menu item - Who we are"
     },
+    "08e7cfa7-7bef-4779-b756-a41215947979": {
+        "message": "foto z registrace zašleme rodiči mailem",
+        "description": "Registrations page - youngest kids - the fifth line"
+    },
     "09de6bec-d523-4b7a-9d15-c73bbe2960f9": {
-        "message": "500Kč v hotovosti a 1000Kč se strhne z 1. vypláceného honoráře.",
+        "message": "1000Kč v hotovosti a 1000Kč se strhne z 1. vypláceného honoráře.",
         "description": "Q&A page - answer to question 7 - paragraph 2 - part2"
     },
     "0e472007-df8d-4a91-a94f-eff8c767d5d0": {
@@ -204,7 +208,7 @@
         "description": "Contact bottom bar - the Registration, database title"
     },
     "5d9705b6-5f6d-47b1-9dcc-bca2e4521809": {
-        "message": "foto z registrace zasíláme mailem",
+        "message": "dítě je poté zdarma součástí naší databáze do 15 let věku, přefocení zdarma",
         "description": "Registrations page - youngest kids - the fourth line"
     },
     "5efc3bbe-887a-4fbf-8a22-654d0a07a2c9": {
@@ -312,7 +316,7 @@
         "description": "Contact page - the registration address paid parking 1"
     },
     "76ac014a-0e24-4aec-90f2-327ce36a32c3": {
-        "message": "miminka se fotí ve 2 outfitech",
+        "message": "jednorázový registrační poplatek: 2.000Kč ",
         "description": "Registrations page - youngest kids - the third line"
     },
     "77e1062d-d854-4c16-bd7d-ca8a2f9a95fa": {
@@ -360,7 +364,7 @@
         "description": "Contact page - the facturation address"
     },
     "8dd8e4ed-fb57-4cc6-a3f9-ac8759e05a59": {
-        "message": "hradí jednorázově 500 Kč v hotovosti u zápisu a 1000 Kč se strhne z 1. vypláceného honoráře.",
+        "message": "hradí jednorázově 1000 Kč v hotovosti u zápisu a 1000 Kč se strhne z 1. vypláceného honoráře.",
         "description": "Registrations page - oldest kids - the second line"
     },
     "93df4d63-d1ac-4861-8be5-2029c23fbfaf": {
@@ -580,7 +584,7 @@
         "description": "References page - header of the third section"
     },
     "df269de6-665f-41ce-8a99-cae37d40427c": {
-        "message": "6 měs - 18 měs hradí 1.500Kč",
+        "message": "6 měs - 18 měs hradí 2000Kč",
         "description": "Q&A page - answer to question 7 - paragraph 1 - part 2"
     },
     "e3cffc3b-0478-4cff-9c3c-b719c143aeb4": {

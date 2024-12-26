@@ -192,7 +192,7 @@ let answer7Paragraph1Part2 =
   @intl.description("Q&A page - answer to question 7 - paragraph 1 - part 2")
   {
     id: "df269de6-665f-41ce-8a99-cae37d40427c",
-    defaultMessage: "6 měs - 18 měs hradí 1.500Kč",
+    defaultMessage: "6 měs - 18 měs hradí 2000Kč",
   }
 let answer7Paragraph1Part3 =
   @intl.description("Q&A page - answer to question 7 - paragraph 1 - part 3")
@@ -210,7 +210,7 @@ let answer7Paragraph2Part2 =
   @intl.description("Q&A page - answer to question 7 - paragraph 2 - part2")
   {
     id: "09de6bec-d523-4b7a-9d15-c73bbe2960f9",
-    defaultMessage: "500Kč v hotovosti a 1000Kč se strhne z 1. vypláceného honoráře.",
+    defaultMessage: "1000Kč v hotovosti a 1000Kč se strhne z 1. vypláceného honoráře.",
   }
 let answer7Paragraph3 =
   @intl.description("Q&A page - answer to question 7 - paragraph 3")

@@ -24,13 +24,19 @@ let youngestKidsLine3 =
   @intl.description("Registrations page - youngest kids - the third line")
   {
     id: "76ac014a-0e24-4aec-90f2-327ce36a32c3",
-    defaultMessage: "miminka se fotí ve 2 outfitech",
+    defaultMessage: "jednorázový registrační poplatek: 2.000Kč ",
   }
 let youngestKidsLine4 =
   @intl.description("Registrations page - youngest kids - the fourth line")
   {
     id: "5d9705b6-5f6d-47b1-9dcc-bca2e4521809",
-    defaultMessage: "foto z registrace zasíláme mailem",
+    defaultMessage: "dítě je poté zdarma součástí naší databáze do 15 let věku, přefocení zdarma",
+  }
+let youngestKidsLine5 =
+  @intl.description("Registrations page - youngest kids - the fifth line")
+  {
+    id: "08e7cfa7-7bef-4779-b756-a41215947979",
+    defaultMessage: "foto z registrace zašleme rodiči mailem",
   }
 let middleKidsLine1Part1 =
   @intl.description("Registrations page - middle kids - the first line - the first part")
@@ -96,7 +102,7 @@ let oldestKidsLine2 =
   @intl.description("Registrations page - oldest kids - the second line")
   {
     id: "8dd8e4ed-fb57-4cc6-a3f9-ac8759e05a59",
-    defaultMessage: "hradí jednorázově 500 Kč v hotovosti u zápisu a 1000 Kč se strhne z 1. vypláceného honoráře.",
+    defaultMessage: "hradí jednorázově 1000 Kč v hotovosti u zápisu a 1000 Kč se strhne z 1. vypláceného honoráře.",
   }
 let oldestKidsLine3 =
   @intl.description("Registrations page - oldest kids - the third line")
