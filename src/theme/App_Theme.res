@@ -187,11 +187,11 @@ let theme = (~prefersDarkMode) => {
       muiAppBar: {
         styleOverrides: {
           colorPrimary: Style.make(
-            ~backgroundColor=palette["primary"]->addTransparency(#background),
+            ~backgroundColor=palette["primaryLight"]->addTransparency(#background),
             (),
           )->Obj.magic,
           colorSecondary: Style.make(
-            ~backgroundColor=palette["secondary"]->addTransparency(#background),
+            ~backgroundColor=palette["secondaryLight"]->addTransparency(#background),
             (),
           )->Obj.magic,
         },

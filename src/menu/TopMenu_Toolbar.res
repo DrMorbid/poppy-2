@@ -1,17 +1,9 @@
-open ReactIntl
 open TopMenu_Item
 
-module Classes = {
-  let label = Mui.Sx.obj({
-    fontSize: String(App_Theme.Typography.h5.fontSize),
-    fontWeight: String(App_Theme.Typography.h5.fontWeight),
-    lineHeight: Number(1.334),
-  })
-}
+module Button = TopMenu_Toolbar_Button
 
 @react.component
 let make = () => {
-  let intl = useIntl()
   let pathname = Next.Navigation.usePathname()
   let router = Next.Navigation.useRouter()
   let (
@@ -25,10 +17,8 @@ let make = () => {
       ->getMenuItems
       ->List.mapWithIndex((menuItem, index) =>
         <Mui.Grid item=true key={`menu-item-${index->Int.toString}`}>
-          <Mui.Button
-            size=Large
-            variant=Outlined
-            color=Secondary
+          <Button
+            label={menuItem->App_Types.MenuItem.toLabel}
             onClick={_ =>
               menuItem->onClick(
                 ~menuItemTargets=pathname->pickMenuItemTargets(
@@ -37,9 +27,8 @@ let make = () => {
                 ),
                 ~router,
               )}
-            sx=Classes.label>
-            {intl->ReactIntl.Intl.formatMessage(menuItem->App_Types.MenuItem.toLabel)->React.string}
-          </Mui.Button>
+            index
+          />
         </Mui.Grid>
       )
       ->List.toArray
