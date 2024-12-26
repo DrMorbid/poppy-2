@@ -21,6 +21,17 @@ type body =
   | Lists(list<listParagraph>)
   | Element(Jsx.element)
 
+module Classes = {
+  let listItemIcon = [
+    Mui.Sx.Array.func(theme =>
+      Mui.Sx.Array.obj({
+        color: String(theme.palette.text.primary),
+        fontSize: String("0.5rem"),
+      })
+    ),
+  ]->Mui.Sx.array
+}
+
 module FragmentContent = {
   let toString = (~intl, content: fragmentContent) =>
     switch content {
@@ -158,16 +169,23 @@ let make = (
                       </Mui.Grid>
                     </Mui.Grid>
                   | Message(message) =>
-                    <Mui.ListItemText
-                      primary={intl->ReactIntl.Intl.formatMessage(message)->React.string}
-                      sx=?{row.bold->Option.getOr(false)
-                        ? Some(
-                            [("& .MuiListItemText-primary", Common_Style.bold)]
-                            ->Dict.fromArray
-                            ->Mui.Sx.dict,
-                          )
-                        : None}
-                    />
+                    <>
+                      <Mui.ListItemIcon sx=Classes.listItemIcon>
+                        <Common_Icon.Circle fontSize="inherit" />
+                      </Mui.ListItemIcon>
+                      <Mui.ListItemText
+                        primary={intl
+                        ->ReactIntl.Intl.formatMessage(message)
+                        ->React.string}
+                        sx=?{row.bold->Option.getOr(false)
+                          ? Some(
+                              [("& .MuiListItemText-primary", Common_Style.bold)]
+                              ->Dict.fromArray
+                              ->Mui.Sx.dict,
+                            )
+                          : None}
+                      />
+                    </>
                   }}
                 </Mui.ListItem>
               )
