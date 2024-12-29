@@ -4,21 +4,16 @@ open Message.Contact
 @react.component
 let default = () => {
   let (mapUrl, setMapUrl) = React.useState(() => None)
-  let (isMapBeingLoaded, setIsMapBeingLoaded) = React.useState(() => false)
   let intl = ReactIntl.useIntl()
   let topRef = React.useRef(null)
 
   let onClose = () => {
-    setIsMapBeingLoaded(_ => false)
     setMapUrl(_ => None)
   }
 
   let onClick = mapUrl => {
-    setIsMapBeingLoaded(_ => true)
     setMapUrl(_ => Some(mapUrl))
   }
-
-  let onMapLoadingFinished = _ => setIsMapBeingLoaded(_ => false)
 
   <Common.Text
     header
@@ -204,12 +199,12 @@ let default = () => {
               </Mui.Grid>
               <Mui.Hidden smDown=true mdUp={mapUrl->Option.isNone}>
                 <Mui.Grid item=true md=Number(6) sx=Common.Style.headerGap>
-                  <Contact_Map url=?mapUrl isMapBeingLoaded onMapLoadingFinished />
+                  <Contact_Map url=?mapUrl />
                 </Mui.Grid>
               </Mui.Hidden>
               <Mui.Hidden mdUp=true>
                 <Common.Dialog isOpen={mapUrl->Option.isSome} onClose fullScreen=true>
-                  <Contact_Map url=?mapUrl isMapBeingLoaded onMapLoadingFinished />
+                  <Contact_Map url=?mapUrl />
                 </Common.Dialog>
               </Mui.Hidden>
             </Mui.Grid>,

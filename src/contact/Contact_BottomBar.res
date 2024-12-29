@@ -4,21 +4,16 @@ open Message.Contact
 @react.component
 let make = () => {
   let (mapUrl, setMapUrl) = React.useState(() => None)
-  let (isMapBeingLoaded, setIsMapBeingLoaded) = React.useState(() => false)
   let intl = ReactIntl.useIntl()
   let isMdUp = Mui.Core.useMediaQueryString(App_Theme.Breakpoint.mdUp)
 
   let onClose = () => {
-    setIsMapBeingLoaded(_ => false)
     setMapUrl(_ => None)
   }
 
   let onClick = mapUrl => {
-    setIsMapBeingLoaded(_ => true)
     setMapUrl(_ => Some(mapUrl))
   }
-
-  let onMapLoadingFinished = _ => setIsMapBeingLoaded(_ => false)
 
   <Mui.Grid
     container=true
@@ -97,7 +92,7 @@ let make = () => {
       </Mui.Grid>
     </Mui.Grid>
     <Common.Dialog isOpen={mapUrl->Option.isSome} onClose fullScreen={!isMdUp} fixedSize=isMdUp>
-      <Contact_Map url=?mapUrl isMapBeingLoaded onMapLoadingFinished />
+      <Contact_Map url=?mapUrl />
     </Common.Dialog>
   </Mui.Grid>
 }
