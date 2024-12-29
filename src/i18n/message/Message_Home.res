@@ -13,12 +13,12 @@ let firstParagraph =
   }
 let secondParagraphHeader =
   @intl.description("Header of the second paragraph on the home page")
-  {id: "204c193b-6887-4e07-974e-e7134e58ab76", defaultMessage: "Film a Seriál"}
+  {id: "204c193b-6887-4e07-974e-e7134e58ab76", defaultMessage: "Film a seriál"}
 let secondParagraph =
   @intl.description("The second paragraph on the home page")
   {
     id: "661c230e-e660-4745-b5c0-9df24de636e3",
-    defaultMessage: "Obsazujeme především hlavní a vedlejší mluvené i nemluvené herecké role, dabléry hl.herců, okrajově i kompars.",
+    defaultMessage: "Obsazujeme především hlavní a vedlejší mluvené i nemluvené herecké role, dabléry hl. herců, okrajově i kompars.",
   }
 let thirdParagraphHeader =
   @intl.description("Header of the third paragraph on the home page")
@@ -27,5 +27,5 @@ let thirdParagraph =
   @intl.description("The third paragraph on the home page")
   {
     id: "b0fe1f36-cd5e-40ee-8941-3a9383cec031",
-    defaultMessage: "Zaměřujeme se na český a slovenský dabing filmů, seriálů, reklam pro televizi, rádio i internet.",
+    defaultMessage: "Zaměřujeme se na dabing filmů, seriálů, reklam pro televizi, rádio i internet především v češtině, slovenštině a angličtině.",
   }
