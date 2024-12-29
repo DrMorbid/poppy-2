@@ -42,7 +42,7 @@ let make = () => {
       <Mui.Button
         size=?{isMdUp ? Some(Large) : None}
         variant=Contained
-        color=Primary
+        color={Error}
         onClick=onRegisterClick
         sx=?{isMdUp ? Some(Common.Style.largeButtonLabel) : None}>
         {intl->ReactIntl.Intl.formatMessage(registrations)->React.string}

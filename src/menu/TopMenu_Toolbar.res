@@ -24,7 +24,7 @@ let make = () => {
     None
   }, [pathname])
 
-  <Mui.Toolbar disableGutters=true variant={Dense}>
+  <Mui.Toolbar disableGutters=true>
     <Mui.Grid container=true justifyContent=String("space-evenly") spacing=Int(1)>
       {menuItems
       ->List.mapWithIndex(((menuItem, visible), index) =>

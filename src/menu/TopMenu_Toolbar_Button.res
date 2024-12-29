@@ -14,7 +14,7 @@ let make = (~label, ~onClick, ~index, ~visible=false) => {
     }
 
   <Mui.Grow in_=visible timeout={Duration(Common.Constants.menuItemAnimationDuration)}>
-    <Mui.Button variant=Contained color={pickColor()} onClick>
+    <Mui.Button variant=Contained color={pickColor()} onClick sx={Common.Style.largeButtonLabel}>
       {intl->ReactIntl.Intl.formatMessage(label)->React.string}
     </Mui.Button>
   </Mui.Grow>
