@@ -23,6 +23,12 @@ let registrationsMiddle =
     id: "aff491b0-4982-4a78-b94e-dc6f658b690a",
     defaultMessage: "18 měs. - 3 roky",
   }
+let registrationsMiddleSubheader =
+  @intl.description("Registrations - middle kids - the sub-header")
+  {
+    id: "ac5e4f12-0375-4f3a-afca-f0ca35068a02",
+    defaultMessage: "STOPSTAV náboru nových dětí",
+  }
 let registrationsOldest =
   @intl.description("Registrations - oldest kids")
   {

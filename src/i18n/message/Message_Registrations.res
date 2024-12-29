@@ -24,7 +24,7 @@ let youngestKidsLine3 =
   @intl.description("Registrations page - youngest kids - the third line")
   {
     id: "76ac014a-0e24-4aec-90f2-327ce36a32c3",
-    defaultMessage: "jednorázový registrační poplatek: 2.000Kč ",
+    defaultMessage: "jednorázový registrační poplatek: 2 000 Kč ",
   }
 let youngestKidsLine4 =
   @intl.description("Registrations page - youngest kids - the fourth line")
@@ -54,42 +54,18 @@ let middleKidsLine2 =
   @intl.description("Registrations page - middle kids - the second line")
   {
     id: "4b4fd264-e3e1-4958-aa7e-b7d64029544c",
-    defaultMessage: "osobně ve vypsaných termínech mezi 9 - 13:30h, objednejte se",
+    defaultMessage: "důvodem stop stavu náboru dětí evropského vzhledu v tomto věku je nízká poptávka klientů, málo nabídek práce pro tento věk",
   }
 let middleKidsLine3 =
   @intl.description("Registrations page - middle kids - the third line")
   {
     id: "f356ee89-c465-43f8-ba8c-79d9175ad2d9",
-    defaultMessage: "registrace zabere 30 minut, čas je vyhrazen pouze pro vás",
+    defaultMessage: "spolupráce s dětmi v tomto období je náročná, dítě nepostojí, nezopakuje záběr vícekrát, je fixované na maminku, produkce se tomuto věku vyhýbají",
   }
 let middleKidsLine4 =
   @intl.description("Registrations page - middle kids - the fourth line")
   {
     id: "022440e0-53f1-45ad-b334-59f2dfdb39df",
-    defaultMessage: "fotí ve 2 outfitech",
-  }
-let middleKidsLine5 =
-  @intl.description("Registrations page - middle kids - the fifth line")
-  {
-    id: "dc050771-fb75-49a6-bd34-dff8ab4d53c9",
-    defaultMessage: "foto z registrace zasíláme mailem",
-  }
-let middleKidsSection2Header =
-  @intl.description("Registrations page - middle kids - the second section - header")
-  {
-    id: "c3107315-372f-496c-bf65-99a43c760c44",
-    defaultMessage: "STOPSTAV 18 měs. - 3 roky",
-  }
-let middleKidsSection2Line1 =
-  @intl.description("Registrations page - middle kids - the second section - the first line")
-  {
-    id: "9fe18571-d40a-439c-b21a-98305b70cffd",
-    defaultMessage: "důvodem stop stavu náboru dětí běžného evropského vzhledu v tomto věku je nízká poptávka, málo zakázek pro tento věk. Spolupráce s dětmi v tomto období je náročná, dítě nepostojí, nezopakuje záběr vícekrát. je fixované na maminku, produkce se tomuto věku vyhýbají.",
-  }
-let middleKidsSection2Line2 =
-  @intl.description("Registrations page - middle kids - the second section - the second line")
-  {
-    id: "8b53a69e-1841-451e-af0e-ef21117bc62a",
     defaultMessage: "ozvěte se tedy prosím až kolem 4. roka dítěte",
   }
 let oldestKidsLine1 =
@@ -102,13 +78,31 @@ let oldestKidsLine2 =
   @intl.description("Registrations page - oldest kids - the second line")
   {
     id: "8dd8e4ed-fb57-4cc6-a3f9-ac8759e05a59",
-    defaultMessage: "hradí jednorázově 1000 Kč v hotovosti u zápisu a 1000 Kč se strhne z 1. vypláceného honoráře.",
+    defaultMessage: "u registrace si dítě vyfotíme a krátce s ním promluvíme",
   }
-let oldestKidsLine3 =
-  @intl.description("Registrations page - oldest kids - the third line")
+let oldestKidsLine3Part1 =
+  @intl.description("Registrations page - oldest kids - the third line - part 1")
   {
     id: "2264b17d-0ea8-49c9-aec7-1cde77887917",
-    defaultMessage: "foto rodičům nezasíláme a není možné je od nás odkoupit, děkujeme za pochopení.",
+    defaultMessage: "registrační poplatek 2 000 Kč je rozdělen na dvě části:",
+  }
+let oldestKidsLine3Part2 =
+  @intl.description("Registrations page - oldest kids - the third line - part 2")
+  {
+    id: "558d09fb-f707-46f6-a0d6-5f70d704440b",
+    defaultMessage: "jednorázově 1 000 Kč v hotovosti u registrace a 1 000 Kč se strhne až z 1. vypláceného honoráře",
+  }
+let oldestKidsLine4 =
+  @intl.description("Registrations page - oldest kids - the fourth line")
+  {
+    id: "7c7751c4-837a-4f8b-adbb-00f9d651763e",
+    defaultMessage: "dítě je poté zdarma součástí naší databáze do 15 let věku, přefocení zdarma",
+  }
+let oldestKidsLine5 =
+  @intl.description("Registrations page - oldest kids - the fifth line")
+  {
+    id: "4b0df7d4-65cb-47bf-864e-9859848d16c2",
+    defaultMessage: "foto rodičům nezasíláme a není možné je od nás odkoupit, děkujeme za pochopení",
   }
 let currentRegistrationDates =
   @intl.description("Registrations - current registration dates")

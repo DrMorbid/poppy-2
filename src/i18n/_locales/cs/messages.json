@@ -1,6 +1,6 @@
 {
     "022440e0-53f1-45ad-b334-59f2dfdb39df": {
-        "message": "fotí ve 2 outfitech",
+        "message": "ozvěte se tedy prosím až kolem 4. roka dítěte",
         "description": "Registrations page - middle kids - the fourth line"
     },
     "0371f3b2-5b62-4c6b-baac-a3925b811458": {
@@ -68,8 +68,8 @@
         "description": "Q&A page - answer to question 5 - paragraph 4"
     },
     "2264b17d-0ea8-49c9-aec7-1cde77887917": {
-        "message": "foto rodičům nezasíláme a není možné je od nás odkoupit, děkujeme za pochopení.",
-        "description": "Registrations page - oldest kids - the third line"
+        "message": "registrační poplatek 2.000Kč je rozdělen na dvě části:",
+        "description": "Registrations page - oldest kids - the third line - part 1"
     },
     "23446130-8c22-4018-bb01-cdfe1215e140": {
         "message": "Email nemohl být odeslán: {error}",
@@ -175,12 +175,16 @@
         "message": "Na různých adresách v Praze, čtěte pečlivě vždy sms s instrukcemi, děti dochází do různých agentur či produkcí, se kterými spolupracujeme.",
         "description": "Q&A page - answer to question 10 - paragraph 1"
     },
+    "4b0df7d4-65cb-47bf-864e-9859848d16c2": {
+        "message": "foto rodičům nezasíláme a není možné je od nás odkoupit, děkujeme za pochopení",
+        "description": "Registrations page - oldest kids - the fifth line"
+    },
     "4b4e932d-33d5-462e-960d-d68cd74edac0": {
         "message": "Potvrzení do role může přijít třeba jen den před avizovaným termínem kostýmové zkoušky.",
         "description": "Q&A page - answer to question 6 - paragraph 6"
     },
     "4b4fd264-e3e1-4958-aa7e-b7d64029544c": {
-        "message": "osobně ve vypsaných termínech mezi 9 - 13:30h, objednejte se",
+        "message": "důvodem stop stavu náboru dětí evropského vzhledu v tomto věku je nízká poptávka klientů, málo nabídek práce pro tento věk",
         "description": "Registrations page - middle kids - the second line"
     },
     "4c0bdbb8-fff7-4301-b21c-fa4b06eddf3c": {
@@ -194,6 +198,10 @@
     "54d5dee3-1a36-497e-af05-225d6e2eb018": {
         "message": "registrujeme osobně ve vypsaných termínech mezi 9 - 13:30h, objednejte se",
         "description": "Registrations page - youngest kids - the first line"
+    },
+    "558d09fb-f707-46f6-a0d6-5f70d704440b": {
+        "message": "jednorázově 1.000 Kč v hotovosti u registrace a 1000 Kč se strhne až z 1. vypláceného honoráře",
+        "description": "Registrations page - oldest kids - the third line - part 2"
     },
     "588ddae1-8b2e-4141-b776-4cd9dfbc4447": {
         "message": "Mgr. art. {name}",
@@ -316,7 +324,7 @@
         "description": "Contact page - the registration address paid parking 1"
     },
     "76ac014a-0e24-4aec-90f2-327ce36a32c3": {
-        "message": "jednorázový registrační poplatek: 2.000Kč ",
+        "message": "jednorázový registrační poplatek: 2 000 Kč ",
         "description": "Registrations page - youngest kids - the third line"
     },
     "77e1062d-d854-4c16-bd7d-ca8a2f9a95fa": {
@@ -326,6 +334,10 @@
     "78d75afe-dfbf-4ccc-8641-b55a3b6d6106": {
         "message": "Připravuje pro vás smlouvy a dojednává kontrakty, doporučuje děti do hereckých rolí.",
         "description": "About Us page - the second part of company owner's description"
+    },
+    "7c7751c4-837a-4f8b-adbb-00f9d651763e": {
+        "message": "dítě je poté zdarma součástí naší databáze do 15 let věku, přefocení zdarma",
+        "description": "Registrations page - oldest kids - the fourth line"
     },
     "7ed024d8-d064-444f-af7e-7f6ca3b83759": {
         "message": "Spolupracujeme s mnohými agenturami, produkcemi, televizemi a studii při obsazování dětských rolí do točených i focených reklam pro ČR i zahraničí.",
@@ -351,10 +363,6 @@
         "message": "Datum je příliš nízké.",
         "description": "Date validation - date is too low"
     },
-    "8b53a69e-1841-451e-af0e-ef21117bc62a": {
-        "message": "ozvěte se tedy prosím až kolem 4. roka dítěte",
-        "description": "Registrations page - middle kids - the second section - the second line"
-    },
     "8bc483c1-91ac-4f35-a897-6f9794332b01": {
         "message": "Děti na castingy zveme SMSkou, kterou pošleme rodiči. Ověříte si, že máte volno všechny vypsané termíny a odepíšete zpět se jménem a příjmením dítěte.",
         "description": "Q&A page - answer to question 6 - paragraph 1"
@@ -364,7 +372,7 @@
         "description": "Contact page - the facturation address"
     },
     "8dd8e4ed-fb57-4cc6-a3f9-ac8759e05a59": {
-        "message": "hradí jednorázově 1000 Kč v hotovosti u zápisu a 1000 Kč se strhne z 1. vypláceného honoráře.",
+        "message": "u registrace si dítě vyfotíme a krátce s ním promluvíme",
         "description": "Registrations page - oldest kids - the second line"
     },
     "93df4d63-d1ac-4861-8be5-2029c23fbfaf": {
@@ -407,10 +415,6 @@
         "message": "Pokud jste dítě zaregistrovali do agentury, která má exkluzivní zastoupení, registrovat jej u nás nemůžete.",
         "description": "Q&A page - answer to question 12 - paragraph 1 - part 2"
     },
-    "9fe18571-d40a-439c-b21a-98305b70cffd": {
-        "message": "důvodem stop stavu náboru dětí běžného evropského vzhledu v tomto věku je nízká poptávka, málo zakázek pro tento věk. Spolupráce s dětmi v tomto období je náročná, dítě nepostojí, nezopakuje záběr vícekrát. je fixované na maminku, produkce se tomuto věku vyhýbají.",
-        "description": "Registrations page - middle kids - the second section - the first line"
-    },
     "a0b279bd-a9cd-4cab-9afd-8de72b2f23d0": {
         "message": "Buďte prosím trpěliví a maximálně flexibilní, na nat.den si vždy raději blokujte celý den.",
         "description": "Q&A page - answer to question 6 - paragraph 5"
@@ -438,6 +442,10 @@
     "a79092a0-18c4-4dc3-a07a-4bea305bf3f3": {
         "message": "Než se k nám rozhodnete přihlásit",
         "description": "Q&A page - the sub-header"
+    },
+    "ac5e4f12-0375-4f3a-afca-f0ca35068a02": {
+        "message": "STOPSTAV náboru nových dětí",
+        "description": "Registrations - middle kids - the sub-header"
     },
     "ae88fbab-0433-4390-93b1-2048cc540f42": {
         "message": "Aktuální info",
@@ -486,10 +494,6 @@
     "c13a8586-e3cf-467a-b651-a498647b1e5e": {
         "message": "U komerčních zakázek je honorář vždy uveden, u filmu a seriálu honorář řešíme až po obsazení dítěte do role.",
         "description": "Q&A page - answer to question 6 - paragraph 3"
-    },
-    "c3107315-372f-496c-bf65-99a43c760c44": {
-        "message": "STOPSTAV 18 měs. - 3 roky",
-        "description": "Registrations page - middle kids - the second section - header"
     },
     "c65d1a9a-885c-488d-a9b5-af73c3ae5870": {
         "message": "Nejobsazovanější věk je u nás 6 měs - 1,5 roku a 5-12 let.",
@@ -571,10 +575,6 @@
         "message": "Castingy se konají výhradně v Praze a znamenají dojíždění, protože konkurzů je potřeba obejít více, aby se něco dítěti podařilo získat. Casting může mít 1. kolo a 2. kolo (tzv. callback pro užší výběr z 1.kola), poté kostýmová zkouška, někdy herecká zkouška, poté termín natáčení. Miminka si ale většinou vyberou jen z fotek bez castingu.",
         "description": "Q&A page - answer to question 3 - paragraph 1"
     },
-    "dc050771-fb75-49a6-bd34-dff8ab4d53c9": {
-        "message": "foto z registrace zasíláme mailem",
-        "description": "Registrations page - middle kids - the fifth line"
-    },
     "dc11ed02-f9f6-4fdf-97c2-9cea0ad95414": {
         "message": "Aktuální termíny",
         "description": "Top menu item - Current Dates"
@@ -624,7 +624,7 @@
         "description": "Q&A page - answer to question 5 - paragraph 2"
     },
     "f356ee89-c465-43f8-ba8c-79d9175ad2d9": {
-        "message": "registrace zabere 30 minut, čas je vyhrazen pouze pro vás",
+        "message": "spolupráce s dětmi v tomto období je náročná, dítě nepostojí, nezopakuje záběr vícekrát, je fixované na maminku, produkce se tomuto věku vyhýbají",
         "description": "Registrations page - middle kids - the third line"
     },
     "f7b87daf-a144-4e73-b4fd-6342f1282136": {

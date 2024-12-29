@@ -163,11 +163,16 @@ let make = (
                 <Mui.ListItem key={`list-row-${index->Int.toString}`}>
                   {switch row.content {
                   | Fragments(fragments) =>
-                    <Mui.Grid container=true>
-                      <Mui.Grid item=true xs=Number(12)>
-                        <Fragment fragments />
+                    <>
+                      <Mui.ListItemIcon sx=Classes.listItemIcon>
+                        <Common_Icon.Circle fontSize="inherit" />
+                      </Mui.ListItemIcon>
+                      <Mui.Grid container=true>
+                        <Mui.Grid item=true xs=Number(12)>
+                          <Fragment fragments />
+                        </Mui.Grid>
                       </Mui.Grid>
-                    </Mui.Grid>
+                    </>
                   | Message(message) =>
                     <>
                       <Mui.ListItemIcon sx=Classes.listItemIcon>
