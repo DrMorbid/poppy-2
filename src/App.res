@@ -38,6 +38,12 @@ let make = (~children) => {
     None
   }, [topRef])
 
+  React.useEffect(() => {
+    EnvVar.Email.apiKey->Option.forEach(EmailUs.Utils.authenticate)
+
+    None
+  }, [EnvVar.Email.apiKey])
+
   <Mui.Container maxWidth=Xl ref={topRef->Ref.domRef} sx=Classes.container>
     <Mui.Grid container=true direction=Column sx={Common.Style.paragraphGap->Utils.Style.styleToSx}>
       <Mui.Grid item=true>

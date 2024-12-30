@@ -35,3 +35,28 @@ let fetchEmailBody = async (
   ->String.replaceRegExp(%re("/\${parentEmail}/g"), parentEmail)
   ->String.replaceRegExp(%re("/\${note}/g"), note->Option.getOr(""))
 }
+
+let authenticate = apiKeyValue => {
+  open ElasticEmail
+
+  let elasticEmail = instance
+  let apiKeyAuthentication = (elasticEmail->authentications)["apikey"]
+  apiKeyAuthentication->apiKey(apiKeyValue)
+}
+
+let send = (~sender as from, ~recipient as email, ~subject, ~onSuccess, ~onError, content) => {
+  open ElasticEmail
+
+  let emailApi = makeEmailsApi()
+  let emailData: EmailData.t = {
+    recipients: [{email}],
+    content: {from, subject, body: [{contentType: #HTML, charset: #"utf-8", content}]},
+  }
+
+  emailApi->emailsPost(emailData, ~callback=error =>
+    switch error {
+    | Some(error) => onError(error)
+    | None => onSuccess()
+    }
+  )
+}

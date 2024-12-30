@@ -39,10 +39,12 @@ let default = () => {
     )
     ->Promise.thenResolve(async body => {
       if input.childBirthdate->Option.isSome {
-        let message = await SmtpJs.email->SmtpJs.sendWithSecureToken({
-          "SecureToken": EnvVar.SmtpJs.secureToken->Option.getOr(""),
+        let message = await SmtpJs.email->SmtpJs.sendWithCredentials({
+          "Host": "smtp.elasticemail.com",
+          "Username": "hanka@poppycasting.cz",
+          "Password": "BC87660ABCBF4FD57A79C36FCA3B3EAA6465",
           "To": EnvVar.SmtpJs.to->Option.getOr(""),
-          "From": EnvVar.SmtpJs.from->Option.getOr(""),
+          "From": "hanka@poppycasting.cz",
           "Subject": intl->ReactIntl.Intl.formatMessage(emailSubject),
           "Body": body,
         })
