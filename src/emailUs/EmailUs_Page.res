@@ -40,7 +40,7 @@ let default = () => {
     ->Promise.thenResolve(async body =>
       if input.childBirthdate->Option.isSome {
         body->send(
-          ~sender=input.parentEmail,
+          ~sender=EnvVar.Email.sender->Option.getOr(""),
           ~recipient=EnvVar.Email.recipient->Option.getOr(""),
           ~subject=intl->ReactIntl.Intl.formatMessage(emailSubject),
           ~onSuccess=() => setSuccessAlertOpen(_ => true),
