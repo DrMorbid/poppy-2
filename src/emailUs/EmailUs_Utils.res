@@ -49,14 +49,14 @@ let send = (~sender as from, ~recipient as email, ~subject, ~onSuccess, ~onError
 
   let emailApi = makeEmailsApi()
   let emailData: EmailData.t = {
-    recipients: [{email}],
+    recipients: [{email: email}],
     content: {from, subject, body: [{contentType: #HTML, charset: #"utf-8", content}]},
   }
 
-  emailApi->emailsPost(emailData, ~callback=error =>
-    switch error {
-    | Some(error) => onError(error)
+  emailApi->emailsPost(emailData, ~callback=(~error, ~data as _) => {
+    switch error->Nullable.toOption {
+    | Some({response: {body: {error}}, status}) => onError(`${status->Int.toString}: ${error}`)
     | None => onSuccess()
     }
-  )
+  })
 }

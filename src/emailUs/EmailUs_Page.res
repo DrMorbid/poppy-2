@@ -37,27 +37,19 @@ let default = () => {
       ->Option.map(Array.map(_, line => `<p>${line}</p>`))
       ->Option.map(Array.join(_, "")),
     )
-    ->Promise.thenResolve(async body => {
+    ->Promise.thenResolve(async body =>
       if input.childBirthdate->Option.isSome {
-        let message = await SmtpJs.email->SmtpJs.sendWithCredentials({
-          "Host": "smtp.elasticemail.com",
-          "Username": "hanka@poppycasting.cz",
-          "Password": "BC87660ABCBF4FD57A79C36FCA3B3EAA6465",
-          "To": EnvVar.SmtpJs.to->Option.getOr(""),
-          "From": "hanka@poppycasting.cz",
-          "Subject": intl->ReactIntl.Intl.formatMessage(emailSubject),
-          "Body": body,
-        })
-
-        if message->String.match(%re("/^ok$/i"))->Option.isSome {
-          setSuccessAlertOpen(_ => true)
-        } else {
-          setErrorAlertOpen(_ => Some(message))
-        }
+        body->send(
+          ~sender=input.parentEmail,
+          ~recipient=EnvVar.Email.recipient->Option.getOr(""),
+          ~subject=intl->ReactIntl.Intl.formatMessage(emailSubject),
+          ~onSuccess=() => setSuccessAlertOpen(_ => true),
+          ~onError=error => setErrorAlertOpen(_ => Some(error)),
+        )
       } else {
         setErrorAlertOpen(_ => Some(Message.Date.dateMissing.defaultMessage))
       }
-    })
+    )
     ->ignore
 
   let onSuccessClose = (_, _) => setSuccessAlertOpen(_ => false)

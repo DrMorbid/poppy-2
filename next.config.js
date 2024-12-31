@@ -1,6 +1,6 @@
 /**
  * @type {import('next').NextConfig}
  */
-const nextConfig = { output: "export", compiler: { removeConsole: { exclude: ["error"] } } };
+const nextConfig = { output: "export" };
 
 module.exports = nextConfig;

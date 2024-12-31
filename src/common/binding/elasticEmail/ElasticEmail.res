@@ -20,6 +20,17 @@ module EmailData = {
   type t = {@as("Recipients") recipients: array<recipient>, @as("Content") content: content}
 }
 
+module Error = {
+  type body = {@as("Error") error: string}
+  type response = {body: body}
+  type t = {response: response, status: int}
+}
+
+type data = {
+  @as("MessageID") messageID: string,
+  @as("TransactionID") transactionID: string,
+}
+
 @module("@elasticemail/elasticemail-client") @scope("ApiClient")
 external instance: apiClientInstance = "instance"
 
@@ -31,5 +42,8 @@ external instance: apiClientInstance = "instance"
 external makeEmailsApi: unit => emailApi = "EmailsApi"
 
 @send
-external emailsPost: (emailApi, EmailData.t, ~callback: option<Error.t> => unit) => unit =
-  "emailsPost"
+external emailsPost: (
+  emailApi,
+  EmailData.t,
+  ~callback: (~error: Nullable.t<Error.t>, ~data: Nullable.t<data>) => unit,
+) => unit = "emailsPost"
