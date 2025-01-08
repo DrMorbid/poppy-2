@@ -7,24 +7,19 @@ let default = () => {
   let (successAlertOpen, setSuccessAlertOpen) = React.useState(() => false)
   let (errorAlertOpen, setErrorAlertOpen) = React.useState(() => None)
   let (dateErrorMessage, setDateErrorMessage) = React.useState(() => None)
+  let (emailBeingSent, setEmailBeingSent) = React.useState(() => false)
 
   let form = Form.use(
     ~config={
-      defaultValues: {
-        parentName: "",
-        childName: "",
-        childBirthdate: Some(Date.make()),
-        cityOfResidence: "",
-        parentPhone: "",
-        parentEmail: "",
-        note: None,
-      },
+      defaultValues: defaultValues,
     },
   )
 
   let intl = ReactIntl.useIntl()
 
-  let onSubmit = async (input, _) =>
+  let onSubmit = async (input, _) => {
+    setEmailBeingSent(_ => true)
+
     fetchEmailBody(
       ~parentName=input.parentName,
       ~childName=input.childName,
@@ -43,14 +38,22 @@ let default = () => {
           ~sender=EnvVar.Email.sender->Option.getOr(""),
           ~recipient=EnvVar.Email.recipient->Option.getOr(""),
           ~subject=intl->ReactIntl.Intl.formatMessage(emailSubject),
-          ~onSuccess=() => setSuccessAlertOpen(_ => true),
-          ~onError=error => setErrorAlertOpen(_ => Some(error)),
+          ~onSuccess=() => {
+            setEmailBeingSent(_ => false)
+            setSuccessAlertOpen(_ => true)
+            form->Form.reset(defaultValues)
+          },
+          ~onError=error => {
+            setEmailBeingSent(_ => false)
+            setErrorAlertOpen(_ => Some(error))
+          },
         )
       } else {
         setErrorAlertOpen(_ => Some(Message.Date.dateMissing.defaultMessage))
       }
     )
     ->ignore
+  }
 
   let onSuccessClose = (_, _) => setSuccessAlertOpen(_ => false)
   let onErrorClose = (_, _) => setErrorAlertOpen(_ => None)
@@ -154,9 +157,15 @@ let default = () => {
             last=true
           />
           <Mui.Grid item=true xs=Number(12)>
-            <Mui.Button type_=Submit color=Primary variant=Contained>
-              {intl->ReactIntl.Intl.formatMessage(submitButton)->React.string}
-            </Mui.Button>
+            {if emailBeingSent {
+              <MuiLab.LoadingButton loading=true color=Primary variant=Contained>
+                {intl->ReactIntl.Intl.formatMessage(submitButton)->React.string}
+              </MuiLab.LoadingButton>
+            } else {
+              <Mui.Button type_=Submit color=Primary variant=Contained>
+                {intl->ReactIntl.Intl.formatMessage(submitButton)->React.string}
+              </Mui.Button>
+            }}
           </Mui.Grid>
         </Mui.Grid>
       </form>,

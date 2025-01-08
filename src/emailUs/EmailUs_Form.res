@@ -8,6 +8,16 @@ type input = {
   note: option<string>,
 }
 
+let defaultValues = {
+  parentName: "",
+  childName: "",
+  childBirthdate: Some(Date.make()),
+  cityOfResidence: "",
+  parentPhone: "",
+  parentEmail: "",
+  note: None,
+}
+
 module Field = {
   type t = {required: bool}
 
