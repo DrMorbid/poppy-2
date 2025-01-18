@@ -4,6 +4,8 @@ module CarouselItem = Home_CarouselItem
 
 @react.component
 let default = () => {
+  let isMdUp = Mui.Core.useMediaQueryString(App_Theme.Breakpoint.mdUp)
+  let isLgUp = Mui.Core.useMediaQueryString(App_Theme.Breakpoint.lgUp)
   let whoWeAreTopRef = React.useRef(Nullable.null)
   let referencesTopRef = React.useRef(Nullable.null)
   let (_, dispatch) = React.useContext(App_Context.Context.t)
@@ -29,26 +31,29 @@ let default = () => {
       </ReactMaterialUiCarousel>
     </Mui.Grid>
     <Common.Island
-      header=firstParagraphHeader
-      body=Paragraphs(list{firstParagraph})
-      centerAll=true
-      lg=Number(4)
-      xl=Number(4)
+      header=firstParagraphHeader body=Paragraphs(list{firstParagraph}) centerAll=true xl=Number(3)
     />
     <Common.Island
       header=secondParagraphHeader
       body=Paragraphs(list{secondParagraph})
       centerAll=true
-      lg=Number(4)
-      xl=Number(4)
+      xl=Number(3)
     />
     <Common.Island
-      header=thirdParagraphHeader
-      body=Paragraphs(list{thirdParagraph})
-      centerAll=true
-      lg=Number(4)
-      xl=Number(4)
+      header=thirdParagraphHeader body=Paragraphs(list{thirdParagraph}) centerAll=true xl=Number(3)
     />
+    {isMdUp && !isLgUp
+      ? <Common.Island body={Element(Jsx.null)} centerAll=true lg=Number(4) xl=Number(4) />
+      : Jsx.null}
+    <Common.Island
+      header=fourthParagraphHeader
+      body=Paragraphs(list{fourthParagraph})
+      centerAll=true
+      xl=Number(3)
+    />
+    {isMdUp && !isLgUp
+      ? <Common.Island body={Element(Jsx.null)} centerAll=true lg=Number(4) xl=Number(4) />
+      : Jsx.null}
     <Mui.Grid item=true xs=Number(12)>
       <App_ScrollableSections
         sections={list{

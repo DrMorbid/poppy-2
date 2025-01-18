@@ -29,3 +29,12 @@ let thirdParagraph =
     id: "b0fe1f36-cd5e-40ee-8941-3a9383cec031",
     defaultMessage: "Zaměřujeme se na dabing filmů, seriálů, reklam pro televizi, rádio i internet především v češtině, slovenštině a angličtině.",
   }
+let fourthParagraphHeader =
+  @intl.description("Header of the fourth paragraph on the home page")
+  {id: "a14e6633-b9f5-42ef-993b-6ffbb54afe17", defaultMessage: "Herectví"}
+let fourthParagraph =
+  @intl.description("The fourth paragraph on the home page")
+  {
+    id: "f99e756b-e4df-453f-b01e-1b8fb5194780",
+    defaultMessage: "Každoročně pořádáme příměstský herecký tábor Filmák, který připravuje děti na situace před kamerou či na castingu.",
+  }
