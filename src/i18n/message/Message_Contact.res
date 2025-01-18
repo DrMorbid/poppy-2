@@ -62,11 +62,29 @@ let facturationAddressLabel =
     id: "bb731b22-3892-4e85-a51e-7ad558f7e5bd",
     defaultMessage: "korespondenční a fakturační adresa:",
   }
-let facturationAddress =
-  @intl.description("Contact page - the facturation address")
+let facturationAddress1 =
+  @intl.description("Contact page - the facturation address 1")
   {
     id: "8c3c6989-a6fa-4111-886f-81389325486a",
-    defaultMessage: "Paťanka 5, 160 00 Praha 6",
+    defaultMessage: "Poppy casting, s.r.o.",
+  }
+let facturationAddress2 =
+  @intl.description("Contact page - the facturation address 2")
+  {
+    id: "b1e477e9-e3f4-4191-8eb5-b4c27aeea657",
+    defaultMessage: "Paťanka 2611/5",
+  }
+let facturationAddress3 =
+  @intl.description("Contact page - the facturation address 3")
+  {
+    id: "37f4a7fb-a4fe-40e7-95f4-2a4f60f6b471",
+    defaultMessage: "160 00 Praha 6",
+  }
+let facturationAddress4 =
+  @intl.description("Contact page - the facturation address 4")
+  {
+    id: "e7d1f7fb-c92d-40ea-91b3-7fff6f26e279",
+    defaultMessage: "IČ: 04740165",
   }
 let idNumber =
   @intl.description("Contact page - the ID number")

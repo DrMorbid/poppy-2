@@ -111,6 +111,10 @@
         "message": "Jak to v Poppy casting funguje?",
         "description": "Q&A page - question 6"
     },
+    "37f4a7fb-a4fe-40e7-95f4-2a4f60f6b471": {
+        "message": "160 00 Praha 6",
+        "description": "Contact page - the facturation address 3"
+    },
     "37f7a6cf-6e2d-4512-a549-da264b47c3b4": {
         "message": "Je Vaše dítě nebojácné? Není na maminku příliš fixované, aby zvládlo být kousek od ní nebo v náručí herečky? U miminek se pochopitelně vše velmi rychle mění, tedy je těžké předvídat, jak se dítě bude chovat, ale pokud víte, že při pohledu na cizího člověka, který na něj promluví, dítě pláče, nebude nejspíše na casting vhodný adept.",
         "description": "Q&A page - answer to question 1 - paragraph 2 - part 2"
@@ -372,8 +376,8 @@
         "description": "Q&A page - answer to question 6 - paragraph 1"
     },
     "8c3c6989-a6fa-4111-886f-81389325486a": {
-        "message": "Paťanka 5, 160 00 Praha 6",
-        "description": "Contact page - the facturation address"
+        "message": "Poppy casting, s.r.o.",
+        "description": "Contact page - the facturation address 1"
     },
     "8dd8e4ed-fb57-4cc6-a3f9-ac8759e05a59": {
         "message": "u registrace si dítě vyfotíme a krátce s ním promluvíme",
@@ -470,6 +474,10 @@
     "b14db5d9-c99a-4b08-af69-7ab224854101": {
         "message": "NE: tričko s obrázky, nápisy, značkami, křiklavé vzory",
         "description": "Q&A page - answer to question 11 - paragraph 1 - inappropriate 2"
+    },
+    "b1e477e9-e3f4-4191-8eb5-b4c27aeea657": {
+        "message": "Paťanka 2611/5",
+        "description": "Contact page - the facturation address 2"
     },
     "b5558f2d-bd8e-4ba3-a2c8-561a9e5a6adc": {
         "message": "registrujeme osobně ve vypsaných termínech mezi 14 - 18h, objednejte se",
@@ -606,6 +614,10 @@
     "e6c3aeb3-690b-4db0-a671-98c739369944": {
         "message": "ANO: jednobarevný vršek nebo proužky, puntíky, jemný vzor",
         "description": "Q&A page - answer to question 11 - paragraph 2 - appropriate 1"
+    },
+    "e7d1f7fb-c92d-40ea-91b3-7fff6f26e279": {
+        "message": "IČ: 04740165",
+        "description": "Contact page - the facturation address 4"
     },
     "ea1bc44d-c83a-4dc0-a236-1cf7aad1c70c": {
         "message": "POUZE děti jiných etnik a JEDNOVAJEČNÁ dvojčata",

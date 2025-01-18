@@ -170,10 +170,32 @@ let default = () => {
                         </Mui.Typography>
                       </Mui.Grid>
                       <Mui.Grid item=true xs=Number(12)>
-                        <Common.OpenInNewButton
-                          label=facturationAddress
-                          onClick={() => onClick(Common.Constants.facturationAddress)}
-                        />
+                        <Mui.Typography>
+                          {intl
+                          ->ReactIntl.Intl.formatMessage(facturationAddress1)
+                          ->React.string}
+                        </Mui.Typography>
+                      </Mui.Grid>
+                      <Mui.Grid item=true xs=Number(12)>
+                        <Mui.Typography>
+                          {intl
+                          ->ReactIntl.Intl.formatMessage(facturationAddress2)
+                          ->React.string}
+                        </Mui.Typography>
+                      </Mui.Grid>
+                      <Mui.Grid item=true xs=Number(12)>
+                        <Mui.Typography>
+                          {intl
+                          ->ReactIntl.Intl.formatMessage(facturationAddress3)
+                          ->React.string}
+                        </Mui.Typography>
+                      </Mui.Grid>
+                      <Mui.Grid item=true xs=Number(12)>
+                        <Mui.Typography>
+                          {intl
+                          ->ReactIntl.Intl.formatMessage(facturationAddress4)
+                          ->React.string}
+                        </Mui.Typography>
                       </Mui.Grid>
                     </Mui.Grid>
                   </Mui.Grid>
