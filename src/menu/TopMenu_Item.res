@@ -3,7 +3,7 @@ open App_Types.MenuItem
 
 let getMenuItems = pathname =>
   if pathname->App_Page.isHomePage {
-    list{WhoWeAre, QAndA, References, Contact}
+    list{WhoWeAre, QAndA, References, Filmak, Contact}
   } else if pathname->App_Page.isRegistrationsPage {
     list{
       Home,
@@ -34,6 +34,10 @@ let onClick = (
       switch menuItem {
       | ScrollableRef(scrollableRef) => scrollToSection(scrollableRef)
       | Page(page) => router->App_Page.goTo(page)
+      | ExternalUrl(url) =>
+        Webapi.Dom.window
+        ->Webapi.Dom.Window.open_(~url, ~name="_blank", ~features="noreferrer", ())
+        ->ignore
       }
     )
 

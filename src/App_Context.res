@@ -13,7 +13,8 @@ module Make = (Config: Config) => {
   }
 }
 
-type menuItemTarget = ScrollableRef(React.ref<Nullable.t<Dom.element>>) | Page(App_Page.t)
+type menuItemTarget =
+  ScrollableRef(React.ref<Nullable.t<Dom.element>>) | Page(App_Page.t) | ExternalUrl(string)
 
 type menuItemTargets = Map.t<MenuItem.t, menuItemTarget>
 
@@ -31,6 +32,7 @@ let initialState = {
   homeMenuItemTargets->Map.set(QAndA, Page(App_Page.QAndA))
   homeMenuItemTargets->Map.set(Contact, Page(App_Page.Contact))
   homeMenuItemTargets->Map.set(References, Page(App_Page.References))
+  homeMenuItemTargets->Map.set(Filmak, ExternalUrl("https://www.filmak.eu/"))
 
   let registrationsMenuItemTargets = Map.make()
   registrationsMenuItemTargets->Map.set(Home, Page(App_Page.Home))

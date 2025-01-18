@@ -17,6 +17,9 @@ let whoWeAre =
 let references =
   @intl.description("Top menu item - References")
   {id: "6bf7df3e-31ef-4204-863a-9cf963d73779", defaultMessage: "Reference"}
+let filmak =
+  @intl.description("Top menu item - Filmak")
+  {id: "63fb56cc-00f8-44b8-8a79-142447cff213", defaultMessage: "Filmák"}
 let contact =
   @intl.description("Top menu item - Contact")
   {id: "73b571e6-4145-4efb-a2ae-6fd9f4933981", defaultMessage: "Kontakt"}

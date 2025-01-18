@@ -4,6 +4,7 @@ module MenuItem = {
     | WhoWeAre
     | QAndA
     | References
+    | Filmak
     | Contact
     | RegistrationsYoungest
     | RegistrationsMiddle
@@ -18,6 +19,7 @@ module MenuItem = {
     | Home => home
     | WhoWeAre => whoWeAre
     | References => references
+    | Filmak => filmak
     | Contact => contact
     | QAndA => qAndA
     | RegistrationsYoungest => registrationsYoungest
