@@ -49,6 +49,7 @@ let make = () => {
               }),
             }
             email=registrationDatabasePersonEmail
+            tel=infoPhone
           />
         </Mui.Grid>
         <Mui.Grid item=true xs=Number(12) xl=Number(6)>

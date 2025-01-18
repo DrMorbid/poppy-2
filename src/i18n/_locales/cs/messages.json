@@ -439,6 +439,10 @@
         "message": "Dětskému castingu se věnuje od roku 2005, Poppycasting založila v roce 2012.",
         "description": "About Us page - the third part of company owner's description"
     },
+    "a322cca1-3016-40bf-98f3-6748fc7d4078": {
+        "message": "email",
+        "description": "About Us page - contact label - for email"
+    },
     "a5eff367-926c-4315-bf96-fc773c34f8da": {
         "message": "Kukačky, Zlatá labuť, Iveta, Jitřní záře, Zákony vlka, O mě se neboj, Pan Profesor, Božena Němcová, Pod hladinou, Temný kraj, Specialisté, 1.Republika",
         "description": "References page - part one of the second section"
@@ -598,6 +602,10 @@
     "df269de6-665f-41ce-8a99-cae37d40427c": {
         "message": "6 měs - 18 měs hradí 2000Kč",
         "description": "Q&A page - answer to question 7 - paragraph 1 - part 2"
+    },
+    "e1c48847-e731-4092-a313-d35d21076c00": {
+        "message": "tel.",
+        "description": "About Us page - contact label - for telephone number"
     },
     "e3cffc3b-0478-4cff-9c3c-b719c143aeb4": {
         "message": "Bydlíte v Praze a okolí?",

@@ -32,6 +32,18 @@ let contact =
     id: "604b2750-e43f-4542-a741-1a0b873765b3",
     defaultMessage: "Kontakt",
   }
+let contactEmail =
+  @intl.description("About Us page - contact label - for email")
+  {
+    id: "a322cca1-3016-40bf-98f3-6748fc7d4078",
+    defaultMessage: "email",
+  }
+let contactTelephone =
+  @intl.description("About Us page - contact label - for telephone number")
+  {
+    id: "e1c48847-e731-4092-a313-d35d21076c00",
+    defaultMessage: "tel.",
+  }
 let registrationDatabasePersonDescription1 =
   @intl.description(
     "About Us page - the first part of registration and database person's description"
