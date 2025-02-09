@@ -14,6 +14,12 @@ let subHeader =
     id: "a79092a0-18c4-4dc3-a07a-4bea305bf3f3",
     defaultMessage: "Než se k nám rozhodnete přihlásit",
   }
+let topInfo =
+  @intl.description("Q&A page - the main info at the top of the page")
+  {
+    id: "01c5afcf-9c02-4320-8a97-7f0d273c0fdd",
+    defaultMessage: "Agentura Poppy casting je určena dětem od 6 měsíců do 15 let. Naším cílem je objevit talentované a zajímavé děti a poskytnout jim příležitost uplatnit se ve filmovém či reklamním prostředí.",
+  }
 let question1 =
   @intl.description("Q&A page - question 1")
   {
