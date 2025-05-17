@@ -25,7 +25,7 @@ module Classes = {
   let listItemIcon = [
     Mui.Sx.Array.func(theme =>
       Mui.Sx.Array.obj({
-        color: String(theme.palette.text.primary),
+        color: String(theme["palette"]["text"]["primary"]),
         fontSize: String("0.5rem"),
       })
     ),

@@ -3,9 +3,9 @@ module Classes = {
     Mui.Sx.Array.obj({
       bgcolor: String(
         App_Theme.Colors.palette(
-          !(theme.palette.mode->App_Theme.Colors.isLightMode),
+          !(theme["palette"]["mode"]->App_Theme.Colors.isLightMode),
         )["secondaryLight"]->Utils.Style.mixColors(
-          ~with=theme.palette.mode->App_Theme.Colors.isLightMode
+          ~with=theme["palette"]["mode"]->App_Theme.Colors.isLightMode
             ? Mui.Colors.grey["50"]
             : Mui.Colors.grey["900"],
           ~transparency1=#background,
@@ -20,7 +20,7 @@ module Classes = {
     Mui.Sx.Array.obj({
       bgcolor: String(
         App_Theme.Colors.palette(
-          !(theme.palette.mode->App_Theme.Colors.isLightMode),
+          !(theme["palette"]["mode"]->App_Theme.Colors.isLightMode),
         )["secondaryLight"]->App_Theme.Transparency.addTransparency(#background),
       ),
     })
@@ -29,7 +29,7 @@ module Classes = {
     Mui.Sx.Array.obj({
       bgcolor: String(
         App_Theme.Colors.palette(
-          !(theme.palette.mode->App_Theme.Colors.isLightMode),
+          !(theme["palette"]["mode"]->App_Theme.Colors.isLightMode),
         )["success"]->App_Theme.Transparency.addTransparency(#background),
       ),
     })

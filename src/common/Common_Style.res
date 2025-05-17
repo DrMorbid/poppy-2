@@ -6,8 +6,8 @@ let pagePaddingSm = "2rem"
 let pagePaddingMdUp = "3rem"
 
 let headerGap = Mui.Sx.obj({marginTop: String("2rem")})
-let paragraphGap = Style.make(~gridRowGap="1rem", ())
-let sectionGap = Style.make(~gridRowGap="2rem", ())->styleToSx
+let paragraphGap: Style.t = {gridRowGap: "1rem"}
+let sectionGap = {gridRowGap: "2rem"}->styleToSx
 let bold: Mui.System.props = {fontWeight: String("bold")}
 let marginTopSm = Mui.Sx.obj({marginTop: String("0.75rem")})
 let marginBottomSm = Mui.Sx.obj({marginBottom: String("0.75rem")})
@@ -28,9 +28,9 @@ let pageGuttersComplete = Mui.Sx.Array.obj({
     md: String(pagePaddingMdUp),
   }),
 })
-let islandsVerticalGap = Style.make(~gridRowGap="2rem", ())->styleToSx
+let islandsVerticalGap = {gridRowGap: "2rem"}->styleToSx
 let islandsHorizontalGap = Mui.Sx.obj({paddingLeft: String("1rem"), paddingRight: String("1rem")})
-let uppercaseText = Style.make(~textTransform="uppercase", ())->styleToSx
+let uppercaseText = {textTransform: "uppercase"}->styleToSx
 let largeButtonLabel = Mui.Sx.obj({
   fontSize: String(App_Theme.Typography.h5.fontSize),
   fontWeight: String(App_Theme.Typography.h5.fontWeight),

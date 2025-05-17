@@ -18,7 +18,7 @@ module Classes = {
     }),
     Mui.Sx.Array.func(theme =>
       Mui.Sx.Array.obj({
-        bgcolor: theme.palette.mode->Theme.Colors.isLightMode
+        bgcolor: theme["palette"]["mode"]->Theme.Colors.isLightMode
           ? String("rgba(250, 250, 250, 0.8)")
           : String("rgba(48, 48, 48, 0.8)"),
       })

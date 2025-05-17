@@ -3,7 +3,7 @@ open ReactDOM
 open Common_Icon
 
 module Classes = {
-  let root = Style.make(~textTransform="none", ())
+  let root: Style.t = {textTransform: "none"}
 }
 
 @react.component

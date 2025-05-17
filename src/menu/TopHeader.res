@@ -6,7 +6,7 @@ module Container = TopHeader_Container
 
 module Classes = {
   let logoContainer = Mui.Sx.obj({width: String("26%")})
-  let logo = Style.make(~height="10vw", ())
+  let logo: Style.t = {height: "10vw"}
 }
 
 @react.component

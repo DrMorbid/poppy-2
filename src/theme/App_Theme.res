@@ -1,7 +1,6 @@
 open Mui.ThemeOptions
 open Mui.Theme
 open Mui.Colors
-open ReactDOM
 
 module Colors = App_Theme_Colors
 module Typography = App_Theme_Typography
@@ -9,7 +8,7 @@ module Transparency = App_Theme_Transparency
 open Transparency
 
 module Breakpoint = {
-  let values: Mui.ThemeOptions.breakpointValues = {
+  let values: Mui.ThemeOptions.t_sizeOptions = {
     xs: 0.,
     sm: 600.,
     md: 900.,
@@ -119,12 +118,11 @@ let theme = (~prefersDarkMode) => {
     components: {
       muiButton: {
         styleOverrides: {
-          contained: Style.make(~color=palette["text"]->addTransparency(#text), ()),
-          outlined: Style.make(
-            ~color=palette["text"]->addTransparency(#text),
-            ~borderColor=palette["text"]->addTransparency(#text),
-            (),
-          ),
+          contained: {color: palette["text"]->addTransparency(#text)},
+          outlined: {
+            color: palette["text"]->addTransparency(#text),
+            borderColor: palette["text"]->addTransparency(#text),
+          },
           outlinedPrimary: [
             (
               "&:hover",
@@ -161,39 +159,36 @@ let theme = (~prefersDarkMode) => {
       },
       muiButtonBase: {
         styleOverrides: {
-          root: Style.make(~color=palette["text"]->addTransparency(#text), ()),
+          root: {color: palette["text"]->addTransparency(#text)},
         },
       },
       muiIconButton: {
         styleOverrides: {
-          root: Style.make(~color=palette["text"]->addTransparency(#text), ()),
+          root: {color: palette["text"]->addTransparency(#text)},
         },
       },
       muiFab: {
         styleOverrides: {
-          primary: Style.make(~color=palette["text"]->addTransparency(#text), ()),
+          primary: {color: palette["text"]->addTransparency(#text)},
         },
       },
       muiAccordion: {
         styleOverrides: {
-          root: Style.make(
-            ~backgroundColor=(prefersDarkMode ? common["black"] : common["white"])->addTransparency(
+          root: {
+            backgroundColor: (prefersDarkMode ? common["black"] : common["white"])->addTransparency(
               #background,
             ),
-            (),
-          ),
+          },
         },
       },
       muiAppBar: {
         styleOverrides: {
-          colorPrimary: Style.make(
-            ~backgroundColor=palette["primaryLight"]->addTransparency(#background),
-            (),
-          )->Obj.magic,
-          colorSecondary: Style.make(
-            ~backgroundColor=palette["secondaryLight"]->addTransparency(#background),
-            (),
-          )->Obj.magic,
+          colorPrimary: {
+            JsxDOMStyle.backgroundColor: palette["primaryLight"]->addTransparency(#background),
+          }->Obj.magic,
+          colorSecondary: {
+            JsxDOMStyle.backgroundColor: palette["secondaryLight"]->addTransparency(#background),
+          }->Obj.magic,
         },
       },
       muiDivider: {styleOverrides: {root: {borderWidth: "2px"}}},
