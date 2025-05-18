@@ -7,6 +7,15 @@ module Container = TopHeader_Container
 module Classes = {
   let logoContainer = Mui.Sx.obj({width: String("26%")})
   let logo: Style.t = {height: "10vw"}
+  let buttonPaddingValue = 2.
+  let buttonPlacementLeft = Mui.Sx.obj({
+    paddingTop: Number(buttonPaddingValue),
+    paddingLeft: Number(buttonPaddingValue),
+  })
+  let buttonPlacementRight = Mui.Sx.obj({
+    paddingTop: Number(buttonPaddingValue),
+    paddingRight: Number(buttonPaddingValue),
+  })
 }
 
 @react.component
@@ -23,7 +32,7 @@ let make = () => {
   let onRegisterClick = _ => router->App_Page.goTo(Registrations)
 
   <Container>
-    <Mui.Grid item=true>
+    <Mui.Grid item=true sx=?{isMdUp ? Some(Classes.buttonPlacementLeft) : None}>
       <Common.Button.WithIcon
         label=emailUs large=?{isMdUp ? Some(true) : None} onClick={_ => onEmailUs()->ignore}
       />
@@ -38,7 +47,7 @@ let make = () => {
         </Mui.ButtonBase>
       </Mui.Grid>
     </Mui.Hidden>
-    <Mui.Grid item=true>
+    <Mui.Grid item=true sx=?{isMdUp ? Some(Classes.buttonPlacementRight) : None}>
       <Mui.Button
         size=?{isMdUp ? Some(Large) : None}
         variant=Contained
