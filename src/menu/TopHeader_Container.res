@@ -1,18 +1,20 @@
 open Utils.Style
 
 module Classes = {
-  let backgroundImage = {
-    JsxDOMStyle.backgroundImage: "url(/header_bg.webp)",
-    backgroundPosition: "center",
-    backgroundSize: "cover",
-    backgroundColor: "white",
-    backgroundRepeat: "no-repeat",
-  }->styleToSx
+  let backgroundImage = prefersDarkMode =>
+    {
+      JsxDOMStyle.backgroundImage: "url(/header_bg.webp)",
+      backgroundPosition: "center",
+      backgroundSize: "cover",
+      backgroundColor: prefersDarkMode ? "black" : "white",
+      backgroundRepeat: "no-repeat",
+    }->styleToSx
 }
 
 @react.component
 let make = (~children) => {
   let isMdUp = Mui.Core.useMediaQueryString(App_Theme.Breakpoint.mdUp)
+  let prefersDarkMode = Mui.Core.useMediaQueryString(Common.Constants.darkModeMediaQuery)
 
   <>
     <Mui.Hidden smDown=true>
@@ -21,7 +23,7 @@ let make = (~children) => {
         direction=Row
         justifyContent=Mui.System.Value.String("space-between")
         wrap=Nowrap
-        sx=?{isMdUp ? Some(Classes.backgroundImage) : None}>
+        sx=?{isMdUp ? Some(Classes.backgroundImage(prefersDarkMode)) : None}>
         children
       </Mui.Grid>
     </Mui.Hidden>
