@@ -2,10 +2,11 @@ open Utils.Style
 
 module Classes = {
   let backgroundImage = {
-    JsxDOMStyle.background: "url(/header_bg.webp)",
+    JsxDOMStyle.backgroundImage: "url(/header_bg.webp)",
     backgroundPosition: "center",
-    backgroundSize: "contain",
+    backgroundSize: "cover",
     backgroundColor: "white",
+    backgroundRepeat: "no-repeat",
   }->styleToSx
 }
 
