@@ -4,8 +4,6 @@ open EmailUs_Utils
 
 @react.component
 let default = () => {
-  let (successAlertOpen, setSuccessAlertOpen) = React.useState(() => false)
-  let (errorAlertOpen, setErrorAlertOpen) = React.useState(() => None)
   let (dateErrorMessage, setDateErrorMessage) = React.useState(() => None)
   let (emailBeingSent, setEmailBeingSent) = React.useState(() => false)
 
@@ -16,6 +14,9 @@ let default = () => {
   )
 
   let intl = ReactIntl.useIntl()
+  let router = Next.Navigation.useRouter()
+
+  let (_, dispatch) = React.useContext(App_Context.Context.t)
 
   let onSubmit = async (input, _) => {
     setEmailBeingSent(_ => true)
@@ -40,23 +41,41 @@ let default = () => {
           ~subject=intl->ReactIntl.Intl.formatMessage(emailSubject),
           ~onSuccess=() => {
             setEmailBeingSent(_ => false)
-            setSuccessAlertOpen(_ => true)
+            dispatch(
+              App_Context.ShowAlert({
+                severity: Success,
+                body: alertSuccess,
+                onClose: (_, _) => dispatch(HideAlert),
+              }),
+            )
             form->Form.reset(defaultValues)
+            router->App_Page.goTo(Home)
           },
           ~onError=error => {
             setEmailBeingSent(_ => false)
-            setErrorAlertOpen(_ => Some(error))
+            dispatch(
+              App_Context.ShowAlert({
+                severity: Error,
+                body: alertError,
+                bodyParameters: {"error": error},
+                onClose: (_, _) => dispatch(HideAlert),
+              }),
+            )
           },
         )
       } else {
-        setErrorAlertOpen(_ => Some(Message.Date.dateMissing.defaultMessage))
+        dispatch(
+          App_Context.ShowAlert({
+            severity: Error,
+            body: alertError,
+            bodyParameters: {"error": Message.Date.dateMissing.defaultMessage},
+            onClose: (_, _) => dispatch(HideAlert),
+          }),
+        )
       }
     )
     ->ignore
   }
-
-  let onSuccessClose = (_, _) => setSuccessAlertOpen(_ => false)
-  let onErrorClose = (_, _) => setErrorAlertOpen(_ => None)
 
   let onChildBirthdateChange = (onFormFieldChange, date) =>
     date
@@ -74,16 +93,6 @@ let default = () => {
       <form
         onSubmit={form->Form.handleSubmit((input, form) => onSubmit(input, form)->ignore)}
         autoComplete="on">
-        <EmailUs_Alert open_=successAlertOpen severity=Success onClose=onSuccessClose>
-          alertSuccess
-        </EmailUs_Alert>
-        <EmailUs_Alert
-          open_={errorAlertOpen->Option.isSome}
-          severity=Error
-          onClose=onErrorClose
-          messageValues=?{errorAlertOpen->Option.map(error => {"error": error})}>
-          alertError
-        </EmailUs_Alert>
         <Mui.Grid container=true spacing=Int(2)>
           <EmailUs_Field
             label=parentNameLabel

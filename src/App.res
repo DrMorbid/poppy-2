@@ -31,6 +31,7 @@ let make = (~children) => {
   let _prefersDarkMode = Mui.Core.useMediaQueryString(Common.Constants.darkModeMediaQuery)
   let topRef = React.useRef(Nullable.null)
   let (_, dispatch) = React.useContext(App_Context.Context.t)
+  let ({alert, _}: App_Context.state, _) = React.useContext(App_Context.Context.t)
 
   React.useEffect(() => {
     dispatch(SetTopRef(topRef))
@@ -52,7 +53,10 @@ let make = (~children) => {
       <Mui.Grid item=true>
         <TopMenu />
       </Mui.Grid>
-      <Mui.Grid item=true> {children} </Mui.Grid>
+      <Mui.Grid item=true>
+        <Common.Alert open_={alert->Option.isSome}> {alert} </Common.Alert>
+        {children}
+      </Mui.Grid>
     </Mui.Grid>
     <Mui.Snackbar />
     <ScrollToTop />

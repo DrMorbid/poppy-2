@@ -18,10 +18,13 @@ type menuItemTarget =
 
 type menuItemTargets = Map.t<MenuItem.t, menuItemTarget>
 
+type alert = Common.Alert.Type.t<{"error": string}>
+
 type state = {
   homeMenuItemTargets: menuItemTargets,
   registrationsMenuItemTargets: menuItemTargets,
   topRef: option<React.ref<Nullable.t<Dom.element>>>,
+  alert: option<alert>,
 }
 
 let initialState = {
@@ -41,6 +44,7 @@ let initialState = {
     homeMenuItemTargets,
     registrationsMenuItemTargets,
     topRef: None,
+    alert: None,
   }
 }
 
@@ -48,6 +52,8 @@ type action =
   | AddHomeMenuItemScrollableRef(MenuItem.t, React.ref<Nullable.t<Dom.element>>)
   | AddRegistrationsMenuItemScrollableRef(MenuItem.t, React.ref<Nullable.t<Dom.element>>)
   | SetTopRef(React.ref<Nullable.t<Dom.element>>)
+  | ShowAlert(alert)
+  | HideAlert
 
 let reducer = (state, action) =>
   switch action {
@@ -70,6 +76,14 @@ let reducer = (state, action) =>
   | SetTopRef(topRef) => {
       ...state,
       topRef: Some(topRef),
+    }
+  | ShowAlert(alert) => {
+      ...state,
+      alert: Some(alert),
+    }
+  | HideAlert => {
+      ...state,
+      alert: None,
     }
   }
 
