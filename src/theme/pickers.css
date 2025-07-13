@@ -15,6 +15,10 @@
         background-color: #4fc3f7;
         color: #212121f2
     }
+
+    .Mui-selected {
+        color: #212121f2 !important
+    }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -33,5 +37,9 @@
     .MuiPickersDay-daySelected {
         background-color: #0288d1;
         color: #fafafaf2
+    }
+
+    .Mui-selected {
+        color: #fafafaf2 !important
     }
 }
