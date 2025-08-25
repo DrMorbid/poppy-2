@@ -5,7 +5,7 @@ let latestNews: News_Type.t = {
   title: list{"Aktuální termíny registrací a přefocení do databáze:"},
   content: list{
     list{
-      "čtvrtek 29. 5., středa 11.6.2025 - objednejte se"->TextFragment.make(~emphasis=Bold),
+      "pondělí 8. 9., úterý 23. 9. 2025 - objednejte se"->TextFragment.make(~emphasis=Bold),
     }->Line.make(~nextLineEmpty=true),
     list{"Ateliér: Františka Křížka 1, Praha 7, 2.patro"->TextFragment.make}->Line.make,
     list{
