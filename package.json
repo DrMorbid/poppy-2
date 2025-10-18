@@ -1,6 +1,6 @@
 {
   "name": "poppy-2",
-  "packageManager": "yarn@4.9.2",
+  "packageManager": "yarn@4.10.3",
   "version": "0.1.0",
   "private": true,
   "scripts": {
