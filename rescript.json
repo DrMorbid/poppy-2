@@ -13,7 +13,7 @@
     }
   ],
   "suffix": ".res.js",
-  "bs-dependencies": [
+  "dependencies": [
     "@rescript/react",
     "rescript-react-intl",
     "rescript-webapi",
@@ -21,11 +21,10 @@
     "@greenlabs/rescript-react-hook-form",
     "@rescript-mui/material"
   ],
-  "bsc-flags": [
+  "compiler-flags": [
     "-open RescriptCore"
   ],
   "jsx": {
-    "version": 4,
-    "mode": "automatic"
+    "version": 4
   }
 }

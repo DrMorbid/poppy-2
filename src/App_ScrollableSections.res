@@ -2,7 +2,7 @@ type coloredSections = Even | Odd
 
 type section = {
   element: Jsx.element,
-  topRef: React.ref<nullable<Dom.element>>,
+  topRef?: React.ref<nullable<Dom.element>>,
   accented?: Common.Section.accented,
 }
 
@@ -11,7 +11,7 @@ let make = (~sections, ~coloredSections=Even, ~children=?) => {
   <Mui.Grid container=true direction=Column alignItems=Stretch>
     {<>
       {sections
-      ->List.mapWithIndex(({element, topRef, ?accented}, index) =>
+      ->List.mapWithIndex(({element, ?topRef, ?accented}, index) =>
         <App_ScrollableSection
           coloring={switch accented {
           | Some(Yellow) => Accented(Yellow)
@@ -22,8 +22,9 @@ let make = (~sections, ~coloredSections=Even, ~children=?) => {
             | (Odd, true) | (Even, false) => Transparent
             }
           }}
-          topRef
-          key={`scrollable-section-${index->Int.toString}`}>
+          ?topRef
+          key={`scrollable-section-${index->Int.toString}`}
+        >
           element
         </App_ScrollableSection>
       )

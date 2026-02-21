@@ -1,8 +1,8 @@
 open ReactDOM
 
 @react.component
-let make = (~coloring: Common.Section.coloring=Transparent, ~children, ~topRef) => {
-  <Mui.Grid item=true ref={topRef->Ref.domRef}>
+let make = (~coloring: Common.Section.coloring=Transparent, ~children, ~topRef=?) => {
+  <Mui.Grid item=true ref=?{topRef->Option.map(Ref.domRef)}>
     <Mui.Grid container=true>
       {switch coloring {
       | Colored | Accented(_) =>

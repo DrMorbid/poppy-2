@@ -7,10 +7,7 @@ let make = () => {
   let (menuItems, setMenuItems) = React.useState(() => list{})
   let pathname = Next.Navigation.usePathname()
   let router = Next.Navigation.useRouter()
-  let (
-    {homeMenuItemTargets, registrationsMenuItemTargets, _}: App_Context.state,
-    _,
-  ) = React.useContext(App_Context.Context.t)
+  let ({homeMenuItemTargets, _}: App_Context.state, _) = React.useContext(App_Context.Context.t)
 
   React.useEffect(() => {
     let newMenuItems = pathname->getMenuItems
@@ -32,14 +29,7 @@ let make = () => {
           <Button
             visible
             label={menuItem->App_Types.MenuItem.toLabel}
-            onClick={_ =>
-              menuItem->onClick(
-                ~menuItemTargets=pathname->pickMenuItemTargets(
-                  ~homeMenuItemTargets,
-                  ~registrationsMenuItemTargets,
-                ),
-                ~router,
-              )}
+            onClick={_ => menuItem->onClick(~menuItemTargets=homeMenuItemTargets, ~router)}
             index
           />
         </Mui.Grid>

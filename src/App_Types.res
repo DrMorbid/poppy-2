@@ -6,13 +6,8 @@ module MenuItem = {
     | References
     | Filmak
     | Contact
-    | RegistrationsYoungest
-    | RegistrationsMiddle
-    | RegistrationsOldest
-    | CurrentRegistrationDates
 
   let toLabel = page => {
-    open Message
     open Message.Menu
 
     switch page {
@@ -22,10 +17,6 @@ module MenuItem = {
     | Filmak => filmak
     | Contact => contact
     | QAndA => qAndA
-    | RegistrationsYoungest => registrationsYoungest
-    | RegistrationsMiddle => registrationsMiddle
-    | RegistrationsOldest => registrationsOldest
-    | CurrentRegistrationDates => currentDates
     }
   }
 }

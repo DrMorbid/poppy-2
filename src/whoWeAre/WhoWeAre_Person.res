@@ -8,7 +8,7 @@ module Photo = WhoWeAre_Photo
 let make = (~photoSrc, ~name, ~description, ~email=?, ~tel=?, ~allwaysFullWidth=false) => {
   let intl = ReactIntl.useIntl()
 
-  let getContact = (~email=?, ~tel=?): Text.fragmentParagraph =>
+  let getContact = (~email=?, ~tel=?): Text.Type.fragmentParagraph =>
     switch (email, tel) {
     | (None, None) => {content: list{}}
     | (Some(emailOrTel), None) | (None, Some(emailOrTel)) => {
@@ -61,12 +61,13 @@ let make = (~photoSrc, ~name, ~description, ~email=?, ~tel=?, ~allwaysFullWidth=
       </Mui.Grid>
     </Mui.Grid>
     <Mui.Grid
-      item=true xs=Number(12) md=Number(10) lg=Number(8) xl=Number(allwaysFullWidth ? 6 : 12)>
+      item=true xs=Number(12) md=Number(10) lg=Number(8) xl=Number(allwaysFullWidth ? 6 : 12)
+    >
       <Text
         body={Fragments(
           list{
             {
-              Text.content: list{
+              Text.Type.content: list{
                 Text({
                   content: name,
                   bold: true,
@@ -74,7 +75,7 @@ let make = (~photoSrc, ~name, ~description, ~email=?, ~tel=?, ~allwaysFullWidth=
               },
               centered: true,
             },
-            ...description->List.map((descriptionLine): Text.fragmentParagraph => {
+            ...description->List.map((descriptionLine): Text.Type.fragmentParagraph => {
               content: list{descriptionLine},
             }),
           }->List.concat(list{getContact(~email?, ~tel?)}),

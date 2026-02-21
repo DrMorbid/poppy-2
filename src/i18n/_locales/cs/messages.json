@@ -3,17 +3,17 @@
         "message": "Agentura Poppy casting je určena dětem od 6 měsíců do 15 let. Naším cílem je objevit talentované a zajímavé děti a poskytnout jim příležitost uplatnit se ve filmovém či reklamním prostředí.",
         "description": "Q&A page - the main info at the top of the page"
     },
-    "022440e0-53f1-45ad-b334-59f2dfdb39df": {
-        "message": "ozvěte se tedy prosím až kolem 4. roka dítěte",
-        "description": "Registrations page - middle kids - the fourth line"
+    "01fa096e-6428-4e1b-a7bf-8e2aee97f8d7": {
+        "message": "část: 1 000 Kč",
+        "description": "Registrations page - oldest kids - the seventh line - part 1"
     },
     "0371f3b2-5b62-4c6b-baac-a3925b811458": {
         "message": "Kdo jsme",
         "description": "Top menu item - Who we are"
     },
     "08e7cfa7-7bef-4779-b756-a41215947979": {
-        "message": "foto z registrace zašleme rodiči mailem",
-        "description": "Registrations page - youngest kids - the fifth line"
+        "message": "Bonus:",
+        "description": "Registrations page - youngest kids - the sixth line - part 1"
     },
     "09de6bec-d523-4b7a-9d15-c73bbe2960f9": {
         "message": "1000Kč v hotovosti a 1000Kč se strhne z 1. vypláceného honoráře.",
@@ -47,6 +47,10 @@
         "message": "Děti 4-15 let hradí jednorázově",
         "description": "Q&A page - answer to question 7 - paragraph 2 - part1"
     },
+    "18bad5b2-bdf2-40b7-9682-06df10fefe61": {
+        "message": "Registrace trvá přibližně 20 minut. Tento čas je vyhrazen pouze pro vás.",
+        "description": "Registrations page - youngest kids - the third line - part 2"
+    },
     "1c429711-7359-4714-a65c-9db4042e5ca3": {
         "message": "Co na sebe dát dítěti na registraci, casting?",
         "description": "Q&A page - answer to question 11"
@@ -54,6 +58,18 @@
     "1c7ff9c8-a7f2-40bf-a645-f7ac48cdfbd9": {
         "message": "Poppy Casting",
         "description": "The name of the application"
+    },
+    "1d732560-65e3-4200-9e1d-8c77736f4f7b": {
+        "message": "a",
+        "description": "Registrations page - middle kids - the first line - the fourth part"
+    },
+    "1de795f0-c393-4929-8bc4-49d68eeafcbe": {
+        "message": "Fotografie z registrace, přefocení ani castingů nezasíláme, děkujeme za pochopení.",
+        "description": "Registrations page - oldest kids - the tenth line"
+    },
+    "1e55ff84-0e97-48cf-a62f-95cdd1806943": {
+        "message": "Fotografie z registrace vám zašleme e-mailem.",
+        "description": "Registrations page - youngest kids - the sixth line - part 2"
     },
     "1ec457c8-6064-44fb-91fc-1bea98e9e39c": {
         "message": "Výsledky castingu mnohdy víme až \"na poslední chvíli\", tedy není možné dávat vědět všem, koho nevybrali. Informujeme ty, kdo jsou v užším výběru nebo potvrzeni. Držte si termíny volné až do dne kostýmové zkoušky či natáčení, pokud se nikdo neozval, znamená to, že jste neuspěli. Děkujeme za pochopení.",
@@ -71,8 +87,12 @@
         "message": "O výběru dítěte do role rozhoduje vždy klient a režisér, nikoli my z agentury.",
         "description": "Q&A page - answer to question 5 - paragraph 4"
     },
+    "217f547e-85ec-4b2d-a54a-59fad614174f": {
+        "message": "Aktuální termíny registrací",
+        "description": "Registrations - current registration dates"
+    },
     "2264b17d-0ea8-49c9-aec7-1cde77887917": {
-        "message": "registrační poplatek 2 000 Kč je rozdělen na dvě části:",
+        "message": "Čas registrace:",
         "description": "Registrations page - oldest kids - the third line - part 1"
     },
     "23446130-8c22-4018-bb01-cdfe1215e140": {
@@ -87,6 +107,10 @@
         "message": "All quiet (Na západní frontě klid), A boy called Christmas, Army of thieves, A Small light, Ash Lad 2, Beethoven, Blood and Gold, Borgia, Carniwal Row, Crossing lines",
         "description": "References page - part one of the third section"
     },
+    "2486bb34-6e8f-4ef8-9fcd-7e5f07df8a8e": {
+        "message": "jiných etnik",
+        "description": "Registrations page - middle kids - the first line - the third part"
+    },
     "25cbad58-8315-4bc5-9f36-68df7fedf87b": {
         "message": "Je databáze Poppy casting veřejná?",
         "description": "Q&A page - question 13"
@@ -95,6 +119,10 @@
         "message": "Registrace",
         "description": "Above the top menu - registrations"
     },
+    "2ad966ce-00a3-45ee-840a-6a044f4f98da": {
+        "message": "Česky hovořící děti (bez cizího přízvuku) nebo rodilí mluvčí angličtiny.",
+        "description": "Registrations page - oldest kids - the second line - part 2"
+    },
     "2d22df08-1649-4bda-9764-6a68b683002d": {
         "message": "NE: šedá barva (máme šedé pozadí fotek)",
         "description": "Q&A page - answer to question 11 - paragraph 1 - inappropriate 1"
@@ -102,6 +130,10 @@
     "2e88dffa-857c-40fc-a00b-fc2eb6212079": {
         "message": "Nevhodné:",
         "description": "Q&A page - answer to question 11 - paragraph 1"
+    },
+    "30ab0ae3-488c-493e-b94f-c7a494c313ba7": {
+        "message": "část: 1 000 Kč",
+        "description": "Registrations page - oldest kids - the eighth line - part 1"
     },
     "334e80f1-4203-44aa-ad56-e32d01751476": {
         "message": "Děti",
@@ -130,10 +162,6 @@
     "3eb465a6-5dad-4d6c-b6be-527f9d410057": {
         "message": "Jaký je poplatek, kolik stojí castingy?",
         "description": "Q&A page - question 7"
-    },
-    "3f20d49f-5784-43ea-9590-6571f86164ed": {
-        "message": "Aktuální termíny registrací",
-        "description": "Registrations - current registration dates"
     },
     "3f670b27-213d-45e8-a589-d0d7cba9a881": {
         "message": "Děti 4+: Natrénujte s dítětem představení na kameru, kde řekne své jméno, odkud pochází, věk a jaké jsou jeho zájmy, dovednosti, koníčky či herecké zkušenosti. Intro je součástí každého castingu. Poté může následovat herecká akce, kterou režisér dítěti vysvětlí a dítě ji zahraje, případně je nějaká snadná improvizace. Herecké castingy vyžadují nastudování textu předem, většina běžných reklamních castingů ale nemá předem pro dítě konkrétnější zadání, aby co nejpřirozeněji reagovalo.",
@@ -184,16 +212,16 @@
         "description": "Q&A page - answer to question 10 - paragraph 1"
     },
     "4b0df7d4-65cb-47bf-864e-9859848d16c2": {
-        "message": "foto rodičům nezasíláme a není možné je od nás odkoupit, děkujeme za pochopení",
-        "description": "Registrations page - oldest kids - the fifth line"
+        "message": "Jak dlouho se zdržíte:",
+        "description": "Registrations page - oldest kids - the fifth line - part 1"
     },
     "4b4e932d-33d5-462e-960d-d68cd74edac0": {
         "message": "Potvrzení do role může přijít třeba jen den před avizovaným termínem kostýmové zkoušky.",
         "description": "Q&A page - answer to question 6 - paragraph 6"
     },
     "4b4fd264-e3e1-4958-aa7e-b7d64029544c": {
-        "message": "důvodem stop stavu náboru dětí evropského vzhledu v tomto věku je nízká poptávka klientů, málo nabídek práce pro tento věk",
-        "description": "Registrations page - middle kids - the second line"
+        "message": "Doporučení:",
+        "description": "Registrations page - middle kids - the second line - part 1"
     },
     "4c0bdbb8-fff7-4301-b21c-fa4b06eddf3c": {
         "message": "Kde a od kolika hodin se koná natáčení dopředu nevíme, protože se jedná o velmi živý organismus, který se neustále mění za běhu.",
@@ -204,16 +232,24 @@
         "description": "Q&A page - answer to question 12 - paragraph 1 - part 1"
     },
     "54d5dee3-1a36-497e-af05-225d6e2eb018": {
-        "message": "registrujeme osobně ve vypsaných termínech mezi 9 - 13:30h, objednejte se",
-        "description": "Registrations page - youngest kids - the first line"
+        "message": "Čas:",
+        "description": "Registrations page - youngest kids - the second line - the first part"
     },
     "558d09fb-f707-46f6-a0d6-5f70d704440b": {
-        "message": "jednorázově 1 000 Kč v hotovosti u registrace a 1 000 Kč se strhne až z 1. vypláceného honoráře",
+        "message": "kdykoli mezi 14:00 - 18:00 (stačí nás informovat, že dorazíte).",
         "description": "Registrations page - oldest kids - the third line - part 2"
+    },
+    "55fe68c2-13f5-4856-991c-4eccd87238be": {
+        "message": "👶 1. Miminka (6 - 17 měsíců) ✅",
+        "description": "Registrations page - youngest kids"
     },
     "588ddae1-8b2e-4141-b776-4cd9dfbc4447": {
         "message": "Mgr. art. {name}",
         "description": "The company owner"
+    },
+    "59244771-3e83-446a-ae12-ce387fddff45": {
+        "message": "Pouze děti",
+        "description": "Registrations page - middle kids - the first line - the second part"
     },
     "5cacc13c-de61-47bb-b7f0-4c6856699644": {
         "message": "Proč vybíráme poplatek za registraci?",
@@ -224,8 +260,8 @@
         "description": "Contact bottom bar - the Registration, database title"
     },
     "5d9705b6-5f6d-47b1-9dcc-bca2e4521809": {
-        "message": "dítě je poté zdarma součástí naší databáze do 15 let věku, přefocení zdarma",
-        "description": "Registrations page - youngest kids - the fourth line"
+        "message": "Přefocení:",
+        "description": "Registrations page - youngest kids - the fifth line - part 1"
     },
     "5efc3bbe-887a-4fbf-8a22-654d0a07a2c9": {
         "message": "ul. Milady Horákové 40Kč/h",
@@ -336,20 +372,36 @@
         "description": "Contact page - the registration address paid parking 1"
     },
     "76ac014a-0e24-4aec-90f2-327ce36a32c3": {
-        "message": "jednorázový registrační poplatek: 2 000 Kč ",
-        "description": "Registrations page - youngest kids - the third line"
+        "message": "Registrační poplatek:",
+        "description": "Registrations page - youngest kids - the fourth line - part 1"
     },
     "77e1062d-d854-4c16-bd7d-ca8a2f9a95fa": {
         "message": "Máme nabídky role TV reklam, seriálů, českých i zahraničních filmů, dabing, kompars, dabléry hlavních dětských herců. Méně zakázek je u nás na modeling.",
         "description": "Q&A page - answer to question 1 - paragraph 3"
     },
+    "789859e3-7712-42bb-abc4-da985cadbc99": {
+        "message": "přefocení (aktualizace fotek) zdarma 1x ročně.",
+        "description": "Registrations page - oldest kids - the ninth line"
+    },
     "78d75afe-dfbf-4ccc-8641-b55a3b6d6106": {
         "message": "Připravuje pro vás smlouvy a dojednává kontrakty, doporučuje děti do hereckých rolí.",
         "description": "About Us page - the second part of company owner's description"
     },
+    "7b1077a4-bacd-48ef-aaac-d28e0191df41": {
+        "message": "1x za půl roku zdarma.",
+        "description": "Registrations page - youngest kids - the fifth line - part 2"
+    },
+    "7b8bdd68-f927-4a33-a90d-ec82cec70896": {
+        "message": "Ozvěte se nám prosím až kolem",
+        "description": "Registrations page - middle kids - the second line - part 2"
+    },
     "7c7751c4-837a-4f8b-adbb-00f9d651763e": {
-        "message": "dítě je poté zdarma součástí naší databáze do 15 let věku, přefocení zdarma",
-        "description": "Registrations page - oldest kids - the fourth line"
+        "message": "Průběh:",
+        "description": "Registrations page - oldest kids - the fourth line - part 1"
+    },
+    "7e2fcf95-f6b7-4a28-a155-f5a83f77843f": {
+        "message": "jednovaječná dvojčata",
+        "description": "Registrations page - middle kids - the first line - the fifth part"
     },
     "7ed024d8-d064-444f-af7e-7f6ca3b83759": {
         "message": "Spolupracujeme s mnohými agenturami, produkcemi, televizemi a studii při obsazování dětských rolí do točených i focených reklam pro ČR i zahraničí.",
@@ -363,9 +415,17 @@
         "message": "Nemůžeme bohužel zaručit, že Vaše nějakou dítě zakázku získá, ale zvýšit šance můžete Vy tím, že dítě bude chodit v budoucnosti minimálně do dramatického kroužku, ochotnického divadla či hereckých kurzů. Pouze talent mnohdy nestačí.",
         "description": "Q&A page - answer to question 5 - paragraph 3"
     },
+    "81f47f9f-3e1d-4724-8b05-4ea14126793f": {
+        "message": "Registrační poplatek je rozdělen:",
+        "description": "Registrations page - oldest kids - the sixth line"
+    },
     "838a3d51-ced5-4d2a-a955-d807ae1e77cb": {
         "message": "Otázky a odpovědi",
         "description": "Top menu item - Q&A"
+    },
+    "83e4d109-37ae-419b-8fb6-c5a9df18becd": {
+        "message": "strhneme jednorázově až z 1. honoráře dítěte.",
+        "description": "Registrations page - oldest kids - the eighth line - part 2"
     },
     "857e18e9-09cd-4b7e-90f6-3bd50a63a91f": {
         "message": "Pro mimopražské zájemce je dojíždění velmi náročné časově i finančně. Dětem dále než 1h dojezdu do Prahy registraci nedoporučujeme.",
@@ -383,9 +443,29 @@
         "message": "Poppy casting, s.r.o.",
         "description": "Contact page - the facturation address 1"
     },
+    "8dd00c75-eb00-44d4-8e31-a3eb27ff22ba": {
+        "message": "v hotovosti na místě u registrace.",
+        "description": "Registrations page - oldest kids - the seventh line - part 2"
+    },
     "8dd8e4ed-fb57-4cc6-a3f9-ac8759e05a59": {
-        "message": "u registrace si dítě vyfotíme a krátce s ním promluvíme",
-        "description": "Registrations page - oldest kids - the second line"
+        "message": "Podmínka:",
+        "description": "Registrations page - oldest kids - the second line - part 1"
+    },
+    "8fa5e766-a063-4b31-8cdc-b2eea909cd15": {
+        "message": "🧒 3. Děti (4 - 15 let) ✅",
+        "description": "Registrations page - oldest kids"
+    },
+    "8ff4cc22-e378-48a6-b573-426fe846b285": {
+        "message": "4. roku věku dítěte",
+        "description": "Registrations page - middle kids - the second line - part 3"
+    },
+    "90ddf791-150a-40f2-82b1-caf162c0535d": {
+        "message": "mezi 30 - 60 min podle obsazenosti",
+        "description": "Registrations page - oldest kids - the fifth line - part 2"
+    },
+    "93d401da-e5be-405e-b0d8-ece20293bc91": {
+        "message": "Registrujeme osobně ve vypsaných termínech (viz níže)",
+        "description": "Registrations page - youngest kids - the first line"
     },
     "93df4d63-d1ac-4861-8be5-2029c23fbfaf": {
         "message": "Praha 7 Letná má modré parkovací zóny, kde bez karty pro P7 nesmíte stát autem, placená stání:",
@@ -408,7 +488,7 @@
         "description": "Q&A page - answer to question 8 - paragraph 2"
     },
     "9ae6d7cc-7db0-4d70-bff0-952bdefb1d8f": {
-        "message": "4 - 15 let",
+        "message": "Děti (4 - 15 let)",
         "description": "Registrations - oldest kids"
     },
     "9c048db6-f90d-48da-a31e-06187c783a60": {
@@ -420,8 +500,8 @@
         "description": "Q&A page - answer to question 9 - paragraph 1"
     },
     "9dffdd7a-1b6a-44fe-a2f5-9bc0eff86673": {
-        "message": "registrace zabere 30 minut, čas je vyhrazen pouze pro vás",
-        "description": "Registrations page - youngest kids - the second line"
+        "message": "Průběh:",
+        "description": "Registrations page - youngest kids - the third line - part 1"
     },
     "9e0fe979-40e6-4978-9268-397e295da651": {
         "message": "Pokud jste dítě zaregistrovali do agentury, která má exkluzivní zastoupení, registrovat jej u nás nemůžete.",
@@ -436,7 +516,7 @@
         "description": "Header of the fourth paragraph on the home page"
     },
     "a181adb2-79c0-429f-b9a9-d5275107f560": {
-        "message": "registrujeme",
+        "message": "Koho přijímáme:",
         "description": "Registrations page - middle kids - the first line - the first part"
     },
     "a1b1962d-baff-4ec4-bd06-55d9e071c381": {
@@ -463,17 +543,17 @@
         "message": "Než se k nám rozhodnete přihlásit",
         "description": "Q&A page - the sub-header"
     },
-    "ac5e4f12-0375-4f3a-afca-f0ca35068a02": {
-        "message": "STOPSTAV náboru nových dětí",
-        "description": "Registrations - middle kids - the sub-header"
-    },
     "ae88fbab-0433-4390-93b1-2048cc540f42": {
         "message": "Aktuální info",
         "description": "News page - the header"
     },
     "aff491b0-4982-4a78-b94e-dc6f658b690a": {
-        "message": "18 měs. - 3 roky",
+        "message": "Batolata (18 měsíců - 3 roky)",
         "description": "Registrations - middle kids"
+    },
+    "b0618b85-52ef-4a0a-b5d2-bab61a7fc1c3": {
+        "message": "V této věkové kategorii aktuálně nové děti evropského vzhledu neregistrujeme.",
+        "description": "Registrations page - middle kids - the sub-header"
     },
     "b0770075-7e30-451c-bdff-20fe6b08647e": {
         "message": "Máte zájem o registraci? Vyplňte následující formulář, odešlete a my se Vám ozveme.",
@@ -492,7 +572,7 @@
         "description": "Contact page - the facturation address 2"
     },
     "b5558f2d-bd8e-4ba3-a2c8-561a9e5a6adc": {
-        "message": "registrujeme osobně ve vypsaných termínech mezi 14 - 18h, objednejte se",
+        "message": "Registrujeme osobně ve vypsaných termínech (viz níže)",
         "description": "Registrations page - oldest kids - the first line"
     },
     "b96688f6-32df-41e0-bb36-aee5099b6cd9": {
@@ -527,8 +607,12 @@
         "message": "hotově u registrace, neplatíte dále žádné poplatky.",
         "description": "Q&A page - answer to question 7 - paragraph 1 - part 3"
     },
+    "c98618c7-c177-411d-8cb4-56aa705787e1": {
+        "message": "S dítětem si krátce popovídáme a vyfotíme jej.",
+        "description": "Registrations page - oldest kids - the fourth line - part 2"
+    },
     "c9bb840c-4f73-4a84-9cb6-2cf39ad7f925": {
-        "message": "6 měs. - 17 měs.",
+        "message": "Miminka (6 - 17 měsíců)",
         "description": "Registrations - youngest kids"
     },
     "cb394fa9-9b9e-4b10-8d3e-7c78a1e75dc7": {
@@ -619,9 +703,17 @@
         "message": "Bydlíte v Praze a okolí?",
         "description": "Q&A page - question 3"
     },
+    "e4cc62ee-a458-4f2e-8cd2-909186ada420": {
+        "message": "objednání nutné",
+        "description": "Registrations page - youngest kids - the second line - the third part"
+    },
     "e4d642e6-40a0-4aa4-919e-9b2adb3a5df6": {
         "message": "Poznámka",
         "description": "Email Us page - the note label"
+    },
+    "e50565f3-cfb6-4d53-be2b-874aafe932ff": {
+        "message": "❌ 2. Batolata (18 měsíců - 3 roky) — STOPSTAV ❌",
+        "description": "Registrations page - middle kids"
     },
     "e698d1df-4094-4935-b3f0-bf36c35f3e3a": {
         "message": "Jakou má vaše dítě šanci na úspěch?",
@@ -635,10 +727,6 @@
         "message": "IČ: 04740165",
         "description": "Contact page - the facturation address 4"
     },
-    "ea1bc44d-c83a-4dc0-a236-1cf7aad1c70c": {
-        "message": "POUZE děti jiných etnik a JEDNOVAJEČNÁ dvojčata",
-        "description": "Registrations page - middle kids - the first line - the second part"
-    },
     "eaca6630-7b35-4a15-8e21-308b42313104": {
         "message": "Telefon na rodiče",
         "description": "Email Us page - the parent phone label"
@@ -651,12 +739,16 @@
         "message": "Parkování:",
         "description": "Contact page - the registration address parking label"
     },
+    "efd416d8-0f42-4fa2-9b44-be6ae587dd4e": {
+        "message": "sloty mezi 9:00 - 13:30",
+        "description": "Registrations page - youngest kids - the second line - the second part"
+    },
     "f1e78b69-62c1-4b5b-a550-2763a4646df5": {
         "message": "Čím starší je dítě, tím větší herecké schopnosti či průprava se od něj na castingu očekávají, stejně tak konkurence je větší.",
         "description": "Q&A page - answer to question 5 - paragraph 2"
     },
     "f356ee89-c465-43f8-ba8c-79d9175ad2d9": {
-        "message": "spolupráce s dětmi v tomto období je náročná, dítě nepostojí, nezopakuje záběr vícekrát, je fixované na maminku, produkce se tomuto věku vyhýbají",
+        "message": "Práce s dětmi v tomto věku je náročná (fixace na rodiče, neochota spolupracovat před kamerou), produkce se tomuto věku vyhýbají, pracovních nabídek je tak minimum.",
         "description": "Registrations page - middle kids - the third line"
     },
     "f7b87daf-a144-4e73-b4fd-6342f1282136": {
@@ -682,5 +774,9 @@
     "fbaa7734-385e-45ac-afad-4e73528e6178": {
         "message": "Otázky a odpovědi",
         "description": "Q&A page - the header"
+    },
+    "fdcabf13-98ac-446a-9ff1-d9eaa4f20b30": {
+        "message": "2 000 Kč jednorázově u registrace, žádné další poplatky.",
+        "description": "Registrations page - youngest kids - the fourth line - part 2"
     }
 }

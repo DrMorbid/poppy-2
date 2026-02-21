@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "res:build": "rescript clean && rescript",
-    "res:dev": "rescript clean && rescript build -w",
+    "res:dev": "rescript clean && rescript watch",
     "dev": "next dev",
     "start": "next start",
     "build": "next build",
