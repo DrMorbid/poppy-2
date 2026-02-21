@@ -4,9 +4,9 @@ open Common.Constants
 let latestNews: News_Type.t = {
   title: list{"Aktuální termíny registrací a přefocení do databáze:"},
   content: list{
-    list{
-      "ČT 15. 1., PO 2. 2., ST 11. 2. 2026 - objednejte se"->TextFragment.make(~emphasis=Bold),
-    }->Line.make(~nextLineEmpty=true),
+    list{"ÚT 3. 3., PO 16. 3. 2026 - objednejte se"->TextFragment.make(~emphasis=Bold)}->Line.make(
+      ~nextLineEmpty=true,
+    ),
     list{"Ateliér: Františka Křížka 1, Praha 7, 2.patro"->TextFragment.make}->Line.make,
     list{
       "Je nutné se objednat:"->TextFragment.make(~space=Right),
