@@ -35,37 +35,48 @@ let default = () => {
             })
             key="question-1"
           />
-          <Section header=question2 body=Paragraphs(list{answer2Paragraph1}) key="question-2" />
+          <Section
+            header=question2
+            body=Paragraphs(list{{content: Message(answer2Paragraph1)}})
+            key="question-2"
+          />
           <Section
             header=question3
-            body=Paragraphs(list{answer3Paragraph1, answer3Paragraph2, answer3Paragraph3})
+            body=Paragraphs(list{
+              {content: Message(answer3Paragraph1)},
+              {content: Message(answer3Paragraph2)},
+              {content: Message(answer3Paragraph3)},
+            })
             key="question-3"
           />
           <Section
             header=question4
-            body=Paragraphs(list{answer4Paragraph1, answer4Paragraph2})
+            body=Paragraphs(list{
+              {content: Message(answer4Paragraph1)},
+              {content: Message(answer4Paragraph2)},
+            })
             key="question-4"
           />
           <Section
             header=question5
             body=Paragraphs(list{
-              answer5Paragraph1,
-              answer5Paragraph2,
-              answer5Paragraph3,
-              answer5Paragraph4,
+              {content: Message(answer5Paragraph1)},
+              {content: Message(answer5Paragraph2)},
+              {content: Message(answer5Paragraph3)},
+              {content: Message(answer5Paragraph4)},
             })
             key="question-5"
           />
           <Section
             header=question6
             body=Paragraphs(list{
-              answer6Paragraph1,
-              answer6Paragraph2,
-              answer6Paragraph3,
-              answer6Paragraph4,
-              answer6Paragraph5,
-              answer6Paragraph6,
-              answer6Paragraph7,
+              {content: Message(answer6Paragraph1)},
+              {content: Message(answer6Paragraph2)},
+              {content: Message(answer6Paragraph3)},
+              {content: Message(answer6Paragraph4)},
+              {content: Message(answer6Paragraph5)},
+              {content: Message(answer6Paragraph6)},
+              {content: Message(answer6Paragraph7)},
             })
             key="question-6"
           />
@@ -91,22 +102,28 @@ let default = () => {
           />
           <Section
             header=question8
-            body=Paragraphs(list{answer8Paragraph1, answer8Paragraph2})
+            body=Paragraphs(list{
+              {content: Message(answer8Paragraph1)},
+              {content: Message(answer8Paragraph2)},
+            })
             key="question-8"
           />
           <Section
             header=question9
-            body=Paragraphs(list{answer9Paragraph1, answer9Paragraph2})
+            body=Paragraphs(list{
+              {content: Message(answer9Paragraph1)},
+              {content: Message(answer9Paragraph2)},
+            })
             key="question-9"
           />
           <Section
             header=question10
             body=Paragraphs(list{
-              answer10Paragraph1,
-              answer10Paragraph2,
-              answer10Paragraph3,
-              answer10Paragraph4,
-              answer10Paragraph5,
+              {content: Message(answer10Paragraph1)},
+              {content: Message(answer10Paragraph2)},
+              {content: Message(answer10Paragraph3)},
+              {content: Message(answer10Paragraph4)},
+              {content: Message(answer10Paragraph5)},
             })
             key="question-10"
           />
@@ -146,7 +163,10 @@ let default = () => {
           />
           <Section
             header=question13
-            body=Paragraphs(list{answer13Paragraph1, answer13Paragraph2})
+            body=Paragraphs(list{
+              {content: Message(answer13Paragraph1)},
+              {content: Message(answer13Paragraph2)},
+            })
             key="question-13"
           />
         </Mui.Grid>

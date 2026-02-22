@@ -1,5 +1,7 @@
 open ReactIntl
 
+module UpcomingDates = Message_Registrations_UpcomingDates
+
 @@intl.messages
 
 let header =
@@ -32,11 +34,11 @@ let titleOldest =
     id: "8fa5e766-a063-4b31-8cdc-b2eea909cd15",
     defaultMessage: "🧒 3. Děti (4 - 15 let) ✅",
   }
-let titleCurrentRegistrationDates =
-  @intl.description("Registrations - current registration dates")
+let headerUpcomingRegistrationDates =
+  @intl.description("Registrations - the Upcoming Dates section - the header")
   {
     id: "217f547e-85ec-4b2d-a54a-59fad614174f",
-    defaultMessage: "Aktuální termíny registrací",
+    defaultMessage: "Aktuální termíny nových registrací dětí",
   }
 let youngestKidsLine1 =
   @intl.description("Registrations page - youngest kids - the first line")

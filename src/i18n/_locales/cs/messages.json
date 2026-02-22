@@ -11,6 +11,10 @@
         "message": "Kdo jsme",
         "description": "Top menu item - Who we are"
     },
+    "03c9224f-fbc8-4e29-87ab-d54ac4c7ab65": {
+        "message": "(Upozornění: Mimo tyto termíny nás v ateliéru nezastihnete, registrace probíhají výhradně osobně ve vypsaných termínech.)",
+        "description": "Registrations page - the Upcoming Dates section - How to register - line 4"
+    },
     "08e7cfa7-7bef-4779-b756-a41215947979": {
         "message": "Bonus:",
         "description": "Registrations page - youngest kids - the sixth line - part 1"
@@ -18,6 +22,14 @@
     "09de6bec-d523-4b7a-9d15-c73bbe2960f9": {
         "message": "1000Kč v hotovosti a 1000Kč se strhne z 1. vypláceného honoráře.",
         "description": "Q&A page - answer to question 7 - paragraph 2 - part2"
+    },
+    "0b4a8c0c-f8b8-4d98-960c-8dcbc2d03d90": {
+        "message": "❗ Důležité podmínky registrace",
+        "description": "Registrations page - the Upcoming Dates section - Important registration requirements title"
+    },
+    "0dbc1395-9b94-4bfd-9725-9765569d9e8b": {
+        "message": "Vyplňte",
+        "description": "Registrations page - the Upcoming Dates section - How to register - line 1 - part 2"
     },
     "0e472007-df8d-4a91-a94f-eff8c767d5d0": {
         "message": "Reference",
@@ -47,6 +59,10 @@
         "message": "Děti 4-15 let hradí jednorázově",
         "description": "Q&A page - answer to question 7 - paragraph 2 - part1"
     },
+    "17c5dc35-4339-49d3-a733-e9a7a5b0b483": {
+        "message": "🕒 Rozdělení podle věku",
+        "description": "Registrations page - the Upcoming Dates section - Breakdown by age title"
+    },
     "18bad5b2-bdf2-40b7-9682-06df10fefe61": {
         "message": "Registrace trvá přibližně 20 minut. Tento čas je vyhrazen pouze pro vás.",
         "description": "Registrations page - youngest kids - the third line - part 2"
@@ -71,6 +87,10 @@
         "message": "Fotografie z registrace vám zašleme e-mailem.",
         "description": "Registrations page - youngest kids - the sixth line - part 2"
     },
+    "1e5bbbcb-aea5-43ee-bbbd-8bd474ce5212": {
+        "message": "Registrujeme děti ve věku",
+        "description": "Registrations page - the Upcoming Dates section - Breakdown by age - line 7 - part 2"
+    },
     "1ec457c8-6064-44fb-91fc-1bea98e9e39c": {
         "message": "Výsledky castingu mnohdy víme až \"na poslední chvíli\", tedy není možné dávat vědět všem, koho nevybrali. Informujeme ty, kdo jsou v užším výběru nebo potvrzeni. Držte si termíny volné až do dne kostýmové zkoušky či natáčení, pokud se nikdo neozval, znamená to, že jste neuspěli. Děkujeme za pochopení.",
         "description": "Q&A page - answer to question 10 - paragraph 5"
@@ -88,8 +108,12 @@
         "description": "Q&A page - answer to question 5 - paragraph 4"
     },
     "217f547e-85ec-4b2d-a54a-59fad614174f": {
-        "message": "Aktuální termíny registrací",
-        "description": "Registrations - current registration dates"
+        "message": "Aktuální termíny nových registrací dětí",
+        "description": "Registrations - the Upcoming Dates section - the header"
+    },
+    "222e4c8d-0de2-48ab-99f5-e27f8ba6be78": {
+        "message": "osobně",
+        "description": "Registrations page - the Upcoming Dates section - Breakdown by age - line 10 - part 3"
     },
     "2264b17d-0ea8-49c9-aec7-1cde77887917": {
         "message": "Čas registrace:",
@@ -114,6 +138,14 @@
     "25cbad58-8315-4bc5-9f36-68df7fedf87b": {
         "message": "Je databáze Poppy casting veřejná?",
         "description": "Q&A page - question 13"
+    },
+    "2799f30b-b9ee-4590-9784-147f41935c67": {
+        "message": "A)",
+        "description": "Registrations page - the Upcoming Dates section - How to register - line 1 - part 1"
+    },
+    "28b8d863-a6df-418a-a807-217031ebecd8": {
+        "message": "Je nutné se předem objednat na konkrétní čas.",
+        "description": "Registrations page - the Upcoming Dates section - Breakdown by age - line 3 - part 2"
     },
     "2a47d058-357b-4080-9f57-a59c6e7537d8": {
         "message": "Registrace",
@@ -142,6 +174,10 @@
     "34f4a860-cc7d-4e81-af81-c2e81e4b7849": {
         "message": "MHD tram 1,8,12,25,26 Kamenická nebo 6,8,17,26 Strossmayerovo náměstí",
         "description": "Contact page - the registration address connection"
+    },
+    "368fb606-f315-4049-8873-c7b22086ea9c2": {
+        "message": "Sloty mezi",
+        "description": "Registrations page - the Upcoming Dates section - Breakdown by age - line 2 - part 2"
     },
     "37dc3db8-1705-4a7e-83a8-675806963340": {
         "message": "Jak to v Poppy casting funguje?",
@@ -195,6 +231,10 @@
         "message": "Miminka:",
         "description": "Q&A page - answer to question 1 - paragraph 2 - part 1"
     },
+    "47ef5e37-c9fd-4fac-bf36-8fe10172feaa": {
+        "message": "ADRESA:",
+        "description": "Registrations page - the Upcoming Dates section - How to register - line 3"
+    },
     "48fd1715-5ac5-468d-912b-6922976fe647": {
         "message": "Je Vaše dítě komunikativní, rádo předvádí? Nestydí před kamerou a cizími lidmi? Bude spolupracovat a hraní scének na castingu jej bude bavit? Je typově zajímavé, něčím výrazné? Má hereckou průpravu, zkušenost? Baví ho dramťák, zajímá se o herectví? Pokud jste odpověděli alespoň několikrát ano, přidejte se k nám.",
         "description": "Q&A page - answer to question 1 - paragraph 1"
@@ -227,9 +267,17 @@
         "message": "Kde a od kolika hodin se koná natáčení dopředu nevíme, protože se jedná o velmi živý organismus, který se neustále mění za běhu.",
         "description": "Q&A page - answer to question 6 - paragraph 4"
     },
+    "4c429350-7d35-4cf4-948e-04d364f8d859": {
+        "message": "B) Děti (4 - 15 let)",
+        "description": "Registrations page - the Upcoming Dates section - Breakdown by age - line 4"
+    },
     "4de90d79-5e91-4f18-bbbe-cb91ac7d8eee": {
         "message": "Není, tedy můžete být registrováni v dalších agenturách, ovšem u registrace podepisujete podmínku, že v případě, že stejnou nabídku dostanete od nás, stejně tak od jiné agentury (a je jedno, zda od nás v úterý, ale od jiné agentury třeba už v pondělí), na castingu do formuláře uvedete Poppycasting.",
         "description": "Q&A page - answer to question 12 - paragraph 1 - part 1"
+    },
+    "4f2ba782-c79c-4c45-968a-d01d7cb9c09d": {
+        "message": "od 4 do 15 let",
+        "description": "Registrations page - the Upcoming Dates section - Breakdown by age - line 7 - part 5"
     },
     "54d5dee3-1a36-497e-af05-225d6e2eb018": {
         "message": "Čas:",
@@ -242,6 +290,10 @@
     "55fe68c2-13f5-4856-991c-4eccd87238be": {
         "message": "👶 1. Miminka (6 - 17 měsíců) ✅",
         "description": "Registrations page - youngest kids"
+    },
+    "574a87d0-dc5e-46e4-8f34-00d4f2d7d03f": {
+        "message": "Stop stav:",
+        "description": "Registrations page - the Upcoming Dates section - Breakdown by age - line 8 - part 1"
     },
     "588ddae1-8b2e-4141-b776-4cd9dfbc4447": {
         "message": "Mgr. art. {name}",
@@ -287,6 +339,10 @@
         "message": "Kontakt",
         "description": "About Us page - contact label"
     },
+    "61d06bf0-0dd3-47e9-a9b3-b299f6eadeff": {
+        "message": "Děti od 18 měsíců do 4. narozenin aktuálně",
+        "description": "Registrations page - the Upcoming Dates section - Breakdown by age - line 8 - part 2"
+    },
     "625b14ea-6bfb-43df-b196-3101abbe22cd": {
         "message": "ANO: tričko, body, kalhoty, džíny, sukně, běžné šaty",
         "description": "Q&A page - answer to question 11 - paragraph 2 - appropriate 2"
@@ -310,6 +366,14 @@
     "668cef96-3e5a-4e28-a83a-a5aef1ca64b7": {
         "message": "Produkční, pravá ruka Martiny, věnuje se registracím nových dětí, odpovídá na Vaše dotazy, spravuje databázi talentů a zve děti na castingy.",
         "description": "About Us page - the first part of registration and database person's description"
+    },
+    "67e986ed-3ac9-4624-ba03-f00578202a6d": {
+        "message": "Věková omezení:",
+        "description": "Registrations page - the Upcoming Dates section - Breakdown by age - line 7 - part 1"
+    },
+    "68a1e3cd-0950-4950-b091-e894baae3c58": {
+        "message": "v doprovodu zákonného zástupce. Online registrace neprovádíme.",
+        "description": "Registrations page - the Upcoming Dates section - Breakdown by age - line 10 - part 4"
     },
     "6aeb8404-d8c9-4e1f-ad8f-1775bd11c903": {
         "message": "Hodí se na herectví Vaše dítě?",
@@ -363,6 +427,10 @@
         "message": "Jméno rodiče",
         "description": "Email Us page - the parent name label"
     },
+    "7538bc62-067f-4eed-a8b2-3b6dfb49e544": {
+        "message": "Jazyk:",
+        "description": "Registrations page - the Upcoming Dates section - Breakdown by age - line 9 - part 1"
+    },
     "75a4f6a4-3847-4bbf-aae4-a4fb4e01b9fe": {
         "message": "Kde se konají castingy? Jak to probíhá?",
         "description": "Q&A page - question 10"
@@ -374,6 +442,10 @@
     "76ac014a-0e24-4aec-90f2-327ce36a32c3": {
         "message": "Registrační poplatek:",
         "description": "Registrations page - youngest kids - the fourth line - part 1"
+    },
+    "773c399d-6089-4467-a878-381cb6bd2987": {
+        "message": "Stačí nám dát vědět, že dorazíte, přesný čas hlásit není potřeba.",
+        "description": "Registrations page - the Upcoming Dates section - Breakdown by age - line 6 - part 2"
     },
     "77e1062d-d854-4c16-bd7d-ca8a2f9a95fa": {
         "message": "Máme nabídky role TV reklam, seriálů, českých i zahraničních filmů, dabing, kompars, dabléry hlavních dětských herců. Méně zakázek je u nás na modeling.",
@@ -415,6 +487,14 @@
         "message": "Nemůžeme bohužel zaručit, že Vaše nějakou dítě zakázku získá, ale zvýšit šance můžete Vy tím, že dítě bude chodit v budoucnosti minimálně do dramatického kroužku, ochotnického divadla či hereckých kurzů. Pouze talent mnohdy nestačí.",
         "description": "Q&A page - answer to question 5 - paragraph 3"
     },
+    "812d7568-7f03-4c16-98ec-b2f23497a356": {
+        "message": "nebo zavolejte na",
+        "description": "Registrations page - the Upcoming Dates section - How to register - line 2 - part 3"
+    },
+    "81550d0f-65a9-4b5e-aa94-6cfce658943d": {
+        "message": "Čas:",
+        "description": "Registrations page - the Upcoming Dates section - Breakdown by age - line 5 - part 1"
+    },
     "81f47f9f-3e1d-4724-8b05-4ea14126793f": {
         "message": "Registrační poplatek je rozdělen:",
         "description": "Registrations page - oldest kids - the sixth line"
@@ -431,6 +511,14 @@
         "message": "Pro mimopražské zájemce je dojíždění velmi náročné časově i finančně. Dětem dále než 1h dojezdu do Prahy registraci nedoporučujeme.",
         "description": "Q&A page - answer to question 3 - paragraph 2"
     },
+    "8ab2a5dc-1b75-4672-be1c-2662b901f82e": {
+        "message": "Postup:",
+        "description": "Registrations page - the Upcoming Dates section - Breakdown by age - line 6 - part 1"
+    },
+    "8ac57a4c-42cf-4a53-83fc-1fb64ecca68a": {
+        "message": "Česky hovořící děti bez cizího přízvuku nebo rodilí mluvčí AJ.",
+        "description": "Registrations page - the Upcoming Dates section - Breakdown by age - line 9 - part 2"
+    },
     "8acc5ad9-1872-4be3-b3d0-8378ff135ef9": {
         "message": "Datum je příliš nízké.",
         "description": "Date validation - date is too low"
@@ -442,6 +530,10 @@
     "8c3c6989-a6fa-4111-886f-81389325486a": {
         "message": "Poppy casting, s.r.o.",
         "description": "Contact page - the facturation address 1"
+    },
+    "8c42b964-be4d-4f01-887d-cb1ab38a9642": {
+        "message": "Čas:",
+        "description": "Registrations page - the Upcoming Dates section - Breakdown by age - line 2 - part 1"
     },
     "8dd00c75-eb00-44d4-8e31-a3eb27ff22ba": {
         "message": "v hotovosti na místě u registrace.",
@@ -479,6 +571,10 @@
         "message": "Registrace",
         "description": "Registrations page - the header"
     },
+    "971ff026-365a-4d21-99a8-dcc104b6d315": {
+        "message": "Kdykoli mezi",
+        "description": "Registrations page - the Upcoming Dates section - Breakdown by age - line 5 - part 2"
+    },
     "99e9c0f2-175c-45ba-a47a-c4d8608623b5": {
         "message": "Poté obdržíte obratem adresu castingu, další podrobnosti.",
         "description": "Q&A page - answer to question 6 - paragraph 2"
@@ -506,6 +602,10 @@
     "9e0fe979-40e6-4978-9268-397e295da651": {
         "message": "Pokud jste dítě zaregistrovali do agentury, která má exkluzivní zastoupení, registrovat jej u nás nemůžete.",
         "description": "Q&A page - answer to question 12 - paragraph 1 - part 2"
+    },
+    "9fb60e10-6f2a-4cb4-b90d-4d374bc6705a": {
+        "message": "A) Miminka (6 - 18 měsíců)",
+        "description": "Registrations page - the Upcoming Dates section - Breakdown by age - line 1"
     },
     "a0b279bd-a9cd-4cab-9afd-8de72b2f23d0": {
         "message": "Buďte prosím trpěliví a maximálně flexibilní, na nat.den si vždy raději blokujte celý den.",
@@ -543,9 +643,17 @@
         "message": "Než se k nám rozhodnete přihlásit",
         "description": "Q&A page - the sub-header"
     },
-    "ae88fbab-0433-4390-93b1-2048cc540f42": {
-        "message": "Aktuální info",
-        "description": "News page - the header"
+    "a79aab1c-6d8a-4478-bfd3-f5ca21e0c91e": {
+        "message": "6 - 18 měsíců",
+        "description": "Registrations page - the Upcoming Dates section - Breakdown by age - line 7 - part 3"
+    },
+    "a97b730c-cbb5-4695-bc78-9b077644a4d4": {
+        "message": "Postup:",
+        "description": "Registrations page - the Upcoming Dates section - Breakdown by age - line 3 - part 1"
+    },
+    "ad40c510-e8da-4992-9e05-2dbf4ee1f728": {
+        "message": "neregistrujeme",
+        "description": "Registrations page - the Upcoming Dates section - Breakdown by age - line 8 - part 3"
     },
     "aff491b0-4982-4a78-b94e-dc6f658b690a": {
         "message": "Batolata (18 měsíců - 3 roky)",
@@ -567,17 +675,33 @@
         "message": "NE: tričko s obrázky, nápisy, značkami, křiklavé vzory",
         "description": "Q&A page - answer to question 11 - paragraph 1 - inappropriate 2"
     },
+    "b157dfaf-6cf9-4179-ae41-8ae5e4674bab": {
+        "message": "KONTAKTNÍ FORMULÁŘ",
+        "description": "Registrations page - the Upcoming Dates section - How to register - line 1 - part 3"
+    },
     "b1e477e9-e3f4-4191-8eb5-b4c27aeea657": {
         "message": "Paťanka 2611/5",
         "description": "Contact page - the facturation address 2"
+    },
+    "b24c1f17-c95b-4dc8-aece-b733e3d96e71": {
+        "message": "14:00 - 18:00",
+        "description": "Registrations page - the Upcoming Dates section - Breakdown by age - line 5 - part 3"
     },
     "b5558f2d-bd8e-4ba3-a2c8-561a9e5a6adc": {
         "message": "Registrujeme osobně ve vypsaných termínech (viz níže)",
         "description": "Registrations page - oldest kids - the first line"
     },
+    "b7702975-3920-44cb-b575-5b93d57694e6": {
+        "message": "Osobní účast:",
+        "description": "Registrations page - the Upcoming Dates section - Breakdown by age - line 10 - part 1"
+    },
     "b96688f6-32df-41e0-bb36-aee5099b6cd9": {
         "message": "Je v Poppy casting exkluzivita?",
         "description": "Q&A page - question 12"
+    },
+    "ba205b20-758d-4f4d-bbd1-90ec02cd682a": {
+        "message": "9:00 - 13:30",
+        "description": "Registrations page - the Upcoming Dates section - Breakdown by age - line 2 - part 3"
     },
     "bae6bf3b-fcd9-493b-8537-face0f016813": {
         "message": "Spolupracujeme s ověřenými partnery, pracujeme v souladu s GDPR.",
@@ -599,6 +723,14 @@
         "message": "U komerčních zakázek je honorář vždy uveden, u filmu a seriálu honorář řešíme až po obsazení dítěte do role.",
         "description": "Q&A page - answer to question 6 - paragraph 3"
     },
+    "c2ff0e69-6ec9-4acc-8fd1-b3f8a453778f": {
+        "message": "a poté až",
+        "description": "Registrations page - the Upcoming Dates section - Breakdown by age - line 7 - part 4"
+    },
+    "c5921e0c-8ba2-4369-b9ab-927addf77ae1": {
+        "message": "📩 Jak se přihlásit?",
+        "description": "Registrations page - the Upcoming Dates section - How to register title"
+    },
     "c65d1a9a-885c-488d-a9b5-af73c3ae5870": {
         "message": "Nejobsazovanější věk je u nás 6 měs - 1,5 roku a 5-12 let.",
         "description": "Q&A page - answer to question 5 - paragraph 1"
@@ -610,6 +742,10 @@
     "c98618c7-c177-411d-8cb4-56aa705787e1": {
         "message": "S dítětem si krátce popovídáme a vyfotíme jej.",
         "description": "Registrations page - oldest kids - the fourth line - part 2"
+    },
+    "c9a527f4-97a4-4e42-af3a-1340195eee5b": {
+        "message": "nebo nám napište na",
+        "description": "Registrations page - the Upcoming Dates section - How to register - line 2 - part 2"
     },
     "c9bb840c-4f73-4a84-9cb6-2cf39ad7f925": {
         "message": "Miminka (6 - 17 měsíců)",
@@ -703,6 +839,10 @@
         "message": "Bydlíte v Praze a okolí?",
         "description": "Q&A page - question 3"
     },
+    "e3d9a737-e966-4654-b0e6-93e8cb17f968": {
+        "message": "Dítě se musí dostavit",
+        "description": "Registrations page - the Upcoming Dates section - Breakdown by age - line 10 - part 2"
+    },
     "e4cc62ee-a458-4f2e-8cd2-909186ada420": {
         "message": "objednání nutné",
         "description": "Registrations page - youngest kids - the second line - the third part"
@@ -751,9 +891,17 @@
         "message": "Práce s dětmi v tomto věku je náročná (fixace na rodiče, neochota spolupracovat před kamerou), produkce se tomuto věku vyhýbají, pracovních nabídek je tak minimum.",
         "description": "Registrations page - middle kids - the third line"
     },
+    "f75a8d07-5af7-4dde-990a-088f16fe5dd2": {
+        "message": "B)",
+        "description": "Registrations page - the Upcoming Dates section - How to register - line 2 - part 1"
+    },
     "f7b87daf-a144-4e73-b4fd-6342f1282136": {
         "message": "Naše dvorní fotografka specializující se na focení dětí, nastávajících maminek a rodinné foto.",
         "description": "About Us page - the first part of photographer's description"
+    },
+    "f949c049-8888-4b04-9507-14beda2246ca": {
+        "message": "a zašleme Vám informace a podmínky.",
+        "description": "Registrations page - the Upcoming Dates section - How to register - line 1 - part 4"
     },
     "f99e756b-e4df-453f-b01e-1b8fb5194780": {
         "message": "Každoročně pořádáme příměstský herecký tábor Filmák, který připravuje děti na situace před kamerou či na castingu.",
@@ -770,6 +918,10 @@
     "fa91facf-bfc8-4bcd-8e14-534651157e05": {
         "message": "Město bydliště",
         "description": "Email Us page - the city of residence label"
+    },
+    "fb5d6104-87af-4ce5-b3a8-9142498b65c4": {
+        "message": "(výjimkou jsou pouze jednovaječná dvojčata a děti neevropského vzhledu).",
+        "description": "Registrations page - the Upcoming Dates section - Breakdown by age - line 8 - part 4"
     },
     "fbaa7734-385e-45ac-afad-4e73528e6178": {
         "message": "Otázky a odpovědi",

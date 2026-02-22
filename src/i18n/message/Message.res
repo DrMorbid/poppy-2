@@ -32,7 +32,6 @@ let registrationsOldest =
 
 module Menu = Message_Menu
 module Home = Message_Home
-module News = Message_News
 module WhoWeAre = Message_WhoWeAre
 module Registrations = Message_Registrations
 module References = Message_References

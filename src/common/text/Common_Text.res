@@ -42,10 +42,15 @@ let make = (
     {switch body {
     | Paragraphs(paragraphs) =>
       paragraphs
-      ->List.mapWithIndex((paragraph, index) =>
+      ->List.mapWithIndex(({content, ?bold}, index) =>
         <Text key={`paragraph-${index->Int.toString}`}>
-          <Mui.Typography>
-            {intl->ReactIntl.Intl.formatMessage(paragraph)->React.string}
+          <Mui.Typography
+            sx=?{bold->Option.getOr(false) ? Some(Common_Style.bold->Mui.Sx.obj) : None}
+          >
+            {switch content {
+            | Message(message) => intl->ReactIntl.Intl.formatMessage(message)
+            | String(string) => string
+            }->React.string}
           </Mui.Typography>
         </Text>
       )

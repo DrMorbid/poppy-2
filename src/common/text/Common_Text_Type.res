@@ -1,7 +1,18 @@
-type fragmentContent = Message(ReactIntl.message) | String(string)
+type paragraphContent = Message(ReactIntl.message) | String(string)
+
+type paragraph = {content: paragraphContent, bold?: bool}
+
+type fragmentContent =
+  Message(ReactIntl.message) | String(string) | Link({content: string, href: string})
 
 type fragment =
-  | Text({content: fragmentContent, bold?: bool, color?: [#error], appendSpace?: bool})
+  | Text({
+      content: fragmentContent,
+      bold?: bool,
+      italic?: bool,
+      color?: [#error],
+      appendSpace?: bool,
+    })
   | Element(Jsx.element)
 
 type fragmentParagraph = {content: list<fragment>, centered?: bool}
@@ -16,7 +27,7 @@ type listParagraph = {
 }
 
 type body =
-  | Paragraphs(list<ReactIntl.message>)
+  | Paragraphs(list<paragraph>)
   | Fragments(list<fragmentParagraph>)
   | Lists(list<listParagraph>)
   | Element(Jsx.element)

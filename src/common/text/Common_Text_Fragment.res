@@ -5,6 +5,7 @@ module FragmentContent = {
     switch content {
     | Message(message) => intl->ReactIntl.Intl.formatMessage(message)
     | String(string) => string
+    | Link({content}) => content
     }
 
   let addSuffix = (~appendSpace=?, ~index, ~fragmentsCount) =>
@@ -14,8 +15,22 @@ module FragmentContent = {
   let make = (~content, ~index, ~fragmentsCount, ~appendSpace=?) => {
     let intl = ReactIntl.useIntl()
 
-    (content->toString(~intl) ++ addSuffix(~index, ~fragmentsCount, ~appendSpace?))->React.string
+    let text = content->toString(~intl) ++ addSuffix(~index, ~fragmentsCount, ~appendSpace?)
+
+    switch content {
+    | Link({href}) => <Mui.Link href> {text->React.string} </Mui.Link>
+    | _ => text->React.string
+    }
   }
+}
+
+let combineStyles = (~bold=false, ~italic=false) => {
+  let bold = bold ? [Common_Style.bold->Mui.Sx.Array.obj] : []
+  let italic = italic ? [Common_Style.italic->Mui.Sx.Array.obj] : []
+
+  bold
+  ->Array.concat(italic)
+  ->Mui.Sx.array
 }
 
 @react.component
@@ -26,7 +41,7 @@ let make = (~fragments) => {
     | Text(fragment) =>
       <Mui.Typography
         component={"span"->Mui.OverridableComponent.string}
-        sx=?{fragment.bold->Option.getOr(false) ? Some(Common_Style.bold->Mui.Sx.obj) : None}
+        sx={combineStyles(~bold=?fragment.bold, ~italic=?fragment.italic)}
         key={`fragment-${index->Int.toString}`}
         color=?{fragment.color
         ->Option.map(color => (color :> string))

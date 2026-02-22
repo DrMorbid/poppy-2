@@ -9,6 +9,7 @@ let headerGap = Mui.Sx.obj({marginTop: String("2rem")})
 let paragraphGap: Style.t = {gridRowGap: "1rem"}
 let sectionGap = {gridRowGap: "2rem"}->styleToSx
 let bold: Mui.System.props = {fontWeight: String("bold")}
+let italic: Mui.System.props = {fontStyle: String("italic")}
 let marginTopSm = Mui.Sx.obj({marginTop: String("0.75rem")})
 let marginBottomSm = Mui.Sx.obj({marginBottom: String("0.75rem")})
 let marginBottom = Mui.Sx.Array.obj({marginBottom: String("1rem")})

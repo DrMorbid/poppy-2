@@ -21,9 +21,6 @@
     "@greenlabs/rescript-react-hook-form",
     "@rescript-mui/material"
   ],
-  "compiler-flags": [
-    "-open RescriptCore"
-  ],
   "jsx": {
     "version": 4
   }

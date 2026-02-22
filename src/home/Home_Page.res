@@ -31,23 +31,29 @@ let default = () => {
       </ReactMaterialUiCarousel>
     </Mui.Grid>
     <Common.Island
-      header=firstParagraphHeader body=Paragraphs(list{firstParagraph}) centerAll=true xl=Number(3)
-    />
-    <Common.Island
-      header=secondParagraphHeader
-      body=Paragraphs(list{secondParagraph})
+      header=firstParagraphHeader
+      body=Paragraphs(list{{content: Message(firstParagraph)}})
       centerAll=true
       xl=Number(3)
     />
     <Common.Island
-      header=thirdParagraphHeader body=Paragraphs(list{thirdParagraph}) centerAll=true xl=Number(3)
+      header=secondParagraphHeader
+      body=Paragraphs(list{{content: Message(secondParagraph)}})
+      centerAll=true
+      xl=Number(3)
+    />
+    <Common.Island
+      header=thirdParagraphHeader
+      body=Paragraphs(list{{content: Message(thirdParagraph)}})
+      centerAll=true
+      xl=Number(3)
     />
     {isMdUp && !isLgUp
       ? <Common.Island body={Element(Jsx.null)} centerAll=true lg=Number(4) xl=Number(4) />
       : Jsx.null}
     <Common.Island
       header=fourthParagraphHeader
-      body=Paragraphs(list{fourthParagraph})
+      body=Paragraphs(list{{content: Message(fourthParagraph)}})
       centerAll=true
       xl=Number(3)
     />
@@ -59,7 +65,8 @@ let default = () => {
         sections={list{
           {element: <WhoWeAre.Section />, topRef: whoWeAreTopRef},
           {element: <References.Section />, topRef: referencesTopRef},
-        }}>
+        }}
+      >
         <Mui.Grid item=true>
           <Contact.BottomBar />
         </Mui.Grid>

@@ -252,9 +252,7 @@ let default = () => {
             />,
           },
           {
-            element: <News.Section
-              header=titleCurrentRegistrationDates headerVariant=H3 headerUppercase=true
-            />,
+            element: <Registrations_UpcomingDates />,
             topRef: currentRegistrationDatesTopRef,
             accented: Yellow,
           },

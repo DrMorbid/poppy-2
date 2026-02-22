@@ -39,11 +39,8 @@
     "files.exclude": {
       "**/.git": true,
       "**/.DS_Store": true,
-      "**/node_modules": true,
-      "**/.next": true,
       "lib/bs": true,
       "lib/ocaml": true,
-      "**/*.bs.js": true,
     },
     // Search exclusions
     "search.exclude": {
@@ -51,19 +48,8 @@
       "**/.next": true,
       "lib/bs": true,
       "lib/ocaml": true,
-      "**/*.bs.js": true,
-      "**/*.res.js": false,
       "yarn.lock": true,
       "package-lock.json": true,
-    },
-    // File watcher exclusions for better performance
-    "files.watcherExclude": {
-      "**/.git/objects/**": true,
-      "**/.git/subtree-cache/**": true,
-      "**/node_modules/*/**": true,
-      "**/.next/**": true,
-      "lib/bs/**": true,
-      "lib/ocaml/**": true,
     },
     // JavaScript/TypeScript settings
     "javascript.preferences.importModuleSpecifier": "relative",
@@ -212,30 +198,7 @@
     "version": "0.2.0",
     "configurations": [
       {
-        "name": "Next.js: Debug Server",
-        "type": "node",
-        "request": "launch",
-        "runtimeExecutable": "yarn",
-        "runtimeArgs": ["dev"],
-        "console": "integratedTerminal",
-        "serverReadyAction": {
-          "pattern": "started server on .+, url: (https?://.+)",
-          "uriFormat": "%s",
-          "action": "debugWithChrome",
-        },
-      },
-      {
-        "name": "Next.js: Debug Client",
-        "type": "chrome",
-        "request": "launch",
-        "url": "http://localhost:3000",
-        "webRoot": "${workspaceFolder}",
-        "sourceMapPathOverrides": {
-          "webpack://_N_E/*": "${webRoot}/*",
-        },
-      },
-      {
-        "name": "Next.js: Debug Full Stack",
+        "name": "Next.js: Dev",
         "type": "node",
         "request": "launch",
         "runtimeExecutable": "yarn",
