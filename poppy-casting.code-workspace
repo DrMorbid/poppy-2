@@ -99,11 +99,10 @@
     "version": "2.0.0",
     "tasks": [
       {
-        "label": "ReScript: Build",
+        "label": "Clean .next",
         "type": "shell",
-        "command": "yarn",
-        "args": ["res:build"],
-        "group": "build",
+        "command": "rm",
+        "args": ["-rf", ".next"],
         "presentation": {
           "reveal": "always",
           "panel": "shared",
@@ -111,7 +110,29 @@
         "problemMatcher": [],
       },
       {
-        "label": "ReScript: Watch",
+        "label": "Clean out",
+        "type": "shell",
+        "command": "rm",
+        "args": ["-rf", "out"],
+        "presentation": {
+          "reveal": "always",
+          "panel": "shared",
+        },
+        "problemMatcher": [],
+      },
+      {
+        "label": "Extract Intl Messages",
+        "type": "shell",
+        "command": "yarn",
+        "args": ["intl"],
+        "presentation": {
+          "reveal": "always",
+          "panel": "shared",
+        },
+        "problemMatcher": [],
+      },
+      {
+        "label": "🛠️ ReScript: Watch",
         "type": "shell",
         "command": "yarn",
         "args": ["res:dev"],
@@ -139,26 +160,16 @@
         },
       },
       {
-        "label": "Next.js: Dev",
+        "label": "ReScript: Build",
         "type": "shell",
         "command": "yarn",
-        "args": ["dev"],
-        "isBackground": true,
+        "args": ["res:build"],
+        "group": "build",
         "presentation": {
           "reveal": "always",
-          "panel": "dedicated",
+          "panel": "shared",
         },
-        "problemMatcher": {
-          "pattern": {
-            "regexp": "^([^\\s].*)$",
-            "message": 1,
-          },
-          "background": {
-            "activeOnStart": true,
-            "beginsPattern": "compiling",
-            "endsPattern": "(Compiled|Failed to compile)",
-          },
-        },
+        "problemMatcher": [],
       },
       {
         "label": "Next.js: Build",
@@ -173,20 +184,15 @@
         "problemMatcher": [],
       },
       {
-        "label": "Extract Intl Messages",
-        "type": "shell",
-        "command": "yarn",
-        "args": ["intl"],
-        "presentation": {
-          "reveal": "always",
-          "panel": "shared",
-        },
-        "problemMatcher": [],
-      },
-      {
-        "label": "Dev: ReScript + Next.js",
-        "dependsOn": ["ReScript: Watch", "Next.js: Dev"],
-        "dependsOrder": "parallel",
+        "label": "🚀 Build for deploy",
+        "dependsOn": [
+          "Clean .next",
+          "Clean out",
+          "Extract Intl Messages",
+          "ReScript: Build",
+          "Next.js: Build",
+        ],
+        "dependsOrder": "sequence",
         "presentation": {
           "reveal": "always",
         },
@@ -198,7 +204,7 @@
     "version": "0.2.0",
     "configurations": [
       {
-        "name": "Next.js: Dev",
+        "name": "▶️ Next.js: Dev",
         "type": "node",
         "request": "launch",
         "runtimeExecutable": "yarn",
