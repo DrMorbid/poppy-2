@@ -3604,9 +3604,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"poppy-2@workspace:.":
+"poppy-casting@workspace:.":
   version: 0.0.0-use.local
-  resolution: "poppy-2@workspace:."
+  resolution: "poppy-casting@workspace:."
   dependencies:
     "@elasticemail/elasticemail-client": "npm:^4.0.26"
     "@emotion/cache": "npm:^11.14.0"

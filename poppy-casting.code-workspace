@@ -1,0 +1,253 @@
+{
+  "folders": [
+    {
+      "path": ".",
+      "name": "🌸 Poppy Casting",
+    },
+  ],
+  "settings": {
+    // Editor settings
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit",
+    },
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    // File associations
+    "files.associations": {
+      "*.res": "rescript",
+      "*.resi": "rescript",
+    },
+    // ReScript settings
+    "[rescript]": {
+      "editor.defaultFormatter": "chenglou92.rescript-vscode",
+      "editor.formatOnSave": true,
+    },
+    // JavaScript/JSX settings
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "[javascriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    // Files to exclude from explorer
+    "files.exclude": {
+      "**/.git": true,
+      "**/.DS_Store": true,
+      "**/node_modules": true,
+      "**/.next": true,
+      "lib/bs": true,
+      "lib/ocaml": true,
+      "**/*.bs.js": true,
+    },
+    // Search exclusions
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/.next": true,
+      "lib/bs": true,
+      "lib/ocaml": true,
+      "**/*.bs.js": true,
+      "**/*.res.js": false,
+      "yarn.lock": true,
+      "package-lock.json": true,
+    },
+    // File watcher exclusions for better performance
+    "files.watcherExclude": {
+      "**/.git/objects/**": true,
+      "**/.git/subtree-cache/**": true,
+      "**/node_modules/*/**": true,
+      "**/.next/**": true,
+      "lib/bs/**": true,
+      "lib/ocaml/**": true,
+    },
+    // JavaScript/TypeScript settings
+    "javascript.preferences.importModuleSpecifier": "relative",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "typescript.preferences.importModuleSpecifier": "relative",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    // Emmet settings for React
+    "emmet.includeLanguages": {
+      "javascript": "javascriptreact",
+      "rescript": "html",
+    },
+    "emmet.triggerExpansionOnTab": true,
+    // Terminal settings
+    "terminal.integrated.cwd": "${workspaceFolder}",
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    // Git settings
+    "git.ignoreLimitWarning": true,
+    // Prettier settings
+    "prettier.semi": false,
+    "prettier.singleQuote": true,
+    "prettier.trailingComma": "es5",
+    "prettier.printWidth": 80,
+    "prettier.tabWidth": 2,
+  },
+  "extensions": {
+    "recommendations": [
+      // ReScript
+      "chenglou92.rescript-vscode",
+      // JavaScript/React
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode",
+      // Next.js
+      "orta.vscode-nextjs",
+      // Utilities
+      "christian-kohler.path-intellisense",
+      "eamodio.gitlens",
+      "usernamehw.errorlens",
+      "naumovs.color-highlight",
+      "formulahendry.auto-rename-tag",
+      "bradlc.vscode-tailwindcss",
+      // Snippets and productivity
+      "dsznajder.es7-react-js-snippets",
+      "ms-vscode.vscode-typescript-next",
+    ],
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "ReScript: Build",
+        "type": "shell",
+        "command": "yarn",
+        "args": ["res:build"],
+        "group": "build",
+        "presentation": {
+          "reveal": "always",
+          "panel": "shared",
+        },
+        "problemMatcher": [],
+      },
+      {
+        "label": "ReScript: Watch",
+        "type": "shell",
+        "command": "yarn",
+        "args": ["res:dev"],
+        "isBackground": true,
+        "presentation": {
+          "reveal": "always",
+          "panel": "dedicated",
+        },
+        "problemMatcher": {
+          "owner": "rescript",
+          "fileLocation": "absolute",
+          "pattern": {
+            "regexp": "^(.*):(\\d+):(\\d+)-(\\d+):\\s+(.*)$",
+            "file": 1,
+            "line": 2,
+            "column": 3,
+            "endColumn": 4,
+            "message": 5,
+          },
+          "background": {
+            "activeOnStart": true,
+            "beginsPattern": "^>>>>>",
+            "endsPattern": "^>>>>>",
+          },
+        },
+      },
+      {
+        "label": "Next.js: Dev",
+        "type": "shell",
+        "command": "yarn",
+        "args": ["dev"],
+        "isBackground": true,
+        "presentation": {
+          "reveal": "always",
+          "panel": "dedicated",
+        },
+        "problemMatcher": {
+          "pattern": {
+            "regexp": "^([^\\s].*)$",
+            "message": 1,
+          },
+          "background": {
+            "activeOnStart": true,
+            "beginsPattern": "compiling",
+            "endsPattern": "(Compiled|Failed to compile)",
+          },
+        },
+      },
+      {
+        "label": "Next.js: Build",
+        "type": "shell",
+        "command": "yarn",
+        "args": ["build"],
+        "group": "build",
+        "presentation": {
+          "reveal": "always",
+          "panel": "shared",
+        },
+        "problemMatcher": [],
+      },
+      {
+        "label": "Extract Intl Messages",
+        "type": "shell",
+        "command": "yarn",
+        "args": ["intl"],
+        "presentation": {
+          "reveal": "always",
+          "panel": "shared",
+        },
+        "problemMatcher": [],
+      },
+      {
+        "label": "Dev: ReScript + Next.js",
+        "dependsOn": ["ReScript: Watch", "Next.js: Dev"],
+        "dependsOrder": "parallel",
+        "presentation": {
+          "reveal": "always",
+        },
+        "problemMatcher": [],
+      },
+    ],
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Next.js: Debug Server",
+        "type": "node",
+        "request": "launch",
+        "runtimeExecutable": "yarn",
+        "runtimeArgs": ["dev"],
+        "console": "integratedTerminal",
+        "serverReadyAction": {
+          "pattern": "started server on .+, url: (https?://.+)",
+          "uriFormat": "%s",
+          "action": "debugWithChrome",
+        },
+      },
+      {
+        "name": "Next.js: Debug Client",
+        "type": "chrome",
+        "request": "launch",
+        "url": "http://localhost:3000",
+        "webRoot": "${workspaceFolder}",
+        "sourceMapPathOverrides": {
+          "webpack://_N_E/*": "${webRoot}/*",
+        },
+      },
+      {
+        "name": "Next.js: Debug Full Stack",
+        "type": "node",
+        "request": "launch",
+        "runtimeExecutable": "yarn",
+        "runtimeArgs": ["dev"],
+        "console": "integratedTerminal",
+        "serverReadyAction": {
+          "pattern": "started server on .+, url: (https?://.+)",
+          "uriFormat": "%s",
+          "action": "debugWithChrome",
+        },
+      },
+    ],
+    "compounds": [],
+  },
+}
