@@ -8,6 +8,9 @@ let emailUs =
 let registrations =
   @intl.description("Above the top menu - registrations")
   {id: "2a47d058-357b-4080-9f57-a59c6e7537d8", defaultMessage: "Registrace"}
+let photosRetake =
+  @intl.description("Above the top menu - photos retake")
+  {id: "37ff75cc-75cb-477a-96d3-57aa24c7797e", defaultMessage: "Přefocení"}
 let home =
   @intl.description("Top menu item - Home")
   {id: "40d873a1-0ae0-4626-a8cd-45fbd140bc50", defaultMessage: "Domů"}

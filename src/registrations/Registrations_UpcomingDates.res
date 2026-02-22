@@ -57,7 +57,7 @@ let make = () => {
               Text({content: String(".")}),
             },
           },
-          {content: list{Element(<UpcommingDates />)}},
+          {content: list{Element(<UpcomingDates />)}},
           {
             content: list{
               Text({content: Message(howToRegisterLine3), bold: true, appendSpace: true}),

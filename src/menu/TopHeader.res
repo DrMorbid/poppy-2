@@ -15,7 +15,10 @@ module Classes = {
   let buttonPlacementRight = Mui.Sx.obj({
     paddingTop: Number(buttonPaddingValue),
     paddingRight: Number(buttonPaddingValue),
+    paddingBottom: Number(buttonPaddingValue),
   })
+  let rightButtonsFullHeight = Mui.Sx.obj({height: Stretch})
+  let rightButtonsPadding = {gridColumnGap: "1rem"}->Utils.Style.styleToSx
 }
 
 @react.component
@@ -30,6 +33,8 @@ let make = () => {
   let onLogoClick = _ => router->App_Page.goTo(Home)
 
   let onRegisterClick = _ => router->App_Page.goTo(Registrations)
+
+  let onPhotosRetakeClick = _ => router->App_Page.goTo(PhotosRetake)
 
   <Container>
     <Mui.Grid item=true sx=?{isMdUp ? Some(Classes.buttonPlacementLeft) : None}>
@@ -48,14 +53,36 @@ let make = () => {
       </Mui.Grid>
     </Mui.Hidden>
     <Mui.Grid item=true sx=?{isMdUp ? Some(Classes.buttonPlacementRight) : None}>
-      <Mui.Button
-        size=?{isMdUp ? Some(Large) : None}
-        variant=Contained
-        color={Error}
-        onClick=onRegisterClick
-        sx=?{isMdUp ? Some(Common.Style.largeButtonLabel) : None}>
-        {intl->ReactIntl.Intl.formatMessage(registrations)->React.string}
-      </Mui.Button>
+      <Mui.Grid
+        container=true
+        sx={isMdUp ? Classes.rightButtonsFullHeight : Classes.rightButtonsPadding}
+        direction={isMdUp ? Column : Row}
+        justifyContent={isMdUp ? String("space-between") : FlexEnd}
+        alignItems=?{isMdUp ? Some(FlexEnd) : None}
+      >
+        <Mui.Grid item=true>
+          <Mui.Button
+            size=?{isMdUp ? Some(Large) : None}
+            variant=Contained
+            color={Error}
+            onClick=onRegisterClick
+            sx=?{isMdUp ? Some(Common.Style.largeButtonLabel) : None}
+          >
+            {intl->ReactIntl.Intl.formatMessage(registrations)->React.string}
+          </Mui.Button>
+        </Mui.Grid>
+        <Mui.Grid item=true>
+          <Mui.Button
+            size=?{isMdUp ? Some(Large) : None}
+            variant=Contained
+            color={Error}
+            onClick=onPhotosRetakeClick
+            sx=?{isMdUp ? Some(Common.Style.largeButtonLabel) : None}
+          >
+            {intl->ReactIntl.Intl.formatMessage(photosRetake)->React.string}
+          </Mui.Button>
+        </Mui.Grid>
+      </Mui.Grid>
     </Mui.Grid>
   </Container>
 }

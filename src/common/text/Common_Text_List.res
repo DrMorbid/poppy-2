@@ -94,6 +94,20 @@ let make = (~paragraphs) => {
                       : None}
                   />
                 </ItemWrapper>
+              | String(string) =>
+                <ItemWrapper level=?row.level>
+                  <ItemIcon number=?row.number level=?row.level />
+                  <Mui.ListItemText
+                    primary={string->React.string}
+                    sx=?{row.bold->Option.getOr(false)
+                      ? Some(
+                          [("& .MuiListItemText-primary", Common_Style.bold)]
+                          ->Dict.fromArray
+                          ->Mui.Sx.dict,
+                        )
+                      : None}
+                  />
+                </ItemWrapper>
               }}
             </Mui.ListItem>
           )

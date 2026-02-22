@@ -9,6 +9,7 @@ module Classes = {
       backgroundColor: prefersDarkMode ? "black" : "white",
       backgroundRepeat: "no-repeat",
     }->styleToSx
+  let buttonsGap = {gridRowGap: "1rem"}->styleToSx
 }
 
 @react.component
@@ -23,12 +24,18 @@ let make = (~children) => {
         direction=Row
         justifyContent=Mui.System.Value.String("space-between")
         wrap=Nowrap
-        sx=?{isMdUp ? Some(Classes.backgroundImage(prefersDarkMode)) : None}>
+        sx=?{isMdUp ? Some(Classes.backgroundImage(prefersDarkMode)) : None}
+      >
         children
       </Mui.Grid>
     </Mui.Hidden>
     <Mui.Hidden smUp=true>
-      <Mui.Grid container=true direction=Row justifyContent=Mui.System.Value.String("space-evenly")>
+      <Mui.Grid
+        container=true
+        direction=Row
+        justifyContent=Mui.System.Value.String("space-evenly")
+        sx=Classes.buttonsGap
+      >
         children
       </Mui.Grid>
     </Mui.Hidden>

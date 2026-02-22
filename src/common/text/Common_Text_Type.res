@@ -17,7 +17,7 @@ type fragment =
 
 type fragmentParagraph = {content: list<fragment>, centered?: bool}
 
-type listRowContent = Fragments(list<fragment>) | Message(ReactIntl.message)
+type listRowContent = Fragments(list<fragment>) | Message(ReactIntl.message) | String(string)
 
 type listRow = {content: listRowContent, bold?: bool, level?: int, number?: int}
 
