@@ -1,6 +1,6 @@
 type paragraphContent = Message(ReactIntl.message) | String(string)
 
-type paragraph = {content: paragraphContent, bold?: bool}
+type paragraph = {content: paragraphContent, bold?: bool, italic?: bool}
 
 type fragmentContent =
   Message(ReactIntl.message) | String(string) | Link({content: string, href: string})

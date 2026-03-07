@@ -24,15 +24,6 @@ module FragmentContent = {
   }
 }
 
-let combineStyles = (~bold=false, ~italic=false) => {
-  let bold = bold ? [Common_Style.bold->Mui.Sx.Array.obj] : []
-  let italic = italic ? [Common_Style.italic->Mui.Sx.Array.obj] : []
-
-  bold
-  ->Array.concat(italic)
-  ->Mui.Sx.array
-}
-
 @react.component
 let make = (~fragments) => {
   fragments
@@ -41,7 +32,7 @@ let make = (~fragments) => {
     | Text(fragment) =>
       <Mui.Typography
         component={"span"->Mui.OverridableComponent.string}
-        sx={combineStyles(~bold=?fragment.bold, ~italic=?fragment.italic)}
+        sx={Common_Style.combineTextStyles(~bold=?fragment.bold, ~italic=?fragment.italic)}
         key={`fragment-${index->Int.toString}`}
         color=?{fragment.color
         ->Option.map(color => (color :> string))

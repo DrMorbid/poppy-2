@@ -37,3 +37,12 @@ let largeButtonLabel = Mui.Sx.obj({
   fontWeight: String(App_Theme.Typography.h5.fontWeight),
   lineHeight: Number(1.334),
 })
+
+let combineTextStyles = (~bold as boldText=false, ~italic as italicText=false) => {
+  let bold = boldText ? [bold->Mui.Sx.Array.obj] : []
+  let italic = italicText ? [italic->Mui.Sx.Array.obj] : []
+
+  bold
+  ->Array.concat(italic)
+  ->Mui.Sx.array
+}

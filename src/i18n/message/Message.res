@@ -40,3 +40,4 @@ module QAndA = Message_QAndA
 module EmailUs = Message_EmailUs
 module Date = Message_Date
 module PhotosRetake = Message_PhotosRetake
+module Gdpr = Message_Gdpr
