@@ -1,1 +1,1 @@
-module Page = Gdpr_Page
+module Content = Gdpr_Content

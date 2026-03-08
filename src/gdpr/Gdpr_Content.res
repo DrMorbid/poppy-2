@@ -1,7 +1,7 @@
 open Message.Gdpr
 
 @react.component
-let default = () => {
+let make = () => {
   let intl = ReactIntl.useIntl()
 
   <Common.Text

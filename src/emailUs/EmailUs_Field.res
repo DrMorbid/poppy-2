@@ -26,8 +26,8 @@ let fieldGrid = {
     xs: Number(12),
     sm: Number(12),
     md: Number(12),
-    lg: Number(6),
-    xl: Number(6),
+    lg: Number(12),
+    xl: Number(12),
   },
 }
 
@@ -49,7 +49,8 @@ let make = (
     sm={last ? fieldGrid.last.sm : fieldGrid.notLast.sm}
     md={last ? fieldGrid.last.md : fieldGrid.notLast.md}
     lg={last ? fieldGrid.last.lg : fieldGrid.notLast.lg}
-    xl={last ? fieldGrid.last.xl : fieldGrid.notLast.xl}>
+    xl={last ? fieldGrid.last.xl : fieldGrid.notLast.xl}
+  >
     {renderWithRegister(
       <Mui.TextField
         variant=Standard

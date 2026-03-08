@@ -207,6 +207,10 @@
         "message": "MHD tram 1,8,12,25,26 Kamenická nebo 6,8,17,26 Strossmayerovo náměstí",
         "description": "Contact page - the registration address connection"
     },
+    "3537bedd-4a66-4be4-8b41-49925404c44a": {
+        "message": "Odesláním souhlasíte se zpracováním vašich osobních údajů v souladu s nařízením {gdprLink}.",
+        "description": "Email Us page - GDPR info"
+    },
     "368fb606-f315-4049-8873-c7b22086ea9c2": {
         "message": "Sloty mezi",
         "description": "Registrations page - the Upcoming Dates section - Breakdown by age - line 2 - part 2"

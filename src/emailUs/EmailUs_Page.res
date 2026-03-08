@@ -6,6 +6,7 @@ open EmailUs_Utils
 let default = () => {
   let (dateErrorMessage, setDateErrorMessage) = React.useState(() => None)
   let (emailBeingSent, setEmailBeingSent) = React.useState(() => false)
+  let (showGdpr, setShowGdpr) = React.useState(() => false)
 
   let form = Form.use(
     ~config={
@@ -15,6 +16,7 @@ let default = () => {
 
   let intl = ReactIntl.useIntl()
   let router = Next.Navigation.useRouter()
+  let isMdUp = Mui.Core.useMediaQueryString(App_Theme.Breakpoint.mdUp)
 
   let (_, dispatch) = React.useContext(App_Context.Context.t)
 
@@ -83,6 +85,8 @@ let default = () => {
     ->Option.map(Dayjs.toDate)
     ->Option.flatMap(date => date->Utils.Date.isValid ? Some(date) : None)
     ->onFormFieldChange
+
+  let onClose = _ => setShowGdpr(_ => false)
 
   <Common.Text
     header
@@ -187,9 +191,9 @@ let default = () => {
                   ->ReactIntl.Intl.formatMessageWithValues(
                     gdprInfo,
                     {
-                      "gdprLink": <Mui.Link href=App_Page.RoutePath.gdpr>
-                        {"GDPR"->React.string}
-                      </Mui.Link>,
+                      "gdprLink": <Common.Button.Link onClick={_ => setShowGdpr(_ => true)}>
+                        {"GDPR"}
+                      </Common.Button.Link>,
                     },
                   )
                   ->React.string}
@@ -198,6 +202,9 @@ let default = () => {
             </Mui.Grid>
           </Mui.Grid>
         </Mui.Grid>
+        <Common.Dialog isOpen={showGdpr} onClose fullScreen={!isMdUp} fixedSize=isMdUp>
+          <Gdpr.Content />
+        </Common.Dialog>
       </form>,
     )
   />
