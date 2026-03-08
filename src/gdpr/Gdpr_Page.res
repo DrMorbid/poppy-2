@@ -16,22 +16,139 @@ let default = () => {
       {
         content: list{
           Element(
-            <Mui.Button variant=Contained startIcon={<Common.Icon.CheckCircleOutline />} size=Large>
-              {intl->ReactIntl.Intl.formatMessage(agreeButton)->React.string}
-            </Mui.Button>,
+            <Common.Text
+              body=Element(
+                <App_ScrollableSections
+                  sections={list{
+                    {
+                      element: <Common.Text
+                        header=gdprSection1Title
+                        headerVariant=H4
+                        body={Lists(list{
+                          {
+                            list: list{
+                              {
+                                content: Message(gdprSection1Body),
+                              },
+                            },
+                          },
+                        })}
+                      />,
+                    },
+                    {
+                      element: <Common.Text
+                        header=gdprSection2Title
+                        headerVariant=H4
+                        body={Lists(list{
+                          {
+                            list: list{
+                              {
+                                content: String("Apple"),
+                              },
+                              {
+                                content: String("Google"),
+                              },
+                              {
+                                content: Message(gdprSection2Line3),
+                              },
+                            },
+                          },
+                        })}
+                      />,
+                    },
+                    {
+                      element: <Common.Text
+                        header=gdprSection3Title
+                        headerVariant=H4
+                        body={Lists(list{
+                          {
+                            list: list{
+                              {
+                                content: Message(gdprSection3Line1),
+                              },
+                              {
+                                content: Message(gdprSection3Line2),
+                              },
+                              {
+                                content: Message(gdprSection3Line3),
+                              },
+                              {
+                                content: Message(gdprSection3Line4),
+                              },
+                              {
+                                content: Message(gdprSection3Line5),
+                              },
+                              {
+                                content: Message(gdprSection3Line6),
+                              },
+                            },
+                          },
+                        })}
+                      />,
+                    },
+                    {
+                      element: <Common.Text
+                        header=gdprSection4Title
+                        headerVariant=H4
+                        body={Lists(list{
+                          {
+                            list: list{
+                              {
+                                content: Message(gdprSection4Line1),
+                              },
+                              {
+                                content: Message(gdprSection4Line2),
+                              },
+                              {
+                                content: Message(gdprSection4Line3),
+                              },
+                              {
+                                content: Message(gdprSection4Line4),
+                              },
+                              {
+                                content: Message(gdprSection4Line5),
+                              },
+                              {
+                                content: Message(gdprSection4Line6),
+                              },
+                              {
+                                content: Message(gdprSection4Line7),
+                              },
+                              {
+                                content: Message(gdprSection4Line8),
+                              },
+                              {
+                                content: Message(gdprSection4Line9),
+                              },
+                            },
+                          },
+                        })}
+                      />,
+                    },
+                  }}
+                />,
+              )
+            />,
           ),
         },
-        centered: true,
       },
       {
         content: list{
           Element(
             <Common.Text
-              body=Paragraphs(list{{content: Message(agreementExplanation), italic: true}})
+              body=Fragments(list{
+                {
+                  content: list{
+                    Text({content: Message(finalNote), italic: true}),
+                    Text({content: String(" "), italic: true}),
+                    Text({content: String(Common.Constants.infoEmail), italic: true}),
+                    Text({content: String("."), italic: true}),
+                  },
+                },
+              })
             />,
           ),
         },
-        centered: true,
       },
     })
   />

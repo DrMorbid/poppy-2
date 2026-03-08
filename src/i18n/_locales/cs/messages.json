@@ -11,10 +11,6 @@
         "message": "část: 1 000 Kč",
         "description": "Registrations page - oldest kids - the seventh line - part 1"
     },
-    "02c8ea0a-bff6-4b86-9cea-f6c60fae377c": {
-        "message": "Bez souhlasu nemůžeme zpracovávat a uchovávat vaše soukromá data.",
-        "description": "GDPR page - the agreement explanation"
-    },
     "0371f3b2-5b62-4c6b-baac-a3925b811458": {
         "message": "Kdo jsme",
         "description": "Top menu item - Who we are"
@@ -26,6 +22,10 @@
     "08e7cfa7-7bef-4779-b756-a41215947979": {
         "message": "Bonus:",
         "description": "Registrations page - youngest kids - the sixth line - part 1"
+    },
+    "09dd3fa6-c413-4d28-bd96-54c16bb82c65": {
+        "message": "E-mail",
+        "description": "GDPR page - the second line of the fourth GDPR section"
     },
     "09de6bec-d523-4b7a-9d15-c73bbe2960f9": {
         "message": "1000Kč v hotovosti a 1000Kč se strhne z 1. vypláceného honoráře.",
@@ -95,6 +95,10 @@
         "message": "Fotografie z registrace, přefocení ani castingů nezasíláme, děkujeme za pochopení.",
         "description": "Registrations page - oldest kids - the tenth line"
     },
+    "1e54b7d7-d916-4f88-bae2-8a96b34b9178": {
+        "message": "vzít souhlas kdykoliv zpět,",
+        "description": "GDPR page - the first line of the third GDPR section"
+    },
     "1e55ff84-0e97-48cf-a62f-95cdd1806943": {
         "message": "Fotografie z registrace vám zašleme e-mailem.",
         "description": "Registrations page - youngest kids - the sixth line - part 2"
@@ -158,6 +162,10 @@
     "2799f30b-b9ee-4590-9784-147f41935c67": {
         "message": "A)",
         "description": "Registrations page - the Upcoming Dates section - How to register - line 1 - part 1"
+    },
+    "287e576d-f8bb-4093-9293-8818928d68bc": {
+        "message": "požadovat výmaz osobních údajů, k jejichž zpracování nemá Správce Váš souhlas ani je\nnezpracovává na základě jiného právního důvodu,",
+        "description": "GDPR page - the fifth line of the third GDPR section"
     },
     "28b8d863-a6df-418a-a807-217031ebecd8": {
         "message": "Je nutné se předem objednat na konkrétní čas.",
@@ -315,6 +323,10 @@
         "message": "od 4 do 15 let",
         "description": "Registrations page - the Upcoming Dates section - Breakdown by age - line 7 - part 5"
     },
+    "4f64cfbe-0620-4f2a-8ed7-eacf7bcea952": {
+        "message": "Souhlasíte, že správce může zpracovávat tyto vaše osobní údaje:",
+        "description": "GDPR page - the title of the fourth GDPR section"
+    },
     "54d5dee3-1a36-497e-af05-225d6e2eb018": {
         "message": "Čas:",
         "description": "Registrations page - youngest kids - the second line - the first part"
@@ -471,6 +483,10 @@
         "message": "Kontakt",
         "description": "Top menu item - Contact"
     },
+    "740928ce-efe7-4372-ac60-2621c3b02783": {
+        "message": "S výše uvedeným zpracováním udělujete svůj výslovný souhlas. Souhlas lze vzít kdykoliv zpět, a to písemně na adresu Správce nebo zasláním emailu na adresu",
+        "description": "GDPR page - the final note"
+    },
     "74536b7d-1333-430f-8e9e-24580783a22c": {
         "message": "a další...",
         "description": "References page - suffix to part one of every section"
@@ -515,9 +531,17 @@
         "message": "1x za půl roku zdarma.",
         "description": "Registrations page - youngest kids - the fifth line - part 2"
     },
+    "7b5f1c1e-d6f7-46cb-a427-f65ace4ccaa2": {
+        "message": "Číslo bankovního účtu",
+        "description": "GDPR page - the eighth line of the fourth GDPR section"
+    },
     "7b8bdd68-f927-4a33-a90d-ec82cec70896": {
         "message": "Ozvěte se nám prosím až kolem",
         "description": "Registrations page - middle kids - the second line - part 2"
+    },
+    "7c2b1671-c199-4b4e-8dd3-f0de56ea1733": {
+        "message": "požadovat po Správci informaci, jaké Vaše osobní údaje jsou zpracovávány,",
+        "description": "GDPR page - the second line of the third GDPR section"
     },
     "7c7751c4-837a-4f8b-adbb-00f9d651763e": {
         "message": "Průběh:",
@@ -643,9 +667,17 @@
         "message": "Registrace",
         "description": "Registrations page - the header"
     },
+    "955a9ef2-2103-4356-abc5-e36b21af9fad": {
+        "message": "Vaše osobní údaje může správce zpracovávat za účelem:",
+        "description": "GDPR page - the title of the first GDPR section"
+    },
     "971ff026-365a-4d21-99a8-dcc104b6d315": {
         "message": "Kdykoli mezi",
         "description": "Registrations page - the Upcoming Dates section - Breakdown by age - line 5 - part 2"
+    },
+    "998e0949-2600-44af-a60f-a223ad5e4e19": {
+        "message": "Telefonní číslo",
+        "description": "GDPR page - the third line of the fourth GDPR section"
     },
     "99e9c0f2-175c-45ba-a47a-c4d8608623b5": {
         "message": "Poté obdržíte obratem adresu castingu, další podrobnosti.",
@@ -655,13 +687,13 @@
         "message": "Poptávka je například na miminka ve věku 8-9 měs, takových dětí v databázi budeme mít opravdu jen pár, protože velmi rychle rostou a jedná se o krátký věkový úsek života dítěte. Šance, že Vaše dítě bude zrovna v požadovaném věku v době dané zakázky je tedy poměrně malá, nabídek pro miminka je tedy bohužel logicky spíše málo.",
         "description": "Q&A page - answer to question 8 - paragraph 2"
     },
-    "9acafcf4-4d9e-4d8f-9280-272b4355b6c6": {
-        "message": "Souhlasím",
-        "description": "GDPR page - the agree button text"
-    },
     "9ae6d7cc-7db0-4d70-bff0-952bdefb1d8f": {
         "message": "Děti",
         "description": "Registrations - oldest kids"
+    },
+    "9b3bafd5-130f-4767-9819-cb574793fb48": {
+        "message": "Jméno a příjmení",
+        "description": "GDPR page - the first line of the fourth GDPR section"
     },
     "9c048db6-f90d-48da-a31e-06187c783a60": {
         "message": "Herečka, produkční, castingová a dabingová režisérka, zakladatelka agentury Poppy casting.",
@@ -771,6 +803,10 @@
         "message": "Děti do 3 let přefocujeme 1x za půl roku, starší děti 1x ročně.",
         "description": "Photos Retake page - the Upcoming Dates section - line 1"
     },
+    "b359b6fa-beb0-48c4-8927-01cd7cd39afb": {
+        "message": "Rodné číslo",
+        "description": "GDPR page - the seventh line of the fourth GDPR section"
+    },
     "b373aa10-aa77-4081-ae70-fe91342a1393": {
         "message": "Adresa:",
         "description": "Photos Retake page - the Upcoming Dates section - line 4"
@@ -786,6 +822,10 @@
     "b7702975-3920-44cb-b575-5b93d57694e6": {
         "message": "Osobní účast:",
         "description": "Registrations page - the Upcoming Dates section - Breakdown by age - line 10 - part 1"
+    },
+    "b79a1ae5-8170-407b-8cc4-c73f735c5758": {
+        "message": "požadovat po Správci vysvětlení ohledně zpracování Vašich osobních údajů,",
+        "description": "GDPR page - the third line of the third GDPR section"
     },
     "b96688f6-32df-41e0-bb36-aee5099b6cd9": {
         "message": "Je v Poppy casting exkluzivita?",
@@ -843,6 +883,10 @@
         "message": "hotově u registrace, neplatíte dále žádné poplatky.",
         "description": "Q&A page - answer to question 7 - paragraph 1 - part 3"
     },
+    "c7a3a3bc-da3b-4f0d-8fb8-98cea3f1be26": {
+        "message": "na přístup k Vašim zpracovávaným osobním údajům a nechat si Vaše zpracovávané\nosobní údaje aktualizovat nebo opravit,",
+        "description": "GDPR page - the fourth line of the third GDPR section"
+    },
     "c98618c7-c177-411d-8cb4-56aa705787e1": {
         "message": "S dítětem si krátce popovídáme a vyfotíme jej.",
         "description": "Registrations page - oldest kids - the fourth line - part 2"
@@ -854,6 +898,10 @@
     "c9bb840c-4f73-4a84-9cb6-2cf39ad7f925": {
         "message": "Miminka",
         "description": "Registrations - youngest kids"
+    },
+    "ca835894-5da0-40a5-907c-63be3fd7c2ca": {
+        "message": "Adresa trvalého bydliště",
+        "description": "GDPR page - the fifth line of the fourth GDPR section"
     },
     "cb394fa9-9b9e-4b10-8d3e-7c78a1e75dc7": {
         "message": "Kdo jsme",
@@ -878,6 +926,10 @@
     "cf18dd06-a669-41d1-988d-9ad750665556": {
         "message": "Castingy se konají nejčastěji ve všední dny nejpozději do 17h, zvažte tedy, zda je to ve vašich možnostech (práce, škola, kroužky).",
         "description": "Q&A page - answer to question 3 - paragraph 3"
+    },
+    "cf18ddb1-4a3f-4c59-991d-54dd38abb934": {
+        "message": "v případě pochybností o dodržování povinností souvisejících se zpracováním Vašich\nosobních údajů se můžete obrátit také na dozorový úřad, tedy Úřad pro ochranu\nosobních údajů.",
+        "description": "GDPR page - the sixth line of the third GDPR section"
     },
     "cff318a3-7706-433c-bd4b-13d498f57474": {
         "message": "Prosím, zadejte datum.",
@@ -943,9 +995,17 @@
         "message": "6 měs - 18 měs hradí 2000Kč",
         "description": "Q&A page - answer to question 7 - paragraph 1 - part 2"
     },
+    "dfa2b402-3b09-4fc8-8fe8-01ce07727b50": {
+        "message": "Ostatní citlivá data - rozměry, váha, národnost, barva očí, vlasů a pleti",
+        "description": "GDPR page - the ninth line of the fourth GDPR section"
+    },
     "e1c48847-e731-4092-a313-d35d21076c00": {
         "message": "tel.",
         "description": "About Us page - contact label - for telephone number"
+    },
+    "e39e8154-49c3-4a33-951f-3f129813b0e1": {
+        "message": "Kontaktování za účelem nabídky služeb a zboží Správce, zejména zasílání obchodních nabídek Správce.\n    Vaše osobní údaje budou Správcem zpracovány po dobu 10 let.",
+        "description": "GDPR page - the body of the first GDPR section"
     },
     "e3cffc3b-0478-4cff-9c3c-b719c143aeb4": {
         "message": "Bydlíte v Praze a okolí?",
@@ -966,6 +1026,10 @@
     "e4d642e6-40a0-4aa4-919e-9b2adb3a5df6": {
         "message": "Poznámka",
         "description": "Email Us page - the note label"
+    },
+    "e4fbf6ff-b1db-460c-8603-69a21863b589": {
+        "message": "V souvislosti s výše popsaným zpracováním údajů máte právo:",
+        "description": "GDPR page - the title of the third GDPR section"
     },
     "e50565f3-cfb6-4d53-be2b-874aafe932ff": {
         "message": "❌ 2. Batolata (18 měsíců - 3 roky) — STOPSTAV ❌",
@@ -1007,9 +1071,17 @@
         "message": "sloty mezi 9:00 - 13:30",
         "description": "Registrations page - youngest kids - the second line - the second part"
     },
+    "f08dca4a-b0de-4885-b2fe-b378a1b7dfa5": {
+        "message": "Případně další poskytovatelé zpracovatelských softwarů, služeb a aplikací.",
+        "description": "GDPR page - the third line of the second GDPR section"
+    },
     "f1e78b69-62c1-4b5b-a550-2763a4646df5": {
         "message": "Čím starší je dítě, tím větší herecké schopnosti či průprava se od něj na castingu očekávají, stejně tak konkurence je větší.",
         "description": "Q&A page - answer to question 5 - paragraph 2"
+    },
+    "f2a7f628-80dd-411e-b782-01559f1bfc51": {
+        "message": "Zpracování osobních údajů je prováděno správcem, osobní údaje však pro správce mohou zpracovávat i další zpracovatelé:",
+        "description": "GDPR page - the title of the second GDPR section"
     },
     "f356ee89-c465-43f8-ba8c-79d9175ad2d9": {
         "message": "Práce s dětmi v tomto věku je náročná (fixace na rodiče, neochota spolupracovat před kamerou), produkce se tomuto věku vyhýbají, pracovních nabídek je tak minimum.",
@@ -1043,6 +1115,10 @@
         "message": "Město bydliště",
         "description": "Email Us page - the city of residence label"
     },
+    "fb5b2bb5-8e1c-4439-bc33-99cf243a3995": {
+        "message": "Datum narození",
+        "description": "GDPR page - the sixth line of the fourth GDPR section"
+    },
     "fb5d6104-87af-4ce5-b3a8-9142498b65c4": {
         "message": "(výjimkou jsou pouze jednovaječná dvojčata a děti neevropského vzhledu).",
         "description": "Registrations page - the Upcoming Dates section - Breakdown by age - line 8 - part 4"
@@ -1058,5 +1134,9 @@
     "fe929c23-70f8-4162-b745-96ea5706d2f2": {
         "message": "křiklavé vzory",
         "description": "Photos Retake page - the Upcoming Dates section - line 19"
+    },
+    "fed95926-1ca0-4df8-9186-09be952d3423": {
+        "message": "Fotografie a videa",
+        "description": "GDPR page - the fourth line of the fourth GDPR section"
     }
 }
