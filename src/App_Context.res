@@ -24,6 +24,7 @@ type state = {
   homeMenuItemTargets: menuItemTargets,
   topRef: option<React.ref<Nullable.t<Dom.element>>>,
   alert: option<alert>,
+  registrationsMenuItemTargets: menuItemTargets,
 }
 
 let initialState = {
@@ -36,8 +37,12 @@ let initialState = {
   homeMenuItemTargets->Map.set(References, Page(App_Page.References))
   homeMenuItemTargets->Map.set(Filmak, ExternalUrl("https://www.filmak.eu/"))
 
+  let registrationsMenuItemTargets = Map.make()
+  registrationsMenuItemTargets->Map.set(Home, Page(App_Page.Home))
+
   {
     homeMenuItemTargets,
+    registrationsMenuItemTargets,
     topRef: None,
     alert: None,
   }
@@ -45,6 +50,7 @@ let initialState = {
 
 type action =
   | AddHomeMenuItemScrollableRef(MenuItem.t, React.ref<Nullable.t<Dom.element>>)
+  | AddRegistrationsMenuItemScrollableRef(MenuItem.t, React.ref<Nullable.t<Dom.element>>)
   | SetTopRef(React.ref<Nullable.t<Dom.element>>)
   | ShowAlert(alert)
   | HideAlert
@@ -57,6 +63,14 @@ let reducer = (state, action) =>
         state.homeMenuItemTargets->Map.set(menuItem, ScrollableRef(ref))
 
         state.homeMenuItemTargets
+      },
+    }
+  | AddRegistrationsMenuItemScrollableRef(menuItem, ref) => {
+      ...state,
+      registrationsMenuItemTargets: {
+        state.registrationsMenuItemTargets->Map.set(menuItem, ScrollableRef(ref))
+
+        state.registrationsMenuItemTargets
       },
     }
   | SetTopRef(topRef) => {

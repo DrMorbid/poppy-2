@@ -15,19 +15,19 @@ let registrationsYoungest =
   @intl.description("Registrations - youngest kids")
   {
     id: "c9bb840c-4f73-4a84-9cb6-2cf39ad7f925",
-    defaultMessage: "Miminka (6 - 17 měsíců)",
+    defaultMessage: "Miminka",
   }
 let registrationsMiddle =
   @intl.description("Registrations - middle kids")
   {
     id: "aff491b0-4982-4a78-b94e-dc6f658b690a",
-    defaultMessage: "Batolata (18 měsíců - 3 roky)",
+    defaultMessage: "Batolata",
   }
 let registrationsOldest =
   @intl.description("Registrations - oldest kids")
   {
     id: "9ae6d7cc-7db0-4d70-bff0-952bdefb1d8f",
-    defaultMessage: "Děti (4 - 15 let)",
+    defaultMessage: "Děti",
   }
 
 module Menu = Message_Menu

@@ -2,8 +2,47 @@ open Message.Registrations
 
 @react.component
 let default = () => {
+  let registrationsYoungestTopRef = React.useRef(null)
+  let registrationsMiddleTopRef = React.useRef(null)
+  let registrationsOldestTopRef = React.useRef(null)
   let currentRegistrationDatesTopRef = React.useRef(null)
   let intl = ReactIntl.useIntl()
+
+  let (_, dispatch) = React.useContext(App_Context.Context.t)
+
+  React.useEffect(() => {
+    dispatch(
+      App_Context.AddRegistrationsMenuItemScrollableRef(
+        RegistrationsYoungest,
+        registrationsYoungestTopRef,
+      ),
+    )
+    dispatch(
+      App_Context.AddRegistrationsMenuItemScrollableRef(
+        RegistrationsMiddle,
+        registrationsMiddleTopRef,
+      ),
+    )
+    dispatch(
+      App_Context.AddRegistrationsMenuItemScrollableRef(
+        RegistrationsOldest,
+        registrationsOldestTopRef,
+      ),
+    )
+    dispatch(
+      App_Context.AddRegistrationsMenuItemScrollableRef(
+        CurrentRegistrationDates,
+        currentRegistrationDatesTopRef,
+      ),
+    )
+
+    None
+  }, (
+    registrationsYoungestTopRef,
+    registrationsMiddleTopRef,
+    registrationsOldestTopRef,
+    currentRegistrationDatesTopRef,
+  ))
 
   <Common.Text
     header
@@ -84,6 +123,7 @@ let default = () => {
                 },
               })}
             />,
+            topRef: registrationsYoungestTopRef,
           },
           {
             element: <Common.Text
@@ -151,6 +191,7 @@ let default = () => {
                 },
               })}
             />,
+            topRef: registrationsMiddleTopRef,
           },
           {
             element: <Common.Text
@@ -250,6 +291,7 @@ let default = () => {
                 },
               })}
             />,
+            topRef: registrationsOldestTopRef,
           },
           {
             element: <Registrations_UpcomingDates />,

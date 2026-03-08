@@ -10,7 +10,10 @@ let make = (~drawerOpen, ~onClose) => {
   let intl = useIntl()
   let pathname = Next.Navigation.usePathname()
   let router = Next.Navigation.useRouter()
-  let ({homeMenuItemTargets, _}: App_Context.state, _) = React.useContext(App_Context.Context.t)
+  let (
+    {homeMenuItemTargets, registrationsMenuItemTargets, _}: App_Context.state,
+    _,
+  ) = React.useContext(App_Context.Context.t)
 
   <Mui.Drawer
     open_=drawerOpen
@@ -24,7 +27,14 @@ let make = (~drawerOpen, ~onClose) => {
       ->List.mapWithIndex((section, index) =>
         <Mui.ListItemButton
           onClick={_ =>
-            section->onClick(~onDrawerClose=onClose, ~menuItemTargets=homeMenuItemTargets, ~router)}
+            section->onClick(
+              ~onDrawerClose=onClose,
+              ~menuItemTargets=pathname->pickMenuItemTargets(
+                ~homeMenuItemTargets,
+                ~registrationsMenuItemTargets,
+              ),
+              ~router,
+            )}
           key={`menu-item-${index->Int.toString}`}
         >
           <Mui.ListItemText

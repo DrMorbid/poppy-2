@@ -7,7 +7,10 @@ let make = () => {
   let (menuItems, setMenuItems) = React.useState(() => list{})
   let pathname = Next.Navigation.usePathname()
   let router = Next.Navigation.useRouter()
-  let ({homeMenuItemTargets, _}: App_Context.state, _) = React.useContext(App_Context.Context.t)
+  let (
+    {homeMenuItemTargets, registrationsMenuItemTargets, _}: App_Context.state,
+    _,
+  ) = React.useContext(App_Context.Context.t)
 
   React.useEffect(() => {
     let newMenuItems = pathname->getMenuItems
@@ -21,6 +24,8 @@ let make = () => {
     None
   }, [pathname])
 
+  Console.log2("Menu items:", menuItems)
+
   <Mui.Toolbar disableGutters=true>
     <Mui.Grid container=true justifyContent=String("space-evenly") spacing=Int(1)>
       {menuItems
@@ -29,7 +34,14 @@ let make = () => {
           <Button
             visible
             label={menuItem->App_Types.MenuItem.toLabel}
-            onClick={_ => menuItem->onClick(~menuItemTargets=homeMenuItemTargets, ~router)}
+            onClick={_ =>
+              menuItem->onClick(
+                ~menuItemTargets=pathname->pickMenuItemTargets(
+                  ~homeMenuItemTargets,
+                  ~registrationsMenuItemTargets,
+                ),
+                ~router,
+              )}
             index
           />
         </Mui.Grid>

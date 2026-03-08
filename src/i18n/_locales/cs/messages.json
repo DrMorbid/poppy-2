@@ -11,6 +11,10 @@
         "message": "část: 1 000 Kč",
         "description": "Registrations page - oldest kids - the seventh line - part 1"
     },
+    "02c8ea0a-bff6-4b86-9cea-f6c60fae377c": {
+        "message": "Bez souhlasu nemůžeme zpracovávat a uchovávat vaše soukromá data.",
+        "description": "GDPR page - the agreement explanation"
+    },
     "0371f3b2-5b62-4c6b-baac-a3925b811458": {
         "message": "Kdo jsme",
         "description": "Top menu item - Who we are"
@@ -651,8 +655,12 @@
         "message": "Poptávka je například na miminka ve věku 8-9 měs, takových dětí v databázi budeme mít opravdu jen pár, protože velmi rychle rostou a jedná se o krátký věkový úsek života dítěte. Šance, že Vaše dítě bude zrovna v požadovaném věku v době dané zakázky je tedy poměrně malá, nabídek pro miminka je tedy bohužel logicky spíše málo.",
         "description": "Q&A page - answer to question 8 - paragraph 2"
     },
+    "9acafcf4-4d9e-4d8f-9280-272b4355b6c6": {
+        "message": "Souhlasím",
+        "description": "GDPR page - the agree button text"
+    },
     "9ae6d7cc-7db0-4d70-bff0-952bdefb1d8f": {
-        "message": "Děti (4 - 15 let)",
+        "message": "Děti",
         "description": "Registrations - oldest kids"
     },
     "9c048db6-f90d-48da-a31e-06187c783a60": {
@@ -728,7 +736,7 @@
         "description": "Registrations page - the Upcoming Dates section - Breakdown by age - line 8 - part 3"
     },
     "aff491b0-4982-4a78-b94e-dc6f658b690a": {
-        "message": "Batolata (18 měsíců - 3 roky)",
+        "message": "Batolata",
         "description": "Registrations - middle kids"
     },
     "b0618b85-52ef-4a0a-b5d2-bab61a7fc1c3": {
@@ -771,6 +779,10 @@
         "message": "Registrujeme osobně ve vypsaných termínech (viz níže)",
         "description": "Registrations page - oldest kids - the first line"
     },
+    "b6e897a8-25e5-4a0a-894f-f51b6a6d8625": {
+        "message": "Vážená paní / vážený pane,",
+        "description": "GDPR page - the salutation on top"
+    },
     "b7702975-3920-44cb-b575-5b93d57694e6": {
         "message": "Osobní účast:",
         "description": "Registrations page - the Upcoming Dates section - Breakdown by age - line 10 - part 1"
@@ -782,6 +794,10 @@
     "ba205b20-758d-4f4d-bbd1-90ec02cd682a": {
         "message": "9:00 - 13:30",
         "description": "Registrations page - the Upcoming Dates section - Breakdown by age - line 2 - part 3"
+    },
+    "babf05bf-4e8a-40e1-bc6a-f1f3ca7158770": {
+        "message": "Souhlas se zpracováním osobních údajů",
+        "description": "GDPR page - the header"
     },
     "bae6bf3b-fcd9-493b-8537-face0f016813": {
         "message": "Spolupracujeme s ověřenými partnery, pracujeme v souladu s GDPR.",
@@ -836,7 +852,7 @@
         "description": "Registrations page - the Upcoming Dates section - How to register - line 2 - part 2"
     },
     "c9bb840c-4f73-4a84-9cb6-2cf39ad7f925": {
-        "message": "Miminka (6 - 17 měsíců)",
+        "message": "Miminka",
         "description": "Registrations - youngest kids"
     },
     "cb394fa9-9b9e-4b10-8d3e-7c78a1e75dc7": {
@@ -974,6 +990,10 @@
     "eaca6630-7b35-4a15-8e21-308b42313104": {
         "message": "Telefon na rodiče",
         "description": "Email Us page - the parent phone label"
+    },
+    "ecc5869f-942d-4262-8e7b-f05c459f0956": {
+        "message": "tímto udělujete souhlas společnosti Poppy casting s.r.o., se sídlem Paťanka 2611/5, Dejvice, 160 00 Praha 6, IČO: 02655136, zapsané ve veřejném rejstříku vedeném u městského soudu v Praze, vložka 252919 (dále jen „Správce“), aby v souladu s nařízením Evropského parlamentu a Rady (EU) č. 2016/679 ze dne 27. dubna 2016 o ochraně fyzických osob v souvislosti se zpracováním osobních údajů a o volném pohybu těchto údajů a o zrušení směrnice 95/46/ES (obecné nařízení o ochraně osobních údajů) (dále jen „GDPR“) zpracovávala Vaše osobní údaje.",
+        "description": "GDPR page - the main text"
     },
     "ed16458e-f167-41d9-af6c-e031412b0504": {
         "message": "Původně učitelka ČJ - HV, v Poppy casting od roku 2016.",

@@ -42,6 +42,6 @@ let goTo = (router, page) => router->Next.Navigation.Router.push(page->toRoutePa
 
 let isHomePage = pathname => pathname->String.equal(RoutePath.home)
 
-let isRegistrationsPage = pathname => pathname->String.equal(RoutePath.registrations)
+let isRegistrationsPage = pathname => pathname->String.startsWith(RoutePath.registrations)
 
-let isPhotosRetakePage = pathname => pathname->String.equal(RoutePath.photosRetake)
+let isPhotosRetakePage = pathname => pathname->String.startsWith(RoutePath.photosRetake)
