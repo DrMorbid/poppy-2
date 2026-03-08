@@ -83,3 +83,9 @@ let alertError =
     id: "23446130-8c22-4018-bb01-cdfe1215e140",
     defaultMessage: "Email nemohl být odeslán: {error}",
   }
+let gdprInfo =
+  @intl.description("Email Us page - GDPR info")
+  {
+    id: "3537bedd-4a66-4be4-8b41-49925404c44a",
+    defaultMessage: "Odesláním souhlasíte se zpracováním vašich osobních údajů v souladu s nařízením {gdprLink}.",
+  }

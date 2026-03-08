@@ -141,7 +141,13 @@ let default = () => {
                   content: list{
                     Text({content: Message(finalNote), italic: true}),
                     Text({content: String(" "), italic: true}),
-                    Text({content: String(Common.Constants.infoEmail), italic: true}),
+                    Text({
+                      content: Link({
+                        content: Common.Constants.infoEmail,
+                        href: `mailto:${Common.Constants.infoEmail}`,
+                      }),
+                      italic: true,
+                    }),
                     Text({content: String("."), italic: true}),
                   },
                 },

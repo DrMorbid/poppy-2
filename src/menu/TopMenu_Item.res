@@ -1,8 +1,7 @@
 open Scroll
 open App_Types.MenuItem
 
-let getMenuItems = pathname => {
-  Console.log2("Getting menu items for pathname:", pathname)
+let getMenuItems = pathname =>
   if pathname->App_Page.isHomePage {
     list{WhoWeAre, QAndA, References, Filmak, Contact}
   } else if pathname->App_Page.isRegistrationsPage {
@@ -16,7 +15,6 @@ let getMenuItems = pathname => {
   } else {
     list{Home}
   }
-}
 
 let scrollToSection = (scrollableRef: React.ref<Nullable.t<Dom.element>>) =>
   scrollableRef.current

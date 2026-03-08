@@ -92,7 +92,8 @@ let default = () => {
     body=Element(
       <form
         onSubmit={form->Form.handleSubmit((input, form) => onSubmit(input, form)->ignore)}
-        autoComplete="on">
+        autoComplete="on"
+      >
         <Mui.Grid container=true spacing=Int(2)>
           <EmailUs_Field
             label=parentNameLabel
@@ -165,16 +166,36 @@ let default = () => {
             multiline=true
             last=true
           />
-          <Mui.Grid item=true xs=Number(12)>
-            {if emailBeingSent {
-              <MuiLab.LoadingButton loading=true color=Primary variant=Contained>
-                {intl->ReactIntl.Intl.formatMessage(submitButton)->React.string}
-              </MuiLab.LoadingButton>
-            } else {
-              <Mui.Button type_=Submit color=Primary variant=Contained>
-                {intl->ReactIntl.Intl.formatMessage(submitButton)->React.string}
-              </Mui.Button>
-            }}
+          <Mui.Grid item=true xs=Number(12) sm=Number(6) md=Number(4)>
+            <Mui.Grid container=true justifyContent=Center>
+              <Mui.Grid item=true xs=Number(12)>
+                {if emailBeingSent {
+                  <MuiLab.LoadingButton
+                    loading=true color=Primary variant=Contained sx={Common.Style.fullWidth}
+                  >
+                    {intl->ReactIntl.Intl.formatMessage(submitButton)->React.string}
+                  </MuiLab.LoadingButton>
+                } else {
+                  <Mui.Button type_=Submit color=Primary variant=Contained fullWidth=true>
+                    {intl->ReactIntl.Intl.formatMessage(submitButton)->React.string}
+                  </Mui.Button>
+                }}
+              </Mui.Grid>
+              <Mui.Grid item=true sx={[Common.Style.centeredText]->Mui.Sx.array}>
+                <Mui.Typography variant=Caption>
+                  {intl
+                  ->ReactIntl.Intl.formatMessageWithValues(
+                    gdprInfo,
+                    {
+                      "gdprLink": <Mui.Link href=App_Page.RoutePath.gdpr>
+                        {"GDPR"->React.string}
+                      </Mui.Link>,
+                    },
+                  )
+                  ->React.string}
+                </Mui.Typography>
+              </Mui.Grid>
+            </Mui.Grid>
           </Mui.Grid>
         </Mui.Grid>
       </form>,

@@ -8,6 +8,7 @@ module RoutePath = {
   let references = "/references"
   let emailUs = "/emailUs"
   let photosRetake = "/photosRetake"
+  let gdpr = "/gdpr"
 }
 
 let toRoutePath = page => {

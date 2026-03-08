@@ -56,7 +56,7 @@
     "@testing-library/user-event": "^14.6.1",
     "env-cmd": "^11.0.0",
     "reanalyze": "^2.23.0",
-    "rescript": "^12.1.0",
+    "rescript": "^12.2.0",
     "rescript-react-intl": "^3.0.0",
     "rescript-react-intl-extractor-bin": "^0.14.0",
     "rescript-webapi": "^0.10.0"

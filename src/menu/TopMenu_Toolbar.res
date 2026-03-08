@@ -24,8 +24,6 @@ let make = () => {
     None
   }, [pathname])
 
-  Console.log2("Menu items:", menuItems)
-
   <Mui.Toolbar disableGutters=true>
     <Mui.Grid container=true justifyContent=String("space-evenly") spacing=Int(1)>
       {menuItems
