@@ -41,3 +41,4 @@ module EmailUs = Message_EmailUs
 module Date = Message_Date
 module PhotosRetake = Message_PhotosRetake
 module Gdpr = Message_Gdpr
+module UpcomingDates = Message_UpcomingDates
