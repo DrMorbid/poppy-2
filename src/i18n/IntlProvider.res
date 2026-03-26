@@ -14,6 +14,8 @@ let make = (~children) => {
   React.useEffect(() => {
     setSelectedLanguage(_ => systemLanguage->Language.fromString)
 
+    Common.Storage.set(#language, systemLanguage)
+
     None
   }, [systemLanguage])
 

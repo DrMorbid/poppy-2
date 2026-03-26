@@ -8,3 +8,4 @@ module Button = Common_Button
 module Dialog = Common_Dialog
 module Island = Common_Island
 module Section = Common_Section
+module Storage = Common_Storage
