@@ -6,3 +6,4 @@ module KeyboardArrowUp = Common_Icon_KeyboardArrowUp
 module ExpandMore = Common_Icon_ExpandMore
 module Circle = Common_Icon_Circle
 module CheckCircleOutline = Common_Icon_CheckCircleOutline
+module Flag = Common_Icon_Flag
