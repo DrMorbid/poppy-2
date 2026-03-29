@@ -1,5 +1,4 @@
 open Message.Menu
-open ReactIntl
 open ReactDOM
 
 module Container = TopHeader_Container
@@ -44,7 +43,8 @@ module Classes = {
 
 @react.component
 let make = () => {
-  let intl = useIntl()
+  let intl = ReactIntl.useIntl()
+  let (_, setLanguage) = React.useContext(IntlProvider.Context.t)
   let prefersDarkMode = Mui.Core.useMediaQueryString(Common.Constants.darkModeMediaQuery)
   let router = Next.Navigation.useRouter()
   let isMdUp = Mui.Core.useMediaQueryString(App_Theme.Breakpoint.mdUp)
@@ -57,9 +57,7 @@ let make = () => {
 
   let onPhotosRetakeClick = _ => router->App_Page.goTo(PhotosRetake)
 
-  let onCzFlagClick = _ => ()
-
-  let onUsFlagClick = _ => ()
+  let onFlagClick = language => _ => setLanguage(language)
 
   <Container>
     <Mui.Grid item=true sx=?{isMdUp ? Some(Classes.buttonPlacementLeft) : None}>
@@ -78,12 +76,12 @@ let make = () => {
         <Mui.Grid item=true>
           <Mui.Grid container=true direction=Row sx=Classes.flagsContainer alignItems=Center>
             <Mui.Grid item=true>
-              <Mui.ButtonBase onClick=onCzFlagClick sx={Classes.flagButton(isMdUp)}>
+              <Mui.ButtonBase onClick={onFlagClick(Language.Cs)} sx={Classes.flagButton(isMdUp)}>
                 <Common.Icon.Flag.Cz />
               </Mui.ButtonBase>
             </Mui.Grid>
             <Mui.Grid item=true>
-              <Mui.ButtonBase onClick=onUsFlagClick sx={Classes.flagButton(isMdUp)}>
+              <Mui.ButtonBase onClick={onFlagClick(Language.En)} sx={Classes.flagButton(isMdUp)}>
                 <Common.Icon.Flag.En />
               </Mui.ButtonBase>
             </Mui.Grid>

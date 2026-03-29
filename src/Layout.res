@@ -5,7 +5,7 @@
 
 @react.component
 let default = (~children) => {
-  <html lang="cs">
+  <html>
     <body>
       <Main> {children} </Main>
     </body>

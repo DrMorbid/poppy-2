@@ -1,29 +1,42 @@
-open Language
+module Context = {
+  let t = React.createContext((None, (_: Language.t) => ()))
+
+  module Provider = {
+    let make = React.Context.provider(t)
+  }
+}
 
 @react.component
 let make = (~children) => {
-  let (systemLanguage, setSystemLanguage) = React.useState(() => "en")
-  let (selectedLanguage, setSelectedLanguage) = React.useState(() => En)
-
-  React.useEffect0(() => {
-    setSystemLanguage(_ => (Webapi.Dom.window->Webapi.Dom.Window.navigator).language)
-
-    None
-  })
+  let (selectedLanguage, setSelectedLanguage) = React.useState(() => None)
 
   React.useEffect(() => {
-    setSelectedLanguage(_ => systemLanguage->Language.fromString)
+    let preselectedLanguage = Common.Storage.get(#language)
+    let systemLanguage =
+      (Webapi.Dom.window->Webapi.Dom.Window.navigator).language->Language.fromString
 
-    Common.Storage.set(#language, systemLanguage)
+    setSelectedLanguage(_ => Some(preselectedLanguage->Option.getOr(systemLanguage)))
 
     None
-  }, [systemLanguage])
+  }, [])
 
-  <ReactIntl.IntlProvider
-    defaultLocale={selectedLanguage->toString}
-    locale={selectedLanguage->toString}
-    messages={selectedLanguage->Translation.getTranslation}
-  >
-    {children}
-  </ReactIntl.IntlProvider>
+  let setLanguage = language => {
+    setSelectedLanguage(_ => Some(language))
+
+    Common.Storage.set(#language, language)
+  }
+
+  <Context.Provider value=(Some(selectedLanguage), setLanguage)>
+    {selectedLanguage
+    ->Option.map(selectedLanguage =>
+      <ReactIntl.IntlProvider
+        defaultLocale={selectedLanguage->Language.toString}
+        locale={selectedLanguage->Language.toString}
+        messages={selectedLanguage->Translation.getTranslation}
+      >
+        {children}
+      </ReactIntl.IntlProvider>
+    )
+    ->Option.getOr(React.null)}
+  </Context.Provider>
 }

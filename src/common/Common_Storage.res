@@ -2,9 +2,10 @@ open Dom.Storage2
 
 type storageKey = [#language]
 
-let defaultLanguage = "en"
-
-let set = (storageKey: storageKey, value) => sessionStorage->setItem((storageKey :> string), value)
+let set = (storageKey: storageKey, value) =>
+  localStorage->setItem((storageKey :> string), value->Language.toString)
 
 let get = (storageKey: storageKey) =>
-  sessionStorage->getItem((storageKey :> string))->Option.getOr(defaultLanguage)
+  localStorage
+  ->getItem((storageKey :> string))
+  ->Option.map(Language.fromString)
