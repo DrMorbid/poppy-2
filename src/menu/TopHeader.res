@@ -20,13 +20,19 @@ module Classes = {
   })
   let buttonsFullHeight = Mui.Sx.obj({height: Stretch})
   let buttonsPadding = {gridColumnGap: "1rem"}->Utils.Style.styleToSx
-  let flagsContainer = Mui.Sx.obj({
-    gap: String("0.5rem"),
-    border: String("1px solid"),
-    borderColor: String("rgba(33, 33, 33, 0.95)"),
-    padding: String("5px 10px"),
-    borderRadius: String("4px"),
-  })
+  let flagsContainer = Mui.Sx.array([
+    Mui.Sx.Array.obj({
+      gap: String("0.5rem"),
+      border: String("1px solid"),
+      padding: String("5px 10px"),
+      borderRadius: String("4px"),
+    }),
+    Mui.Sx.Array.func(theme =>
+      Mui.Sx.Array.obj({
+        borderColor: String(theme["palette"]["text"]["primary"]),
+      })
+    ),
+  ])
   let flagButton = isMdUp =>
     Mui.Sx.obj({
       fontSize: isMdUp ? String("2rem") : String("1.3rem"),
