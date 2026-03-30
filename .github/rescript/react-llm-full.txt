@@ -1,0 +1,5213 @@
+---
+title: Arrays and Keys
+description: "Rendering arrays and handling keys in ReScript and React"
+canonical: "/docs/react/arrays-and-keys"
+section: "Main Concepts"
+order: 4
+---
+
+# Arrays and Keys
+
+<Intro>
+
+Whenever we are transforming data into an array of elements and put it in our React tree, we need to make sure to give every element an unique identifier to help React distinguish elements for each render. This page will explain the `key` attribute and how to apply it whenever we need to map data to `React.element`s.
+
+</Intro>
+
+## Rendering Arrays
+
+Arrays require a special function `React.array` to convert an `array<Jsx.element>` to render as `Jsx.element`.
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+type todo = {id: string, text: string}
+
+@react.component
+let make = () => {
+  let todos = [{id: "todo1", text: "Todo 1"}, {id: "todo2", text: "Todo 2"}]
+
+  let items = Array.map(todos, todo => {
+    <li key={todo.id}> {React.string(todo.text)} </li>
+  })
+
+  <ul> {React.array(items)} </ul>
+}
+```
+
+```js
+function Playground(props) {
+  var todos = [
+    {
+      id: "todo1",
+      text: "Todo 1",
+    },
+    {
+      id: "todo2",
+      text: "Todo 2",
+    },
+  ];
+  var items = todos.map(function (todo) {
+    return JsxRuntime.jsx(
+      "li",
+      {
+        children: todo.text,
+      },
+      todo.id,
+    );
+  });
+  return JsxRuntime.jsx("ul", {
+    children: items,
+  });
+}
+```
+
+</CodeTab>
+
+## Keys
+
+Keys help React identify which elements have been changed, added, or removed throughout each render. Keys should be given to elements inside the array to give the elements a stable identity:
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+let numbers = [1, 2, 3, 4, 5]
+
+let items = Array.map(numbers, (number) => {
+  <li key={Int.toString(number)}> {React.int(number)} </li>
+})
+```
+
+```js
+var numbers = [1, 2, 3, 4, 5];
+
+var items = numbers.map(function (number) {
+  return JsxRuntime.jsx(
+    "li",
+    {
+      children: number,
+    },
+    number.toString(),
+  );
+});
+```
+
+</CodeTab>
+
+The best way to pick a key is to use a string that uniquely identifies a list item among its siblings. Most often you would use IDs from your data as keys:
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res prelude
+type todo = {id: string, text: string}
+
+let todos = [
+  {id: "todo1", text: "Todo 1"},
+  {id: "todo2", text: "Todo 2"}
+]
+
+let items = Array.map(todos, todo => {
+  <li key={todo.id}> {React.string(todo.text)} </li>
+})
+```
+
+```js
+var todos = [
+  {
+    id: "todo1",
+    text: "Todo 1",
+  },
+  {
+    id: "todo2",
+    text: "Todo 2",
+  },
+];
+
+var items = todos.map(function (todo) {
+  return JsxRuntime.jsx(
+    "li",
+    {
+      children: todo.text,
+    },
+    todo.id,
+  );
+});
+```
+
+</CodeTab>
+
+If you don’t have stable IDs for rendered items, you may use the item index as a key as a last resort:
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example {1..3}
+let items = Array.mapWithIndex(todos, (todo, i) => {
+  // Only do this if items have no stable id
+  <li key={Int.toString(i)}>
+    {React.string(todo.text)}
+  </li>
+})
+```
+
+```js
+var items = todos.map(function (todo, i) {
+  return JsxRuntime.jsx(
+    "li",
+    {
+      children: todo.text,
+    },
+    i.toString(),
+  );
+});
+```
+
+</CodeTab>
+
+### Keys Must Only Be Unique Among Siblings
+
+Keys used within arrays should be unique among their siblings. However they don’t need to be globally unique. We can use the same keys when we produce two different arrays:
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example {6,10,17,18,25,27}
+type post = {id: string, title: string, content: string}
+
+module Blog = {
+  @react.component
+  let make = (~posts: array<post>) => {
+    let sidebar =
+      <ul>
+        {Array.map(posts, post => {
+          <li key={post.id}> {React.string(post.title)} </li>
+        })->React.array}
+      </ul>
+
+    let content = Array.map(posts, post => {
+      <div key={post.id}>
+        <h3> {React.string(post.title)} </h3>
+        <p> {React.string(post.content)} </p>
+      </div>
+    })
+
+    <div>
+      {sidebar}
+      <hr />
+      {React.array(content)}
+    </div>
+  }
+}
+
+let posts = [
+  {
+    id: "1",
+    title: "Hello World",
+    content: "Welcome to learning ReScript & React!",
+  },
+  {
+    id: "2",
+    title: "Installation",
+    content: "You can install reason-react from npm.",
+  },
+]
+
+let blog = <Blog posts />
+```
+
+```js
+function Playground$Blog(props) {
+  var posts = props.posts;
+  var sidebar = JsxRuntime.jsx("ul", {
+    children: posts.map(function (post) {
+      return JsxRuntime.jsx(
+        "li",
+        {
+          children: post.title,
+        },
+        post.id,
+      );
+    }),
+  });
+  var content = posts.map(function (post) {
+    return JsxRuntime.jsxs(
+      "div",
+      {
+        children: [
+          JsxRuntime.jsx("h3", {
+            children: post.title,
+          }),
+          JsxRuntime.jsx("p", {
+            children: post.content,
+          }),
+        ],
+      },
+      post.id,
+    );
+  });
+  return JsxRuntime.jsxs("div", {
+    children: [sidebar, JsxRuntime.jsx("hr", {}), content],
+  });
+}
+
+var Blog = {
+  make: Playground$Blog,
+};
+
+var posts = [
+  {
+    id: "1",
+    title: "Hello World",
+    content: "Welcome to learning ReScript & React!",
+  },
+  {
+    id: "2",
+    title: "Installation",
+    content: "You can install reason-react from npm.",
+  },
+];
+
+var blog = JsxRuntime.jsx(Playground$Blog, {
+  posts: posts,
+});
+```
+
+</CodeTab>
+
+## Rendering `list` Values
+
+In case you ever want to render a `list` of items, you can do something like this:
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+type todo = {id: string, text: string}
+
+@react.component
+let make = () => {
+  let todoList = list{
+    {id: "todo1", text: "Todo 1"},
+    {id: "todo2", text: "Todo 2"},
+  }
+
+  let items =
+    todoList
+    ->List.toArray
+    ->Array.map(todo => {
+      <li key={todo.id}> {React.string(todo.text)} </li>
+    })
+
+  <div> {React.array(items)} </div>
+}
+
+```
+
+```js
+function Playground(props) {
+  var items = Core__List.toArray({
+    hd: {
+      id: "todo1",
+      text: "Todo 1",
+    },
+    tl: {
+      hd: {
+        id: "todo2",
+        text: "Todo 2",
+      },
+      tl: /* [] */ 0,
+    },
+  }).map(function (todo) {
+    return JsxRuntime.jsx(
+      "li",
+      {
+        children: todo.text,
+      },
+      todo.id,
+    );
+  });
+  return JsxRuntime.jsx("div", {
+    children: items,
+  });
+}
+```
+
+</CodeTab>
+
+We use `List.toArray` to convert our list to an array before creating our `array<React.element>`. Please note that using `list` has performance impact due to extra conversion costs.
+
+99% of the time you'll want to use arrays (seamless interop, faster JS code), but in some cases it might make sense to use a `list` to leverage advanced pattern matching features etc.
+
+---
+title: Beyond JSX
+description: "Details on how to use ReScript and React without JSX"
+canonical: "/docs/react/beyond-jsx"
+section: "Guides"
+order: 1
+---
+
+# Beyond JSX
+
+<Intro>
+
+JSX is a syntax sugar that allows us to use React components in an HTML like manner. A component needs to adhere to certain interface conventions, otherwise it can't be used in JSX. This section will go into detail on how the JSX transformation works and what React APIs are used underneath.
+
+</Intro>
+
+**Note:** This section requires knowledge about the low level apis for [creating elements](./elements-and-jsx.mdx#creating-elements-from-component-functions), such as `React.createElement` or `ReactDOM.createDOMElementVariadic`.
+
+> **Note:** The output shown for the examples on this page assumes your `rescript.json` to be set to `"jsx": { "version": 4, "mode": "classic" }`. We will update it for automatic mode soon.
+
+## Component Types
+
+A plain React component is defined as a `('props) => React.element` function. You can also express a component more efficiently with our shorthand type `React.component<'props>`.
+
+Here are some examples on how to define your own component types (often useful when interoping with existing JS code, or passing around components):
+
+```res example
+// Plain function type
+type friend = {name: string, online: bool}
+type friendComp = friend => React.element
+
+// Equivalent to
+// ({padding: string, children: React.element}) => React.element
+type props = {padding: string, children: React.element}
+type containerComp = React.component<props>
+```
+
+The types above are pretty low level (basically the JS representation of a React component), but since ReScript React has its own ways of defining React components in a more language specific way, let's have a closer look on the anatomy of such a construct.
+
+## JSX Component Interface
+
+A ReScript React component needs to be a (sub-)module with a `make` function and `props` type to be usable in JSX. To make things easier, we provide a `@react.component` decorator to create those functions for you:
+
+<div className="hidden">
+
+```res prelude
+module Friend = {
+  @react.component
+  let make = (~name: string, ~age: int) => {React.string(name ++ ", " ++ age->Int.toString)}
+}
+module Container = {
+  @react.component
+  let make = (~width: int, ~children) => {<> {React.string(width->Int.toString)} children </>}
+}
+```
+
+</div>
+
+<CodeTab labels={["Decorated", "Expanded", "JS Output"]}>
+
+```res example
+module Friend = {
+  @react.component
+  let make = (~name: string, ~children) => {
+    <div>
+      {React.string(name)}
+      children
+    </div>
+  }
+}
+```
+
+```res example
+module Friend = {
+  type props<'name, 'children> = {
+    name: 'name,
+    children: 'children,
+  }
+
+  let make = ({name, children, _}: props<string, 'children>) => {
+    ReactDOM.createDOMElementVariadic("div", [{React.string(name)}, children])
+  }
+}
+```
+
+```js
+function Playground$Friend(props) {
+  return JsxRuntime.jsxs("div", {
+    children: [props.name, props.children],
+  });
+}
+
+var Friend = {
+  make: Playground$Friend,
+};
+```
+
+</CodeTab>
+
+In the expanded output:
+
+- `props`: A generated record type that has fields according to the labeled arguments of the `make` function
+- `make`: A converted `make` function that complies to the component interface `(props) => React.element`
+
+### Special Case React.forwardRef
+
+The `@react.component` decorator also works for `React.forwardRef` calls:
+
+<CodeTab labels={["Decorated", "Expanded"]}>
+
+```res
+module FancyInput = {
+  @react.component
+  let make = React.forwardRef((~className=?, ~children, ref) =>
+    <div>
+      // use ref here
+    </div>
+  )
+}
+```
+
+```res
+// Simplified Output
+type props<'className, 'children, 'ref> = {
+  className?: 'className,
+  children: 'children,
+  ref?: 'ref,
+}
+
+let make = (
+  {?className, children, _}: props<'className, 'children, ReactDOM.Ref.currentDomRef>,
+  ref: Nullable.t<ReactDOM.Ref.currentDomRef>,
+) => make(~className, ~children, ~ref, ())
+```
+
+</CodeTab>
+
+As shown in the expanded output above, our decorator desugars the function passed to `React.forwardRef` in the same manner as a typical component `make` function. It also creates a `props` type with an optional `ref` field, so we can use it in our JSX call (`<FancyInput ref=.../>`).
+
+So now that we know how the ReScript React component transformation works, let's have a look on how ReScript transforms our JSX constructs.
+
+## JSX Under the Hood
+
+Whenever we are using JSX with a custom component ("capitalized JSX"), we are actually using `React.createElement` to create a new element. Here is an example of a React component without children:
+
+<CodeTab labels={["JSX", "Without JSX", "JS Output"]}>
+
+```res example
+let _ = <Friend name="Fred" age=20 />
+```
+
+```res example
+// classic
+React.createElement(Friend.make, {name: "Fred", age:20})
+
+// automatic
+React.jsx(Friend.make, {name: "Fred", age: 20})
+```
+
+```js
+JsxRuntime.jsx(Playground$Friend, { name: "Fred", age: 20 });
+```
+
+</CodeTab>
+
+As you can see, it uses `Friend.make` to call the `React.createElement` API. In case you are providing children, it will use `React.createElementVariadic` instead (which is just a different binding for `React.createElement`):
+
+<CodeTab labels={["JSX", "Without JSX", "JS Output"]}>
+
+```res example
+<Container width=200>
+  {React.string("Hello")}
+  {React.string("World")}
+</Container>
+```
+
+```res example
+// classic
+React.createElementVariadic(
+  Container.make,
+  {width: 200, children: React.null},
+  [{React.string("Hello")}, {React.string("World")}],
+)
+
+// automatic
+React.jsxs(
+  Container.make,
+  {width: 200, children: React.array([{React.string("Hello")}, {React.string("World")}])},
+)
+```
+
+```js
+JsxRuntime.jsx(Container, { width: 200, children: null }, "Hello", "World");
+```
+
+</CodeTab>
+
+Note that the `children: React.null` field has no relevance since React will only care about the children array passed as a third argument.
+
+### Dom Elements
+
+"Uncapitalized JSX" expressions are treated as DOM elements and will be converted to `ReactDOM.createDOMElementVariadic` calls:
+
+<CodeTab labels={["JSX", "Without JSX", "JS Output"]}>
+
+```res example
+<div title="test"/>
+```
+
+```res example
+// classic
+ReactDOM.createDOMElementVariadic("div", ~props={title: "test"}, [])
+
+// automatic
+ReactDOM.jsx("div", {title: "test"})
+```
+
+```js
+JsxRuntime.jsx("div", { title: "test" });
+```
+
+</CodeTab>
+
+The same goes for uncapitalized JSX with children:
+
+<CodeTab labels={["JSX", "Without JSX", "JSX Output", "Without JSX Output"]}>
+
+```res example
+<div title="test">
+  <span/>
+</div>
+```
+
+```res example
+// classic
+ReactDOM.createDOMElementVariadic(
+  "div",
+  ~props={title: "test"},
+  [ReactDOM.createDOMElementVariadic("span", [])],
+)
+
+// automatic
+ReactDOM.jsx("div", {title: "test", children: ?ReactDOM.someElement(ReactDOM.jsx("span", {}))})
+```
+
+```js
+JsxRuntime.jsx("div", {
+  children: JsxRuntime.jsx("span", {}),
+  title: "test",
+});
+```
+
+```js
+React.createElement(
+  "div",
+  {
+    title: "test",
+  },
+  React.createElement("span", undefined),
+);
+```
+
+</CodeTab>
+
+---
+title: Components and Props
+description: "Basic concepts for components and props in ReScript & React"
+canonical: "/docs/react/components-and-props"
+section: "Main Concepts"
+order: 3
+---
+
+# Components and Props
+
+<Intro>
+
+Components let you split the UI into independent, reusable pieces, and think about each piece in isolation. This page provides an introduction to the idea of components.
+
+</Intro>
+
+## What is a Component?
+
+A React component is a function describing a UI element that receives a `props` object as a parameter (data describing the dynamic parts of the UI) and returns a `React.element`.
+
+The nice thing about this concept is that you can solely focus on the input and output. The component function receives some data and returns some opaque `React.element` that is managed by the React framework to render your UI.
+
+> If you want to know more about the low level details on how a component interface is implemented, refer to the [Beyond JSX](./beyond-jsx.mdx) page.
+
+## Component Example
+
+Let's start with a first example to see how a ReScript React component looks like:
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+// src/Greeting.res
+@react.component
+let make = () => {
+  <div>
+    {React.string("Hello ReScripters!")}
+  </div>
+}
+```
+
+```js
+import * as React from "react";
+
+function Greeting(props) {
+  return JsxRuntime.jsx("div", {
+    children: "Hello ReScripters!",
+  });
+}
+
+var make = Greeting;
+```
+
+</CodeTab>
+
+**Important:** Always make sure to name your component function `make`.
+
+We've created a `Greeting.res` file that contains a `make` function that doesn't receive any props (the function doesn't receive any parameters), and returns a `React.element` that represents `<div> Hello ReScripters! </div>` in the rendered DOM.
+
+You can also see in the the JS output that the function we created was directly translated into the pure JS version of a ReactJS component. Note how a `<div>` transforms into a `JsxRuntime.jsx("div",...)` call in JavaScript.
+
+## Defining Props
+
+In ReactJS, props are usually described as a single `props` record. In ReScript, we use [labeled arguments](../manual/function.mdx#labeled-arguments) to define our props parameters instead. Here's an example:
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+// src/Article.res
+@react.component
+let make = (~title: string, ~visitorCount: int, ~children: React.element) => {
+  let visitorCountMsg = "You are visitor number: " ++ Belt.Int.toString(visitorCount);
+  <div>
+    <div> {React.string(title)} </div>
+    <div> {React.string(visitorCountMsg)} </div>
+    children
+  </div>
+}
+```
+
+```js
+import * as React from "react";
+
+function Article(props) {
+  var visitorCountMsg = "You are visitor number: " + String(props.visitorCount);
+  return React.createElement(
+    "div",
+    undefined,
+    React.createElement("div", undefined, props.title),
+    React.createElement("div", undefined, visitorCountMsg),
+    props.children,
+  );
+}
+
+var make = Article;
+```
+
+</CodeTab>
+
+### Optional Props
+
+We can leverage the full power of labeled arguments to define optional props as well:
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+// Greeting.res
+@react.component
+let make = (~name: option<string>=?) => {
+  let greeting = switch name {
+  | Some(name) => "Hello " ++ name ++ "!"
+  | None => "Hello stranger!"
+  }
+  <div> {React.string(greeting)} </div>
+}
+```
+
+```js
+function Greeting(props) {
+  var name = props.name;
+  var greeting = name !== undefined ? "Hello " + name + "!" : "Hello stranger!";
+  return React.createElement("div", undefined, greeting);
+}
+```
+
+</CodeTab>
+
+**Note:** The `@react.component` attribute implicitly adds the last `()` parameter to our `make` function for us (no need to do it ourselves).
+
+In JSX, you can apply optional props with some special syntax:
+
+<div className="hidden">
+
+```res prelude
+module Greeting = {
+  @react.component
+  let make = (~name: option<string>=?) => {React.string(name->Option.getOr(""))}
+}
+```
+
+</div>
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+let name = Some("Andrea")
+
+<Greeting ?name />
+```
+
+```js
+var name = "Andrea";
+
+React.createElement(Greeting, {
+  name: name,
+});
+```
+
+</CodeTab>
+
+### Special Props `key` and `ref`
+
+You can't define any props called `key` or `ref`. React treats those props differently and the compiler will yield an error whenever you try to define a `~key` or `~ref` argument in your component function.
+
+Check out the corresponding [Arrays and Keys](./arrays-and-keys.mdx) and [Forwarding React Refs](./forwarding-refs.mdx) sections for more details.
+
+### Handling Invalid Prop Names (e.g. keywords)
+
+Prop names like `type` (as in `<input type="text" />`) aren't syntactically valid; `type` is a reserved keyword in ReScript. Use `<input type_="text" />` instead.
+
+For `aria-*` use camelCasing, e.g., `ariaLabel`. For DOM components, we'll translate it to `aria-label` under the hood.
+
+For `data-*` this is a bit trickier; words with `-` in them aren't valid in ReScript. When you do want to write them, e.g., `<div data-name="click me" />`, check out the [React.cloneElement](./elements-and-jsx.mdx#cloning-elements) or [React.createDOMElementVariadic](./elements-and-jsx.mdx#creating-dom-elements) section.
+
+## Children Props
+
+In React `props.children` is a special attribute to represent the nested elements within a parent element:
+
+```res
+let element = <div> child1 child2 </div>
+```
+
+By default, whenever you are passing children like in the expression above, `children` will be treated
+as a `React.element`:
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+module MyList = {
+  @react.component
+  let make = (~children: React.element) => {
+    <ul>
+      children
+    </ul>
+  }
+}
+
+<MyList>
+  <li> {React.string("Item 1")} </li>
+  <li> {React.string("Item 2")} </li>
+</MyList>
+```
+
+```js
+function MyList(props) {
+  return React.createElement("ul", undefined, props.children);
+}
+
+var MyList = {
+  make: MyList,
+};
+
+React.createElement(
+  MyList,
+  {
+    children: null,
+  },
+  React.createElement("li", undefined, "Item 1"),
+  React.createElement("li", undefined, "Item 2"),
+);
+```
+
+</CodeTab>
+
+Interestingly, it doesn't matter if you are passing just one element, or several, React will always collapse its children to a single `React.element`.
+
+It is also possible to redefine the `children` type as well. Here are some examples:
+
+**Component with a mandatory `string` as children:**
+
+```res
+module StringChildren = {
+  @react.component
+  let make = (~children: string) => {
+    <div>
+      {React.string(children)}
+    </div>
+  }
+}
+
+<StringChildren> "My Child" </StringChildren>
+
+// This will cause a type check error
+<StringChildren/>
+```
+
+**Component with an optional `React.element` as children:**
+
+```res example
+module OptionalChildren = {
+  @react.component
+  let make = (~children: option<React.element>=?) => {
+    <div>
+      {switch children {
+      | Some(element) => element
+      | None => React.string("No children provided")
+      }}
+    </div>
+  }
+}
+
+<div>
+  <OptionalChildren />
+  <OptionalChildren> <div /> </OptionalChildren>
+</div>
+```
+
+**Component that doesn't allow children at all:**
+
+```res
+module NoChildren = {
+  @react.component
+  let make = () => {
+    <div>
+      {React.string("I don't accept any children params")}
+    </div>
+  }
+}
+
+// The compiler will raise a type error here
+<NoChildren> <div/> </NoChildren>
+```
+
+Children props are really tempting to be abused as a way to model hierarchies, e.g. `<List> <ListHeader/> <Item/> </List>` (`List` should only allow `Item` / `ListHeader` elements), but this kind of constraint is hard to enforce because all components end up being a `React.element`, so it would require notorious runtime checking within `List` to verify that all children are in fact of type `Item` or `ListHeader`.
+
+The best way to approach this kind of issue is by using props instead of children, e.g. `<List header="..." items=[{id: "...", text: "..."}]/>`. This way it's easy to type check the constraints, and it also spares component consumers from memorizing and remembering component constraints.
+
+**The best use-case for `children` is to pass down `React.element`s without any semantic order or implementation details!**
+
+## @react decorators
+
+You might've wondered what `@react.component` actually does.
+It's a decorator that tells the ReScript compiler to treat the function as a React component, transforming it at the syntax level.
+
+In JavaScript, a React component is just a function that takes props (an object) and returns JSX. In ReScript, props are typically represented as a record type.
+The `@react.component` decorator automatically generates that record type and wraps the function for you—so you don't have to.
+
+```res
+// Counter.res
+
+@react.component
+let make = (~title, ~count) => {
+  <h1> {React.string(title)} {React.int(count)} </h1>
+}
+
+// This is equivalent to writing:
+
+type props = {title: string, count: int}
+
+let \"Counter" = ({title, count}: props) => {
+  <h1> {React.string(title)} {React.int(count)} </h1>
+}
+```
+
+However, writing it manually like this means you lose the `make` function name, which prevents JSX from working as expected when using the component elsewhere.
+
+Having an uppercased function name also helps distinguish React components from regular functions in [React DevTools](https://react.dev/learn/react-developer-tools).
+
+If you prefer defining your own props record, you can use `@react.componentWithProps`. This gives you full control over the props type while still generating a proper uppercased component.
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res
+// Counter.res
+type props = {title: string, count: int}
+
+@react.componentWithProps
+let make = (props: props) => {
+  <h1>
+    {React.string(props.title)}
+    {React.int(props.count)}
+  </h1>
+}
+```
+
+```js
+import * as JsxRuntime from "react/jsx-runtime";
+
+function Counter(props) {
+  return JsxRuntime.jsxs("h1", {
+    children: [props.title, props.count],
+  });
+}
+
+let make = Counter;
+```
+
+</CodeTab>
+
+## Props & Type Inference
+
+The ReScript type system is really good at inferring the prop types just by looking at its prop usage.
+
+For simple cases, well-scoped usage, or experimentation, it's still fine to omit type annotations:
+
+```res example
+// Button.res
+
+@react.component
+let make = (~onClick, ~msg, ~children) => {
+  <div onClick>
+    {React.string(msg)}
+    children
+  </div>
+}
+```
+
+In the example above, `onClick` will be inferred as `ReactEvent.Mouse.t => unit`, `msg` as `string` and `children` as `React.element`. Type inference is especially useful when you just forward values to some smaller (privately scoped) functions.
+
+Even though type inference spares us a lot of keyboard typing, we still recommend to explicitly type your props (just like with any public API) for better type visibility and to prevent confusing type errors.
+
+## Using Components in JSX
+
+Every ReScript component can be used in JSX. For example, if we want to use our `Greeting` component within our `App` component, we can do this:
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+// src/App.res
+
+@react.component
+let make = () => {
+  <div>
+    <Greeting/>
+  </div>
+}
+```
+
+```js
+var React = require("react");
+var Greeting = require("./Greeting.js");
+
+function App(Props) {
+  return React.createElement(
+    "div",
+    undefined,
+    React.createElement(Greeting.make, {}),
+  );
+}
+
+var make = App;
+```
+
+</CodeTab>
+
+**Note:** React components are capitalized; primitive DOM elements like `div` or `button` are uncapitalized. More infos on the JSX specifics and code transformations can be found in our [JSX language manual section](../manual/jsx.mdx#capitalized-tag).
+
+### Handwritten Components
+
+You don't need to use the `@react.component` decorator to write components that can be used in JSX. Instead you can write the `make` function with type `props` and these will always work as React components. But then you will have the issue with the component name being "make" in the React dev tools.
+
+For example:
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+module Link = {
+  type props = {href: string, children: React.element};
+
+  let make = (props: props) => {
+    <a href={props.href}>
+     {props.children}
+    </a>
+  }
+}
+
+<Link href="/docs"> {React.string("Docs")} </Link>
+```
+
+```js
+function make(props) {
+  return React.createElement("a", { href: props.href }, props.children);
+}
+
+var Link = {
+  make: make,
+};
+
+React.createElement(make, {
+  href: "/docs",
+  children: "Docs",
+});
+```
+
+</CodeTab>
+
+More details on the `@react.component` decorator and its generated interface can be found in our [Beyond JSX](./beyond-jsx.mdx) page.
+
+## Submodule Components
+
+We can also represent React components as submodules, which makes it very convenient to build more complex UI without the need to create multiple files for each composite component (that's probably only used by the parent component anyways):
+
+```res example
+// src/Button.res
+module Label = {
+  @react.component
+  let make = (~title: string) => {
+    <div className="myLabel"> {React.string(title)} </div>
+  }
+}
+
+@react.component
+let make = (~children) => {
+  <div>
+    <Label title="Getting Started" />
+    children
+  </div>
+}
+```
+
+The `Button.res` file defined above is now containing a `Label` component, that can also be used by other components, either by writing the fully qualified module name (`<Button.Label title="My Button"/>`) or by using a module alias to shortcut the full qualifier:
+
+```res
+module Label = Button.Label
+
+let content = <Label title="Test"/>
+```
+
+## Component Naming
+
+Because components are actually a pair of functions, they have to belong to a module to be used in JSX. It makes sense to use these modules for identification purposes as well. `@react.component` or `@react.componentWithProps` automatically adds the name for you based on the module you are in.
+
+```res
+// File.res
+
+// will be named `File` in dev tools
+@react.component
+let make = ...
+
+// will be named `File$component` in dev tools
+@react.component
+let component = ...
+
+module Nested = {
+  // will be named `File$Nested` in dev tools
+  @react.component
+  let make = ...
+}
+```
+
+If you need a dynamic name for higher-order components or you would like to set your own name you can use `React.setDisplayName(make, "NameThatShouldBeInDevTools")`.
+
+## Tips & Tricks
+
+- Start with one component file and utilize submodule components as your component grows. Consider splitting up in multiple files when really necessary.
+- Keep your directory hierarchy flat. Instead of `article/Header.res` use `ArticleHeader.res` etc. Filenames are unique across the codebase, so filenames tend to be very specific `ArticleUserHeaderCard.res`, which is not necessarily a bad thing, since it clearly expresses the intent of the component within its name, and makes it also very easy to find, match and refactor across the whole codebase.
+
+---
+title: Context
+description: "Details about Context in ReScript and React"
+canonical: "/docs/react/context"
+section: "Main Concepts"
+order: 7
+---
+
+# Context
+
+<Intro>
+
+Context provides a way to pass data through the component tree without having to pass props down manually at every level. See the [JSX](../manual/jsx.mdx) docs for more details.
+
+</Intro>
+
+## Why Context?
+
+In a typical React application, data is passed top-down (parent to child) via props, but this can be cumbersome for certain types of props (e.g. locale preference, UI theme) that are required by many components within an application. Context provides a way to share values like these between components without having to explicitly pass a prop through every level of the tree.
+
+**Note:** In ReScript, passing down props is way simpler than in TS / JS due to its [JSX prop punning](../manual/jsx.mdx#punning) feature and strong type inference, so it's often preferrable to keep it simple and just do props passing. Less magic means more transparency!
+
+## When to Use Context
+
+Context is designed to share data that can be considered “global” for a tree of React components, such as the current authenticated user, theme, or preferred language. For example, in the code below we manually thread through a “theme” prop in order to style the Button component:
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+// src/App.res
+type theme = Light | Dark
+
+module Button = {
+  @react.component
+  let make = (~theme) => {
+    let className = switch theme {
+      | Light => "theme-light"
+      | Dark => "theme-black"
+    }
+    <button className> {React.string("Click me")} </button>
+  }
+}
+
+module ThemedButton = {
+  @react.component
+  let make = (~theme) => {
+    <Button theme />
+  }
+}
+
+module Toolbar = {
+  @react.component
+  let make = (~theme) => {
+    <div>
+      <ThemedButton theme/>
+    </div>
+  }
+}
+
+@react.component
+let make = () => {
+  // We define the theme in the
+  // toplevel App component and
+  // pass it down
+  <Toolbar theme=Dark/>
+}
+```
+
+```js
+function Button(props) {
+  var className = props.theme ? "theme-black" : "theme-light";
+  return React.createElement(
+    "button",
+    {
+      className: className,
+    },
+    "Click me",
+  );
+}
+
+function ThemedButton(props) {
+  return React.createElement(App$Button, {
+    theme: props.theme,
+  });
+}
+
+function Toolbar(props) {
+  return React.createElement(
+    "div",
+    undefined,
+    React.createElement(App$ThemedButton, {
+      theme: props.theme,
+    }),
+  );
+}
+
+function App(props) {
+  return React.createElement(App$Toolbar, {
+    theme: /* Dark */ 1,
+  });
+}
+```
+
+</CodeTab>
+
+Using context, we can avoid passing props through intermediate elements:
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+// src/App.res
+
+module ThemeContext = {
+  type theme = Light | Dark
+  let context = React.createContext(Light)
+
+  module Provider = {
+    let make = React.Context.provider(context)
+  }
+}
+
+module Button = {
+  @react.component
+  let make = (~theme) => {
+    let className = switch theme {
+    | ThemeContext.Light => "theme-light"
+    | Dark => "theme-black"
+    }
+    <button className> {React.string("Click me")} </button>
+  }
+}
+
+module ThemedButton = {
+  @react.component
+  let make = () => {
+    let theme = React.useContext(ThemeContext.context)
+
+    <Button theme />
+  }
+}
+
+module Toolbar = {
+  @react.component
+  let make = () => {
+    <div>
+      <ThemedButton />
+    </div>
+  }
+}
+
+@react.component
+let make = () => {
+  <ThemeContext.Provider value=ThemeContext.Dark>
+    <div>
+      <Toolbar />
+    </div>
+  </ThemeContext.Provider>
+}
+```
+
+```js
+var context = React.createContext(/* Light */ 0);
+
+var make = context.Provider;
+
+var Provider = {
+  make: make,
+};
+
+var ThemeContext = {
+  context: context,
+  Provider: Provider,
+};
+
+function App$Button(props) {
+  var className = props.theme ? "theme-black" : "theme-light";
+  return React.createElement(
+    "button",
+    {
+      className: className,
+    },
+    "Click me",
+  );
+}
+
+var Button = {
+  make: App$Button,
+};
+
+function App$ThemedButton(props) {
+  var theme = React.useContext(context);
+  return React.createElement(App$Button, {
+    theme: theme,
+  });
+}
+
+var ThemedButton = {
+  make: App$ThemedButton,
+};
+
+function App$Toolbar(props) {
+  return React.createElement(
+    "div",
+    undefined,
+    React.createElement(App$ThemedButton, {}),
+  );
+}
+
+var Toolbar = {
+  make: App$Toolbar,
+};
+
+function App(props) {
+  return React.createElement(make, {
+    value: /* Dark */ 1,
+    children: React.createElement(
+      "div",
+      undefined,
+      React.createElement(App$Toolbar, {}),
+    ),
+  });
+}
+```
+
+</CodeTab>
+
+---
+title: Elements & JSX
+description: "Basic concepts for React elements and how to use them in JSX"
+canonical: "/docs/react/elements-and-jsx"
+section: "Main Concepts"
+order: 1
+---
+
+# Elements & JSX
+
+<Intro>
+
+Elements are the smallest building blocks of React apps. This page will explain how to handle `React.element`s in your React app with our dedicated JSX syntax.
+
+</Intro>
+
+> **Note:** The output shown for the examples on this page assumes your `rescript.json` to be set to `"jsx": { "version": 4, "mode": "classic" }`. We will update it for automatic mode soon.
+
+## Element Basics
+
+Let's start out by creating our first React element.
+
+```res example
+let element = <h1> {React.string("Hello World")} </h1>
+```
+
+The binding `element` and the expression `{React.string("Hello World")}` are both of type `React.element`, the fundamental type for representing React elements within a React application. An element describes what you see on the screen whenever you render your application to the DOM.
+
+Let's say you want to create a function that handles another React element, such as `children`, you can annotate it as `React.element`:
+
+```res example
+let wrapChildren = (children: React.element) => {
+  <div>
+    <h1> {React.string("Overview")} </h1>
+    children
+  </div>
+}
+
+wrapChildren(<div> {React.string("Let's use React with ReScript")} </div>)
+```
+
+Understanding the definition of a `React.element` is essential since it is heavily used within the React APIs, such as `ReactDOM.Client.Root.render(..., element)`, etc. Be aware that JSX doesn't do any automatic `string` to `React.element` conversion for you (ReScript forces explicit type conversion). For example `<div> Hello World </div>` will not type-check (which is actually a good thing because it's also a huge source for subtle bugs!), you need to convert your `"Hello World"` with the `React.string` function first.
+
+Fortunately our React bindings bring all necessary functionality to represent all relevant data types as `React.element`s.
+
+## Using Elements within JSX
+
+You can compose elements into more complex structures by using JSX:
+
+```res example
+let greeting = React.string("Hello ")
+let name = React.string("Stranger")
+
+
+// element is also of type React.element
+let element = <div className="myElement"> greeting name </div>
+```
+
+JSX is the main way to express your React application as a tree of elements.
+
+Sometimes, when doing a lot of interop with existing ReactJS codebases, you'll find yourself in a situation where you can't use JSX syntax due to syntactic restrictions. For a more detailed description of how those functions work, please refer to the [JSX](../manual/jsx.mdx) documentation.
+
+## Creating Elements
+
+### Creating Elements from `string`, `int`, `float`, `array`
+
+Apart from using JSX to create our React elements or React components, the `React` module offers various functions to create elements from primitive data types:
+
+```res example
+React.string("Hello") // new element representing "Hello"
+
+React.int(1) // new element representing "1"
+
+React.float(1.0) // new element representing "1.0"
+```
+
+It also offers `React.array` to represent multiple elements as one single element (useful for rendering a list of data, or passing children):
+
+```res example
+let element = React.array([
+  React.string("element 1"),
+  React.string("element 2"),
+  React.string("element 3")
+])
+```
+
+**Note:** We don't offer a `React.list` function because a `list` value would impose runtime overhead. ReScript cares about clean, idiomatic JS output. If you want to transform a `list` of elements to a single React element, combine the output of `Belt.List.toArray` with `React.array` instead.
+
+### Creating Null Elements
+
+ReScript doesn't allow `element || null` constraints due to it's strongly typed nature. Whenever you are expressing conditionals where a value might, or might not be rendered, you will need the `React.null` constant to represent _Nothingness_:
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+let name = Some("Andrea")
+
+let element = switch name {
+  | Some(name) => <div> {React.string("Hello " ++ name)} </div>
+  | None => React.null
+}
+
+<div> element </div>
+```
+
+```js
+var name = "Andrea";
+
+var element =
+  name !== undefined
+    ? React.createElement("div", undefined, "Hello " + name)
+    : null;
+
+React.createElement("div", undefined, element);
+```
+
+</CodeTab>
+
+## Escape Hatches
+
+**Note:** This chapter features low level APIs that are used by JSX itself, and should only be used whenever you hit certain JSX syntax limitations. More infos on the JSX internals can be found in our [Beyond JSX](./beyond-jsx.mdx) section.
+
+### Creating Elements from Component Functions
+
+**Note:** To learn about the details on creating components, please look at the [Components and Props](./components-and-props.mdx) section.
+
+Sometimes it's necessary to pass around component functions to have more control over `React.element` creation. Use the `React.createElement` function to instantiate your elements:
+
+```res example
+type props = {name: string}
+
+let render = (myComp: props => React.element) => {
+  <div> {React.createElement(myComp, {name: "Franz"})} </div>
+}
+```
+
+This feature is often used when interacting with existing JS / ReactJS code. In pure ReScript React applications, you would rather pass a function that does the rendering for you (also called a "render prop"):
+
+```res example
+let render = (renderMyComp: (~name: string) => React.element) => {
+  <div> {renderMyComp(~name="Franz")} </div>
+}
+```
+
+#### Pass Variadic Children
+
+There is also a `React.createElementVariadic` function, which takes an array of children as a third parameter:
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+type props = {title: string, children: React.element}
+
+let render = (article: props => React.element) => {
+  let children = [React.string("Introduction"), React.string("Body")]
+
+  let props = {title: "Article #1", children: React.null}
+
+  {React.createElementVariadic(article, props, children)}
+}
+```
+
+```js
+function render(article) {
+  var children = ["Introduction", "Body"];
+  var props = {
+    title: "Article #1",
+    children: null,
+  };
+  return Caml_splice_call.spliceApply(React.createElement, [
+    article,
+    props,
+    children,
+  ]);
+}
+```
+
+</CodeTab>
+
+**Note:** Here we are passing a prop `"children": React.null` to satisfy the type checker. React will ignore the children prop in favor of the children array.
+
+This function is mostly used by our JSX transformations, so usually you want to use `React.createElement` and pass a children prop instead.
+
+### Creating DOM Elements
+
+To create DOM elements (`<div>`, `<span>`, etc.), use `ReactDOM.createDOMElementVariadic`:
+
+```res example
+ReactDOM.createDOMElementVariadic("div", ~props={className: "card"}, [])
+```
+
+ReScript can make sure that we are only passing valid dom props. You can find an exhaustive list of all available props in the [JsxDOM](https://github.com/rescript-lang/rescript/blob/3bc159f33a3534280bbc26be88fa37ea2114dafe/jscomp/others/jsxDOM.res#L31) module.
+
+### Cloning Elements
+
+**Note:** This is an escape hatch feature and will only be useful for interoping with existing JS code / libraries.
+
+Sometimes it's required to clone an existing element to set, overwrite or add prop values to a new instance, or if you want to set invalid prop names such as `data-name`. You can use `React.cloneElement` for that:
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+let original = <div className="hello"/>
+
+// Will return a new React.element with className set to "world"
+React.cloneElement(original, {"className": "world", "data-name": "some name"})
+```
+
+```js
+var original = React.createElement("div", {
+  className: "hello",
+});
+
+React.cloneElement(original, {
+  className: "world",
+  "data-name": "some name",
+});
+```
+
+</CodeTab>
+
+The feature mentioned above could also replicate `props spreading`, a practise commonly used in ReactJS codebases, but we strongly discourage the usage due to its unsafe nature and its incorrectness (e.g. adding undefined extra props to a component doesn't make sense, and causes hard to find bugs).
+
+In ReScript, we rather pass down required props explicitly to leaf components or use a renderProp instead. We introduced [JSX punning](../manual/jsx.mdx#punning) syntax to make the process of passing down props more convenient.
+
+---
+title: Events
+description: "Event handlers for React elements"
+canonical: "/docs/react/events"
+section: "Main Concepts"
+order: 5
+---
+
+# Events
+
+React lets you add event handlers to your JSX. Event handlers are your own functions that will be triggered in response to interactions like clicking, hovering, focusing form inputs, and so on.
+
+## Capture the input value onChange
+
+Depending on the event handler, the callback function will have a different type.
+Due to the dynamic nature of JavaScript, we cannot anticipate the target type on the event.
+So, we need a leap of faith to grab the input value as string.
+
+```res example
+module App = {
+  @react.component
+  let make = () => {
+    let (value, setValue) = React.useState(_ => "")
+
+    <form>
+      <input
+        type_="text"
+        defaultValue={value}
+        onChange={(ev: JsxEvent.Form.t) => {
+          let target = JsxEvent.Form.target(ev)
+          let value: string = target["value"]
+          setValue(_prevValue => value)
+        }}
+      />
+      <p style={{color:"red"}}>{React.string(value)}</p>
+    </form>
+  }
+}
+```
+
+---
+title: Extensions of props
+description: "Extensions of props in ReScript and React"
+canonical: "/docs/react/extensions-of-props"
+section: "Guides"
+order: 3
+---
+
+# Extensions of Props
+
+> **Note:** The output shown for the examples on this page assumes your `rescript.json` to be set to `"jsx": { "version": 4, "mode": "classic" }`. We will update it for automatic mode soon.
+
+## Spread props
+
+JSX props spread is supported now, but in a stricter way than in JS.
+
+<div className="hidden">
+
+```res prelude
+module Comp = {
+  type props = {a?: string, b?: string}
+  external make: React.component<props> = "default"
+}
+```
+
+</div>
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+let props = {Comp.b: "b"}
+<Comp {...props} a="a" />
+```
+
+```js
+var props = {b: "b"};
+var newrecord = Caml_obj.obj_dup(props);
+return JsxRuntime.jsx(default, (newrecord.a = "a", newrecord));
+```
+
+</CodeTab>
+
+Multiple spreads are not allowed:
+
+<CodeTab labels={["ReScript"]}>
+
+```res
+<NotAllowed {...props1} {...props2} />
+```
+
+</CodeTab>
+
+The spread must be at the first position, followed by other props:
+
+<CodeTab labels={["ReScript"]}>
+
+```res
+<NotAllowed a="a" {...props} />
+```
+
+</CodeTab>
+
+## Shared props
+
+You can control the definition of the `props` type by passing as argument to `@react.component` the body of the type definition of `props`. The main application is sharing a single type definition across several components. Here are a few examples:
+
+<CodeTab labels={["Decorated", "Expanded"]}>
+
+```res example
+type sharedProps<'x, 'y> = {x: 'x, y: 'y, z:string}
+
+module C1 = {
+  @react.component(:sharedProps<'a, 'b>)
+  let make = (~x, ~y, ~z) => React.string(x ++ y ++ z)
+}
+
+module C2 = {
+  @react.component(:sharedProps<string, 'b>)
+  let make = (~x, ~y, ~z) => React.string(x ++ y ++ z)
+}
+
+module C3 = {
+  type myProps = sharedProps<int, int>
+  @react.component(:myProps)
+  let make = (~x, ~y) => React.int(x + y)
+}
+```
+
+```res example
+type sharedProps<'x, 'y> = {x: 'x, y: 'y, z: string}
+
+module C1 = {
+  type props<'a, 'b> = sharedProps<'a, 'b>
+  let make = ({x, y, z}: props<_>) => React.string(x ++ y ++ z)
+}
+
+module C2 = {
+  type props<'b> = sharedProps<string, 'b>
+  let make = ({x, y, z}: props<_>) => React.string(x ++ y ++ z)
+}
+
+module C3 = {
+  type myProps = sharedProps<int, int>
+  type props = myProps
+  let make = ({x, y, _}: props) => React.int(x + y)
+}
+```
+
+</CodeTab>
+
+This feature can be used when the nominally different components are passed to the prop of `Screen` component in [ReScript React Native Navigation](https://github.com/rescript-react-native/rescript-react-navigation).
+
+```res
+type screenProps = { navigation: navigation, route: route }
+
+module Screen: {
+  @react.component
+  let make: (
+    ~name: string,
+    ~component: React.component<screenProps>,
+    ...
+  ) => React.element
+}
+
+<Screen
+  name="SomeScreen"
+  component={A.make} // This will cause a type check error
+  ...
+/>
+<Screen
+  name="SomeScreen"
+  component={B.make} // This will cause a type check error
+  ...
+/>
+```
+
+This example can't pass the type checker, because the props types of both components are nominally different. You can make the both components having the same props type by passing `screenProps` type as argument to `@react.component`.
+
+```res
+module A = {
+  @react.component(:screenProps)
+  let make = (
+    ~navigation: navigation,
+    ~route: route
+  ) => ...
+}
+
+module B = {
+  @react.component(:screenProps)
+  let make = (
+    ~navigation: navigation,
+    ~route: route
+  ) => ...
+}
+```
+
+---
+title: Forwarding Refs
+description: "Forwarding Ref values in ReScript and React"
+canonical: "/docs/react/forwarding-refs"
+section: "Guides"
+order: 2
+---
+
+# Forwarding Refs
+
+<Intro>
+
+Ref forwarding is a technique for automatically passing a [React.ref](./refs-and-the-dom.mdx) through a component to one of its children. This is typically not necessary for most components in the application. However, it can be useful for some kinds of components, especially in reusable component libraries. The most common scenarios are described below.
+
+</Intro>
+
+## Why Ref Forwarding?
+
+Consider a FancyButton component that renders the native button DOM element:
+
+```res example
+// FancyButton.res
+
+@react.component
+let make = (~children) => {
+  <button className="FancyButton">
+    children
+  </button>
+}
+```
+
+React components hide their implementation details, including their rendered output. Other components using FancyButton **usually will not need** to obtain a ref to the inner button DOM element. This is good because it prevents components from relying on each other’s DOM structure too much.
+
+Although such encapsulation is desirable for application-level components like `FeedStory` or `Comment`, it can be inconvenient for highly reusable “leaf” components like `FancyButton` or `MyTextInput`. These components tend to be used throughout the application in a similar manner as a regular DOM button and input, and accessing their DOM nodes may be unavoidable for managing focus, selection, or animations.
+
+There are currently two strategies on forwarding refs through a component. In ReScript and React we strongly recommend **passing your ref as a prop**, but there is also a dedicated API called `React.forwardRef`.
+
+We will discuss both methods in this document.
+
+## Forward Refs via Props
+
+A `React.ref` can be passed down like any other prop. The component will take care of forwarding the ref to the right DOM element.
+
+**No new concepts to learn!**
+
+In the example below, `FancyInput` defines a prop `inputRef` that will be forwarded to its `input` element:
+
+```res example
+// App.res
+
+module FancyInput = {
+  @react.component
+  let make = (~children, ~inputRef: ReactDOM.domRef) =>
+    <div> <input type_="text" ref=inputRef /> children </div>
+}
+
+@send external focus: Dom.element => unit = "focus"
+
+@react.component
+let make = () => {
+  let input = React.useRef(Nullable.null)
+
+  let focusInput = () =>
+    input.current->Nullable.forEach(input => input->focus)
+
+  let onClick = _ => focusInput()
+
+  <div>
+    <FancyInput inputRef={ReactDOM.Ref.domRef(input)}>
+      <button onClick> {React.string("Click to focus")} </button>
+    </FancyInput>
+  </div>
+}
+```
+
+We use the `ReactDOM.domRef` type to represent our `inputRef`. We pass our ref in the exact same manner as we'd do a DOM `ref` attribute (`<input ref={ReactDOM.Ref.domRef(myRef)} />`).
+
+## [Discouraged] React.forwardRef
+
+**Note:** We discourage this method since it will likely go away at some point, and doesn't yield any obvious advantages over the previously mentioned ref prop passing.
+
+`React.forwardRef` offers a way to "emulate a `ref` prop" within custom components. Internally the component will forward the passed `ref` value to the target DOM element instead.
+
+This is how the previous example would look like with the `React.forwardRef` approach:
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+// App.res
+
+module FancyInput = {
+  @react.component
+  let make = React.forwardRef((~className=?, ~children, ref) =>
+    <div>
+      <input
+        type_="text"
+        ?className
+        ref=?{Nullable.toOption(ref)->Option.map(ReactDOM.Ref.domRef)}
+      />
+      children
+    </div>
+  )
+}
+
+@send external focus: Dom.element => unit = "focus"
+
+@react.component
+let make = () => {
+  let input = React.useRef(Nullable.null)
+
+  let focusInput = () =>
+    input.current->Nullable.forEach(input => input->focus)
+
+  let onClick = _ => focusInput()
+
+  <div>
+    <FancyInput className="fancy" ref=input>
+      <button onClick> {React.string("Click to focus")} </button>
+    </FancyInput>
+  </div>
+}
+```
+
+```js
+import * as React from "react";
+import * as Belt_Option from "rescript/lib/es6/belt_Option.js";
+import * as Caml_option from "rescript/lib/es6/caml_option.js";
+
+var make = React.forwardRef(function (props, ref) {
+  return React.createElement(
+    "div",
+    undefined,
+    React.createElement("input", {
+      ref: Belt_Option.map(
+        ref == null ? undefined : Caml_option.some(ref),
+        function (prim) {
+          return prim;
+        },
+      ),
+      className: props.className,
+      type: "text",
+    }),
+    props.children,
+  );
+});
+
+var FancyInput = {
+  make: make,
+};
+
+function App(props) {
+  var input = React.useRef(null);
+  var onClick = function (param) {
+    Belt_Option.forEach(
+      Caml_option.nullable_to_opt(input.current),
+      function (input) {
+        input.focus();
+      },
+    );
+  };
+  return React.createElement(
+    "div",
+    undefined,
+    React.createElement(make, {
+      className: "fancy",
+      children: React.createElement(
+        "button",
+        {
+          onClick: onClick,
+        },
+        "Click to focus",
+      ),
+      ref: input,
+    }),
+  );
+}
+```
+
+</CodeTab>
+
+**Note:** Our `@react.component` decorator transforms our labeled argument props within our `React.forwardRef` function in the same manner as our classic `make` function.
+
+This way, components using `FancyInput` can get a ref to the underlying `input` DOM node and access it if necessary—just like if they used a DOM `input` directly.
+
+## Note for Component Library Maintainers
+
+**When you start using ref forwarding in a component library, you should treat it as a breaking change and release a new major version of your library**. This is because your library likely has an observably different behavior (such as what refs get assigned to, and what types are exported), and this can break apps and other libraries that depend on the old behavior.
+
+---
+title: useContext Hook
+description: "Details about the useContext React hook in ReScript"
+canonical: "/docs/react/hooks-context"
+section: "Hooks & State Management"
+order: 5
+---
+
+# useContext
+
+<Intro>
+
+Context provides a way to pass data through the component tree without having to pass props down manually at every level. The `useContext` hooks gives access to such Context values.
+
+</Intro>
+
+> **Note:** All the details and rationale on React's context feature can be found in [here](./context.mdx).
+
+## Usage
+
+```res
+let value = React.useContext(myContext)
+```
+
+Accepts a `React.Context.t` (the value returned from `React.createContext`) and returns the current context value for that context. The current context value is determined by the value prop of the nearest `<MyContext.Provider>` above the calling component in the tree.
+
+## Examples
+
+### A Simple ThemeProvider
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+// App.res
+module ThemeContext = {
+  let context = React.createContext("light")
+
+  module Provider = {
+    let make = React.Context.provider(context)
+  }
+}
+
+module ThemedButton = {
+  @react.component
+  let make = () => {
+    let theme = React.useContext(ThemeContext.context)
+    let (color, backgroundColor) = switch theme {
+    | "dark" => ("#ffffff", "#222222")
+    | "light" | _ => ("#000000", "#eeeeee")
+    }
+
+    <button style={{color, backgroundColor}}>
+      {React.string("I am a styled button!")}
+    </button>
+  }
+}
+
+module Toolbar = {
+  @react.component
+  let make = () => {
+    <div> <ThemedButton /> </div>
+  }
+}
+
+@react.component
+let make = () => {
+  <ThemeContext.Provider value="dark">
+    <div> <Toolbar /> </div>
+  </ThemeContext.Provider>
+}
+```
+
+```js
+var context = React.createContext("light");
+
+var make = context.Provider;
+
+var Provider = {
+  make: make,
+};
+
+var ThemeContext = {
+  context: context,
+  Provider: Provider,
+};
+
+function App$ThemedButton(props) {
+  var theme = React.useContext(context);
+  var match;
+  switch (theme) {
+    case "dark":
+      match = ["#ffffff", "#222222"];
+      break;
+    case "light":
+      match = ["#000000", "#eeeeee"];
+      break;
+    default:
+      match = ["#000000", "#eeeeee"];
+  }
+  var style = {
+    backgroundColor: match[1],
+    color: match[0],
+  };
+  return React.createElement(
+    "button",
+    {
+      style: style,
+    },
+    "I am a styled button!",
+  );
+}
+
+var ThemedButton = {
+  make: App$ThemedButton,
+};
+
+function App$Toolbar(props) {
+  return React.createElement(
+    "div",
+    undefined,
+    React.createElement(App$ThemedButton, {}),
+  );
+}
+
+var Toolbar = {
+  make: App$Toolbar,
+};
+
+function App(props) {
+  return React.createElement(make, {
+    value: "dark",
+    children: React.createElement(
+      "div",
+      undefined,
+      React.createElement(App$Toolbar, {}),
+    ),
+  });
+}
+```
+
+</CodeTab>
+
+---
+title: Build A Custom Hook
+description: "How to build your own hooks in ReScript & React"
+canonical: "/docs/react/hooks-custom"
+section: "Hooks & State Management"
+order: 7
+---
+
+# Build A Custom Hook
+
+<Intro>
+
+React comes with a few fundamental hooks out-of-the-box, such as `React.useState` or `React.useEffect`. Here you will learn how to build your own, higher-level hooks for your React use-cases.
+
+</Intro>
+
+## Why Custom Hooks?
+
+Custom hooks let you extract existing component logic into reusable, separate functions.
+
+Let's go back to a previous example from our [React.useEffect section](./hooks-effect.mdx) where we built a component for a chat application that displays a message, indicating whether a friend is online or offline:
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+{/* TODO: fix this example */}
+
+```res {16-31}
+// FriendStatus.res
+
+module ChatAPI = {
+  // Imaginary globally available ChatAPI for demo purposes
+  type status = { isOnline: bool }
+  @val external subscribeToFriendStatus: (string, status => unit) => unit = "subscribeToFriendStatus"
+  @val external unsubscribeFromFriendStatus: (string, status => unit) => unit = "unsubscribeFromFriendStatus"
+}
+
+type state = Offline | Loading | Online
+
+@react.component
+let make = (~friendId: string) => {
+  let (state, setState) = React.useState(_ => Offline)
+
+  React.useEffect(() => {
+    let handleStatusChange = (status) => {
+      setState(_ => {
+        status.ChatAPI.isOnline ? Online : Offline
+      })
+    }
+
+    ChatAPI.subscribeToFriendStatus(friendId, handleStatusChange)
+    setState(_ => Loading)
+
+    let cleanup = () => {
+      ChatAPI.unsubscribeFromFriendStatus(friendId, handleStatusChange)
+    }
+
+    Some(cleanup)
+  }, [friendId])
+
+  let text = switch(state) {
+    | Offline => friendId ++ " is offline"
+    | Online => friendId ++ " is online"
+    | Loading => "loading..."
+  }
+
+  <div>
+  	{React.string(text)}
+  </div>
+}
+
+```
+
+```js
+function FriendStatus(Props) {
+  var friendId = Props.friendId;
+  var match = React.useState(function () {
+    return /* Offline */ 0;
+  });
+  var setState = match[1];
+  React.useEffect(function () {
+    var handleStatusChange = function (status) {
+      return Curry._1(setState, function (param) {
+        if (status.isOnline) {
+          return /* Online */ 2;
+        } else {
+          return /* Offline */ 0;
+        }
+      });
+    };
+    subscribeToFriendStatus(friendId, handleStatusChange);
+    Curry._1(setState, function (param) {
+      return /* Loading */ 1;
+    });
+    return function (param) {
+      unsubscribeFromFriendStatus(friendId, handleStatusChange);
+    };
+  });
+  var text;
+  switch (match[0]) {
+    case /* Offline */ 0:
+      text = friendId + " is offline";
+      break;
+    case /* Loading */ 1:
+      text = "loading...";
+      break;
+    case /* Online */ 2:
+      text = friendId + " is online";
+      break;
+  }
+  return React.createElement("div", undefined, text);
+}
+```
+
+</CodeTab>
+
+Now let’s say that our chat application also has a contact list, and we want to render names of online users with a green color. We could copy and paste similar logic above into our `FriendListItem` component but it wouldn’t be ideal:
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res {15-30}
+// FriendListItem.res
+type state = Offline | Loading | Online
+
+// module ChatAPI = {...}
+
+type friend = {
+  id: string,
+  name: string
+}
+
+@react.component
+let make = (~friend: friend) => {
+  let (state, setState) = React.useState(_ => Offline)
+
+  React.useEffect(() => {
+    let handleStatusChange = (status) => {
+      setState(_ => {
+        status.ChatAPI.isOnline ? Online : Offline
+      })
+    }
+
+    ChatAPI.subscribeToFriendStatus(friend.id, handleStatusChange)
+    setState(_ => Loading)
+
+    let cleanup = () => {
+      ChatAPI.unsubscribeFromFriendStatus(friend.id, handleStatusChange)
+    }
+
+    Some(cleanup)
+  })
+
+  let color = switch(state) {
+    | Offline => "red"
+    | Online => "green"
+    | Loading => "grey"
+  }
+
+  <li style={{ color }}>
+      {React.string(friend.name)}
+  </li>
+}
+```
+
+```js
+function FriendListItem(Props) {
+  var friend = Props.friend;
+  var match = React.useState(function () {
+    return /* Offline */ 0;
+  });
+  var setState = match[1];
+  React.useEffect(function () {
+    var handleStatusChange = function (status) {
+      return Curry._1(setState, function (param) {
+        if (status.isOnline) {
+          return /* Online */ 2;
+        } else {
+          return /* Offline */ 0;
+        }
+      });
+    };
+    subscribeToFriendStatus(friend.id, handleStatusChange);
+    Curry._1(setState, function (param) {
+      return /* Loading */ 1;
+    });
+    return function (param) {
+      unsubscribeFromFriendStatus(friend.id, handleStatusChange);
+    };
+  });
+  var color;
+  switch (match[0]) {
+    case /* Offline */ 0:
+      color = "red";
+      break;
+    case /* Loading */ 1:
+      color = "grey";
+      break;
+    case /* Online */ 2:
+      color = "green";
+      break;
+  }
+  return React.createElement(
+    "li",
+    {
+      style: {
+        color: color,
+      },
+    },
+    friend.name,
+  );
+}
+```
+
+</CodeTab>
+
+Instead, we’d like to share this logic between `FriendStatus` and `FriendListItem`.
+
+Traditionally in React, we’ve had two popular ways to share stateful logic between components: render props and higher-order components. We will now look at how Hooks solve many of the same problems without forcing you to add more components to the tree.
+
+## Extracting a Custom Hook
+
+Usually when we want to share logic between two functions, we extract it to a third function. Both components and Hooks are functions, so this works for them too!
+
+**A custom Hook is a function whose name starts with ”use” and that may call other Hooks.** For example, `useFriendStatus` below is our first custom Hook (we create a new file `FriendStatusHook.res` to encapsulate the `state` type as well):
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res
+// FriendStatusHook.res
+
+// module ChatAPI {...}
+
+type state = Offline | Loading | Online
+
+let useFriendStatus = (friendId: string): state => {
+  let (state, setState) = React.useState(_ => Offline)
+
+  React.useEffect(() => {
+    let handleStatusChange = status => {
+      setState(_ => {
+        status.ChatAPI.isOnline ? Online : Offline
+      })
+    }
+
+    ChatAPI.subscribeToFriendStatus(friendId, handleStatusChange)
+    setState(_ => Loading)
+
+    let cleanup = () => {
+      ChatAPI.unsubscribeFromFriendStatus(friendId, handleStatusChange)
+    }
+
+    Some(cleanup)
+  })
+
+  state
+}
+```
+
+```js
+function useFriendStatus(friendId) {
+  var match = React.useState(function () {
+    return /* Offline */ 0;
+  });
+  var setState = match[1];
+  React.useEffect(function () {
+    var handleStatusChange = function (status) {
+      return Curry._1(setState, function (param) {
+        if (status.isOnline) {
+          return /* Online */ 2;
+        } else {
+          return /* Offline */ 0;
+        }
+      });
+    };
+    subscribeToFriendStatus(friendId, handleStatusChange);
+    Curry._1(setState, function (param) {
+      return /* Loading */ 1;
+    });
+    return function (param) {
+      unsubscribeFromFriendStatus(friendId, handleStatusChange);
+    };
+  });
+  return match[0];
+}
+```
+
+</CodeTab>
+
+There’s nothing new inside of it — the logic is copied from the components above. Just like in a component, make sure to only call other Hooks unconditionally at the top level of your custom Hook.
+
+Unlike a React component, a custom Hook doesn’t need to have a specific signature. We can decide what it takes as arguments, and what, if anything, it should return. In other words, it’s just like a normal function. Its name should always start with use so that you can tell at a glance that the rules of Hooks apply to it.
+
+The purpose of our `useFriendStatus` Hook is to subscribe us to a friend’s status. This is why it takes `friendId` as an argument, and returns the online state like `Online`, `Offline` or `Loading`:
+
+```res
+let useFriendStatus = (friendId: string): status {
+  let (state, setState) = React.useState(_ => Offline)
+
+  // ...
+
+  state
+}
+```
+
+Now let’s use our custom Hook.
+
+## Using a Custom Hook
+
+In the beginning, our stated goal was to remove the duplicated logic from the `FriendStatus` and `FriendListItem` components. Both of them want to know the online state of a friend.
+
+Now that we’ve extracted this logic to a useFriendStatus hook, we can just use it:
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res {6}
+// FriendStatus.res
+type friend = { id: string }
+
+@react.component
+let make = (~friend: friend) => {
+  let onlineState = FriendStatusHook.useFriendStatus(friend.id)
+
+  let status = switch(onlineState) {
+    | FriendStatusHook.Online => "Online"
+    | Loading => "Loading"
+    | Offline => "Offline"
+  }
+
+  React.string(status)
+}
+```
+
+```js
+function FriendStatus(Props) {
+  var friend = Props.friend;
+  var onlineState = useFriendStatus(friend.id);
+  var color;
+  switch (onlineState) {
+    case /* Offline */ 0:
+      color = "red";
+      break;
+    case /* Loading */ 1:
+      color = "grey";
+      break;
+    case /* Online */ 2:
+      color = "green";
+      break;
+  }
+  return React.createElement(
+    "li",
+    {
+      style: {
+        color: color,
+      },
+    },
+    friend.name,
+  );
+}
+```
+
+</CodeTab>
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res {4}
+// FriendListItem.res
+@react.component
+let make = (~friend: friend) => {
+  let onlineState = FriendStatusHook.useFriendStatus(friend.id)
+
+  let color = switch(onlineState) {
+    | Offline => "red"
+    | Online => "green"
+    | Loading => "grey"
+  }
+
+  <li style={{ color }}>
+      {React.string(friend.name)}
+  </li>
+}
+```
+
+```js
+function FriendListItem(Props) {
+  var friend = Props.friend;
+  var onlineState = useFriendStatus(friend.id);
+  var color;
+  switch (onlineState) {
+    case /* Offline */ 0:
+      color = "red";
+      break;
+    case /* Loading */ 1:
+      color = "grey";
+      break;
+    case /* Online */ 2:
+      color = "green";
+      break;
+  }
+  return React.createElement(
+    "li",
+    {
+      style: {
+        color: color,
+      },
+    },
+    friend.name,
+  );
+}
+```
+
+</CodeTab>
+
+**Is this code equivalent to the original examples?** Yes, it works in exactly the same way. If you look closely, you’ll notice we didn’t make any changes to the behavior. All we did was to extract some common code between two functions into a separate function. Custom Hooks are a convention that naturally follows from the design of Hooks, rather than a React feature.
+
+**Do I have to name my custom Hooks starting with “use”?** Please do. This convention is very important. Without it, we wouldn’t be able to automatically check for violations of rules of Hooks because we couldn’t tell if a certain function contains calls to Hooks inside of it.
+
+**Do two components using the same Hook share state?** No. Custom Hooks are a mechanism to reuse stateful logic (such as setting up a subscription and remembering the current value), but every time you use a custom Hook, all state and effects inside of it are fully isolated.
+
+**How does a custom Hook get isolated state?** Each call to a Hook gets isolated state. Because we call useFriendStatus directly, from React’s point of view our component just calls useState and useEffect. And as we learned earlier, we can call useState and useEffect many times in one component, and they will be completely independent.
+
+### Tip: Pass Information Between Hooks
+
+Since Hooks are functions, we can pass information between them.
+
+To illustrate this, we’ll use another component from our hypothetical chat example. This is a chat message recipient picker that displays whether the currently selected friend is online:
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res {11,12,14-18,22}
+type friend = {id: string, name: string}
+
+let friendList = [
+  {id: "1", name: "Phoebe"},
+  {id: "2", name: "Rachel"},
+  {id: "3", name: "Ross"},
+]
+
+@react.component
+let make = () => {
+  let (recipientId, setRecipientId) = React.useState(_ => "1")
+  let recipientOnlineState = FriendStatusHook.useFriendStatus(recipientId)
+
+  let color = switch recipientOnlineState {
+  | FriendStatusHook.Offline => Circle.Red
+  | Online => Green
+  | Loading => Grey
+  }
+
+  let onChange = evt => {
+    let value = ReactEvent.Form.target(evt)["value"]
+    setRecipientId(value)
+  }
+
+  let friends = Belt.Array.map(friendList, friend => {
+    <option key={friend.id} value={friend.id}>
+      {React.string(friend.name)}
+    </option>
+  })
+
+  <>
+    <Circle color />
+    <select value={recipientId} onChange>
+      {React.array(friends)}
+    </select>
+  </>
+}
+```
+
+```js
+var friendList = [
+  {
+    id: "1",
+    name: "Phoebe",
+  },
+  {
+    id: "2",
+    name: "Rachel",
+  },
+  {
+    id: "3",
+    name: "Ross",
+  },
+];
+
+function Playground(Props) {
+  var match = React.useState(function () {
+    return "1";
+  });
+  var setRecipientId = match[1];
+  var recipientId = match[0];
+  var recipientOnlineState = useFriendStatus(recipientId);
+  var color;
+  switch (recipientOnlineState) {
+    case /* Offline */ 0:
+      color = /* Red */ 0;
+      break;
+    case /* Loading */ 1:
+      color = /* Grey */ 2;
+      break;
+    case /* Online */ 2:
+      color = /* Green */ 1;
+      break;
+  }
+  var onChange = function (evt) {
+    return Curry._1(setRecipientId, evt.target.value);
+  };
+  var friends = Belt_Array.map(friendList, function (friend) {
+    return React.createElement(
+      "option",
+      {
+        key: friend.id,
+        value: friend.id,
+      },
+      friend.name,
+    );
+  });
+  return React.createElement(
+    React.Fragment,
+    undefined,
+    React.createElement(Playground$Circle, {
+      color: color,
+    }),
+    React.createElement(
+      "select",
+      {
+        value: recipientId,
+        onChange: onChange,
+      },
+      friends,
+    ),
+  );
+}
+```
+
+</CodeTab>
+
+We keep the currently chosen friend ID in the `recipientId` state variable, and update it if the user chooses a different friend in the `<select>` picker.
+
+Because the useState Hook call gives us the latest value of the `recipientId` state variable, we can pass it to our custom `FriendStatusHook.useFriendStatus` Hook as an argument:
+
+```res
+let (recipientId, setRecipientId) = React.useState(_ => "1")
+let recipientOnlineState = FriendStatusHook.useFriendStatus(recipientId)
+```
+
+This lets us know whether the currently selected friend is online. If we pick a different friend and update the `recipientId` state variable, our `FriendStatus.useFriendStatus` Hook will unsubscribe from the previously selected friend, and subscribe to the status of the newly selected one.
+
+## Use Your Imagination
+
+Custom Hooks offer the flexibility of sharing logic. You can write custom Hooks that cover a wide range of use cases like form handling, animation, declarative subscriptions, timers, and probably many more we haven’t considered. What’s more, you can build Hooks that are just as easy to use as React’s built-in features.
+
+Try to resist adding abstraction too early. It's pretty common that components grow pretty big when there is enough stateful logic handling involved. This is normal — don’t feel like you have to immediately split it into Hooks. But we also encourage you to start spotting cases where a custom Hook could hide complex logic behind a simple interface, or help untangle a messy component.
+
+---
+title: useEffect Hook
+description: "Details about the useEffect React hook in ReScript"
+canonical: "/docs/react/hooks-effect"
+section: "Hooks & State Management"
+order: 2
+---
+
+# useEffect
+
+<Intro>
+
+The _Effect_ Hook lets you perform side effects in function components.
+
+</Intro>
+
+## What are Effects?
+
+Common examples for (side) effects are data fetching, setting up a subscription, and manually changing the DOM in React components.
+
+There are two common kinds of side effects in React components: those that don’t require cleanup, and those that do. We'll look into the distinction later on in our examples, but first let's see how the interface looks like.
+
+## Basic Usage
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+// Runs after every completed render
+React.useEffectOnEveryRender(() => {
+  // Run effects
+  None // or Some(() => {})
+})
+
+
+// Runs only once right after mounting the component
+React.useEffect(() => {
+  // Run effects
+  None // or Some(() => {})
+}, [])
+
+// Dummy props
+let prop1 = 1 and prop2 = 2 and prop3 = 3
+
+// Runs everytime `prop1` has changed
+React.useEffect(() => {
+  // Run effects based on prop1
+  None
+}, [prop1])
+
+// Runs everytime `prop1` or `prop2` has changed
+React.useEffect(() => {
+  // Run effects based on prop1 / prop2
+  None
+}, (prop1, prop2))
+
+React.useEffect(() => {
+  None
+}, (prop1, prop2, prop3))
+```
+
+```js
+React.useEffect(function () {});
+React.useEffect(function () {}, []);
+React.useEffect(function () {}, [prop1]);
+React.useEffect(function () {}, [prop1, prop2]);
+React.useEffect(function () {}, [prop1, prop2, prop3]);
+```
+
+</CodeTab>
+
+`React.useEffect` receives a function that contains imperative, possibly effectful code, and returns a value `option<unit => unit>` as a potential cleanup function.
+
+A `useEffect` call may receive an additional array of dependencies. The effect function will run whenever one of the provided dependencies has changed. More details on why this is useful [down below](#effect-dependencies).
+
+**Note:** You probably wonder why the `React.useEffect` with only one dependency receives an `array`, while `useEffect`'s with multiple dependencies require a `tuple` (e.g. `(prop1, prop2)`) for the dependency list. That's because a tuple can receive multiple values of different types, whereas an `array` only accepts values of identical types. It's possible to replicate a `useEffect` with multiple dependencies by doing `React.useEffect(fn, [1, 2])`, on other hand the type checker wouldn't allow `React.useEffect(fn, [1, "two"])`.
+
+`React.useEffectOnEveryRender` will run its function after every completed render, while `React.useEffect` will only run the effect on the first render (when the component has mounted).
+
+## Examples
+
+### Effects without Cleanup
+
+Sometimes, we want to run some additional code after React has updated the DOM. Network requests, manual DOM mutations, and logging are common examples of effects that don’t require a cleanup. We say that because we can run them and immediately forget about them.
+
+As an example, let's write a counter component that updates `document.title` on every render:
+
+```res prelude
+// Counter.res
+module Document = {
+  type t
+  @val external document: t = "document"
+  @set external setTitle: (t, string) => unit = "title"
+}
+```
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+
+@react.component
+let make = () => {
+  let (count, setCount) = React.useState(_ => 0)
+
+  React.useEffectOnEveryRender(() => {
+    open! Document
+    document->setTitle(`You clicked ${Belt.Int.toString(count)} times!`)
+    None
+  })
+
+  let onClick = (_evt) => {
+    setCount(prev => prev + 1)
+  }
+
+  let msg = "You clicked" ++ Belt.Int.toString(count) ++  "times"
+
+  <div>
+    <p>{React.string(msg)}</p>
+    <button onClick> {React.string("Click me")} </button>
+  </div>
+}
+```
+
+```js
+function Counter(Props) {
+  var match = React.useState(function () {
+    return 0;
+  });
+  var setCount = match[1];
+  var count = match[0];
+  React.useEffect(function () {
+    document.title = "You clicked " + String(count) + " times!";
+  });
+  var onClick = function (_evt) {
+    return Curry._1(setCount, function (prev) {
+      return (prev + 1) | 0;
+    });
+  };
+  var msg = "You clicked" + String(count) + "times";
+  return React.createElement(
+    "div",
+    undefined,
+    React.createElement("p", undefined, msg),
+    React.createElement(
+      "button",
+      {
+        onClick: onClick,
+      },
+      "Click me",
+    ),
+  );
+}
+```
+
+</CodeTab>
+
+In case we want to make the effects dependent on `count`, we can just use following `useEffect` call instead:
+
+```res
+ React.useEffect(() => {
+    open! Document
+    document->setTitle(`You clicked ${Belt.Int.toString(count)} times!`)
+    None
+  }, [count])
+```
+
+Now instead of running an effect on every render, it will only run when `count` has a different value than in the render before.
+
+### Effects with Cleanup
+
+Earlier, we looked at how to express side effects that don’t require any cleanup. However, some effects do. For example, we might want to set up a subscription to some external data source. In that case, it is important to clean up so that we don’t introduce a memory leak!
+
+Let's look at an example that gracefully subscribes, and later on unsubscribes from some subscription API:
+
+```res prelude
+module ChatAPI = {
+  // Imaginary globally available ChatAPI for demo purposes
+  type status = { isOnline: bool }
+  @val external subscribeToFriendStatus: (string, status => unit) => unit = "subscribeToFriendStatus"
+  @val external unsubscribeFromFriendStatus: (string, status => unit) => unit = "unsubscribeFromFriendStatus"
+}
+
+type state = Offline | Loading | Online
+```
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+{/* TODO: fix this example */}
+
+```res
+// FriendStatus.res
+@react.component
+let make = (~friendId: string) => {
+  let (state, setState) = React.useState(_ => Offline)
+
+  React.useEffectOnEveryRender(() => {
+    let handleStatusChange = (status) => {
+      setState(_ => {
+        status.ChatAPI.isOnline ? Online : Offline
+      })
+    }
+
+    ChatAPI.subscribeToFriendStatus(friendId, handleStatusChange)
+    setState(_ => Loading)
+
+    let cleanup = () => {
+      ChatAPI.unsubscribeFromFriendStatus(friendId, handleStatusChange)
+    }
+
+    Some(cleanup)
+  })
+
+  let text = switch(state) {
+    | Offline => friendId ++ " is offline"
+    | Online => friendId ++ " is online"
+    | Loading => "loading..."
+  }
+
+  <div>
+  	{React.string(text)}
+  </div>
+}
+```
+
+```js
+function FriendStatus(Props) {
+  var friendId = Props.friendId;
+  var match = React.useState(function () {
+    return /* Offline */ 0;
+  });
+  var setState = match[1];
+  React.useEffect(function () {
+    var handleStatusChange = function (status) {
+      return Curry._1(setState, function (param) {
+        if (status.isOnline) {
+          return /* Online */ 2;
+        } else {
+          return /* Offline */ 0;
+        }
+      });
+    };
+    subscribeToFriendStatus(friendId, handleStatusChange);
+    Curry._1(setState, function (param) {
+      return /* Loading */ 1;
+    });
+    return function (param) {
+      unsubscribeFromFriendStatus(friendId, handleStatusChange);
+    };
+  });
+  var text;
+  switch (match[0]) {
+    case /* Offline */ 0:
+      text = friendId + " is offline";
+      break;
+    case /* Loading */ 1:
+      text = "loading...";
+      break;
+    case /* Online */ 2:
+      text = friendId + " is online";
+      break;
+  }
+  return React.createElement("div", undefined, text);
+}
+```
+
+</CodeTab>
+
+## Effect Dependencies
+
+In some cases, cleaning up or applying the effect after every render might create a performance problem. Let's look at a concrete example to see what `useEffect` does:
+
+```res
+// from a previous example above
+React.useEffect(() => {
+  open! Document
+  document->setTitle(`You clicked ${Belt.Int.toString(count)} times!`)
+  None
+}, [count])
+```
+
+Here, we pass `[count]` to `useEffect` as a dependency. What does this mean? If the `count` is 5, and then our component re-renders with count still equal to 5, React will compare `[5]` from the previous render and `[5]` from the next render. Because all items within the array are the same (5 === 5), React would skip the effect. That’s our optimization.
+
+When we render with count updated to 6, React will compare the items in the `[5]` array from the previous render to items in the `[6]` array from the next render. This time, React will re-apply the effect because `5 !== 6`. If there are multiple items in the array, React will re-run the effect even if just one of them is different.
+
+This also works for effects that have a cleanup phase:
+
+{/* TODO fix this example */}
+
+```res
+@react.component
+let make = (~friendId: string) => {
+  let (state, setState) = React.useState(_ => Offline)
+  // from a previous example above
+  React.useEffect(() => {
+    let handleStatusChange = (status) => {
+      setState(_ => {
+        status.ChatAPI.isOnline ? Online : Offline
+      })
+    }
+
+    ChatAPI.subscribeToFriendStatus(friendId, handleStatusChange)
+    setState(_ => Loading)
+
+    let cleanup = () => {
+      ChatAPI.unsubscribeFromFriendStatus(friendId, handleStatusChange)
+    }
+
+    Some(cleanup)
+  }, [friendId]) // Only re-subscribe if friendId changes
+}
+```
+
+**Important:** If you use this optimization, make sure the array includes all values from the component scope (such as props and state) that change over time and that are used by the effect. Otherwise, your code will reference stale values from previous renders
+
+If you want to run an effect and clean it up only once (on mount and unmount), use `React.useEffect` with an empty dependency array `[]`.
+
+If you are interested in learning about performance optimization related topics, have a look at the ReactJS [improving application performance](https://react.dev/learn/build-a-react-app-from-scratch#improving-application-performance) for more detailed infos.
+
+---
+title: Hooks & State Management Overview
+description: "Overview state management and hooks in ReScript and React"
+canonical: "/docs/react/hooks-overview"
+section: "Hooks & State Management"
+order: 1
+---
+
+# Hooks Overview
+
+<Intro>
+
+Hooks are an essential mechanism to introduce and manage state and effects in React components.
+
+</Intro>
+
+## What is a Hook?
+
+In the previous chapters we learned how React components are just a simple function representing UI based on specific prop values. For an application to be useful we still need a way to manipulate those props interactively either via user input or via requests loading in data from a server.
+
+That's where Hooks come in. A Hook is a function that allows us to introduce component state and trigger side-effects for different tasks, such as HTTP requests, direct HTML DOM access, querying window sizes, etc.
+
+In other words: **It allows us to "hook into" React features.**
+
+### Example: The `useState` Hook
+
+Just for a quick look, here is an example of a `Counter` component that allows a user to click a button and increment an `count` value that will immediately be rendered on each button click:
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+// Counter.res
+@react.component
+let make = () => {
+  let (count, setCount) = React.useState(_ => 0)
+
+  let onClick = (_evt) => {
+    setCount(prev => prev + 1)
+  }
+
+  let msg = "You clicked" ++ Belt.Int.toString(count) ++  "times"
+
+  <div>
+    <p>{React.string(msg)}</p>
+    <button onClick> {React.string("Click me")} </button>
+  </div>
+}
+```
+
+```js
+function Counter(Props) {
+  var match = React.useState(function () {
+    return 0;
+  });
+  var setCount = match[1];
+  var onClick = function (_evt) {
+    return Curry._1(setCount, function (prev) {
+      return (prev + 1) | 0;
+    });
+  };
+  var msg = "You clicked" + String(match[0]) + "times";
+  return React.createElement(
+    "div",
+    undefined,
+    React.createElement("p", undefined, msg),
+    React.createElement(
+      "button",
+      {
+        onClick: onClick,
+      },
+      "Click me",
+    ),
+  );
+}
+```
+
+</CodeTab>
+
+Here we are using the `React.useState` Hook. We call it inside a component function to add some local state to it. React will preserve this state between re-renders. `React.useState` returns a tuple: the current state value (`count`) and a function that lets you update it (`setCount`). You can call this function from an event handler or pass it down to other components to call the function.
+
+The only argument to `React.useState` is a function that returns the initial state (`_ => 0`). In the example above, it is 0 because our counter starts from zero. Note that your state can be any type you want and `ReScript` will make sure to infer the types for you (only make sure to return an initial state that matches your type). The initial state argument is only used during the first render.
+
+This was just a quick example on our first hook usage. We will go into more detail in a dedicated [useState](./hooks-state.mdx) section.
+
+## Available Hooks
+
+**Note:** All hooks are part of the `React` module (e.g. `React.useState`).
+
+### Basic Hooks:
+
+- [useState](./hooks-state.mdx): Adds local state to your component
+- [useEffect](./hooks-effect.mdx): Runs side-effectual code within your component
+- [useContext](./hooks-context.mdx): Gives your component to a React Context value
+
+### Additional Hooks:
+
+- [useReducer](./hooks-reducer.mdx): An alternative to `useState`. Uses the state / action / reduce pattern.
+  - useCallback: Returns a memoized callback
+  - useMemo: Returns a memoized value
+- [useRef](./hooks-ref.mdx): Returns a mutable React-Ref value
+  - useImperativeHandle: Customizes the instance value that is exposed to parent components when using `ref`
+  - useLayoutEffect: Identical to useEffect, but it fires synchronously after all DOM mutations.
+
+## Rules of Hooks
+
+Hooks are just simple functions, but you need to follow _two rules_ when using them. ReScript doesn't enforce those rules within the compiler, so if you really want to enforce correct hooks conventions, you can use an [eslint-plugin](https://www.npmjs.com/package/eslint-plugin-react-hooks) to check your compiled JS output.
+
+### Rule 1) Only Call Hooks at the Top Level
+
+**Don’t call Hooks inside loops, conditions, or nested functions.** Instead, always use Hooks at the top level of your React function. By following this rule, you ensure that Hooks are called in the same order each time a component renders. That’s what allows React to correctly preserve the state of Hooks between multiple `useState` and `useEffect` calls. (If you’re curious, you can check out the in depth explanation in the [ReactJS Rules of Hooks docs](https://react.dev/reference/rules/rules-of-hooks))
+
+### Rule 2) Only Call Hooks from React Functions
+
+**Don't call Hooks from regular functions.** Instead, you can:
+
+- ✅ Call Hooks from React function components.
+- ✅ Call Hooks from custom Hooks (we'll learn about them in our [custom hooks](./hooks-custom.mdx) section).
+
+By following this rule, you ensure that all stateful logic in a component is clearly visible from its source code.
+
+---
+title: useReducer Hook
+description: "Details about the useReducer React hook in ReScript"
+canonical: "/docs/react/hooks-reducer"
+section: "Hooks & State Management"
+order: 4
+---
+
+# useReducer
+
+<Intro>
+
+`React.useReducer` helps you express your state in an action / reducer pattern.
+
+</Intro>
+
+## Usage
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res
+let (state, dispatch) = React.useReducer(reducer, initialState)
+```
+
+```js
+var match = React.useReducer(reducer, initialState);
+```
+
+</CodeTab>
+
+An alternative to [useState](./hooks-state.mdx). Accepts a reducer of type `(state, action) => newState`, and returns the current `state` paired with a `dispatch` function `(action) => unit`.
+
+`React.useReducer` is usually preferable to `useState` when you have complex state logic that involves multiple sub-values or when the next state depends on the previous one. `useReducer` also lets you optimize performance for components that trigger deep updates because you can pass dispatch down instead of callbacks.
+
+Learn more about [records](../manual/record.mdx), [variants](../manual/variant.mdx), and [pattern matching & destructuring](../manual/pattern-matching-destructuring.mdx).
+
+## Examples
+
+### Counter Example with `React.useReducer`
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+// Counter.res
+
+type action = Inc | Dec
+type state = {count: int}
+
+let reducer = (state, action) => {
+  switch action {
+  | Inc => {count: state.count + 1}
+  | Dec => {count: state.count - 1}
+  }
+}
+
+@react.component
+let make = () => {
+  let (state, dispatch) = React.useReducer(reducer, {count: 0})
+
+  <>
+    {React.string("Count:" ++ Belt.Int.toString(state.count))}
+    <button onClick={(_) => dispatch(Dec)}> {React.string("-")} </button>
+    <button onClick={(_) => dispatch(Inc)}> {React.string("+")} </button>
+  </>
+}
+```
+
+```js
+function reducer(state, action) {
+  if (action) {
+    return {
+      count: (state.count - 1) | 0,
+    };
+  } else {
+    return {
+      count: (state.count + 1) | 0,
+    };
+  }
+}
+
+function Counter(Props) {
+  var match = React.useReducer(reducer, {
+    count: 0,
+  });
+  var dispatch = match[1];
+  return React.createElement(
+    React.Fragment,
+    undefined,
+    "Count:" + String(match[0].count),
+    React.createElement(
+      "button",
+      {
+        onClick: function (param) {
+          return Curry._1(dispatch, /* Dec */ 1);
+        },
+      },
+      "-",
+    ),
+    React.createElement(
+      "button",
+      {
+        onClick: function (param) {
+          return Curry._1(dispatch, /* Inc */ 0);
+        },
+      },
+      "+",
+    ),
+  );
+}
+```
+
+</CodeTab>
+
+> React guarantees that dispatch function identity is stable and won’t change on re-renders. This is why it’s safe to omit from the useEffect or useCallback dependency list.
+
+### Basic Todo List App with More Complex Actions
+
+You can leverage the full power of variants to express actions with data payloads to parametrize your state transitions:
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+// TodoApp.res
+
+type todo = {
+  id: int,
+  content: string,
+  completed: bool,
+}
+
+type action =
+  | AddTodo(string)
+  | RemoveTodo(int)
+  | ToggleTodo(int)
+
+type state = {
+  todos: array<todo>,
+  nextId: int,
+}
+
+let reducer = (state, action) =>
+  switch action {
+  | AddTodo(content) =>
+    let todos = Array.concat(
+      state.todos,
+      [{id: state.nextId, content: content, completed: false}],
+    )
+    {todos: todos, nextId: state.nextId + 1}
+  | RemoveTodo(id) =>
+    let todos = Array.filter(state.todos, todo => todo.id !== id)
+    {...state, todos: todos}
+  | ToggleTodo(id) =>
+    let todos = Belt.Array.map(state.todos, todo =>
+      if todo.id === id {
+        {
+          ...todo,
+          completed: !todo.completed,
+        }
+      } else {
+        todo
+      }
+    )
+    {...state, todos: todos}
+  }
+
+let initialTodos = [{id: 1, content: "Try ReScript & React", completed: false}]
+
+@react.component
+let make = () => {
+  let (state, dispatch) = React.useReducer(
+    reducer,
+    {todos: initialTodos, nextId: 2},
+  )
+
+  let todos = Belt.Array.map(state.todos, todo =>
+    <li>
+      {React.string(todo.content)}
+      <button onClick={_ => dispatch(RemoveTodo(todo.id))}>
+        {React.string("Remove")}
+      </button>
+      <input
+        type_="checkbox"
+        checked=todo.completed
+        onChange={_ => dispatch(ToggleTodo(todo.id))}
+      />
+    </li>
+  )
+
+  <> <h1> {React.string("Todo List:")} </h1> <ul> {React.array(todos)} </ul> </>
+}
+```
+
+```js
+function reducer(state, action) {
+  switch (action.TAG | 0) {
+    case /* AddTodo */ 0:
+      var todos = state.todos.concat([
+        {
+          id: state.nextId,
+          content: action._0,
+          completed: false,
+        },
+      ]);
+      return {
+        todos: todos,
+        nextId: (state.nextId + 1) | 0,
+      };
+    case /* RemoveTodo */ 1:
+      var id = action._0;
+      var todos$1 = state.todos.filter(function (todo) {
+        return todo.id !== id;
+      });
+      return {
+        todos: todos$1,
+        nextId: state.nextId,
+      };
+    case /* ToggleTodo */ 2:
+      var id$1 = action._0;
+      var todos$2 = Belt_Array.map(state.todos, function (todo) {
+        if (todo.id === id$1) {
+          return {
+            id: todo.id,
+            content: todo.content,
+            completed: !todo.completed,
+          };
+        } else {
+          return todo;
+        }
+      });
+      return {
+        todos: todos$2,
+        nextId: state.nextId,
+      };
+  }
+}
+
+var initialTodos = [
+  {
+    id: 1,
+    content: "Try ReScript & React",
+    completed: false,
+  },
+];
+
+function TodoApp(Props) {
+  var match = React.useReducer(reducer, {
+    todos: initialTodos,
+    nextId: 2,
+  });
+  var dispatch = match[1];
+  var todos = Belt_Array.map(match[0].todos, function (todo) {
+    return React.createElement(
+      "li",
+      undefined,
+      todo.content,
+      React.createElement(
+        "button",
+        {
+          onClick: function (param) {
+            return Curry._1(dispatch, {
+              TAG: /* RemoveTodo */ 1,
+              _0: todo.id,
+            });
+          },
+        },
+        "Remove",
+      ),
+      React.createElement("input", {
+        checked: todo.completed,
+        type: "checkbox",
+        onChange: function (param) {
+          return Curry._1(dispatch, {
+            TAG: /* ToggleTodo */ 2,
+            _0: todo.id,
+          });
+        },
+      }),
+    );
+  });
+  return React.createElement(
+    React.Fragment,
+    undefined,
+    React.createElement("h1", undefined, "Todo List:"),
+    React.createElement("ul", undefined, todos),
+  );
+}
+```
+
+</CodeTab>
+
+## Lazy Initialization
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res
+let (state, dispatch) =
+  React.useReducerWithMapState(reducer, initialState, initial)
+```
+
+```js
+var match = React.useReducer(reducer, initialState, init);
+```
+
+</CodeTab>
+
+You can also create the `initialState` lazily. To do this, you can use `React.useReducerWithMapState` and pass an `init` function as the third argument. The initial state will be set to `init(initialState)`.
+
+It lets you extract the logic for calculating the initial state outside the reducer. This is also handy for resetting the state later in response to an action:
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+// Counter.res
+
+type action = Inc | Dec | Reset(int)
+type state = {count: int}
+
+let init = initialCount => {
+  {count: initialCount}
+}
+
+let reducer = (state, action) => {
+  switch action {
+  | Inc => {count: state.count + 1}
+  | Dec => {count: state.count - 1}
+  | Reset(count) => init(count)
+  }
+}
+
+@react.component
+let make = (~initialCount: int) => {
+  let (state, dispatch) = React.useReducerWithMapState(
+    reducer,
+    initialCount,
+    init,
+  )
+
+  <>
+    {React.string("Count:" ++ Belt.Int.toString(state.count))}
+    <button onClick={_ => dispatch(Dec)}> {React.string("-")} </button>
+    <button onClick={_ => dispatch(Inc)}> {React.string("+")} </button>
+  </>
+}
+```
+
+```js
+function init(initialCount) {
+  return {
+    count: initialCount,
+  };
+}
+
+function reducer(state, action) {
+  if (typeof action === "number") {
+    if (action !== 0) {
+      return {
+        count: (state.count - 1) | 0,
+      };
+    } else {
+      return {
+        count: (state.count + 1) | 0,
+      };
+    }
+  } else {
+    return {
+      count: action._0,
+    };
+  }
+}
+
+function Counter(Props) {
+  var initialCount = Props.initialCount;
+  var match = React.useReducer(reducer, initialCount, init);
+  var dispatch = match[1];
+  return React.createElement(
+    React.Fragment,
+    undefined,
+    "Count:" + String(match[0].count),
+    React.createElement(
+      "button",
+      {
+        onClick: function (param) {
+          return Curry._1(dispatch, /* Dec */ 1);
+        },
+      },
+      "-",
+    ),
+    React.createElement(
+      "button",
+      {
+        onClick: function (param) {
+          return Curry._1(dispatch, /* Inc */ 0);
+        },
+      },
+      "+",
+    ),
+  );
+}
+```
+
+</CodeTab>
+
+---
+title: useRef Hook
+description: "Details about the useRef React hook in ReScript"
+canonical: "/docs/react/hooks-ref"
+section: "Hooks & State Management"
+order: 6
+---
+
+# useRef
+
+<Intro>
+
+The `useRef` hooks creates and manages mutable containers inside your React component.
+
+</Intro>
+
+## Usage
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res
+let refContainer = React.useRef(initialValue)
+```
+
+```js
+var button = React.useRef(null);
+React.useRef(0);
+```
+
+</CodeTab>
+
+`React.useRef` returns a mutable ref object whose `.current` record field is initialized to the passed argument (`initialValue`). The returned object will persist for the full lifetime of the component.
+
+Essentially, a `React.ref` is like a "box" that can hold a mutable value in its `.current` record field.
+
+You might be familiar with refs primarily as a way to access the DOM. If you pass a ref object to React with `<div ref={ReactDOM.Ref.domRef(myRef)} />`, React will set its `.current` property to the corresponding DOM node whenever that node changes.
+
+However, `useRef()` is useful for more than the ref attribute. It's handy for keeping any mutable value around similar to how you’d use instance fields in classes.
+
+This works because `useRef()` creates a plain JavaScript object. The only difference between `useRef()` and creating a `{current: ...}` object yourself is that useRef will give you the same ref object on every render.
+
+Keep in mind that `useRef` doesn't notify you when its content changes. Mutating the `.current` record field doesn't cause a re-render. If you want to run some code when React attaches or detaches a ref to a DOM node, you may want to use a [callback ref](./refs-and-the-dom.mdx#callback-refs) instead.
+
+More infos on direct DOM manipulation can be found in the [Refs and the DOM](./refs-and-the-dom.mdx) section.
+
+## Examples
+
+### Managing Focus for a Text Input
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+// TextInputWithFocusButton.res
+
+@send external focus: Dom.element => unit = "focus"
+
+@react.component
+let make = () => {
+  let inputEl = React.useRef(Nullable.null)
+
+  let onClick = _ => {
+    inputEl.current->Nullable.forEach(input => input->focus)
+  }
+
+  <>
+    <input ref={ReactDOM.Ref.domRef(inputEl)} type_="text" />
+    <button onClick> {React.string("Focus the input")} </button>
+  </>
+}
+```
+
+```js
+function TextInputWithFocusButton(Props) {
+  var inputEl = React.useRef(null);
+  var onClick = function (param) {
+    Core__Nullable.forEach(inputEl.current, function (input) {
+      input.focus();
+    });
+  };
+  return React.createElement(
+    React.Fragment,
+    {},
+    React.createElement("input", {
+      ref: Caml_option.some(inputEl),
+      type: "text",
+    }),
+    React.createElement(
+      "button",
+      {
+        onClick: onClick,
+      },
+      "Focus the input",
+    ),
+  );
+}
+```
+
+</CodeTab>
+
+### Using a Callback Ref
+
+Reusing the example from our [Refs and the DOM](./refs-and-the-dom.mdx#callback-refs) section:
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+// CustomTextInput.res
+
+@send external focus: Dom.element => unit = "focus"
+
+@react.component
+let make = () => {
+  let textInput = React.useRef(Nullable.null)
+  let setTextInputRef = element => {
+    textInput.current = element;
+    None
+  }
+
+  let focusTextInput = _ => {
+    textInput.current->Nullable.forEach(input => input->focus)
+  }
+
+  <div>
+    <input type_="text" ref={ReactDOM.Ref.callbackDomRef(setTextInputRef)} />
+    <input
+      type_="button" value="Focus the text input" onClick={focusTextInput}
+    />
+  </div>
+}
+```
+
+```js
+function CustomTextInput(Props) {
+  var textInput = React.useRef(null);
+  var setTextInputRef = function (element) {
+    textInput.current = element;
+  };
+  var focusTextInput = function (param) {
+    Core__Nullable.forEach(textInput.current, function (input) {
+      input.focus();
+    });
+  };
+  return React.createElement(
+    "div",
+    undefined,
+    React.createElement("input", {
+      ref: Caml_option.some(setTextInputRef),
+      type: "text",
+    }),
+    React.createElement("input", {
+      type: "button",
+      value: "Focus the text input",
+      onClick: focusTextInput,
+    }),
+  );
+}
+```
+
+</CodeTab>
+
+---
+title: useState Hook
+description: "Details about the useState React hook in ReScript"
+canonical: "/docs/react/hooks-state"
+section: "Hooks & State Management"
+order: 3
+---
+
+# useState
+
+<Intro>
+
+`React.useState` returns a stateful value, and a function to update it.
+
+</Intro>
+
+## Usage
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res
+let (state, setState) = React.useState(_ => initialState)
+```
+
+```js
+var match = React.useState(function () {
+  return initialState;
+});
+
+var state = match[0];
+
+var setState = match[1];
+```
+
+</CodeTab>
+
+During the initial render, the returned state `state` is the same as the value passed as the first argument (initialState).
+
+The `setState` function can be passed down to other components as well, which is useful for e.g. setting the state of a parent component by its children.
+
+## Examples
+
+### Using State for a Text Input
+
+```res example
+@react.component
+let make = () => {
+  let (text, setText) = React.useState(_ => "");
+
+  let onChange = evt => {
+    ReactEvent.Form.preventDefault(evt)
+    let value = ReactEvent.Form.target(evt)["value"]
+    setText(_prev => value);
+  }
+
+  <div>
+    <input onChange value=text />
+  </div>
+};
+```
+
+### Passing `setState` to a Child Component
+
+In this example, we are creating a `ThemeContainer` component that manages a `darkmode` boolean state and passes the `setDarkmode` function to a `ControlPanel` component to trigger the state changes.
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+// ThemeContainer.res
+module ControlPanel = {
+  @react.component
+  let make = (~setDarkmode, ~darkmode) => {
+    let onClick = evt => {
+      ReactEvent.Mouse.preventDefault(evt)
+      setDarkmode(prev => !prev)
+    }
+
+    let toggleText = "Switch to " ++ ((darkmode ? "light" : "dark") ++ " theme")
+
+    <div> <button onClick> {React.string(toggleText)} </button> </div>
+  }
+}
+
+@react.component
+let make = (~content) => {
+  let (darkmode, setDarkmode) = React.useState(_ => false)
+
+  let className = darkmode ? "theme-dark" : "theme-light"
+
+  <div className>
+    <section>
+      <h1> {React.string("More Infos about ReScript")} </h1> content
+    </section>
+    <ControlPanel darkmode setDarkmode />
+  </div>
+}
+```
+
+```js
+function ControlPanel(Props) {
+  var setDarkmode = Props.setDarkmode;
+  var darkmode = Props.darkmode;
+  var onClick = function (evt) {
+    evt.preventDefault();
+    return Curry._1(setDarkmode, function (prev) {
+      return !prev;
+    });
+  };
+  var toggleText = "Switch to " + ((darkmode ? "light" : "dark") + " theme");
+  return React.createElement(
+    "div",
+    undefined,
+    React.createElement(
+      "button",
+      {
+        onClick: onClick,
+      },
+      toggleText,
+    ),
+  );
+}
+
+function ThemeContainer(Props) {
+  var content = Props.content;
+  var match = React.useState(function () {
+    return false;
+  });
+  var darkmode = match[0];
+  var className = darkmode ? "theme-dark" : "theme-light";
+  return React.createElement(
+    "div",
+    {
+      className: className,
+    },
+    React.createElement(
+      "section",
+      undefined,
+      React.createElement("h1", undefined, "More Infos about ReScript"),
+      content,
+    ),
+    React.createElement(Playground$ControlPanel, {
+      setDarkmode: match[1],
+      darkmode: darkmode,
+    }),
+  );
+}
+```
+
+</CodeTab>
+
+Note that whenever `setDarkmode` is returning a new value (e.g. switching from `true` -> `false`), it will cause a re-render for `ThemeContainer`'s `className` and the toggle text of its nested `ControlPanel`.
+
+---
+title: Import / Export ReactJS
+description: "Reusing existing React components"
+canonical: "/docs/react/import-export-reactjs"
+section: "Main Concepts"
+order: 12
+---
+
+# Import / Export ReactJS
+
+Reusing existing React components in ReScript is straightforward.
+This guide will walk you through the steps required to import and use React components within ReScript,
+including defining component props and handling various import scenarios.
+
+## Basic Example
+
+To reuse a React component in ReScript, create a new module, specify the component's location, and define its props.
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+module Confetti = {
+  @module("react-confetti") @react.component
+  external make: (~width: int, ~height: int) => React.element = "default"
+}
+
+// Assuming we are in App.res
+@react.component
+let make = () => {
+  <Confetti width={300} height={300} />
+}
+```
+
+```js
+import ReactConfetti from "react-confetti";
+import * as JsxRuntime from "react/jsx-runtime";
+
+var Confetti = {};
+
+function Playground(props) {
+  return JsxRuntime.jsx(ReactConfetti, {
+    width: 300,
+    height: 300,
+  });
+}
+```
+
+</CodeTab>
+
+## Importing from Relative Paths
+
+You can import components from relative file paths using the `@module` attribute.  
+Use "default" to indicate the default export, or specify a named export if needed.
+
+### Named Export Example
+
+<CodeTab labels={["ReScript"]}>
+
+```res example
+// Equivalent of import { Foo } from "bar"
+module Foo = {
+  @module("bar") @react.component
+  external make: unit => React.element = "Foo"
+}
+```
+
+</CodeTab>
+
+## Defining Props Types
+
+You can define a separate type for your component's props within the module.
+
+### Props Type Example
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+module Confetti = {
+  type confettiProps = {
+    width: int,
+    height: int,
+  }
+
+  @module("react-confetti") @react.component(: confettiProps)
+  external make: confettiProps => React.element = "default"
+}
+
+@react.component
+let make = () => {
+  <Confetti width={300} height={300} />
+}
+```
+
+```js
+import ReactConfetti from "react-confetti";
+import * as JsxRuntime from "react/jsx-runtime";
+
+var Confetti = {};
+
+function Playground(props) {
+  return JsxRuntime.jsx(ReactConfetti, {
+    width: 300,
+    height: 300,
+  });
+}
+```
+
+</CodeTab>
+
+## Optional Props
+
+To define optional props, use the `?` symbol.
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+module Confetti = {
+  type confettiProps = {
+    width: int,
+    height: int,
+    initialVelocityX?: int,
+    initialVelocityY?: int,
+  }
+
+  @module("react-confetti") @react.component(: confettiProps)
+  external make: confettiProps => React.element = "default"
+}
+
+@react.component
+let make = () => {
+  <Confetti width={300} height={300} />
+}
+```
+
+```js
+import ReactConfetti from "react-confetti";
+import * as JsxRuntime from "react/jsx-runtime";
+
+var Confetti = {};
+
+function Playground(props) {
+  return JsxRuntime.jsx(ReactConfetti, {
+    width: 300,
+    height: 300,
+  });
+}
+```
+
+</CodeTab>
+
+## Extending Built-in DOM Nodes
+
+To accept existing DOM props for a component, extend the `JsxDOM.domProps` type.
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+module Foo = {
+  type fooProps = {
+    ...JsxDOM.domProps,
+    customProp: string,
+  }
+
+  @module("foo") @react.component(: fooProps)
+  external make: fooProps => React.element = "default"
+}
+
+@react.component
+let make = () => {
+  <Foo width={"300px"} height={"300px"} customProp="bar" />
+}
+```
+
+```js
+import Foo from "foo";
+import * as JsxRuntime from "react/jsx-runtime";
+
+var Foo$1 = {};
+
+function Playground(props) {
+  return JsxRuntime.jsx(Foo, {
+    height: "300px",
+    width: "300px",
+    customProp: "bar",
+  });
+}
+```
+
+</CodeTab>
+
+In this example `width` and `height` can be set because `JsxDOM.domProps` was spread into `fooProps`.
+
+---
+title: Installation
+description: "Installation and Setup"
+canonical: "/docs/react/installation"
+section: "Overview"
+order: 2
+---
+
+# Installation
+
+**Requirements:**
+
+- `rescript@11.0` or later
+- `react@18.0.0` or later
+
+Add the following dependency to your ReScript project (in case you don't have any project yet, check out the [installation instructions](../manual/installation.mdx)):
+
+```
+npm install @rescript/react
+```
+
+Then add the following setting to your existing `rescript.json`:
+
+```json
+{
+  "jsx": { "version": 4 },
+  "bs-dependencies": ["@rescript/react"]
+}
+```
+
+To test your setup, create a new `.res` file in your source directory and add the following code:
+
+```res
+// src/Test.res
+@react.component
+let make = () => {
+  <div> {React.string("Hello World")} </div>
+}
+```
+
+Now run `npx rescript` and you should see a successful build.
+
+## Exposed Modules
+
+After a successful installation, `@rescript/react` will make the following modules available in your project's global scope:
+
+- `React`: Bindings to React
+- `ReactDOM`: Bindings to the ReactDOM
+- `ReactDOMServer`: Bindings to the ReactDOMServer
+- `ReactEvent`: Bindings to React's synthetic events
+- `ReactDOMStyle`: Bindings to the inline style API
+- `RescriptReactRouter`: A simple, yet fully featured router with minimal memory allocations
+- `RescriptReactErrorBoundary`: A component which handles errors thrown in its child components gracefully
+
+---
+title: Introduction
+description: "Introduction to ReScript & ReactJS"
+canonical: "/docs/react/introduction"
+section: "Overview"
+order: 1
+---
+
+# ReScript & React
+
+ReScript offers first class bindings for [ReactJS](https://react.dev) and is designed and built by people using ReScript and React in large mission critical React codebases. The bindings are compatible with modern React versions (>= v18.0).
+
+The ReScript philosophy is to compile as closely to idiomatic JS code as possible; in the case of ReactJS, we made no exception, so it's not only easy to transfer all the React knowledge to the ReScript platform, but also straightforward to integrate with existing ReactJS codebases and libraries.
+
+All our documented examples can be compiled in our [ReScript Playground](/try) as well.
+
+## Feature Overview
+
+- No Babel plugins required (JSX is part of the language!)
+- Comes with all essential React APIs for building production ready apps (`useState`, `useReducer`, `useEffect`, `useRef`,...)
+- No component class API (all ReScript & React codebases are built on function components & hooks)
+- Strong level of type safety and type inference for component props and state values
+- [GenType](../manual/typescript-integration.mdx) support for importing / exporting React components in TypeScript codebases
+
+> **This documentation assumes basic knowledge about ReactJS.**
+>
+> Please note that even though we will cover many basic React concepts, it might still be necessary to have a look at the official [ReactJS](https://react.dev) resources, especially if you are a complete beginner with React.
+
+## Development
+
+- In case you are having any issues or if you want to help us out improving our bindings, check out our [rescript-react GitHub repository](https://github.com/rescript-lang/rescript-react).
+- For doc related issues, please go to the [rescript-lang.org repo](https://github.com/rescript-lang/rescript-lang.org).
+
+---
+title: Lazy Components
+description: "Details on how to use the React.lazy_ API to dynamically import components"
+canonical: "/docs/react/lazy-components"
+section: "Main Concepts"
+order: 11
+---
+
+# Lazy Components
+
+<Intro>
+
+It's good practice to delay loading the JavaScript required to render components you're not actually showing yet. This helps with performance and makes your application load faster.
+
+React ships with an [API for dynamically loading components](https://react.dev/reference/react/lazy#lazy). In this little guide we'll show you how to dynamically load React components in ReScript.
+
+</Intro>
+
+> **Note:** This section requires the latest [@rescript/react](https://github.com/rescript-lang/rescript-react) bindings to be installed (_0.12.0-alpha.2 and above_).
+
+ReScript comes with APIs for doing dynamic imports both for single values and for entire modules. These APIs make dynamically importing React components easy.
+
+Let's look at a small example. First we'll define a simple component:
+
+```res example
+// Title.res
+@react.component
+let make = (~text) => {
+  <div className="title">{text->React.string}</div>
+}
+```
+
+Now we can dynamically import the `<Title/>` component by passing the result of our dynamic import to `React.lazy_`:
+
+```rescript
+// SomeOtherFile.res
+module LazyTitle = {
+  let make = React.lazy_(() => import(Title.make))
+}
+
+let titleJsx = <LazyTitle text="Hello!" />
+```
+
+That's all the code we need! The new `<LazyTitle />` component behaves exactly the same as the wrapped `<Title />` component, but will be lazy loaded via React's built-in lazy mechanism.
+
+> You can read more about `import` and dynamic import in ReScript in [this part of the documentation](../manual/import-from-export-to-js.mdx#dynamic-import).
+
+---
+title: "LLMs"
+description: "Documentation for LLMs"
+canonical: "/docs/react/llms"
+section: "Overview"
+---
+
+# Documentation for LLMs
+
+We adhere to the [llms.txt convention](https://llmstxt.org/) to make documentation accessible to large language models and their applications.
+
+Currently, we have the following files...
+
+- [/llms/react/llms.txt](/llms/react/llms.txt) — a list of the available files for ReScript React.
+- [/llms/react/llms-full.txt](/llms/react/llm-full.txt) — complete documentation for ReScript React.
+- [/llms/react/llms-small.txt](/llms/react/llm-small.txt) — compressed version of the former, without examples for ReScript React.
+
+...and the language documentation:
+
+- [/docs/manual/llms](../manual/llms.mdx) — the LLms documentation for ReScript.
+
+## Notes
+
+- The content is automatically generated from the same source as the official documentation for the specific version
+
+---
+title: memo
+description: "Using React.memo"
+canonical: "/docs/react/memo"
+section: "Main Concepts"
+order: 8
+---
+
+# memo
+
+`React.memo` lets you skip re-rendering a component when its props are unchanged.
+
+Wrap a component in memo to get a memoized version of that component.
+This memoized version of your component will usually not be re-rendered when its parent component is re-rendered as long as its props have not changed.
+
+<small>
+  But React may still re-render it: memoization is a performance optimization,
+  not a guarantee.
+</small>
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+@react.component
+let make = React.memo((~a: int, ~b: string) => {
+  <div>
+    {React.int(a)}
+    <br />
+    {React.string(b)}
+  </div>
+})
+```
+
+```js
+import * as React from "react";
+import * as JsxRuntime from "react/jsx-runtime";
+
+var make = React.memo(function (props) {
+  return JsxRuntime.jsxs("div", {
+    children: [props.a, JsxRuntime.jsx("br", {}), props.b],
+  });
+});
+```
+
+</CodeTab>
+
+## arePropsEqual
+
+In React, memo can accept an optional argument called "arePropsEqual". This function takes two arguments: the previous props and the new props of the component.
+It should return true if the old and new props are the same, meaning the component will produce the same output and behavior with the new props as it did with the old ones.
+
+In ReScript, you can use the `arePropsEqual` function with the `React.memoCustomCompareProps` binding. However, `React.memoCustomCompareProps` cannot be combined with `@react.component`.
+
+To work around this, you can redefine the make binding:
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+@react.component
+let make = (~disabled, ~onClick) => {
+  <button
+    disabled={disabled}
+    onClick={ev => ev->JsxEvent.Mouse.preventDefault->onClick}>
+    {React.string("My button")}
+  </button>
+}
+
+let make = React.memoCustomCompareProps(make, (p1, p2) =>
+  p1.disabled == p2.disabled
+)
+```
+
+```js
+import * as React from "react";
+import * as JsxRuntime from "react/jsx-runtime";
+
+function Playground(props) {
+  var onClick = props.onClick;
+  return JsxRuntime.jsx("button", {
+    children: "My button",
+    disabled: props.disabled,
+    onClick: function (ev) {
+      onClick((ev.preventDefault(), undefined));
+    },
+  });
+}
+
+var make = React.memo(Playground, function (p1, p2) {
+  return p1.disabled === p2.disabled;
+});
+```
+
+</CodeTab>
+
+Another approach is to use a custom prop type and remove the `@react.component` annotation.
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+type props = {
+  disabled: bool,
+  onClick: JsxEvent.Mouse.t => unit,
+}
+
+let make = React.memoCustomCompareProps(
+  ({disabled, onClick}) => {
+    <button disabled={disabled} onClick={ev => ev->onClick}>
+      {React.string("My button")}
+    </button>
+  },
+  (p1, p2) => p1.disabled == p2.disabled,
+)
+```
+
+```js
+import * as React from "react";
+import * as JsxRuntime from "react/jsx-runtime";
+
+var make = React.memo(
+  function (param) {
+    var onClick = param.onClick;
+    return JsxRuntime.jsx("button", {
+      children: "My button",
+      disabled: param.disabled,
+      onClick: function (ev) {
+        onClick(ev);
+      },
+    });
+  },
+  function (p1, p2) {
+    return p1.disabled === p2.disabled;
+  },
+);
+```
+
+</CodeTab>
+
+---
+title: Refs and the DOM
+description: "Using Refs and DOM elements in ReScript and React"
+canonical: "/docs/react/refs-and-the-dom"
+section: "Main Concepts"
+order: 6
+---
+
+# Refs and the DOM
+
+<Intro>
+
+Refs provide a way to access DOM nodes or React elements created within your `make` component function.
+
+</Intro>
+
+In the typical React dataflow, [props](./components-and-props.mdx) are the only way that parent components interact with their children. To modify a child, you re-render it with new props. However, there are a few cases where you need to imperatively modify a child outside of the typical dataflow. The child to be modified could be an `React.element`, or it could be a `Dom.element`. For both of these cases, React provides an escape hatch.
+
+A `React.ref` is defined like this:
+
+```res
+type t<'value> = { mutable current: 'value }
+```
+
+> _Note that the `Ref.ref` should not to be confused with the builtin [ref type](../manual/mutation.mdx), the language feature that enables mutation._
+
+## When to use Refs
+
+There are a few good use cases for refs:
+
+- Managing state that _should not trigger_ any re-render.
+- Managing focus, text selection, or media playback.
+- Triggering imperative animations.
+- Integrating with third-party DOM libraries.
+
+Avoid using refs for anything that can be done declaratively.
+
+## Creating Refs
+
+A React ref is represented as a `React.ref('value)` type, a container managing a mutable value of type `'value`. You can create this kind of ref with the [React.useRef](./hooks-ref.mdx) hook:
+
+```res example
+@react.component
+let make = () => {
+  let clicks = React.useRef(0)
+
+  let onClick = (_) => {
+    clicks.current = clicks.current + 1
+  };
+
+  <div onClick>
+    {Belt.Int.toString(clicks.current)->React.string}
+  </div>
+}
+```
+
+The example above defines a binding `clicks` of type `React.ref<int>`. Note how changing the value `clicks.current` doesn't trigger any re-rendering of the component.
+
+## Accessing Refs
+
+When a ref is passed to an element during render, a reference to the node becomes accessible at the current attribute of the ref.
+
+```res
+let value = myRef.current
+```
+
+The value of the ref differs depending on the type of the node:
+
+- When the ref attribute is used on an HTML element, the ref passed via `ReactDOM.Ref.domRef` receives the underlying DOM element as its current property (type of `React.ref<Nullable.t<Dom.element>>`)
+- In case of interop, when the ref attribute is used on a custom class component (based on JS classes), the ref object receives the mounted instance of the component as its current (not discussed in this document).
+- **You may not use the ref attribute on component functions** because they don’t have instances (we don't expose JS classes in ReScript).
+
+Here are some examples:
+
+### Adding a Ref to a DOM Element
+
+This code uses a `React.ref` to store a reference to an `input` DOM node to put focus on a text field when a button was clicked:
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+// CustomTextInput.res
+
+@send external focus: Dom.element => unit = "focus"
+
+@react.component
+let make = () => {
+  let textInput = React.useRef(Nullable.null)
+
+  let focusInput = () =>
+    switch textInput.current {
+    | Value(dom) => dom->focus
+    | Null | Undefined => ()
+    }
+
+  let onClick = _ => focusInput()
+
+  <div>
+    <input type_="text" ref={ReactDOM.Ref.domRef(textInput)} />
+    <input type_="button" value="Focus the text input" onClick />
+  </div>
+}
+```
+
+```js
+function CustomTextInput(Props) {
+  var textInput = React.useRef(null);
+  var focusInput = function () {
+    var dom = textInput.current;
+    if (dom === null || dom === undefined) {
+      return;
+    }
+    dom.focus();
+  };
+  var onClick = function (param) {
+    focusInput();
+  };
+  return JsxRuntime.jsxs("div", {
+    children: [
+      JsxRuntime.jsx("input", {
+        ref: Caml_option.some(textInput),
+        type: "text",
+      }),
+      JsxRuntime.jsx("input", {
+        type: "button",
+        value: "Focus the text input",
+        onClick: onClick,
+      }),
+    ],
+  });
+}
+```
+
+</CodeTab>
+
+A few things happened here, so let's break them down:
+
+- We initialize our `textInput` ref as a `Nullable.null`
+- We register our `textInput` ref in our `<input>` element with `ReactDOM.Ref.domRef(textInput)`
+- In our `focusInput` function, we need to first verify that our DOM element is set, and then use the `focus` binding to set the focus
+
+React will assign the `current` field with the DOM element when the component mounts, and assign it back to null when it unmounts.
+
+### Refs and Component Functions
+
+In React, you **can't** pass a `ref` attribute to a component function:
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res
+module MyComp = {
+  @react.component
+  let make = (~ref) => <input />
+}
+
+@react.component
+let make = () => {
+  let textInput = React.useRef(Nullable.null)
+
+  // This will **not** work
+  <MyComp ref={ReactDOM.Ref.domRef(textInput)} />
+}
+```
+
+```js
+// Compiler Error:
+// Ref cannot be passed as a normal prop. Please use `forwardRef`
+// API instead
+```
+
+</CodeTab>
+
+The snippet above will not compile and output an error that looks like this: `"Ref cannot be passed as a normal prop. Please use forwardRef API instead."`.
+
+As the error message implies, If you want to allow people to take a ref to your component function, you can use [ref forwarding](./forwarding-refs.mdx) (possibly in conjunction with useImperativeHandle) instead.
+
+## Exposing DOM Refs to Parent Components
+
+In rare cases, you might want to have access to a child’s DOM node from a parent component. This is generally not recommended because it breaks component encapsulation, but it can occasionally be useful for triggering focus or measuring the size or position of a child DOM node.
+
+we recommend to use [ref forwarding](./forwarding-refs.mdx) for these cases. **Ref forwarding lets components opt into exposing any child component's ref as their own**. You can find a detailed example of how to expose a child's DOM node to a parent component in the ref forwarding documentation.
+
+## Callback Refs
+
+React also supports another way to set refs called “callback refs” (`React.Ref.callbackDomRef`), which gives more fine-grain control over when refs are set and unset.
+
+Instead of passing a ref value created by `React.useRef()`, you can pass in a callback function. The function receives the target `Dom.element` as its argument, which can be stored and accessed elsewhere.
+
+**Note:** Usually we'd use `React.Ref.domRef()` to pass a ref value, but for callback refs, we use `React.Ref.callbackDomRef()` instead.
+
+The example below implements a common pattern: using the ref callback to store a reference to a DOM node in an instance property.
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+// CustomTextInput.res
+
+@send external focus: Dom.element => unit = "focus"
+
+@react.component
+let make = () => {
+  let textInput = React.useRef(Nullable.null)
+  let setTextInputRef = element => {
+    textInput.current = element
+    None
+  }
+
+  let focusTextInput = _ => {
+    textInput.current->Nullable.forEach(input => input->focus)
+  }
+
+  <div>
+    <input type_="text" ref={ReactDOM.Ref.callbackDomRef(setTextInputRef)} />
+    <input
+      type_="button" value="Focus the text input" onClick={focusTextInput}
+    />
+  </div>
+}
+```
+
+```js
+function CustomTextInput(Props) {
+  var textInput = React.useRef(null);
+  var setTextInputRef = function (element) {
+    textInput.current = element;
+  };
+  var focusTextInput = function (param) {
+    Core__Nullable.forEach(textInput.current, function (input) {
+      input.focus();
+    });
+  };
+  return React.createElement(
+    "div",
+    undefined,
+    React.createElement("input", {
+      ref: Caml_option.some(setTextInputRef),
+      type: "text",
+    }),
+    React.createElement("input", {
+      type: "button",
+      value: "Focus the text input",
+      onClick: focusTextInput,
+    }),
+  );
+}
+```
+
+</CodeTab>
+
+React will call the ref callback with the DOM element when the component mounts, and call it with null when it unmounts.
+
+You can pass callback refs between components like you can with object refs that were created with `React.useRef()`.
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+// Parent.res
+
+@send external focus: Dom.element => unit = "focus"
+
+module CustomTextInput = {
+  @react.component
+  let make = (~setInputRef) => {
+    <div>
+      <input type_="text" ref={ReactDOM.Ref.callbackDomRef(setInputRef)} />
+    </div>
+  }
+}
+
+@react.component
+let make = () => {
+  let textInput = React.useRef(Nullable.null)
+  let setInputRef = element => {
+    textInput.current = element
+    None
+  }
+
+  <CustomTextInput setInputRef/>
+}
+```
+
+```js
+function CustomTextInput(Props) {
+  var setInputRef = Props.setInputRef;
+  return React.createElement(
+    "div",
+    undefined,
+    React.createElement("input", {
+      ref: setInputRef,
+      type: "text",
+    }),
+  );
+}
+
+var CustomTextInput = {
+  make: CustomTextInput,
+};
+
+function Parent(Props) {
+  var textInput = React.useRef(null);
+  var setInputRef = function (element) {
+    textInput.current = element;
+  };
+  return React.createElement(CustomTextInput, {
+    setInputRef: setInputRef,
+  });
+}
+```
+
+</CodeTab>
+
+In the example above, `Parent` passes its ref callback as an `setInputRef` prop to the `CustomTextInput`, and the `CustomTextInput` passes the same function as a special ref attribute to the `<input>`. As a result, the `textInput` ref in Parent will be set to the DOM node corresponding to the `<input>` element in the `CustomTextInput`.
+
+---
+title: Rendering Elements
+description: "How to render React elements to the DOM"
+canonical: "/docs/react/rendering-elements"
+section: "Main Concepts"
+order: 2
+---
+
+# Rendering Elements
+
+<Intro>
+
+In our previous section [React Elements & JSX](./elements-and-jsx.mdx) we learned how to create and handle React elements. In this section we will learn how to put our elements into action by rendering them into the DOM.
+
+</Intro>
+
+As we mentioned before, a `React.element` describes what you see on the screen:
+
+```res example
+let element = <h1> {React.string("Hello World")} </h1>
+```
+
+Unlike browser DOM elements, React elements are plain objects, and are cheap to create. React DOM takes care of updating the DOM to match the React elements.
+
+## Rendering Elements to the DOM
+
+Let's assume we've got an HTML file that contains a `div` like this:
+
+```html
+<div id="root" />
+```
+
+We call this a “root” DOM node because everything inside it will be managed by React DOM.
+
+Plain React applications usually have a single root DOM node. If you are integrating React into an existing app, you may have as many isolated root DOM nodes as you like.
+
+To render our React application into the `root` div, we need to do two things:
+
+- Find our DOM node with `ReactDOM.querySelector`
+- Render our React element to our queried `Dom.element` with `ReactDOM.render`
+
+Here is a full example rendering our application in our `root` div:
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+// Dom access can actually fail. ReScript
+// is really explicit about handling edge cases!
+switch ReactDOM.querySelector("#root") {
+| Some(rootElement) => {
+    let root = ReactDOM.Client.createRoot(rootElement)
+    ReactDOM.Client.Root.render(root, <div />)
+  }
+| None => ()
+}
+```
+
+```js
+var root = document.querySelector("#root");
+
+if (!(root == null)) {
+  ReactDom.render(React.createElement("div", undefined, "Hello Andrea"), root);
+}
+```
+
+</CodeTab>
+
+React elements are immutable. Once you create an element, you can’t change its children or attributes. An element is like a single frame in a movie: it represents the UI at a certain point in time.
+
+At this point we would need to understand a few more concepts, such as React components and state management to be able to update the rendered elements after the initial `ReactDOM.Client.Root.render`. For now, just imagine your React application as a tree of elements, whereby some elements may get replaced during the lifetime of your application.
+
+React will automatically recognize any element changes and will only apply the DOM updates necessary to bring the DOM to the desired state.
+
+---
+title: Router
+description: "Basic concepts for navigation and routing in ReScript & React"
+canonical: "/docs/react/router"
+section: "Main Concepts"
+order: 10
+---
+
+# Router
+
+RescriptReact comes with a router! We've leveraged the language and library features in order to create a router that's:
+
+- The simplest, thinnest possible.
+- Easily pluggable anywhere into your existing code.
+- Performant and tiny.
+
+## How does it work?
+
+The available methods are listed here:
+
+- `RescriptReactRouter.push(string)`: takes a new path and update the URL.
+- `RescriptReactRouter.replace(string)`: like `push`, but replaces the current URL.
+- `RescriptReactRouter.watchUrl(f)`: start watching for URL changes. Returns a subscription token. Upon url change, calls the callback and passes it the `RescriptReactRouter.url` record.
+- `RescriptReactRouter.unwatchUrl(watcherID)`: stop watching for URL changes.
+- `RescriptReactRouter.dangerouslyGetInitialUrl()`: get `url` record outside of `watchUrl`. Described later.
+- `RescriptReactRouter.useUrl(~serverUrl)`: returns the `url` record inside a component.
+
+> If you want to know more about the low level details on how the router interface is implemented, refer to the [RescriptReactRouter implementation](https://github.com/rescript-lang/rescript-react/blob/master/src/RescriptReactRouter.res).
+
+## Match a Route
+
+_There's no API_! `watchUrl` gives you back a `url` record of the following shape:
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res prelude
+type url = {
+  /* path takes window.location.pathname, like "/book/title/edit" and turns it into `list{"book", "title", "edit"}` */
+  path: list<string>,
+  /* the url's hash, if any. The # symbol is stripped out for you */
+  hash: string,
+  /* the url's query params, if any. The ? symbol is stripped out for you */
+  search: string
+}
+```
+
+```js
+// Empty output
+```
+
+</CodeTab>
+
+So the url `www.hello.com/book/10/edit?name=Jane#author` is given back as:
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res prelude
+{
+  path: list{"book", "10", "edit"},
+  hash: "author",
+  search: "name=Jane"
+}
+```
+
+```js
+// Empty output
+```
+
+</CodeTab>
+
+## Basic Example
+
+Let's start with a first example to see how a ReScript React Router looks like:
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res
+// App.res
+@react.component
+let make = () => {
+  let url = RescriptReactRouter.useUrl()
+
+  switch url.path {
+    | list{"user", id, ..._} => <User id />
+    | list{} => <Home/>
+    | _ => <PageNotFound/>
+  }
+}
+```
+
+```js
+import * as React from "react";
+import * as User from "./User.res.js";
+import * as RescriptReactRouter from "@rescript/react/src/RescriptReactRouter.res.js";
+import * as Home from "./Home.res.js";
+import * as NotFound from "./NotFound.res.js";
+
+function App(Props) {
+  let url = RescriptReactRouter.useUrl(undefined, undefined);
+  let match = url.path;
+  if (match === 0) {
+    return JsxRuntime.jsx(Home, {});
+  }
+  if (match.hd !== "user") {
+    return JsxRuntime.jsx(NotFound, {});
+  }
+  let match$1 = match.tl;
+  if (match$1 !== 0 && match$1.tl === 0) {
+    return JsxRuntime.jsx(User, {
+      id: match$1.hd,
+    });
+  } else {
+    return JsxRuntime.jsx(NotFound, {});
+  }
+}
+
+var make = App;
+
+export { make };
+```
+
+</CodeTab>
+
+## Directly Get a Route
+
+In one specific occasion, you might want to take hold of a `url` record outside of `watchUrl`. For example, if you've put `watchUrl` inside a component's `didMount` so that a URL change triggers a component state change, you might also want the initial state to be dictated by the URL.
+
+In other words, you'd like to read from the `url` record once at the beginning of your app logic. We expose `dangerouslyGetInitialUrl()` for this purpose.
+
+Note: the reason why we label it as "dangerous" is to remind you not to read this `url` in any arbitrary component's e.g. `render`, since that information might be out of date if said component doesn't also contain a `watchUrl` subscription that re-renders the component when the URL changes. Aka, please only use `dangerouslyGetInitialUrl` alongside `watchUrl`.
+
+## Push a New Route
+
+From anywhere in your app, just call e.g. `RescriptReactRouter.push("/books/10/edit#validated")`. This will trigger a URL change (without a page refresh) and `watchUrl`'s callback will be called again.
+
+We might provide better facilities for typed routing + payload carrying in the future!
+
+Note: because of browser limitations, changing the URL through JavaScript (aka pushState) cannot be detected. The solution is to change the URL then fire a "popState" event. This is what Router.push does, and what the event watchUrl listens to.
+So if, for whatever reason (e.g. incremental migration), you want to update the URL outside of `RescriptReactRouter.push`, just do `window.dispatchEvent(new Event('popState'))`.
+
+## Design Decisions
+
+We always strive to lower the performance and learning overhead in RescriptReact, and our router design's no different. The entire implementation, barring browser features detection, is around 20 lines. The design might seem obvious in retrospect, but to arrive here, we had to dig back into ReactJS internals & future proposals to make sure we understood the state update mechanisms, the future context proposal, lifecycle ordering, etc. and reject some bad API designs along the way. It's nice to arrive at such an obvious solution!
+
+The API also doesn't dictate whether matching on a route should return a component, a state update, or a side-effect. Flexible enough to slip into existing apps.
+
+Performance-wise, a JavaScript-like API tends to use a JS object of route string -> callback. We eschewed that in favor of pattern-matching, since the latter in Rescript does not allocate memory, and is compiled to a fast jump table in C++ (through the JS JIT). In fact, the only allocation in the router matching is the creation of the url record!
+
+---
+title: Server Components
+description: "Creating React components"
+canonical: "/docs/react/server-components"
+---
+
+# Server Components
+
+ReScript allows you to create server components as described in [React 19](https://react.dev/reference/rsc/server-components).
+
+## Server Functions
+
+To mark a file exposing functions as [Server Functions](https://react.dev/reference/rsc/server-functions),  
+you can use the `@@directive("'use server'")` tag.
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+// src/actions/MyActions.res
+@@directive("'use server'")
+
+let myHelper = () => "Hello from the server!"
+
+let helloWorld = async () => {
+  let response = myHelper()
+  response
+}
+```
+
+```js
+"use server";
+// Generated by ReScript, PLEASE EDIT WITH CARE
+
+function myHelper() {
+  return "Hello from the server!";
+}
+
+async function helloWorld() {
+  return "Hello from the server!";
+}
+
+export { myHelper, helloWorld };
+```
+
+</CodeTab>
+
+**Warning:** It is recommended to use an interface file here, to ensure only the functions you want to expose are exposed.
+
+```res
+// src/actions/MyActions.resi
+let helloWorld: unit => Promise<string>
+```
+
+`myHelper` will remain unexported with this change.
+
+## Server Components
+
+[Server components](https://react.dev/reference/rsc/server-components) can be async.
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+// src/pages/Index.res
+let data = [1, 2, 3]
+let getData = () => Promise.resolve(data)
+
+@react.component
+let make = async () => {
+  // fetch some data from somewhere
+  let data = await getData()
+  <html>
+    <body>
+      <h1> {React.string("Hello from server component")} </h1>
+      <ul>
+        {data->Array.map(id => <li> {React.int(id)} </li>)->React.array}
+      </ul>
+    </body>
+  </html>
+}
+
+// Export as default
+let default = make
+```
+
+```js
+"use server";
+import * as JsxRuntime from "react/jsx-runtime";
+
+async function make(param) {
+  await getData();
+  return JsxRuntime.jsx("html", {
+    children: JsxRuntime.jsx("body", {
+      children: JsxRuntime.jsx("h1", {
+        children: "Hello from server component",
+      }),
+    }),
+  });
+}
+
+let Index = make;
+
+let make$1 = Index;
+
+let $$default = Index;
+
+export { make$1 as make, $$default as default };
+```
+
+</CodeTab>
+
+A server function can be inlined in a server component and passed as prop to a client component.
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res
+module ClientComp = {
+  @react.component @module("some-module")
+  external make: (~submit: int => promise<bool>) => React.element =
+    "SomeClientComp"
+}
+
+let data = [1, 2, 3]
+let getData = () => Promise.resolve(data)
+
+@react.component
+let make = async () => {
+  let data = await getData()
+
+  let addData =
+    @directive("'use server'")
+    async (id: int) => {
+      // add to data store
+      data->Array.push(id)
+      true
+    }
+  <html>
+    <body>
+      <h1> {React.string("Hello from server component")} </h1>
+      <ul>
+        {data->Array.map(id => <li> {React.int(id)} </li>)->React.array}
+      </ul>
+      <ClientComp submit={addData} />
+    </body>
+  </html>
+}
+```
+
+```js
+import * as SomeModule from "some-module";
+
+let data = [1, 2, 3];
+
+function getData() {
+  return Promise.resolve(data);
+}
+
+async function make(param) {
+  let data$1 = await Promise.resolve(data);
+  let addData = async (id) => {
+    "use server";
+    data$1.push(id);
+    return true;
+  };
+  return JsxRuntime.jsx("html", {
+    children: JsxRuntime.jsxs("body", {
+      children: [
+        JsxRuntime.jsx("h1", {
+          children: "Hello from server component",
+        }),
+        JsxRuntime.jsx("ul", {
+          children: data$1.map((id) =>
+            JsxRuntime.jsx("li", {
+              children: id,
+            }),
+          ),
+        }),
+        JsxRuntime.jsx(SomeModule.SomeClientComp, {
+          submit: addData,
+        }),
+      ],
+    }),
+  });
+}
+```
+
+</CodeTab>
+
+**Note** that when decorating the function with `@directive("'use server'")`, we use a single `@`, where to annotate an entire file we use `@@directive("'use server'")`.
+
+## Client Components
+
+[Client components](https://react.dev/reference/rsc/use-client) should use the `@@directive("'use client'")` attribute.
+
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res
+// src/components/ClientComp.res
+@@directive("'use client'")
+
+@react.component
+let make = (~submit) => <button> {React.string("yow from client")} </button>
+```
+
+```js
+use client'
+// Generated by ReScript, PLEASE EDIT WITH CARE
+
+import * as JsxRuntime from "react/jsx-runtime";
+
+function ClientComp(props) {
+  return JsxRuntime.jsx("button", {
+    children: "yow from client"
+  });
+}
+
+let make = ClientComp;
+
+export {
+  make,
+}
+```
+
+</CodeTab>
+
+---
+title: Styling
+description: "Styling in ReScript & React"
+canonical: "/docs/react/styling"
+section: "Main Concepts"
+order: 9
+---
+
+# Styling
+
+React comes with builtin support for inline styles, but there are also a number of third party libraries for styling React components. You might be comfortable with a specific setup, like:
+
+- Global CSS / CSS modules
+- CSS utility libraries (`tailwindcss`, `tachyons`, `bootstrap` etc.)
+- CSS-in-JS (`styled-components`, `emotion`, etc.)
+
+If they work in JS then they almost certainly work in ReScript. In the next few sections, we've shared some ideas for working with popular libraries. If you're interested in working with one you don't see here, search the [package index](/packages) or post in [the forum](https://forum.rescript-lang.org).
+
+## Inline Styles
+
+This is the most basic form of styling, coming straight from the 90s. You can apply a `style` attribute to any DOM element using the `style` prop.
+
+```res example
+let make = () =>
+  <div style={{ color: "#444444", fontSize: "68px"}} />
+```
+
+## Global CSS
+
+Use a `%%raw` expression to import CSS files within your ReScript / React component code:
+
+```res example
+// in a JS module setup
+%%raw("import './styles/main.css'")
+
+// or with CommonJS
+%%raw("require('./styles/main.css')")
+```
+
+## CSS Modules
+
+[CSS modules](https://github.com/css-modules/css-modules) can be imported like any other JS module. The imported value is a JS object, with attributes equivalent to each classname defined in the CSS file.
+
+As an example, let's say we have a CSS module like this:
+
+```css
+/* styles.module.css */
+
+.root {
+  color: red;
+}
+```
+
+We now need to create a module binding that imports our styles as a JS object:
+
+```res example
+// {..} means we are handling a JS object with an unknown
+// set of attributes
+@module external styles: {..} = "./styles.module.css"
+
+// Use the obj["key"] syntax to access any classname within our object
+let app = <div className={styles["root"]} />
+```
+
+**Note:** `{..}` is an open [JS object type](../manual/object.mdx#type-declaration), which means the type checker will not type check correct classname usage. If you want to enforce compiler errors, replace `{..}` with a concrete JS object type, such as `{"root": string}`.
+
+## CSS Utility Libraries
+
+### Tailwind
+
+CSS utility libraries like [TailwindCSS](https://tailwindcss.com) usually require some globally imported CSS.
+
+First, create your TailwindCSS main entrypoint file:
+
+```css
+/* main.css */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+Then, import your `main.css` file in your ReScript / React application:
+
+```res example
+// src/App.res
+
+%%raw("import './main.css'")
+```
+
+Utilize ReScript's pattern matching and string interpolations to combine different classnames:
+
+```res example
+@react.component
+let make = (~active: bool) => {
+  let activeClass = if active {
+    "text-green-600"
+  }
+  else {
+    "text-red-600"
+  }
+
+  <div className={`border border-black ${activeClass}`}>
+    {React.string("Hello World")}
+  </div>
+}
+```
+
+> **Hint:** `rescript-lang.org` actually uses TailwindCSS under the hood! Check out our [codebase](https://github.com/rescript-lang/rescript-lang.org) to get some more inspiration on usage patterns.
+
+## CSS-in-JS
+
+There's no way we could recommend a definitive CSS-in-JS workflow, since there are many different approaches on how to bind to CSS-in-JS libraries (going from simple to very advanced).
+
+For demonstration purposes, let's create some simple bindings to e.g. [`emotion`](https://emotion.sh/docs/introduction) (as described [here](https://github.com/bloodyowl/rescript-react-starter-kit/blob/eca7055c59ba578b2d1994fc928d8f541a423e74/src/shared/Emotion.res)):
+
+```res example
+// src/Emotion.res
+
+@module("@emotion/css") external css: {..} => string = "css"
+@module("@emotion/css") external rawCss: string => string = "css"
+@module("@emotion/css") external keyframes: {..} => string = "css"
+@module("@emotion/css") external cx: array<string> => string = "cx"
+
+@module("@emotion/css") external injectGlobal: string => unit = "injectGlobal"
+```
+
+This will give you straight-forward access to `emotion`'s apis. Here's how you'd use them in your app code:
+
+```res
+let container = Emotion.css({
+  "color": "#fff",
+  "backgroundColor": "red"
+})
+
+let app = <div className={container} />
+```
+
+You can also use submodules to organize your styles more easily:
+
+```res
+module Styles = {
+  open Emotion
+  let container = css({
+    "color": "#fff",
+    "backgroundColor": "red"
+  })
+  // your other declarations
+}
+
+let app = <div className={Styles.container} />
+```
+
+Please note that this approach will not check for invalid css attribute names. If you e.g. want to make sure that only valid CSS attributes are being passed, you could define your `css` function like this as well:
+
+```res example
+@module("@emotion/css") external css: ReactDOM.Style.t => string = "css"
+
+// Usage is slightly different (and probably less ergonomic)
+let container = {padding: "20px"}->css
+
+let app = <div
+  className={container}
+/>
+```
+
+Here we used the already existing `React.Style.t` type to enforce valid CSS attribute names.
+Last but not least, you can also bind to functions that let you use raw CSS directly:
+
+```res
+let container = Emotion.rawCss(`
+  color: #fff;
+  background-color: red;
+`)
+
+let app = <div className={container} />
+```
+
+Please keep in mind that there's a spectrum on how type-safe an API can be (while being more / less complex to handle), so choose a solution that fits to your team's needs.
+

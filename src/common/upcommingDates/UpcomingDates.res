@@ -26,7 +26,11 @@ let indexToEmojiNumber = index =>
 
 let format = date => {
   Intl.DateTimeFormat.make(
-    ~locales=[Common.Constants.defaultLocale],
+    ~locales=[
+      Common.Storage.get(#language)
+      ->Option.getOr(Common.Constants.defaultLanguage)
+      ->Language.toString,
+    ],
     ~options={dateStyle: #full},
   )->Intl.DateTimeFormat.format(date)
 }

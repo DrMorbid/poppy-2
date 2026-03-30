@@ -17,4 +17,4 @@ let photographerWebsite = "https://www.babyfotoeva.cz/"
 let lowestChildAge: App_Types.Age.ageLimit = Months(6)
 let highestChildAge: App_Types.Age.ageLimit = Years(15)
 
-let defaultLocale = "cs-CZ"
+let defaultLanguage = Language.Cs

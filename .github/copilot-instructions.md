@@ -29,6 +29,32 @@ yarn res:build  # Compile ReScript
 yarn build      # Next.js static export
 ```
 
+## LLM Reference Files in This Repo
+
+The [.github/rescript](.github/rescript) folder follows the llms.txt convention and is the preferred local reference for agent reasoning.
+
+- [.github/rescript/llms.txt](.github/rescript/llms.txt): index for ReScript language docs
+- [.github/rescript/llm-small.txt](.github/rescript/llm-small.txt): abridged ReScript docs (fast lookup)
+- [.github/rescript/llm-full.txt](.github/rescript/llm-full.txt): complete ReScript docs (deep lookup)
+- [.github/rescript/react-llms.txt](.github/rescript/react-llms.txt): index for ReScript React docs
+- [.github/rescript/react-llm-small.txt](.github/rescript/react-llm-small.txt): abridged ReScript React docs (fast lookup)
+- [.github/rescript/react-llm-full.txt](.github/rescript/react-llm-full.txt): complete ReScript React docs (deep lookup)
+
+### How agents should use them
+
+1. Start with abridged files for quick recall and conventions:
+
+- [.github/rescript/llm-small.txt](.github/rescript/llm-small.txt)
+- [.github/rescript/react-llm-small.txt](.github/rescript/react-llm-small.txt)
+
+2. Escalate to full files when:
+
+- modeling advanced JS interop
+- working with tricky type-system behavior
+- resolving subtle JSX/hook edge cases
+
+3. Prefer extracting just targeted sections (headings + nearby lines) instead of loading the entire full files into context.
+
 **Internationalization:**
 
 ```bash
@@ -220,6 +246,37 @@ module Email = {
 
 Use: `EnvVar.Email.apiKey->Option.forEach(authenticate)`
 
+### 9. ReScript React Conventions from LLM Docs
+
+- Hooks must stay at top level of component/custom hook bodies (no loops/conditions/nested helper calls).
+- Custom hooks should be named with `use...` prefix.
+- `React.useEffect` dependency typing:
+  - one dependency: array, e.g. `[count]`
+  - mixed-type multiple dependencies: tuple, e.g. `(count, status)`
+- Prefer arrays for render lists. If data is a `list`, convert before render (`List.toArray` or `Belt.List.toArray`) and then map.
+- Always provide stable sibling keys when mapping arrays to JSX.
+- Do not declare component props named `key` or `ref`; React handles them specially.
+- Convert primitive text explicitly with `React.string` when needed in JSX contexts.
+- Prefer explicit props over heavily-constrained `children` APIs for typed component contracts.
+
+### 10. ReScript Language Conventions from LLM Docs
+
+- Prefer `switch` pattern matching over complex if/else ladders for exhaustiveness and readability.
+- For JS interop from untrusted sources, bind return values as `unknown` and decode/validate before use.
+- Use `@module`, `@send`, `@scope`, `@new`, `@unwrap`, `@as`, `@string` deliberately for precise interop modeling.
+- Prefer `async`/`await` for promise flows; remember nested promises do not auto-collapse in ReScript.
+- Keep filenames capitalized by convention to match module names.
+- Use interface files (`.resi`) when module surface stability matters (faster incremental builds and safer public API control).
+
+### 11. Agent Editing Defaults for .res Files
+
+- Preserve existing formatting and naming; avoid broad refactors unless explicitly requested.
+- When adding React components that use hooks/events/context, include `@@directive("'use client';")`.
+- Keep public props and exposed module signatures explicit for reusable components.
+- Favor simple, explicit data flow over magic abstractions.
+- After message changes, run `yarn intl`.
+- After ReScript changes, run `yarn res:build` (or keep `yarn res:dev` active) before concluding.
+
 ## Common Gotchas
 
 1. **ReScript must compile before Next.js can run** - if you see module not found errors, check ReScript compilation
@@ -227,6 +284,9 @@ Use: `EnvVar.Email.apiKey->Option.forEach(authenticate)`
 3. **Refs need conversion**: `ref={topRef->Ref.domRef}` or `ref={topRef->ReactDOM.Ref.domRef}`
 4. **Option handling**: Use `->Option.map()`, `->Option.getOr()`, `->Option.forEach()` for option types
 5. **JSX children arrays**: Wrap in `{[ ... ]->React.array}` when mapping/filtering
+6. **useEffect dependencies**: Single dependency uses array; mixed-type multi-dependency uses tuple
+7. **Rendering list values**: Convert `list` to `array` before producing JSX arrays
+8. **Interop safety**: Use `unknown` for untrusted external return values and decode before access
 
 ## File Changes Checklist
 
@@ -235,6 +295,8 @@ Use: `EnvVar.Email.apiKey->Option.forEach(authenticate)`
 - **New messages**: Add to `Message_*.res`, run `yarn intl`, translate in `_locales/*/messages.json`
 - **Style changes**: Use Sx props from `Common.Style` constants when available
 - **Context changes**: Update `App_Context.res` types, actions, and reducer
+- **Hook additions**: Verify hooks follow top-level rules and dependency typing conventions
+- **Interop additions**: Prefer safe externals and avoid over-permissive `'a` returns from untrusted APIs
 
 ## Key Files Reference
 

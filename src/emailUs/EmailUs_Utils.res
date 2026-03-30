@@ -30,7 +30,9 @@ let fetchEmailBody = async (
     ->Option.map(
       Date.toLocaleDateStringWithLocaleAndOptions(
         _,
-        Common.Constants.defaultLocale,
+        Common.Storage.get(#language)
+        ->Option.getOr(Common.Constants.defaultLanguage)
+        ->Language.toString,
         {dateStyle: #medium},
       ),
     )
