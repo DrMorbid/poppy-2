@@ -37,6 +37,6 @@ let make = (~children) => {
         {children}
       </ReactIntl.IntlProvider>
     )
-    ->Option.getOr(React.null)}
+    ->Option.getOr(<App_Loading />)}
   </Context.Provider>
 }

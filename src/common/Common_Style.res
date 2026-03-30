@@ -46,3 +46,18 @@ let combineTextStyles = (~bold as boldText=false, ~italic as italicText=false) =
   ->Array.concat(italic)
   ->Mui.Sx.array
 }
+
+let appContainer = Mui.Sx.array([
+  Mui.Sx.Array.obj({
+    paddingTop: Breakpoint({xs: String("1rem"), sm: String("1.5rem"), md: String("2rem")}),
+    paddingLeft: Breakpoint({xs: String("0rem"), sm: String("1.5rem"), md: String("2rem")}),
+    paddingRight: Breakpoint({xs: String("0rem"), sm: String("1.5rem"), md: String("2rem")}),
+  }),
+  Mui.Sx.Array.func(theme =>
+    Mui.Sx.Array.obj({
+      bgcolor: theme["palette"]["mode"]->App_Theme.Colors.isLightMode
+        ? String("rgba(250, 250, 250, 0.8)")
+        : String("rgba(48, 48, 48, 0.8)"),
+    })
+  ),
+])
